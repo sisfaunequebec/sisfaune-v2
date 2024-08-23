@@ -1,0 +1,330 @@
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url = env("DATABASE_URL") // uses connection pooling
+}
+
+model User {
+  @@map("auth_utilisateur")
+  id            String          @id @default(cuid())
+  name          String?
+  email         String          @unique
+  emailVerified DateTime?
+  image         String?
+  accounts      Account[]
+  sessions      Session[]
+  // Optional for WebAuthn support
+  // Authenticator Authenticator[]
+ 
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  eventCreated Event[] @relation("EventCreator")
+  eventSubmitted Event[] @relation("EventSubmitter")
+}
+ 
+model Account {
+  @@map("auth_compte")
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String?
+  access_token      String?
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?
+  session_state     String?
+ 
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+ 
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+ 
+  @@id([provider, providerAccountId])
+}
+ 
+model Session {
+  @@map("auth_session")
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+ 
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+ 
+model VerificationToken {
+  @@map("auth_token")
+  identifier String
+  token      String
+  expires    DateTime
+ 
+  @@id([identifier, token])
+}
+
+model LutEventType {
+  @@map("lut_evenement_type")
+  id Int @id @db.SmallInt
+  name String @map(name: "nom")
+
+  event Event[]
+}
+
+model LutReportOrigin {
+  @@map("lut_signalement_provenance")
+  id Int @id @db.SmallInt
+  name String @map(name: "nom")
+  isActive Boolean
+
+  event Event[]
+}
+
+model LutEventProgram {
+  @@map("lut_evenement_programme")
+  id Int @id @db.SmallInt
+  code String
+  name String @map(name: "nom")
+  isActive Boolean
+
+  event Event[]
+}
+
+model LutEventStatus {
+  @@map("lut_evenement_statut")
+  id Int @id @db.SmallInt
+  name String @map(name: "nom")
+  mapaqCode String @map(name: "code_mapaq")
+
+  event Event[]
+}
+
+model LutHabitatType {
+  @@map("lut_habitat_type")
+  id Int @id @db.SmallInt
+  name String @map(name: "nom")
+  group String @map(name: "groupe")
+
+  event Event[]
+}
+
+model LutLabShippingMethod {
+  @@map("lut_methode_expedition")
+  id Int @id @db.SmallInt
+  name String @map(name: "nom")
+
+  event Event[]
+}
+
+model LutAnimalFamily {
+  @@map("lut_animal_famille")
+  id Int @id @db.SmallInt
+  name String @map(name: "nom")
+
+  specie LutAnimalSpecie[]
+}
+
+model LutAnimalSpecie {
+  @@map("lut_animal_espece")
+  id Int @id @db.SmallInt
+  name String @map(name: "nom")
+  group String @map(name: "group")
+  binome String @map(name: "binome")
+
+  familyId Int @map(name: "id_famille")
+  family LutAnimalFamily @relation(fields: [familyId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+
+  eventAffectedSpecie1 Event[] @relation("EventAffectedSpecie1")
+  eventAffectedSpecie2 Event[] @relation("EventAffectedSpecie2")
+  eventAffectedSpecie3 Event[] @relation("EventAffectedSpecie3")
+  eventAffectedSpecie4 Event[] @relation("EventAffectedSpecie4")
+  eventAffectedSpecie5 Event[] @relation("EventAffectedSpecie5")
+}
+
+model Collaborator {
+  @@map("data_intervenant")
+  id Int @id @db.SmallInt
+  name String @map(name: "nom")
+  isActive Boolean
+
+  event Event[]
+}
+
+model Discoverer {
+  @@map("data_decouvreur")
+
+  eventId Int @id @map(name: "id_evenement")
+  event Event[]
+
+  // TODO :
+  // salutation	nvarchar(4)	YES	NO	NULL	
+  // nom	nvarchar(50)	YES	NO	NULL	
+  // prenom	nvarchar(50)	YES	NO	NULL	
+  // id_adresse	int	YES	NO	NULL	
+  // no_civique	nvarchar(20)	YES	NO	NULL	
+  // route	nvarchar(100)	YES	NO	NULL	
+  // courriel	nvarchar(50)	YES	NO	NULL	
+  // appartement	nvarchar(50)	YES	NO	NULL	
+  // id_muni	int	YES	NO	NULL	
+  // municipalite	nvarchar(100)	YES	NO	NULL	
+  // province	nvarchar(50)	YES	NO	NULL	
+  // code_postal	nchar(7)	YES	NO	NULL	
+  // telephone	nchar(12)	YES	NO	NULL	
+}
+
+model Specimen {
+  @@map("data_specimen")
+  id Int @id
+
+  eventId Int @map(name: "id_evenement")
+  event Event @relation(fields: [eventId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+
+  // TODO :
+  // n	tinyint	NO	NO	((1))	
+  // id_sequentiel	tinyint	NO	NO	((0))	
+  // numero_specimen	nvarchar(61)	YES	YES	NULL	
+  // numero_identification_terrain	nvarchar(50)	YES	NO	NULL	
+  // numero_identification_silab	nvarchar(50)	YES	NO	NULL	
+  // numero_cqsas	nvarchar(50)	YES	NO	NULL	
+  // numero_pathologie	nvarchar(10)	YES	NO	NULL	
+  // numero_permis_chasse	nchar(10)	YES	NO	NULL	
+  // identifie_par	nvarchar(100)	YES	NO	NULL	
+  // marques_identification	nvarchar(MAX)	YES	NO	NULL	
+  // id_espece	smallint	NO	NO	((0))	 dbo.lut_animal_espece(id_espece)
+  // id_age	tinyint	NO	NO	((0))	 dbo.lut_animal_age(id)
+  // id_sexe	tinyint	NO	NO	((0))	 dbo.lut_animal_sexe(id)
+  // poids	numeric(10,3)	YES	NO	NULL	
+  // id_poids_unite	tinyint	YES	NO	((0))	 dbo.lut_poids_unite(id)
+  // id_etat_decouverte	tinyint	NO	NO	((0))	 dbo.lut_etat_decouverte(id)
+  // id_cause_mort	int	NO	NO	((0))	 dbo.lut_animal_cause_mort(id)
+  // id_methode_conservation	tinyint	NO	NO	((0))	 dbo.lut_methode_conservation(id)
+  // remarques	nvarchar(MAX)	YES	NO	NULL	
+  // motcles	nvarchar(MAX)	YES	NO	NULL	
+  // meta_date_creation	datetime	NO	NO	(getdate())	
+  // meta_creation_par	uniqueidentifier	NO	NO	NULL	
+  // numero_sefaq	nvarchar(11)	YES	NO	NULL	
+}
+
+model Euthanasia {
+  @@map("data_euthanasie")
+  @@id([specimenId, methodId])
+  specimenId Int @map(name: "id_specimen")
+  methodId Int @map(name: "id_methode")
+  date DateTime? @db.Date
+
+  // TODO:
+  // qtee_ketamine	numeric(18,2)	YES	NO	NULL	
+  // no_bouteille	nvarchar(50)	YES	NO	NULL	
+  // id_organisme	int	NO	NO	((0))	 dbo.lut_euthanasie_organisme(id_organisme)
+}
+
+model Event {
+  @@map("data_evenement")
+  id Int @id @default(autoincrement())
+
+  typeId Int @db.SmallInt @map(name: "id_type") @default(0)
+  type LutEventType @relation(fields: [typeId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+
+  reportOriginId Int @map(name: "id_provenance_signalement")
+  reportOrigin LutReportOrigin @relation(fields: [reportOriginId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+
+  programId Int @map(name: "id_programme") @default(10)
+  program LutEventProgram @relation(fields: [programId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+
+  statusId Int @db.SmallInt @map(name: "id_statut") @default(2)
+  status LutEventStatus @relation(fields: [statusId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+
+  silabId String? @map(name: "id_silab")
+  mapaqId String @map(name: "no_mapaq")
+  cqsasIncidentNumber String? @map(name: "no_incident_cqsas")
+
+  // Discovery
+  discovererId Int @map(name: "id_decouvreur")
+  discoverer Discoverer @relation(fields: [discovererId], references: [eventId], onDelete: Restrict, onUpdate: Restrict)
+  discoveredAt DateTime? @db.Date @map(name: "date_decouverte")
+
+  reportedAt DateTime?  @db.Date @map(name: "date_signalement")
+  collectedAt DateTime?  @db.Date @map(name: "date_recolte")
+
+  closedAt DateTime? @db.Date @map("date_fermeture_dossier")
+
+  // Submission
+  submitterId String @map(name: "id_soumissionnaire")
+  submitter User @relation("EventSubmitter", fields: [submitterId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+
+  isDiscovererSameAsSubmitter Boolean @default(false) @map(name: "decouvreur_idem_soumissionnaire")
+
+  hadHumanContact Boolean @default(false) @map(name: "contact_humain")
+  hadAnimalContact Boolean @default(false)
+ 
+  collaboratorId Int @db.SmallInt @map(name: "id_intervenant") @default(0)
+  collaborator Collaborator @relation(fields: [collaboratorId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+
+  habitatTypeId Int @db.SmallInt @map(name: "id_type_habitat") @default(0)
+  habitatType LutHabitatType @relation(fields: [habitatTypeId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+
+  // Lab
+  labId Int @map(name: "id_laboratoire") @default(0)
+  labShippingDate DateTime? @map(name: "date_expedition_labo")
+  labShippingMethodId Int @db.SmallInt @map(name: "id_methode_expedition") @default(0)
+  labShippingMethod LutLabShippingMethod @relation(fields: [labShippingMethodId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+  labShippingTrackingNumber String @map(name: "no_suivi_transporteur")
+
+  temperature Decimal? @db.Decimal(4, 1) @map(name: "temperature")
+  observations String? @map(name: "observations")
+  commentaires String? @map(name: "commentaires")
+  keywords String @map(name: "motcles")
+
+  pathologyNumber String? @map(name: "numero_pathologie")
+
+  affectedSpecie1Id Int? @db.SmallInt @map(name: "affect1_espece")
+  affectedSpecie1 LutAnimalSpecie? @relation("EventAffectedSpecie1", fields: [affectedSpecie1Id], references: [id], onDelete: Restrict, onUpdate: Restrict)
+  affectedSpecie1UnhealtyCount Int? @db.SmallInt @map(name: "affect1_malade")
+  affectedSpecie1DeadCount Int? @db.SmallInt @map(name: "affect1_mort")
+  affectedSpecie1AliveCount Int? @db.SmallInt @map(name: "affect1_vivant")
+  affectedSpecie1NotSpecifiedCount Int? @db.SmallInt @map(name: "affect1_non_specifie")
+
+  affectedSpecie2Id Int? @db.SmallInt @map(name: "affect2_espece")
+  affectedSpecie2 LutAnimalSpecie? @relation("EventAffectedSpecie2", fields: [affectedSpecie2Id], references: [id], onDelete: Restrict, onUpdate: Restrict)
+  affectedSpecie2UnhealtyCount Int? @db.SmallInt @map(name: "affect2_malade")
+  affectedSpecie2DeadCount Int? @db.SmallInt @map(name: "affect2_mort")
+  affectedSpecie2AliveCount Int? @db.SmallInt @map(name: "affect2_vivant")
+  affectedSpecie2NotSpecifiedCount Int? @db.SmallInt @map(name: "affect2_non_specifie")
+
+  affectedSpecie3Id Int? @db.SmallInt @map(name: "affect3_espece")
+  affectedSpecie3 LutAnimalSpecie? @relation("EventAffectedSpecie3", fields: [affectedSpecie3Id], references: [id], onDelete: Restrict, onUpdate: Restrict)
+  affectedSpecie3UnhealtyCount Int? @db.SmallInt @map(name: "affect3_malade")
+  affectedSpecie3DeadCount Int? @db.SmallInt @map(name: "affect3_mort")
+  affectedSpecie3AliveCount Int? @db.SmallInt @map(name: "affect3_vivant")
+  affectedSpecie3NotSpecifiedCount Int? @db.SmallInt @map(name: "affect3_non_specifie")
+
+  affectedSpecie4Id Int? @db.SmallInt @map(name: "affect4_espece")
+  affectedSpecie4 LutAnimalSpecie? @relation("EventAffectedSpecie4", fields: [affectedSpecie4Id], references: [id], onDelete: Restrict, onUpdate: Restrict)
+  affectedSpecie4UnhealtyCount Int? @db.SmallInt @map(name: "affect4_malade")
+  affectedSpecie4DeadCount Int? @db.SmallInt @map(name: "affect4_mort")
+  affectedSpecie4AliveCount Int? @db.SmallInt @map(name: "affect4_vivant")
+  affectedSpecie4NotSpecifiedCount Int? @db.SmallInt @map(name: "affect4_non_specifie")
+
+  affectedSpecie5Id Int? @db.SmallInt @map(name: "affect5_espece")
+  affectedSpecie5 LutAnimalSpecie? @relation("EventAffectedSpecie5", fields: [affectedSpecie5Id], references: [id], onDelete: Restrict, onUpdate: Restrict)
+  affectedSpecie5UnhealtyCount Int? @db.SmallInt @map(name: "affect5_malade")
+  affectedSpecie5DeadCount Int? @db.SmallInt @map(name: "affect5_mort")
+  affectedSpecie5AliveCount Int? @db.SmallInt @map(name: "affect5_vivant")
+  affectedSpecie5NotSpecifiedCount Int? @db.SmallInt @map(name: "affect5_non_specifie")
+
+  source String? @map("source")
+  sourcePk Int? @map("pk_source")
+
+  createdAt DateTime @default(now()) @map("meta_date_creation")
+  createdById String @map("meta_creation_par")
+  createdBy User @relation("EventCreator", fields: [createdById], references: [id], onDelete: Restrict, onUpdate: Restrict)
+
+  // Relations
+  specimen Specimen[]
+}

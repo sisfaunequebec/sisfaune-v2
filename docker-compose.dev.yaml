@@ -1,0 +1,12 @@
+version: '3'
+services:
+  dev_db:
+    image: postgres:16
+    restart: always
+    ports:
+      - 5440:5432
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: jojoba123
+      POSTGRES_DB: sisfaune-v2-dev
+    container_name: sisfaune-v2-dev-db
