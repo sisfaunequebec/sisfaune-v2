@@ -11,17 +11,17 @@ datasource db {
 model User {
   @@map("auth_utilisateur")
   id            String          @id @default(cuid())
-  name          String?
-  email         String          @unique
-  emailVerified DateTime?
+  name          String? @map(name: "nom_complet")
+  email         String          @unique @map(name: "adresse_courriel")
+  emailVerified DateTime? @map(name: "meta_date_verification_courriel")
   image         String?
   accounts      Account[]
   sessions      Session[]
   // Optional for WebAuthn support
   // Authenticator Authenticator[]
  
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  createdAt DateTime @default(now()) @map(name: "meta_date_creation")
+  updatedAt DateTime @updatedAt @map(name: "meta_date_maj")
 
   eventCreated Event[] @relation("EventCreator")
   eventSubmitted Event[] @relation("EventSubmitter")
@@ -29,20 +29,20 @@ model User {
  
 model Account {
   @@map("auth_compte")
-  userId            String
+  userId            String  @map(name: "id_utilisateur")
   type              String
-  provider          String
-  providerAccountId String
-  refresh_token     String?
-  access_token      String?
-  expires_at        Int?
-  token_type        String?
+  provider          String @map(name: "id_fournisseur")
+  providerAccountId String  @map(name: "id_compte_fournisseur")
+  refresh_token     String? @map(name: "jeton_renouvellement")
+  access_token      String? @map(name: "jeton_acces")
+  expires_at        Int? @map(name: "meta_date_expiration")
+  token_type        String? @map(name: "type_jeton")
   scope             String?
-  id_token          String?
-  session_state     String?
+  id_token          String? @map(name: "id_jeton")
+  session_state     String? @map(name: "etat_Session")
  
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  createdAt DateTime @default(now())  @map(name: "meta_date_creation")
+  updatedAt DateTime @updatedAt @map(name: "meta_date_maj")
  
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
  
@@ -51,20 +51,20 @@ model Account {
  
 model Session {
   @@map("auth_session")
-  sessionToken String   @unique
-  userId       String
-  expires      DateTime
+  sessionToken String   @unique @map(name: "jeton_session")
+  userId       String @map(name: "id_utilisateur")
+  expires      DateTime @map(name: "meta_date_expiration")
+  createdAt DateTime @default(now()) @map(name: "meta_date_creation")
+  updatedAt DateTime @updatedAt @map(name: "meta_date_maj")
+
   user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
- 
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
 }
  
 model VerificationToken {
   @@map("auth_token")
-  identifier String
-  token      String
-  expires    DateTime
+  identifier String @unique @map(name: "identifiant")
+  token      String @unique @map(name: "jeton")
+  expires    DateTime @map(name: "meta_date_expiration")
  
   @@id([identifier, token])
 }
@@ -81,7 +81,7 @@ model LutReportOrigin {
   @@map("lut_signalement_provenance")
   id Int @id @db.SmallInt
   name String @map(name: "nom")
-  isActive Boolean
+  isActive Boolean @default(true)
 
   event Event[]
 }
@@ -91,7 +91,7 @@ model LutEventProgram {
   id Int @id @db.SmallInt
   code String
   name String @map(name: "nom")
-  isActive Boolean
+  isActive Boolean @default(true)
 
   event Event[]
 }
@@ -147,11 +147,20 @@ model LutAnimalSpecie {
   eventAffectedSpecie5 Event[] @relation("EventAffectedSpecie5")
 }
 
+model LutLaboratory {
+  @@map("lut_laboratoire")
+  id Int @id @db.SmallInt
+  name String @map(name: "nom")
+  isActive Boolean @default(true)
+
+  labEvent LabEvent[] 
+}
+
 model Collaborator {
   @@map("data_intervenant")
   id Int @id @db.SmallInt
   name String @map(name: "nom")
-  isActive Boolean
+  isActive Boolean @default(true)
 
   event Event[]
 }
@@ -176,6 +185,23 @@ model Discoverer {
   // province	nvarchar(50)	YES	NO	NULL	
   // code_postal	nchar(7)	YES	NO	NULL	
   // telephone	nchar(12)	YES	NO	NULL	
+}
+
+model LabEvent {
+  @@map("data_laboratoire")
+  @@id([eventId, labId])
+
+  eventId Int @map(name: "id_evenement")
+  event Event @relation(fields: [eventId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+
+  labId Int @map(name: "id_laboratoire")
+  lab LutLaboratory @relation(fields: [labId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+
+  receivedAt DateTime? @map(name: "date_reception")
+  receivedBy String? @map(name: "recu_par")
+
+  // TODO: 
+  // id_responsable	uniqueidentifier	YES	NO	NULL	 dbo.utilisateur(id_utilisateur)
 }
 
 model Specimen {
@@ -327,4 +353,5 @@ model Event {
 
   // Relations
   specimen Specimen[]
+  labEvent LabEvent[]
 }
