@@ -90,10 +90,14 @@ const config = defineConfig({
 
 const system = createSystem(defaultConfig, config)
 
-export function Provider(props) {
+const Provider = ({ children }) => {
   return (
     <ChakraProvider value={system}>
-      <ColorModeProvider>{props.children}</ColorModeProvider>
+      {/* <ColorModeProvider> */}
+        {children}
+      {/* </ColorModeProvider> */}
     </ChakraProvider>
   )
 }
+
+export default Provider

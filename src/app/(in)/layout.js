@@ -41,7 +41,7 @@ const Layout = async ({ children }) => {
       <Flex as={'main'} flex={1} direction={'column'} justifyContent={'space-between'} px={0} py={4}>
         <Container maxWidth={'4xl'}>{children}</Container>
       </Flex>
-      <Flex as={'footer'} flex={0} direction={'column'} justifyContent={'space-between'} px={0} py={4}>
+      <Flex as={'footer'} flex={0} direction={'column'} justifyContent={'space-between'} px={0} py={4} pb={6}>
         <Container maxWidth={'4xl'}>Footer</Container>
       </Flex>
     </>
