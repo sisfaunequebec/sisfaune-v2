@@ -11,28 +11,34 @@ const credentialsProvider = Credentials({
   authorize: async (credentials) => {
     let user = null
 
-    if (process.env.NODE_ENV === 'development') {
-      return {
-        email: 'bob@alice.com',
-        name: 'Bob Alice',
-        image: 'https://avatars.githubusercontent.com/u/67470890?s=200&v=4'
-      }
+    return {
+      email: 'bob@alice.com',
+      name: 'Bob Alice',
+      image: 'https://avatars.githubusercontent.com/u/67470890?s=200&v=4'
     }
 
-    // logic to salt and hash password
-    const pwHash = saltAndHashPassword(credentials.password)
+    // if (process.env.NODE_ENV === 'development') {
+    //   return {
+    //     email: 'bob@alice.com',
+    //     name: 'Bob Alice',
+    //     image: 'https://avatars.githubusercontent.com/u/67470890?s=200&v=4'
+    //   }
+    // }
 
-    // logic to verify if the user exists
-    user = await getUserFromDb(credentials.email, pwHash)
+    // // logic to salt and hash password
+    // const pwHash = saltAndHashPassword(credentials.password)
 
-    if (!user) {
-      // No user found, so this is their first attempt to login
-      // meaning this is also the place you could do registration
-      throw new Error('User not found.')
-    }
+    // // logic to verify if the user exists
+    // user = await getUserFromDb(credentials.email, pwHash)
 
-    // return user object with their profile data
-    return user
+    // if (!user) {
+    //   // No user found, so this is their first attempt to login
+    //   // meaning this is also the place you could do registration
+    //   throw new Error('User not found.')
+    // }
+
+    // // return user object with their profile data
+    // return user
   }
 })
 
