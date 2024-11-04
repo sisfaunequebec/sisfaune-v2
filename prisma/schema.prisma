@@ -89,7 +89,7 @@ model LutAnalysisGroup {
   code String? @map(name: "code")
   isActive Boolean @default(true) @map(name: "actif")
 
-  analysisSectorId Int @db.SmallInt
+  analysisSectorId Int @db.SmallInt @map(name: "id_analyse_secteur")
 
   analysisSector LutAnalysisSector @relation(fields: [analysisSectorId], references: [id], onDelete: Restrict, onUpdate: Restrict)
   Analysis LutAnalysis[]
@@ -118,16 +118,14 @@ model LutAnalysis {
   defaultValue String? @map(name: "valeur_defaut")
   isShared Boolean @default(false) @map(name: "partage")
 
-  analysisGroupId Int @db.SmallInt
-  resultTypeId Int @db.SmallInt
+  analysisGroupId Int @db.SmallInt @map(name: "id_analyse_groupe")
+  resultTypeId Int @db.SmallInt @map(name: "id_resultat_type")
 
   analysisGroup LutAnalysisGroup @relation(fields: [analysisGroupId], references: [id], onDelete: Restrict, onUpdate: Restrict)
   resultType LutResultType @relation(fields: [resultTypeId], references: [id], onDelete: Restrict, onUpdate: Restrict)
 
   results Result[]
 }
-
-
 
 model LutAnimalAge {
   @@map("lut_animal_age")
@@ -236,7 +234,7 @@ model LutReportOrigin {
 
   id Int @id @db.SmallInt
   name String @map(name: "nom")
-  isActive Boolean @default(true)
+  isActive Boolean @default(true) @map(name: "actif")
 
   event Event[]
 }
@@ -247,7 +245,7 @@ model LutEventProgram {
   id Int @id @db.SmallInt
   code String
   name String @map(name: "nom")
-  isActive Boolean @default(true)
+  isActive Boolean @default(true) @map(name: "actif")
 
   event Event[]
 }
@@ -284,7 +282,7 @@ model LutLocalityGeometry {
   version String? @map(name: "version")
   vertices BigInt? @map(name: "vertex")
 
-  localityId Int @unique()
+  localityId Int @unique() @map(name: "id_muni")
   // TODO: 
   // geometry String? @map(name: "geom") ?? PostGIS ?
 
@@ -404,7 +402,7 @@ model Collaborator {
 
   id Int @id @db.SmallInt
   name String @map(name: "nom")
-  isActive Boolean @default(true)
+  isActive Boolean @default(true) @map(name: "actif")
 
   event Event[]
 }
@@ -570,7 +568,7 @@ model Event {
   isDiscovererSameAsSubmitter Boolean @default(false) @map(name: "decouvreur_idem_soumissionnaire")
 
   hadHumanContact Boolean @default(false) @map(name: "contact_humain")
-  hadAnimalContact Boolean @default(false)
+  hadAnimalContact Boolean @default(false) @map(name: "contact_animal")
  
   collaboratorId Int @db.SmallInt @map(name: "id_intervenant") @default(0)
   collaborator Collaborator @relation(fields: [collaboratorId], references: [id], onDelete: Restrict, onUpdate: Restrict)
