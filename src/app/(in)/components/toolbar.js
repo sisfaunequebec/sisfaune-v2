@@ -25,11 +25,11 @@ const Toolbar = async () => {
   const { name : username } = user
 
   return (
-    <Flex direction={'row'} justifyContent={'space-between'} alignItems={'center'}>
+    <Flex direction={'row'} justifyContent={'space-between'} alignItems={'center'} pt={1} pe={2}>
         <Flex>
           <Image src={'/logo_sisfaune_small.png'} alt={'logo'}  />
         </Flex>
-        <HStack gap={1}>
+        <HStack gap={[4, null, 1]}>
           <MenuRoot positioning={{ placement: 'bottom-end' }}>
             <MenuTrigger>
               <Avatar name={username} colorPalette={'green'} size={'sm'} variant={'solid'} cursor={'pointer'} />

@@ -29,15 +29,15 @@ const signAction = async () => {
  
 export default async function SignInPage() {
   return (
-    <Flex direction={'column'} justifyContent={'space-between'}>
-      <AbsoluteCenter>
+    <Flex direction={'column'} minH={'100%'} justifyContent={'center'} alignItems={'center'}>
+      {/* <AbsoluteCenter > */}
         <Flex direction={'column'} alignItems={'center'}>
           <Image src={'/logo_sisfaune_big.png'} alt={'logo'} mb={8} />
           <form action={signAction}>
-            <SignInButton/ >
+            <SignInButton />
           </form>
         </Flex>
-      </AbsoluteCenter>
+      {/* </AbsoluteCenter> */}
     </Flex>
   )
 }
