@@ -10,7 +10,7 @@ import {
   MenuTrigger
 } from '@/components/ui/menu'
 
-import SignInButton from './ui/sign-out-button'
+import SignOutButton from './ui/sign-out-button'
 
 const colorPalette = ['red', 'blue', 'green', 'yellow', 'purple', 'orange']
 
@@ -29,8 +29,8 @@ const Toolbar = async () => {
         <Flex>
           <Image src={'/logo_sisfaune_small.png'} alt={'logo'}  />
         </Flex>
-        <HStack gap={[4, null, 1]}>
-          <MenuRoot positioning={{ placement: 'bottom-end' }}>
+        <HStack gap={[3, null, 1]}>
+          {/* <MenuRoot positioning={{ placement: 'bottom-end' }}>
             <MenuTrigger>
               <Avatar name={username} colorPalette={'green'} size={'sm'} variant={'solid'} cursor={'pointer'} />
             </MenuTrigger>
@@ -42,8 +42,8 @@ const Toolbar = async () => {
                 New File...
               </MenuItem>
             </MenuContent>
-          </MenuRoot>
-          <SignInButton />
+          </MenuRoot> */}
+          <SignOutButton />
         </HStack>
     </Flex>
   )
