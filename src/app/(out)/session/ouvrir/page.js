@@ -31,7 +31,7 @@ export default async function SignInPage() {
   return (
     <Flex direction={'column'} minH={'100%'} justifyContent={'center'} alignItems={'center'}>
       {/* <AbsoluteCenter > */}
-        <Flex direction={'column'} alignItems={'center'}>
+        <Flex direction={'column'} alignItems={'center'} shadow={'lg'} bg={'white'} p={8} borderRadius={'lg'}>
           <Image src={'/logo_sisfaune_big.png'} alt={'logo'} mb={8} />
           <form action={signAction}>
             <SignInButton />

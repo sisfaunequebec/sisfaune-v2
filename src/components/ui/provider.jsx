@@ -3,7 +3,7 @@
 import { ChakraProvider, defineConfig, mergeConfigs, defaultBaseConfig, defaultConfig, defineRecipe, defineSlotRecipe, defineTokens, defineTextStyles, createSystem } from '@chakra-ui/react'
 import { ColorModeProvider } from './color-mode'
 
-import { avatarAnatomy } from '@chakra-ui/react/anatomy'
+import { avatarAnatomy, menuAnatomy } from '@chakra-ui/react/anatomy'
 
 const tokens = defineTokens({
   colors: {
@@ -50,6 +50,19 @@ const avatarRecipe = defineSlotRecipe({
   }
 })
 
+const menuRecipe = defineSlotRecipe({
+  slots: menuAnatomy.keys(),
+  base: {
+    item: {
+      borderRadius: 'sm',
+      cursor: 'pointer',
+      _hover: {
+        bg: 'gray.100'
+      }
+    }
+  }
+})
+
 const buttonRecipe = defineRecipe({
   variants: {
     variant: {
@@ -71,18 +84,19 @@ const textStyles = defineTextStyles({
 })
 
 const config = defineConfig({
-  // globalCss: {
-  // 'html, body': {
-  //     color: 'red.300'
-  //   }
-  // },
+  globalCss: {
+    'html, body': {
+      bg: 'gray.100'
+    }
+  },
   theme: {
     tokens,
     recipes: {
       button: buttonRecipe
     },
     slotRecipes: {
-      avatar: avatarRecipe
+      avatar: avatarRecipe,
+      menu: menuRecipe
     }
     // textStyles
   }
