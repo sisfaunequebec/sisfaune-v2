@@ -11,9 +11,7 @@ const RootLayout = async ({ children }) => {
     <html lang={'fr'} suppressHydrationWarning={true}>
       <body>
       <Provider>
-        <Flex direction={'column'} height={'100vh'} justifyContent={'space-between'} textStyle={'body'}>
-          {children}
-        </Flex>
+        {children}
       </Provider>
       </body>
     </html>

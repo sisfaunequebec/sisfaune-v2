@@ -693,6 +693,18 @@
   dependencies:
     "@prisma/debug" "5.18.0"
 
+"@react-hooks-library/core@^0.6.2":
+  version "0.6.2"
+  resolved "https://registry.yarnpkg.com/@react-hooks-library/core/-/core-0.6.2.tgz#1898d32e0dc174ec3b0af82a6edeb4dcd7150ede"
+  integrity sha512-Ca6ccj9mfUiQ0hbDJV0hzUaweZU7D0E5Xwtp3ba5oT6/yWj1tzoPe0y3AwGQyUSUKA5G6OADylU2fwEqZwrpNA==
+  dependencies:
+    "@react-hooks-library/shared" "0.6.2"
+
+"@react-hooks-library/shared@0.6.2":
+  version "0.6.2"
+  resolved "https://registry.yarnpkg.com/@react-hooks-library/shared/-/shared-0.6.2.tgz#aea5fe91397f8cfe3ba5175717b8496f7ea32127"
+  integrity sha512-tasvVgcoRhnHYZSVfQjDK7VDviVrO9BqqS/yEvjJ4/QRTVFQTNmt5Jfj3ym0Uju2B63Dc9892DuLhb9V9oysWA==
+
 "@rtsao/scc@^1.1.0":
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/@rtsao/scc/-/scc-1.1.0.tgz#927dd2fae9bc3361403ac2c7a00c32ddce9ad7e8"
@@ -810,6 +822,11 @@
   dependencies:
     "@typescript-eslint/types" "8.12.2"
     eslint-visitor-keys "^3.4.3"
+
+"@uidotdev/usehooks@^2.4.1":
+  version "2.4.1"
+  resolved "https://registry.yarnpkg.com/@uidotdev/usehooks/-/usehooks-2.4.1.tgz#4b733eaeae09a7be143c6c9ca158b56cc1ea75bf"
+  integrity sha512-1I+RwWyS+kdv3Mv0Vmc+p0dPYH0DTRAo04HLyXReYBL9AeseDWUJyi4THuksBJcu9F0Pih69Ak150VDnqbVnXg==
 
 "@ungap/structured-clone@^1.2.0":
   version "1.2.0"

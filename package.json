@@ -13,6 +13,8 @@
     "@chakra-ui/react": "^3.0.2",
     "@emotion/react": "^11.13.3",
     "@prisma/client": "5.18.0",
+    "@react-hooks-library/core": "^0.6.2",
+    "@uidotdev/usehooks": "^2.4.1",
     "dotenv": "^16.4.5",
     "dotenv-cli": "^7.4.2",
     "framer-motion": "^11.3.30",
