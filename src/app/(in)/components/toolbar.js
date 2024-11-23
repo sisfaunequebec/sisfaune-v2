@@ -45,10 +45,10 @@ const Toolbar = ({ session }) => {
   const [{ x, y }, scrollTo] = useWindowScroll()
 
   const toolbarShadowSize = y > 0 ? 'lg' : null
-  const borderBottomWidth = y > 0 ? 0 : 3
+  const borderBottomWidth = y > 0 ? 0 : 4
 
   return (
-    <Flex pt={1} pe={2} minH={8} px={0} py={4} bg={'white'} shadow={toolbarShadowSize} borderBottomWidth={borderBottomWidth}>
+    <Flex height={20} px={0} py={4} bg={'white'} shadow={toolbarShadowSize} borderBottomWidth={2} position={'sticky'} zIndex={10} alignItems={'center'} justifyContent={'center'} top={0} w={'100%'}>
       <Container maxWidth={'full'} display={'flex'} flexDirection={'row'} justifyContent={'space-between'} alignItems={'center'} >
         <Flex>
           <Image src={'/logo_sisfaune_small.png'} alt={'logo'} />

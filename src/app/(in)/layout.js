@@ -34,10 +34,11 @@ const Layout = async ({ children }) => {
   }
   return (
     <>
-      <Flex as={'header'} flex={0} position={'sticky'} zIndex={10} direction={'column'} justifyContent={'flex-start'} top={0} >
+      {/* <Flex as={'header'} flex={0} position={'sticky'} zIndex={10} direction={'column'} justifyContent={'flex-start'} top={0} >
+        
+      </Flex> */}
+      <Flex as={'main'} flex={1} direction={'column'} justifyContent={'space-between'} px={0} alignItems={'flex-start'}>
         <Toolbar session={session} />
-      </Flex>
-      <Flex as={'main'} flex={1} direction={'column'} justifyContent={'space-between'} px={0} py={4}>
         {children}
       </Flex>
     </>
