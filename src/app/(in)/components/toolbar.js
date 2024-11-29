@@ -7,7 +7,7 @@ import { signOut } from 'next-auth/react'
 
 import { useWindowScroll } from '@uidotdev/usehooks'
 
-import { Box, Flex, HStack, Image, VStack, IconButton, Container, Separator, Link  } from '@chakra-ui/react'
+import { Box, Flex, HStack, Image, VStack, IconButton, Container, Separator, Link, Tabs } from '@chakra-ui/react'
 
 import { Avatar } from '@/components/ui/avatar'
 
@@ -53,19 +53,34 @@ const Toolbar = ({ session }) => {
   const borderBottomWidth = y > 0 ? 0 : 4
 
   return (
-    <Flex css={{ '--toolbar-height': '80px', '--toolbar-border-width': '2px' }} height={'var(--toolbar-height)'} px={0} py={4} bg={'white'} shadow={toolbarShadowSize} borderBottomWidth={'var(--toolbar-border-width)'} position={'sticky'} zIndex={10} alignItems={'center'} justifyContent={'center'} top={0} w={'100%'}>
-      <Container maxWidth={'8xl'} display={'flex'} flexDirection={'row'} justifyContent={'space-between'} alignItems={'center'} >
-        <Flex>
-          <Image src={'/logo_sisfaune_small.png'} alt={'logo'} />
-        </Flex>
-        <HStack gap={[3, null, 1]}>
-          <DesktopMenu username={username} email={email} />
-          <MobileMenu username={username} email={email} />
-        </HStack>
-      </Container>
+    <Flex css={{ '--toolbar-height': '70px', '--toolbar-border-width': '2px', '--tabs-height': '40px' }} height={'calc(var(--toolbar-height) + var(--tabs-height))'} px={0} py={4} pb={0} bg={'white'} shadow={toolbarShadowSize} borderBottomWidth={'var(--toolbar-border-width)'} position={'sticky'} zIndex={10} alignItems={'flex-end'} justifyContent={'center'} top={0} w={'100%'}>
+      <VStack justifyContent={'flex-end'} alignItems={'flex-end'} flex={1}>
+        <Container maxWidth={'8xl'} display={'flex'} flexDirection={'row'} justifyContent={'space-between'} alignItems={'center'}>
+          <Flex>
+            <Image src={'/logo_sisfaune_small.png'} alt={'logo'} />
+          </Flex>
+          <HStack gap={[3, null, 1]}>
+            <DesktopMenu username={username} email={email} />
+            <MobileMenu username={username} email={email} />
+          </HStack>
+        </Container>
+        <Container maxWidth={'8xl'} display={'flex'} flexDirection={'row'} justifyContent={'center'}>
+          <Tabs.Root defaultValue="database" position='relative' top={'1px'}>
+            <Tabs.List>
+              <Tabs.Trigger value="database">
+                Base de données
+              </Tabs.Trigger>
+              <Tabs.Trigger value="admin">
+                Administation
+              </Tabs.Trigger>
+            </Tabs.List>
+          </Tabs.Root>
+        </Container>
+      </VStack>
     </Flex>
   )
 }
+
 
 const DesktopMenu = ({ username, email }) => {
   return (
@@ -114,7 +129,7 @@ const MobileMenu = ({ username, email }) => {
         { on ? <RxCross1 /> : <RxHamburgerMenu /> }
       </IconButton>
       { on &&
-      <Flex bg={'white'} position={'fixed'} inset={'calc(var(--toolbar-height) - var(--toolbar-border-width)) 0 0'} overscrollBehavior={'contain'}>
+      <Flex bg={'white'} position={'fixed'} inset={'calc(var(--toolbar-height) - var(--toolbar-border-width)) 0 0'} overscrollBehavior={'contain'} zIndex={1000}>
         <Container>
           <VStack alignItems={'stretch'} justifyContent={'center'} px={2}>
             <Flex flex={1} py={2}>

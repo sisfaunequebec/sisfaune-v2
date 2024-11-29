@@ -5,6 +5,10 @@ import { zodResolver } from '@hookform/resolvers/zod'
 
 import { Flex, Image, Fieldset, Input } from '@chakra-ui/react'
 import { Field as ChakraField } from "@/components/ui/field"
+import {
+  PasswordInput,
+  PasswordStrengthMeter,
+} from "@/components/ui/password-input"
 
 import signInSchema from './sign-in-schema'
 import signAction from './signin-action'
@@ -40,7 +44,7 @@ export default function SignInPage() {
                 <Input type={'email'} autoComplete={'off'} {...register('email')} />
               </Field>
               <Field formState={formState} name={'password'} label={'Mot de passe :'}>
-                <Input type={'password'} autoComplete={'off'}  {...register('password')}  />
+                <PasswordInput autoComplete={'off'}  {...register('password')}  />
               </Field>
             </Fieldset.Content>
             <SignInButton />
