@@ -3,22 +3,29 @@ import { ZodError } from 'zod'
 const EMPTY_FORM_STATE = {
   status: 'UNSET',
   message: null,
-  validationErrors: {},
+  validationErrors: [],
   timestamp: Date.now()
 }
 
 const fromErrorToFormState = (error) => {
   // if validation error with Zod, return first error message
   if (error instanceof ZodError) {
-    
-    console.debug(error)
-    const { errors } = error
-    const firstError = errors[0]
-    const { path, message } = firstError
+
+    const { fieldErrors } = error.flatten()
+    const validationErrors = Object.entries(fieldErrors).map(e => {
+      const [ key, messages ] = e 
+      return {
+        name: key,
+        message: messages[0]
+      }
+    })
+
+    // console.debug(validationErrors)
+
     return {
       status: 'ERROR',
       message: null,
-      validationErrors: error.flatten().fieldErrors,
+      validationErrors: [validationErrors[0]],
       timestamp: Date.now()
     }
   // if another error instance, return error message
@@ -27,7 +34,7 @@ const fromErrorToFormState = (error) => {
     return {
       status: 'ERROR',
       message: error.message,
-      validationErrors: {},
+      validationErrors: [],
       timestamp: Date.now(),
       // errors: {
       //   generic : { message: error.message }
@@ -39,7 +46,7 @@ const fromErrorToFormState = (error) => {
     return {
       status: 'ERROR',
       message: 'Une erreur s\'est produite...',
-      validationErrors: {},
+      validationErrors: [],
       timestamp: Date.now()
       // errors: {
       //   generic : { message: error.message }
