@@ -1,10 +1,13 @@
 'use client'
+import { useState } from 'react'
+import { useToggle } from '@uidotdev/usehooks'
+
 // import { auth } from '@/auth'
 import { signOut } from 'next-auth/react'
 
 import { useWindowScroll } from '@uidotdev/usehooks'
 
-import { Box, Flex, HStack, Image, VStack, IconButton, Container } from '@chakra-ui/react'
+import { Box, Flex, HStack, Image, VStack, IconButton, Container, Separator, Link  } from '@chakra-ui/react'
 
 import { Avatar } from '@/components/ui/avatar'
 
@@ -16,20 +19,22 @@ import {
   MenuSeparator
 } from '@/components/ui/menu'
 
-import {
-  DrawerActionTrigger,
-  DrawerBackdrop,
-  DrawerBody,
-  DrawerCloseTrigger,
-  DrawerContent,
-  DrawerFooter,
-  DrawerHeader,
-  DrawerRoot,
-  DrawerTitle,
-  DrawerTrigger,
-} from '@/components/ui/drawer'
+// import {
+//   DrawerActionTrigger,
+//   DrawerBackdrop,
+//   DrawerBody,
+//   DrawerCloseTrigger,
+//   DrawerContent,
+//   DrawerFooter,
+//   DrawerHeader,
+//   DrawerRoot,
+//   DrawerTitle,
+//   DrawerTrigger,
+// } from '@/components/ui/drawer'
 
-import { RxExit, RxHamburgerMenu, RxGear  } from 'react-icons/rx'
+import { DataListItem, DataListRoot } from "@/components/ui/data-list"
+
+import { RxExit, RxHamburgerMenu, RxGear, RxCross1 } from 'react-icons/rx'
 
 const colorPalette = ['red', 'blue', 'green', 'yellow', 'purple', 'orange']
 
@@ -48,7 +53,7 @@ const Toolbar = ({ session }) => {
   const borderBottomWidth = y > 0 ? 0 : 4
 
   return (
-    <Flex height={20} px={0} py={4} bg={'white'} shadow={toolbarShadowSize} borderBottomWidth={2} position={'sticky'} zIndex={10} alignItems={'center'} justifyContent={'center'} top={0} w={'100%'}>
+    <Flex css={{ '--toolbar-height': '80px', '--toolbar-border-width': '2px' }} height={'var(--toolbar-height)'} px={0} py={4} bg={'white'} shadow={toolbarShadowSize} borderBottomWidth={'var(--toolbar-border-width)'} position={'sticky'} zIndex={10} alignItems={'center'} justifyContent={'center'} top={0} w={'100%'}>
       <Container maxWidth={'8xl'} display={'flex'} flexDirection={'row'} justifyContent={'space-between'} alignItems={'center'} >
         <Flex>
           <Image src={'/logo_sisfaune_small.png'} alt={'logo'} />
@@ -64,7 +69,7 @@ const Toolbar = ({ session }) => {
 
 const DesktopMenu = ({ username, email }) => {
   return (
-    <Flex hideBelow={'md'}>
+    <Flex hideBelow={'lg'}>
       <MenuRoot positioning={{ placement: 'bottom-end' }}>
         <MenuTrigger >
           <Avatar name={username} colorPalette={'green'} size={'sm'} variant={'solid'} cursor={'pointer'} />
@@ -92,9 +97,33 @@ const DesktopMenu = ({ username, email }) => {
 }
 
 const MobileMenu = ({ username, email }) => {
+  const [on, toggle] = useToggle(false)
+  console.debug(on)
   return (
-    <Flex hideFrom={'md'}>
-      <DrawerRoot placement={'top'} size={'full'}>
+    <Flex hideFrom={'lg'}>
+      <IconButton variant={'outline'} rounded={'full'} size={'sm'} onClick={toggle} >
+        { on ? <RxCross1 /> : <RxHamburgerMenu /> }
+      </IconButton>
+      { on &&
+
+      <Flex bg={'white'} position={'fixed'} inset={'calc(var(--toolbar-height) - var(--toolbar-border-width)) 0 0'} overflowY={'scroll'} overscrollBehavior={'none'}>
+        <Container>
+          <VStack alignItems={'stretch'} justifyContent={'center'} px={2}>
+            <Flex flex={1}>
+            <VStack gap={0} flex={1} alignItems={'flex-start'}>
+              <Box flex={1} fontWeight={500}>{username}</Box>
+              <Box flex={1} color={'gray.500'}>{email}</Box>
+            </VStack>
+            </Flex>
+            <Separator />
+            <Flex flex={1}>Vos paramètres</Flex>
+            <Separator />
+            <Flex as={Link} onClick={() => { signOut() }}>Quitter</Flex>
+          </VStack>
+        </Container>
+      </Flex>
+      }
+      {/* <DrawerRoot placement={'top'} size={'full'}>
         <DrawerBackdrop />
         <DrawerTrigger asChild>
           <IconButton variant={'outline'} rounded={'full'} size={'sm'} >
@@ -111,7 +140,7 @@ const MobileMenu = ({ username, email }) => {
             eiusmod tempor incididunt ut labore et dolore magna aliqua.
           </DrawerBody>
         </DrawerContent>
-      </DrawerRoot>
+      </DrawerRoot> */}
     </Flex>
   )
 }
