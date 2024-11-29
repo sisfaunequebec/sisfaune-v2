@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button'
 const SignInButton = () => {
   const { pending } = useFormStatus()
   return (
-    <Button type={'submit'} loading={pending} loadingText={'Un instant...'} colorPalette={'blue'} size={['xl', null, 'md']}>Ouvrir</Button>
+    <Button type={'submit'} loading={pending} loadingText={'Un instant...'} colorPalette={'blue'} size={['xl', null, 'md']}>Ouvrir une session</Button>
   )
 }
 

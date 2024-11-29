@@ -49,7 +49,7 @@ const Toolbar = ({ session }) => {
 
   return (
     <Flex height={20} px={0} py={4} bg={'white'} shadow={toolbarShadowSize} borderBottomWidth={2} position={'sticky'} zIndex={10} alignItems={'center'} justifyContent={'center'} top={0} w={'100%'}>
-      <Container maxWidth={'full'} display={'flex'} flexDirection={'row'} justifyContent={'space-between'} alignItems={'center'} >
+      <Container maxWidth={'8xl'} display={'flex'} flexDirection={'row'} justifyContent={'space-between'} alignItems={'center'} >
         <Flex>
           <Image src={'/logo_sisfaune_small.png'} alt={'logo'} />
         </Flex>
