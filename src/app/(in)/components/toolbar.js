@@ -55,7 +55,7 @@ const Toolbar = ({ session }) => {
   return (
     <Flex css={{ '--toolbar-height': '70px', '--toolbar-border-width': '2px', '--tabs-height': '40px' }} height={'calc(var(--toolbar-height) + var(--tabs-height))'} px={0} py={4} pb={0} bg={'white'} shadow={toolbarShadowSize} borderBottomWidth={'var(--toolbar-border-width)'} position={'sticky'} zIndex={10} alignItems={'flex-end'} justifyContent={'center'} top={0} w={'100%'}>
       <VStack justifyContent={'flex-end'} alignItems={'flex-end'} flex={1}>
-        <Container maxWidth={'8xl'} display={'flex'} flexDirection={'row'} justifyContent={'space-between'} alignItems={'center'}>
+        <Container maxWidth={'8xl'} display={'flex'} flexDirection={'row'} alignItems={'center'} justifyContent={'space-between'}>
           <Flex>
             <Image src={'/logo_sisfaune_small.png'} alt={'logo'} />
           </Flex>
@@ -64,8 +64,8 @@ const Toolbar = ({ session }) => {
             <MobileMenu username={username} email={email} />
           </HStack>
         </Container>
-        <Container maxWidth={'8xl'} display={'flex'} flexDirection={'row'} justifyContent={'center'}>
-          <Tabs.Root defaultValue="database" position='relative' top={'1px'}>
+        <Container display={'flex'}>
+          <Tabs.Root defaultValue="database" top={'2px'} display={'flex'} flex={1} justifyContent={['center', null, null, null]}>
             <Tabs.List>
               <Tabs.Trigger value="database">
                 Base de données

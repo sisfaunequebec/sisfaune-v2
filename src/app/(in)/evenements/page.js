@@ -14,7 +14,7 @@ const Evenements = async () => {
   return (
     <Flex as={Container} direction={['column', null, null, 'row']} maxWidth={'6xl'} spaceX={[0, null, null, 4]} >
 
-      <Flex flex={1} position={'sticky'} top={20} alignSelf={'flex-start'} bg={'gray.100'} width={'full'} p={4} pb={8}>Filtres</Flex>
+      <Flex flex={1} position={'sticky'} top={'110px'} alignSelf={'flex-start'} bg={'gray.100'} width={'full'} p={4} pb={8}>Filtres</Flex>
       <Flex flex={3} p={4}>
 
         <DataListRoot size={'md'} divideY={'1px'} orientation={'horizontal'} w={'full'}>
