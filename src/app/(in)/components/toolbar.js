@@ -109,16 +109,22 @@ const MobileMenu = ({ username, email }) => {
       <Flex bg={'white'} position={'fixed'} inset={'calc(var(--toolbar-height) - var(--toolbar-border-width)) 0 0'} overflowY={'scroll'} overscrollBehavior={'none'}>
         <Container>
           <VStack alignItems={'stretch'} justifyContent={'center'} px={2}>
-            <Flex flex={1}>
-            <VStack gap={0} flex={1} alignItems={'flex-start'}>
-              <Box flex={1} fontWeight={500}>{username}</Box>
-              <Box flex={1} color={'gray.500'}>{email}</Box>
-            </VStack>
+            <Flex flex={1} py={2}>
+              <VStack gap={0} flex={1} alignItems={'flex-start'}>
+                <Box flex={1} fontWeight={500}>{username}</Box>
+                <Box flex={1} color={'gray.500'}>{email}</Box>
+              </VStack>
             </Flex>
             <Separator />
-            <Flex flex={1}>Vos paramètres</Flex>
+            <Flex as={Link} py={2} alignItems={'center'} justifyContent={'space-between'} >
+              <Box>Vos paramètres</Box>
+              <RxGear />
+            </Flex>
             <Separator />
-            <Flex as={Link} onClick={() => { signOut() }}>Quitter</Flex>
+            <Flex as={Link} onClick={() => { signOut() }} py={2}>
+              <Box flex={1}>Quitter</Box>
+              <RxExit />
+            </Flex>
           </VStack>
         </Container>
       </Flex>
