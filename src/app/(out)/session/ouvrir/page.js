@@ -11,11 +11,11 @@ import signAction from './signin-action'
 import SignInButton from './sign-in-button'
 
 const Field = ({ formState, children, name, ...rest }) => {
-  const { errors } =  formState
+  const { errors, isSubmitting } =  formState
   const error = errors[name]
 
   return (
-    <ChakraField invalid={!!error} errorText={error?.message} {...rest}>
+    <ChakraField invalid={!!error} errorText={error?.message} disabled={isSubmitting} {...rest}>
       { children }
     </ChakraField>
   )
