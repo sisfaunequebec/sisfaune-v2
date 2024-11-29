@@ -1,5 +1,5 @@
 'use client'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useToggle } from '@uidotdev/usehooks'
 
 // import { auth } from '@/auth'
@@ -98,15 +98,23 @@ const DesktopMenu = ({ username, email }) => {
 
 const MobileMenu = ({ username, email }) => {
   const [on, toggle] = useToggle(false)
-  console.debug(on)
+
+  useEffect(() => {
+    if (on) {
+      document.body.style.overflowY = 'hidden'
+    } else {
+      document.body.style.overflowY = 'scroll'
+    }
+    // return () => ;
+ }, [on]);
+
   return (
     <Flex hideFrom={'lg'}>
       <IconButton variant={'outline'} rounded={'full'} size={'sm'} onClick={toggle} >
         { on ? <RxCross1 /> : <RxHamburgerMenu /> }
       </IconButton>
       { on &&
-
-      <Flex bg={'white'} position={'fixed'} inset={'calc(var(--toolbar-height) - var(--toolbar-border-width)) 0 0'} overflowY={'scroll'} overscrollBehavior={'none'}>
+      <Flex bg={'white'} position={'fixed'} inset={'calc(var(--toolbar-height) - var(--toolbar-border-width)) 0 0'} overscrollBehavior={'contain'}>
         <Container>
           <VStack alignItems={'stretch'} justifyContent={'center'} px={2}>
             <Flex flex={1} py={2}>
