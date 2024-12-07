@@ -53,7 +53,7 @@ const Toolbar = ({ session }) => {
   const borderBottomWidth = y > 0 ? 0 : 8
 
   return (
-    <Flex css={{ '--toolbar-height': '70px', '--toolbar-border-width': '2px', '--tabs-height': '0px' }} height={'calc(var(--toolbar-height) + var(--tabs-height))'} bg={'white'} shadow={toolbarShadowSize} borderBottomColor={'blue.600'} borderBottomWidth={'var(--toolbar-border-width)'} position={'sticky'} zIndex={10} alignItems={'center'} justifyContent={'center'}  top={0} w={'100%'}>
+    <Flex css={{ '--toolbar-height': '70px', '--toolbar-border-width': '2px', '--tabs-height': '0px' }} height={'calc(var(--toolbar-height) + var(--tabs-height))'} bg={'white'}  borderBottomColor={'blue.600'} borderBottomWidth={'var(--toolbar-border-width)'} position={'sticky'} zIndex={10} alignItems={'center'} justifyContent={'center'} top={0} w={'100%'}>
       <VStack justifyContent={'flex-end'} alignItems={'flex-end'} flex={1} gap={0}>
         <Container maxWidth={'4xl'} display={'flex'} flexDirection={'row'} alignItems={'center'} justifyContent={'space-between'}>
           <Flex>

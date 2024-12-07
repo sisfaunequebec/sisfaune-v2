@@ -28,6 +28,7 @@ const ListItem = () => {
       _hover={{
          bg: 'green.100'
       }}
+      cursor={'pointer'}
     >
       Item
     </Flex>

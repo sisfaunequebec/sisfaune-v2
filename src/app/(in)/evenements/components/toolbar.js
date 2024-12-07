@@ -48,7 +48,7 @@ const Toolbar = () => {
 
           <HStack justifyContent={'space-between'} gap={2}>
 
-          <IconButton size={'sm'} rounded="full" variant={'subtle'} colorPalette={'blue'} aria-label="Search database"  ><RiFilterLine /></IconButton>
+          <IconButton size={'sm'} rounded="full" variant={'subtle'} colorPalette={'blue'} aria-label="Search database" display={['inherit', null, 'none']}><RiFilterLine /></IconButton>
 
             <Tabs.Root defaultValue='evenement' variant={'subtle'} size={'sm'} colorPalette={'blue'}>
               <Tabs.List>
@@ -67,7 +67,7 @@ const Toolbar = () => {
 
           <HStack justifyContent={'space-between'} gap={1}>
             <IconButton size={'sm'} rounded="full" variant={'subtle'} colorPalette={'blue'} aria-label="Search database"  ><RxDownload /></IconButton>
-            <IconButton size={'sm'} rounded="full"  variant={'subtle'} colorPalette={'blue'} aria-label="Search database"  ><RxUpload /></IconButton>
+            {/* <IconButton size={'sm'} rounded="full"  variant={'subtle'} colorPalette={'blue'} aria-label="Search database"  ><RxUpload /></IconButton> */}
             {/* <IconButton size={'sm'} rounded="full"  variant={'solid'} colorPalette={'blue'} aria-label="Search database"  ><RxPlus /></IconButton> */}
             <NewEventButton/>
           </HStack>
