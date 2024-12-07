@@ -2,9 +2,20 @@
 import { useWindowScroll } from '@uidotdev/usehooks'
 
 import { Box, Flex, Container, Stack, VStack, Collapsible, Tabs, IconButton, HStack  } from '@chakra-ui/react'
+import { Button } from "@/components/ui/button"
+
 import { RxPlus, RxDownload, RxUpload  } from "react-icons/rx";
 import { CiFilter } from "react-icons/ci";
 import { RiFilterLine } from "react-icons/ri";
+
+const NewEventButton = () => {
+  return (
+    <>
+    <Button rounded="full"  variant={'subtle'} colorPalette={'blue'} display={['none', null, null, 'inherit']}><RxPlus />Nouvel événement</Button>
+    <IconButton size={'sm'} rounded="full"  variant={'subtle'} colorPalette={'blue'} aria-label="Search database" display={['inherit', null, null, 'none']}><RxPlus /></IconButton>
+    </>
+  )
+}
 
 const Toolbar = () => {
   const [{ x, y }, scrollTo] = useWindowScroll()
@@ -55,9 +66,10 @@ const Toolbar = () => {
           </HStack>
 
           <HStack justifyContent={'space-between'} gap={1}>
-            <IconButton size={'sm'} rounded="full" variant={'solid'} colorPalette={'blue'} aria-label="Search database"  ><RxDownload /></IconButton>
-            <IconButton size={'sm'} rounded="full"  variant={'solid'} colorPalette={'blue'} aria-label="Search database"  ><RxUpload /></IconButton>
-            <IconButton size={'sm'} rounded="full"  variant={'solid'} colorPalette={'blue'} aria-label="Search database"  ><RxPlus /></IconButton>
+            <IconButton size={'sm'} rounded="full" variant={'subtle'} colorPalette={'blue'} aria-label="Search database"  ><RxDownload /></IconButton>
+            <IconButton size={'sm'} rounded="full"  variant={'subtle'} colorPalette={'blue'} aria-label="Search database"  ><RxUpload /></IconButton>
+            {/* <IconButton size={'sm'} rounded="full"  variant={'solid'} colorPalette={'blue'} aria-label="Search database"  ><RxPlus /></IconButton> */}
+            <NewEventButton/>
           </HStack>
 
         </HStack>
