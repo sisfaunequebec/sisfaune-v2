@@ -39,8 +39,12 @@ const Evenements = async () => {
   return (
     <>
       <Toolbar />
-      <Flex as={Container} direction={['column', null, null, 'row']} px={[0, null, 8]} maxWidth={'4xl'}>
-        <Flex flex={3} py={[0, null, 4]} alignItems={'stretch'}>
+
+      <Flex as={Container} direction={['column', null, 'row']} maxWidth={['4xl']} p={{ smToMd: 0 }}>
+        <Flex flex={2} p={4} alignItems={'stretch'} bg={'blue.100'} position={'sticky'} top={0} borderColor={'blue.300'} borderTopWidth={1}>
+          Filtres
+        </Flex>
+        <Flex flex={5} alignItems={'stretch'}>
           <VStack alignItems={'stretch'} flex={1} gap={0}>
             {items.map((item) => (
               <ListItem key={item.value} />
