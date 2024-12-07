@@ -55,8 +55,8 @@ const Toolbar = () => {
           </HStack>
 
           <HStack justifyContent={'space-between'} gap={1}>
-            <IconButton size={'sm'} rounded="full" variant={'subtle'} colorPalette={'blue'} aria-label="Search database"  ><RxDownload /></IconButton>
-            <IconButton size={'sm'} rounded="full"  variant={'subtle'} colorPalette={'blue'} aria-label="Search database"  ><RxUpload /></IconButton>
+            <IconButton size={'sm'} rounded="full" variant={'solid'} colorPalette={'blue'} aria-label="Search database"  ><RxDownload /></IconButton>
+            <IconButton size={'sm'} rounded="full"  variant={'solid'} colorPalette={'blue'} aria-label="Search database"  ><RxUpload /></IconButton>
             <IconButton size={'sm'} rounded="full"  variant={'solid'} colorPalette={'blue'} aria-label="Search database"  ><RxPlus /></IconButton>
           </HStack>
 

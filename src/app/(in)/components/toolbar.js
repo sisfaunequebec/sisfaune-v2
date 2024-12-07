@@ -119,7 +119,7 @@ const MobileMenu = ({ username, email }) => {
       { on &&
       <Flex bg={'white'} position={'fixed'} inset={'calc(var(--toolbar-height) - var(--toolbar-border-width)) 0 0'} overscrollBehavior={'contain'} zIndex={2001}>
         <Container>
-          <VStack alignItems={'stretch'} justifyContent={'center'} px={2}>
+          <VStack alignItems={'stretch'} justifyContent={'center'} px={0}>
             <Flex flex={1} py={2}>
               <VStack gap={0} flex={1} alignItems={'flex-start'}>
                 <Box flex={1} fontWeight={500}>{username}</Box>
