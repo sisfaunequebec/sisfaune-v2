@@ -49,32 +49,20 @@ const Toolbar = ({ session }) => {
 
   const [{ x, y }, scrollTo] = useWindowScroll()
 
-  const toolbarShadowSize = y > 0 ? 'lg' : null
-  const borderBottomWidth = y > 0 ? 0 : 4
+  const toolbarShadowSize = null // y > 0 ? 'md' : null
+  const borderBottomWidth = y > 0 ? 0 : 8
 
   return (
-    <Flex css={{ '--toolbar-height': '70px', '--toolbar-border-width': '2px', '--tabs-height': '40px' }} height={'calc(var(--toolbar-height) + var(--tabs-height))'} px={0} py={4} pb={0} bg={'white'} shadow={toolbarShadowSize} borderBottomWidth={'var(--toolbar-border-width)'} position={'sticky'} zIndex={10} alignItems={'flex-end'} justifyContent={'center'} top={0} w={'100%'}>
-      <VStack justifyContent={'flex-end'} alignItems={'flex-end'} flex={1}>
-        <Container maxWidth={'8xl'} display={'flex'} flexDirection={'row'} alignItems={'center'} justifyContent={'space-between'}>
+    <Flex css={{ '--toolbar-height': '70px', '--toolbar-border-width': '2px', '--tabs-height': '0px' }} height={'calc(var(--toolbar-height) + var(--tabs-height))'} bg={'white'} shadow={toolbarShadowSize} borderBottomColor={'blue.600'} borderBottomWidth={'var(--toolbar-border-width)'} position={'sticky'} zIndex={10} alignItems={'center'} justifyContent={'center'}  top={0} w={'100%'}>
+      <VStack justifyContent={'flex-end'} alignItems={'flex-end'} flex={1} gap={0}>
+        <Container maxWidth={'4xl'} display={'flex'} flexDirection={'row'} alignItems={'center'} justifyContent={'space-between'}>
           <Flex>
-            <Image src={'/logo_sisfaune_small.png'} alt={'logo'} />
+            <Image src={'/logo_sisfaune_small.png'} alt={'logo'} position={'relative'} left={'-2'} />
           </Flex>
           <HStack gap={[3, null, 1]}>
             <DesktopMenu username={username} email={email} />
             <MobileMenu username={username} email={email} />
           </HStack>
-        </Container>
-        <Container display={'flex'}>
-          <Tabs.Root defaultValue="database" top={'2px'} display={'flex'} flex={1} justifyContent={['center', null, null, null]}>
-            <Tabs.List>
-              <Tabs.Trigger value="database">
-                Base de données
-              </Tabs.Trigger>
-              <Tabs.Trigger value="admin">
-                Administation
-              </Tabs.Trigger>
-            </Tabs.List>
-          </Tabs.Root>
         </Container>
       </VStack>
     </Flex>
@@ -129,7 +117,7 @@ const MobileMenu = ({ username, email }) => {
         { on ? <RxCross1 /> : <RxHamburgerMenu /> }
       </IconButton>
       { on &&
-      <Flex bg={'white'} position={'fixed'} inset={'calc(var(--toolbar-height) - var(--toolbar-border-width)) 0 0'} overscrollBehavior={'contain'} zIndex={1000}>
+      <Flex bg={'white'} position={'fixed'} inset={'calc(var(--toolbar-height) - var(--toolbar-border-width)) 0 0'} overscrollBehavior={'contain'} zIndex={2001}>
         <Container>
           <VStack alignItems={'stretch'} justifyContent={'center'} px={2}>
             <Flex flex={1} py={2}>
