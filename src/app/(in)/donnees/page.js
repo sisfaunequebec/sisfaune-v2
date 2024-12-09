@@ -30,7 +30,7 @@ const ListItem = () => {
       }}
       cursor={'pointer'}
     >
-      Item
+      Événement ou spécimen
     </Flex>
   )
 }

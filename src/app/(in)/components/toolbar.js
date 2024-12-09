@@ -16,7 +16,9 @@ import {
   MenuItem,
   MenuRoot,
   MenuTrigger,
-  MenuSeparator
+  MenuSeparator,
+  MenuRadioItem,
+  MenuRadioItemGroup,
 } from '@/components/ui/menu'
 
 // import {
@@ -84,14 +86,23 @@ const DesktopMenu = ({ username, email }) => {
               <Box flex={1} color={'gray.500'}>{email}</Box>
             </VStack>
           </MenuItem>
+          <MenuSeparator />
+          <MenuRadioItemGroup
+          value={'data'}
+          // onValueChange={(e) => setValue(e.value)}
+        >
+          <MenuRadioItem value={'data'}>Base de données</MenuRadioItem>
+          <MenuRadioItem value={'admin'}>Administration</MenuRadioItem>
+        </MenuRadioItemGroup>
+        <MenuSeparator />
           <MenuItem>
-            <Box flex={1}>Vos paramètres</Box>
             <RxGear />
+            <Box flex={1} ms={0.5}>Vos paramètres</Box>
           </MenuItem>
           <MenuSeparator />
           <MenuItem onClick={() => { signOut() }}>
-            <Box flex={1}>Quitter</Box>
             <RxExit />
+            <Box flex={1} ms={0.5}>Quitter</Box>
           </MenuItem>
         </MenuContent>
       </MenuRoot>
@@ -125,6 +136,15 @@ const MobileMenu = ({ username, email }) => {
                 <Box flex={1} fontWeight={500}>{username}</Box>
                 <Box flex={1} color={'gray.500'}>{email}</Box>
               </VStack>
+            </Flex>
+            <Separator />
+            <Flex as={Link} py={2} alignItems={'center'} justifyContent={'space-between'} >
+              <Box>Base de données</Box>
+              {/* <RxGear /> */}
+            </Flex>
+            <Flex as={Link} py={2} alignItems={'center'} justifyContent={'space-between'} >
+              <Box>Administration</Box>
+              {/* <RxGear /> */}
             </Flex>
             <Separator />
             <Flex as={Link} py={2} alignItems={'center'} justifyContent={'space-between'} >
