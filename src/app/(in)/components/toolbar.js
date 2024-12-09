@@ -36,7 +36,7 @@ import {
 
 import { DataListItem, DataListRoot } from "@/components/ui/data-list"
 
-import { RxExit, RxHamburgerMenu, RxGear, RxCross1 } from 'react-icons/rx'
+import { RxExit, RxHamburgerMenu, RxGear, RxCross1, RxCheck } from 'react-icons/rx'
 
 const colorPalette = ['red', 'blue', 'green', 'yellow', 'purple', 'orange']
 
@@ -140,7 +140,7 @@ const MobileMenu = ({ username, email }) => {
             <Separator />
             <Flex as={Link} py={2} alignItems={'center'} justifyContent={'space-between'} >
               <Box>Base de données</Box>
-              {/* <RxGear /> */}
+              <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><polyline points="20 6 9 17 4 12"></polyline></svg>
             </Flex>
             <Flex as={Link} py={2} alignItems={'center'} justifyContent={'space-between'} >
               <Box>Administration</Box>
