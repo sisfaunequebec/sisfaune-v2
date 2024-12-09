@@ -11,8 +11,8 @@ import { RiFilterLine } from "react-icons/ri";
 const NewEventButton = () => {
   return (
     <>
-    <Button rounded="full"  variant={'solid'} colorPalette={'blue'} display={['none', null, null, 'inherit']}><RxPlus />Nouvel événement</Button>
-    <IconButton size={'sm'} rounded="full"  variant={'solid'} colorPalette={'blue'} aria-label="Search database" display={['inherit', null, null, 'none']}><RxPlus /></IconButton>
+    <Button size={['md', null, 'sm']} rounded="full"  variant={'solid'} colorPalette={'blue'} display={['none', null, null, 'inherit']}><RxPlus />Nouvel événement</Button>
+    <IconButton size={['md', null, 'sm']} rounded="full"  variant={'solid'} colorPalette={'blue'} aria-label="Search database" display={['inherit', null, null, 'none']}><RxPlus /></IconButton>
     </>
   )
 }
@@ -45,9 +45,9 @@ const Toolbar = () => {
 
               <HStack justifyContent={'space-between'} gap={2}>
 
-              <IconButton size={'sm'} rounded="full" variant={'solid'} colorPalette={'blue'} aria-label="Search database" display={['inherit', null, 'none']}><RiFilterLine /></IconButton>
+              <IconButton size={['md', null, 'sm']} rounded="full" variant={'solid'} colorPalette={'blue'} aria-label="Search database" display={['inherit', null, 'none']}><RiFilterLine /></IconButton>
 
-                <Tabs.Root defaultValue='evenement' variant={'subtle'} size={'sm'} colorPalette={'blue'}>
+                <Tabs.Root defaultValue='evenement' variant={'subtle'} size={['md', null, 'sm']} colorPalette={'blue'}>
                   <Tabs.List>
                     <Tabs.Trigger value='evenement' borderRadius={'full'}>
                       {/* <LuUser /> */}
@@ -63,7 +63,7 @@ const Toolbar = () => {
               </HStack>
 
               <HStack justifyContent={'space-between'} gap={1}>
-                <IconButton size={'sm'} rounded="full" variant={'solid'} colorPalette={'blue'} aria-label="Search database"  ><RxDownload /></IconButton>
+                <IconButton size={['md', null, 'sm']} rounded="full" variant={'solid'} colorPalette={'blue'} aria-label="Search database"  ><RxDownload /></IconButton>
                 {/* <IconButton size={'sm'} rounded="full"  variant={'subtle'} colorPalette={'blue'} aria-label="Search database"  ><RxUpload /></IconButton> */}
                 {/* <IconButton size={'sm'} rounded="full"  variant={'solid'} colorPalette={'blue'} aria-label="Search database"  ><RxPlus /></IconButton> */}
                 <NewEventButton/>

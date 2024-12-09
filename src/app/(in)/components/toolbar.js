@@ -76,7 +76,7 @@ const DesktopMenu = ({ username, email }) => {
     <Flex hideBelow={'lg'}>
       <MenuRoot positioning={{ placement: 'bottom-end' }} size={'md'}>
         <MenuTrigger >
-          <Avatar name={username} colorPalette={'green'} size={'sm'} variant={'solid'} cursor={'pointer'} />
+          <Avatar name={username} colorPalette={'green'} size={['md', null, 'sm']} variant={'solid'} cursor={'pointer'} />
         </MenuTrigger>
         <MenuContent minW={'48'} hideBelow={'md'}>
           <MenuItem _hover={{ bg: 'transparent' }} cursor={'default'}>
@@ -123,7 +123,7 @@ const MobileMenu = ({ username, email }) => {
 
   return (
     <Flex hideFrom={'lg'}>
-      <IconButton variant={'outline'} rounded={'full'} size={'sm'} onClick={toggle} >
+      <IconButton variant={'outline'} rounded={'full'} size={['md', null, 'sm']} onClick={toggle} >
         { on ? <RxCross1 /> : <RxHamburgerMenu /> }
       </IconButton>
       { on &&
