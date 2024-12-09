@@ -11,8 +11,8 @@ import { RiFilterLine } from "react-icons/ri";
 const NewEventButton = () => {
   return (
     <>
-    <Button size={['md', null, 'sm']} rounded="full"  variant={'solid'} colorPalette={'blue'} display={['none', null, null, 'inherit']}><RxPlus />Nouvel événement</Button>
-    <IconButton size={['md', null, 'sm']} rounded="full"  variant={'solid'} colorPalette={'blue'} aria-label="Search database" display={['inherit', null, null, 'none']}><RxPlus /></IconButton>
+    <Button size={['md', null, 'sm']} rounded="full"  variant={'solid'} colorPalette={'blue'} display={['none', null, 'inherit']}><RxPlus />Nouvel événement</Button>
+    <IconButton size={['md', null, 'sm']} rounded="full"  variant={'solid'} colorPalette={'blue'} aria-label="Search database" display={['inherit', null, 'none']}><RxPlus /></IconButton>
     </>
   )
 }

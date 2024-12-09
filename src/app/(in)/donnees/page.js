@@ -40,7 +40,7 @@ const Evenements = async () => {
     <>
       <Toolbar />
 
-      <Flex as={Container} direction={['column', null, 'row']} maxWidth={['4xl']} px={[0, 0, 8]} py={[0, 0, 4]}>
+      <Flex as={Container} direction={['column', null, 'row']} maxWidth={['4xl']} px={[0, 0, 8]} py={[0, 0, 4]} fontSize={['md', null, 'sm']}>
         <Flex flex={2} p={4} alignItems={'stretch'} bg={'blue.100'} position={'sticky'} top={0} borderColor={'blue.300'} borderTopWidth={1}>
           Filtres
         </Flex>
