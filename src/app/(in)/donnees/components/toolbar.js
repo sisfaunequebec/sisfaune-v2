@@ -1,18 +1,22 @@
 'use client'
 import { useWindowScroll } from '@uidotdev/usehooks'
 
-import { Box, Flex, Container, Stack, VStack, Collapsible, Tabs, IconButton, HStack  } from '@chakra-ui/react'
-import { Button } from "@/components/ui/button"
+import NextLink from 'next/link'
 
-import { RxPlus, RxDownload, RxUpload  } from "react-icons/rx";
-import { CiFilter } from "react-icons/ci";
-import { RiFilterLine } from "react-icons/ri";
+import { Box, Flex, Container, Stack, VStack, Collapsible, Tabs, IconButton, HStack, Link } from '@chakra-ui/react'
+import { Button } from '@/components/ui/button'
+
+import { RxPlus, RxDownload, RxUpload  } from 'react-icons/rx'
+import { CiFilter } from 'react-icons/ci'
+import { RiFilterLine } from 'react-icons/ri'
+
+import EvenementsSpecimens from './evenements-specimens-tabs'
 
 const NewEventButton = () => {
   return (
     <>
-    <Button size={['md', null, 'sm']} rounded="full"  variant={'solid'} colorPalette={'blue'} display={['none', null, 'inherit']}><RxPlus />Nouvel événement</Button>
-    <IconButton size={['md', null, 'sm']} rounded="full"  variant={'solid'} colorPalette={'blue'} aria-label="Search database" display={['inherit', null, 'none']}><RxPlus /></IconButton>
+      <Button size={['md', null, 'sm']} rounded='full' variant={'solid'} colorPalette={'blue'} display={['none', null, 'inherit']}><RxPlus />Nouvel événement</Button>
+      <IconButton size={['md', null, 'sm']} rounded='full'  variant={'solid'} colorPalette={'blue'} aria-label='Search database' display={['inherit', null, 'none']}><RxPlus /></IconButton>
     </>
   )
 }
@@ -33,49 +37,25 @@ const Toolbar = () => {
       zIndex={1}
       shadow={toolbarShadowSize}
     >
-      <Flex 
-        flex={1}
-        bg={'white'}
-        py={1}
-      >
-        {/* <Stack direction={['column', null, 'row']} flex={1}> */}
-          <Container maxWidth={'4xl'} py={2} >
+      <Flex flex={1} bg={'white'} py={1}>
+        <Container maxWidth={'4xl'} py={2} >
+          <HStack justifyContent={'space-between'} gap={2}>
 
             <HStack justifyContent={'space-between'} gap={2}>
-
-              <HStack justifyContent={'space-between'} gap={2}>
-
-              <IconButton size={['md', null, 'sm']} rounded="full" variant={'solid'} colorPalette={'blue'} aria-label="Search database" display={['inherit', null, 'none']}><RiFilterLine /></IconButton>
-
-                <Tabs.Root defaultValue='evenement' variant={'subtle'} size={['md', null, 'sm']} colorPalette={'blue'}>
-                  <Tabs.List>
-                    <Tabs.Trigger value='evenement' borderRadius={'full'}>
-                      {/* <LuUser /> */}
-                      Événements
-                    </Tabs.Trigger>
-                    <Tabs.Trigger value='specimens' borderRadius={'full'}>
-                      {/* <LuFolder /> */}
-                      Spécimens
-                    </Tabs.Trigger>
-                  </Tabs.List>
-                </Tabs.Root>
-
-              </HStack>
-
-              <HStack justifyContent={'space-between'} gap={1}>
-                <IconButton size={['md', null, 'sm']} rounded="full" variant={'solid'} colorPalette={'blue'} aria-label="Search database"  ><RxDownload /></IconButton>
-                {/* <IconButton size={'sm'} rounded="full"  variant={'subtle'} colorPalette={'blue'} aria-label="Search database"  ><RxUpload /></IconButton> */}
-                {/* <IconButton size={'sm'} rounded="full"  variant={'solid'} colorPalette={'blue'} aria-label="Search database"  ><RxPlus /></IconButton> */}
-                <NewEventButton/>
-              </HStack>
-
+            {/* <IconButton size={['md', null, 'sm']} rounded='full' variant={'solid'} colorPalette={'blue'} aria-label='Search database' display={['inherit', null, 'none']}><RiFilterLine /></IconButton> */}  
+              <EvenementsSpecimens />
             </HStack>
 
-          </Container>
-          {/* <Container>
-            Filters
-          </Container> */}
-        {/* </Stack> */}
+            <HStack justifyContent={'space-between'} gap={1}>
+              <IconButton size={['md', null, 'sm']} rounded='full' variant={'solid'} colorPalette={'blue'} aria-label='Search database'  ><RxDownload /></IconButton>
+              {/* <IconButton size={'sm'} rounded='full'  variant={'subtle'} colorPalette={'blue'} aria-label='Search database'  ><RxUpload /></IconButton> */}
+              {/* <IconButton size={'sm'} rounded='full'  variant={'solid'} colorPalette={'blue'} aria-label='Search database'  ><RxPlus /></IconButton> */}
+              <NewEventButton/>
+            </HStack>
+
+          </HStack>
+
+        </Container>
     </Flex>
 
   </Flex>

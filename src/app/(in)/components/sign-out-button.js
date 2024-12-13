@@ -3,7 +3,6 @@
 import { auth, signOut } from '@/auth'
 
 import { IconButton } from '@chakra-ui/react'
-// import { RxExit } from 'react-icons/rx'
 import { MdExitToApp } from 'react-icons/md'
 
 const signOutAction = async () => {

@@ -1,10 +1,6 @@
-// import { useWindowScroll } from '@uidotdev/usehooks'
-
 import { Box, Flex, Container, Stack, VStack, Collapsible, Tabs } from '@chakra-ui/react'
 
-import { SegmentedControl } from '@/components/ui/segmented-control'
-
-import Toolbar from './components/toolbar'
+import Toolbar from '../components/toolbar'
 
 const items = Array(20).fill(null).map((item, i) => {
   return {
@@ -30,7 +26,7 @@ const ListItem = () => {
       }}
       cursor={'pointer'}
     >
-      Événement ou spécimen
+      Événement
     </Flex>
   )
 }
@@ -39,8 +35,7 @@ const Evenements = async () => {
   return (
     <>
       <Toolbar />
-
-      <Flex as={Container} direction={['column', null, 'row']} maxWidth={['4xl']} px={[0, 0, 8]} py={[0, 0, 4]} fontSize={['md', null, 'sm']}>
+      <Flex top={0} as={Container} direction={['column', null, 'row']} maxWidth={['4xl']} px={[0, 0, 8]} py={[0, 0, 4]} fontSize={['md', null, 'sm']}>
         <Flex flex={2} p={4} alignItems={'stretch'} bg={'blue.100'} position={'sticky'} top={0} borderColor={'blue.300'} borderTopWidth={1}>
           Filtres
         </Flex>

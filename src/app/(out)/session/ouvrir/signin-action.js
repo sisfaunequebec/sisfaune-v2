@@ -15,7 +15,7 @@ const signAction = async (formData) => {
     return fromErrorToFormState(error)
   }
   await wait(500)
-  redirect('/donnees')
+  redirect('/donnees/evenements')
 }
 
 export default signAction

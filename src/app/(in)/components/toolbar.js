@@ -1,10 +1,12 @@
 'use client'
-import { useState, useEffect } from 'react'
-import { useToggle } from '@uidotdev/usehooks'
+import { useState, useEffect, useCallback } from 'react'
 
-// import { auth } from '@/auth'
+import NextLink from 'next/link'
+import { useRouter, usePathname  } from 'next/navigation'
+
 import { signOut } from 'next-auth/react'
 
+import { useToggle } from '@uidotdev/usehooks'
 import { useWindowScroll } from '@uidotdev/usehooks'
 
 import { Box, Flex, HStack, Image, VStack, IconButton, Container, Separator, Link, Tabs } from '@chakra-ui/react'
@@ -20,19 +22,6 @@ import {
   MenuRadioItem,
   MenuRadioItemGroup,
 } from '@/components/ui/menu'
-
-// import {
-//   DrawerActionTrigger,
-//   DrawerBackdrop,
-//   DrawerBody,
-//   DrawerCloseTrigger,
-//   DrawerContent,
-//   DrawerFooter,
-//   DrawerHeader,
-//   DrawerRoot,
-//   DrawerTitle,
-//   DrawerTrigger,
-// } from '@/components/ui/drawer'
 
 import { DataListItem, DataListRoot } from "@/components/ui/data-list"
 
@@ -72,8 +61,21 @@ const Toolbar = ({ session }) => {
 }
 
 const DesktopMenu = ({ username, email }) => {
+
+  const pathname = usePathname()
+  const splitedPathname = pathname.split('/')
+  const secondPathSegment = splitedPathname.at(1)
+
+  const router = useRouter()
+
+  const handleMenuRadioItemGroupChange = useCallback(e => {
+    const { value } = e
+    const targetUrl = value === 'donnees' ? '/donnees/evenements' : '/administration'
+    router.push(targetUrl)
+  }, [router])
+
   return (
-    <Flex hideBelow={'lg'}>
+    <Flex hideBelow={'md'}>
       <MenuRoot positioning={{ placement: 'bottom-end' }} size={'md'}>
         <MenuTrigger >
           <Avatar name={username} colorPalette={'green'} size={['md', null, 'sm']} variant={'solid'} cursor={'pointer'} />
@@ -87,13 +89,13 @@ const DesktopMenu = ({ username, email }) => {
           </MenuItem>
           <MenuSeparator />
           <MenuRadioItemGroup
-          value={'data'}
-          // onValueChange={(e) => setValue(e.value)}
-        >
-          <MenuRadioItem value={'data'}>Base de données</MenuRadioItem>
-          <MenuRadioItem value={'admin'}>Administration</MenuRadioItem>
-        </MenuRadioItemGroup>
-        <MenuSeparator />
+            value={secondPathSegment}
+            onValueChange={handleMenuRadioItemGroupChange}
+          >
+            <MenuRadioItem value={'donnees'}>Base de données</MenuRadioItem>
+            <MenuRadioItem value={'administration'}>Administration</MenuRadioItem>
+          </MenuRadioItemGroup>
+          <MenuSeparator />
           <MenuItem>
             <RxGear />
             <Box flex={1} ms={0.5}>Vos paramètres</Box>
@@ -112,23 +114,34 @@ const DesktopMenu = ({ username, email }) => {
 const MobileMenu = ({ username, email }) => {
   const [on, toggle] = useToggle(false)
 
+  const pathname = usePathname()
+  const splitedPathname = pathname.split('/')
+  const secondPathSegment = splitedPathname.at(1)
+
+  const router = useRouter()
+
+  const handleLinkClick = useCallback(value => {
+    const targetUrl = value === 'donnees' ? '/donnees/evenements' : '/administration'
+    router.push(targetUrl)
+    toggle()
+  }, [router, toggle])
+
   useEffect(() => {
     if (on) {
       document.body.style.overflowY = 'hidden'
     } else {
       document.body.style.overflowY = 'scroll'
     }
-    // return () => ;
- }, [on]);
+ }, [on])
 
   return (
-    <Flex hideFrom={'lg'}>
+    <Flex hideFrom={'md'}>
       <IconButton variant={'outline'} rounded={'full'} size={['md', null, 'sm']} onClick={toggle} >
         { on ? <RxCross1 /> : <RxHamburgerMenu /> }
       </IconButton>
       { on &&
       <Flex bg={'white'} position={'fixed'} inset={'calc(var(--toolbar-height) - var(--toolbar-border-width)) 0 0'} overscrollBehavior={'contain'} zIndex={2001}>
-        <Container>
+        <Container maxW={'4xl'}>
           <VStack alignItems={'stretch'} justifyContent={'center'} px={0}>
             <Flex flex={1} py={2}>
               <VStack gap={0} flex={1} alignItems={'flex-start'}>
@@ -138,13 +151,13 @@ const MobileMenu = ({ username, email }) => {
             </Flex>
             <Separator />
             <VStack alignItems={'stretch'} justifyContent={'center'} px={0} gap={0}>
-              <Flex as={Link} py={2} alignItems={'center'} justifyContent={'space-between'} >
+              <Flex py={2} alignItems={'center'} justifyContent={'space-between'} onClick={() => handleLinkClick('donnees')}>
                 <Box>Base de données</Box>
-                <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                {(secondPathSegment === 'donnees') && <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><polyline points="20 6 9 17 4 12"></polyline></svg>}
               </Flex>
-              <Flex as={Link} py={2} alignItems={'center'} justifyContent={'space-between'} >
+              <Flex py={2} alignItems={'center'} justifyContent={'space-between'} onClick={() => handleLinkClick('administration')}>
                 <Box>Administration</Box>
-                {/* <RxGear /> */}
+                {(secondPathSegment === 'administration') && <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><polyline points="20 6 9 17 4 12"></polyline></svg>}
               </Flex>
             </VStack>
             <Separator />
