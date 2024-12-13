@@ -3,7 +3,7 @@
 import { ChakraProvider, defineConfig, mergeConfigs, defaultBaseConfig, defaultConfig, defineRecipe, defineSlotRecipe, defineTokens, defineTextStyles, createSystem } from '@chakra-ui/react'
 import { ColorModeProvider } from './color-mode'
 
-import { avatarAnatomy, menuAnatomy } from '@chakra-ui/react/anatomy'
+import { avatarAnatomy, menuAnatomy, tabsAnatomy  } from '@chakra-ui/react/anatomy'
 
 const tokens = defineTokens({
   colors: {
@@ -46,6 +46,18 @@ const avatarRecipe = defineSlotRecipe({
           color: 'colorPalette.contrast'
         }
       }
+    }
+  }
+})
+
+const tabsRecipe = defineSlotRecipe({
+  slots: tabsAnatomy.keys(),
+  base: {
+    list: {
+      gap: 2
+    },
+    trigger: {
+      bg: 'gray.100'
     }
   }
 })
@@ -97,7 +109,8 @@ const config = defineConfig({
     },
     slotRecipes: {
       avatar: avatarRecipe,
-      menu: menuRecipe
+      menu: menuRecipe,
+      tabs: tabsRecipe
     }
     // textStyles
   }

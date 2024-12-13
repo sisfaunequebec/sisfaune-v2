@@ -1,4 +1,5 @@
 // import { useWindowScroll } from '@uidotdev/usehooks'
+import NextLink from 'next/link'
 
 import { Box, Flex, Container, Stack, VStack, Collapsible, Tabs } from '@chakra-ui/react'
 
@@ -16,7 +17,10 @@ const items = Array(20).fill(null).map((item, i) => {
 const ListItem = () => {
   return (
     <Flex
+      as={NextLink}
+      href={'/donnees/evenements/toto'}
       p={4}
+      px={6}
       borderBottomColor={'green.300'}
       borderBottomWidth={1}
       _first={{
@@ -40,7 +44,7 @@ const Specimens = async () => {
     <>
       <Toolbar />
       <Flex top={0} as={Container} direction={['column', null, 'row']} maxWidth={['6xl']} px={[0, 0, 8]} py={[0, 0, 4]} fontSize={['md', null, 'sm']}>
-        <Flex flex={2} p={4} alignItems={'stretch'} bg={'blue.100'} position={'sticky'} top={0} borderColor={'blue.300'} borderTopWidth={1}>
+        <Flex flex={2} p={4} alignItems={'stretch'} bg={'blue.100'} top={0} borderColor={'blue.300'} borderTopWidth={1} hideBelow={'md'}>
           Filtres
         </Flex>
         <Flex flex={5} alignItems={'stretch'}>
