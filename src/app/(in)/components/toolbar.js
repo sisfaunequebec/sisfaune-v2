@@ -46,7 +46,7 @@ const Toolbar = ({ session }) => {
   return (
     <Flex css={{ '--toolbar-height': '70px', '--toolbar-border-width': '2px', '--tabs-height': '0px' }} height={'calc(var(--toolbar-height) + var(--tabs-height))'} bg={'white'}  borderBottomColor={'blue.600'} borderBottomWidth={'var(--toolbar-border-width)'} position={'sticky'} zIndex={10} alignItems={'center'} justifyContent={'center'} top={0} w={'100%'}>
       <VStack justifyContent={'flex-end'} alignItems={'flex-end'} flex={1} gap={0}>
-        <Container maxWidth={'4xl'} display={'flex'} flexDirection={'row'} alignItems={'center'} justifyContent={'space-between'}>
+        <Container maxWidth={'6xl'} display={'flex'} flexDirection={'row'} alignItems={'center'} justifyContent={'space-between'}>
           <Flex>
             <Image src={'/logo_sisfaune_small.png'} alt={'logo'} position={'relative'} left={'-2'} />
           </Flex>
@@ -141,7 +141,7 @@ const MobileMenu = ({ username, email }) => {
       </IconButton>
       { on &&
       <Flex bg={'white'} position={'fixed'} inset={'calc(var(--toolbar-height) - var(--toolbar-border-width)) 0 0'} overscrollBehavior={'contain'} zIndex={2001}>
-        <Container maxW={'4xl'}>
+        <Container maxW={'6xl'}>
           <VStack alignItems={'stretch'} justifyContent={'center'} px={0}>
             <Flex flex={1} py={2}>
               <VStack gap={0} flex={1} alignItems={'flex-start'}>
