@@ -138,7 +138,7 @@ const MobileMenu = ({ username, email }) => {
         { on ? <RxCross1 /> : <RxHamburgerMenu /> }
       </IconButton>
       { on &&
-      <Flex bg={'white'} position={'fixed'} inset={'calc(var(--toolbar-height) - var(--toolbar-border-width)) 0 0'} overscrollBehavior={'contain'} zIndex={2001}>
+      <Flex data-state={on ? 'open' : 'closed'} animationStyle={{ _open: "scale-fade-in", _closed: "scale-fade-out" }} animationDuration="slow"  bg={'white'} position={'fixed'} inset={'calc(var(--toolbar-height) - var(--toolbar-border-width)) 0 0'} overscrollBehavior={'contain'} zIndex={2001}>
         <Container maxW={'6xl'}>
           <VStack alignItems={'stretch'} justifyContent={'center'} px={0}>
             <Flex flex={1} py={2}>
