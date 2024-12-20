@@ -1,6 +1,7 @@
 import NextLink from 'next/link'
 
-import { Box, Flex, Container, Stack, VStack, Collapsible, Tabs } from '@chakra-ui/react'
+import { Box, Flex, Container, Stack, VStack, Collapsible, Tabs, AbsoluteCenter, IconButton } from '@chakra-ui/react'
+import { RxPencil1 } from 'react-icons/rx'
 
 import {
   AccordionItem,
@@ -54,10 +55,15 @@ const Evenement = async () => {
           
             <AccordionRoot multiple size={['md', null, 'sm']} defaultValue={[]}>
               <AccordionItem value={'dsc'}>
-                <AccordionItemTrigger bg={'green.50'} color={'green.600'} p={4} px={6} borderRadius={0} borderColor={'green.300'} borderTopWidth={1}>Distemper canin (PCR)
-                </AccordionItemTrigger>
+                <Box position={'relative'}>
+                  <AbsoluteCenter axis="vertical" insetEnd={4}>
+                    <IconButton colorPalette={'green'} variant={'ghost'} rounded={'full'} size={['xs']}><RxPencil1 /></IconButton>
+                  </AbsoluteCenter>
+                  <AccordionItemTrigger indicatorPlacement="start" bg={'green.50'} color={'green.600'} p={4} px={6} ps={4} borderRadius={0} borderColor={'green.300'} borderTopWidth={1}>Distemper canin (PCR)</AccordionItemTrigger>
+                </Box>
                 <AccordionItemContent bg={'white'} p={4} px={6} borderBottomWidth={0}>Content</AccordionItemContent>
               </AccordionItem>
+
             </AccordionRoot>
           </VStack>
 
