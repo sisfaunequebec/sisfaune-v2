@@ -16,7 +16,7 @@ const Layout = async ({ children }) => {
     return redirect('/session/ouvrir')
   }
   return (
-    <Flex as={'main'} flex={1} direction={'column'} justifyContent={'space-between'} px={0} alignItems={'flex-start'}>
+    <Flex as={'main'} minH={'100vh'} flex={1} direction={'column'} justifyContent={'flex-start'} px={0} alignItems={'flex-start'}>
       <Toolbar session={session} />
       {children}
     </Flex>

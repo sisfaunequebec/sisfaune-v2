@@ -34,7 +34,7 @@ const Toolbar = () => {
 
   return (
     <Flex
-      flex={1}
+      flex={0}
       position={'sticky'}
       top={'70px'}
       alignSelf={'flex-start'}

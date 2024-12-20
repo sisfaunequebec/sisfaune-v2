@@ -99,7 +99,7 @@ const config = defineConfig({
   globalCss: {
     'html, body': {
       bg: 'gray.100',
-      minH: '100%'
+      minH: '100vh'
     }
   },
   theme: {

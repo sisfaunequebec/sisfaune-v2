@@ -29,7 +29,7 @@ const Toolbar = () => {
 
   return (
     <Flex
-      flex={1}
+      // flex={1}
       position={'sticky'}
       top={'70px'}
       alignSelf={'flex-start'}
@@ -38,7 +38,7 @@ const Toolbar = () => {
       shadow={toolbarShadowSize}
     >
       <Flex flex={1} bg={'white'} py={1}>
-        <Container maxWidth={'6xl'} py={2} >
+        <Container maxWidth={'6xl'} py={2}>
           <HStack justifyContent={'space-between'} gap={2}>
 
             <HStack justifyContent={'space-between'} gap={2}>

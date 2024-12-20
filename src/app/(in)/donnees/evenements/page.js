@@ -24,8 +24,8 @@ const ListItem = () => {
         borderTopColor: 'green.300',
         borderTopWidth: 1
       }}
-      _odd={{ bg: 'white' }} 
-      _even={{ bg: 'green.50' }}
+      _even={{ bg: 'white' }} 
+      _odd={{ bg: 'green.50' }}
       _hover={{
          bg: 'green.100'
       }}
@@ -44,7 +44,7 @@ const Evenements = async () => {
         <Flex flex={2} p={4} alignItems={'stretch'} bg={'blue.100'} top={0} borderColor={'blue.300'} borderTopWidth={1} hideBelow={'md'}>
           Filtres
         </Flex>
-        <Flex flex={5} alignItems={'stretch'}>
+        <Flex flex={5} alignItems={'stretch'} ps={[0, null, 2]}>
           <VStack alignItems={'stretch'} flex={1} gap={0}>
             {items.map((item) => (
               <ListItem key={item.value} />
