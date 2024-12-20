@@ -22,7 +22,7 @@ const ListItem = (props) => {
       as={NextLink}
       alignItems={'center'} justifyContent={'space-between'}
       href={`/donnees/evenements/${idEvenement}`}
-      px={4} ps={6} py={3} 
+      px={6} py={3} 
       fontWeight={500} 
       borderBottomColor={'green.300'}
       borderBottomWidth={1}

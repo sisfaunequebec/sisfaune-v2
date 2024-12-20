@@ -51,8 +51,8 @@ const Evenement = async () => {
           </VStack>
 
           <VStack alignItems={'stretch'} fontSize={['md', null, 'sm']} gap={0}>
-            
-            <Flex bg={'green.100'} color={'green.600'} px={4} ps={6} py={3} fontWeight={500} borderColor={'green.300'} borderTopWidth={1} alignItems={'center'} justifyContent={'space-between'}>
+
+            <Flex bg={'green.100'} color={'green.600'} px={6} py={3} fontWeight={500} borderColor={'green.300'} borderTopWidth={1} alignItems={'center'} justifyContent={'space-between'}>
               <Text>Analyses</Text>
               <IconButton colorPalette={'green'} variant={'outline'} rounded={'full'} size={['xs']}><RxPlus /></IconButton>
             </Flex>
@@ -60,10 +60,10 @@ const Evenement = async () => {
             <AccordionRoot multiple size={['md', null, 'sm']} defaultValue={[]}>
               <AccordionItem value={'dsc'}>
                 <Box position={'relative'}>
-                  <AbsoluteCenter axis="vertical" insetEnd={4}>
-                    <IconButton colorPalette={'green'} variant={'ghost'} rounded={'full'} size={['xs']}><RxPencil1 /></IconButton>
+                  <AbsoluteCenter axis="vertical" insetEnd={6}>
+                    <IconButton colorPalette={'green'} variant={'outline'} rounded={'full'} size={['xs']}><RxPencil1 /></IconButton>
                   </AbsoluteCenter>
-                  <AccordionItemTrigger indicatorPlacement="start" bg={'green.50'} color={'green.600'} p={4} px={6} ps={4} borderRadius={0} borderColor={'green.300'} borderTopWidth={1}>Distemper canin (PCR)</AccordionItemTrigger>
+                  <AccordionItemTrigger indicatorPlacement="start" bg={'green.50'} color={'green.600'} p={4} px={6} borderRadius={0} borderColor={'green.300'} borderTopWidth={1}>Distemper canin (PCR)</AccordionItemTrigger>
                 </Box>
                 <AccordionItemContent bg={'white'} p={4} px={6} borderBottomWidth={0}>Content</AccordionItemContent>
               </AccordionItem>

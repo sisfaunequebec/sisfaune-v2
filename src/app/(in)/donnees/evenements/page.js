@@ -19,7 +19,7 @@ const ListItem = (props) => {
       as={NextLink}
       alignItems={'center'} justifyContent={'space-between'}
       href={`/donnees/evenements/${id}`}
-      px={4} ps={6} py={3} 
+      px={6} py={3} 
       fontWeight={500} 
       borderBottomColor={'green.300'}
       borderBottomWidth={1}
@@ -40,7 +40,7 @@ const ListItem = (props) => {
   )
 }
 
-const Evenements = async () => {
+const Evenements = () => {
   return (
     <>
       <Toolbar />
