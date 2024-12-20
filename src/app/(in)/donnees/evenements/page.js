@@ -1,6 +1,8 @@
+'use client'
 import NextLink from 'next/link'
 
-import { Box, Flex, Container, Stack, VStack, Collapsible, Tabs, Text } from '@chakra-ui/react'
+import { Box, Flex, Container, Stack, VStack, Collapsible, Tabs, Text, IconButton } from '@chakra-ui/react'
+import { RxTrash, RxPlus } from 'react-icons/rx'
 
 import Toolbar from '../components/toolbar'
 
@@ -15,9 +17,10 @@ const ListItem = (props) => {
   return (
     <Flex
       as={NextLink}
+      alignItems={'center'} justifyContent={'space-between'}
       href={`/donnees/evenements/${id}`}
-      p={4}
-      px={6}
+      px={4} ps={6} py={3} 
+      fontWeight={500} 
       borderBottomColor={'green.300'}
       borderBottomWidth={1}
       _first={{
@@ -31,7 +34,8 @@ const ListItem = (props) => {
       }}
       cursor={'pointer'}
     >
-      <Text fontWeight={500} color={'green.600'}>Événement no {id}</Text>
+      <Text color={'green.600'}>Événement no {id}</Text>
+      <IconButton colorPalette={'green'} variant={'outline'} rounded={'full'} size={['xs']} onClick={() => alert('click')}><RxTrash  /></IconButton>
     </Flex>
   )
 }

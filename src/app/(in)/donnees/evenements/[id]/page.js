@@ -1,7 +1,7 @@
 import NextLink from 'next/link'
 
-import { Box, Flex, Container, Stack, VStack, Collapsible, Tabs, AbsoluteCenter, IconButton } from '@chakra-ui/react'
-import { RxPencil1 } from 'react-icons/rx'
+import { Box, Flex, Container, Stack, VStack, Collapsible, Tabs, AbsoluteCenter, IconButton, Text } from '@chakra-ui/react'
+import { RxPencil1, RxPlus } from 'react-icons/rx'
 
 import {
   AccordionItem,
@@ -51,7 +51,11 @@ const Evenement = async () => {
           </VStack>
 
           <VStack alignItems={'stretch'} fontSize={['md', null, 'sm']} gap={0}>
-            <Flex bg={'green.100'} color={'green.600'} px={6} py={4} fontWeight={500} borderColor={'green.300'} borderTopWidth={1}>Analyses</Flex>
+            
+            <Flex bg={'green.100'} color={'green.600'} px={4} ps={6} py={3} fontWeight={500} borderColor={'green.300'} borderTopWidth={1} alignItems={'center'} justifyContent={'space-between'}>
+              <Text>Analyses</Text>
+              <IconButton colorPalette={'green'} variant={'outline'} rounded={'full'} size={['xs']}><RxPlus /></IconButton>
+            </Flex>
           
             <AccordionRoot multiple size={['md', null, 'sm']} defaultValue={[]}>
               <AccordionItem value={'dsc'}>

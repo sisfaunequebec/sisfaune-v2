@@ -25,7 +25,7 @@ import {
 
 import { DataListItem, DataListRoot } from "@/components/ui/data-list"
 
-import { RxExit, RxHamburgerMenu, RxGear, RxCross1, RxCheck } from 'react-icons/rx'
+import { RxExit, RxHamburgerMenu, RxGear, RxCross1, RxCheck, RxPencil1 } from 'react-icons/rx'
 import DonneesAdministration from './donnees-admin-tabs'
 
 const colorPalette = ['red', 'blue', 'green', 'yellow', 'purple', 'orange']
