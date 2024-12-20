@@ -3,20 +3,18 @@ import { useRouter } from 'next/navigation'
 
 import { useWindowScroll } from '@uidotdev/usehooks'
 
-import { Box, Flex, Container, Stack, VStack, Collapsible, Tabs, IconButton, HStack, Link } from '@chakra-ui/react'
+import { Box, Flex, Container, Stack, VStack, Collapsible, Tabs, Button, IconButton, HStack, Link } from '@chakra-ui/react'
 
 import { RxArrowLeft, RxFileText  } from 'react-icons/rx'
 import { useCallback } from 'react'
 
-
-// const NewEventButton = () => {
-//   return (
-//     <>
-//       <Button size={['md', null, 'sm']} rounded='full' variant={'solid'} colorPalette={'blue'} display={['none', null, 'inherit']}><RxPlus />Nouvel événement</Button>
-//       <IconButton size={['md', null, 'sm']} rounded='full'  variant={'solid'} colorPalette={'blue'} aria-label='Search database' display={['inherit', null, 'none']}><RxPlus /></IconButton>
-//     </>
-//   )
-// }
+const ReportButton = () => {
+  return (
+    <>
+      <Button size={['md', null, 'sm']} rounded='full' variant={'solid'} colorPalette={'blue'} display={['none', null, 'inherit']}><RxFileText />Rapport</Button>
+      <IconButton size={['md', null, 'sm']} rounded='full' variant={'solid'} colorPalette={'blue'} aria-label={'Rapport'} display={['inherit', null, 'none']}><RxFileText /></IconButton>    </>
+  )
+}
 
 const BackButton = () => {
   const router = useRouter()
@@ -49,7 +47,7 @@ const Toolbar = () => {
               <BackButton />
             </HStack>
             <HStack justifyContent={'space-between'} gap={1}>
-              <IconButton size={['md', null, 'sm']} rounded='full' variant={'solid'} colorPalette={'blue'} aria-label={'Search database'}><RxFileText /></IconButton>
+              <ReportButton />
             </HStack>
           </HStack>
         </Container>
