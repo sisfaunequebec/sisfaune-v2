@@ -63,7 +63,7 @@ const Evenement = async () => {
                   <AbsoluteCenter axis="vertical" insetEnd={6}>
                     <IconButton colorPalette={'green'} variant={'outline'} rounded={'full'} size={['xs']}><RxPencil1 /></IconButton>
                   </AbsoluteCenter>
-                  <AccordionItemTrigger indicatorPlacement="start" bg={'green.50'} color={'green.600'} p={4} px={6} borderRadius={0} borderColor={'green.300'} borderTopWidth={1}>Distemper canin (PCR)</AccordionItemTrigger>
+                  <AccordionItemTrigger indicatorPlacement="start" bg={'green.50'} color={'green.600'} p={4} pe={6} borderRadius={0} borderColor={'green.300'} borderTopWidth={1}>Distemper canin (PCR)</AccordionItemTrigger>
                 </Box>
                 <AccordionItemContent bg={'white'} p={4} px={6} borderBottomWidth={0}>Content</AccordionItemContent>
               </AccordionItem>
