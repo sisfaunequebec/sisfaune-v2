@@ -54,7 +54,7 @@ const tabsRecipe = defineSlotRecipe({
   slots: tabsAnatomy.keys(),
   base: {
     list: {
-      gap: 2
+      gap: 1
     },
     trigger: {
       bg: 'gray.100'
