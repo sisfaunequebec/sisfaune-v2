@@ -19,7 +19,7 @@ const ListItem = (props) => {
       as={NextLink}
       alignItems={'center'} justifyContent={'space-between'}
       href={`/donnees/evenements/${id}`}
-      ps={5} pe={4} py={3} 
+      ps={4} pe={4} py={3} 
       fontWeight={500} 
       borderBottomColor={'green.300'}
       borderBottomWidth={1}
@@ -35,7 +35,7 @@ const ListItem = (props) => {
       cursor={'pointer'}
     >
       <Text color={'green.600'}>Événement no {id}</Text>
-      <IconButton colorPalette={'green'} variant={'outline'} rounded={'full'} size={['xs']} onClick={() => alert('click')}><RxTrash  /></IconButton>
+      <IconButton colorPalette={'green'} variant={'outline'} rounded={'full'} size={['xs']} onClick={e => { e.preventDefault(); alert('click') }}><RxTrash  /></IconButton>
     </Flex>
   )
 }

@@ -3,7 +3,7 @@
 import { ChakraProvider, defineConfig, mergeConfigs, defaultBaseConfig, defaultConfig, defineRecipe, defineSlotRecipe, defineTokens, defineTextStyles, createSystem } from '@chakra-ui/react'
 import { ColorModeProvider } from './color-mode'
 
-import { avatarAnatomy, menuAnatomy, tabsAnatomy  } from '@chakra-ui/react/anatomy'
+import { avatarAnatomy, menuAnatomy, tabsAnatomy, accordionAnatomy } from '@chakra-ui/react/anatomy'
 
 const tokens = defineTokens({
   colors: {
@@ -74,6 +74,15 @@ const menuRecipe = defineSlotRecipe({
     }
   }
 })
+
+// const accordionRecipe = defineSlotRecipe({
+//   slots: accordionAnatomy.keys(),
+//   base: {
+//     itemTrigger: {
+//       gap: "2"
+//     }
+//   }
+// })
 
 const buttonRecipe = defineRecipe({
   variants: {
