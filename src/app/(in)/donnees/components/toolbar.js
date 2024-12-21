@@ -6,9 +6,9 @@ import NextLink from 'next/link'
 import { Box, Flex, Container, Stack, VStack, Collapsible, Tabs, IconButton, HStack, Link } from '@chakra-ui/react'
 import { Button } from '@/components/ui/button'
 
-import { RxPlus, RxDownload, RxUpload  } from 'react-icons/rx'
-import { CiFilter } from 'react-icons/ci'
-import { RiFilterLine } from 'react-icons/ri'
+import { RxPlus, RxDownload, RxUpload, RxMagnifyingGlass   } from 'react-icons/rx'
+// import { CiFilter } from 'react-icons/ci'
+// import { RiFilterLine, ààà } from 'react-icons/ri'
 
 import EvenementsSpecimens from './evenements-specimens-tabs'
 
@@ -42,7 +42,7 @@ const Toolbar = () => {
           <HStack justifyContent={'space-between'} gap={2}>
 
             <HStack justifyContent={'space-between'} gap={2}>
-              <IconButton size={['md', null, 'sm']} rounded='full' variant={'subtle'} colorPalette={'blue'} aria-label='Search database' display={['inherit', null, 'none']}><RiFilterLine /></IconButton>  
+              <IconButton size={['md', null, 'sm']} rounded='full' variant={'subtle'} colorPalette={'blue'} aria-label='Search database' display={['inherit', null, 'none']}><RxMagnifyingGlass /></IconButton>  
               <EvenementsSpecimens />
             </HStack>
 
