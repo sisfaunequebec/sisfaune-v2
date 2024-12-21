@@ -42,12 +42,12 @@ const Toolbar = () => {
           <HStack justifyContent={'space-between'} gap={2}>
 
             <HStack justifyContent={'space-between'} gap={2}>
-            {/* <IconButton size={['md', null, 'sm']} rounded='full' variant={'solid'} colorPalette={'blue'} aria-label='Search database' display={['inherit', null, 'none']}><RiFilterLine /></IconButton> */}  
+              <IconButton size={['md', null, 'sm']} rounded='full' variant={'subtle'} colorPalette={'blue'} aria-label='Search database' display={['inherit', null, 'none']}><RiFilterLine /></IconButton>  
               <EvenementsSpecimens />
             </HStack>
 
             <HStack justifyContent={'space-between'} gap={1}>
-              <IconButton size={['md', null, 'sm']} rounded='full' variant={'solid'} colorPalette={'blue'} aria-label='Search database'  ><RxDownload /></IconButton>
+              {/* <IconButton size={['md', null, 'sm']} rounded='full' variant={'solid'} colorPalette={'blue'} aria-label='Search database'  ><RxDownload /></IconButton> */}
               {/* <IconButton size={'sm'} rounded='full'  variant={'subtle'} colorPalette={'blue'} aria-label='Search database'  ><RxUpload /></IconButton> */}
               {/* <IconButton size={'sm'} rounded='full'  variant={'solid'} colorPalette={'blue'} aria-label='Search database'  ><RxPlus /></IconButton> */}
               <NewEventButton/>
