@@ -3,7 +3,7 @@
 import NextLink from 'next/link'
 import { usePathname, useParams  } from 'next/navigation'
 
-import { Box, Flex, Container, Stack, VStack, Collapsible, Tabs, AbsoluteCenter, IconButton, Text, HStack } from '@chakra-ui/react'
+import { Box, Flex, Container, Stack, VStack, Collapsible, Tabs, AbsoluteCenter, IconButton, Text, HStack, Separator } from '@chakra-ui/react'
 import { RxPencil1, RxPlus, RxTrash } from 'react-icons/rx'
 
 import {
@@ -37,6 +37,32 @@ const Content = ({ children }) => {
   )
 }
 
+const GeneralInformation = () => {
+  return (
+    <VStack alignItems={'flex-start'}>
+      <Text as={'h4'}>Identification</Text>
+      <Separator />
+      <Text as={'h4'}>Personnes impliquées</Text>
+      <Separator />
+      <Text as={'h4'}>Description de l'événement</Text>
+      <Separator />
+      <Text as={'h4'}>Expédition des spécimens</Text>
+    </VStack>
+  )
+}
+
+const GeneralSpecimenInformation = () => {
+  return (
+    <VStack alignItems={'flex-start'}>
+      <Text as={'h4'}>Identification du spécimen</Text>
+      <Separator />
+      <Text as={'h4'}>Mesures</Text>
+      <Separator />
+      <Text as={'h4'}>Autres informations</Text>
+    </VStack>
+  )
+}
+
 const Evenement = () => {
   const params = useParams()
   const { id: idEvenement } = params
@@ -62,7 +88,9 @@ const Evenement = () => {
                   </AbsoluteCenter>
                   <Trigger label={'Informations générales'} />
                 </Box>
-                <Content>Informations générales</Content>
+                <Content>
+                  <GeneralInformation />
+                </Content>
               </AccordionItem>
               <AccordionItem value={'geo'}>
                 <Box position={'relative'}>
@@ -102,9 +130,9 @@ const Evenement = () => {
                   </AbsoluteCenter>
                   <Trigger label={'303307.1 - Raton laveur'} />
                 </Box>
-                <Content>303307.1 - Raton laveur</Content>
-                {/* <AccordionItemTrigger bg={'green.50'} color={'green.600'} p={4} px={6} borderRadius={0} borderColor={'green.300'} borderTopWidth={1}>303307.1 - Raton laveur</AccordionItemTrigger>
-                <AccordionItemContent bg={'white'} p={4} px={6} borderBottomWidth={0}>Content</AccordionItemContent> */}
+                <Content>
+                  <GeneralSpecimenInformation/ >
+                </Content>
               </AccordionItem>
             </AccordionRoot>
           </VStack>
