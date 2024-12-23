@@ -44,7 +44,7 @@ const GeneralInformation = () => {
       <Separator />
       <Text as={'h4'}>Personnes impliquées</Text>
       <Separator />
-      <Text as={'h4'}>Description de l'événement</Text>
+      <Text as={'h4'}>Description</Text>
       <Separator />
       <Text as={'h4'}>Expédition des spécimens</Text>
     </VStack>
