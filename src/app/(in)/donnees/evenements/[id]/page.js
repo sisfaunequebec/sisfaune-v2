@@ -17,7 +17,7 @@ import Toolbar from '../components/toolbar'
 
 const Trigger = ({ label }) => {
   return (
-    <AccordionItemTrigger indicatorPlacement={'start'} bg={'green.50'} color={'green.600'} p={4} ps={3} pe={6} borderRadius={0} borderColor={'green.300'} borderTopWidth={1}>{label}</AccordionItemTrigger>
+    <AccordionItemTrigger indicatorPlacement={'start'} bg={'green.50'} color={'green.600'} p={4} borderRadius={0} borderColor={'green.300'} borderTopWidth={1}>{label}</AccordionItemTrigger>
 
   )
 }
