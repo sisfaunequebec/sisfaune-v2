@@ -75,14 +75,17 @@ const menuRecipe = defineSlotRecipe({
   }
 })
 
-// const accordionRecipe = defineSlotRecipe({
-//   slots: accordionAnatomy.keys(),
-//   base: {
-//     itemTrigger: {
-//       gap: "2"
-//     }
-//   }
-// })
+const accordionRecipe = defineSlotRecipe({
+  slots: accordionAnatomy.keys(),
+  base: {
+    itemTrigger: {
+      gap: 1
+    },
+    itemIndicator: {
+      color: 'green.500'
+    }
+  }
+})
 
 const buttonRecipe = defineRecipe({
   variants: {
@@ -119,7 +122,8 @@ const config = defineConfig({
     slotRecipes: {
       avatar: avatarRecipe,
       menu: menuRecipe,
-      tabs: tabsRecipe
+      tabs: tabsRecipe,
+      accordion: accordionRecipe
     }
     // textStyles
   }

@@ -15,6 +15,15 @@ import {
 
 import Toolbar from '../components/toolbar'
 
+const SectionHeading = ({ label, children }) => {
+  return (
+    <Flex as={'section'} bg={'green.100'} color={'green.600'} px={5} py={3} fontWeight={500} borderColor={'green.300'} borderTopWidth={1} alignItems={'center'} justifyContent={'space-between'}>
+      <Text as={'h3'} userSelect={'none'}>{label}</Text>
+      { children }
+    </Flex>
+  )
+}
+
 const Trigger = ({ label }) => {
   return (
     <AccordionItemTrigger indicatorPlacement={'start'} bg={'green.50'} color={'green.600'} p={4} borderRadius={0} borderColor={'green.300'} borderTopWidth={1}>{label}</AccordionItemTrigger>
@@ -41,10 +50,9 @@ const Evenement = () => {
 
           <VStack alignItems={'stretch'} fontSize={['md', null, 'sm']} gap={0}>
 
-            <Flex bg={'green.100'} color={'green.600'} px={5} py={3} fontWeight={500} borderColor={'green.300'} borderTopWidth={1} alignItems={'center'} justifyContent={'space-between'}>
-              <Text>Événement no {idEvenement}</Text>
+            <SectionHeading label={`Événement no ${idEvenement}`}>
               <IconButton colorPalette={'green'} variant={'solid'} rounded={'full'} size={['xs']}><RxTrash /></IconButton>
-            </Flex>
+            </SectionHeading>
 
             <AccordionRoot multiple size={['md', null, 'sm']} defaultValue={['general']}>  
               <AccordionItem value={'general'}>
