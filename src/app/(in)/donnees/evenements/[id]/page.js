@@ -43,7 +43,7 @@ const Evenement = () => {
 
             <Flex bg={'green.100'} color={'green.600'} px={5} py={3} fontWeight={500} borderColor={'green.300'} borderTopWidth={1} alignItems={'center'} justifyContent={'space-between'}>
               <Text>Événement no {idEvenement}</Text>
-              <IconButton colorPalette={'green'} variant={'solid'} rounded={'full'} size={['xs']}><RxPlus /></IconButton>
+              <IconButton colorPalette={'green'} variant={'solid'} rounded={'full'} size={['xs']}><RxTrash /></IconButton>
             </Flex>
 
             <AccordionRoot multiple size={['md', null, 'sm']} defaultValue={['general']}>  
@@ -112,7 +112,7 @@ const Evenement = () => {
 
               <AccordionItem value={'dsc'}>
                 <Box position={'relative'}>
-                  <AbsoluteCenter as={HStack} axis={'vertical'} insetEnd={4}>
+                  <AbsoluteCenter as={HStack} axis={'vertical'} insetEnd={5}>
                     <IconButton colorPalette={'green'} variant={'outline'} rounded={'full'} size={['xs']}><RxPencil1 /></IconButton>
                     <IconButton colorPalette={'green'} variant={'outline'} rounded={'full'} size={['xs']}><RxTrash /></IconButton>
                   </AbsoluteCenter>
