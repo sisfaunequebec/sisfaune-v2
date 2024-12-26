@@ -41,16 +41,16 @@ const Content = ({ children }) => {
 
 const GeneralInformation = () => {
   return (
-    <Fieldset.Root as={'VStack'} size={'md'} alignItems={'flex-start'}>
+    <Fieldset.Root as={'VStack'} size={['lg', null, 'md']} alignItems={'flex-start'}>
       <Fieldset.Legend>Identification</Fieldset.Legend>
       <Fieldset.Content gap={2}>
-        <Field label={'Numéro d\'événement :'}>
+        <Field label={'Numéro d\'événement\u00A0:'}>
           <Input flex={4} variant={'subtle'} size={'sm'} />
         </Field>
-        <Field label={'Type d\'événement :'}>
+        <Field label={'Type d\'événement\u00A0:'}>
           <Input flex={4} variant={'subtle'} size={'sm'} w={2} />
         </Field>
-        <Field label={'Numéro d\'identification SILAB :'}>
+        <Field label={'Numéro d\'identification SILAB\u00A0:'}>
           <Input flex={4} variant={'subtle'} size={'sm'} />
         </Field>
       </Fieldset.Content>
