@@ -3,7 +3,7 @@
 import NextLink from 'next/link'
 import { usePathname, useParams  } from 'next/navigation'
 
-import { Box, Flex, Container, Stack, VStack, Collapsible, Tabs, AbsoluteCenter, IconButton, Text, HStack, Separator } from '@chakra-ui/react'
+import { Box, Flex, Container, Stack, VStack, Collapsible, Tabs, AbsoluteCenter, IconButton, Text, HStack, Separator, Fieldset, Input } from '@chakra-ui/react'
 import { RxPencil1, RxPlus, RxTrash } from 'react-icons/rx'
 
 import {
@@ -12,6 +12,8 @@ import {
   AccordionItemTrigger,
   AccordionRoot,
 } from "@/components/ui/accordion"
+
+import { Field } from '@/components/ui/field'
 
 import Toolbar from '../components/toolbar'
 
@@ -39,15 +41,26 @@ const Content = ({ children }) => {
 
 const GeneralInformation = () => {
   return (
-    <VStack alignItems={'flex-start'}>
-      <Text as={'h4'}>Identification</Text>
+    <Fieldset.Root as={'VStack'} size={'md'} alignItems={'flex-start'}>
+      <Fieldset.Legend>Identification</Fieldset.Legend>
+      <Fieldset.Content gap={2}>
+        <Field label={'Numéro d\'événement :'}>
+          <Input flex={4} variant={'subtle'} size={'sm'} />
+        </Field>
+        <Field label={'Type d\'événement :'}>
+          <Input flex={4} variant={'subtle'} size={'sm'} w={2} />
+        </Field>
+        <Field label={'Numéro d\'identification SILAB :'}>
+          <Input flex={4} variant={'subtle'} size={'sm'} />
+        </Field>
+      </Fieldset.Content>
       <Separator />
-      <Text as={'h4'}>Personnes impliquées</Text>
+      <Fieldset.Legend>Personnes impliquées</Fieldset.Legend>
       <Separator />
-      <Text as={'h4'}>Description</Text>
+      <Fieldset.Legend>Description</Fieldset.Legend>
       <Separator />
-      <Text as={'h4'}>Expédition des spécimens</Text>
-    </VStack>
+      <Fieldset.Legend>Expédition des spécimens</Fieldset.Legend>
+    </Fieldset.Root>
   )
 }
 

@@ -19,7 +19,7 @@ const ItemEvenement = (props) => {
   return (
     <LinkListWrapper href={href}>
       <LinkOverlay asChild>
-        <NextLink href={href}>
+        <NextLink href={href} scroll={false}>
           <Text color={'green.600'}>Événement no {id}</Text>
         </NextLink>
       </LinkOverlay>
