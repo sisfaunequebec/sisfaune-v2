@@ -19,7 +19,7 @@ import Toolbar from '../components/toolbar'
 
 const SectionHeading = ({ label, children }) => {
   return (
-    <Flex as={'section'} bg={'green.100'} color={'green.600'} px={5} py={3} fontWeight={500} borderColor={'green.300'} borderTopWidth={1} alignItems={'center'} justifyContent={'space-between'}>
+    <Flex as={'section'} bg={'green.100'} color={'green.600'} px={5} py={3} fontWeight={500} borderColor={'green.300'} borderTopWidth={1} alignItems={'center'} justifyContent={'space-between'} position={'sticky'} top={134} justifySelf={'flex-start'} zIndex={1002}>
       <Text as={'h3'} userSelect={'none'}>{label}</Text>
       { children }
     </Flex>
@@ -84,7 +84,7 @@ const Evenement = () => {
     <>
       <Toolbar />
       <Flex flex={1} top={0} as={Container} direction={['column', null, 'row']} maxWidth={['6xl']} px={[0, 0, 8]} py={[0, 0, 4]} fontSize={['md', null, 'sm']}>
-        <Flex flex={2} p={4} px={6} alignItems={'stretch'} bg={'blue.100'} position={'sticky'} top={0} borderColor={'blue.300'} borderTopWidth={1} hideBelow={'md'} />
+        <Flex flex={2} p={4} px={6} alignItems={'stretch'} bg={'blue.100'} position={'sticky'} borderColor={'blue.300'} borderTopWidth={1} hideBelow={'md'} top={130} alignSelf={'flex-start'} zIndex={1002} />
         <VStack flex={5} justifyContent={'flex-start'} alignItems={'stretch'} ps={[0, null, 2]} gap={[0, null, 2]}>
 
           <VStack alignItems={'stretch'} fontSize={['md', null, 'sm']} gap={0}>
@@ -129,14 +129,15 @@ const Evenement = () => {
 
           <VStack alignItems={'stretch'} fontSize={['md', null, 'sm']} gap={0}>
             
-            <Flex bg={'green.100'} color={'green.600'} px={5} py={3} fontWeight={500} borderColor={'green.300'} borderTopWidth={1} alignItems={'center'} justifyContent={'space-between'}>
-            <Text>Spécimens</Text>
+            {/* <Flex bg={'green.100'} color={'green.600'} px={5} py={3} fontWeight={500} borderColor={'green.300'} borderTopWidth={1} alignItems={'center'} justifyContent={'space-between'}>
+            <Text></Text> */}
+            <SectionHeading label={'Spécimens'}>
               <IconButton colorPalette={'green'} variant={'solid'} rounded={'full'} size={['xs']}><RxPlus /></IconButton>
-            </Flex>
+            </SectionHeading>
             
             <AccordionRoot multiple size={['md', null, 'sm']} defaultValue={[]}>
               <AccordionItem value={'s0001'}>
-              <Box position={'relative'}>
+                <Box position={'relative'}>
                   <AbsoluteCenter as={HStack} axis={'vertical'} insetEnd={5}>
                     <IconButton colorPalette={'green'} variant={'outline'} rounded={'full'} size={['xs']}><RxPencil1 /></IconButton>
                     <IconButton colorPalette={'green'} variant={'outline'} rounded={'full'} size={['xs']}><RxTrash /></IconButton>
@@ -152,10 +153,11 @@ const Evenement = () => {
 
           <VStack alignItems={'stretch'} fontSize={['md', null, 'sm']} gap={0}>
 
-            <Flex bg={'green.100'} color={'green.600'} px={5} py={3} fontWeight={500} borderColor={'green.300'} borderTopWidth={1} alignItems={'center'} justifyContent={'space-between'}>
-              <Text>Analyses</Text>
+            {/* <Flex bg={'green.100'} color={'green.600'} px={5} py={3} fontWeight={500} borderColor={'green.300'} borderTopWidth={1} alignItems={'center'} justifyContent={'space-between'}>
+              <Text>Analyses</Text> */}
+            <SectionHeading label={'Analyses'}>
               <IconButton colorPalette={'green'} variant={'solid'} rounded={'full'} size={['xs']}><RxPlus /></IconButton>
-            </Flex>
+            </SectionHeading>
           
             <AccordionRoot multiple size={['md', null, 'sm']} defaultValue={[]}>
 

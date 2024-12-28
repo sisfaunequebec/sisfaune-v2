@@ -37,7 +37,7 @@ const Toolbar = () => {
       top={'70px'}
       alignSelf={'flex-start'}
       width={'full'}
-      zIndex={1}
+      zIndex={2000}
       shadow={toolbarShadowSize}
     >
       <Flex flex={1} bg={'white'} py={1}>
