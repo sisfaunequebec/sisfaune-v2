@@ -17,18 +17,18 @@ import { Field } from '@/components/ui/field'
 
 import Toolbar from '../components/toolbar'
 
-const SectionHeading = ({ label, children }) => {
+const SectionHeading = ({ label, isSticky = false, children }) => {
   return (
-    <Flex as={'section'} bg={'green.100'} color={'green.600'} px={5} py={3} fontWeight={500} borderColor={'green.300'} borderTopWidth={1} alignItems={'center'} justifyContent={'space-between'} position={'sticky'} top={134} justifySelf={'flex-start'} zIndex={1002}>
+    <Flex as={'section'} bg={'green.100'} color={'green.600'} px={5} py={3} fontWeight={500} borderColor={'green.300'} borderTopWidth={1} alignItems={'center'} justifyContent={'space-between'} position={isSticky && 'sticky'} top={[134, null, 129]} justifySelf={'flex-start'} zIndex={1002}>
       <Text as={'h3'} userSelect={'none'}>{label}</Text>
       { children }
     </Flex>
   )
 }
 
-const Trigger = ({ label }) => {
+const Trigger = ({ label, ...rest }) => {
   return (
-    <AccordionItemTrigger indicatorPlacement={'start'} bg={'green.50'} color={'green.600'} p={4} borderRadius={0} borderColor={'green.300'} borderTopWidth={1}>{label}</AccordionItemTrigger>
+    <AccordionItemTrigger indicatorPlacement={'start'} bg={'green.50'} color={'green.600'} p={4} borderRadius={0} borderColor={'green.300'} borderTopWidth={1} {...rest}>{label}</AccordionItemTrigger>
 
   )
 }
@@ -84,12 +84,18 @@ const Evenement = () => {
     <>
       <Toolbar />
       <Flex flex={1} top={0} as={Container} direction={['column', null, 'row']} maxWidth={['6xl']} px={[0, 0, 8]} py={[0, 0, 4]} fontSize={['md', null, 'sm']}>
-        <Flex flex={2} p={4} px={6} alignItems={'stretch'} bg={'blue.100'} position={'sticky'} borderColor={'blue.300'} borderTopWidth={1} hideBelow={'md'} top={130} alignSelf={'flex-start'} zIndex={1002} />
+        
+        <Flex flex={2} p={4} px={6} alignItems={'stretch'} bg={'blue.100'} position={'sticky'} borderColor={'blue.300'} borderTopWidth={1} hideBelow={'md'} >
+          <Flex position={'sticky'} top={145} alignSelf={'flex-start'} zIndex={1000}>
+            Filtres
+          </Flex>
+        </Flex>
+        
         <VStack flex={5} justifyContent={'flex-start'} alignItems={'stretch'} ps={[0, null, 2]} gap={[0, null, 2]}>
 
           <VStack alignItems={'stretch'} fontSize={['md', null, 'sm']} gap={0}>
 
-            <SectionHeading label={`Événement no ${idEvenement}`}>
+            <SectionHeading label={`Événement no ${idEvenement}`} isSticky>
               <IconButton colorPalette={'green'} variant={'solid'} rounded={'full'} size={['xs']}><RxTrash /></IconButton>
             </SectionHeading>
 
@@ -129,23 +135,21 @@ const Evenement = () => {
 
           <VStack alignItems={'stretch'} fontSize={['md', null, 'sm']} gap={0}>
             
-            {/* <Flex bg={'green.100'} color={'green.600'} px={5} py={3} fontWeight={500} borderColor={'green.300'} borderTopWidth={1} alignItems={'center'} justifyContent={'space-between'}>
-            <Text></Text> */}
-            <SectionHeading label={'Spécimens'}>
+            <SectionHeading label={'Spécimens'} isSticky>
               <IconButton colorPalette={'green'} variant={'solid'} rounded={'full'} size={['xs']}><RxPlus /></IconButton>
             </SectionHeading>
             
             <AccordionRoot multiple size={['md', null, 'sm']} defaultValue={[]}>
-              <AccordionItem value={'s0001'}>
+              <AccordionItem value={'s0001'} >
                 <Box position={'relative'}>
                   <AbsoluteCenter as={HStack} axis={'vertical'} insetEnd={5}>
                     <IconButton colorPalette={'green'} variant={'outline'} rounded={'full'} size={['xs']}><RxPencil1 /></IconButton>
                     <IconButton colorPalette={'green'} variant={'outline'} rounded={'full'} size={['xs']}><RxTrash /></IconButton>
                   </AbsoluteCenter>
-                  <Trigger label={'303307.1 - Raton laveur'} />
+                  <Trigger label={'303307.1 - Raton laveur'}/>
                 </Box>
                 <Content>
-                  <GeneralSpecimenInformation/ >
+                  <GeneralSpecimenInformation />
                 </Content>
               </AccordionItem>
             </AccordionRoot>
@@ -153,8 +157,6 @@ const Evenement = () => {
 
           <VStack alignItems={'stretch'} fontSize={['md', null, 'sm']} gap={0}>
 
-            {/* <Flex bg={'green.100'} color={'green.600'} px={5} py={3} fontWeight={500} borderColor={'green.300'} borderTopWidth={1} alignItems={'center'} justifyContent={'space-between'}>
-              <Text>Analyses</Text> */}
             <SectionHeading label={'Analyses'}>
               <IconButton colorPalette={'green'} variant={'solid'} rounded={'full'} size={['xs']}><RxPlus /></IconButton>
             </SectionHeading>
