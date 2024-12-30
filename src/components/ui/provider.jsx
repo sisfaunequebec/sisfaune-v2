@@ -110,7 +110,7 @@ const textStyles = defineTextStyles({
 const config = defineConfig({
   globalCss: {
     'html, body': {
-      bg: 'gray.100',
+      bg: { base: 'gray.100', _dark: 'gray.900' },
       minH: '100vh'
     }
   },

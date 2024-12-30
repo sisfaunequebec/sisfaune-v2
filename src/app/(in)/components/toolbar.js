@@ -12,6 +12,7 @@ import { useWindowScroll } from '@uidotdev/usehooks'
 import { Box, Flex, HStack, Image, VStack, IconButton, Container, Separator, Link, Tabs } from '@chakra-ui/react'
 
 import { Avatar } from '@/components/ui/avatar'
+import { ColorModeButton } from "@/components/ui/color-mode"
 
 import {
   MenuContent,
@@ -23,10 +24,10 @@ import {
   MenuRadioItemGroup,
 } from '@/components/ui/menu'
 
-import { DataListItem, DataListRoot } from "@/components/ui/data-list"
+// import { DataListItem, DataListRoot } from "@/components/ui/data-list"
 
 import { RxExit, RxHamburgerMenu, RxGear, RxCross1, RxCheck, RxPencil1 } from 'react-icons/rx'
-import DonneesAdministration from './donnees-admin-tabs'
+// import DonneesAdministration from './donnees-admin-tabs'
 
 const colorPalette = ['red', 'blue', 'green', 'yellow', 'purple', 'orange']
 
@@ -45,7 +46,7 @@ const Toolbar = ({ session }) => {
   const borderBottomWidth = y > 0 ? 0 : 8
 
   return (
-    <Flex css={{ '--toolbar-height': '70px', '--toolbar-border-width': '2px', '--tabs-height': '0px' }} height={'calc(var(--toolbar-height) + var(--tabs-height))'}  bg={'white'}  borderBottomColor={'blue.600'} borderBottomWidth={'var(--toolbar-border-width)'} position={'sticky'} zIndex={2000} alignItems={'center'} justifyContent={'center'} top={0} w={'100%'}>
+    <Flex css={{ '--toolbar-height': '70px', '--toolbar-border-width': '2px', '--tabs-height': '0px' }} height={'calc(var(--toolbar-height) + var(--tabs-height))'}  bg={'white'} _dark={{ bg: 'black' }} borderBottomColor={'blue.600'} borderBottomWidth={'var(--toolbar-border-width)'} position={'sticky'} zIndex={2000} alignItems={'center'} justifyContent={'center'} top={0} w={'100%'}>
       <VStack justifyContent={'flex-end'} alignItems={'flex-end'} flex={1} gap={0}>
         <Container maxWidth={'6xl'} display={'flex'} flexDirection={'row'} alignItems={'center'} justifyContent={'space-between'}>
           <Flex>
@@ -53,8 +54,10 @@ const Toolbar = ({ session }) => {
           </Flex>
           <HStack gap={[3, null, 4]}>
             {/* <DonneesAdministration /> */}
+            <ColorModeButton rounded={'full'} />
             <DesktopMenu username={username} email={email} />
             <MobileMenu username={username} email={email} />
+ 
           </HStack>
         </Container>
       </VStack>

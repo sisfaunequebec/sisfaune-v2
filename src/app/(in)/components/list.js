@@ -16,10 +16,11 @@ const LinkListWrapper = ({ href, children }) => {
         borderTopColor: 'green.300',
         borderTopWidth: 1
       }}
-      _even={{ bg: 'white' }} 
-      _odd={{ bg: 'green.50' }}
+      _even={{ bg: 'white', _dark: { bg: 'black' } }} 
+      _odd={{ bg: 'green.50', _dark: { bg: 'green.900' } }}
       _hover={{
-        bg: 'green.100'
+        bg: 'green.100',
+        _dark: { bg: 'green.700' }
       }}
       cursor={'pointer'}
     >

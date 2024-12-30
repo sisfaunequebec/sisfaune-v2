@@ -20,7 +20,7 @@ const ItemEvenement = (props) => {
     <LinkListWrapper href={href}>
       <LinkOverlay asChild>
         <NextLink href={href} scroll={false}>
-          <Text color={'green.600'}>Événement no {id}</Text>
+          <Text color={'green.600'} _dark={{ color: 'green.200' }}>Événement no {id}</Text>
         </NextLink>
       </LinkOverlay>
       <IconButton colorPalette={'green'} variant={'outline'} rounded={'full'} size={['xs']} onClick={handleDelete}><RxTrash  /></IconButton>

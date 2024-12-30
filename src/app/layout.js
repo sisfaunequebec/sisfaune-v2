@@ -1,4 +1,5 @@
-import Provider from "@/components/ui/provider"
+import Provider from '@/components/ui/provider'
+import { ColorModeProvider } from '@/components/ui/color-mode'
 
 export const metadata = {
   title: 'SIS Faune'
@@ -10,9 +11,11 @@ const RootLayout = async ({ children }) => {
   return (
     <html lang={'fr'} suppressHydrationWarning={true}>
       <body>
-      <Provider>
-        {children}
-      </Provider>
+        <Provider>
+          <ColorModeProvider>
+            {children}
+          </ColorModeProvider>
+        </Provider>
       </body>
     </html>
   )
