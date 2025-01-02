@@ -1,3 +1,5 @@
+'use client'
+
 import { Flex, Container } from '@chakra-ui/react'
 
 import Toolbar from '../components/toolbar'
