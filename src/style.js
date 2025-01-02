@@ -102,7 +102,7 @@ const dialogRecipe = defineSlotRecipe({
     size: {
       cover: {
         positioner: {
-          padding: '4'
+          padding: '2'
         }
       }
     }
