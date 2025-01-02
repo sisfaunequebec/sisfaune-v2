@@ -1,22 +1,36 @@
 'use client'
+import { useCallback } from 'react'
+
 import { useWindowScroll } from '@uidotdev/usehooks'
 
 import NextLink from 'next/link'
 
 import { Box, Flex, Container, Stack, VStack, Collapsible, Tabs, IconButton, HStack, Link } from '@chakra-ui/react'
 import { Button } from '@/components/ui/button'
-
 import { RxPlus, RxDownload, RxUpload, RxMagnifyingGlass } from 'react-icons/rx'
-// import { CiFilter } from 'react-icons/ci'
-// import { RiFilterLine, ààà } from 'react-icons/ri'
+
+import useDialog from '@/utilities/use-dialog'
 
 import EvenementsSpecimens from './evenements-specimens-tabs'
+import AjouterEvenementDialog from '../evenements/components/ajouter-evenement-dialog'
 
 const NewEventButton = () => {
+  const { ask: confirmCreation, dialog: createConfirmDialog } = useDialog(AjouterEvenementDialog)
+
+  const handleCreate = useCallback(async () => {
+    const result = await confirmCreation()
+    // console.debug(result)
+    if (result) {
+      console.debug('Create !!!')
+    }
+    // console.log(result)
+  }, [])
+
   return (
     <>
-      <Button size={['md', null, 'sm']} rounded='full' variant={'solid'} colorPalette={'blue'} display={['none', null, 'inherit']}><RxPlus />Nouvel événement</Button>
-      <IconButton size={['md', null, 'sm']} rounded='full'  variant={'solid'} colorPalette={'blue'} aria-label='Search database' display={['inherit', null, 'none']}><RxPlus /></IconButton>
+      {createConfirmDialog}
+      <Button size={['md', null, 'sm']} rounded='full' variant={'solid'} colorPalette={'blue'} display={['none', null, 'inherit']} onClick={handleCreate}><RxPlus />Nouvel événement</Button>
+      <IconButton size={['md', null, 'sm']} rounded='full'  variant={'solid'} colorPalette={'blue'} aria-label='Search database' display={['inherit', null, 'none']} onClick={handleCreate}><RxPlus /></IconButton>
     </>
   )
 }
