@@ -33,8 +33,6 @@ const DesktopMenu = ({ username, email }) => {
   const splitedPathname = pathname.split('/')
   const secondPathSegment = splitedPathname.at(1)
 
-  const router = useRouter()
-
   const { ask: modifyParameters, dialog: modifyParametersDialog } = useDialog(ParametresDialog)
 
   const handleModifyParameters = useCallback(async () => {
@@ -43,6 +41,8 @@ const DesktopMenu = ({ username, email }) => {
       console.debug('Modify !!!')
     }
   }, [modifyParameters])
+
+  const router = useRouter()
 
   const handleMenuRadioItemGroupChange = useCallback(e => {
     const { value } = e
