@@ -12,7 +12,7 @@ import {
   DialogTitle
 } from '@/components/ui/dialog'
 
-const AjouterEvenementDialog = ({ close, eventId }) => {
+const AjouterAnalyseDialog = ({ close, eventId }) => {
   const size = useBreakpointValue({ base: 'cover', md: 'md' })
   const motion = useBreakpointValue({ base: 'scale', md: 'slide-in-bottom'})
 
@@ -20,7 +20,7 @@ const AjouterEvenementDialog = ({ close, eventId }) => {
     <DialogRoot open={true} size={size} placement={'center'} motionPreset={motion} onOpenChange={e => close(false)} closeOnInteractOutside={true}>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Création d&apos;un événement</DialogTitle>
+          <DialogTitle>Ajout d&apos;une nouvelle analyse</DialogTitle>
         </DialogHeader>
         <DialogBody>
           {/* <p><strong>Voulez-vous réellement effacer l&apos;événement no {eventId}&nbsp;?</strong></p>
@@ -37,5 +37,5 @@ const AjouterEvenementDialog = ({ close, eventId }) => {
   )
 }
 
-export default AjouterEvenementDialog
+export default AjouterAnalyseDialog
 

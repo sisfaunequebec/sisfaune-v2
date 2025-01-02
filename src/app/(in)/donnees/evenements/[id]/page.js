@@ -1,7 +1,7 @@
 'use client'
+import { useCallback } from 'react'
 
-import NextLink from 'next/link'
-import { usePathname, useParams  } from 'next/navigation'
+import { usePathname, useParams } from 'next/navigation'
 
 import { Box, Flex, Container, Stack, VStack, Collapsible, Tabs, AbsoluteCenter, IconButton, Text, HStack, Separator, Fieldset, Input } from '@chakra-ui/react'
 import { RxPencil1, RxPlus, RxTrash } from 'react-icons/rx'
@@ -15,7 +15,11 @@ import {
 
 import { Field } from '@/components/ui/field'
 
+import useDialog from '@/utilities/use-dialog'
+
 import Toolbar from '../components/toolbar'
+import AjouterSpecimenDialog from './components/ajouter-specimen-dialog'
+import AjouterAnalyseDialog from './components/ajouter-analyse-dialog'
 
 const SectionHeading = ({ label, isSticky = false, children }) => {
   return (
@@ -79,9 +83,29 @@ const GeneralSpecimenInformation = () => {
 const Evenement = () => {
   const params = useParams()
   const { id: idEvenement } = params
-  // console.debug(params)
+
+  const { ask: confirmSpecimenCreation, dialog: createSpecimenDialog } = useDialog(AjouterSpecimenDialog)
+
+  const handleCreateSpecimen = useCallback(async () => {
+    const result = await confirmSpecimenCreation()
+    if (result) {
+      console.debug('Create !!!')
+    }
+  }, [confirmSpecimenCreation])
+
+  const { ask: confirmAnalysisCreation, dialog: createAnalysisDialog } = useDialog(AjouterAnalyseDialog)
+
+  const handleCreateAnalysis = useCallback(async () => {
+    const result = await confirmAnalysisCreation()
+    if (result) {
+      console.debug('Create !!!')
+    }
+  }, [confirmAnalysisCreation])
+
   return (
     <>
+      { createSpecimenDialog }
+      { createAnalysisDialog }
       <Toolbar />
       <Flex flex={1} top={0} as={Container} direction={['column', null, 'row']} maxWidth={['6xl']} px={[0, 0, 8]} py={[0, 0, 4]} fontSize={['md', null, 'sm']}>
         
@@ -134,7 +158,7 @@ const Evenement = () => {
           <VStack alignItems={'stretch'} fontSize={['md', null, 'sm']} gap={0}>
             
             <SectionHeading label={'Spécimens'} isSticky>
-              <IconButton colorPalette={'green'} variant={'solid'} rounded={'full'} size={['xs']}><RxPlus /></IconButton>
+              <IconButton colorPalette={'green'} variant={'solid'} rounded={'full'} size={['xs']} onClick={handleCreateSpecimen}><RxPlus /></IconButton>
             </SectionHeading>
             
             <AccordionRoot multiple size={['md', null, 'sm']} defaultValue={[]}>
@@ -156,7 +180,7 @@ const Evenement = () => {
           <VStack alignItems={'stretch'} fontSize={['md', null, 'sm']} gap={0}>
 
             <SectionHeading label={'Analyses'}>
-              <IconButton colorPalette={'green'} variant={'solid'} rounded={'full'} size={['xs']}><RxPlus /></IconButton>
+              <IconButton colorPalette={'green'} variant={'solid'} rounded={'full'} size={['xs']} onClick={handleCreateAnalysis}><RxPlus /></IconButton>
             </SectionHeading>
           
             <AccordionRoot multiple size={['md', null, 'sm']} defaultValue={[]}>

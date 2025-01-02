@@ -23,7 +23,7 @@ const ItemSpecimen = (props) => {
           <Text color={'green.600'}>Spécimen no {id}</Text>
         </NextLink>
       </LinkOverlay>
-      <IconButton colorPalette={'green'} variant={'outline'} rounded={'full'} size={['xs']} onClick={handleDelete}><RxTrash  /></IconButton>
+      <IconButton colorPalette={'green'} variant={'outline'} rounded={'full'} size={['xs']} onClick={handleDelete} visibility={'hidden'}><RxTrash  /></IconButton>
     </LinkListWrapper>
   )
 }

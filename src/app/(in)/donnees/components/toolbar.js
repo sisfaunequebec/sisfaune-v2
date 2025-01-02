@@ -19,12 +19,10 @@ const NewEventButton = () => {
 
   const handleCreate = useCallback(async () => {
     const result = await confirmCreation()
-    // console.debug(result)
     if (result) {
       console.debug('Create !!!')
     }
-    // console.log(result)
-  }, [])
+  }, [confirmCreation])
 
   return (
     <>

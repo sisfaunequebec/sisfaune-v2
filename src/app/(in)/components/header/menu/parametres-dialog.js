@@ -12,7 +12,7 @@ import {
   DialogTitle
 } from '@/components/ui/dialog'
 
-const AjouterEvenementDialog = ({ close, eventId }) => {
+const ParametresDialog = ({ close, eventId }) => {
   const size = useBreakpointValue({ base: 'cover', md: 'md' })
   const motion = useBreakpointValue({ base: 'scale', md: 'slide-in-bottom'})
 
@@ -20,7 +20,7 @@ const AjouterEvenementDialog = ({ close, eventId }) => {
     <DialogRoot open={true} size={size} placement={'center'} motionPreset={motion} onOpenChange={e => close(false)} closeOnInteractOutside={true}>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Création d&apos;un événement</DialogTitle>
+          <DialogTitle>Vos paramètres</DialogTitle>
         </DialogHeader>
         <DialogBody>
           {/* <p><strong>Voulez-vous réellement effacer l&apos;événement no {eventId}&nbsp;?</strong></p>
@@ -30,12 +30,12 @@ const AjouterEvenementDialog = ({ close, eventId }) => {
           <DialogActionTrigger asChild>
             <Button size={'sm'} variant={'outline'} onClick={() => close(false)} minW={24}>Annuler</Button>
           </DialogActionTrigger>
-          <Button size={'sm'} colorPalette={'blue'} onClick={() => close(true)} minW={24}>Ajouter</Button>
+          <Button size={'sm'} colorPalette={'blue'} onClick={() => close(true)} minW={24}>Modifier</Button>
         </DialogFooter>
       </DialogContent>
     </DialogRoot>
   )
 }
 
-export default AjouterEvenementDialog
+export default ParametresDialog
 
