@@ -80,7 +80,7 @@ const DesktopMenu = ({ username, email }) => {
 
   return (
     <Flex hideBelow={'md'}>
-      <MenuRoot positioning={{ placement: 'bottom-end' }} size={'md'} >
+      <MenuRoot positioning={{ placement: 'bottom-end' }} size={'md'}>
         <MenuTrigger >
           <Avatar name={username} colorPalette={'green'} size={['md', null, 'sm']} variant={'solid'} cursor={'pointer'} />
         </MenuTrigger>
