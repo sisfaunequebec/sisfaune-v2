@@ -65,8 +65,9 @@ const VisibilityTrigger = forwardRef(function VisibilityTrigger(props, ref) {
       ref={ref}
       me='-2'
       aspectRatio='square'
-      size='sm'
+      size='xs'
       variant='ghost'
+      rounded={'full'}
       height='calc(100% - {spacing.2})'
       aria-label='Toggle password visibility'
       {...props}

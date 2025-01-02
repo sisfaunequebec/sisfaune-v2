@@ -19,7 +19,7 @@ const Field = ({ formState, children, name, ...rest }) => {
   const error = errors[name]
 
   return (
-    <ChakraField invalid={!!error} errorText={error?.message} disabled={isSubmitting} {...rest}>
+    <ChakraField variant={'vertical'} invalid={!!error} errorText={error?.message} disabled={isSubmitting} {...rest}>
       { children }
     </ChakraField>
   )
