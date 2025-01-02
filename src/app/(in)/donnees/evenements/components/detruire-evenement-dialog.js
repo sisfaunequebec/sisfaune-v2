@@ -1,4 +1,6 @@
-import { Button } from "@/components/ui/button"
+import { useBreakpointValue } from '@chakra-ui/react'
+
+import { Button } from '@/components/ui/button'
 
 import {
   DialogActionTrigger,
@@ -10,11 +12,17 @@ import {
   DialogRoot,
   DialogTitle,
   // DialogTrigger,
-} from "@/components/ui/dialog"
+} from '@/components/ui/dialog'
+import { setErrorMap } from 'zod'
+
+// console.debug(useBreakpointValue)
 
 const DetruireEvenementDialog = ({ close, eventId }) => {
+  const size = useBreakpointValue({ base: 'full', sm: 'sm' })
+  const motion = useBreakpointValue({ base: 'scale', sm: 'slide-in-bottom'})
+
   return (
-    <DialogRoot lazyMount open={true} size={'sm'} placement={'center'} motionPreset={'slide-in-bottom'} role={'alertdialog'} onOpenChange={e => close(false)} closeOnInteractOutside={true}>
+    <DialogRoot open={true} size={size} placement={'center'} motionPreset={motion} onOpenChange={e => close(false)} closeOnInteractOutside={true}>
       <DialogContent>
         <DialogHeader>
           <DialogTitle>Attention !</DialogTitle>
