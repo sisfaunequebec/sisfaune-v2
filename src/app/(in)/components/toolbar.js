@@ -80,11 +80,11 @@ const DesktopMenu = ({ username, email }) => {
 
   return (
     <Flex hideBelow={'md'}>
-      <MenuRoot positioning={{ placement: 'bottom-end' }} size={'md'}>
+      <MenuRoot positioning={{ placement: 'bottom-end' }} size={'md'} >
         <MenuTrigger >
           <Avatar name={username} colorPalette={'green'} size={['md', null, 'sm']} variant={'solid'} cursor={'pointer'} />
         </MenuTrigger>
-        <MenuContent minW={'48'} hideBelow={'md'}>
+        <MenuContent minW={'48'} hideBelow={'md'} mt={4}>
           <MenuItem _hover={{ bg: 'transparent' }} cursor={'default'}>
             <VStack gap={0} flex={1} alignItems={'flex-start'}>
               <Box flex={1} fontWeight={500}>{username}</Box>

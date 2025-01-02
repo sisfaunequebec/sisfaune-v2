@@ -5,7 +5,7 @@ import Toolbar from '../components/toolbar'
 import ListeSpecimens from './components/liste-specimens'
 import Filtres from '../components/filtres'
 
-const specimens = Array(2).fill(null).map((item, i) => {
+const specimens = Array(200).fill(null).map((item, i) => {
   return {
     id: i + 1,
     idEvenement: i + 1

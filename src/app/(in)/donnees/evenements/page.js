@@ -10,7 +10,7 @@ import Toolbar from '../components/toolbar'
 import ListeEvenements from './components/liste-evenements'
 import Filtres from '../components/filtres'
 
-const evenements = Array(20).fill(null).map((item, i) => {
+const evenements = Array(200).fill(null).map((item, i) => {
   return {
     id: i + 1
   }

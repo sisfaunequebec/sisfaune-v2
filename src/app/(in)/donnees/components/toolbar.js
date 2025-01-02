@@ -6,7 +6,7 @@ import NextLink from 'next/link'
 import { Box, Flex, Container, Stack, VStack, Collapsible, Tabs, IconButton, HStack, Link } from '@chakra-ui/react'
 import { Button } from '@/components/ui/button'
 
-import { RxPlus, RxDownload, RxUpload, RxMagnifyingGlass   } from 'react-icons/rx'
+import { RxPlus, RxDownload, RxUpload, RxMagnifyingGlass } from 'react-icons/rx'
 // import { CiFilter } from 'react-icons/ci'
 // import { RiFilterLine, ààà } from 'react-icons/ri'
 
@@ -46,8 +46,8 @@ const Toolbar = () => {
               <EvenementsSpecimens />
             </HStack>
 
-            <HStack justifyContent={'space-between'} gap={1}>
-              {/* <IconButton size={['md', null, 'sm']} rounded='full' variant={'solid'} colorPalette={'blue'} aria-label='Search database'  ><RxDownload /></IconButton> */}
+            <HStack justifyContent={'space-between'} gap={2}>
+              <IconButton size={['md', null, 'sm']} rounded='full' variant={'solid'} colorPalette={'blue'} aria-label='Search database'  ><RxDownload /></IconButton>
               {/* <IconButton size={'sm'} rounded='full'  variant={'subtle'} colorPalette={'blue'} aria-label='Search database'  ><RxUpload /></IconButton> */}
               {/* <IconButton size={'sm'} rounded='full'  variant={'solid'} colorPalette={'blue'} aria-label='Search database'  ><RxPlus /></IconButton> */}
               <NewEventButton/>

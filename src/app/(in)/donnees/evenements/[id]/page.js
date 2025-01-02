@@ -86,9 +86,7 @@ const Evenement = () => {
       <Flex flex={1} top={0} as={Container} direction={['column', null, 'row']} maxWidth={['6xl']} px={[0, 0, 8]} py={[0, 0, 4]} fontSize={['md', null, 'sm']}>
         
         <Flex flex={2} p={4} px={6} alignItems={'stretch'} bg={'blue.100'} position={'sticky'} borderColor={'blue.300'} borderTopWidth={1} hideBelow={'md'} >
-          <Flex position={'sticky'} top={145} alignSelf={'flex-start'} zIndex={1000}>
-            Filtres
-          </Flex>
+          <Flex position={'sticky'} top={145} alignSelf={'flex-start'} zIndex={1000} />
         </Flex>
         
         <VStack flex={5} justifyContent={'flex-start'} alignItems={'stretch'} ps={[0, null, 2]} gap={[0, null, 2]}>
