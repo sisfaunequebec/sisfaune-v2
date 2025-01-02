@@ -63,7 +63,7 @@ const VisibilityTrigger = forwardRef(function VisibilityTrigger(props, ref) {
     <IconButton
       tabIndex={-1}
       ref={ref}
-      me='-2'
+      me={-1}
       aspectRatio='square'
       size='xs'
       variant='ghost'

@@ -14,7 +14,7 @@ const specimens = Array(200).fill(null).map((item, i) => {
   }
 })
 
-const Specimens = async () => {
+const Specimens = () => {
   return (
     <>
       <Toolbar />

@@ -3,7 +3,7 @@ import { auth, signOut } from '@/auth'
 
 import { Flex, Container } from '@chakra-ui/react'
 
-import Toolbar from './components/toolbar'
+import Header from './components/header'
 
 export const metadata = {
   title: 'SIS Faune :: Gestion des événements '
@@ -17,7 +17,7 @@ const Layout = async ({ children }) => {
   }
   return (
     <Flex as={'main'} minH={'100vh'} flex={1} direction={'column'} justifyContent={'flex-start'} px={0} alignItems={'flex-start'}>
-      <Toolbar session={session} />
+      <Header session={session} />
       {children}
     </Flex>
   )

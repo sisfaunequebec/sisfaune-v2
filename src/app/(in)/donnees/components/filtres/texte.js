@@ -28,7 +28,7 @@ const Texte = ({ onChange = () => null }) => {
     <InputGroup
       flex={1}
       startElement={<RxMagnifyingGlass />}
-      endElement={showClearButton && <IconButton variant={'ghost'} size={'xs'} rounded={'full'} me={-2} onClick={handleClearValue}><RxCross2 /></IconButton>}
+      endElement={showClearButton && <IconButton variant={'ghost'} size={'xs'} rounded={'full'} me={-1} onClick={handleClearValue}><RxCross2 /></IconButton>}
     >
       <Input variant={'surface'} onChange={handleChangeValue} value={internalValue} />
     </InputGroup>

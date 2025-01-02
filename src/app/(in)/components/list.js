@@ -1,13 +1,10 @@
-import NextLink from 'next/link'
-
-import { Flex, LinkBox, LinkOverlay } from '@chakra-ui/react'
+import { Flex, LinkBox,  } from '@chakra-ui/react'
 
 const LinkListWrapper = ({ href, children }) => {
   return (
     <LinkBox
       as={Flex}
       alignItems={'center'} justifyContent={'space-between'}
-      // href={href}
       ps={5} pe={5} py={3} 
       fontWeight={500} 
       borderBottomColor={'green.300'}

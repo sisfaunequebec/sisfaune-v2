@@ -38,28 +38,29 @@ const FiltresForm = () => {
 
 
       <SectionTitle label={'Raffiner par statut :'} />
-      <Section><Statut /> </Section>
+      <Section><Statut onChange={v => console.debug(v)} /> </Section>
 
       <Separator />
 
-      <SectionTitle label={'Raffiner par programme...'} />
+      <SectionTitle label={'Raffiner par programme :'} />
       <Section><Programme /> </Section>
 
       <Separator />
 
       
-      <SectionTitle label={'Raffiner par région administrative...'} />
+      <SectionTitle label={'Raffiner par région administrative :'} />
       <Section><Region /> </Section>
 
       <Separator />
 
-      <Fieldset.Legend color={'blue.800'}>Raffiner par groupe de spécimens...</Fieldset.Legend>
-      <Fieldset.Content gap={2} >
-      </Fieldset.Content>
-      <Separator borderColor={'blue.600'} />
-      <Fieldset.Legend color={'blue.800'}>Raffiner par date...</Fieldset.Legend>
-      <Fieldset.Content gap={2} >
-      </Fieldset.Content>
+      <SectionTitle label={'Raffiner par groupe de spécimens :'} />
+      <Section></Section>
+
+      <Separator />
+
+      <SectionTitle label={'Raffiner par date :'} />
+      <Section></Section>
+
     </Fieldset.Root>
   )
 }

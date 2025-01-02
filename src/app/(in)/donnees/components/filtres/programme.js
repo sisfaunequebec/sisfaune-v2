@@ -1,44 +1,21 @@
-import { Flex, Fieldset, Input, Separator as ChakraSeparator, VStack, CheckboxGroup } from '@chakra-ui/react'
+import Checkboxes from '../checkboxes'
 
-import { Field } from '@/components/ui/field'
-import { Radio, RadioGroup } from "@/components/ui/radio"
-import { Checkbox } from "@/components/ui/checkbox"
+const programmes = [
+  { value: 11, label: 'Évaluation de la contamination par le plomb' },
+  { value: 1, label: 'Surveillance de la MDC' },
+  { value: 2, label: 'Surveillance de la rage du raton laveur' },
+  { value: 3, label: 'Surveillance de la santé des chauves-souris' },
+  { value: 4, label: 'Surveillance de la septicémie hémorragique virale' },
+  { value: 5, label: 'Surveillance de l\'influenza aviaire' },
+  { value: 6, label: 'Surveillance des salmonelles' },
+  { value: 7, label: 'Surveillance passive de la rage (analyse ACIA)' },
+  { value: 8, label: 'Surveillance régulière' }
+]
 
-const programmes = {
-  11: 'Évaluation de la contamination par le plomb',
-  1: 'Surveillance de la MDC',
-  2: 'Surveillance de la rage du raton laveur',
-  3: 'Surveillance de la santé des chauves-souris',
-  4: 'Surveillance de la septicémie hémorragique virale',
-  5: 'Surveillance de l\'influenza aviaire',
-  6: 'Surveillance des salmonelles',
-  7: 'Surveillance passive de la rage (analyse ACIA)',
-  8: 'Surveillance régulière'
-}
-
-const Programme = () => {
+const Programme = ({ value = [], onChange = () => { } }) => {
   return (
-    <>
-      <Checkbox size={'sm'} colorPalette={'blue'} variant={'subtle'} checked={true} mb={4}>Tous les programmes</Checkbox>
-      <CheckboxGroup defaultValue={[]} name={'programme'}>
-        { Object.entries(programmes).map(([key, label]) => {
-          return (
-            <Checkbox size={'sm'} colorPalette={'blue'} variant={'subtle'} value={key} key={key}>{label}</Checkbox>
-          )
-        })}
-      </CheckboxGroup>
-    </>
+    <Checkboxes choices={programmes} value={value} onChange={onChange} allChoicesLabel = {'Tous les programmes'} />
   )
 }
 
 export default Programme
-
-// Évaluation de la contamination par le plomb
-//  Surveillance de la MDC
-//  Surveillance de la rage du raton laveur
-//  Surveillance de la santé des chauves-souris
-//  Surveillance de la septicémie hémorragique virale
-//  Surveillance de l'influenza aviaire
-//  Surveillance des salmonelles
-//  Surveillance passive de la rage (analyse ACIA)
-//  Surveillance régulière

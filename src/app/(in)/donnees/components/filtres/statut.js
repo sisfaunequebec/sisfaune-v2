@@ -1,26 +1,13 @@
-import { Flex, Fieldset, Input, Separator as ChakraSeparator, VStack, CheckboxGroup } from '@chakra-ui/react'
+import Checkboxes from '../checkboxes'
 
-import { Field } from '@/components/ui/field'
-import { Radio, RadioGroup } from "@/components/ui/radio"
-import { Checkbox } from "@/components/ui/checkbox"
+const statuts = [
+  { value: 2, label: 'En cours' },
+  { value: 3, label: 'Terminé' }
+]
 
-const statuts = {
-  2: 'En cours',
-  3: 'Terminé'
-}
-
-const Statut = () => {
+const Statut = ({ value = [], onChange = () => {} }) => {
   return (
-    <>
-      <Checkbox size={'sm'} colorPalette={'blue'} variant={'subtle'} checked={true} mb={4}>Tous les statuts</Checkbox>
-      <CheckboxGroup defaultValue={[]} name={'statut'}>
-        { Object.entries(statuts).map(([key, label]) => {
-          return (
-            <Checkbox size={'sm'} colorPalette={'blue'} variant={'subtle'} value={key} key={key}>{label}</Checkbox>
-          )
-        })}
-      </CheckboxGroup>
-    </>
+    <Checkboxes choices={statuts} value={value} onChange={onChange} allChoicesLabel = {'Tous les statuts'} />
   )
 }
 

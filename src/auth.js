@@ -12,8 +12,8 @@ const credentialsProvider = Credentials({
     let user = null
 
     return {
-      email: 'bob@alice.com',
-      name: 'Bob Alice',
+      email: 'bruno.gendron.consult@gmail.com',
+      name: 'Bruno Gendron',
       image: 'https://avatars.githubusercontent.com/u/67470890?s=200&v=4'
     }
 

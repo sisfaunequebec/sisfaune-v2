@@ -6,7 +6,7 @@ export const Field = forwardRef(function Field(props, ref) {
 
   const flexDirection = variant === 'horizontal' ? 'row' : 'column'
   const alignItems = variant === 'horizontal' ? 'center' : 'flex-start'
-  const labelFlexValue =  variant === 'horizontal' ? [1, null, 2] : 1
+  const labelFlexValue =  variant === 'horizontal' ? [1, null, 1] : 1
   const childrenFlexValue =  variant === 'horizontal' ? 2 : 1
 
   return (

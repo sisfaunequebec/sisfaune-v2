@@ -45,13 +45,13 @@ const GeneralInformation = () => {
       <Fieldset.Legend>Identification</Fieldset.Legend>
       <Fieldset.Content gap={2}>
         <Field label={'Numéro d\'événement\u00A0:'}>
-          <Input flex={4} variant={'subtle'} />
+          <Input flex={4} readOnly value={'303326'} />
         </Field>
         <Field label={'Type d\'événement\u00A0:'}>
-          <Input flex={4} variant={'subtle'} />
+          <Input flex={4} readOnly value={'Santé de la faune'} />
         </Field>
         <Field label={'Numéro d\'identification SILAB\u00A0:'}>
-          <Input flex={4} variant={'subtle'} />
+          <Input flex={4} />
         </Field>
       </Fieldset.Content>
       <Separator />

@@ -6,15 +6,23 @@ import NextLink from 'next/link'
 import { VStack, Text, IconButton, LinkOverlay } from '@chakra-ui/react'
 import { RxTrash } from 'react-icons/rx'
 
+import useDialog from '@/utilities/use-dialog'
+
+import DetruireEvenementDialog from './detruire-evenement-dialog'
+
 import { LinkListWrapper } from '@/app/(in)/components/list'
 
-const ItemEvenement = (props) => {
-  const { id } = props
+const ItemEvenement = ({ id, onDelete }) => {
+  // const { id, onDelete } = props
   const href = `/donnees/evenements/${id}`
 
-  const handleDelete = useCallback(() => {
-    alert(`Effacer evenement id = ${id}`)
-  }, [id])
+  const handleDelete = useCallback(async () => {
+    const result = await onDelete({ eventId: id })
+    if (result) {
+      console.debug('Delete !!!')
+    }
+    // console.log(result)
+  }, [id, onDelete])
 
   return (
     <LinkListWrapper href={href}>
@@ -29,15 +37,21 @@ const ItemEvenement = (props) => {
 }
 
 const ListeEvenements = ({ evenements }) => {
+
+  const { ask: confirmDeletion, dialog: deleteConfirmDialog } = useDialog(DetruireEvenementDialog)
+
   return (
+    <>
+    { deleteConfirmDialog }
     <VStack alignItems={'stretch'} flex={1} gap={0}>
       {evenements.map(evenement => {
         const { id } = evenement
         return (
-          <ItemEvenement key={id} {...evenement} />
+          <ItemEvenement key={id} {...evenement} onDelete={confirmDeletion} />
         )
       })}
     </VStack>
+    </>
   )
 }
 
