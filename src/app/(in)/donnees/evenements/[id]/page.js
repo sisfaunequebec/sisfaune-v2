@@ -19,7 +19,7 @@ import Toolbar from '../components/toolbar'
 
 const SectionHeading = ({ label, isSticky = false, children }) => {
   return (
-    <Flex as={'section'} bg={'green.100'} color={'green.600'} px={5} py={3} fontWeight={500} borderColor={'green.300'} borderTopWidth={1} alignItems={'center'} justifyContent={'space-between'} position={isSticky && 'sticky'} top={[134, null, 129]} justifySelf={'flex-start'} zIndex={1002}>
+    <Flex as={'section'} bg={'green.100'} color={'green.600'} px={5} py={3} fontWeight={500} borderColor={'green.300'} borderTopWidth={1} alignItems={'center'} justifyContent={'space-between'} position={isSticky && 'sticky'} top={[134, null, 129]} justifySelf={'flex-start'} zIndex={1000}>
       <Text as={'h3'} userSelect={'none'}>{label}</Text>
       { children }
     </Flex>

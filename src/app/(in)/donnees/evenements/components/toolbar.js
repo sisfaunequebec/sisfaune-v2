@@ -12,7 +12,8 @@ const ReportButton = () => {
   return (
     <>
       <Button size={['md', null, 'sm']} rounded='full' variant={'solid'} colorPalette={'blue'} display={['none', null, 'inherit']}><RxFileText />Rapport</Button>
-      <IconButton size={['md', null, 'sm']} rounded='full' variant={'solid'} colorPalette={'blue'} aria-label={'Rapport'} display={['inherit', null, 'none']}><RxFileText /></IconButton>    </>
+      <IconButton size={['md', null, 'sm']} rounded='full' variant={'solid'} colorPalette={'blue'} aria-label={'Rapport'} display={['inherit', null, 'none']}><RxFileText /></IconButton>
+    </>
   )
 }
 
@@ -22,7 +23,10 @@ const BackButton = () => {
     router.back()
   }, [router])
   return (
-    <IconButton size={['md', null, 'sm']} rounded='full' variant={'subtle'} colorPalette={'blue'} aria-label={'Retour'} onClick={handleClick}><RxArrowLeft /></IconButton>
+    <>
+      <Button size={['md', null, 'sm']} rounded='full' variant={'subtle'} colorPalette={'blue'} display={['none', null, 'inherit']} onClick={handleClick}><RxArrowLeft />Retour à la liste</Button>
+      <IconButton size={['md', null, 'sm']} rounded='full' variant={'subtle'} colorPalette={'blue'} aria-label={'Retour'} display={['inherit', null, 'none']} onClick={handleClick}><RxArrowLeft /></IconButton>
+    </>
   )
 }
 
@@ -37,7 +41,7 @@ const Toolbar = () => {
       top={'70px'}
       alignSelf={'flex-start'}
       width={'full'}
-      zIndex={2000}
+      zIndex={1001}
       shadow={[null, null, toolbarShadowSize]}
     >
       <Flex flex={1} bg={'white'} py={1}>
