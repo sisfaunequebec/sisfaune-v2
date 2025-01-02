@@ -18,7 +18,7 @@ import { setErrorMap } from 'zod'
 // console.debug(useBreakpointValue)
 
 const DetruireEvenementDialog = ({ close, eventId }) => {
-  const size = useBreakpointValue({ base: 'full', sm: 'sm' })
+  const size = useBreakpointValue({ base: 'cover', sm: 'sm' })
   const motion = useBreakpointValue({ base: 'scale', sm: 'slide-in-bottom'})
 
   return (
