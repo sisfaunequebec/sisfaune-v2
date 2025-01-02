@@ -2,7 +2,7 @@
 
 import { defineConfig, defaultConfig, defineRecipe, defineSlotRecipe, defineTokens, defineTextStyles, createSystem } from '@chakra-ui/react'
 
-import { avatarAnatomy, menuAnatomy, tabsAnatomy, accordionAnatomy, checkboxAnatomy } from '@chakra-ui/react/anatomy'
+import { avatarAnatomy, menuAnatomy, tabsAnatomy, accordionAnatomy, checkboxAnatomy, dialogAnatomy } from '@chakra-ui/react/anatomy'
 
 const tokens = defineTokens({
   colors: {
@@ -96,6 +96,19 @@ const checkboxRecipe = defineSlotRecipe({
   }
 })
 
+const dialogRecipe = defineSlotRecipe({
+  slots: dialogAnatomy.keys(),
+  variants: {
+    size: {
+      cover: {
+        positioner: {
+          padding: '4'
+        }
+      }
+    }
+  }
+})
+
 const buttonRecipe = defineRecipe({
   variants: {
     variant: {
@@ -144,7 +157,8 @@ const config = defineConfig({
       menu: menuRecipe,
       tabs: tabsRecipe,
       accordion: accordionRecipe,
-      checkbox: checkboxRecipe
+      checkbox: checkboxRecipe,
+      dialog: dialogRecipe
     }
     // textStyles
   }
