@@ -25,7 +25,7 @@ const DetruireEvenementDialog = ({ close, eventId }) => {
           <DialogTitle textStyle={['2xl', null, 'lg']}>Attention !</DialogTitle>
         </DialogHeader>
         <DialogBody>
-          <Text fontWeight={'bold'} textStyle={['xl', null, 'md']}>Voulez-vous réellement effacer l&apos;événement no {eventId}&nbsp;?</Text>
+          <Text fontWeight={'bold'} textStyle={['lg', null, 'sm']}>Voulez-vous réellement effacer l&apos;événement no {eventId}&nbsp;?</Text>
           <Text textStyle={['lg', null, 'sm']}>Cette action est irréversible...</Text>
         </DialogBody>
         <DialogFooter gap={2}>
