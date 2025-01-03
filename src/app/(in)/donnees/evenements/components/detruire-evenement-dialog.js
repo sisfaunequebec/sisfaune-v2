@@ -1,5 +1,7 @@
 import { useBreakpointValue } from '@chakra-ui/react'
 
+import { Text } from '@chakra-ui/react'
+
 import { Button } from '@/components/ui/button'
 
 import {
@@ -20,17 +22,17 @@ const DetruireEvenementDialog = ({ close, eventId }) => {
     <DialogRoot open={true} size={size} placement={'center'} motionPreset={motion} onOpenChange={e => close(false)} closeOnInteractOutside={true} role={'alertdialog'}>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Attention !</DialogTitle>
+          <DialogTitle textStyle={['2xl', null, 'lg']}>Attention !</DialogTitle>
         </DialogHeader>
         <DialogBody>
-          <p><strong>Voulez-vous réellement effacer l&apos;événement no {eventId}&nbsp;?</strong></p>
-          <p>Cette action est irréversible...</p>
+          <Text fontWeight={'bold'} textStyle={['xl', null, 'md']}>Voulez-vous réellement effacer l&apos;événement no {eventId}&nbsp;?</Text>
+          <Text textStyle={['lg', null, 'sm']}>Cette action est irréversible...</Text>
         </DialogBody>
         <DialogFooter gap={2}>
           <DialogActionTrigger asChild>
-            <Button size={'sm'} variant={'outline'} onClick={() => close(false)} minW={24}>Annuler</Button>
+            <Button size={['xl', null, 'md']} variant={'outline'} onClick={() => close(false)} minW={24}>Annuler</Button>
           </DialogActionTrigger>
-          <Button size={'sm'} colorPalette={'red'} onClick={() => close(true)} minW={24}>Effacer</Button>
+          <Button size={['xl', null, 'md']} colorPalette={'red'} onClick={() => close(true)} minW={24}>Effacer</Button>
         </DialogFooter>
       </DialogContent>
     </DialogRoot>

@@ -118,7 +118,7 @@ const Evenement = () => {
           <VStack alignItems={'stretch'} fontSize={['md', null, 'sm']} gap={0}>
 
             <SectionHeading label={`Événement no ${idEvenement}`} isSticky>
-              <IconButton colorPalette={'green'} variant={'solid'} rounded={'full'} size={['xs']}><RxTrash /></IconButton>
+              <IconButton colorPalette={'green'} variant={'solid'} rounded={'full'} size={['xs']} visibility={'hidden'}></IconButton>
             </SectionHeading>
 
             <AccordionRoot multiple size={['md', null, 'sm']} defaultValue={['general']}>  
