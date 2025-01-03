@@ -1,9 +1,14 @@
-import { Box, Flex, Container, Stack, VStack, Collapsible, Tabs } from '@chakra-ui/react'
+import { Box, VStack } from '@chakra-ui/react'
 
-import { SegmentedControl } from '@/components/ui/segmented-control'
+import Test from './components/test'
 
 const Administration = async () => {
-  return null
+  return (
+    <VStack>
+      <Box>Administration</Box>
+      <Test />
+    </VStack>
+  )
 }
 
 export default Administration 
