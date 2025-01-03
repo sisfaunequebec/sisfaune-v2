@@ -98,6 +98,22 @@ const checkboxRecipe = defineSlotRecipe({
 
 const dialogRecipe = defineSlotRecipe({
   slots: dialogAnatomy.keys(),
+  base: {
+    content: {
+      textStyle: ['lg', null, 'md']
+    },
+    body: {
+      gap: '3 !important',
+      alignItems:  'flex-start !important',
+      lineHeight: '1.2rem'
+    },
+    footer: {
+      gap: '2 !important',
+    },
+    title: {
+      textStyle: ['2xl', null, 'xl']
+    }
+  },
   variants: {
     size: {
       cover: {

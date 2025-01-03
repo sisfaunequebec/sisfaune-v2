@@ -1,13 +1,18 @@
-import { Box, VStack } from '@chakra-ui/react'
+import { AbsoluteCenter, Flex, VStack } from '@chakra-ui/react'
+
+import wait from '@/utilities/wait'
 
 import Test from './components/test'
 
 const Administration = async () => {
+  await wait(2000)
   return (
-    <VStack>
-      <Box>Administration</Box>
-      <Test />
-    </VStack>
+    <AbsoluteCenter>
+      <VStack>
+        <Flex>Administration</Flex>
+        {/* <Test /> */}
+      </VStack>
+    </AbsoluteCenter>
   )
 }
 

@@ -1,3 +1,4 @@
+'use client'
 import { Flex, Fieldset, Input, Separator as ChakraSeparator, VStack, CheckboxGroup } from '@chakra-ui/react'
 
 import { Field } from '@/components/ui/field'

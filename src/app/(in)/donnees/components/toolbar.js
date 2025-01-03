@@ -15,18 +15,18 @@ import EvenementsSpecimens from './evenements-specimens-tabs'
 import AjouterEvenementDialog from '../evenements/components/ajouter-evenement-dialog'
 
 const NewEventButton = () => {
-  const { ask: confirmCreation, dialog: createConfirmDialog } = useDialog(AjouterEvenementDialog)
+  const { ask: createEvent, dialog: createEventDialog } = useDialog(AjouterEvenementDialog)
 
   const handleCreate = useCallback(async () => {
-    const result = await confirmCreation()
+    const result = await createEvent()
     if (result) {
       console.debug('Create !!!')
     }
-  }, [confirmCreation])
+  }, [createEvent])
 
   return (
     <>
-      {createConfirmDialog}
+      {createEventDialog}
       <Button size={['md', null, 'sm']} rounded='full' variant={'solid'} colorPalette={'blue'} display={['none', null, 'inherit']} onClick={handleCreate}><RxPlus />Nouvel événement</Button>
       <IconButton size={['md', null, 'sm']} rounded='full'  variant={'solid'} colorPalette={'blue'} aria-label='Search database' display={['inherit', null, 'none']} onClick={handleCreate}><RxPlus /></IconButton>
     </>

@@ -14,21 +14,21 @@ import {
   DialogTitle
 } from '@/components/ui/dialog'
 
-const DetruireEvenementDialog = ({ close, eventId }) => {
+const Dialog = ({ title, isAlert = false, children, close }) => {
   const size = useBreakpointValue({ base: 'cover', md: 'sm' })
   const motion = useBreakpointValue({ base: 'scale', md: 'slide-in-bottom'})
+  const role = isAlert && 'alertdialog'
 
   return (
-    <DialogRoot open={true} size={size} placement={'center'} motionPreset={motion} onOpenChange={e => close(false)} closeOnInteractOutside={true} role={'alertdialog'}>
+    <DialogRoot open={true} size={size} placement={'center'} role={role} motionPreset={motion} onOpenChange={e => close(false)} closeOnInteractOutside={true}>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Effacement d&apos;un événement</DialogTitle>
+          <DialogTitle>{title}</DialogTitle>
         </DialogHeader>
         <DialogBody as={VStack}>
-          <Text fontWeight={'bold'}>Attention&nbsp;! Voulez-vous réellement effacer l&apos;événement no {eventId}&nbsp;?</Text>
-          <Text>Cette action est irréversible...</Text>
+          { children }
         </DialogBody>
-        <DialogFooter>
+        <DialogFooter gap={2}>
           <DialogActionTrigger asChild>
             <Button size={['lg', null, 'sm']} variant={'outline'} onClick={() => close(false)} minW={24}>Annuler</Button>
           </DialogActionTrigger>
@@ -39,5 +39,5 @@ const DetruireEvenementDialog = ({ close, eventId }) => {
   )
 }
 
-export default DetruireEvenementDialog
+export default Dialog
 

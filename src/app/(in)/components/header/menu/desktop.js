@@ -33,14 +33,17 @@ const DesktopMenu = ({ username, email }) => {
   const splitedPathname = pathname.split('/')
   const secondPathSegment = splitedPathname.at(1)
 
-  const { ask: modifyParameters, dialog: modifyParametersDialog } = useDialog(ParametresDialog)
+  const dialogs = []
+
+  const { ask: openParameters, dialog: parametersDialog } = useDialog(ParametresDialog)
+  dialogs.push(parametersDialog)
 
   const handleModifyParameters = useCallback(async () => {
-    const result = await modifyParameters()
+    const result = await openParameters()
     if (result) {
       console.debug('Modify !!!')
     }
-  }, [modifyParameters])
+  }, [openParameters])
 
   const router = useRouter()
 
@@ -52,7 +55,8 @@ const DesktopMenu = ({ username, email }) => {
 
   return (
     <>
-      { modifyParametersDialog }
+      { dialogs }
+
       <Flex hideBelow={'md'}>
         <MenuRoot positioning={{ placement: 'bottom-end' }} size={'md'}>
           <MenuTrigger >
@@ -83,6 +87,7 @@ const DesktopMenu = ({ username, email }) => {
           </MenuContent>
         </MenuRoot>
       </Flex>
+      
     </>
   )
 }

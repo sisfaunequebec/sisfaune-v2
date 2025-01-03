@@ -1,9 +1,11 @@
-'use client'
-import NextLink from 'next/link'
+// 'use client'
+// import NextLink from 'next/link'
 
 import { Box, Flex, Container, Stack, VStack, Collapsible, Tabs, Text, IconButton, LinkOverlay } from '@chakra-ui/react'
 
-import { RxTrash, RxPlus } from 'react-icons/rx'
+// import { RxTrash, RxPlus } from 'react-icons/rx'
+
+import wait from '@/utilities/wait'
 
 import Toolbar from '../components/toolbar'
 
@@ -16,7 +18,8 @@ const evenements = Array(200).fill(null).map((item, i) => {
   }
 })
 
-const Evenements = () => {
+const Evenements = async () => {
+  await wait(500) // simulate latency
   return (
     <>
       <Toolbar />

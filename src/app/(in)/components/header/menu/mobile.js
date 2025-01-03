@@ -38,14 +38,17 @@ const MobileMenu = ({ username, email }) => {
   const splitedPathname = pathname.split('/')
   const secondPathSegment = splitedPathname.at(1)
 
-  const { ask: modifyParameters, dialog: modifyParametersDialog } = useDialog(ParametresDialog)
+  const dialogs = []
+
+  const { ask: openParameters, dialog: parametersDialog } = useDialog(ParametresDialog)
+  dialogs.push(parametersDialog)
 
   const handleModifyParameters = useCallback(async () => {
-    const result = await modifyParameters()
+    const result = await openParameters()
     if (result) {
       console.debug('Modify !!!')
     }
-  }, [modifyParameters])
+  }, [openParameters])
 
   const router = useRouter()
 
@@ -65,7 +68,8 @@ const MobileMenu = ({ username, email }) => {
 
   return (
     <>
-      { modifyParametersDialog }
+      { dialogs }
+
       <Flex hideFrom={'md'}>
         <IconButton variant={'outline'} rounded={'full'} size={['md', null, 'sm']} onClick={toggle} >
           { on ? <RxCross1 /> : <RxHamburgerMenu /> }
@@ -106,6 +110,7 @@ const MobileMenu = ({ username, email }) => {
         </Flex>
         }
       </Flex>
+      
     </>
   )
 }

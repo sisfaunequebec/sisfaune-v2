@@ -84,28 +84,32 @@ const Evenement = () => {
   const params = useParams()
   const { id: idEvenement } = params
 
-  const { ask: confirmSpecimenCreation, dialog: createSpecimenDialog } = useDialog(AjouterSpecimenDialog)
+  const dialogs = []
+
+  const { ask: createSpecimen, dialog: createSpecimenDialog } = useDialog(AjouterSpecimenDialog)
+  dialogs.push(createSpecimenDialog)
 
   const handleCreateSpecimen = useCallback(async () => {
-    const result = await confirmSpecimenCreation()
+    const result = await createSpecimen()
     if (result) {
       console.debug('Create !!!')
     }
-  }, [confirmSpecimenCreation])
+  }, [createSpecimen])
 
-  const { ask: confirmAnalysisCreation, dialog: createAnalysisDialog } = useDialog(AjouterAnalyseDialog)
+  const { ask: createAnalysis, dialog: createAnalysisDialog } = useDialog(AjouterAnalyseDialog)
+  dialogs.push(createAnalysisDialog)
 
   const handleCreateAnalysis = useCallback(async () => {
-    const result = await confirmAnalysisCreation()
+    const result = await createAnalysis()
     if (result) {
       console.debug('Create !!!')
     }
-  }, [confirmAnalysisCreation])
+  }, [createAnalysis])
 
   return (
     <>
-      { createSpecimenDialog }
-      { createAnalysisDialog }
+      { dialogs }
+
       <Toolbar />
       <Flex flex={1} top={0} as={Container} direction={['column', null, 'row']} maxWidth={['6xl']} px={[0, 0, 8]} py={[0, 0, 4]} fontSize={['md', null, 'sm']}>
         
@@ -201,6 +205,7 @@ const Evenement = () => {
 
         </VStack>
       </Flex>
+      
     </>
   )
 }

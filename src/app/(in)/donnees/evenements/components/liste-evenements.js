@@ -38,16 +38,16 @@ const ItemEvenement = ({ id, onDelete }) => {
 
 const ListeEvenements = ({ evenements }) => {
 
-  const { ask: confirmDeletion, dialog: deleteConfirmDialog } = useDialog(DetruireEvenementDialog)
+  const { ask: deleteEvent, dialog: deleteEventDialog } = useDialog(DetruireEvenementDialog)
 
   return (
     <>
-    { deleteConfirmDialog }
+    { deleteEventDialog }
     <VStack alignItems={'stretch'} flex={1} gap={0}>
       {evenements.map(evenement => {
         const { id } = evenement
         return (
-          <ItemEvenement key={id} {...evenement} onDelete={confirmDeletion} />
+          <ItemEvenement key={id} {...evenement} onDelete={deleteEvent} />
         )
       })}
     </VStack>
