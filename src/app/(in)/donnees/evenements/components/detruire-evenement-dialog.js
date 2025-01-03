@@ -24,15 +24,15 @@ const DetruireEvenementDialog = ({ close, eventId }) => {
         <DialogHeader>
           <DialogTitle textStyle={['2xl', null, 'lg']}>Attention !</DialogTitle>
         </DialogHeader>
-        <DialogBody>
-          <Text fontWeight={'bold'} textStyle={['lg', null, 'sm']}>Voulez-vous réellement effacer l&apos;événement no {eventId}&nbsp;?</Text>
-          <Text textStyle={['lg', null, 'sm']}>Cette action est irréversible...</Text>
+        <DialogBody textStyle={['lg', null, 'sm']}>
+          <Text fontWeight={'bold'} >Voulez-vous réellement effacer l&apos;événement no {eventId}&nbsp;?</Text>
+          <Text>Cette action est irréversible...</Text>
         </DialogBody>
         <DialogFooter gap={2}>
           <DialogActionTrigger asChild>
-            <Button size={['xl', null, 'md']} variant={'outline'} onClick={() => close(false)} minW={24}>Annuler</Button>
+            <Button size={['lg', null, 'sm']} variant={'outline'} onClick={() => close(false)} minW={24}>Annuler</Button>
           </DialogActionTrigger>
-          <Button size={['xl', null, 'md']} colorPalette={'red'} onClick={() => close(true)} minW={24}>Effacer</Button>
+          <Button size={['lg', null, 'sm']} colorPalette={'red'} onClick={() => close(true)} minW={24}>Effacer</Button>
         </DialogFooter>
       </DialogContent>
     </DialogRoot>
