@@ -5,7 +5,7 @@ const useDialog = (DialogFactory) => {
 
   const ask = (props) => {
     return new Promise(resolve => {
-      function close(result) {
+      const close = result => {
         setDialog(null)
         resolve(result)
       }

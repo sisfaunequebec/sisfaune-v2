@@ -33,10 +33,10 @@ const DesktopMenu = ({ username, email }) => {
   const splitedPathname = pathname.split('/')
   const secondPathSegment = splitedPathname.at(1)
 
-  const dialogs = []
+  // const dialogs = []
 
   const { ask: openParameters, dialog: parametersDialog } = useDialog(ParametresDialog)
-  dialogs.push(parametersDialog)
+  // dialogs.push(parametersDialog)
 
   const handleModifyParameters = useCallback(async () => {
     const result = await openParameters()
@@ -55,7 +55,7 @@ const DesktopMenu = ({ username, email }) => {
 
   return (
     <>
-      { dialogs }
+      { parametersDialog }
 
       <Flex hideBelow={'md'}>
         <MenuRoot positioning={{ placement: 'bottom-end' }} size={'md'}>

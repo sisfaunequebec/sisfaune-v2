@@ -14,6 +14,8 @@ import {
   DialogTitle
 } from '@/components/ui/dialog'
 
+import { RxInfoCircled } from 'react-icons/rx'
+
 const DetruireEvenementDialog = ({ close, eventId }) => {
   const size = useBreakpointValue({ base: 'cover', md: 'sm' })
   const motion = useBreakpointValue({ base: 'scale', md: 'slide-in-bottom'})
@@ -25,14 +27,17 @@ const DetruireEvenementDialog = ({ close, eventId }) => {
           <DialogTitle>Effacement d&apos;un événement</DialogTitle>
         </DialogHeader>
         <DialogBody as={VStack}>
-          <Text fontWeight={'bold'}>Attention&nbsp;! Voulez-vous réellement effacer l&apos;événement no {eventId}&nbsp;?</Text>
+          <Text fontWeight={'bold'}>Attention&nbsp;! Voulez-vous réellement effacer<br/>l&apos;événement no {eventId}&nbsp;?</Text>
           <Text>Cette action est irréversible...</Text>
         </DialogBody>
         <DialogFooter>
           <DialogActionTrigger asChild>
             <Button size={['lg', null, 'sm']} variant={'outline'} onClick={() => close(false)} minW={24}>Annuler</Button>
           </DialogActionTrigger>
-          <Button size={['lg', null, 'sm']} colorPalette={'red'} onClick={() => close(true)} minW={24}>Effacer</Button>
+          <Button size={['lg', null, 'sm']} colorPalette={'red'} onClick={() => close(true)} minW={24}>
+            {/* <RxInfoCircled /> */}
+            Effacer
+          </Button>
         </DialogFooter>
       </DialogContent>
     </DialogRoot>
