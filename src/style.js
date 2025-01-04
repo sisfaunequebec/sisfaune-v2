@@ -100,7 +100,7 @@ const dialogRecipe = defineSlotRecipe({
   slots: dialogAnatomy.keys(),
   base: {
     content: {
-      textStyle: ['lg', null, 'md']
+      textStyle: ['md', null, 'sm']
     },
     body: {
       gap: '3 !important',
@@ -111,7 +111,7 @@ const dialogRecipe = defineSlotRecipe({
       gap: '2 !important',
     },
     title: {
-      textStyle: ['2xl', null, 'xl']
+      textStyle: ['xl', null, 'lg']
     }
   },
   variants: {
