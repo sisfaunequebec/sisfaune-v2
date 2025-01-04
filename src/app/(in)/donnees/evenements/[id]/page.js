@@ -18,8 +18,11 @@ import { Field } from '@/components/ui/field'
 import useDialog from '@/utilities/use-dialog'
 
 import Toolbar from '../components/toolbar'
+
 import AjouterSpecimenDialog from './components/ajouter-specimen-dialog'
 import AjouterAnalyseDialog from './components/ajouter-analyse-dialog'
+import DetruireAnalyseDialog from './components/detruire-analyse-dialog'
+import DetruireSpecimenDialog from './components/detuire-specimen-dialog'
 
 const SectionHeading = ({ label, isSticky = false, children }) => {
   return (
@@ -106,11 +109,31 @@ const Evenement = () => {
     }
   }, [createAnalysis])
 
+  const { ask: deleteAnalysis, dialog: deleteAnalysisDialog } = useDialog(DetruireAnalyseDialog)
+  dialogs.push(deleteAnalysisDialog)
+
+  const handleDeleteAnalysis = useCallback(async () => {
+    const result = await deleteAnalysis()
+    if (result) {
+      console.debug('Delete !!!')
+    }
+  }, [deleteAnalysis])
+
+  const { ask: deleteSpecimen, dialog: deleteSpecimenDialog } = useDialog(DetruireSpecimenDialog)
+  dialogs.push(deleteSpecimenDialog)
+
+  const handleDeleteSpecimen = useCallback(async () => {
+    const result = await deleteSpecimen()
+    if (result) {
+      console.debug('Delete !!!')
+    }
+  }, [deleteSpecimen])
+
   return (
     <>
       { dialogs }
 
-      <Toolbar />
+      {/* <Toolbar /> */}
       <Flex flex={1} top={0} as={Container} direction={['column', null, 'row']} maxWidth={['6xl']} px={[0, 0, 8]} py={[0, 0, 4]} fontSize={['md', null, 'sm']}>
         
         <Flex flex={2} p={4} px={6} alignItems={'stretch'} bg={'blue.100'} position={'sticky'} borderColor={'blue.300'} borderTopWidth={1} hideBelow={'md'} >
@@ -170,7 +193,7 @@ const Evenement = () => {
                 <Box position={'relative'}>
                   <AbsoluteCenter as={HStack} axis={'vertical'} insetEnd={5}>
                     <IconButton colorPalette={'green'} variant={'outline'} rounded={'full'} size={['xs']}><RxPencil1 /></IconButton>
-                    <IconButton colorPalette={'green'} variant={'outline'} rounded={'full'} size={['xs']}><RxTrash /></IconButton>
+                    <IconButton colorPalette={'green'} variant={'outline'} rounded={'full'} size={['xs']} onClick={handleDeleteSpecimen}><RxTrash /></IconButton>
                   </AbsoluteCenter>
                   <Trigger label={'303307.1 - Raton laveur'}/>
                 </Box>
@@ -193,7 +216,7 @@ const Evenement = () => {
                 <Box position={'relative'}>
                   <AbsoluteCenter as={HStack} axis={'vertical'} insetEnd={5}>
                     <IconButton colorPalette={'green'} variant={'outline'} rounded={'full'} size={['xs']}><RxPencil1 /></IconButton>
-                    <IconButton colorPalette={'green'} variant={'outline'} rounded={'full'} size={['xs']}><RxTrash /></IconButton>
+                    <IconButton colorPalette={'green'} variant={'outline'} rounded={'full'} size={['xs']} onClick={handleDeleteAnalysis}><RxTrash /></IconButton>
                   </AbsoluteCenter>
                   <Trigger label={'Distemper canin (PCR)'} />
                 </Box>
@@ -205,7 +228,7 @@ const Evenement = () => {
 
         </VStack>
       </Flex>
-      
+
     </>
   )
 }
