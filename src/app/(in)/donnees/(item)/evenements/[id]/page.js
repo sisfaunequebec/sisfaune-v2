@@ -152,7 +152,7 @@ const Evenement = () => {
               <AccordionItem value={'general'}>
                 <Box position={'relative'}>
                   <AbsoluteCenter as={HStack} axis={'vertical'} insetEnd={5}>
-                    <IconButton colorPalette={'green'} variant={'outline'} rounded={'full'} size={['xs']}><RxPencil1 /></IconButton>
+                    <IconButton colorPalette={'green'} variant={'subtle'} rounded={'full'} size={['xs']}><RxPencil1 /></IconButton>
                   </AbsoluteCenter>
                   <Trigger label={'Informations générales'} />
                 </Box>
@@ -163,7 +163,7 @@ const Evenement = () => {
               <AccordionItem value={'geo'}>
                 <Box position={'relative'}>
                   <AbsoluteCenter as={HStack} axis={'vertical'} insetEnd={5}>
-                    <IconButton colorPalette={'green'} variant={'outline'} rounded={'full'} size={['xs']}><RxPencil1 /></IconButton>
+                    <IconButton colorPalette={'green'} variant={'subtle'} rounded={'full'} size={['xs']}><RxPencil1 /></IconButton>
                   </AbsoluteCenter>
                   <Trigger label={'Localisation géographique'} />
                 </Box>
@@ -172,7 +172,7 @@ const Evenement = () => {
               <AccordionItem value={'labo'}>
                 <Box position={'relative'}>
                   <AbsoluteCenter as={HStack} axis={'vertical'} insetEnd={5}>
-                    <IconButton colorPalette={'green'} variant={'outline'} rounded={'full'} size={['xs']}><RxPencil1 /></IconButton>
+                    <IconButton colorPalette={'green'} variant={'subtle'} rounded={'full'} size={['xs']}><RxPencil1 /></IconButton>
                   </AbsoluteCenter>
                   <Trigger label={'Laboratoire'} />
                 </Box>
@@ -192,7 +192,7 @@ const Evenement = () => {
               <AccordionItem value={'s0001'} >
                 <Box position={'relative'}>
                   <AbsoluteCenter as={HStack} axis={'vertical'} insetEnd={5}>
-                    <IconButton colorPalette={'green'} variant={'outline'} rounded={'full'} size={['xs']}><RxPencil1 /></IconButton>
+                    <IconButton colorPalette={'green'} variant={'subtle'} rounded={'full'} size={['xs']}><RxPencil1 /></IconButton>
                     <IconButton colorPalette={'red'} variant={'subtle'} rounded={'full'} size={['xs']} onClick={handleDeleteSpecimen}><RxTrash /></IconButton>
                   </AbsoluteCenter>
                   <Trigger label={'303307.1 - Raton laveur'}/>
@@ -215,7 +215,7 @@ const Evenement = () => {
               <AccordionItem value={'dsc'}>
                 <Box position={'relative'}>
                   <AbsoluteCenter as={HStack} axis={'vertical'} insetEnd={5}>
-                    <IconButton colorPalette={'green'} variant={'outline'} rounded={'full'} size={['xs']}><RxPencil1 /></IconButton>
+                    <IconButton colorPalette={'green'} variant={'subtle'} rounded={'full'} size={['xs']}><RxPencil1 /></IconButton>
                     <IconButton colorPalette={'red'} variant={'subtle'} rounded={'full'} size={['xs']} onClick={handleDeleteAnalysis}><RxTrash /></IconButton>
                   </AbsoluteCenter>
                   <Trigger label={'Distemper canin (PCR)'} />
