@@ -1,7 +1,7 @@
 'use client'
 import { useCallback } from 'react'
 
-import { useRouter } from 'next/navigation'
+import { useRouter, useParams } from 'next/navigation'
 
 import { useWindowScroll } from '@uidotdev/usehooks'
 
@@ -35,6 +35,9 @@ const BackButton = () => {
 }
 
 const Toolbar = () => {
+  const params = useParams()
+  const { id: idEvenement } = params
+
   const [{ x, y }, scrollTo] = useWindowScroll()
   const toolbarShadowSize = y > 70 ? 'md' : null
 
@@ -55,7 +58,7 @@ const Toolbar = () => {
               <BackButton />
             </HStack>
             <HStack justifyContent={'space-between'} gap={1}>
-              <ReportButton id={'test'} />
+              <ReportButton id={idEvenement} />
             </HStack>
           </HStack>
         </Container>
