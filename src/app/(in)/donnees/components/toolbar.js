@@ -13,6 +13,7 @@ import useDialog from '@/utilities/use-dialog'
 
 import EvenementsSpecimens from './evenements-specimens-tabs'
 import AjouterEvenementDialog from '../evenements/components/ajouter-evenement-dialog'
+import ExporterListeDialog from '../evenements/components/exporter-liste-dialog'
 
 const NewEventButton = () => {
   const { ask: createEvent, dialog: createEventDialog } = useDialog(AjouterEvenementDialog)
@@ -29,6 +30,24 @@ const NewEventButton = () => {
       {createEventDialog}
       <Button size={['md', null, 'sm']} rounded='full' variant={'solid'} colorPalette={'blue'} display={['none', null, 'inherit']} onClick={handleCreate}><RxPlus />Nouvel événement</Button>
       <IconButton size={['md', null, 'sm']} rounded='full'  variant={'solid'} colorPalette={'blue'} aria-label='Search database' display={['inherit', null, 'none']} onClick={handleCreate}><RxPlus /></IconButton>
+    </>
+  )
+}
+
+const DownloadButton = () => {
+  const { ask: downloadEvents, dialog: downloadEventsDialog } = useDialog(ExporterListeDialog)
+
+  const handleDownload = useCallback(async () => {
+    const result = await downloadEvents()
+    if (result) {
+      console.debug('Download !!!')
+    }
+  }, [downloadEvents])
+
+  return (
+    <>
+      {downloadEventsDialog}
+      <IconButton size={['md', null, 'sm']} rounded='full' variant={'solid'} colorPalette={'blue'} aria-label={'Exporter la liste des spécimens'} onClick={handleDownload}><RxDownload /></IconButton>
     </>
   )
 }
@@ -59,10 +78,8 @@ const Toolbar = () => {
             </HStack>
 
             <HStack justifyContent={'space-between'} gap={2}>
-              <IconButton size={['md', null, 'sm']} rounded='full' variant={'solid'} colorPalette={'blue'} aria-label='Search database'  ><RxDownload /></IconButton>
-              {/* <IconButton size={'sm'} rounded='full'  variant={'subtle'} colorPalette={'blue'} aria-label='Search database'  ><RxUpload /></IconButton> */}
-              {/* <IconButton size={'sm'} rounded='full'  variant={'solid'} colorPalette={'blue'} aria-label='Search database'  ><RxPlus /></IconButton> */}
-              <NewEventButton/>
+              <DownloadButton />
+              <NewEventButton />
             </HStack>
 
           </HStack>

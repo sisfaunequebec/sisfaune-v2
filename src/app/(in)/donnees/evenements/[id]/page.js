@@ -193,7 +193,7 @@ const Evenement = () => {
                 <Box position={'relative'}>
                   <AbsoluteCenter as={HStack} axis={'vertical'} insetEnd={5}>
                     <IconButton colorPalette={'green'} variant={'outline'} rounded={'full'} size={['xs']}><RxPencil1 /></IconButton>
-                    <IconButton colorPalette={'green'} variant={'outline'} rounded={'full'} size={['xs']} onClick={handleDeleteSpecimen}><RxTrash /></IconButton>
+                    <IconButton colorPalette={'red'} variant={'subtle'} rounded={'full'} size={['xs']} onClick={handleDeleteSpecimen}><RxTrash /></IconButton>
                   </AbsoluteCenter>
                   <Trigger label={'303307.1 - Raton laveur'}/>
                 </Box>
@@ -216,7 +216,7 @@ const Evenement = () => {
                 <Box position={'relative'}>
                   <AbsoluteCenter as={HStack} axis={'vertical'} insetEnd={5}>
                     <IconButton colorPalette={'green'} variant={'outline'} rounded={'full'} size={['xs']}><RxPencil1 /></IconButton>
-                    <IconButton colorPalette={'green'} variant={'outline'} rounded={'full'} size={['xs']} onClick={handleDeleteAnalysis}><RxTrash /></IconButton>
+                    <IconButton colorPalette={'red'} variant={'subtle'} rounded={'full'} size={['xs']} onClick={handleDeleteAnalysis}><RxTrash /></IconButton>
                   </AbsoluteCenter>
                   <Trigger label={'Distemper canin (PCR)'} />
                 </Box>

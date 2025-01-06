@@ -31,7 +31,7 @@ const ItemEvenement = ({ id, onDelete }) => {
           <Text color={'green.600'} _dark={{ color: 'green.200' }}>Événement no {id}</Text>
         </NextLink>
       </LinkOverlay>
-      <IconButton colorPalette={'green'} variant={'outline'} rounded={'full'} size={['xs']} onClick={handleDelete}><RxTrash  /></IconButton>
+      <IconButton colorPalette={'red'} variant={'subtle'} rounded={'full'} size={['xs']} onClick={handleDelete}><RxTrash  /></IconButton>
     </LinkListWrapper>
   )
 }
