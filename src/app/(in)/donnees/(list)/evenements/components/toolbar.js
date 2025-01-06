@@ -5,23 +5,27 @@ import { useRouter } from 'next/navigation'
 
 import { useWindowScroll } from '@uidotdev/usehooks'
 
-import { Box, Flex, Container, Stack, VStack, Collapsible, Tabs, Button, IconButton, HStack, Link } from '@chakra-ui/react'
+import Link from 'next/link'
+
+import { Box, Flex, Container, Stack, VStack, Collapsible, Tabs, Button, IconButton, HStack } from '@chakra-ui/react'
 import { RxArrowLeft, RxFileText  } from 'react-icons/rx'
 
-const ReportButton = () => {
+const ReportButton = ({ id }) => {
   return (
     <>
-      <Button size={['md', null, 'sm']} rounded='full' variant={'solid'} colorPalette={'blue'} display={['none', null, 'inherit']}><RxFileText />Rapport</Button>
-      <IconButton size={['md', null, 'sm']} rounded='full' variant={'solid'} colorPalette={'blue'} aria-label={'Rapport'} display={['inherit', null, 'none']}><RxFileText /></IconButton>
+      <Button as={Link} href={`/donnees/evenements/${id}/rapport`} target={'_blank'} size={['md', null, 'sm']} rounded='full' variant={'solid'} colorPalette={'blue'} display={['none', null, 'inherit']}><RxFileText />Rapport</Button>
+      <IconButton as={Link} href={`/donnees/evenements/${id}/rapport`} target={'_blank'} size={['md', null, 'sm']} rounded='full' variant={'solid'} colorPalette={'blue'} aria-label={'Rapport'} display={['inherit', null, 'none']}><RxFileText /></IconButton>
     </>
   )
 }
 
 const BackButton = () => {
   const router = useRouter()
+
   const handleClick = useCallback(() => {
     router.back()
   }, [router])
+
   return (
     <>
       <Button size={['md', null, 'sm']} rounded='full' variant={'subtle'} colorPalette={'blue'} display={['none', null, 'inherit']} onClick={handleClick}><RxArrowLeft />Retour à la liste</Button>
@@ -51,7 +55,7 @@ const Toolbar = () => {
               <BackButton />
             </HStack>
             <HStack justifyContent={'space-between'} gap={1}>
-              <ReportButton />
+              <ReportButton id={'test'} />
             </HStack>
           </HStack>
         </Container>

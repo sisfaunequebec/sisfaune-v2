@@ -17,7 +17,7 @@ import { Field } from '@/components/ui/field'
 
 import useDialog from '@/utilities/use-dialog'
 
-import Toolbar from '../components/toolbar'
+import Toolbar from '../../../(list)/evenements/components/toolbar'
 
 import AjouterSpecimenDialog from './components/ajouter-specimen-dialog'
 import AjouterAnalyseDialog from './components/ajouter-analyse-dialog'
@@ -133,7 +133,7 @@ const Evenement = () => {
     <>
       { dialogs }
 
-      {/* <Toolbar /> */}
+      <Toolbar />
       <Flex flex={1} top={0} as={Container} direction={['column', null, 'row']} maxWidth={['6xl']} px={[0, 0, 8]} py={[0, 0, 4]} fontSize={['md', null, 'sm']}>
         
         <Flex flex={2} p={4} px={6} alignItems={'stretch'} bg={'blue.100'} position={'sticky'} borderColor={'blue.300'} borderTopWidth={1} hideBelow={'md'} >
