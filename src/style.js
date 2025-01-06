@@ -111,7 +111,8 @@ const dialogRecipe = defineSlotRecipe({
       gap: '2 !important',
     },
     title: {
-      textStyle: ['xl', null, 'lg']
+      textStyle: ['xl', null, 'lg'],
+      lineHeight: '1.5rem'
     }
   },
   variants: {
