@@ -15,6 +15,7 @@ const Layout = async ({ children }) => {
   if (!session) {
     return redirect('/session/ouvrir')
   }
+  
   return (
     <Flex as={'main'} minH={'100vh'} flex={1} direction={'column'} justifyContent={'flex-start'} px={0} alignItems={'flex-start'}>
       <Header session={session} />

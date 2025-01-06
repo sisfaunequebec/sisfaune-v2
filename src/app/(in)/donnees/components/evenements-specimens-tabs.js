@@ -17,12 +17,12 @@ const EvenementsSpecimens = () => {
       <Tabs.List>
         <Tabs.Trigger value={'evenements'} borderRadius={'full'}>
           <Link asChild unstyled>
-            <NextLink href={'evenements'}>Événements</NextLink>
+            <NextLink href={'/donnees/evenements'}>Événements</NextLink>
           </Link>
         </Tabs.Trigger>
         <Tabs.Trigger value={'specimens'} borderRadius={'full'}>
           <Link asChild unstyled>
-            <NextLink href={'specimens'}>Spécimens</NextLink>
+            <NextLink href={'/donnees/specimens'}>Spécimens</NextLink>
           </Link>
         </Tabs.Trigger>
       </Tabs.List>
