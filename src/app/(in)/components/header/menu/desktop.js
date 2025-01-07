@@ -58,11 +58,11 @@ const DesktopMenu = ({ username, email }) => {
       { parametersDialog }
 
       <Flex hideBelow={'md'}>
-        <MenuRoot positioning={{ placement: 'bottom-end' }} size={'md'}>
+        <MenuRoot positioning={{ placement: 'bottom-end' }} size={'md'} lazyMount>
           <MenuTrigger >
             <Avatar name={username} colorPalette={'green'} size={['md', null, 'sm']} variant={'solid'} cursor={'pointer'} />
           </MenuTrigger>
-          <MenuContent minW={60} hideBelow={'md'} mt={4} isolation={'isolate'}>
+          <MenuContent minW={60} hideBelow={'md'} mt={4} isolation={'isolate'} isolate>
             <MenuItem _hover={{ bg: 'transparent' }} cursor={'default'}>
               <VStack gap={0} flex={1} alignItems={'flex-start'}>
                 <Box flex={1} fontWeight={500}>{username}</Box>
