@@ -1,6 +1,13 @@
 import NextAuth from 'next-auth'
 import Credentials from 'next-auth/providers/credentials'
 
+import wait from '@/utilities/wait'
+
+const users = {
+  'bruno.gendron.consult@gmail.com': { name: 'Bruno Gendron' },
+  'admin@sisfaunequebec.ca': { name: 'Admin SISFaune' }
+}
+
 const credentialsProvider = Credentials({
   // You can specify which fields should be submitted, by adding keys to the `credentials` object.
   // e.g. domain, username, password, 2FA token, etc.
@@ -9,14 +16,19 @@ const credentialsProvider = Credentials({
     password: {},
   },
   authorize: async (credentials) => {
-    // console.info(credentials)
-    
-    let user = null
+    await wait(Math.random() * 2000)
+
     const { email } = credentials
+
+    const user = users[email]
+
+    if (!user) { throw new Error() }
+
+    const { name } = user
 
     return {
       email: email,
-      name: 'Bruno Gendron',
+      name: name,
       image: 'https://avatars.githubusercontent.com/u/67470890?s=200&v=4'
     }
 

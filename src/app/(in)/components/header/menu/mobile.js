@@ -97,12 +97,12 @@ const MobileMenu = ({ username, email }) => {
               </VStack>
               <Separator />
               <Flex as={Link} py={2} alignItems={'center'} justifyContent={'space-between'} onClick={handleModifyParameters} >
-                <Box>Vos paramètres</Box>
+                <Box>Vos paramètres...</Box>
                 <RxGear />
               </Flex>
               <Separator />
               <Flex as={Link} onClick={() => { signOut() }} py={2}>
-                <Box flex={1}>Quitter</Box>
+                <Box flex={1}>Quitter...</Box>
                 <RxExit />
               </Flex>
             </VStack>

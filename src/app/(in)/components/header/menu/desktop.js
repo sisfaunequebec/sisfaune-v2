@@ -77,12 +77,12 @@ const DesktopMenu = ({ username, email }) => {
             <MenuSeparator />
             <MenuItem as={Button} onClick={handleModifyParameters}>
               <RxGear />
-              <Box flex={1} ms={0.5}>Vos paramètres</Box>
+              <Box flex={1} ms={0.5}>Vos paramètres...</Box>
             </MenuItem>
             <MenuSeparator />
             <MenuItem onClick={() => { signOut() }}>
               <RxExit />
-              <Box flex={1} ms={0.5}>Quitter</Box>
+              <Box flex={1} ms={0.5}>Quitter...</Box>
             </MenuItem>
           </MenuContent>
         </MenuRoot>
