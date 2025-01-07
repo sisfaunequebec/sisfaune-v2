@@ -4,11 +4,9 @@ import { useForm, FormProvider } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 
 import { Flex, Image, Fieldset, Input } from '@chakra-ui/react'
+
 import { Field as ChakraField } from "@/components/ui/field"
-import {
-  PasswordInput,
-  PasswordStrengthMeter,
-} from "@/components/ui/password-input"
+import { PasswordInput } from "@/components/ui/password-input"
 
 import signInSchema from './sign-in-schema'
 import signAction from './signin-action'

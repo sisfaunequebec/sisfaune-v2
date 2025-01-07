@@ -8,9 +8,8 @@ import wait from '@/utilities/wait'
 import fromErrorToFormState from '@/utilities/from-error-to-form-state'
 
 const signAction = async (formData) => {
-  // console.debug(formState, formData)
   try {
-    await signIn('credentials', { redirect: false })
+    await signIn('credentials', { ...formData, redirect: false })
   } catch (error) {
     return fromErrorToFormState(error)
   }

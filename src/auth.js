@@ -9,10 +9,13 @@ const credentialsProvider = Credentials({
     password: {},
   },
   authorize: async (credentials) => {
+    // console.info(credentials)
+    
     let user = null
+    const { email } = credentials
 
     return {
-      email: 'bruno.gendron.consult@gmail.com',
+      email: email,
       name: 'Bruno Gendron',
       image: 'https://avatars.githubusercontent.com/u/67470890?s=200&v=4'
     }
