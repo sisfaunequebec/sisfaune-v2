@@ -70,7 +70,7 @@ const ParametresDialog = ({ close, eventId }) => {
         </DialogHeader>
 
           <FormProvider {...form}>
-            <form autoComplete={'off'} onSubmit={handleSubmit(handleAction)} direction={'column'} alignItems={'center'} justifyContent={'center'} shadow={'lg'} bg={'white'} p={8} borderRadius={'lg'} w={['full', 'auto']} h={['100%', 'auto']}>
+            <Flex as={'form'} autoComplete={'off'} onSubmit={handleSubmit(handleAction)} direction={'column'} justifyContent={'stretch'} h={'100%'}>
               
               <DialogBody>
                 
@@ -79,9 +79,9 @@ const ParametresDialog = ({ close, eventId }) => {
                     <Field formState={formState} name={'toto'} label={'Votre adresse de courriel :'} variant={'vertical'}>
                       <Input autoComplete={'off'} {...register('toto')} />
                     </Field>
-                    <Field formState={formState} name={'titi'} label={'Votre prénom :'} variant={'horizontal'}>
+                    {/* <Field formState={formState} name={'titi'} label={'Votre prénom :'} variant={'horizontal'}>
                       <Input autoComplete={'off'} {...register('titi')} />
-                    </Field>
+                    </Field> */}
                   </Fieldset.Content>
                 </Fieldset.Root>
 
@@ -94,7 +94,7 @@ const ParametresDialog = ({ close, eventId }) => {
                 <Button type={'submit'} size={'sm'} colorPalette={'blue'} minW={24} loading={isSubmitting} >Modifier</Button>
               </DialogFooter>
 
-            </form>
+            </Flex>
           </FormProvider>
           
       </DialogContent>
