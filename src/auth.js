@@ -5,7 +5,7 @@ import wait from '@/utilities/wait'
 
 const users = {
   'bruno.gendron.consult@gmail.com': { name: 'Bruno Gendron', password: '123456' },
-  'admin@sisfaunequebec.ca': { name: 'Admin SISFaune', password: '123456' }
+  'admin@sisfaunequebec.ca': { name: 'Admin', password: '123456' }
 }
 
 // class InvalidLoginError extends CredentialsSignin {
