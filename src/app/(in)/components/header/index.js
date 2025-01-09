@@ -35,6 +35,7 @@ const Toolbar = ({ session }) => {
             <Image src={'/logo_sisfaune_small.png'} alt={'logo'} position={'relative'} left={'-2'} />
           </Flex>
           <HStack gap={[3, null, 4]}>
+            <Flex hideBelow={'md'}>Bonjour&nbsp;<strong>{username}</strong></Flex>
             <Menu username={username} email={email} />
           </HStack>
         </Container>
