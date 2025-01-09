@@ -1,12 +1,16 @@
-import NextAuth from 'next-auth'
+import NextAuth, { CredentialsSignin } from 'next-auth'
 import Credentials from 'next-auth/providers/credentials'
 
 import wait from '@/utilities/wait'
 
 const users = {
-  'bruno.gendron.consult@gmail.com': { name: 'Bruno Gendron' },
-  'admin@sisfaunequebec.ca': { name: 'Admin SISFaune' }
+  'bruno.gendron.consult@gmail.com': { name: 'Bruno Gendron', password: '123456' },
+  'admin@sisfaunequebec.ca': { name: 'Admin SISFaune', password: '123456' }
 }
+
+// class InvalidLoginError extends CredentialsSignin {
+//   code = "Invalid identifier or password"
+// }
 
 const credentialsProvider = Credentials({
   // You can specify which fields should be submitted, by adding keys to the `credentials` object.
@@ -18,11 +22,22 @@ const credentialsProvider = Credentials({
   authorize: async (credentials) => {
     await wait(Math.random() * 2000)
 
-    const { email } = credentials
+    const { email, password } = credentials
 
     const user = users[email]
 
-    if (!user) { throw new Error() }
+    if (!user) { 
+      const error = new CredentialsSignin()
+      error.errors = { email: 'Cette adresse est inconnue...'} 
+      throw error
+    }
+
+    const { password: userPassword } = user
+    if (userPassword !== password) { 
+      const error = new CredentialsSignin()
+      error.errors = { password: 'Le mot de passe est erroné...'} 
+      throw error
+    }
 
     const { name } = user
 
