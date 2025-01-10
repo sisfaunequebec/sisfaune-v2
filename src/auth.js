@@ -3,28 +3,25 @@ import Credentials from 'next-auth/providers/credentials'
 
 import wait from '@/utilities/wait'
 
-const users = {
-  'bruno.gendron.consult@gmail.com': { name: 'Bruno Gendron', password: '123456' },
-  'admin@sisfaunequebec.ca': { name: 'Admin', password: '123456' }
-}
+import { USERS } from '@/logic/auth/constants'
 
 // class InvalidLoginError extends CredentialsSignin {
 //   code = "Invalid identifier or password"
 // }
 
 const credentialsProvider = Credentials({
-  // You can specify which fields should be submitted, by adding keys to the `credentials` object.
-  // e.g. domain, username, password, 2FA token, etc.
+
   credentials: {
     email: {},
-    password: {},
+    password: {}
   },
+
   authorize: async (credentials) => {
     await wait(Math.random() * 2000)
 
     const { email, password } = credentials
 
-    const user = users[email]
+    const user = USERS[email]
 
     if (!user) { 
       const error = new CredentialsSignin()
