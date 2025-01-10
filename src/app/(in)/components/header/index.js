@@ -1,41 +1,41 @@
 'use client'
 
-import { useWindowScroll } from '@uidotdev/usehooks'
+// import { useWindowScroll } from '@uidotdev/usehooks'
 
-import { Box, Flex, HStack, Image, VStack, IconButton, Container, Separator, Link, Tabs } from '@chakra-ui/react'
+import { Flex, HStack, Image, VStack, Container } from '@chakra-ui/react'
 
 // import { DataListItem, DataListRoot } from "@/components/ui/data-list"
 
-import { RxExit, RxHamburgerMenu, RxGear, RxCross1, RxCheck, RxPencil1 } from 'react-icons/rx'
+// import { RxExit, RxHamburgerMenu, RxGear, RxCross1, RxCheck, RxPencil1 } from 'react-icons/rx'
 // import DonneesAdministration from './donnees-admin-tabs'
 
 import Menu from './menu'
 
-const colorPalette = ['red', 'blue', 'green', 'yellow', 'purple', 'orange']
+// const colorPalette = ['red', 'blue', 'green', 'yellow', 'purple', 'orange']
 
-const pickPalette = (name) => {
-  const index = name.charCodeAt(0) % colorPalette.length
-  return colorPalette[index]
-}
+// const pickPalette = (name) => {
+//   const index = name.charCodeAt(0) % colorPalette.length
+//   return colorPalette[index]
+// }
 
 const Toolbar = ({ session }) => {
   const { user } = session
   const { name: username, email } = user
 
-  const [{ x, y }, scrollTo] = useWindowScroll()
+  // const [{ y }] = useWindowScroll()
 
-  const toolbarShadowSize = null // y > 0 ? 'md' : null
-  const borderBottomWidth = y > 0 ? 0 : 8
+  // const toolbarShadowSize = null // y > 0 ? 'md' : null
+  // const borderBottomWidth = y > 0 ? 0 : 8
 
   return (
-    <Flex css={{ '--toolbar-height': '70px', '--toolbar-border-width': '2px', '--tabs-height': '0px' }} height={'calc(var(--toolbar-height) + var(--tabs-height))'}  bg={'white'} _dark={{ bg: 'black' }} borderBottomColor={'blue.600'} borderBottomWidth={'var(--toolbar-border-width)'} position={'sticky'} zIndex={1002} alignItems={'center'} justifyContent={'center'} top={0} w={'100%'}>
-      <VStack justifyContent={'flex-end'} alignItems={'flex-end'} flex={1} gap={0}>
-        <Container maxWidth={'6xl'} display={'flex'} flexDirection={'row'} alignItems={'center'} justifyContent={'space-between'}>
+    <Flex css={{ '--toolbar-height': '70px', '--toolbar-border-width': '2px', '--tabs-height': '0px' }} height='calc(var(--toolbar-height) + var(--tabs-height))' bg='white' _dark={{ bg: 'black' }} borderBottomColor='blue.600' borderBottomWidth='var(--toolbar-border-width)' position='sticky' zIndex={1002} alignItems='center' justifyContent='center' top={0} w='100%'>
+      <VStack justifyContent='flex-end' alignItems='flex-end' flex={1} gap={0}>
+        <Container maxWidth='6xl' display='flex' flexDirection='row' alignItems='center' justifyContent='space-between'>
           <Flex>
-            <Image src={'/logo_sisfaune_small.png'} alt={'logo'} position={'relative'} left={'-2'} />
+            <Image src='/logo_sisfaune_small.png' alt='logo' position='relative' left='-2' />
           </Flex>
           <HStack gap={[3, null, 4]}>
-            <Flex hideBelow={'md'}>Bonjour&nbsp;<strong>{username}</strong></Flex>
+            <Flex hideBelow='md'>Bonjour&nbsp;<strong>{username}</strong></Flex>
             <Menu username={username} email={email} />
           </HStack>
         </Container>
@@ -177,4 +177,3 @@ const Toolbar = ({ session }) => {
 // }
 
 export default Toolbar
-

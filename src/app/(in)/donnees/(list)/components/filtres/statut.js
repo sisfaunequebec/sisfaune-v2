@@ -7,7 +7,7 @@ const statuts = [
 
 const Statut = ({ value = [], onChange = () => {} }) => {
   return (
-    <Checkboxes choices={statuts} value={value} onChange={onChange} allChoicesLabel = {'Tous les statuts'} />
+    <Checkboxes choices={statuts} value={value} onChange={onChange} allChoicesLabel='Tous les statuts' />
   )
 }
 

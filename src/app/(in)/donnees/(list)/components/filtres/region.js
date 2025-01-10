@@ -13,7 +13,7 @@ const regions = regionsRaw.map((r, i) => {
 
 const Region = ({ value = [], onChange = () => { } }) => {
   return (
-    <Checkboxes choices={regions} value={value} onChange={onChange}  allChoicesLabel = {'Toutes les régions'}/>
+    <Checkboxes choices={regions} value={value} onChange={onChange} allChoicesLabel='Toutes les régions' />
   )
 }
 

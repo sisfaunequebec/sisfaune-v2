@@ -3,11 +3,9 @@ import { useCallback } from 'react'
 
 import { useWindowScroll } from '@uidotdev/usehooks'
 
-import NextLink from 'next/link'
-
-import { Box, Flex, Container, Stack, VStack, Collapsible, Tabs, IconButton, HStack, Link } from '@chakra-ui/react'
+import { Flex, Container, IconButton, HStack } from '@chakra-ui/react'
 import { Button } from '@/components/ui/button'
-import { RxPlus, RxDownload, RxUpload, RxMagnifyingGlass } from 'react-icons/rx'
+import { RxPlus, RxDownload, RxMagnifyingGlass } from 'react-icons/rx'
 
 import useDialog from '@/utilities/use-dialog'
 
@@ -28,8 +26,8 @@ const NewEventButton = () => {
   return (
     <>
       {createEventDialog}
-      <Button size={['md', null, 'sm']} rounded='full' variant={'solid'} colorPalette={'blue'} display={['none', null, 'inherit']} onClick={handleCreate}><RxPlus />Nouvel événement</Button>
-      <IconButton size={['md', null, 'sm']} rounded='full'  variant={'solid'} colorPalette={'blue'} aria-label='Search database' display={['inherit', null, 'none']} onClick={handleCreate}><RxPlus /></IconButton>
+      <Button size={['md', null, 'sm']} rounded='full' variant='solid' colorPalette='blue' display={['none', null, 'inherit']} onClick={handleCreate}><RxPlus />Nouvel événement</Button>
+      <IconButton size={['md', null, 'sm']} rounded='full' variant='solid' colorPalette='blue' aria-label='Search database' display={['inherit', null, 'none']} onClick={handleCreate}><RxPlus /></IconButton>
     </>
   )
 }
@@ -47,13 +45,13 @@ const DownloadButton = () => {
   return (
     <>
       {downloadEventsDialog}
-      <IconButton size={['md', null, 'sm']} rounded='full' variant={'solid'} colorPalette={'blue'} aria-label={'Exporter la liste des spécimens'} onClick={handleDownload}><RxDownload /></IconButton>
+      <IconButton size={['md', null, 'sm']} rounded='full' variant='solid' colorPalette='blue' aria-label='Exporter la liste des spécimens' onClick={handleDownload}><RxDownload /></IconButton>
     </>
   )
 }
 
 const Toolbar = () => {
-  const [{ x, y }, scrollTo] = useWindowScroll()
+  const [{ y }] = useWindowScroll()
 
   const toolbarShadowSize = y > 70 ? 'md' : null
   // const paddingTop = y > 70 ? 2 : null
@@ -61,23 +59,23 @@ const Toolbar = () => {
   return (
     <Flex
       // flex={1}
-      position={'sticky'}
-      top={'70px'}
-      alignSelf={'flex-start'}
-      width={'full'}
+      position='sticky'
+      top='70px'
+      alignSelf='flex-start'
+      width='full'
       zIndex={1001}
       shadow={[null, null, toolbarShadowSize]}
     >
-      <Flex flex={1} bg={'white'} _dark={{ bg: 'black' }} py={1}>
-        <Container maxWidth={'6xl'} py={2}>
-          <HStack justifyContent={'space-between'} gap={2}>
+      <Flex flex={1} bg='white' _dark={{ bg: 'black' }} py={1}>
+        <Container maxWidth='6xl' py={2}>
+          <HStack justifyContent='space-between' gap={2}>
 
-            <HStack justifyContent={'space-between'} gap={2}>
-              <IconButton size={['md', null, 'sm']} rounded='full' variant={'subtle'} colorPalette={'blue'} aria-label='Search database' display={['inherit', null, 'none']}><RxMagnifyingGlass /></IconButton>  
+            <HStack justifyContent='space-between' gap={2}>
+              <IconButton size={['md', null, 'sm']} rounded='full' variant='subtle' colorPalette='blue' aria-label='Search database' display={['inherit', null, 'none']}><RxMagnifyingGlass /></IconButton>
               <EvenementsSpecimens />
             </HStack>
 
-            <HStack justifyContent={'space-between'} gap={2}>
+            <HStack justifyContent='space-between' gap={2}>
               <DownloadButton />
               <NewEventButton />
             </HStack>
@@ -85,12 +83,11 @@ const Toolbar = () => {
           </HStack>
 
         </Container>
+      </Flex>
+
     </Flex>
 
-  </Flex>
-
   )
-
 }
 
 export default Toolbar

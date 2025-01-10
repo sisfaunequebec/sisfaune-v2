@@ -1,10 +1,9 @@
 'use client'
-import { useCallback } from 'react'
 
 import NextLink from 'next/link'
 
 import { VStack, Text, IconButton, LinkOverlay } from '@chakra-ui/react'
-import { RxTrash, RxChevronRight, RxArrowRight  } from 'react-icons/rx'
+import { RxArrowRight } from 'react-icons/rx'
 
 import useDialog from '@/utilities/use-dialog'
 
@@ -28,29 +27,28 @@ const ItemEvenement = ({ id, onDelete }) => {
     <LinkListWrapper>
       <LinkOverlay asChild>
         <NextLink href={href} scroll={false}>
-          <Text color={'green.600'} _dark={{ color: 'green.200' }}>Événement no {id}</Text>
+          <Text color='green.600' _dark={{ color: 'green.200' }}>Événement no {id}</Text>
         </NextLink>
       </LinkOverlay>
-      <IconButton as={NextLink} href={href} scroll={true} colorPalette={'green'} variant={'surface'} rounded={'full'} size={['xs']}><RxArrowRight /></IconButton>
+      <IconButton as={NextLink} href={href} scroll colorPalette='green' variant='surface' rounded='full' size={['xs']}><RxArrowRight /></IconButton>
     </LinkListWrapper>
   )
 }
 
 const ListeEvenements = ({ evenements }) => {
-
   const { ask: deleteEvent, dialog: deleteEventDialog } = useDialog(DetruireEvenementDialog)
 
   return (
     <>
-    { deleteEventDialog }
-    <VStack alignItems={'stretch'} flex={1} gap={0}>
-      {evenements.map(evenement => {
-        const { id } = evenement
-        return (
-          <ItemEvenement key={id} {...evenement} onDelete={deleteEvent} />
-        )
-      })}
-    </VStack>
+      {deleteEventDialog}
+      <VStack alignItems='stretch' flex={1} gap={0}>
+        {evenements.map(evenement => {
+          const { id } = evenement
+          return (
+            <ItemEvenement key={id} {...evenement} onDelete={deleteEvent} />
+          )
+        })}
+      </VStack>
     </>
   )
 }

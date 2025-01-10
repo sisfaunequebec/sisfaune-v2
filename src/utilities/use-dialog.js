@@ -14,7 +14,7 @@ const useDialog = (DialogFactory) => {
     })
   }
 
-  return {ask, dialog}
+  return { ask, dialog }
 }
 
 export default useDialog

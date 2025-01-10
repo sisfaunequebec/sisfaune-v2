@@ -41,7 +41,7 @@ const action = async (data) => {
 
 const ParametresDialog = ({ close, eventId }) => {
   const size = useBreakpointValue({ base: 'cover', md: 'md' })
-  const motion = useBreakpointValue({ base: 'scale', md: 'slide-in-bottom'})
+  const motion = useBreakpointValue({ base: 'scale', md: 'slide-in-bottom' })
 
   const form = useForm({
     resolver: zodResolver(schema),
@@ -62,45 +62,44 @@ const ParametresDialog = ({ close, eventId }) => {
   const { isSubmitting } = formState
 
   return (
-    <DialogRoot open={true} size={size} placement={'center'} motionPreset={motion} onOpenChange={e => close(false)} closeOnInteractOutside={true}>
+    <DialogRoot open size={size} placement='center' motionPreset={motion} onOpenChange={e => close(false)} closeOnInteractOutside>
       <DialogContent>
 
         <DialogHeader>
           <DialogTitle>Vos paramètres</DialogTitle>
         </DialogHeader>
 
-          <FormProvider {...form}>
-            <Flex as={'form'} autoComplete={'off'} onSubmit={handleSubmit(handleAction)} direction={'column'} justifyContent={'stretch'} h={'100%'}>
-              
-              <DialogBody>
-                
-                <Fieldset.Root>
-                  <Fieldset.Content>
-                    <Field formState={formState} name={'toto'} label={'Votre adresse de courriel :'} variant={'vertical'}>
-                      <Input autoComplete={'off'} {...register('toto')} />
-                    </Field>
-                    {/* <Field formState={formState} name={'titi'} label={'Votre prénom :'} variant={'horizontal'}>
+        <FormProvider {...form}>
+          <Flex as='form' autoComplete='off' onSubmit={handleSubmit(handleAction)} direction='column' justifyContent='stretch' h='100%'>
+
+            <DialogBody>
+
+              <Fieldset.Root>
+                <Fieldset.Content>
+                  <Field formState={formState} name='toto' label='Votre adresse de courriel :' variant='vertical'>
+                    <Input autoComplete='off' {...register('toto')} />
+                  </Field>
+                  {/* <Field formState={formState} name={'titi'} label={'Votre prénom :'} variant={'horizontal'}>
                       <Input autoComplete={'off'} {...register('titi')} />
                     </Field> */}
-                  </Fieldset.Content>
-                </Fieldset.Root>
+                </Fieldset.Content>
+              </Fieldset.Root>
 
-              </DialogBody>
+            </DialogBody>
 
-              <DialogFooter gap={2}>
-                <DialogActionTrigger asChild>
-                  <Button size={'sm'} variant={'outline'} onClick={() => close(false)} minW={24}>Annuler</Button>
-                </DialogActionTrigger>
-                <Button type={'submit'} size={'sm'} colorPalette={'blue'} minW={24} loading={isSubmitting} >Modifier</Button>
-              </DialogFooter>
+            <DialogFooter gap={2}>
+              <DialogActionTrigger asChild>
+                <Button size='sm' variant='outline' onClick={() => close(false)} minW={24}>Annuler</Button>
+              </DialogActionTrigger>
+              <Button type='submit' size='sm' colorPalette='blue' minW={24} loading={isSubmitting}>Modifier</Button>
+            </DialogFooter>
 
-            </Flex>
-          </FormProvider>
-          
+          </Flex>
+        </FormProvider>
+
       </DialogContent>
     </DialogRoot>
   )
 }
 
 export default ParametresDialog
-

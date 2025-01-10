@@ -1,7 +1,7 @@
 import { redirect } from 'next/navigation'
-import { auth, signOut } from '@/auth'
+import { auth } from '@/auth'
 
-import { Flex, Container } from '@chakra-ui/react'
+import { Flex } from '@chakra-ui/react'
 
 import Header from './components/header'
 
@@ -15,9 +15,9 @@ const Layout = async ({ children }) => {
   if (!session) {
     return redirect('/session/ouvrir')
   }
-  
+
   return (
-    <Flex as={'main'} minH={'100vh'} flex={1} direction={'column'} justifyContent={'flex-start'} px={0} alignItems={'flex-start'}>
+    <Flex as='main' minH='100vh' flex={1} direction='column' justifyContent='flex-start' px={0} alignItems='flex-start'>
       <Header session={session} />
       {children}
     </Flex>
@@ -25,5 +25,3 @@ const Layout = async ({ children }) => {
 }
 
 export default Layout
-
-

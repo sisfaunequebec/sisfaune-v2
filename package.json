@@ -8,6 +8,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "standard": "standard",
     "test": "vitest",
     "email-dev": "email dev"
   },
@@ -36,6 +37,12 @@
     "eslint": "^8",
     "eslint-config-next": "15.0.2",
     "react-email": "3.0.6",
+    "standard": "^17.1.2",
     "vitest": "^2.1.8"
+  },
+  "standard": {
+    "ignore": [
+      "*.jsx"
+    ]
   }
 }

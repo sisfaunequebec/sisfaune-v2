@@ -2,7 +2,7 @@ import { AbsoluteCenter, Flex, VStack } from '@chakra-ui/react'
 
 import wait from '@/utilities/wait'
 
-import Test from './components/test'
+// import Test from './components/test'
 
 const Administration = async () => {
   await wait(2000)
@@ -16,4 +16,4 @@ const Administration = async () => {
   )
 }
 
-export default Administration 
+export default Administration

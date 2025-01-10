@@ -4,7 +4,7 @@ import { Button } from '@chakra-ui/react'
 
 const Test = () => {
   return (
-    <Button onClick={() => alert('click')}>Test</Button>
+    <Button onClick={() => window.alert('click')}>Test</Button>
   )
 }
 

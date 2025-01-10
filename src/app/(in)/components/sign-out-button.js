@@ -17,7 +17,7 @@ const SignOut = async () => {
   }
   return (
     <form action={signOutAction}>
-      <IconButton type={'submit'} colorPalette={'blue'} rounded={'full'} size={['xl', null, 'md']}> 
+      <IconButton type='submit' colorPalette='blue' rounded='full' size={['xl', null, 'md']}>
         <MdExitToApp />
       </IconButton>
     </form>

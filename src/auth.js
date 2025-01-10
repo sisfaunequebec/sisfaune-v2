@@ -23,24 +23,24 @@ const credentialsProvider = Credentials({
 
     const user = USERS[email]
 
-    if (!user) { 
+    if (!user) {
       const error = new CredentialsSignin()
-      error.errors = { email: 'Cette adresse est inconnue...'} 
+      error.errors = { email: 'Cette adresse est inconnue...' }
       throw error
     }
 
     const { password: userPassword } = user
-    if (userPassword !== password) { 
+    if (userPassword !== password) {
       const error = new CredentialsSignin()
-      error.errors = { password: 'Le mot de passe est erroné...'} 
+      error.errors = { password: 'Le mot de passe est erroné...' }
       throw error
     }
 
     const { name } = user
 
     return {
-      email: email,
-      name: name,
+      email,
+      name,
       image: 'https://avatars.githubusercontent.com/u/67470890?s=200&v=4'
     }
 

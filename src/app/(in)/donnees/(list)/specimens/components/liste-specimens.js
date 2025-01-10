@@ -13,24 +13,24 @@ const ItemSpecimen = (props) => {
   const href = `/donnees/evenements/${idEvenement}`
 
   const handleDelete = useCallback(() => {
-    alert(`Effacer specimen id = ${id}`)
+    window.alert(`Effacer specimen id = ${id}`)
   }, [id])
 
   return (
     <LinkListWrapper href={href}>
       <LinkOverlay asChild>
         <NextLink href={href}>
-          <Text color={'green.600'}>Spécimen no {id}</Text>
+          <Text color='green.600'>Spécimen no {id}</Text>
         </NextLink>
       </LinkOverlay>
-      <IconButton colorPalette={'green'} variant={'outline'} rounded={'full'} size={['xs']} onClick={handleDelete} visibility={'hidden'}><RxTrash  /></IconButton>
+      <IconButton colorPalette='green' variant='outline' rounded='full' size={['xs']} onClick={handleDelete} visibility='hidden'><RxTrash /></IconButton>
     </LinkListWrapper>
   )
 }
 
 const ListeSpecimens = ({ specimens }) => {
   return (
-    <VStack alignItems={'stretch'} flex={1} gap={0}>
+    <VStack alignItems='stretch' flex={1} gap={0}>
       {specimens.map(specimen => {
         const { id } = specimen
         return (

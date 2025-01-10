@@ -2,12 +2,11 @@
 import { useState, useCallback } from 'react'
 
 import { Input, IconButton } from '@chakra-ui/react'
-import { InputGroup } from "@/components/ui/input-group"
+import { InputGroup } from '@/components/ui/input-group'
 
 import { RxMagnifyingGlass, RxCross2 } from 'react-icons/rx'
 
 const Texte = ({ onChange = () => null }) => {
-
   const [internalValue, setInternalValue] = useState('')
 
   const handleChangeValue = useCallback(e => {
@@ -28,9 +27,9 @@ const Texte = ({ onChange = () => null }) => {
     <InputGroup
       flex={1}
       startElement={<RxMagnifyingGlass />}
-      endElement={showClearButton && <IconButton variant={'ghost'} size={'xs'} rounded={'full'} me={-1} onClick={handleClearValue}><RxCross2 /></IconButton>}
+      endElement={showClearButton && <IconButton variant='ghost' size='xs' rounded='full' me={-1} onClick={handleClearValue}><RxCross2 /></IconButton>}
     >
-      <Input variant={'surface'} onChange={handleChangeValue} value={internalValue} />
+      <Input variant='surface' onChange={handleChangeValue} value={internalValue} />
     </InputGroup>
   )
 }

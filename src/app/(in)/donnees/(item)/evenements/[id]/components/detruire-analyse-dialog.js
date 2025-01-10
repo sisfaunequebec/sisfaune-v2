@@ -1,6 +1,4 @@
-import { useBreakpointValue } from '@chakra-ui/react'
-
-import { Text, VStack } from '@chakra-ui/react'
+import { useBreakpointValue, Text, VStack } from '@chakra-ui/react'
 
 import { Button } from '@/components/ui/button'
 
@@ -14,27 +12,27 @@ import {
   DialogTitle
 } from '@/components/ui/dialog'
 
-import { RxInfoCircled } from 'react-icons/rx'
+// import { RxInfoCircled } from 'react-icons/rx'
 
 const DetruireAnalyseDialog = ({ close, eventId }) => {
   const size = useBreakpointValue({ base: 'cover', md: 'sm' })
-  const motion = useBreakpointValue({ base: 'scale', md: 'slide-in-bottom'})
+  const motion = useBreakpointValue({ base: 'scale', md: 'slide-in-bottom' })
 
   return (
-    <DialogRoot open={true} size={size} placement={'center'} motionPreset={motion} onOpenChange={e => close(false)} closeOnInteractOutside={true} role={'alertdialog'}>
+    <DialogRoot open size={size} placement='center' motionPreset={motion} onOpenChange={e => close(false)} closeOnInteractOutside role='alertdialog'>
       <DialogContent>
         <DialogHeader>
           <DialogTitle>Effacement d&apos;une analyse</DialogTitle>
         </DialogHeader>
         <DialogBody as={VStack}>
-          <Text fontWeight={'bold'}>Attention&nbsp;! Voulez-vous réellement effacer cette analyse&nbsp;?</Text>
+          <Text fontWeight='bold'>Attention&nbsp;! Voulez-vous réellement effacer cette analyse&nbsp;?</Text>
           <Text>Cette action est irréversible...</Text>
         </DialogBody>
         <DialogFooter>
           <DialogActionTrigger asChild>
-            <Button size={['lg', null, 'sm']} variant={'outline'} onClick={() => close(false)} minW={24}>Annuler</Button>
+            <Button size={['lg', null, 'sm']} variant='outline' onClick={() => close(false)} minW={24}>Annuler</Button>
           </DialogActionTrigger>
-          <Button size={['lg', null, 'sm']} colorPalette={'red'} onClick={() => close(true)} minW={24}>
+          <Button size={['lg', null, 'sm']} colorPalette='red' onClick={() => close(true)} minW={24}>
             {/* <RxInfoCircled /> */}
             Effacer
           </Button>
@@ -45,4 +43,3 @@ const DetruireAnalyseDialog = ({ close, eventId }) => {
 }
 
 export default DetruireAnalyseDialog
-

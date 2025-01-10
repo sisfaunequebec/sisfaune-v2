@@ -14,10 +14,10 @@ import {
 
 const AjouterSpecimenDialog = ({ close, eventId }) => {
   const size = useBreakpointValue({ base: 'cover', md: 'md' })
-  const motion = useBreakpointValue({ base: 'scale', md: 'slide-in-bottom'})
+  const motion = useBreakpointValue({ base: 'scale', md: 'slide-in-bottom' })
 
   return (
-    <DialogRoot open={true} size={size} placement={'center'} motionPreset={motion} onOpenChange={e => close(false)} closeOnInteractOutside={true}>
+    <DialogRoot open size={size} placement='center' motionPreset={motion} onOpenChange={e => close(false)} closeOnInteractOutside>
       <DialogContent>
         <DialogHeader>
           <DialogTitle>Ajout d&apos;un nouveau spécimen</DialogTitle>
@@ -28,9 +28,9 @@ const AjouterSpecimenDialog = ({ close, eventId }) => {
         </DialogBody>
         <DialogFooter gap={2}>
           <DialogActionTrigger asChild>
-            <Button size={'sm'} variant={'outline'} onClick={() => close(false)} minW={24}>Annuler</Button>
+            <Button size='sm' variant='outline' onClick={() => close(false)} minW={24}>Annuler</Button>
           </DialogActionTrigger>
-          <Button size={'sm'} colorPalette={'blue'} onClick={() => close(true)} minW={24}>Ajouter</Button>
+          <Button size='sm' colorPalette='blue' onClick={() => close(true)} minW={24}>Ajouter</Button>
         </DialogFooter>
       </DialogContent>
     </DialogRoot>
@@ -38,4 +38,3 @@ const AjouterSpecimenDialog = ({ close, eventId }) => {
 }
 
 export default AjouterSpecimenDialog
-
