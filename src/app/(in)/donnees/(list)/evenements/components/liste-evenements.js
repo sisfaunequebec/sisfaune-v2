@@ -4,7 +4,7 @@ import { useCallback } from 'react'
 import NextLink from 'next/link'
 
 import { VStack, Text, IconButton, LinkOverlay } from '@chakra-ui/react'
-import { RxTrash } from 'react-icons/rx'
+import { RxTrash, RxChevronRight  } from 'react-icons/rx'
 
 import useDialog from '@/utilities/use-dialog'
 
@@ -25,13 +25,13 @@ const ItemEvenement = ({ id, onDelete }) => {
   }, [id, onDelete])
 
   return (
-    <LinkListWrapper href={href}>
+    <LinkListWrapper>
       <LinkOverlay asChild>
         <NextLink href={href} scroll={false}>
           <Text color={'green.600'} _dark={{ color: 'green.200' }}>Événement no {id}</Text>
         </NextLink>
       </LinkOverlay>
-      <IconButton colorPalette={'red'} variant={'subtle'} rounded={'full'} size={['xs']} onClick={handleDelete}><RxTrash  /></IconButton>
+      <IconButton as={NextLink} href={href} scroll={false} colorPalette={'green'} variant={'surface'} rounded={'full'} size={['xs']}><RxChevronRight /></IconButton>
     </LinkListWrapper>
   )
 }

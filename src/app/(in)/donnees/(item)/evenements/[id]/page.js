@@ -1,5 +1,5 @@
 'use client'
-import { useCallback } from 'react'
+import { useState, useCallback, useEffect } from 'react'
 
 import { usePathname, useParams } from 'next/navigation'
 
@@ -11,11 +11,15 @@ import {
   AccordionItemContent,
   AccordionItemTrigger,
   AccordionRoot,
-} from "@/components/ui/accordion"
+} from '@/components/ui/accordion'
+
+// import wait from '@/utilities/wait'
 
 import { Field } from '@/components/ui/field'
 
 import useDialog from '@/utilities/use-dialog'
+
+import PageSpinner from '@/components/page-spinner'
 
 import Toolbar from '../../../(list)/evenements/components/toolbar'
 
@@ -87,6 +91,8 @@ const Evenement = () => {
   const params = useParams()
   const { id: idEvenement } = params
 
+  const [isReady, setReady] = useState(false)
+
   const dialogs = []
 
   const { ask: createSpecimen, dialog: createSpecimenDialog } = useDialog(AjouterSpecimenDialog)
@@ -129,6 +135,18 @@ const Evenement = () => {
     }
   }, [deleteSpecimen])
 
+  useEffect(() => {
+    setTimeout(() => {
+      setReady(true)
+    }, Math.random() * 1000)
+  }, [setReady])
+
+  if (!isReady) {
+    return (
+      <PageSpinner />
+    )
+  }
+
   return (
     <>
       { dialogs }
@@ -145,7 +163,7 @@ const Evenement = () => {
           <VStack alignItems={'stretch'} fontSize={['md', null, 'sm']} gap={0}>
 
             <SectionHeading label={`Événement no ${idEvenement}`} isSticky>
-              <IconButton colorPalette={'green'} variant={'solid'} rounded={'full'} size={['xs']} visibility={'hidden'}></IconButton>
+              <IconButton colorPalette={'red'} variant={'surface'} rounded={'full'} size={['xs']}><RxTrash /></IconButton>
             </SectionHeading>
 
             <AccordionRoot multiple size={['md', null, 'sm']} defaultValue={['general']}>  
@@ -193,7 +211,7 @@ const Evenement = () => {
                 <Box position={'relative'}>
                   <AbsoluteCenter as={HStack} axis={'vertical'} insetEnd={5}>
                     <IconButton colorPalette={'green'} variant={'subtle'} rounded={'full'} size={['xs']}><RxPencil1 /></IconButton>
-                    <IconButton colorPalette={'red'} variant={'subtle'} rounded={'full'} size={['xs']} onClick={handleDeleteSpecimen}><RxTrash /></IconButton>
+                    <IconButton colorPalette={'red'} variant={'surface'} rounded={'full'} size={['xs']} onClick={handleDeleteSpecimen}><RxTrash /></IconButton>
                   </AbsoluteCenter>
                   <Trigger label={'303307.1 - Raton laveur'}/>
                 </Box>
@@ -216,7 +234,7 @@ const Evenement = () => {
                 <Box position={'relative'}>
                   <AbsoluteCenter as={HStack} axis={'vertical'} insetEnd={5}>
                     <IconButton colorPalette={'green'} variant={'subtle'} rounded={'full'} size={['xs']}><RxPencil1 /></IconButton>
-                    <IconButton colorPalette={'red'} variant={'subtle'} rounded={'full'} size={['xs']} onClick={handleDeleteAnalysis}><RxTrash /></IconButton>
+                    <IconButton colorPalette={'red'} variant={'surface'} rounded={'full'} size={['xs']} onClick={handleDeleteAnalysis}><RxTrash /></IconButton>
                   </AbsoluteCenter>
                   <Trigger label={'Distemper canin (PCR)'} />
                 </Box>
