@@ -16,13 +16,13 @@ const ItemEvenement = ({ id, onDelete }) => {
   // const { id, onDelete } = props
   const href = `/donnees/evenements/${id}`
 
-  const handleDelete = useCallback(async () => {
-    const result = await onDelete({ eventId: id })
-    if (result) {
-      console.debug('Delete !!!')
-    }
-    // console.log(result)
-  }, [id, onDelete])
+  // const handleDelete = useCallback(async () => {
+  //   const result = await onDelete({ eventId: id })
+  //   if (result) {
+  //     console.debug('Delete !!!')
+  //   }
+  //   // console.log(result)
+  // }, [id, onDelete])
 
   return (
     <LinkListWrapper>
@@ -31,7 +31,7 @@ const ItemEvenement = ({ id, onDelete }) => {
           <Text color={'green.600'} _dark={{ color: 'green.200' }}>Événement no {id}</Text>
         </NextLink>
       </LinkOverlay>
-      <IconButton as={NextLink} href={href} scroll={false} colorPalette={'green'} variant={'surface'} rounded={'full'} size={['xs']}><RxArrowRight /></IconButton>
+      <IconButton as={NextLink} href={href} scroll={true} colorPalette={'green'} variant={'surface'} rounded={'full'} size={['xs']}><RxArrowRight /></IconButton>
     </LinkListWrapper>
   )
 }
