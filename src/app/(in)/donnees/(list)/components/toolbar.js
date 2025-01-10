@@ -1,13 +1,15 @@
+/* eslint-disable react/jsx-curly-brace-presence */
 'use client'
 import { useCallback } from 'react'
 
 import { useWindowScroll } from '@uidotdev/usehooks'
 
 import { Flex, Container, IconButton, HStack } from '@chakra-ui/react'
-import { Button } from '@/components/ui/button'
 import { RxPlus, RxDownload, RxMagnifyingGlass } from 'react-icons/rx'
 
 import useDialog from '@/utilities/use-dialog'
+
+import ResponsiveButton from '@/components/responsive-button'
 
 import EvenementsSpecimens from './evenements-specimens-tabs'
 import AjouterEvenementDialog from '../evenements/components/ajouter-evenement-dialog'
@@ -26,8 +28,7 @@ const NewEventButton = () => {
   return (
     <>
       {createEventDialog}
-      <Button size={['md', null, 'sm']} rounded='full' variant='solid' colorPalette='blue' display={['none', null, 'inherit']} onClick={handleCreate}><RxPlus />Nouvel événement</Button>
-      <IconButton size={['md', null, 'sm']} rounded='full' variant='solid' colorPalette='blue' aria-label='Search database' display={['inherit', null, 'none']} onClick={handleCreate}><RxPlus /></IconButton>
+      <ResponsiveButton label={'Nouvel événement'} colorPalette={'blue'} icon={<RxPlus />} onClick={handleCreate} />
     </>
   )
 }
@@ -45,7 +46,7 @@ const DownloadButton = () => {
   return (
     <>
       {downloadEventsDialog}
-      <IconButton size={['md', null, 'sm']} rounded='full' variant='solid' colorPalette='blue' aria-label='Exporter la liste des spécimens' onClick={handleDownload}><RxDownload /></IconButton>
+      <ResponsiveButton label={'Exporter la liste'} colorPalette={'blue'} icon={<RxDownload />} onClick={handleDownload} />
     </>
   )
 }

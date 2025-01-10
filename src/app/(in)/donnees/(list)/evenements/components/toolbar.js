@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-curly-brace-presence */
 'use client'
 import { useCallback } from 'react'
 
@@ -9,6 +10,8 @@ import Link from 'next/link'
 
 import { Flex, Container, Button, IconButton, HStack } from '@chakra-ui/react'
 import { RxArrowLeft, RxFileText } from 'react-icons/rx'
+
+import ResponsiveButton from '@/components/responsive-button'
 
 const ReportButton = ({ id }) => {
   return (
@@ -22,15 +25,16 @@ const ReportButton = ({ id }) => {
 const BackButton = () => {
   const router = useRouter()
 
-  const handleClick = useCallback(() => {
+  const handleGoBack = useCallback(() => {
     router.back()
   }, [router])
 
   return (
-    <>
-      <Button size={['md', null, 'sm']} rounded='full' variant='subtle' colorPalette='blue' display={['none', null, 'inherit']} onClick={handleClick}><RxArrowLeft />Retour à la liste</Button>
-      <IconButton size={['md', null, 'sm']} rounded='full' variant='subtle' colorPalette='blue' aria-label='Retour' display={['inherit', null, 'none']} onClick={handleClick}><RxArrowLeft /></IconButton>
-    </>
+    <ResponsiveButton label={'Retour à la liste'} variant={'subtle'} colorPalette={'blue'} icon={<RxArrowLeft />} onClick={handleGoBack} />
+    // <>
+    //   <Button size={['md', null, 'sm']} rounded='full' variant='subtle' colorPalette='blue' display={['none', null, 'inherit']} onClick={handleClick}><RxArrowLeft />Retour à la liste</Button>
+    //   <IconButton size={['md', null, 'sm']} rounded='full' variant='subtle' colorPalette='blue' aria-label='Retour' display={['inherit', null, 'none']} onClick={handleClick}><RxArrowLeft /></IconButton>
+    // </>
   )
 }
 

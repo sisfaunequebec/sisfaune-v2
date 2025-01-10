@@ -20,7 +20,7 @@ const ExporterListeDialog = ({ close, eventId }) => {
     <DialogRoot open size={size} placement='center' motionPreset={motion} onOpenChange={e => close(false)} closeOnInteractOutside>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Exportation de la liste des spécimens</DialogTitle>
+          <DialogTitle>Exportation de la liste</DialogTitle>
         </DialogHeader>
         <DialogBody>
           {/* <p><strong>Voulez-vous réellement effacer l&apos;événement no {eventId}&nbsp;?</strong></p>
