@@ -1,9 +1,14 @@
+'use client'
+import { useState, useEffect } from 'react'
 import { Flex, Container } from '@chakra-ui/react'
+
+import { useQueryStates, parseAsInteger, parseAsArrayOf } from 'nuqs'
 
 import wait from '@/utilities/wait'
 
 import ListeEvenements from './components/liste-evenements'
 import Filtres from '../components/filtres'
+
 
 const evenements = Array(200).fill(null).map((item, i) => {
   return {
@@ -11,14 +16,34 @@ const evenements = Array(200).fill(null).map((item, i) => {
   }
 })
 
-const Evenements = async () => {
-  await wait(500) // simulate latency
+const useEvents = (params) => {
+  const [isBusy, setBusy] = useState(false)
+
+  useEffect(() => {
+    const fetch = async() => {
+      setBusy(true)
+      await wait(200)
+      setBusy(false)
+    }
+    fetch()
+  }, [params])
+
+  return [isBusy]
+}
+
+const Evenements = () => {
+  const [statut, setStatut] = useQueryStates({
+    statut: parseAsArrayOf(parseAsInteger).withDefault([]),
+  }, { throttleMs: 200 })
+
+  const [isBusy] = useEvents({ statut })
+
   return (
     <>
       <Flex flex={1} top={0} as={Container} direction={['column', null, 'row']} maxWidth={['6xl']} px={[0, 0, 8]} py={[0, 0, 4]} fontSize={['md', null, 'sm']}>
         <Filtres />
-        <Flex flex={5} alignItems='stretch' ps={[0, null, 2]}>
-          <ListeEvenements evenements={evenements} />
+        <Flex flex={5} ps={[0, null, 2]} justifyContent={'center'} alignItems={'stretch'}>
+          <ListeEvenements evenements={evenements} isLoading={isBusy} />
         </Flex>
       </Flex>
     </>

@@ -35,13 +35,13 @@ const ItemEvenement = ({ id, onDelete }) => {
   )
 }
 
-const ListeEvenements = ({ evenements }) => {
+const ListeEvenements = ({ evenements, isLoading }) => {
   const { ask: deleteEvent, dialog: deleteEventDialog } = useDialog(DetruireEvenementDialog)
 
   return (
     <>
       {deleteEventDialog}
-      <VStack alignItems='stretch' flex={1} gap={0}>
+      <VStack alignItems={'stretch'} flex={1} gap={0} justifyContent={'stretch'} opacity={isLoading && 0.2}>
         {evenements.map(evenement => {
           const { id } = evenement
           return (

@@ -1,4 +1,6 @@
 'use client'
+import { useQueryState, parseAsInteger, parseAsArrayOf } from 'nuqs'
+
 import { Flex, Fieldset, Separator as ChakraSeparator } from '@chakra-ui/react'
 
 import Ordre from './ordre'
@@ -20,6 +22,8 @@ const Separator = () => {
 }
 
 const FiltresForm = () => {
+  const [statut, setStatut] = useQueryState('statut', parseAsArrayOf(parseAsInteger).withDefault([]), { throttleMs: 200 })
+
   return (
     <Fieldset.Root alignItems='flex-start' flex>
 
@@ -34,17 +38,17 @@ const FiltresForm = () => {
       <Separator />
 
       <SectionTitle label='Raffiner par statut :' />
-      <Section><Statut onChange={v => console.debug(v)} /> </Section>
+      <Section><Statut value={statut} onChange={v => setStatut(v)} /> </Section>
 
       <Separator />
 
       <SectionTitle label='Raffiner par programme :' />
-      <Section><Programme /> </Section>
+      <Section><Programme onChange={v => console.debug(v)} /> </Section>
 
       <Separator />
 
       <SectionTitle label='Raffiner par région administrative :' />
-      <Section><Region /> </Section>
+      <Section><Region onChange={v => console.debug(v)} /> </Section>
 
       <Separator />
 
