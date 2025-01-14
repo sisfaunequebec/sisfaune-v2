@@ -18,17 +18,19 @@ const evenements = Array(200).fill(null).map((item, i) => {
 
 const useEvents = (params) => {
   const [isBusy, setBusy] = useState(false)
+  const [events, setEvents] = useState([])
 
   useEffect(() => {
     const fetch = async() => {
       setBusy(true)
       await wait(200)
       setBusy(false)
+      setEvents(evenements)
     }
     fetch()
   }, [params])
 
-  return [isBusy]
+  return [isBusy, events]
 }
 
 const Evenements = () => {
@@ -36,14 +38,14 @@ const Evenements = () => {
     statut: parseAsArrayOf(parseAsInteger).withDefault([]),
   }, { throttleMs: 200 })
 
-  const [isBusy] = useEvents({ statut })
+  const [isBusy, events] = useEvents({ statut })
 
   return (
     <>
       <Flex flex={1} top={0} as={Container} direction={['column', null, 'row']} maxWidth={['6xl']} px={[0, 0, 8]} py={[0, 0, 4]} fontSize={['md', null, 'sm']}>
         <Filtres />
         <Flex flex={5} ps={[0, null, 2]} justifyContent={'center'} alignItems={'stretch'}>
-          <ListeEvenements evenements={evenements} isLoading={isBusy} />
+          <ListeEvenements evenements={events} isLoading={isBusy} />
         </Flex>
       </Flex>
     </>
