@@ -34,12 +34,12 @@ const ItemEvenement = ({ id, onDelete }) => {
             </Flex>
           </LinkOverlay>
           <Flex>Surveillance de la rage du raton laveur</Flex>
-          <Flex>Numéro SILAB :</Flex>
+          <Flex display={['none', null, null, 'inherit']}>Numéro SILAB :</Flex>
         </VStack>
         <VStack alignItems={['flex-start', null, null, 'flex-end']} gap={0.4} flex={1}>
-          <Flex>Soumis par : Administrateur du système</Flex>
+          <Flex display={['none', null, null, 'inherit']}>Soumis par : Administrateur du système</Flex>
           <Flex color={'blue.600'} >Date du signalement : 2025-01-01</Flex>
-          <Flex>Municipalité : Montréal</Flex>
+          <Flex display={['none', null, null, 'inherit']}>Municipalité : Montréal</Flex>
         </VStack>
       </Stack>
       <IconButton as={NextLink} href={href} scroll colorPalette={'green'} variant={'surface'} rounded={'full'} size={['xs']}><RxArrowRight /></IconButton>
