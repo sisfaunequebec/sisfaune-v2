@@ -1,13 +1,17 @@
-import { Flex, LinkBox } from '@chakra-ui/react'
+import { HStack, LinkBox } from '@chakra-ui/react'
 
 const LinkListWrapper = ({ href, children }) => {
   return (
     <LinkBox
-      as={Flex}
-      alignItems='center' justifyContent='space-between'
-      ps={5} pe={5} py={3}
-      fontWeight={500}
-      borderBottomColor='green.300'
+      as={HStack}
+      gap={4}
+      direction={'row'}
+      alignItems={'center'}
+      justifyContent={'space-between'}
+      ps={5}
+      pe={5}
+      py={3}
+      borderBottomColor={'green.300'}
       borderBottomWidth={1}
       _first={{
         borderTopColor: 'green.300',
@@ -19,7 +23,7 @@ const LinkListWrapper = ({ href, children }) => {
         bg: 'green.100',
         _dark: { bg: 'green.700' }
       }}
-      cursor='pointer'
+      cursor={'pointer'}
     >
       {children}
     </LinkBox>

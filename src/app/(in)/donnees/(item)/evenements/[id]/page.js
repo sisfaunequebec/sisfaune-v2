@@ -30,7 +30,7 @@ import DetruireSpecimenDialog from './components/detuire-specimen-dialog'
 
 const SectionHeading = ({ label, isSticky = false, children }) => {
   return (
-    <Flex as='section' bg='green.100' color='green.600' px={5} py={3} fontWeight={500} borderColor='green.300' borderTopWidth={1} alignItems='center' justifyContent='space-between' position={isSticky && 'sticky'} top={[134, null, 129]} justifySelf='flex-start' zIndex={1000}>
+    <Flex as='section' bg='green.100' color='green.600' px={5} py={2} fontWeight={500} borderColor='green.300' borderTopWidth={1} alignItems='center' justifyContent='space-between' position={isSticky && 'sticky'} top={[134, null, 129]} justifySelf='flex-start' zIndex={1000}>
       <Text as='h3' userSelect='none'>{label}</Text>
       {children}
     </Flex>
@@ -40,7 +40,6 @@ const SectionHeading = ({ label, isSticky = false, children }) => {
 const Trigger = ({ label, ...rest }) => {
   return (
     <AccordionItemTrigger indicatorPlacement='start' bg='green.50' color='green.600' p={4} borderRadius={0} borderColor='green.300' borderTopWidth={1} {...rest}>{label}</AccordionItemTrigger>
-
   )
 }
 
