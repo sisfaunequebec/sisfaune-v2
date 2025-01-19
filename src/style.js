@@ -91,6 +91,7 @@ const checkboxRecipe = defineSlotRecipe({
   slots: checkboxAnatomy.keys(),
   base: {
     label: {
+      cursor: 'pointer',
       fontWeight: 'normal'
     }
   }
