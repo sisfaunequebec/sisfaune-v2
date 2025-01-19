@@ -1,9 +1,14 @@
 'use client'
+import { useState, useEffect } from 'react'
 
 import NextLink from 'next/link'
 
 import { Flex, Stack, HStack, VStack, Text, IconButton, LinkOverlay } from '@chakra-ui/react'
 import { RxArrowRight } from 'react-icons/rx'
+
+import { useQueryState, useQueryStates, parseAsInteger, parseAsArrayOf } from 'nuqs'
+
+import wait from '@/utilitaires/wait'
 
 import { LinkListWrapper } from '@/app/(pages)/(in)/components/list'
 
@@ -34,13 +39,48 @@ const ItemEvenement = ({ id }) => {
   )
 }
 
+const evenements = Array(50).fill(null).map((item, i) => {
+  // console.debug('here')
+  return {
+    id: i + 1
+  }
+})
+
+
+const useEvents = (params) => {
+  const [isBusy, setBusy] = useState(false)
+  const [events, setEvents] = useState([])
+
+  useEffect(() => {
+    const fetch = async(params) => {
+      console.debug('fetching => ', params)
+      setBusy(true)
+      await wait(Math.random() * 500)
+      setBusy(false)
+      setEvents(evenements)
+    }
+    fetch(params)
+  }, [params])
+
+  return [isBusy, events]
+}
+
 const ListeEvenements = ({ evenements, isLoading }) => {
+  const [params, setParams] = useQueryStates({
+    statut: parseAsArrayOf(parseAsInteger),
+    programme: parseAsArrayOf(parseAsInteger)
+  })
+
+  console.debug(params)
+
+  const [isBusy, events] = useEvents(params)
+
   return (
-    <VStack alignItems={'stretch'} flex={1} gap={0} justifyContent={'stretch'} opacity={isLoading && 0.2}>
-      {evenements.map(evenement => {
-        const { id } = evenement
+    <VStack alignItems={'stretch'} flex={1} gap={0} justifyContent={'stretch'} opacity={isBusy && 0.2}>
+      {events.map(event => {
+        const { id } = event
         return (
-          <ItemEvenement key={id} {...evenement} />
+          <ItemEvenement key={id} {...event} />
         )
       })}
     </VStack>

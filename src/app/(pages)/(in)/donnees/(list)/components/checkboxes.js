@@ -3,16 +3,9 @@ import { useState, useCallback, useMemo, useEffect } from 'react'
 import { CheckboxGroup } from '@chakra-ui/react'
 import { Checkbox } from '@/components/ui/checkbox'
 
-const Checkboxes = ({ allChoicesLabel = 'Tous', choices = [], name, value = [], onChange = () => {} }) => {
+const Checkboxes = ({ allChoicesLabel = 'Tous', choices = [], name, value, onChange = () => {} }) => {
   const [internalValue, setInternalValue] = useState(value ?? [])
-  // console.debug(value, internalValue)
-
-  // useEffect(() => {
-  //   if (value && (value !== internalValue)) {
-  //     console.debug('here')
-  //     setInternalValue(value)
-  //   }
-  // }, [value])
+  console.debug(name, internalValue)
 
   const choicesMap = useMemo(() => {
     return choices.reduce((acc, s) => {
@@ -23,6 +16,7 @@ const Checkboxes = ({ allChoicesLabel = 'Tous', choices = [], name, value = [], 
   }, [choices])
 
   const handleAllCheck = useCallback(e => {
+    console.debug('handleAllCheck')
     const { checked } = e
     if (checked) {
       setInternalValue([])
@@ -31,6 +25,7 @@ const Checkboxes = ({ allChoicesLabel = 'Tous', choices = [], name, value = [], 
   }, [setInternalValue, onChange])
 
   const handleChange = useCallback(value => {
+    console.debug('handleChange', value)
     const values = value.map(v => {
       const choiceEntry = choicesMap[v]
       const { value } = choiceEntry
@@ -41,7 +36,7 @@ const Checkboxes = ({ allChoicesLabel = 'Tous', choices = [], name, value = [], 
     onChange && onChange(values)
   }, [setInternalValue, onChange, choicesMap])
 
-  const allChecked = !internalValue?.length
+  const allChecked = internalValue && internalValue.length === 0
 
   return (
     <>
@@ -50,7 +45,7 @@ const Checkboxes = ({ allChoicesLabel = 'Tous', choices = [], name, value = [], 
         {Object.values(choicesMap).map(c => {
           const { value, label } = c
           return (
-            <Checkbox size={'sm'} colorPalette={'blue'} variant={'subtle'} value={value.toString()} key={value}>{label}</Checkbox>
+            <Checkbox size={'sm'} colorPalette={'blue'} variant={'subtle'} value={value.toString()} key={value.toString()}>{label}</Checkbox>
           )
         })}
       </CheckboxGroup>

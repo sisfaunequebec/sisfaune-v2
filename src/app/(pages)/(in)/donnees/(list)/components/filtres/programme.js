@@ -1,3 +1,5 @@
+import { useQueryState, parseAsInteger, parseAsArrayOf } from 'nuqs'
+
 import Checkboxes from '../checkboxes'
 
 const programmes = [
@@ -12,9 +14,11 @@ const programmes = [
   { value: 8, label: 'Surveillance régulière' }
 ]
 
-const Programme = ({ value = [], onChange = () => { } }) => {
+const Programme = () => {
+  const [value, setValue] = useQueryState('programme', parseAsArrayOf(parseAsInteger).withDefault([]))
+
   return (
-    <Checkboxes choices={programmes} value={value} onChange={null} allChoicesLabel='Tous les programmes' />
+    <Checkboxes choices={programmes} value={value} onChange={v => setValue(v)} allChoicesLabel={'Tous les programmes'} />
   )
 }
 
