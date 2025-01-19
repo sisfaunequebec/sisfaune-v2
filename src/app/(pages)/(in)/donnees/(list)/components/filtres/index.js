@@ -1,7 +1,8 @@
 'use client'
-import { useQueryState, parseAsInteger, parseAsArrayOf } from 'nuqs'
+import { Flex, Fieldset, Separator as ChakraSeparator, Text, IconButton, HStack } from '@chakra-ui/react'
 
-import { Flex, Fieldset, Separator as ChakraSeparator } from '@chakra-ui/react'
+import { ToggleTip } from '@/components/ui/toggle-tip'
+import { LuInfo } from 'react-icons/lu'
 
 import Ordre from './ordre'
 import Texte from './texte'
@@ -22,8 +23,6 @@ const Separator = () => {
 }
 
 const FiltresForm = () => {
-  // const [statut, setStatut] = useQueryState('statut', parseAsArrayOf(parseAsInteger).withDefault([]))
-
   return (
     <Fieldset.Root alignItems='flex-start' flex>
 
@@ -32,23 +31,23 @@ const FiltresForm = () => {
 
       <Separator />
 
-      <SectionTitle label='Rechercher dans le texte :' />
-      <Section><Texte onChange={v => console.debug(v)} /></Section>
+      <SectionTitle label={<HStack><Text>Rechercher dans le texte :</Text><ToggleTip size={'xl'} content={'Recherche par numéro d\'événement, numéro MAPAQ, numéro SILAB, numéro de pathologie, nom du soumissionnaire et/ou municipalité'}><LuInfo /></ToggleTip></HStack>} />
+      <Section><Texte /></Section>
 
       <Separator />
 
       <SectionTitle label='Raffiner par statut :' />
-      <Section><Statut /> </Section>
+      <Section><Statut /></Section>
 
       <Separator />
 
       <SectionTitle label='Raffiner par programme :' />
-      <Section><Programme onChange={v => console.debug(v)} /> </Section>
+      <Section><Programme /></Section>
 
       <Separator />
 
       <SectionTitle label='Raffiner par région administrative :' />
-      <Section><Region onChange={v => console.debug(v)} /> </Section>
+      <Section><Region /></Section>
 
       <Separator />
 

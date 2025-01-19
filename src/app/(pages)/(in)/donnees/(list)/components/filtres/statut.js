@@ -11,7 +11,7 @@ const Statut = () => {
   const [value, setValue] = useQueryState('statut', parseAsArrayOf(parseAsInteger).withDefault([]))
 
   return (
-    <Checkboxes name={'statut'} choices={statuts} value={value} onChange={v => setValue(v)} allChoicesLabel={'Tous les statuts'} />
+    <Checkboxes name={'statut'} choices={statuts} value={value} onChange={setValue} allChoicesLabel={'Tous les statuts'} />
   )
 }
 

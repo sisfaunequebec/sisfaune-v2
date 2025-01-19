@@ -6,7 +6,7 @@ import NextLink from 'next/link'
 import { Flex, Stack, HStack, VStack, Text, IconButton, LinkOverlay } from '@chakra-ui/react'
 import { RxArrowRight } from 'react-icons/rx'
 
-import { useQueryState, useQueryStates, parseAsInteger, parseAsArrayOf } from 'nuqs'
+import { useQueryState, useQueryStates, parseAsInteger, parseAsArrayOf, parseAsString } from 'nuqs'
 
 import wait from '@/utilitaires/wait'
 
@@ -40,7 +40,6 @@ const ItemEvenement = ({ id }) => {
 }
 
 const evenements = Array(50).fill(null).map((item, i) => {
-  // console.debug('here')
   return {
     id: i + 1
   }
@@ -67,11 +66,11 @@ const useEvents = (params) => {
 
 const ListeEvenements = ({ evenements, isLoading }) => {
   const [params, setParams] = useQueryStates({
+    texte: parseAsString.withDefault(''),
     statut: parseAsArrayOf(parseAsInteger),
-    programme: parseAsArrayOf(parseAsInteger)
+    programme: parseAsArrayOf(parseAsInteger),
+    region: parseAsArrayOf(parseAsInteger),
   })
-
-  console.debug(params)
 
   const [isBusy, events] = useEvents(params)
 

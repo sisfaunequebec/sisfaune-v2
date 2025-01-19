@@ -1,3 +1,4 @@
+import { useQueryState, parseAsInteger, parseAsArrayOf } from 'nuqs'
 import Checkboxes from '../checkboxes'
 
 const regionsRaw = [
@@ -11,9 +12,10 @@ const regions = regionsRaw.map((r, i) => {
   }
 })
 
-const Region = ({ value = [], onChange = () => { } }) => {
+const Region = () => {
+  const [value, setValue] = useQueryState('region', parseAsArrayOf(parseAsInteger).withDefault([]))
   return (
-    <Checkboxes choices={regions} value={value} onChange={onChange} allChoicesLabel='Toutes les régions' />
+    <Checkboxes name={'region'} choices={regions} value={value} onChange={setValue} allChoicesLabel={'Toutes les régions'} />
   )
 }
 

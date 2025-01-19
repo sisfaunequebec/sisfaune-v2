@@ -5,7 +5,6 @@ import { Checkbox } from '@/components/ui/checkbox'
 
 const Checkboxes = ({ allChoicesLabel = 'Tous', choices = [], name, value, onChange = () => {} }) => {
   const [internalValue, setInternalValue] = useState(value ?? [])
-  console.debug(name, internalValue)
 
   const choicesMap = useMemo(() => {
     return choices.reduce((acc, s) => {
@@ -16,7 +15,6 @@ const Checkboxes = ({ allChoicesLabel = 'Tous', choices = [], name, value, onCha
   }, [choices])
 
   const handleAllCheck = useCallback(e => {
-    console.debug('handleAllCheck')
     const { checked } = e
     if (checked) {
       setInternalValue([])
@@ -25,7 +23,6 @@ const Checkboxes = ({ allChoicesLabel = 'Tous', choices = [], name, value, onCha
   }, [setInternalValue, onChange])
 
   const handleChange = useCallback(value => {
-    console.debug('handleChange', value)
     const values = value.map(v => {
       const choiceEntry = choicesMap[v]
       const { value } = choiceEntry

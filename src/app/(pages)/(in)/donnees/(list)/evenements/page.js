@@ -1,20 +1,11 @@
 'use client'
 
-import { useState, useEffect } from 'react'
 import { Flex, Container } from '@chakra-ui/react'
-
-import { NuqsAdapter } from 'nuqs/adapters/next/app'
-import { useQueryState, useQueryStates, parseAsInteger, parseAsArrayOf } from 'nuqs'
-
-import wait from '@/utilitaires/wait'
 
 import ListeEvenements from './components/liste-evenements'
 import Filtres from '../components/filtres'
 
-
-
 const Evenements = () => {
-
 
   return (
     <>
