@@ -1,4 +1,5 @@
 'use client'
+
 import { useState, useEffect } from 'react'
 
 import NextLink from 'next/link'
@@ -8,7 +9,7 @@ import { RxArrowRight } from 'react-icons/rx'
 
 import { useQueryState, useQueryStates, parseAsInteger, parseAsArrayOf, parseAsString } from 'nuqs'
 
-import wait from '@/utilitaires/wait'
+import useEvents from '@/logic/data/use-events'
 
 import { LinkListWrapper } from '@/app/(pages)/(in)/components/list'
 
@@ -39,32 +40,25 @@ const ItemEvenement = ({ id }) => {
   )
 }
 
-const evenements = Array(50).fill(null).map((item, i) => {
-  return {
-    id: i + 1
-  }
-})
+// const useEvents = (params) => {
+//   const [isBusy, setBusy] = useState(false)
+//   const [events, setEvents] = useState([])
 
+//   useEffect(() => {
+//     const fetch = async(params) => {
+//       console.debug('fetching => ', params)
+//       setBusy(true)
+//       await wait(Math.random() * 500)
+//       setBusy(false)
+//       setEvents(evenements)
+//     }
+//     fetch(params)
+//   }, [params])
 
-const useEvents = (params) => {
-  const [isBusy, setBusy] = useState(false)
-  const [events, setEvents] = useState([])
+//   return [isBusy, events]
+// }
 
-  useEffect(() => {
-    const fetch = async(params) => {
-      console.debug('fetching => ', params)
-      setBusy(true)
-      await wait(Math.random() * 500)
-      setBusy(false)
-      setEvents(evenements)
-    }
-    fetch(params)
-  }, [params])
-
-  return [isBusy, events]
-}
-
-const ListeEvenements = ({ evenements, isLoading }) => {
+const ListeEvenements = () => {
   const [params, setParams] = useQueryStates({
     texte: parseAsString.withDefault(''),
     statut: parseAsArrayOf(parseAsInteger),
@@ -72,11 +66,12 @@ const ListeEvenements = ({ evenements, isLoading }) => {
     region: parseAsArrayOf(parseAsInteger),
   })
 
-  const [isBusy, events] = useEvents(params)
+  const { payload, isLoading, isError } = useEvents(params)
+  console.debug(payload, isLoading, isError)
 
   return (
-    <VStack alignItems={'stretch'} flex={1} gap={0} justifyContent={'stretch'} opacity={isBusy && 0.2}>
-      {events.map(event => {
+    <VStack alignItems={'stretch'} flex={1} gap={0} justifyContent={'stretch'} opacity={isLoading && 0.2}>
+      {payload.map(event => {
         const { id } = event
         return (
           <ItemEvenement key={id} {...event} />

@@ -1,4 +1,4 @@
-import { auth } from '@/logique/auth'
+import { auth } from '@/logic/auth'
 import { NextResponse } from 'next/server'
 
 export const GET = auth(function GET (req) {

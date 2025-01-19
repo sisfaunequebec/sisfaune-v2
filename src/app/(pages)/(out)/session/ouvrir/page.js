@@ -1,5 +1,5 @@
 import { redirect } from 'next/navigation'
-import { auth } from '@/logique/auth'
+import { auth } from '@/logic/auth'
 
 import { Flex } from '@chakra-ui/react'
 
