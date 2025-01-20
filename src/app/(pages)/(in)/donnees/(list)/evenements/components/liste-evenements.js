@@ -1,15 +1,14 @@
 'use client'
 
-import { useState, useEffect } from 'react'
-
 import NextLink from 'next/link'
 
-import { Flex, Stack, HStack, VStack, Text, IconButton, LinkOverlay } from '@chakra-ui/react'
+import { Flex, Stack, VStack, Text, IconButton, LinkOverlay } from '@chakra-ui/react'
 import { RxArrowRight } from 'react-icons/rx'
 
-import { useQueryState, useQueryStates, parseAsInteger, parseAsArrayOf, parseAsString } from 'nuqs'
+import { useQueryStates } from 'nuqs'
 
 import useEvents from '@/logic/data/use-events'
+import { searchParams, urlKeys } from '@/logic/data/events-params'
 
 import { LinkListWrapper } from '@/app/(pages)/(in)/components/list'
 
@@ -31,7 +30,7 @@ const ItemEvenement = ({ id }) => {
         </VStack>
         <VStack alignItems={['flex-start', null, null, 'flex-end']} gap={0.4} flex={1}>
           <Flex display={['none', null, null, 'inherit']}>Soumis par : Administrateur du système</Flex>
-          <Flex color={'blue.600'} >Date du signalement : 2025-01-01</Flex>
+          <Flex color={'blue.600'}>Date du signalement : 2025-01-01</Flex>
           <Flex display={['none', null, null, 'inherit']}>Municipalité : Montréal</Flex>
         </VStack>
       </Stack>
@@ -59,15 +58,11 @@ const ItemEvenement = ({ id }) => {
 // }
 
 const ListeEvenements = () => {
-  const [params, setParams] = useQueryStates({
-    texte: parseAsString.withDefault(''),
-    statut: parseAsArrayOf(parseAsInteger),
-    programme: parseAsArrayOf(parseAsInteger),
-    region: parseAsArrayOf(parseAsInteger),
-  })
+  const [params] = useQueryStates(searchParams, { urlKeys })
+  // console.debug(params)
 
-  const { payload, isLoading, isError } = useEvents(params)
-  console.debug(payload, isLoading, isError)
+  const { payload, isLoading } = useEvents(params)
+  // console.debug(payload, isLoading, isError)
 
   return (
     <VStack alignItems={'stretch'} flex={1} gap={0} justifyContent={'stretch'} opacity={isLoading && 0.2}>

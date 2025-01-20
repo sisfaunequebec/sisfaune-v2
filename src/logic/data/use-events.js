@@ -5,26 +5,23 @@ import useSWR from 'swr'
 import fetcher from './fetcher'
 
 import {
-  createSerializer,
-  parseAsInteger,
-  parseAsArrayOf,
-  parseAsIsoDateTime,
-  parseAsString,
-  parseAsStringLiteral
+  createSerializer
 } from 'nuqs'
 
-const searchParams = {
-  // texte: parseAsString.withDefault(''),
-  statut: parseAsArrayOf(parseAsInteger),
-  // programme: parseAsArrayOf(parseAsInteger),
-  // region: parseAsArrayOf(parseAsInteger),
-}
+import { searchParams, urlKeys } from './events-params'
 
-const serialize = createSerializer(searchParams)
+// const searchParams = {
+//   texte: parseAsString,
+//   statut: parseAsArrayOf(parseAsInteger),
+//   programme: parseAsArrayOf(parseAsInteger),
+//   region: parseAsArrayOf(parseAsInteger)
+// }
+
+const serialize = createSerializer(searchParams, { urlKeys })
 const baseUrl = '/api/data/events'
 
 const useEvents = (params) => {
-  console.debug('params', serialize(params))
+  // console.debug('params', serialize(params))
   const result = useSWR({ url: `${baseUrl}${serialize(params)}`, params }, ({ url }) => fetcher(url))
   const { data, error, isLoading } = result
   const payload = data ? data.data : []

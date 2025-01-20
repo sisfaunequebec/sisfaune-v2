@@ -13,7 +13,7 @@ const regions = regionsRaw.map((r, i) => {
 })
 
 const Region = () => {
-  const [value, setValue] = useQueryState('region', parseAsArrayOf(parseAsInteger).withDefault([]))
+  const [value, setValue] = useQueryState('r', parseAsArrayOf(parseAsInteger).withDefault([]))
   return (
     <Checkboxes name={'region'} choices={regions} value={value} onChange={setValue} allChoicesLabel={'Toutes les régions'} />
   )

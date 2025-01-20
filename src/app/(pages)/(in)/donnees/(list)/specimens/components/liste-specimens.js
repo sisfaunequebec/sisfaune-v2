@@ -1,9 +1,7 @@
 'use client'
-import { useCallback } from 'react'
-
 import NextLink from 'next/link'
 
-import { Flex, Stack, HStack, VStack, Text, IconButton, LinkOverlay } from '@chakra-ui/react'
+import { Flex, Stack, VStack, Text, IconButton, LinkOverlay } from '@chakra-ui/react'
 import { RxArrowRight } from 'react-icons/rx'
 
 import { LinkListWrapper } from '@/app/(pages)/(in)/components/list'
@@ -12,9 +10,9 @@ const ItemSpecimen = (props) => {
   const { id, idEvenement } = props
   const href = `/donnees/evenements/${idEvenement}`
 
-  const handleDelete = useCallback(() => {
-    window.alert(`Effacer specimen id = ${id}`)
-  }, [id])
+  // const handleDelete = useCallback(() => {
+  //   window.alert(`Effacer specimen id = ${id}`)
+  // }, [id])
 
   return (
     <LinkListWrapper>
@@ -22,7 +20,7 @@ const ItemSpecimen = (props) => {
         <VStack alignItems={'flex-start'} gap={0.4} flex={1}>
           <LinkOverlay asChild>
             <NextLink href={href} color={'green.600'} _dark={{ color: 'green.200' }}>
-              <Text fontWeight={500}color='green.600'>Spécimen no {id}</Text>
+              <Text fontWeight={500} color='green.600'>Spécimen no {id}</Text>
             </NextLink>
           </LinkOverlay>
           <Flex>Mouffette rayée (<Text fontStyle={'italic'}>Mephitis mephitis</Text>)</Flex>
@@ -30,7 +28,7 @@ const ItemSpecimen = (props) => {
         </VStack>
         <VStack alignItems={['flex-start', null, null, 'flex-end']} gap={0.4} flex={1}>
           <Flex display={['none', null, null, 'inherit']}>Soumis par : Administrateur du système</Flex>
-          <Flex color={'blue.600'} >Date du signalement : 2025-01-01</Flex>
+          <Flex color={'blue.600'}>Date du signalement : 2025-01-01</Flex>
           <Flex display={['none', null, null, 'inherit']}>Municipalité : Montréal</Flex>
         </VStack>
       </Stack>

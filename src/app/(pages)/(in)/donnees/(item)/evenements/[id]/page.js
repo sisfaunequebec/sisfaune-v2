@@ -13,8 +13,6 @@ import {
   AccordionRoot
 } from '@/components/ui/accordion'
 
-// import wait from '@/utilities/wait'
-
 import { Field } from '@/components/ui/field'
 
 import useDialog from '@/utilitaires/use-dialog'
@@ -25,7 +23,6 @@ import Toolbar from '../../../(list)/evenements/components/toolbar'
 
 import DeleteEventButton from './components/delete-event-button'
 
-import DetruireEvenementDialog from './components/detruire-evenement-dialog'
 import AjouterSpecimenDialog from './components/ajouter-specimen-dialog'
 import AjouterAnalyseDialog from './components/ajouter-analyse-dialog'
 import DetruireAnalyseDialog from './components/detruire-analyse-dialog'

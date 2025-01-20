@@ -1,4 +1,4 @@
-import { useState, useCallback, useMemo, useEffect } from 'react'
+import { useState, useCallback, useMemo } from 'react'
 
 import { CheckboxGroup } from '@chakra-ui/react'
 import { Checkbox } from '@/components/ui/checkbox'

@@ -1,7 +1,7 @@
 'use client'
-import { useState, useCallback } from 'react'
+import { useCallback } from 'react'
 
-import { useQueryState, parseAsInteger, parseAsArrayOf } from 'nuqs'
+import { useQueryState } from 'nuqs'
 
 import { Input, IconButton } from '@chakra-ui/react'
 import { InputGroup } from '@/components/ui/input-group'
@@ -9,7 +9,7 @@ import { InputGroup } from '@/components/ui/input-group'
 import { RxMagnifyingGlass, RxCross2 } from 'react-icons/rx'
 
 const Texte = ({ onChange = () => null }) => {
-  const [internalValue, setInternalValue] = useQueryState('texte', {
+  const [internalValue, setInternalValue] = useQueryState('t', {
     defaultValue: ''
   })
   // const [internalValue, setInternalValue] = useState('')

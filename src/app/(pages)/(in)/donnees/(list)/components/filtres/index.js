@@ -1,7 +1,8 @@
 'use client'
-import { Flex, Fieldset, Separator as ChakraSeparator, Text, IconButton, HStack } from '@chakra-ui/react'
+import { Flex, Fieldset, Separator as ChakraSeparator, Text, Icon, HStack } from '@chakra-ui/react'
 
-import { ToggleTip } from '@/components/ui/toggle-tip'
+import { Tooltip } from '@/components/ui/tooltip'
+// import { ToggleTip } from '@/components/ui/toggle-tip'
 import { LuInfo } from 'react-icons/lu'
 
 import Ordre from './ordre'
@@ -31,7 +32,7 @@ const FiltresForm = () => {
 
       <Separator />
 
-      <SectionTitle label={<HStack><Text>Rechercher dans le texte :</Text><ToggleTip size={'xl'} content={'Recherche par numéro d\'événement, numéro MAPAQ, numéro SILAB, numéro de pathologie, nom du soumissionnaire et/ou municipalité'}><LuInfo /></ToggleTip></HStack>} />
+      <SectionTitle label={<HStack><Text>Rechercher dans le texte :</Text><Tooltip size={'xl'} content={'Recherche par numéro d\'événement, numéro MAPAQ, numéro SILAB, numéro de pathologie, nom du soumissionnaire et/ou municipalité'}><Icon fontSize={'xl'} cursor={'pointer'}><LuInfo /></Icon></Tooltip></HStack>} />
       <Section><Texte /></Section>
 
       <Separator />

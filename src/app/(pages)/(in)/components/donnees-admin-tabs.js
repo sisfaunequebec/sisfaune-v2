@@ -6,6 +6,7 @@ import { Tabs, Link } from '@chakra-ui/react'
 
 const DonneesAdministration = () => {
   const pathname = usePathname()
+
   const splitedPathname = pathname.split('/')
   const lastPathSegment = splitedPathname.at(-1)
 
