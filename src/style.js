@@ -2,7 +2,7 @@
 
 import { defineConfig, defaultConfig, defineRecipe, defineSlotRecipe, defineTokens, createSystem } from '@chakra-ui/react'
 
-import { avatarAnatomy, menuAnatomy, tabsAnatomy, accordionAnatomy, checkboxAnatomy, dialogAnatomy } from '@chakra-ui/react/anatomy'
+import { avatarAnatomy, menuAnatomy, tabsAnatomy, accordionAnatomy, checkboxAnatomy, radioGroupAnatomy, dialogAnatomy } from '@chakra-ui/react/anatomy'
 
 const tokens = defineTokens({
   colors: {
@@ -87,6 +87,16 @@ const accordionRecipe = defineSlotRecipe({
   }
 })
 
+const radioGroupRecipe = defineSlotRecipe({
+  slots: radioGroupAnatomy.keys(),
+  base: {
+    item: {
+      cursor: 'pointer',
+      fontWeight: 'normal'
+    }
+  }
+})
+
 const checkboxRecipe = defineSlotRecipe({
   slots: checkboxAnatomy.keys(),
   base: {
@@ -96,6 +106,7 @@ const checkboxRecipe = defineSlotRecipe({
     }
   }
 })
+
 
 const dialogRecipe = defineSlotRecipe({
   slots: dialogAnatomy.keys(),
@@ -175,6 +186,7 @@ const config = defineConfig({
       menu: menuRecipe,
       tabs: tabsRecipe,
       accordion: accordionRecipe,
+      radioGroup: radioGroupRecipe,
       checkbox: checkboxRecipe,
       dialog: dialogRecipe
     }

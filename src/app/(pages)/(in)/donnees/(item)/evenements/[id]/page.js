@@ -51,17 +51,17 @@ const Content = ({ children }) => {
 
 const GeneralInformation = () => {
   return (
-    <Fieldset.Root as='VStack' alignItems='flex-start'>
+    <Fieldset.Root as='VStack' alignItems='flex-start' size={['lg', null, 'md']}>
       <Fieldset.Legend>Identification</Fieldset.Legend>
-      <Fieldset.Content gap={2}>
+      <Fieldset.Content gap={0.5} mt={2}>
         <Field label={'Numéro d\'événement\u00A0:'}>
-          <Input flex={4} readOnly value='303326' />
+          <Input flex={4} readOnly value='303326' size={['lg', null, 'md']} />
         </Field>
         <Field label={'Type d\'événement\u00A0:'}>
-          <Input flex={4} readOnly value='Santé de la faune' />
+          <Input flex={4} readOnly value='Santé de la faune' size={['lg', null, 'md']} />
         </Field>
         <Field label={'Numéro d\'identification SILAB\u00A0:'}>
-          <Input flex={4} />
+          <Input flex={4} size={['lg', null, 'md']} />
         </Field>
       </Fieldset.Content>
       <Separator />
@@ -160,7 +160,6 @@ const Evenement = () => {
   return (
     <>
       {dialogs}
-
       <Toolbar />
       <Flex flex={1} top={0} as={Container} direction={['column', null, 'row']} maxWidth={['6xl']} px={[0, 0, 8]} py={[0, 0, 4]} fontSize={['md', null, 'sm']}>
 

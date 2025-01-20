@@ -42,9 +42,9 @@ const Ordre = () => {
   return (
     <RadioGroup defaultValue={'date_creation'} size={'sm'} colorPalette={'blue'} variant={'subtle'} name={'ordre'} value={tri} onValueChange={handleChange}>
       <VStack alignItems={'flex-start'}>
-        <Radio value={'date_creation'} fontWeight={400} lineHeight={1.2}>Date de création du dossier</Radio>
-        <Radio value={'date_signalement'} fontWeight={400} lineHeight={1.2}>Date du signalement</Radio>
-        <Radio value={'id_evenement'} fontWeight={400} lineHeight={1.2}>Numéro d&apos;événement (ou de spécimen)</Radio>
+        <Radio value={'date_creation'} lineHeight={1.2}>Date de création du dossier</Radio>
+        <Radio value={'date_signalement'} lineHeight={1.2}>Date du signalement</Radio>
+        <Radio value={'id_evenement'} lineHeight={1.2}>Numéro d&apos;événement (ou de spécimen)</Radio>
         <Checkbox size={'sm'} colorPalette={'blue'} variant={'subtle'} mt={4} checked={directionIsReversed} onCheckedChange={handleCheckedChange}>Inverser l&apos;ordre</Checkbox>
       </VStack>
     </RadioGroup>
