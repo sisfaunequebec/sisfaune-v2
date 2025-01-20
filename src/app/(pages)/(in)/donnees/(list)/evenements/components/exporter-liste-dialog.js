@@ -1,3 +1,5 @@
+import { useQueryStates } from 'nuqs'
+
 import { useBreakpointValue } from '@chakra-ui/react'
 
 import { Button } from '@/components/ui/button'
@@ -12,9 +14,13 @@ import {
   DialogTitle
 } from '@/components/ui/dialog'
 
+import { searchParams, urlKeys } from '@/logic/data/events/events-params'
+
 const ExporterListeDialog = ({ close, eventId }) => {
   const size = useBreakpointValue({ base: 'cover', md: 'md' })
   const motion = useBreakpointValue({ base: 'scale', md: 'slide-in-bottom' })
+
+  const [params] = useQueryStates(searchParams, { urlKeys })
 
   return (
     <DialogRoot open size={size} placement='center' motionPreset={motion} onOpenChange={e => close(false)} closeOnInteractOutside>
@@ -23,6 +29,7 @@ const ExporterListeDialog = ({ close, eventId }) => {
           <DialogTitle>Exportation de la liste</DialogTitle>
         </DialogHeader>
         <DialogBody>
+          { JSON.stringify(params) }
           {/* <p><strong>Voulez-vous réellement effacer l&apos;événement no {eventId}&nbsp;?</strong></p>
           <p>Cette action est irréversible...</p> */}
         </DialogBody>

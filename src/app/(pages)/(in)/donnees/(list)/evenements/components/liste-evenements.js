@@ -7,13 +7,23 @@ import { RxArrowRight } from 'react-icons/rx'
 
 import { useQueryStates } from 'nuqs'
 
-import useEvents from '@/logic/data/use-events'
-import { searchParams, urlKeys } from '@/logic/data/events-params'
+import useEvents from '@/logic/data/events/use-events'
+import { searchParams, urlKeys } from '@/logic/data/events/events-params'
 
 import { LinkListWrapper } from '@/app/(pages)/(in)/components/list'
 
-const ItemEvenement = ({ id }) => {
+import { PROGRAMS } from '@/logic/data/events/service'
+
+const programsById = PROGRAMS.reduce((acc, p) => {
+  const { value, label } = p
+  acc[value] = label
+  return acc
+}, {})
+
+const ItemEvenement = ({ id, program }) => {
   const href = `/donnees/evenements/${id}`
+
+  const programLabel = programsById[program]
 
   return (
     <LinkListWrapper>
@@ -25,7 +35,7 @@ const ItemEvenement = ({ id }) => {
               <Text>(MAPAQ 25000000161)</Text>
             </Flex>
           </LinkOverlay>
-          <Flex>Surveillance de la rage du raton laveur</Flex>
+          <Flex>{programLabel}</Flex>
           <Flex display={['none', null, null, 'inherit']}>Numéro SILAB :</Flex>
         </VStack>
         <VStack alignItems={['flex-start', null, null, 'flex-end']} gap={0.4} flex={1}>
@@ -38,24 +48,6 @@ const ItemEvenement = ({ id }) => {
     </LinkListWrapper>
   )
 }
-
-// const useEvents = (params) => {
-//   const [isBusy, setBusy] = useState(false)
-//   const [events, setEvents] = useState([])
-
-//   useEffect(() => {
-//     const fetch = async(params) => {
-//       console.debug('fetching => ', params)
-//       setBusy(true)
-//       await wait(Math.random() * 500)
-//       setBusy(false)
-//       setEvents(evenements)
-//     }
-//     fetch(params)
-//   }, [params])
-
-//   return [isBusy, events]
-// }
 
 const ListeEvenements = () => {
   const [params] = useQueryStates(searchParams, { urlKeys })

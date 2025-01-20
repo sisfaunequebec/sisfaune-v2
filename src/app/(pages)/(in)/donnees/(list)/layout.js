@@ -2,7 +2,7 @@
 // import { auth, signOut } from '@/auth'
 'use client'
 
-import { NuqsAdapter } from 'nuqs/adapters/next/app'
+// import { NuqsAdapter } from 'nuqs/adapters/next/app'
 
 // import { Flex, Container } from '@chakra-ui/react'
 
@@ -13,7 +13,7 @@ const Layout = ({ children }) => {
   return (
     <>
       <Toolbar />
-      <NuqsAdapter>{children}</NuqsAdapter>
+      {children}
     </>
   )
 }

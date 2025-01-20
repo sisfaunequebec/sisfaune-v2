@@ -2,16 +2,13 @@ import { useQueryState, parseAsInteger, parseAsArrayOf } from 'nuqs'
 
 import Checkboxes from '../checkboxes'
 
-const statuts = [
-  { value: 2, label: 'En cours' },
-  { value: 3, label: 'Terminé' }
-]
+import { STATUSES } from '@/logic/data/events/service'
 
 const Statut = () => {
   const [value, setValue] = useQueryState('s', parseAsArrayOf(parseAsInteger).withDefault([]))
 
   return (
-    <Checkboxes name={'statut'} choices={statuts} value={value} onChange={setValue} allChoicesLabel={'Tous les statuts'} />
+    <Checkboxes name={'statut'} choices={STATUSES} value={value} onChange={setValue} allChoicesLabel={'Tous les statuts'} />
   )
 }
 

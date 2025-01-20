@@ -4,6 +4,8 @@ import Provider from '@/components/ui/provider'
 import system from '@/style'
 // import { ColorModeProvider } from '@/components/ui/color-mode'
 
+import { NuqsAdapter } from 'nuqs/adapters/next/app'
+
 export const metadata = {
   title: 'SIS Faune'
 }
@@ -13,8 +15,9 @@ const RootLayout = async ({ children }) => {
     <html lang='fr' suppressHydrationWarning>
       <body>
         <Provider system={system}>
+          <NuqsAdapter>{children}</NuqsAdapter>
           {/* <ColorModeProvider> */}
-          {children}
+          {/* {children} */}
           {/* </ColorModeProvider> */}
         </Provider>
       </body>
