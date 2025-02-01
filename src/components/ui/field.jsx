@@ -5,7 +5,7 @@ export const Field = forwardRef(function Field(props, ref) {
   const { label, children, helperText, errorText, optionalText, variant = 'horizontal', ...rest } = props
 
   const flexDirection = variant === 'horizontal' ? 'row' : 'column'
-  const alignItems = variant === 'horizontal' ? 'flex-start' : 'flex-start'
+  const alignItems = variant === 'horizontal' ? 'center' : 'flex-start'
   const labelFlexValue =  variant === 'horizontal' ? [1, null, 1] : 1
   const childrenFlexValue =  variant === 'horizontal' ? 2 : 1
 

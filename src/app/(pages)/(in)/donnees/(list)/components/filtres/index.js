@@ -1,4 +1,6 @@
-'use client'
+// 'use client'
+import orm from '@/logic/data/database'
+
 import { Flex, Fieldset, Separator as ChakraSeparator, Text, Icon, HStack } from '@chakra-ui/react'
 
 import { Tooltip } from '@/components/ui/tooltip'
@@ -10,24 +12,34 @@ import Texte from './texte'
 import Statut from './statut'
 import Programme from './programme'
 import Region from './region'
+import orderBy from 'lodash.orderby'
 
 const SectionTitle = ({ label }) => {
   return <Fieldset.Legend color='blue.800'>{label}</Fieldset.Legend>
 }
 
 const Section = ({ children }) => {
-  return <Fieldset.Content gap={2}>{children}</Fieldset.Content>
+  return <Fieldset.Content gap={2} _last={{pb: 4}}>{children}</Fieldset.Content>
 }
 
 const Separator = () => {
   return <ChakraSeparator borderColor='blue.600' />
 }
 
-const FiltresForm = () => {
-  return (
-    <Fieldset.Root alignItems='flex-start' flex>
+const FiltresForm = async () => {
+  const programmes = await orm.LutEventProgram.findMany({ where: { isActive: true }})
+  const statuts = await orm.LutEventStatus.findMany()
+  const regions = await orm.LutLocality.groupBy({
+    by: ['regionId', 'regionName'],
+    orderBy: {
+      regionName: 'asc'
+    }
+  })
 
-      <SectionTitle label='Ordonner la liste par :' />
+  return (
+    <Fieldset.Root flex alignItems={'flex-start'} >
+
+      <SectionTitle label={'Ordonner la liste par :'} />
       <Section><Ordre /></Section>
 
       <Separator />
@@ -37,28 +49,28 @@ const FiltresForm = () => {
 
       <Separator />
 
-      <SectionTitle label='Raffiner par statut :' />
-      <Section><Statut /></Section>
+      <SectionTitle label={'Raffiner par statut :'} />
+      <Section><Statut statuts={statuts} /></Section>
 
       <Separator />
 
-      <SectionTitle label='Raffiner par programme :' />
-      <Section><Programme /></Section>
+      <SectionTitle label={'Raffiner par programme :'} />
+      <Section><Programme programmes={programmes} /></Section>
 
       <Separator />
 
-      <SectionTitle label='Raffiner par région administrative :' />
-      <Section><Region /></Section>
+      <SectionTitle label={'Raffiner par région administrative :'} />
+      <Section><Region regions={regions} /></Section>
 
       <Separator />
 
-      <SectionTitle label='Raffiner par groupe de spécimens :' />
+      <SectionTitle label={'Raffiner par groupe de spécimens :'} />
       <Section />
 
       <Separator />
 
-      <SectionTitle label='Raffiner par date :' />
-      <Section />
+      <SectionTitle label={'Raffiner par date :'} />
+      {/* <Section><Statut statuts={statuts} /></Section> */}
 
     </Fieldset.Root>
   )
@@ -66,10 +78,10 @@ const FiltresForm = () => {
 
 const FiltresContainer = ({ children }) => {
   return (
-    <Flex flex={2} p={4} px={6} alignItems='stretch' bg='blue.100' _dark={{ bg: 'blue.900' }} borderColor='blue.300' borderTopWidth={1} hideBelow='md'>
-      <Flex top={145} flex={1} alignSelf='flex-start' direction='column' alignItems='stretch' zIndex={1000} w='full'>
+    <Flex position={'sticky'} flex={2} h={'calc(100vh - 162px)'} overflowY={'auto'} top={154} p={3} px={6} alignItems={'stretch'} bg={'blue.100'} _dark={{ bg: 'blue.900' }} borderColor={'blue.300'} borderTopWidth={1} borderBottomWidth={1} hideBelow={'md'}>
+      {/* <Flex flex={1} alignSelf='flex-start' direction='column' alignItems='stretch' zIndex={1000} w='full'> */}
         {children}
-      </Flex>
+      {/* </Flex> */}
     </Flex>
   )
 }

@@ -1,3 +1,4 @@
+'use client'
 import { useState, useCallback, useMemo } from 'react'
 
 import { CheckboxGroup } from '@chakra-ui/react'
@@ -39,7 +40,7 @@ const Checkboxes = ({ allChoicesLabel = 'Tous', choices = [], name, value, onCha
     <>
       <Checkbox size={'sm'} colorPalette={'blue'} variant={'subtle'} checked={allChecked} mb={4} onCheckedChange={handleAllCheck}>{allChoicesLabel}</Checkbox>
       <CheckboxGroup value={internalValue} name={name} onValueChange={handleChange}>
-        {Object.values(choicesMap).map(c => {
+        {choices.map(c => {
           const { value, label } = c
           return (
             <Checkbox size={'sm'} colorPalette={'blue'} variant={'subtle'} value={value.toString()} key={value.toString()}>{label}</Checkbox>

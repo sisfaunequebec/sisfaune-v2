@@ -1,3 +1,4 @@
+'use client'
 import { useQueryStates, parseAsString } from 'nuqs'
 
 import { VStack } from '@chakra-ui/react'
@@ -44,7 +45,7 @@ const Ordre = () => {
       <VStack alignItems={'flex-start'}>
         <Radio value={'date_creation'} lineHeight={1.2}>Date de création du dossier</Radio>
         <Radio value={'date_signalement'} lineHeight={1.2}>Date du signalement</Radio>
-        <Radio value={'id_evenement'} lineHeight={1.2}>Numéro d&apos;événement (ou de spécimen)</Radio>
+        <Radio value={'id'} lineHeight={1.2}>Numéro d&apos;événement (ou de spécimen)</Radio>
         <Checkbox size={'sm'} colorPalette={'blue'} variant={'subtle'} mt={4} checked={directionIsReversed} onCheckedChange={handleCheckedChange}>Inverser l&apos;ordre</Checkbox>
       </VStack>
     </RadioGroup>

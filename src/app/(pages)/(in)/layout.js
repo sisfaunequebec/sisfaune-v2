@@ -17,7 +17,7 @@ const Layout = async ({ children }) => {
   }
 
   return (
-    <Flex as='main' minH='100vh' flex={1} direction='column' justifyContent='flex-start' px={0} alignItems='flex-start'>
+    <Flex as={'main'} minH={'100vh'} flex={1} direction={'column'} justifyContent={'flex-start'} px={0} alignItems={'flex-start'}>
       <Header session={session} />
       {children}
     </Flex>

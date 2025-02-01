@@ -4,7 +4,7 @@ import {
   createLoader
 } from 'nuqs/server'
 
-import { getEvents } from '@/logic/data/events/service'
+import { getSpecimens } from '@/logic/data/specimens/service'
 
 const loader = createLoader(searchParams, { urlKeys })
 
@@ -12,9 +12,9 @@ const GET  = async (request) => {
   const { nextUrl: { searchParams } } = request
 
   const params = loader(searchParams)
-  const events = await getEvents(params)
+  const specimens = await getSpecimens(params)
   
-  return Response.json(events)
+  return Response.json(specimens)
 }
 
 export {

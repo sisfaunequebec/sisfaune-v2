@@ -16,8 +16,8 @@ import ResponsiveButton from '@/components/responsive-button'
 const ReportButton = ({ id }) => {
   return (
     <>
-      <Button as={Link} href={`/donnees/evenements/${id}/rapport`} target='_blank' size={['md', null, 'sm']} rounded='full' variant='solid' colorPalette='blue' display={['none', null, 'inherit']}><RxFileText />Rapport</Button>
-      <IconButton as={Link} href={`/donnees/evenements/${id}/rapport`} target='_blank' size={['md', null, 'sm']} rounded='full' variant='solid' colorPalette='blue' aria-label='Rapport' display={['inherit', null, 'none']}><RxFileText /></IconButton>
+      <Button as={Link} href={`/donnees/evenements/${id}/rapport`} target={'_blank'} size={['md', null, 'sm']} rounded={'full'} variant={'solid'} colorPalette={'blue'} display={['none', null, 'inherit']}><RxFileText />Rapport</Button>
+      <IconButton as={Link} href={`/donnees/evenements/${id}/rapport`} target={'_blank'} size={['md', null, 'sm']} rounded={'full'} variant={'solid'} colorPalette={'blue'} aria-label={'Rapport'} display={['inherit', null, 'none']}><RxFileText /></IconButton>
     </>
   )
 }
@@ -32,8 +32,8 @@ const BackButton = () => {
   return (
     <ResponsiveButton label={'Retour à la liste'} variant={'subtle'} colorPalette={'blue'} icon={<RxArrowLeft />} onClick={handleGoBack} />
     // <>
-    //   <Button size={['md', null, 'sm']} rounded='full' variant='subtle' colorPalette='blue' display={['none', null, 'inherit']} onClick={handleClick}><RxArrowLeft />Retour à la liste</Button>
-    //   <IconButton size={['md', null, 'sm']} rounded='full' variant='subtle' colorPalette='blue' aria-label='Retour' display={['inherit', null, 'none']} onClick={handleClick}><RxArrowLeft /></IconButton>
+    //   <Button size={['md', null, 'sm']} rounded={'full' variant={'subtle' colorPalette={'blue' display={['none', null, 'inherit']} onClick={handleClick}><RxArrowLeft />Retour à la liste</Button>
+    //   <IconButton size={['md', null, 'sm']} rounded={'full' variant={'subtle' colorPalette={'blue' aria-label={'Retour' display={['inherit', null, 'none']} onClick={handleClick}><RxArrowLeft /></IconButton>
     // </>
   )
 }
@@ -48,20 +48,20 @@ const Toolbar = () => {
   return (
     <Flex
       flex={0}
-      position='sticky'
-      top='70px'
-      alignSelf='flex-start'
-      width='full'
+      position={'sticky'}
+      top={'70px'}
+      alignSelf={'flex-start'}
+      width={'full'}
       zIndex={1001}
-      shadow={[null, null, toolbarShadowSize]}
+      // shadow={[null, null, toolbarShadowSize]}
     >
-      <Flex flex={1} bg='white' py={1}>
-        <Container maxWidth='6xl' py={2}>
-          <HStack justifyContent='space-between' gap={2}>
-            <HStack justifyContent='space-between' gap={2}>
+      <Flex flex={1} bg={'white'} py={1}>
+        <Container maxWidth={'6xl'} py={2}>
+          <HStack justifyContent={'space-between'} gap={2}>
+            <HStack justifyContent={'space-between'} gap={2}>
               <BackButton />
             </HStack>
-            <HStack justifyContent='space-between' gap={1}>
+            <HStack justifyContent={'space-between'} gap={1}>
               <ReportButton id={idEvenement} />
             </HStack>
           </HStack>

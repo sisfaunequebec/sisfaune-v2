@@ -9,10 +9,10 @@ import {
   createSerializer
 } from 'nuqs'
 
-import { searchParams, urlKeys } from './events-params'
+import { searchParams, urlKeys } from './specimens-params'
 
 const serialize = createSerializer(searchParams, { urlKeys })
-const baseUrl = '/api/data/events'
+const baseUrl = '/api/data/specimens'
 
 const useEvents = (params, take = 20) => {
   const result = useSWRInfinite(

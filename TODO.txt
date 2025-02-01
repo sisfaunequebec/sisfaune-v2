@@ -1,0 +1,12 @@
+STRUCTURE
+
+Merge event et locations ? 1 to 1 ?
+
+DATA 
+
+Vérifier dates (offset 1 jour)
+
+UI 
+
+Filtres par espèces et dates
+

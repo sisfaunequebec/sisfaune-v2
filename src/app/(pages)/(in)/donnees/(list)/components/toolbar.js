@@ -60,10 +60,10 @@ const Toolbar = () => {
   return (
     <Flex
       // flex={1}
-      position='sticky'
-      top='70px'
-      alignSelf='flex-start'
-      width='full'
+      position={'sticky'}
+      top={'70px'}
+      alignSelf={'flex-start'}
+      width={'full'}
       zIndex={1001}
       shadow={[null, null, toolbarShadowSize]}
     >
