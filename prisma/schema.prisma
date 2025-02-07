@@ -669,8 +669,8 @@ model Event {
   createdBy User @relation("EventCreator", fields: [createdById], references: [id], onDelete: Restrict, onUpdate: Restrict)
 
   // Relations
-  specimen Specimen[]
-  labEvent LabEvent[]
+  specimens Specimen[]
+  labEvents LabEvent[]
 
   location Location @relation(fields: [id], references: [id])
 }

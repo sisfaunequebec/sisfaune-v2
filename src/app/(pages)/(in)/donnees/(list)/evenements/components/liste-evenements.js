@@ -42,7 +42,7 @@ const ItemEvenement = ({ id, silabId, mapaqId, typeName, programName, localityNa
           <Flex display={['none', null, null, 'inherit']}>Municipalité : {localityName}</Flex>
         </VStack>
       </Stack>
-      <IconButton as={NextLink} href={href} scroll colorPalette={'green'} variant={'surface'} rounded={'full'} size={['xs']}><RxArrowRight /></IconButton>
+      <IconButton as={NextLink} href={href} scroll colorPalette={'green'} variant={'ghost'} rounded={'full'} size={['xs']}><RxArrowRight /></IconButton>
     </LinkListWrapper>
   )
 }
@@ -89,7 +89,7 @@ const ListeEvenements = () => {
   // console.debug(isReachingEnd, isLoadingMore, triggerIsVisible)
 
   return (
-    <VStack position={'relative'} alignItems={'stretch'} flex={1} gap={0} justifyContent={'stretch'} opacity={isLoadingMore && 1} mb={2}>
+    <VStack position={'relative'} alignItems={'stretch'} flex={1} gap={0} justifyContent={'stretch'} opacity={isLoadingMore && 0.5} mb={2}>
       { events.map(event => {
         const { id } = event
         return (

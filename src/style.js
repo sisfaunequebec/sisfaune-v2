@@ -79,7 +79,8 @@ const accordionRecipe = defineSlotRecipe({
   slots: accordionAnatomy.keys(),
   base: {
     itemTrigger: {
-      gap: 1
+      gap: 1,
+      cursor: 'pointer'
     },
     itemIndicator: {
       color: 'green.500'

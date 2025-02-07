@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev --turbopack -p 4501",
     "db:dev:push": "dotenv -e .env.development.local -- prisma db push",
+    "db:dev:generate": "dotenv -e .env.development.local -- prisma generate",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",

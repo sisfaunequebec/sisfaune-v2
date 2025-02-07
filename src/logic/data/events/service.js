@@ -87,6 +87,16 @@ const getEvents = async (params, context) => {
   return payload
 }
 
+const getEvent = async (id, context) => {
+  const event = await orm.Event.find({
+    where: {
+      id
+    }
+  })
+  return event
+}
+
 export {
-  getEvents
+  getEvents,
+  getEvent
 }

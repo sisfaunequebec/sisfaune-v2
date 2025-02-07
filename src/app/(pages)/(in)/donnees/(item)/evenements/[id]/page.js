@@ -3,6 +3,8 @@ import { useState, useCallback, useEffect } from 'react'
 
 import { useParams } from 'next/navigation'
 
+import getEvent from './components/get-event'
+
 import { Box, Flex, Container, VStack, AbsoluteCenter, IconButton, Text, HStack, Separator, Fieldset, Input } from '@chakra-ui/react'
 import { RxPencil1, RxPlus, RxTrash } from 'react-icons/rx'
 
@@ -13,7 +15,7 @@ import {
   AccordionRoot
 } from '@/components/ui/accordion'
 
-import { Field } from '@/components/ui/field'
+// import { Field } from '@/components/ui/field'
 
 import useDialog from '@/utilitaires/use-dialog'
 
@@ -27,6 +29,8 @@ import AjouterSpecimenDialog from './components/ajouter-specimen-dialog'
 import AjouterAnalyseDialog from './components/ajouter-analyse-dialog'
 import DetruireAnalyseDialog from './components/detruire-analyse-dialog'
 import DetruireSpecimenDialog from './components/detuire-specimen-dialog'
+
+import InfosGeneralesSection from './containers/info-generales'
 
 const SectionHeading = ({ label, isSticky = false, children }) => {
   return (
@@ -49,31 +53,6 @@ const Content = ({ children }) => {
   )
 }
 
-const GeneralInformation = () => {
-  return (
-    <Fieldset.Root as='VStack' alignItems='flex-start' size={['lg', null, 'md']}>
-      <Fieldset.Legend>Identification</Fieldset.Legend>
-      <Fieldset.Content gap={0.5} mt={2}>
-        <Field label={'Numéro d\'événement\u00A0:'}>
-          <Input flex={4} readOnly value='303326' size={['lg', null, 'md']} />
-        </Field>
-        <Field label={'Type d\'événement\u00A0:'}>
-          <Input flex={4} readOnly value='Santé de la faune' size={['lg', null, 'md']} />
-        </Field>
-        <Field label={'Numéro d\'identification SILAB\u00A0:'}>
-          <Input flex={4} size={['lg', null, 'md']} />
-        </Field>
-      </Fieldset.Content>
-      <Separator />
-      <Fieldset.Legend>Personnes impliquées</Fieldset.Legend>
-      <Separator />
-      <Fieldset.Legend>Description</Fieldset.Legend>
-      <Separator />
-      <Fieldset.Legend>Expédition des spécimens</Fieldset.Legend>
-    </Fieldset.Root>
-  )
-}
-
 const GeneralSpecimenInformation = () => {
   return (
     <VStack alignItems='flex-start'>
@@ -88,9 +67,11 @@ const GeneralSpecimenInformation = () => {
 
 const Evenement = () => {
   const params = useParams()
-  const { id: eventId } = params
+  const { id } = params
+  
+  const eventId = parseInt(id, 10)
 
-  const [isReady, setReady] = useState(false)
+  const [event, setEvent] = useState(null)
 
   const dialogs = []
 
@@ -146,20 +127,25 @@ const Evenement = () => {
   }, [deleteSpecimen])
 
   useEffect(() => {
-    setTimeout(() => {
-      setReady(true)
-    }, Math.random() * 1000)
-  }, [setReady])
+    const loadEvent = async (eventId) => {
+      const event = await getEvent(eventId)
+      setEvent(event)
+    }
+    loadEvent(eventId)
+  }, [eventId])
 
-  if (!isReady) {
+  if (!event) {
     return (
       <PageSpinner />
     )
   }
 
+  console.debug(event)
+
   return (
     <>
       {dialogs}
+
       <Toolbar />
       <Flex flex={1} top={0} as={Container} direction={['column', null, 'row']} maxWidth={['6xl']} px={[0, 0, 8]} py={[0, 0, 4]} fontSize={['md', null, 'sm']}>
 
@@ -173,21 +159,10 @@ const Evenement = () => {
 
             <SectionHeading label={`Événement no ${eventId}`} isSticky>
               <DeleteEventButton eventId={eventId} />
-              {/* <IconButton colorPalette='red' variant='surface' rounded='full' size={['xs']} onClick={handleDeleteEvent}><RxTrash /></IconButton> */}
             </SectionHeading>
 
             <AccordionRoot multiple size={['md', null, 'sm']} defaultValue={['general']}>
-              <AccordionItem value='general'>
-                <Box position='relative'>
-                  <AbsoluteCenter as={HStack} axis='vertical' insetEnd={5}>
-                    <IconButton colorPalette='green' variant='subtle' rounded='full' size={['xs']}><RxPencil1 /></IconButton>
-                  </AbsoluteCenter>
-                  <Trigger label='Informations générales' />
-                </Box>
-                <Content>
-                  <GeneralInformation />
-                </Content>
-              </AccordionItem>
+              <InfosGeneralesSection event={event} />
               <AccordionItem value='geo'>
                 <Box position='relative'>
                   <AbsoluteCenter as={HStack} axis='vertical' insetEnd={5}>

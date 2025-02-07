@@ -87,7 +87,7 @@ const ListeSpecimens = () => {
   // console.debug(isReachingEnd, isLoadingMore, triggerIsVisible)
 
   return (
-    <VStack position={'relative'} alignItems={'stretch'} flex={1} gap={0} justifyContent={'stretch'} opacity={isLoadingMore && 1} mb={2}>
+    <VStack position={'relative'} alignItems={'stretch'} flex={1} gap={0} justifyContent={'stretch'} opacity={isLoadingMore && 0.5} mb={2}>
       {specimens.map(specimen => {
         const { id } = specimen
         return (
