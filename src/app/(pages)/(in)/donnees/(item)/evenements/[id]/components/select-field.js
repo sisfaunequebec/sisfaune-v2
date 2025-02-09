@@ -25,6 +25,7 @@ const Select = ({ items: rawItems, value, onChange }) => {
       collection={collection}
       value={[value.toString()]}
       onValueChange={(e) => console.debug(e)}
+      // size={['lg', null, 'md']}
     >
       <SelectTrigger>
         <SelectValueText />
@@ -46,7 +47,7 @@ const SelectField = ({ label, value, items, isEditing = false }) => {
 
   return (
     <Field label={label}>
-      { isEditing ? <Select items={items} value={value} /> : <Input value={valueLabel} readOnly flex={4} size={['lg', null, 'md']} /> }
+      { isEditing ? <Select items={items} value={value} /> : <Input value={valueLabel} readOnly flex={4} size={['md', null, 'md']} /> }
     </Field>
   )
 }

@@ -1,4 +1,3 @@
-import { useCallback } from 'react'
 import { useToggle } from '@uidotdev/usehooks'
 
 import { Box, AbsoluteCenter, IconButton, HStack, Separator, Fieldset, Button } from '@chakra-ui/react'
@@ -19,22 +18,15 @@ import ProgrammeSelect from '../components/programme-select'
 import ProvenanceSelect from '../components/provenance-select'
 import HabitatSelect from '../components/habitat-select'
 import MethodeExpeditionSelect from '../components/methode-expedition-select'
-import LaboratoireSelect from '../components/laboratoire-select'
+import { useCallback } from 'react'
 
-
-const InfosGeneralesForm = ({ event, isEditing, onToggleEditing }) => {
-  const {
-    id, typeId, silabId, cqsasIncidentNumber, pathologyNumber, reportedAt, mapaqId, programId, reportOriginId, statusId,
-    labShippingDate, labShippingTrackingNumber, labShippingMethodId, labId,
-    discoveredAt, collectedAt, temperature, habitatTypeId
-   } = event
-  
-  return (
+const LaboratoireSectionForm = ({ event, isEditing, onToggleEditing }) => {
+return (
     <Fieldset.Root as={'VStack'} alignItems={'stretch'} size={['lg', null, 'md']}>
 
-      <Fieldset.Legend>Identification</Fieldset.Legend>
+      {/* <Fieldset.Legend>Identification</Fieldset.Legend> */}
       <Fieldset.Content gap={0.5} mt={2}>
-        <TextField label={'Numéro d\'événement\u00A0:'} value={id} isEditing={isEditing} />
+        {/* <TextField label={'Numéro d\'événement\u00A0:'} value={id} isEditing={isEditing} />
         <TypeEvenementSelect label={'Type d\'événement\u00A0:'} value={typeId} isEditing={isEditing}  />
         <TextField label={'Numéro d\'identification SILAB\u00A0:'} value={silabId} isEditing={isEditing} />
         <TextField label={'Numéro d\'incident CQSAS\u00A0:'} value={cqsasIncidentNumber} isEditing={isEditing} />
@@ -43,51 +35,23 @@ const InfosGeneralesForm = ({ event, isEditing, onToggleEditing }) => {
         <TextField label={'Numéro centrale MAPAQ\u00A0:'} value={mapaqId} isEditing={isEditing} />
         <ProgrammeSelect label={'Programme\u00A0:'} value={programId} isEditing={isEditing}  />
         <ProvenanceSelect label={'Provenance du signalement\u00A0:'} value={reportOriginId} isEditing={isEditing}  />
-        <StatutSelect label={'Statut\u00A0:'} value={statusId} isEditing={isEditing}  />
-      </Fieldset.Content>
-      
-      <Separator />
-
-      <Fieldset.Legend>Personnes impliquées</Fieldset.Legend>
-      <Fieldset.Content gap={0.5} mt={2}>
-
+        <StatutSelect label={'Statut\u00A0:'} value={statusId} isEditing={isEditing}  /> */}
       </Fieldset.Content>
 
-      <Separator />
-
-      <Fieldset.Legend>Description</Fieldset.Legend>
-      <Fieldset.Content gap={0.5} mt={2}>
-        <DateField label={'Date de la découverte\u00A0:'} value={discoveredAt} isEditing={isEditing} />
-        <DateField label={'Date de la récolte\u00A0:'} value={collectedAt} isEditing={isEditing} />
-        <TextField label={'Contacts possibles\u00A0:'} value={null} isEditing={isEditing} />
-        <HabitatSelect label={'Type d\'habitat\u00A0:'} value={habitatTypeId} isEditing={isEditing} />
-        <TextField label={'Température\u00A0:'} value={temperature} isEditing={isEditing} />
-      </Fieldset.Content>
-
-      <Separator />
-
-      <Fieldset.Legend>Expédition des spécimens</Fieldset.Legend>
-      <Fieldset.Content gap={0.5} mt={2}>
-        <DateField label={'Spécimen(s) expédié(s) le\u00A0:'} value={labShippingDate} isEditing={isEditing} />
-        <MethodeExpeditionSelect label={'Méthode d\'expédition\u00A0:'} value={labShippingMethodId} isEditing={isEditing} />
-        <TextField label={'Numéro de connaissement\u00A0:'} value={labShippingTrackingNumber} isEditing={isEditing} />
-        <LaboratoireSelect label={'Laboratoire de destination\u00A0:'} value={labId} isEditing={isEditing} />
-      </Fieldset.Content>
-      
     </Fieldset.Root>
   )
 }
 
-const InfosGeneralesSection = ({ event, editingSection, onToggleEditing }) => {
+const LaboratoireSection = ({ event, editingSection, onToggleEditing }) => {
   // const [isEditing, toggleEditing] = useToggle(false)
-  const isEditing = editingSection === 'general'
+  const isEditing = editingSection === 'laboratoire'
 
   const handleToggleEditing = useCallback(() => {
-    onToggleEditing('general')
+    onToggleEditing('laboratoire')
   }, [onToggleEditing])
 
   return (
-    <AccordionItem value={'general'} position={isEditing ? 'sticky' : 'static'} zIndex={isEditing && 1000} disabled={isEditing}>
+    <AccordionItem value={'laboratoire'} position={isEditing ? 'sticky' : 'static'} zIndex={isEditing && 1000} disabled={isEditing}>
       <Box position={isEditing ? 'sticky' : 'relative'} top={isEditing && [135, null, 130]} zIndex={isEditing && 1000}>
         <AbsoluteCenter as={HStack} axis={'vertical'} insetEnd={5} zIndex={1000}>
             <HStack flex={1} justifyContent={'flex-end'}>
@@ -101,14 +65,15 @@ const InfosGeneralesSection = ({ event, editingSection, onToggleEditing }) => {
             }
             </HStack>
         </AbsoluteCenter>
-        <Trigger label={'Informations générales'}  />
+        <Trigger label={'Laboratoire'}  />
       </Box>
       <Content>
-        <InfosGeneralesForm event={event} isEditing={isEditing} onToggleEditing={handleToggleEditing} />
-      </Content>
+        <Box minH={500}>
+          <LaboratoireSectionForm />
+        </Box></Content>
     </AccordionItem>
   )
   
 }
 
-export default InfosGeneralesSection
+export default LaboratoireSection

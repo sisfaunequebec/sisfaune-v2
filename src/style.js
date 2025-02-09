@@ -80,7 +80,10 @@ const accordionRecipe = defineSlotRecipe({
   base: {
     itemTrigger: {
       gap: 1,
-      cursor: 'pointer'
+      cursor: 'pointer',
+      _disabled: {
+        layerStyle: null
+      }
     },
     itemIndicator: {
       color: 'green.500'

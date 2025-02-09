@@ -10,10 +10,10 @@ import { RxPencil1, RxPlus, RxTrash } from 'react-icons/rx'
 
 import {
   AccordionItem,
-  AccordionItemContent,
-  AccordionItemTrigger,
   AccordionRoot
 } from '@/components/ui/accordion'
+
+import { Trigger, Content } from './components/accordion-parts'
 
 // import { Field } from '@/components/ui/field'
 
@@ -31,28 +31,17 @@ import DetruireAnalyseDialog from './components/detruire-analyse-dialog'
 import DetruireSpecimenDialog from './components/detuire-specimen-dialog'
 
 import InfosGeneralesSection from './containers/info-generales'
+import LocalisationSection from './containers/localisation'
+import LaboratoireSection from './containers/laboratoire'
 
 const SectionHeading = ({ label, isSticky = false, children }) => {
   return (
-    <Flex as='section' bg='green.100' color='green.600' px={5} py={2} fontWeight={500} borderColor='green.300' borderTopWidth={1} alignItems='center' justifyContent='space-between' position={isSticky && 'sticky'} top={[134, null, 129]} justifySelf='flex-start' zIndex={1000}>
+    <Flex as='section' bg='green.100' color='green.600' px={5} py={3} fontWeight={500} borderColor='green.300' borderTopWidth={1} alignItems='center' justifyContent='space-between' position={isSticky && 'sticky'} top={[135, null, 130]} justifySelf='flex-start' zIndex={1000}>
       <Text as='h3' userSelect='none'>{label}</Text>
       {children}
     </Flex>
   )
 }
-
-const Trigger = ({ label, ...rest }) => {
-  return (
-    <AccordionItemTrigger indicatorPlacement='start' bg='green.50' color='green.600' p={4} borderRadius={0} borderColor='green.300' borderTopWidth={1} {...rest}>{label}</AccordionItemTrigger>
-  )
-}
-
-const Content = ({ children }) => {
-  return (
-    <AccordionItemContent bg='white' p={4} px={5} borderBottomWidth={0}>{children}</AccordionItemContent>
-  )
-}
-
 const GeneralSpecimenInformation = () => {
   return (
     <VStack alignItems='flex-start'>
@@ -72,6 +61,28 @@ const Evenement = () => {
   const eventId = parseInt(id, 10)
 
   const [event, setEvent] = useState(null)
+  const [activePanel, setActivePanel] = useState(['general'])
+
+  const [editingSection, setEditingSection] = useState(null)
+
+  const handleToggleEditingSection = useCallback(section => {
+    // console.debug(editingSection, section)
+    if (editingSection) {
+      if (editingSection === section) {
+        // setActivePanel([section])
+        setEditingSection(null)
+      } else {
+        return
+      }
+    } else {
+      setActivePanel([section])
+      setEditingSection(section)
+    }
+  }, [editingSection])
+
+  const handleToggleActiveSection = useCallback(e => {
+    setActivePanel(e.value)
+  }, [])
 
   const dialogs = []
 
@@ -85,6 +96,14 @@ const Evenement = () => {
   //   }
   //   // console.log(result)
   // }, [idEvenement, deleteEvent])
+
+  useEffect(() => {
+    const loadEvent = async (eventId) => {
+      const event = await getEvent(eventId)
+      setEvent(event)
+    }
+    loadEvent(eventId)
+  }, [eventId])
 
   const { ask: createSpecimen, dialog: createSpecimenDialog } = useDialog(AjouterSpecimenDialog)
   dialogs.push(createSpecimenDialog)
@@ -126,13 +145,6 @@ const Evenement = () => {
     }
   }, [deleteSpecimen])
 
-  useEffect(() => {
-    const loadEvent = async (eventId) => {
-      const event = await getEvent(eventId)
-      setEvent(event)
-    }
-    loadEvent(eventId)
-  }, [eventId])
 
   if (!event) {
     return (
@@ -140,18 +152,16 @@ const Evenement = () => {
     )
   }
 
-  console.debug(event)
-
   return (
     <>
       {dialogs}
 
       <Toolbar />
-      <Flex flex={1} top={0} as={Container} direction={['column', null, 'row']} maxWidth={['6xl']} px={[0, 0, 8]} py={[0, 0, 4]} fontSize={['md', null, 'sm']}>
+      <Flex flex={1} top={0} as={Container} direction={['column', null, 'row']} maxWidth={['4xl']} px={[0, 0, 6]} py={[0, 0, 4]} fontSize={['md', null, 'sm']}>
 
-        <Flex flex={2} p={4} px={6} alignItems='stretch' bg='blue.100' position='sticky' borderColor='blue.300' borderTopWidth={1} hideBelow='md'>
-          <Flex position='sticky' top={145} alignSelf='flex-start' zIndex={1000} />
-        </Flex>
+        {/* <Flex flex={2} p={4} px={6} alignItems='stretch' bg='blue.100' position='sticky' borderColor='blue.300' borderTopWidth={1} hideBelow='md'>
+          <Flex alignSelf='flex-start' zIndex={1000} />
+        </Flex> */}
 
         <VStack flex={5} justifyContent='flex-start' alignItems='stretch' ps={[0, null, 2]} gap={[0, null, 2]}>
 
@@ -161,33 +171,19 @@ const Evenement = () => {
               <DeleteEventButton eventId={eventId} />
             </SectionHeading>
 
-            <AccordionRoot multiple size={['md', null, 'sm']} defaultValue={['general']}>
-              <InfosGeneralesSection event={event} />
-              <AccordionItem value='geo'>
-                <Box position='relative'>
-                  <AbsoluteCenter as={HStack} axis='vertical' insetEnd={5}>
-                    <IconButton colorPalette='green' variant='subtle' rounded='full' size={['xs']}><RxPencil1 /></IconButton>
-                  </AbsoluteCenter>
-                  <Trigger label='Localisation géographique' />
-                </Box>
-                <Content>Localisation géographique</Content>
-              </AccordionItem>
-              <AccordionItem value='labo'>
-                <Box position='relative'>
-                  <AbsoluteCenter as={HStack} axis='vertical' insetEnd={5}>
-                    <IconButton colorPalette='green' variant='subtle' rounded='full' size={['xs']}><RxPencil1 /></IconButton>
-                  </AbsoluteCenter>
-                  <Trigger label='Laboratoire' />
-                </Box>
-                <Content>Laboratoire</Content>
-              </AccordionItem>
+            <AccordionRoot size={['md', null, 'sm']} multiple value={activePanel} onValueChange={handleToggleActiveSection}>
+
+              <InfosGeneralesSection event={event} onToggleEditing={handleToggleEditingSection} editingSection={editingSection} />
+              <LocalisationSection event={event} onToggleEditing={handleToggleEditingSection} editingSection={editingSection} />
+              <LaboratoireSection event={event} onToggleEditing={handleToggleEditingSection} editingSection={editingSection} />
+
             </AccordionRoot>
 
           </VStack>
 
           <VStack alignItems='stretch' fontSize={['md', null, 'sm']} gap={0}>
 
-            <SectionHeading label='Spécimens' isSticky>
+            <SectionHeading label={'Spécimens'} isSticky>
               <IconButton colorPalette='green' variant='solid' rounded='full' size={['xs']} onClick={handleCreateSpecimen}><RxPlus /></IconButton>
             </SectionHeading>
 
