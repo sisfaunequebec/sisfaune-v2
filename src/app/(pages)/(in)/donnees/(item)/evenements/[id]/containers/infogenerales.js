@@ -12,6 +12,7 @@ import { Trigger, Content } from '../components/accordion-parts'
 
 import TextField from '../components/text-field'
 import DateField from '../components/date-field'
+import CommentField from '../components/comment-field'
 
 import TypeEvenementSelect from '../components/type-evenement-select'
 import StatutSelect from '../components/statut-select'
@@ -20,15 +21,16 @@ import ProvenanceSelect from '../components/provenance-select'
 import HabitatSelect from '../components/habitat-select'
 import MethodeExpeditionSelect from '../components/methode-expedition-select'
 import LaboratoireSelect from '../components/laboratoire-select'
-
+import AffectedSpeciesField from '../components/affected-species-field'
 
 const InfosGeneralesForm = ({ event, isEditing, onToggleEditing }) => {
   const {
     id, typeId, silabId, cqsasIncidentNumber, pathologyNumber, reportedAt, mapaqId, programId, reportOriginId, statusId,
     labShippingDate, labShippingTrackingNumber, labShippingMethodId, labId,
-    discoveredAt, collectedAt, temperature, habitatTypeId
+    discoveredAt, collectedAt, temperature, habitatTypeId,
+    observations, commentaires, keywords
    } = event
-  
+
   return (
     <Fieldset.Root as={'VStack'} alignItems={'stretch'} size={['lg', null, 'md']}>
 
@@ -55,13 +57,17 @@ const InfosGeneralesForm = ({ event, isEditing, onToggleEditing }) => {
 
       <Separator />
 
-      <Fieldset.Legend>Description</Fieldset.Legend>
+      <Fieldset.Legend>Description de l'événement</Fieldset.Legend>
       <Fieldset.Content gap={0.5} mt={2}>
         <DateField label={'Date de la découverte\u00A0:'} value={discoveredAt} isEditing={isEditing} />
         <DateField label={'Date de la récolte\u00A0:'} value={collectedAt} isEditing={isEditing} />
         <TextField label={'Contacts possibles\u00A0:'} value={null} isEditing={isEditing} />
         <HabitatSelect label={'Type d\'habitat\u00A0:'} value={habitatTypeId} isEditing={isEditing} />
         <TextField label={'Température\u00A0:'} value={temperature} isEditing={isEditing} />
+        <AffectedSpeciesField label={'Individus affectés, par espèce\u00A0:'} value={temperature} isEditing={isEditing} />
+        <CommentField label={'Observations sur le terrain\u00A0:'} value={observations} isEditing={isEditing} />
+        <CommentField label={'Commentaires généraux\u00A0:'} value={commentaires} isEditing={isEditing} />
+        <CommentField label={'Mots-clés\u00A0:'} value={keywords} isEditing={isEditing} />
       </Fieldset.Content>
 
       <Separator />
@@ -87,10 +93,10 @@ const InfosGeneralesSection = ({ event, editingSection, onToggleEditing }) => {
   }, [onToggleEditing])
 
   return (
-    <AccordionItem value={'general'} position={isEditing ? 'sticky' : 'static'} zIndex={isEditing && 1000} disabled={isEditing}>
+    <AccordionItem value={'general'} position={isEditing ? 'sticky' : 'static'} zIndex={isEditing && 1000} disabled={isEditing} >
       <Box position={isEditing ? 'sticky' : 'relative'} top={isEditing && [135, null, 130]} zIndex={isEditing && 1000}>
-        <AbsoluteCenter as={HStack} axis={'vertical'} insetEnd={5} zIndex={1000}>
-            <HStack flex={1} justifyContent={'flex-end'}>
+        <AbsoluteCenter as={HStack} axis={'vertical'} insetEnd={5}  >
+            <HStack flex={1} justifyContent={'flex-end'} >
             { isEditing ?
               <>
                 <Button variant={'solid'} colorPalette={'blue'} size={'xs'} onClick={handleToggleEditing} borderRadius={'full'}>Sauvegarder les modifications</Button>
@@ -101,7 +107,7 @@ const InfosGeneralesSection = ({ event, editingSection, onToggleEditing }) => {
             }
             </HStack>
         </AbsoluteCenter>
-        <Trigger label={'Informations générales'}  />
+        <Trigger label={'Informations générales'} />
       </Box>
       <Content>
         <InfosGeneralesForm event={event} isEditing={isEditing} onToggleEditing={handleToggleEditing} />

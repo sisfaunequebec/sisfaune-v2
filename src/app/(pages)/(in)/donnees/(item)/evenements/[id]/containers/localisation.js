@@ -1,6 +1,13 @@
-import { useToggle } from '@uidotdev/usehooks'
+import { useCallback } from 'react'
+import { useToggle, useMeasure } from '@uidotdev/usehooks'
 
-import { Box, AbsoluteCenter, IconButton, HStack, Separator, Fieldset, Button } from '@chakra-ui/react'
+import {
+  StaticGoogleMap,
+  Marker,
+  Path,
+} from 'react-static-google-map';
+
+import { Box, Flex, AbsoluteCenter, IconButton, Stack, HStack, Separator, Fieldset, Button } from '@chakra-ui/react'
 import { RxPencil1 } from 'react-icons/rx'
 
 import {
@@ -12,30 +19,47 @@ import { Trigger, Content } from '../components/accordion-parts'
 import TextField from '../components/text-field'
 import DateField from '../components/date-field'
 
-import TypeEvenementSelect from '../components/type-evenement-select'
-import StatutSelect from '../components/statut-select'
-import ProgrammeSelect from '../components/programme-select'
-import ProvenanceSelect from '../components/provenance-select'
-import HabitatSelect from '../components/habitat-select'
-import MethodeExpeditionSelect from '../components/methode-expedition-select'
-import { useCallback } from 'react'
+const StaticMap = ({ lat = 45, lng = -72, zoom }) => {
+  const [ref, { width, height }] = useMeasure()
+
+  const mapSize = [Math.round(width), Math.round(height)].join('x')
+  const mapCenter = [lat, lng].join(', ')
+
+  return (
+    <Flex w={'100%'} bg={'gray.200'} aspectRatio={'3/2.3'} ref={ref}>
+      <StaticGoogleMap size={mapSize} apiKey={'AIzaSyDIb9gr86ch2p6T5ULbVqwuBmc80S683Uk'} center={mapCenter} zoom={zoom}>
+        <Marker location={mapCenter} />  
+      </StaticGoogleMap>
+    </Flex>
+  )
+}
+
+const MapField = () => {
+  const lat = 45
+  const lng = -72
+  return (
+    <Stack direction={['column', 'row']} gap={4}>
+      <StaticMap zoom={8} lat={lat} lng={lng} />
+      <StaticMap zoom={12} lat={lat} lng={lng} />
+      <StaticMap zoom={16} lat={lat} lng={lng} />
+    </Stack>
+  )
+}
 
 const LocalisationSectionForm = ({ event, isEditing, onToggleEditing }) => {
 return (
     <Fieldset.Root as={'VStack'} alignItems={'stretch'} size={['lg', null, 'md']}>
 
-      {/* <Fieldset.Legend>Identification</Fieldset.Legend> */}
+      {/* <Fieldset.Legend>Personnes impliquées</Fieldset.Legend> */}
       <Fieldset.Content gap={0.5} mt={2}>
-        {/* <TextField label={'Numéro d\'événement\u00A0:'} value={id} isEditing={isEditing} />
-        <TypeEvenementSelect label={'Type d\'événement\u00A0:'} value={typeId} isEditing={isEditing}  />
-        <TextField label={'Numéro d\'identification SILAB\u00A0:'} value={silabId} isEditing={isEditing} />
-        <TextField label={'Numéro d\'incident CQSAS\u00A0:'} value={cqsasIncidentNumber} isEditing={isEditing} />
-        <TextField label={'Numéro de pathologie\u00A0:'} value={pathologyNumber} isEditing={isEditing} />
-        <DateField label={'Date du signalement\u00A0:'} value={reportedAt} isEditing={isEditing} />
-        <TextField label={'Numéro centrale MAPAQ\u00A0:'} value={mapaqId} isEditing={isEditing} />
-        <ProgrammeSelect label={'Programme\u00A0:'} value={programId} isEditing={isEditing}  />
-        <ProvenanceSelect label={'Provenance du signalement\u00A0:'} value={reportOriginId} isEditing={isEditing}  />
-        <StatutSelect label={'Statut\u00A0:'} value={statusId} isEditing={isEditing}  /> */}
+        {/* <MapField /> */}
+      </Fieldset.Content>
+
+      <Separator />
+
+      {/* <Fieldset.Legend>Personnes impliquées</Fieldset.Legend> */}
+      <Fieldset.Content gap={0.5} mt={2}>
+        <MapField />
       </Fieldset.Content>
 
     </Fieldset.Root>
@@ -43,7 +67,7 @@ return (
 }
 
 const LocalisationSection = ({ event, editingSection, onToggleEditing }) => {
-  // const [isEditing, toggleEditing] = useToggle(false)
+  // console.debug(event)
   const isEditing = editingSection === 'localisation'
 
   const handleToggleEditing = useCallback(() => {
@@ -68,9 +92,8 @@ const LocalisationSection = ({ event, editingSection, onToggleEditing }) => {
         <Trigger label={'Localisation géographique'}  />
       </Box>
       <Content>
-        <Box minH={500}>
-          <LocalisationSectionForm />
-        </Box></Content>
+        <LocalisationSectionForm />
+      </Content>
     </AccordionItem>
   )
   

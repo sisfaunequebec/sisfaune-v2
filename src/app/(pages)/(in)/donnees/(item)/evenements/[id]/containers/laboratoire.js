@@ -24,18 +24,9 @@ const LaboratoireSectionForm = ({ event, isEditing, onToggleEditing }) => {
 return (
     <Fieldset.Root as={'VStack'} alignItems={'stretch'} size={['lg', null, 'md']}>
 
-      {/* <Fieldset.Legend>Identification</Fieldset.Legend> */}
       <Fieldset.Content gap={0.5} mt={2}>
-        {/* <TextField label={'Numéro d\'événement\u00A0:'} value={id} isEditing={isEditing} />
-        <TypeEvenementSelect label={'Type d\'événement\u00A0:'} value={typeId} isEditing={isEditing}  />
-        <TextField label={'Numéro d\'identification SILAB\u00A0:'} value={silabId} isEditing={isEditing} />
-        <TextField label={'Numéro d\'incident CQSAS\u00A0:'} value={cqsasIncidentNumber} isEditing={isEditing} />
-        <TextField label={'Numéro de pathologie\u00A0:'} value={pathologyNumber} isEditing={isEditing} />
-        <DateField label={'Date du signalement\u00A0:'} value={reportedAt} isEditing={isEditing} />
-        <TextField label={'Numéro centrale MAPAQ\u00A0:'} value={mapaqId} isEditing={isEditing} />
-        <ProgrammeSelect label={'Programme\u00A0:'} value={programId} isEditing={isEditing}  />
-        <ProvenanceSelect label={'Provenance du signalement\u00A0:'} value={reportOriginId} isEditing={isEditing}  />
-        <StatutSelect label={'Statut\u00A0:'} value={statusId} isEditing={isEditing}  /> */}
+        <DateField label={'Spécimen(s) reçu(s) le\u00A0:'} value={null} isEditing={isEditing} />
+        {/* <TextField label={'Numéro centrale MAPAQ\u00A0:'} value={mapaqId} isEditing={isEditing} /> */}
       </Fieldset.Content>
 
     </Fieldset.Root>
@@ -68,9 +59,8 @@ const LaboratoireSection = ({ event, editingSection, onToggleEditing }) => {
         <Trigger label={'Laboratoire'}  />
       </Box>
       <Content>
-        <Box minH={500}>
-          <LaboratoireSectionForm />
-        </Box></Content>
+        <LaboratoireSectionForm event={event} isEditing={isEditing} onToggleEditing={handleToggleEditing} />
+      </Content>
     </AccordionItem>
   )
   

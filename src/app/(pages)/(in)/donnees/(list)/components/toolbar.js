@@ -68,7 +68,7 @@ const Toolbar = () => {
       shadow={[null, null, toolbarShadowSize]}
     >
       <Flex flex={1} bg='white' _dark={{ bg: 'black' }} py={1}>
-        <Container maxWidth='6xl' py={2}>
+        <Container maxWidth={'6xl'} py={2}>
           <HStack justifyContent='space-between' gap={2}>
 
             <HStack justifyContent='space-between' gap={2}>

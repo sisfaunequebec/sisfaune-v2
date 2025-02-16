@@ -10,7 +10,6 @@ const LaboratoireSelect = ({ label, value, isEditing, onChange }) => {
   useEffect(() => {
     const getItems = async () => {
       const items = await getLabs()
-      console.debug(items)
       setItems(items)
     }
 

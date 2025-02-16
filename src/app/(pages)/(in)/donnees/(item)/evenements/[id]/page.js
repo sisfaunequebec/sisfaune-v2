@@ -30,9 +30,11 @@ import AjouterAnalyseDialog from './components/ajouter-analyse-dialog'
 import DetruireAnalyseDialog from './components/detruire-analyse-dialog'
 import DetruireSpecimenDialog from './components/detuire-specimen-dialog'
 
-import InfosGeneralesSection from './containers/info-generales'
+import InfosGeneralesSection from './containers/infogenerales'
 import LocalisationSection from './containers/localisation'
 import LaboratoireSection from './containers/laboratoire'
+
+import SpecimenSection from './containers/specimen'
 
 const SectionHeading = ({ label, isSticky = false, children }) => {
   return (
@@ -40,17 +42,6 @@ const SectionHeading = ({ label, isSticky = false, children }) => {
       <Text as='h3' userSelect='none'>{label}</Text>
       {children}
     </Flex>
-  )
-}
-const GeneralSpecimenInformation = () => {
-  return (
-    <VStack alignItems='flex-start'>
-      <Text as='h4'>Identification du spécimen</Text>
-      <Separator />
-      <Text as='h4'>Mesures</Text>
-      <Separator />
-      <Text as='h4'>Autres informations</Text>
-    </VStack>
   )
 }
 
@@ -152,12 +143,14 @@ const Evenement = () => {
     )
   }
 
+  const { specimens } = event
+
   return (
     <>
       {dialogs}
 
       <Toolbar />
-      <Flex flex={1} top={0} as={Container} direction={['column', null, 'row']} maxWidth={['4xl']} px={[0, 0, 6]} py={[0, 0, 4]} fontSize={['md', null, 'sm']}>
+      <Flex flex={1} top={0} as={Container} direction={['column', null, 'row']} maxWidth={['6xl']} px={[0, 0, 6]} py={[0, 0, 4]} fontSize={['md', null, 'sm']}>
 
         {/* <Flex flex={2} p={4} px={6} alignItems='stretch' bg='blue.100' position='sticky' borderColor='blue.300' borderTopWidth={1} hideBelow='md'>
           <Flex alignSelf='flex-start' zIndex={1000} />
@@ -171,7 +164,7 @@ const Evenement = () => {
               <DeleteEventButton eventId={eventId} />
             </SectionHeading>
 
-            <AccordionRoot size={['md', null, 'sm']} multiple value={activePanel} onValueChange={handleToggleActiveSection}>
+            <AccordionRoot size={['md', null, 'sm']} multiple value={activePanel} onValueChange={handleToggleActiveSection} lazyMount={true}>
 
               <InfosGeneralesSection event={event} onToggleEditing={handleToggleEditingSection} editingSection={editingSection} />
               <LocalisationSection event={event} onToggleEditing={handleToggleEditingSection} editingSection={editingSection} />
@@ -187,19 +180,28 @@ const Evenement = () => {
               <IconButton colorPalette='green' variant='solid' rounded='full' size={['xs']} onClick={handleCreateSpecimen}><RxPlus /></IconButton>
             </SectionHeading>
 
-            <AccordionRoot multiple size={['md', null, 'sm']} defaultValue={[]}>
-              <AccordionItem value='s0001'>
-                <Box position='relative'>
-                  <AbsoluteCenter as={HStack} axis='vertical' insetEnd={5}>
-                    <IconButton colorPalette='green' variant='subtle' rounded='full' size={['xs']}><RxPencil1 /></IconButton>
-                    <IconButton colorPalette='red' variant='surface' rounded='full' size={['xs']} onClick={handleDeleteSpecimen}><RxTrash /></IconButton>
-                  </AbsoluteCenter>
-                  <Trigger label='303307.1 - Raton laveur' />
-                </Box>
-                <Content>
-                  <GeneralSpecimenInformation />
-                </Content>
-              </AccordionItem>
+            <AccordionRoot multiple size={['md', null, 'sm']} defaultValue={[]} lazyMount={true}>
+
+              { specimens.map(s => {
+                // const { id, specimenNumber, specie } = s
+                // const { name: specieName, binome } = specie
+                return (
+                  <SpecimenSection key={id} specimen={s} onToggleEditing={handleToggleEditingSection} editingSection={editingSection} onDelete={handleDeleteSpecimen} />
+                  // <AccordionItem key={id} value={id}>
+                  //     <Box position='relative'>
+                  //       <AbsoluteCenter as={HStack} axis='vertical' insetEnd={5}>
+                  //         <IconButton colorPalette='green' variant='subtle' rounded='full' size={['xs']}><RxPencil1 /></IconButton>
+                  //         <IconButton colorPalette='red' variant='surface' rounded='full' size={['xs']} onClick={handleDeleteSpecimen}><RxTrash /></IconButton>
+                  //       </AbsoluteCenter>
+                  //       <Trigger label={`${specimenNumber} - ${specieName} (${binome})`} />
+                  //     </Box>
+                  //     <Content>
+                  //       <SpecimenInformation specimen={s} />
+                  //     </Content>
+                  // </AccordionItem>
+                )
+              }) }
+   
             </AccordionRoot>
           </VStack>
 
@@ -209,7 +211,7 @@ const Evenement = () => {
               <IconButton colorPalette='green' variant='solid' rounded='full' size={['xs']} onClick={handleCreateAnalysis}><RxPlus /></IconButton>
             </SectionHeading>
 
-            <AccordionRoot multiple size={['md', null, 'sm']} defaultValue={[]}>
+            <AccordionRoot multiple size={['md', null, 'sm']} defaultValue={[]} lazyMount={true}>
 
               <AccordionItem value='dsc'>
                 <Box position='relative'>

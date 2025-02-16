@@ -163,6 +163,16 @@ const inputRecipe = defineRecipe({
   }
 })
 
+const teatAreaRecipe = defineRecipe({
+  base: {
+    _readOnly: {
+      bg: 'bg.muted',
+      borderColor: 'transparent',
+      focusRingColor: 'transparent'
+    }
+  }
+})
+
 // const textStyles = defineTextStyles({
 //   // body: {
 //   //   description: 'The body text style',
@@ -183,7 +193,8 @@ const config = defineConfig({
     tokens,
     recipes: {
       button: buttonRecipe,
-      input: inputRecipe
+      input: inputRecipe,
+      textarea: teatAreaRecipe
     },
     slotRecipes: {
       avatar: avatarRecipe,

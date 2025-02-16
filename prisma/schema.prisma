@@ -621,7 +621,7 @@ model Event {
 
   temperature Decimal? @db.Decimal(4, 1) @map(name: "temperature")
   observations String? @map(name: "observations")
-  commentaires String? @map(name: "commentaires")
+  comments String? @map(name: "commentaires")
   keywords String? @map(name: "motcles")
 
   pathologyNumber String? @map(name: "numero_pathologie")

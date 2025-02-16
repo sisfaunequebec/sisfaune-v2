@@ -7,7 +7,13 @@ const getEvent = async (id, context) => {
       id
     },
     include: {
-      specimens: true
+      location: true,
+      specimens: {
+        include: {
+          specie: true
+        }
+      },
+      labEvents: true
     }
   })
   return event
