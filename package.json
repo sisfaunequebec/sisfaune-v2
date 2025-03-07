@@ -14,7 +14,7 @@
     "email-dev": "email dev"
   },
   "dependencies": {
-    "@chakra-ui/react": "^3.0.2",
+    "@chakra-ui/react": "^3.8.0",
     "@emotion/react": "^11.13.3",
     "@hookform/resolvers": "^3.9.1",
     "@prisma/client": "5.18.0",

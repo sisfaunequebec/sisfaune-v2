@@ -1,6 +1,6 @@
 'use client'
 
-import { defineConfig, defaultConfig, defineRecipe, defineSlotRecipe, defineTokens, createSystem } from '@chakra-ui/react'
+import { defineConfig, defaultConfig, defineRecipe, defineSlotRecipe, defineTokens, defineSemanticTokens, createSystem } from '@chakra-ui/react'
 
 import { avatarAnatomy, menuAnatomy, tabsAnatomy, accordionAnatomy, checkboxAnatomy, radioGroupAnatomy, dialogAnatomy } from '@chakra-ui/react/anatomy'
 

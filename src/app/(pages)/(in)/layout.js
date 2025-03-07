@@ -3,7 +3,7 @@ import { auth } from '@/logic/auth'
 
 import { Flex } from '@chakra-ui/react'
 
-import Header from './components/header'
+import Header from './lib/components/header'
 
 export const metadata = {
   title: 'SIS Faune :: Gestion des événements '

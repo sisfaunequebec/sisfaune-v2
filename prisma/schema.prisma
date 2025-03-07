@@ -609,8 +609,8 @@ model Event {
   collaboratorId Int @db.SmallInt @map(name: "id_intervenant") @default(0)
   collaborator Collaborator @relation(fields: [collaboratorId], references: [id], onDelete: Restrict, onUpdate: Restrict)
 
-  habitatTypeId Int @db.SmallInt @map(name: "id_type_habitat") @default(0)
-  habitatType LutHabitatType @relation(fields: [habitatTypeId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+  habitatTypeId Int? @db.SmallInt @map(name: "id_type_habitat")
+  habitatType LutHabitatType? @relation(fields: [habitatTypeId], references: [id], onDelete: Restrict, onUpdate: Restrict)
 
   // Lab
   labId Int @map(name: "id_laboratoire") @default(0)

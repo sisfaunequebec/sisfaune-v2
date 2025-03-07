@@ -3,7 +3,7 @@ import { useState, useCallback, useEffect } from 'react'
 
 import { useParams } from 'next/navigation'
 
-import getEvent from './components/get-event'
+import getEvent from './lib/actions/get-event'
 
 import { Box, Flex, Container, VStack, AbsoluteCenter, IconButton, Text, HStack, Separator, Fieldset, Input } from '@chakra-ui/react'
 import { RxPencil1, RxPlus, RxTrash } from 'react-icons/rx'
@@ -13,7 +13,7 @@ import {
   AccordionRoot
 } from '@/components/ui/accordion'
 
-import { Trigger, Content } from './components/accordion-parts'
+import { Trigger, Content } from './lib/components/accordion-parts'
 
 // import { Field } from '@/components/ui/field'
 
@@ -21,20 +21,20 @@ import useDialog from '@/utilitaires/use-dialog'
 
 import PageSpinner from '@/components/page-spinner'
 
-import Toolbar from '../../../(list)/evenements/components/toolbar'
+import Toolbar from '../../../(list)/evenements/lib/components/toolbar'
 
-import DeleteEventButton from './components/delete-event-button'
+import DeleteEventButton from './lib/components/delete-event-button'
 
-import AjouterSpecimenDialog from './components/ajouter-specimen-dialog'
-import AjouterAnalyseDialog from './components/ajouter-analyse-dialog'
-import DetruireAnalyseDialog from './components/detruire-analyse-dialog'
-import DetruireSpecimenDialog from './components/detuire-specimen-dialog'
+import AjouterSpecimenDialog from './lib/components/ajouter-specimen-dialog'
+import AjouterAnalyseDialog from './lib/components/ajouter-analyse-dialog'
+import DetruireAnalyseDialog from './lib/components/detruire-analyse-dialog'
+import DetruireSpecimenDialog from './lib/components/detuire-specimen-dialog'
 
-import InfosGeneralesSection from './containers/infogenerales'
-import LocalisationSection from './containers/localisation'
-import LaboratoireSection from './containers/laboratoire'
+import InfosGeneralesSection from './lib/containers/infogenerales'
+import LocalisationSection from './lib/containers/localisation'
+import LaboratoireSection from './lib/containers/laboratoire'
 
-import SpecimenSection from './containers/specimen'
+import SpecimenInformationSection from './lib/containers/specimen'
 
 const SectionHeading = ({ label, isSticky = false, children }) => {
   return (
@@ -181,27 +181,11 @@ const Evenement = () => {
             </SectionHeading>
 
             <AccordionRoot multiple size={['md', null, 'sm']} defaultValue={[]} lazyMount={true}>
-
               { specimens.map(s => {
-                // const { id, specimenNumber, specie } = s
-                // const { name: specieName, binome } = specie
                 return (
-                  <SpecimenSection key={id} specimen={s} onToggleEditing={handleToggleEditingSection} editingSection={editingSection} onDelete={handleDeleteSpecimen} />
-                  // <AccordionItem key={id} value={id}>
-                  //     <Box position='relative'>
-                  //       <AbsoluteCenter as={HStack} axis='vertical' insetEnd={5}>
-                  //         <IconButton colorPalette='green' variant='subtle' rounded='full' size={['xs']}><RxPencil1 /></IconButton>
-                  //         <IconButton colorPalette='red' variant='surface' rounded='full' size={['xs']} onClick={handleDeleteSpecimen}><RxTrash /></IconButton>
-                  //       </AbsoluteCenter>
-                  //       <Trigger label={`${specimenNumber} - ${specieName} (${binome})`} />
-                  //     </Box>
-                  //     <Content>
-                  //       <SpecimenInformation specimen={s} />
-                  //     </Content>
-                  // </AccordionItem>
+                  <SpecimenInformationSection key={id} specimen={s} onToggleEditing={handleToggleEditingSection} editingSection={editingSection} onDelete={handleDeleteSpecimen} />
                 )
               }) }
-   
             </AccordionRoot>
           </VStack>
 

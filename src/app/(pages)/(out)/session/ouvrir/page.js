@@ -3,7 +3,7 @@ import { auth } from '@/logic/auth'
 
 import { Flex } from '@chakra-ui/react'
 
-import LoginForm from './components/login-form'
+import LoginForm from './lib/components/login-form'
 
 const OuvrirSession = async () => {
   const session = await auth()
