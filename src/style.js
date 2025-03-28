@@ -2,7 +2,7 @@
 
 import { defineConfig, defaultConfig, defineRecipe, defineSlotRecipe, defineTokens, defineSemanticTokens, createSystem } from '@chakra-ui/react'
 
-import { avatarAnatomy, menuAnatomy, tabsAnatomy, accordionAnatomy, checkboxAnatomy, radioGroupAnatomy, dialogAnatomy } from '@chakra-ui/react/anatomy'
+import { avatarAnatomy, menuAnatomy, tabsAnatomy, accordionAnatomy, checkboxAnatomy, radioGroupAnatomy, dialogAnatomy, selectAnatomy } from '@chakra-ui/react/anatomy'
 
 const tokens = defineTokens({
   colors: {
@@ -53,10 +53,21 @@ const tabsRecipe = defineSlotRecipe({
   slots: tabsAnatomy.keys(),
   base: {
     list: {
-      gap: 1
+      gap: 2
     },
     trigger: {
       bg: 'gray.100'
+    }
+  },
+  variants: {
+    variant: {
+      subtle: {
+        trigger: {
+          _selected: {
+            borderColor: 'colorPalette.solid'
+          }
+        }
+      }
     }
   }
 })
@@ -111,6 +122,18 @@ const checkboxRecipe = defineSlotRecipe({
   }
 })
 
+const selectRecipe = defineSlotRecipe({
+  slots: selectAnatomy.keys(),
+  base: {
+    trigger: {
+      cursor: 'pointer'
+    },
+    item: {
+      cursor: 'pointer'
+    }
+  }
+})
+
 
 const dialogRecipe = defineSlotRecipe({
   slots: dialogAnatomy.keys(),
@@ -155,7 +178,11 @@ const buttonRecipe = defineRecipe({
 
 const inputRecipe = defineRecipe({
   base: {
+    _focus: {
+      bg: 'blue.50',
+    },
     _readOnly: {
+      cursor: 'default',
       bg: 'bg.muted',
       borderColor: 'transparent',
       focusRingColor: 'transparent'
@@ -163,9 +190,10 @@ const inputRecipe = defineRecipe({
   }
 })
 
-const teatAreaRecipe = defineRecipe({
+const textAreaRecipe = defineRecipe({
   base: {
     _readOnly: {
+      cursor: 'default',
       bg: 'bg.muted',
       borderColor: 'transparent',
       focusRingColor: 'transparent'
@@ -194,7 +222,7 @@ const config = defineConfig({
     recipes: {
       button: buttonRecipe,
       input: inputRecipe,
-      textarea: teatAreaRecipe
+      textarea: textAreaRecipe
     },
     slotRecipes: {
       avatar: avatarRecipe,
@@ -203,7 +231,8 @@ const config = defineConfig({
       accordion: accordionRecipe,
       radioGroup: radioGroupRecipe,
       checkbox: checkboxRecipe,
-      dialog: dialogRecipe
+      dialog: dialogRecipe,
+      select: selectRecipe
     }
     // textStyles
   }

@@ -176,20 +176,12 @@ model LutAnimalSex {
   specimens Specimen[]
 }
 
-// model LutMeasureUnit {
-//   @@map("lut_mesure_unite")
-
-//   id Int @db.SmallInt @id
-//   type Int @db.SmallInt @map(name: "type")
-//   name String @map(name: "nom")
-// }
-
 model LutAnimalMeasureType {
   @@map("lut_animal_mesure_type")
 
   id Int @db.SmallInt @id
   name String @map(name: "nom")
-  unit String @map(name: "unite")
+  unit String? @map(name: "unite")
   group String @map(name: "groupe")
   description String? @map(name: "description")
 
@@ -354,7 +346,8 @@ model LutLaboratory {
   name String @map(name: "nom")
   isActive Boolean @default(true) @map(name: "actif")
 
-  labEvent LabEvent[] 
+  labEvent LabEvent[]
+  event Event[]
 }
 
 model LutMeasureUnit {
@@ -362,7 +355,7 @@ model LutMeasureUnit {
 
   id Int @id @db.SmallInt
   type Int @db.SmallInt  @map(name: "type")
-  unit String @map(name: "unite")
+  name String? @map(name: "unite")
   multiplier Decimal? @db.Decimal(18, 10) @map(name: "facteur")
 
   animalMeasureType LutAnimalMeasureType[]
@@ -417,6 +410,9 @@ model SpecimenMeasure {
 
   type LutAnimalMeasureType @relation(fields: [measureTypeId], references: [id], onDelete: Restrict, onUpdate: Restrict)
   unit LutMeasureUnit @relation(fields: [unitId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+
+  // Relations
+  specimen Specimen @relation(fields: [specimenId], references: [id], onDelete: Restrict, onUpdate: Restrict)
 }
 
 model Collaborator {
@@ -550,6 +546,7 @@ model Specimen {
 
   samples Sample[]
   results Result[]
+  measures SpecimenMeasure[]
 }
 
 model Euthanasia {
@@ -614,6 +611,7 @@ model Event {
 
   // Lab
   labId Int @map(name: "id_laboratoire") @default(0)
+  lab LutLaboratory? @relation(fields: [labId], references: [id], onDelete: Restrict, onUpdate: Restrict)
   labShippingDate DateTime? @map(name: "date_expedition_labo")
   labShippingMethodId Int @db.SmallInt @map(name: "id_methode_expedition") @default(0)
   labShippingMethod LutLabShippingMethod @relation(fields: [labShippingMethodId], references: [id], onDelete: Restrict, onUpdate: Restrict)

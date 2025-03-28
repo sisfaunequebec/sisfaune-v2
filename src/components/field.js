@@ -4,6 +4,8 @@ const Field = ({ formState, children, name, ...rest }) => {
   const { errors, isSubmitting } = formState
   // const error = errors[name]
 
+  // console.debug(errors)
+
   const onlyFirstError = Object.entries(errors).slice(0, 1).reduce((acc, e) => {
     const [key, value] = e
     acc[key] = value
@@ -14,7 +16,7 @@ const Field = ({ formState, children, name, ...rest }) => {
   const error = onlyFirstError[name]
 
   return (
-    <ChakraField variant='vertical' invalid={!!error} errorText={error?.message} disabled={isSubmitting} {...rest}>
+    <ChakraField variant={'vertical'} invalid={!!error} errorText={error?.message} disabled={isSubmitting} mb={1} {...rest}>
       {children}
     </ChakraField>
   )
