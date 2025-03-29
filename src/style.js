@@ -125,8 +125,12 @@ const checkboxRecipe = defineSlotRecipe({
 const selectRecipe = defineSlotRecipe({
   slots: selectAnatomy.keys(),
   base: {
+
     trigger: {
-      cursor: 'pointer'
+      cursor: 'pointer',
+      _focus: {
+        bg: 'blue.50',
+      }
     },
     item: {
       cursor: 'pointer'

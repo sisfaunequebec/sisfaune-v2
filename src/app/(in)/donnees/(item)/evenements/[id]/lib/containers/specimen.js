@@ -20,7 +20,7 @@ import CauseMortSelect from '../components/cause-mort-select'
 
 import MeasureField from '../components/measure-field'
 
-import SelectFieldAdvanced from '../select-field-advanced'
+import SelectFieldAdvanced from '../components/select-field-advanced'
 import getPreservationMethods from '../actions/get-preservation-methods'
 
 import MeasuresSection from './measures-section'

@@ -4,7 +4,7 @@ import { useCallback } from 'react'
 import getShippingMethods from '../actions/get-shipping-methods'
 
 import SelectField from './select-field'
-import SelectFieldAdvanced from '../select-field-advanced'
+import SelectFieldAdvanced from './select-field-advanced'
 
 // const MethodeExpeditionSelect = ({ label, value, isEditing, onChange }) => {
 //   const [items, setItems] = useState([])

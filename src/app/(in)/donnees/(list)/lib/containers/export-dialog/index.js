@@ -2,19 +2,22 @@ import { useQueryStates } from 'nuqs'
 
 import { useBreakpointValue } from '@chakra-ui/react'
 
-import { Button } from '@/components/ui/button'
-
-import {
-  DialogActionTrigger,
-  DialogBody,
-  DialogContent,
-  DialogFooter,
-  DialogHeader,
-  DialogRoot,
-  DialogTitle
-} from '@/components/ui/dialog'
-
 import { searchParams, urlKeys } from '@/logic/data/events/events-params'
+
+import exportDataSchema from './export.schema'
+import exportData from './export.action'
+
+import { Fieldset } from '@chakra-ui/react'
+
+import BaseDialog from '@/app/lib/components/base-dialog'
+
+import ControlledField from '@/app/lib/components/controlled-field'
+
+import FormatSelect from './format-select'
+
+const defaultValues = {
+  format: 'csv'
+}
 
 const ExportDialog = ({ close, eventId }) => {
   const size = useBreakpointValue({ base: 'cover', md: 'md' })
@@ -23,22 +26,17 @@ const ExportDialog = ({ close, eventId }) => {
   const [params] = useQueryStates(searchParams, { urlKeys })
 
   return (
-    <DialogRoot open size={size} placement='center' motionPreset={motion} onOpenChange={e => close(false)} closeOnInteractOutside>
-      <DialogContent>
-        <DialogHeader>
-          <DialogTitle>Exportation des événements ou spécimens</DialogTitle>
-        </DialogHeader>
-        <DialogBody>
-
-        </DialogBody>
-        <DialogFooter gap={2}>
-          <DialogActionTrigger asChild>
-            <Button size='sm' variant='outline' onClick={() => close(false)} minW={24}>Annuler</Button>
-          </DialogActionTrigger>
-          <Button size='sm' colorPalette='blue' onClick={() => close(true)} minW={24}>Exporter</Button>
-        </DialogFooter>
-      </DialogContent>
-    </DialogRoot>
+    <BaseDialog title={'Exportation des événements ou spécimens'} onClose={close} onSubmit={exportData} schema={exportDataSchema} defaultValues={defaultValues}>
+      {(contentRef) => (
+        <Fieldset.Root>
+          <Fieldset.Content gap={3}>
+            <ControlledField name={'format'} label={'Format :'} variant={'horizontal'}>
+              <FormatSelect contentRef={contentRef} />
+            </ControlledField>
+          </Fieldset.Content>
+        </Fieldset.Root>
+      )}
+    </BaseDialog>
   )
 }
 

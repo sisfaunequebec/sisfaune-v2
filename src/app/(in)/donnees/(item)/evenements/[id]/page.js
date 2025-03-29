@@ -25,8 +25,10 @@ import Toolbar from '../../../(list)/evenements/lib/components/toolbar'
 
 import DeleteEventButton from './lib/components/delete-event-button'
 
-import AjouterSpecimenDialog from './lib/components/ajouter-specimen-dialog'
-import AjouterAnalyseDialog from './lib/components/ajouter-analyse-dialog'
+import AddSpecimenDialog from '../../../(list)/lib/containers/add-specimen-dialog'
+import AddAnalysisDialog from './lib/containers/add-analysis-dialog'
+
+// import AjouterAnalyseDialog from './lib/components/ajouter-analyse-dialog'
 import DetruireAnalyseDialog from './lib/components/detruire-analyse-dialog'
 import DetruireSpecimenDialog from './lib/components/detuire-specimen-dialog'
 
@@ -96,7 +98,7 @@ const Evenement = () => {
     loadEvent(eventId)
   }, [eventId])
 
-  const { ask: createSpecimen, dialog: createSpecimenDialog } = useDialog(AjouterSpecimenDialog)
+  const { ask: createSpecimen, dialog: createSpecimenDialog } = useDialog(AddSpecimenDialog)
   dialogs.push(createSpecimenDialog)
 
   const handleCreateSpecimen = useCallback(async () => {
@@ -106,7 +108,7 @@ const Evenement = () => {
     }
   }, [createSpecimen])
 
-  const { ask: createAnalysis, dialog: createAnalysisDialog } = useDialog(AjouterAnalyseDialog)
+  const { ask: createAnalysis, dialog: createAnalysisDialog } = useDialog(AddAnalysisDialog)
   dialogs.push(createAnalysisDialog)
 
   const handleCreateAnalysis = useCallback(async () => {
@@ -182,8 +184,8 @@ const Evenement = () => {
 
             <AccordionRoot multiple size={['md', null, 'sm']} defaultValue={[]} lazyMount={true}>
               { specimens.map(s => {
-                console.debug(specimens)
                 const { id } = s
+                // console.debug(id)
                 return (
                   <SpecimenInformationSection key={id} specimen={s} onToggleEditing={handleToggleEditingSection} editingSection={editingSection} onDelete={handleDeleteSpecimen} />
                 )

@@ -4,7 +4,7 @@ import { useCallback } from 'react'
 import getDeathCauses from '../actions/get-death-causes'
 
 // import SelectField from './select-field'
-import SelectFieldAdvanced from '../select-field-advanced'
+import SelectFieldAdvanced from './select-field-advanced'
 
 // const CauseMortSelect = ({ label, value, isEditing, onChange }) => {
 //   const [items, setItems] = useState([])

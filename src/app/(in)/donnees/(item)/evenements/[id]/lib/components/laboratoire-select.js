@@ -4,7 +4,7 @@ import { useCallback } from 'react'
 import getLabs from '../actions/get-labs'
 
 // import SelectField from './select-field'
-import SelectFieldAdvanced from '../select-field-advanced'
+import SelectFieldAdvanced from './select-field-advanced'
 
 // const LaboratoireSelect = ({ label, value, isEditing, onChange }) => {
 //   const [items, setItems] = useState([])

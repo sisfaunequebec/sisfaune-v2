@@ -16,7 +16,7 @@ export const Field = forwardRef(function Field(props, ref) {
       <Flex direction={flexDirection} alignItems={alignItems} w={'full'}>
         {label && (
           <Tooltip content={descriptionText} disabled={!descriptionText}>
-            <ChakraField.Label fontSize={['md', null, 'sm']} color={'gray.600'} fontWeight={400} flex={labelFlexValue} justifyContent={'flex-start'} pe={2} pt={2} mb={2} textDecoration={descriptionText && 'underline'} cursor={descriptionText && 'help'}>
+            <ChakraField.Label fontSize={['md', null, 'sm']} color={'gray.600'} fontWeight={400} flex={labelFlexValue} justifyContent={'flex-start'} pe={2} mb={1.5} textDecoration={descriptionText && 'underline'} cursor={descriptionText && 'help'} lineHeight={'shorter'}>
               {label}
               <ChakraField.RequiredIndicator fallback={optionalText} />
             </ChakraField.Label>

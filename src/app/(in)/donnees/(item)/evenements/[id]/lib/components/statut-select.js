@@ -4,7 +4,7 @@ import { useCallback } from 'react'
 import getStatuses from '../actions/get-statuses'
 
 // import SelectField from './select-field'
-import SelectFieldAdvanced from '../select-field-advanced'
+import SelectFieldAdvanced from './select-field-advanced'
 
 // const StatutSelect = ({ label, value, isEditing, onChange }) => {
 //   const [items, setItems] = useState([])

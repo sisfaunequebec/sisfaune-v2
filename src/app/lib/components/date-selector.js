@@ -102,10 +102,10 @@ const DateSelector =  ({ value, onChange, children }) => {
 
   return (
     <PopoverRoot lazyMount unmountOnExit open={open} onOpenChange={(e) => setOpen(e.open)} positioning={{ placement: 'bottom-start' }}>
-      <PopoverTrigger asChild>
+      <PopoverTrigger asChild >
         {/* <Field label={label}> */}
           <InputGroup endElement={<RxCalendar />} flex={1} >
-            <Input value={value ? DateTime.fromJSDate(value).toFormat('yyyy-LL-dd') : null} readOnly={true} flex={4} size={['lg', null, 'md']} bg={'bg'} borderColor={'border'} cursor={'default'} />
+            <Input value={value ? DateTime.fromJSDate(value).toFormat('yyyy-LL-dd') : null} readOnly={true} flex={4} size={['lg', null, 'md']} bg={'bg'} borderColor={'border'} cursor={'pointer'} />
           </InputGroup>
         {/* </Field> */}
       </PopoverTrigger>

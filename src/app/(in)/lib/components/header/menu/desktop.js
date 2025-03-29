@@ -5,7 +5,7 @@ import { useRouter, usePathname } from 'next/navigation'
 
 import { signOut } from 'next-auth/react'
 
-import { Box, Flex, VStack, Button } from '@chakra-ui/react'
+import { Box, Flex, VStack, Button, Menu } from '@chakra-ui/react'
 
 import { Avatar } from '@/components/ui/avatar'
 
@@ -53,35 +53,35 @@ const DesktopMenu = ({ username, email }) => {
     <>
       {parametersDialog}
 
-      <Flex hideBelow='md'>
-        <MenuRoot positioning={{ placement: 'bottom-end' }} size='md' lazyMount>
-          <MenuTrigger>
-            <Avatar name={username} colorPalette='green' size={['md', null, 'sm']} variant='solid' cursor='pointer' />
-          </MenuTrigger>
-          <MenuContent minW={60} hideBelow='md' mt={4} isolation='isolate' isolate='isolate'>
-            <MenuItem _hover={{ bg: 'transparent' }} cursor='default'>
-              <VStack gap={0} flex={1} alignItems='flex-start'>
+      <Flex hideBelow={'md'}>
+        <Menu.Root positioning={{ placement: 'bottom-end' }} size={'md'} lazyMount>
+          <Menu.Trigger>
+            <Avatar name={username} colorPalette={'green'} size={['md', null, 'sm']} variant={'solid'} cursor={'pointer'} />
+          </Menu.Trigger>
+          <MenuContent minW={60} hideBelow={'md'} mt={4} isolation={'isolate'} isolate={'isolate'}  _hover={{ bg: 'white' }}>
+            <Menu.Item cursor={'default'} value={'info'}>
+              <VStack gap={0} flex={1} alignItems={'flex-start'}>
                 <Box flex={1} fontWeight={500}>{username}</Box>
-                <Box flex={1} color='gray.500'>{email}</Box>
+                <Box flex={1} color={'gray.500'}>{email}</Box>
               </VStack>
-            </MenuItem>
-            <MenuSeparator />
+            </Menu.Item>
+            <Menu.Separator />
             <MenuRadioItemGroup value={secondPathSegment} onValueChange={handleMenuRadioItemGroupChange}>
-              <MenuRadioItem value='donnees'>Base de données</MenuRadioItem>
-              <MenuRadioItem value='administration'>Administration</MenuRadioItem>
+              <MenuRadioItem value={'donnees'}>Base de données</MenuRadioItem>
+              <MenuRadioItem value={'administration'}>Administration</MenuRadioItem>
             </MenuRadioItemGroup>
-            <MenuSeparator />
-            <MenuItem as={Button} onClick={handleModifyParameters}>
+            <Menu.Separator />
+            <Menu.Item onClick={handleModifyParameters} value={'params'}>
               <RxGear />
               <Box flex={1} ms={0.5}>Vos paramètres...</Box>
-            </MenuItem>
-            <MenuSeparator />
-            <MenuItem onClick={() => { signOut() }}>
+            </Menu.Item>
+            <Menu.Separator />
+            <Menu.Item onClick={() => { signOut() }} value={'signout'}>
               <RxExit />
               <Box flex={1} ms={0.5}>Quitter...</Box>
-            </MenuItem>
+            </Menu.Item>
           </MenuContent>
-        </MenuRoot>
+        </Menu.Root>
       </Flex>
 
     </>

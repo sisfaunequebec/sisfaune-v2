@@ -13,7 +13,7 @@ import ResponsiveButton from '@/components/responsive-button'
 
 import EvenementsSpecimens from './evenements-specimens-tabs'
 
-import AddEventDialog from '../../evenements/lib/containers/add-event-dialog/index.js'
+import AddEventDialog from '../../../(item)/evenements/[id]/lib/containers/add-event-dialog/index.js'
 import ExportDialog from '../containers/export-dialog'
 
 const NewEventButton = () => {
@@ -47,7 +47,7 @@ const DownloadButton = () => {
   return (
     <>
       {downloadEventsDialog}
-      <ResponsiveButton label={'Exporter la liste'} colorPalette={'blue'} icon={<RxDownload />} onClick={handleDownload} />
+      <ResponsiveButton label={'Exporter'} colorPalette={'blue'} icon={<RxDownload />} onClick={handleDownload} />
     </>
   )
 }
