@@ -25,6 +25,7 @@
     "dotenv": "^16.4.5",
     "dotenv-cli": "^7.4.2",
     "framer-motion": "^11.3.30",
+    "generate-password": "^1.7.1",
     "lodash.orderby": "^4.6.0",
     "luxon": "^3.5.0",
     "next": "15.0.2",

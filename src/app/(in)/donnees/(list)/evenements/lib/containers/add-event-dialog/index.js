@@ -28,7 +28,7 @@ const defaultValues = {
 
 const AddEventDialog = ({ close }) => {
   return (
-    <BaseDialog title={'Création d\'un événement'} onClose={close} onSubmit={addEvent} schema={addEventSchema} defaultValues={defaultValues}>
+    <BaseDialog title={'Nouvel événement'} onClose={close} onSubmit={addEvent} submitBtnLabel={'Ajouter'} schema={addEventSchema} defaultValues={defaultValues}>
       {(contentRef) => (
         <Fieldset.Root>
           <Fieldset.Content gap={3}>

@@ -26,7 +26,7 @@ const ExportDialog = ({ close, eventId }) => {
   const [params] = useQueryStates(searchParams, { urlKeys })
 
   return (
-    <BaseDialog title={'Exportation des événements ou spécimens'} onClose={close} onSubmit={exportData} schema={exportDataSchema} defaultValues={defaultValues}>
+    <BaseDialog title={'Exportation des événements ou spécimens'} onClose={close} onSubmit={exportData} submitBtnLabel={'Exporter'} schema={exportDataSchema} defaultValues={defaultValues}>
       {(contentRef) => (
         <Fieldset.Root>
           <Fieldset.Content gap={3}>

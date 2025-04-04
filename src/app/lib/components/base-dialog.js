@@ -11,7 +11,7 @@ import {
   DialogFooter
 } from '@/components/ui/dialog'
 
-const BaseDialog = ({ title, size = 'md', schema, defaultValues, onClose, onSubmit, children }) => {
+const BaseDialog = ({ title, size = 'md', schema, defaultValues, onClose, onSubmit, submitBtnLabel = 'Continuer', children }) => {
   const rootSize = useBreakpointValue({ base: 'cover', md: size })
   const motion = useBreakpointValue({ base: 'scale', md: 'slide-in-bottom' })
 
@@ -57,7 +57,7 @@ const BaseDialog = ({ title, size = 'md', schema, defaultValues, onClose, onSubm
                 <DialogActionTrigger asChild>
                   <Button size='sm' variant='outline' onClick={() => onClose(false)} minW={24}>Annuler</Button>
                 </DialogActionTrigger>
-                <Button type='submit' size='sm' colorPalette='blue' minW={24} loading={isSubmitting}>Ajouter</Button>
+                <Button type='submit' size='sm' colorPalette='blue' minW={24} loading={isSubmitting}>{submitBtnLabel}</Button>
               </DialogFooter>
 
             </Flex>

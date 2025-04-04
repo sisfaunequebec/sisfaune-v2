@@ -1,18 +1,21 @@
 import { AbsoluteCenter, Flex, VStack } from '@chakra-ui/react'
 
-// import wait from '@/utilitaires/wait'
+import Toolbar from '../lib/components/toolbar'
 
-// import Test from './components/test'
-
-const Administration = async () => {
-  // await wait(2000)
+const TablesAdminPage = async () => {
   return (
-    <AbsoluteCenter>
-      <VStack>
-        <Flex>Gestion des tables de valeurs</Flex>
-      </VStack>
-    </AbsoluteCenter>
+    <>
+      <Toolbar>
+
+      </Toolbar>
+      <AbsoluteCenter>
+        <VStack>
+          <Flex>Tables de valeurs</Flex>
+        </VStack>
+      </AbsoluteCenter>
+    </>
   )
 }
 
-export default Administration
+export default TablesAdminPage
+

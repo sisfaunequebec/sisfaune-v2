@@ -22,7 +22,7 @@ const defaultValues = {
 }
 const AddSpecimenDialog = ({ close }) => {
   return (
-    <BaseDialog title={'Ajout d\'un nouveau spécimen'} onClose={close} onSubmit={addSpecimen} schema={addSpecimenSchema} defaultValues={defaultValues}>
+    <BaseDialog title={'Ajout d\'un spécimen'} onClose={close} onSubmit={addSpecimen} submitBtnLabel={'Ajouter'} schema={addSpecimenSchema} defaultValues={defaultValues}>
       {(contentRef) => (
         <Fieldset.Root>
           <Fieldset.Content gap={3}>

@@ -22,7 +22,9 @@ import {
 import { RxExit, RxGear } from 'react-icons/rx'
 
 import useDialog from '@/utilitaires/use-dialog'
-import ParametresDialog from './parametres-dialog'
+// import ParametresDialog from '../../../containers/parametres-dialog'
+
+import UserParametersDialog from '../../../containers/user-parameters-dialog.js'
 
 const DesktopMenu = ({ username, email }) => {
   const pathname = usePathname()
@@ -31,7 +33,7 @@ const DesktopMenu = ({ username, email }) => {
 
   // const dialogs = []
 
-  const { ask: openParameters, dialog: parametersDialog } = useDialog(ParametresDialog)
+  const { ask: openParameters, dialog: parametersDialog } = useDialog(UserParametersDialog)
   // dialogs.push(parametersDialog)
 
   const handleModifyParameters = useCallback(async () => {

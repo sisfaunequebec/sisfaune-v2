@@ -7,7 +7,7 @@ export const Field = forwardRef(function Field(props, ref) {
   const { label, children, helperText, errorText, optionalText, descriptionText, variant = 'horizontal', cursor, ...rest } = props
 
   const flexDirection = variant === 'horizontal' ? 'row' : 'column'
-  const alignItems = variant === 'horizontal' ? 'center' : 'flex-start'
+  const alignItems = variant === 'horizontal' ? 'flex-start' : 'flex-start'
   const labelFlexValue =  variant === 'horizontal' ? [1, null, 1] : 1
   const childrenFlexValue =  variant === 'horizontal' ? 2 : 1
 
@@ -16,7 +16,7 @@ export const Field = forwardRef(function Field(props, ref) {
       <Flex direction={flexDirection} alignItems={alignItems} w={'full'}>
         {label && (
           <Tooltip content={descriptionText} disabled={!descriptionText}>
-            <ChakraField.Label fontSize={['md', null, 'sm']} color={'gray.600'} fontWeight={400} flex={labelFlexValue} justifyContent={'flex-start'} pe={2} mb={1.5} textDecoration={descriptionText && 'underline'} cursor={descriptionText && 'help'} lineHeight={'shorter'}>
+            <ChakraField.Label fontSize={['md', null, 'sm']} color={'gray.600'} fontWeight={400} flex={labelFlexValue} justifyContent={'flex-start'} pt={2} pe={2} mb={1.5} textDecoration={descriptionText && 'underline'} cursor={descriptionText && 'help'} lineHeight={'shorter'}>
               {label}
               <ChakraField.RequiredIndicator fallback={optionalText} />
             </ChakraField.Label>

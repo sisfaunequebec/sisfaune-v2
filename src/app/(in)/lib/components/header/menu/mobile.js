@@ -28,7 +28,9 @@ import { Box, Flex, VStack, IconButton, Container, Separator, Link } from '@chak
 import { RxExit, RxHamburgerMenu, RxGear, RxCross1 } from 'react-icons/rx'
 
 import useDialog from '@/utilitaires/use-dialog'
-import ParametresDialog from './parametres-dialog'
+
+import UserParametersDialog from '../../../containers/user-parameters-dialog.js'
+// import ParametresDialog from '../../../containers/parametres-dialog'
 
 const MobileMenu = ({ username, email }) => {
   const [on, toggle] = useToggle(false)
@@ -37,10 +39,7 @@ const MobileMenu = ({ username, email }) => {
   const splitedPathname = pathname.split('/')
   const secondPathSegment = splitedPathname.at(1)
 
-  const dialogs = []
-
-  const { ask: openParameters, dialog: parametersDialog } = useDialog(ParametresDialog)
-  dialogs.push(parametersDialog)
+  const { ask: openParameters, dialog: parametersDialog } = useDialog(UserParametersDialog)
 
   const handleModifyParameters = useCallback(async () => {
     const result = await openParameters()
@@ -67,7 +66,7 @@ const MobileMenu = ({ username, email }) => {
 
   return (
     <>
-      {dialogs}
+      {parametersDialog}
 
       <Flex hideFrom='md'>
         <IconButton variant='outline' rounded='full' size={['md', null, 'sm']} onClick={toggle}>

@@ -1,11 +1,11 @@
 
-import { useCallback, useState } from 'react'
+import { useCallback, useRef, useState } from 'react'
 
 import { DateTime } from 'luxon'
 
 import { useDatePicker } from '@rehookify/datepicker'
 
-import { HStack, Input, VStack, Flex, SimpleGrid, Button, Text, IconButton } from '@chakra-ui/react'
+import { HStack, Input, VStack, Flex, SimpleGrid, Button, Text, IconButton, CloseButton } from '@chakra-ui/react'
 import { InputGroup } from '@/components/ui/input-group'
 import { RxDoubleArrowLeft, RxChevronLeft, RxChevronRight, RxDoubleArrowRight, RxCalendar } from 'react-icons/rx'
 
@@ -92,20 +92,35 @@ const Calendar = ({ value, onSelect }) => {
   )
 }
 
-const DateSelector =  ({ value, onChange, children }) => {
+const DateSelector =  ({ value, onChange, clearable = false, children }) => {
   const [open, setOpen] = useState(false)
+  const inputRef = useRef()
 
   const handleSelect = useCallback(value => {
     setOpen(false)
     onChange(value)
   }, [setOpen, onChange])
 
+  const endElement = value ? (
+    <CloseButton
+      variant={'ghost'}
+      rounded={'full'}
+      size={'xs'}
+      me={-2}
+      onClick={(e) => {
+        e.stopPropagation()
+        inputRef.current.value = ''
+        onChange(null)
+      }}
+    />
+  ) : undefined
+
   return (
     <PopoverRoot lazyMount unmountOnExit open={open} onOpenChange={(e) => setOpen(e.open)} positioning={{ placement: 'bottom-start' }}>
       <PopoverTrigger asChild >
         {/* <Field label={label}> */}
-          <InputGroup endElement={<RxCalendar />} flex={1} >
-            <Input value={value ? DateTime.fromJSDate(value).toFormat('yyyy-LL-dd') : null} readOnly={true} flex={4} size={['lg', null, 'md']} bg={'bg'} borderColor={'border'} cursor={'pointer'} />
+          <InputGroup startElement={<RxCalendar />} endElement={clearable && endElement} flex={1} >
+            <Input ref={inputRef} value={value ? DateTime.fromJSDate(value).toFormat('yyyy-LL-dd') : null} readOnly={true} flex={4} size={['lg', null, 'md']} bg={'bg'} borderColor={'border'} cursor={'pointer'} userSelect={'none'} />
           </InputGroup>
         {/* </Field> */}
       </PopoverTrigger>

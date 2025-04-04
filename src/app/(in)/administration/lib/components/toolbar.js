@@ -54,7 +54,7 @@ const NavTabs = () => {
   )
 }
 
-const Toolbar = () => {
+const Toolbar = ({ children }) => {
   const [{ y }] = useWindowScroll()
 
   const toolbarShadowSize = y > 70 ? 'md' : null
@@ -73,13 +73,8 @@ const Toolbar = () => {
       <Flex flex={1} bg='white' _dark={{ bg: 'black' }} py={1}>
         <Container maxWidth={'6xl'} py={2}>
           <HStack justifyContent='space-between' gap={2}>
-
-            <HStack justifyContent='space-between' gap={2}>
-              {/* <IconButton size={['md', null, 'sm']} rounded='full' variant='subtle' colorPalette='blue' aria-label='Search database' display={['inherit', null, 'none']}><RxMagnifyingGlass /></IconButton> */}
-              <NavTabs />
-            </HStack>
-
-
+            <NavTabs />
+            { children }
           </HStack>
 
         </Container>

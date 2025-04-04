@@ -12,7 +12,8 @@ import FullText from './full-text'
 import Status from './status'
 import Program from './program'
 import Region from './region'
-import orderBy from 'lodash.orderby'
+import Dates from './dates'
+
 
 const SectionTitle = ({ label }) => {
   return <Fieldset.Legend color='blue.800'>{label}</Fieldset.Legend>
@@ -49,28 +50,28 @@ const FiltersForm = async () => {
 
       <Separator />
 
-      <SectionTitle label={'Raffiner par statut :'} />
+      <SectionTitle label={'Filtrer par statut :'} />
       <Section><Status statuts={statuts} /></Section>
 
       <Separator />
 
-      <SectionTitle label={'Raffiner par programme :'} />
+      <SectionTitle label={'Filtrer par programme :'} />
       <Section><Program programmes={programmes} /></Section>
 
       <Separator />
 
-      <SectionTitle label={'Raffiner par région administrative :'} />
+      <SectionTitle label={'Filtrer par région administrative :'} />
       <Section><Region regions={regions} /></Section>
 
       <Separator />
 
-      <SectionTitle label={'Raffiner par groupe de spécimens :'} />
+      <SectionTitle label={'Filtrer par groupe de spécimens :'} />
       <Section />
 
       <Separator />
 
-      <SectionTitle label={'Raffiner par date :'} />
-      {/* <Section><Statut statuts={statuts} /></Section> */}
+      <SectionTitle label={'Filtrer par date :'} />
+      <Section><Dates /></Section>
 
     </Fieldset.Root>
   )

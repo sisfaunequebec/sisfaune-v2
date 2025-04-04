@@ -13,7 +13,7 @@ import ResponsiveButton from '@/components/responsive-button'
 
 import EvenementsSpecimens from './evenements-specimens-tabs'
 
-import AddEventDialog from '../../../(item)/evenements/[id]/lib/containers/add-event-dialog/index.js'
+import AddEventDialog from '../../evenements/lib/containers/add-event-dialog/index.js'
 import ExportDialog from '../containers/export-dialog'
 
 const NewEventButton = () => {
