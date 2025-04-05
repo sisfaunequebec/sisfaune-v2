@@ -17,7 +17,7 @@ const DetruireEvenementDialog = ({ close, eventId }) => {
   const motion = useBreakpointValue({ base: 'scale', md: 'slide-in-bottom' })
 
   return (
-    <DialogRoot open size={size} placement='center' motionPreset={motion} onOpenChange={e => close(false)} closeOnInteractOutside role='alertdialog'>
+    <DialogRoot open size={size} placement='center' motionPreset={motion} onOpenChange={e => close(false)} role={'alertdialog'}>
       <DialogContent>
         <DialogHeader>
           <DialogTitle>Effacement d&apos;un événement</DialogTitle>

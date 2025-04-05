@@ -8,7 +8,7 @@ import generator from 'generate-password'
 import addUser from './action'
 
 import { Fieldset, Input, Separator, IconButton, useClipboard } from '@chakra-ui/react'
-import { RxCopy, RxCheck } from 'react-icons/rx'
+import { RxCopy, RxCheckCircled } from 'react-icons/rx'
 
 import BaseDialog from '@/app/lib/components/base-dialog'
 
@@ -22,7 +22,7 @@ const CopyPasswordButton = ({ password }) => {
   const { copy, copied } = clipboard
   return (
     <IconButton variant={'ghost'} size={'xxs'} rounded={'full'} onClick={copy}>
-      { copied ? <RxCheck /> : <RxCopy /> }
+      { copied ? <RxCheckCircled  color={'green'} /> : <RxCopy /> }
     </IconButton>
   )
 }
@@ -55,7 +55,7 @@ const AddUserDialog = ({ close }) => {
               <Input autoComplete={'off'} type={'email'} />
             </ControlledField>
             <Separator />
-            <ControlledField name={'password'} label={'Mot de passe :'} variant={'horizontal'} helperText={'Ceci est le mot de passe généré qui sera envoyé par courriel au participant: il est recommandé de le copier avant de cliquer sur Inscrire'}>
+            <ControlledField name={'password'} label={'Mot de passe :'} variant={'horizontal'} helperText={'IMPORTANT : ce mot de passe a été généré automatiquement et sera envoyé par courriel à l\'utilisateur: il ne sera plus visible par la suite. Il est recommandé de le copier si nécessaire avant de continuer...'}>
               <PasswordDisplay />
             </ControlledField>
           </Fieldset.Content>

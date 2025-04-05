@@ -2,9 +2,6 @@ import { Field as ChakraField } from '@/components/ui/field'
 
 const Field = ({ formState, children, name, ...rest }) => {
   const { errors, isSubmitting } = formState
-  // const error = errors[name]
-
-  // console.debug(errors)
 
   const onlyFirstError = Object.entries(errors).slice(0, 1).reduce((acc, e) => {
     const [key, value] = e
@@ -14,6 +11,8 @@ const Field = ({ formState, children, name, ...rest }) => {
 
   // console.debug(onlyFirstError)
   const error = onlyFirstError[name]
+  // console.debug(errors, name)
+  // const error = errors[name]
 
   return (
     <ChakraField variant={'vertical'} invalid={!!error} errorText={error?.message} disabled={isSubmitting} {...rest}>

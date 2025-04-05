@@ -1,4 +1,3 @@
-// 'use client'
 import orm from '@/logic/data/database'
 
 import { Flex, Fieldset, Separator as ChakraSeparator, Text, Icon, HStack } from '@chakra-ui/react'
@@ -10,9 +9,6 @@ import { LuInfo } from 'react-icons/lu'
 import Order from './order'
 import FullText from './full-text'
 import Status from './status'
-import Program from './program'
-import Region from './region'
-import Dates from './dates'
 
 const FiltersContainer = ({ children }) => {
   return (
@@ -35,14 +31,10 @@ const Separator = () => {
 }
 
 const FiltersForm = async () => {
-  const programmes = await orm.LutEventProgram.findMany({ where: { isActive: true }})
-  const statuts = await orm.LutEventStatus.findMany()
-  const regions = await orm.LutLocality.groupBy({
-    by: ['regionId', 'regionName'],
-    orderBy: {
-      regionName: 'asc'
-    }
-  })
+  const statuts = [
+    { value: 1, label: 'Actif' },
+    { value: 0, label: 'Inactif' }
+  ]
 
   return (
     <Fieldset.Root flex alignItems={'flex-start'} >
@@ -52,7 +44,7 @@ const FiltersForm = async () => {
 
       <Separator />
 
-      <SectionTitle label={<HStack><Text>Rechercher dans le texte :</Text><Tooltip size={'xl'} content={'Rechercher par numéro d\'événement, numéro MAPAQ, numéro SILAB, numéro de pathologie, nom du soumissionnaire et/ou municipalité'}><Icon fontSize={'xl'} cursor={'pointer'}><LuInfo /></Icon></Tooltip></HStack>} />
+      <SectionTitle label={<HStack><Text>Rechercher dans le texte :</Text><Tooltip size={'xl'} content={'Rechercher par nom d\'utilisateurs, nom, organisme'}><Icon fontSize={'xl'} cursor={'pointer'}><LuInfo /></Icon></Tooltip></HStack>} />
       <Section><FullText /></Section>
 
       <Separator />
@@ -60,25 +52,6 @@ const FiltersForm = async () => {
       <SectionTitle label={'Filtrer par statut :'} />
       <Section><Status statuts={statuts} /></Section>
 
-      <Separator />
-
-      <SectionTitle label={'Filtrer par programme :'} />
-      <Section><Program programmes={programmes} /></Section>
-
-      <Separator />
-
-      <SectionTitle label={'Filtrer par région administrative :'} />
-      <Section><Region regions={regions} /></Section>
-
-      <Separator />
-
-      <SectionTitle label={'Filtrer par groupe de spécimens :'} />
-      <Section />
-
-      <Separator />
-
-      <SectionTitle label={'Filtrer par date :'} />
-      <Section><Dates /></Section>
 
     </Fieldset.Root>
   )

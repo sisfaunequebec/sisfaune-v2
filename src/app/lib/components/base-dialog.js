@@ -1,5 +1,5 @@
 'use client'
-import { useCallback, useRef  } from 'react'
+import { useCallback, useMemo, useRef } from 'react'
 
 import { useForm, FormProvider, useController } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -11,7 +11,7 @@ import {
   DialogFooter
 } from '@/components/ui/dialog'
 
-const BaseDialog = ({ title, size = 'md', schema, defaultValues, onClose, onSubmit, submitBtnLabel = 'Continuer', children }) => {
+const BaseDialog = ({ title, size = 'md', schema, watches = [], defaultValues, onClose, onSubmit, submitBtnLabel = 'Continuer', close, children }) => {
   const rootSize = useBreakpointValue({ base: 'cover', md: size })
   const motion = useBreakpointValue({ base: 'scale', md: 'slide-in-bottom' })
 
@@ -20,7 +20,16 @@ const BaseDialog = ({ title, size = 'md', schema, defaultValues, onClose, onSubm
     defaultValues
   })
 
-  const { handleSubmit, formState } = form
+  const { handleSubmit, formState, watch } = form
+
+  const watchedArray = watch(watches)
+
+  const watched = watchedArray.reduce((acc, w, i) => {
+    acc[watches[i]] = w
+    return acc
+  }, {})
+
+  // console.debug('watched', watched, formState.errors)
 
    const handleAction = useCallback(async data => {
       try {
@@ -36,7 +45,7 @@ const BaseDialog = ({ title, size = 'md', schema, defaultValues, onClose, onSubm
   const contentRef = useRef(null)
 
   return (
-    <Dialog.Root open size={rootSize} placement={'center'} motionPreset={motion} onOpenChange={e => close(false)} closeOnInteractOutside>
+    <Dialog.Root lazyMount open size={rootSize} placement={'center'} motionPreset={motion} onOpenChange={e => onClose(false)} closeOnInteractOutside>
       <Portal>
         <Dialog.Backdrop />
         <Dialog.Positioner>
@@ -50,7 +59,7 @@ const BaseDialog = ({ title, size = 'md', schema, defaultValues, onClose, onSubm
             <Flex as={'form'} onSubmit={handleSubmit(handleAction)} direction={'column'} justifyContent={'stretch'} h={'100%'}>
 
               <Dialog.Body>
-                { children(contentRef) }
+                { children(contentRef, watched) }
               </Dialog.Body>
 
               <DialogFooter gap={2}>

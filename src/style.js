@@ -32,6 +32,9 @@ const tokens = defineTokens({
       900: { value: '#313f28' },
       950: { value: '#182112' }
     }
+  },
+  cursor: {
+    radio: { value: 'pointer' },
   }
 })
 

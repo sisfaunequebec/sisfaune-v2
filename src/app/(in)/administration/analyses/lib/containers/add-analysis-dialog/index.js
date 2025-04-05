@@ -1,9 +1,11 @@
 'use client'
+import { useCallback } from 'react'
 import { DateTime } from 'luxon'
 
 import addAnalysis from './action'
 
-import { Fieldset, Input } from '@chakra-ui/react'
+import { Fieldset, Input, Separator, VStack } from '@chakra-ui/react'
+import { Radio, RadioGroup } from '@/components/ui/radio'
 
 import BaseDialog from '@/app/lib/components/base-dialog'
 
@@ -18,38 +20,61 @@ import ControlledField from '@/app/lib/components/controlled-field'
 import addAnalysisSchema from './schema'
 
 const defaultValues = {
-  // typeId: 0,
-  // programId: null,
-  // reportOriginId: 1,
-  // statusId: 2,
-  // silabId: null,
-  // reportedAt: DateTime.utc().toJSDate()
+  analysisName: null,
+  resultTypeId: null,
+  isNewGroup: 0,
+  newAnalysisGroupName: '',
+  analysisGroupId: null,
+  analysisSectorId: null
 }
 
-const AddAnalysisDialog = ({ close }) => {
+const IsNewSelector = (props) => {
+  const { value, onChange } = props
+  // console.debug(value)
+
+  const handleChange = useCallback(e => {
+    const { value } = e
+    onChange(value)
+  }, [onChange])
+
   return (
-    <BaseDialog title={'Nouvelle analyse'} onClose={close} onSubmit={addAnalysis} submitBtnLabel={'Ajouter'} schema={addAnalysisSchema} defaultValues={defaultValues}>
-      {(contentRef) => (
+    <RadioGroup size={'sm'} colorPalette={'blue'} variant={'subtle'} name={'isNewGroup'} defaultValue={'no'} value={value} onValueChange={handleChange}>
+      <VStack alignItems={'flex-start'} gap={1}>
+        <Radio value={0}>d&apos;un groupe existant</Radio>
+        <Radio value={1}>d&apos;un nouveau groupe</Radio>
+      </VStack>
+    </RadioGroup>
+  )
+}
+
+const AddAnalysisDialog = ({ close: onClose }) => {
+  return (
+    <BaseDialog title={'Nouvelle analyse'} watches={['isNewGroup']} onClose={onClose} onSubmit={addAnalysis} submitBtnLabel={'Ajouter'} schema={addAnalysisSchema} defaultValues={defaultValues}>
+      {(contentRef, watched) => (
         <Fieldset.Root>
           <Fieldset.Content gap={3}>
-            {/* <ControlledField name={'typeId'} label={'Type :'} variant={'horizontal'}>
-              <TypeSelect contentRef={contentRef} />
-            </ControlledField>
-            <ControlledField name={'statusId'} label={'Statut :'} variant={'horizontal'}>
-              <StatusSelect contentRef={contentRef} />
-            </ControlledField>
-            <ControlledField name={'programId'} label={'Programme :'} variant={'horizontal'}>
-              <ProgramSelect contentRef={contentRef} />
-            </ControlledField>
-            <ControlledField name={'silabId'} label={'Numéro d\'identification SILAB :'} variant={'horizontal'}>
+            <ControlledField name={'analysisName'} label={'Nom de l\'analyse :'} variant={'horizontal'}>
               <Input autoComplete={'off'} />
             </ControlledField>
-            <ControlledField name={'reportOriginId'} label={'Provenance du signalement :'} variant={'horizontal'}>
-              <ReportOriginSelect contentRef={contentRef} />
+            <ControlledField name={'resultTypeId'} label={'Type de résultat :'} variant={'horizontal'}>
+              <Input autoComplete={'off'} />
             </ControlledField>
-            <ControlledField name={'reportedAt'} label={'Date du signalement :'} variant={'horizontal'}>
-              <DateSelector />
-            </ControlledField> */}
+            <Separator />
+            <ControlledField name={'isNewGroup'} label={'L\'analyse fait partie :'} variant={'horizontal'}>
+              <IsNewSelector />
+            </ControlledField>
+            { watched.isNewGroup === 0 && <ControlledField name={'analysisGroupId'} label={'Groupe :'} variant={'horizontal'}>
+              <Input autoComplete={'off'} />
+            </ControlledField>
+            }
+            { watched.isNewGroup === 1 && <ControlledField name={'analysisSectorId'} label={'Secteur :'} variant={'horizontal'}>
+              <Input autoComplete={'off'} />
+            </ControlledField>
+            }
+            { watched.isNewGroup === 1 && <ControlledField name={'newAnalysisGroupName'} label={'Nom du nouveau groupe (optionnel) :'} variant={'horizontal'}>
+              <Input autoComplete={'off'} />
+            </ControlledField>
+            }
           </Fieldset.Content>
         </Fieldset.Root>
       )}
