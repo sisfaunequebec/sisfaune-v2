@@ -4,7 +4,7 @@ import { useCallback } from 'react'
 import getReportOrigins from '../actions/get-report-origins'
 
 // import SelectField from './select-field'
-import SelectFieldAdvanced from './select-field-advanced'
+import SelectFieldAdvanced from '../../../../../../../lib/components/select-field-advanced'
 
 // const ProvenanceSelect = ({ label, value, isEditing, onChange }) => {
 //   const [items, setItems] = useState([])

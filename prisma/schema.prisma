@@ -24,8 +24,8 @@ model User {
   createdAt DateTime @default(now()) @map(name: "meta_date_creation")
   updatedAt DateTime @updatedAt @map(name: "meta_date_maj")
 
-  eventCreated Event[] @relation("EventCreator")
-  eventSubmitted Event[] @relation("EventSubmitter")
+  eventsCreated Event[] @relation("EventCreator")
+  eventsSubmitted Event[] @relation("EventSubmitter")
 }
  
 model Account {
@@ -41,7 +41,9 @@ model Account {
   token_type        String? @map(name: "type_jeton")
   scope             String?
   id_token          String? @map(name: "id_jeton")
-  session_state     String? @map(name: "etat_Session")
+  session_state     String? @map(name: "etat_session")
+
+  isActive Boolean @map(name: "actif") @default(true)
  
   createdAt DateTime @default(now())  @map(name: "meta_date_creation")
   updatedAt DateTime @updatedAt @map(name: "meta_date_maj")

@@ -4,7 +4,7 @@ import { useCallback } from 'react'
 import getHabitatTypes from '../actions/get-habitat-types'
 
 // import SelectField from './select-field'
-import SelectFieldAdvanced from './select-field-advanced'
+import SelectFieldAdvanced from '../../../../../../../lib/components/select-field-advanced'
 
 // const HabitatSelect = ({ label, value, isEditing, onChange }) => {
 //   const [items, setItems] = useState([])

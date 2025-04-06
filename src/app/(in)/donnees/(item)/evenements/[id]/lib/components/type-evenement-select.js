@@ -3,7 +3,7 @@ import { useCallback } from 'react'
 
 import getEventTypes from '../actions/get-event-types'
 
-import SelectFieldAdvanced from './select-field-advanced'
+import SelectFieldAdvanced from '../../../../../../../lib/components/select-field-advanced'
 
 // const TypeEvenementSelect = ({ label, value, isEditing, onChange }) => {
 //   const [items, setItems] = useState([])

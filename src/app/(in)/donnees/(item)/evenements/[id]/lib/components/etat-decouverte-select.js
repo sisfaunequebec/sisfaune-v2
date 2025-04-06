@@ -4,7 +4,7 @@ import { useCallback } from 'react'
 import getDiscoveryStates from '../actions/get-discovery-states'
 
 // import SelectField from './select-field'
-import SelectFieldAdvanced from './select-field-advanced'
+import SelectFieldAdvanced from '../../../../../../../lib/components/select-field-advanced'
 
 // const EtatDecouverteSelect = ({ label, value, isEditing, onChange }) => {
 //   const [items, setItems] = useState([])

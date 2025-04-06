@@ -4,7 +4,7 @@ import { useCallback } from 'react'
 // import SelectField from './select-field'
 import getPrograms from '../actions/get-programs'
 
-import SelectFieldAdvanced from './select-field-advanced'
+import SelectFieldAdvanced from '../../../../../../../lib/components/select-field-advanced'
 
 // const ProgrammeSelect = ({ label, value, isEditing, onChange }) => {
 //   const [items, setItems] = useState([])

@@ -18,7 +18,7 @@ const NewUserButton = () => {
     if (result) {
       console.debug('Create !!!')
     }
-  }, [])
+  }, [add])
 
   return (
     <>

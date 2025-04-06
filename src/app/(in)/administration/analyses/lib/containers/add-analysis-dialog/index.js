@@ -10,12 +10,10 @@ import { Radio, RadioGroup } from '@/components/ui/radio'
 import BaseDialog from '@/app/lib/components/base-dialog'
 
 import ControlledField from '@/app/lib/components/controlled-field'
-// import DateSelector from '@/app/lib/components/date-selector'
 
-// import ProgramSelect from './program-select'
-// import TypeSelect from './type-select'
-// import StatusSelect from './status-select'
-// import ReportOriginSelect from './report-origin-select'
+import ResultTypeSelect from '../../components/result-type-select'
+import AnalysisGroupSelect from '../../components/analysis-group-select'
+import AnalysisSectorSelect from '../../components/analysis-sector-select'
 
 import addAnalysisSchema from './schema'
 
@@ -29,8 +27,7 @@ const defaultValues = {
 }
 
 const IsNewSelector = (props) => {
-  const { value, onChange } = props
-  // console.debug(value)
+  const { value, onChange } = props 
 
   const handleChange = useCallback(e => {
     const { value } = e
@@ -47,9 +44,9 @@ const IsNewSelector = (props) => {
   )
 }
 
-const AddAnalysisDialog = ({ close: onClose }) => {
+const AddAnalysisDialog = ({ close }) => {
   return (
-    <BaseDialog title={'Nouvelle analyse'} watches={['isNewGroup']} onClose={onClose} onSubmit={addAnalysis} submitBtnLabel={'Ajouter'} schema={addAnalysisSchema} defaultValues={defaultValues}>
+    <BaseDialog title={'Nouvelle analyse'} watches={['isNewGroup']} onClose={close} onSubmit={addAnalysis} submitBtnLabel={'Ajouter'} schema={addAnalysisSchema} defaultValues={defaultValues}>
       {(contentRef, watched) => (
         <Fieldset.Root>
           <Fieldset.Content gap={3}>
@@ -57,18 +54,18 @@ const AddAnalysisDialog = ({ close: onClose }) => {
               <Input autoComplete={'off'} />
             </ControlledField>
             <ControlledField name={'resultTypeId'} label={'Type de résultat :'} variant={'horizontal'}>
-              <Input autoComplete={'off'} />
+              <ResultTypeSelect />
             </ControlledField>
             <Separator />
             <ControlledField name={'isNewGroup'} label={'L\'analyse fait partie :'} variant={'horizontal'}>
               <IsNewSelector />
             </ControlledField>
             { watched.isNewGroup === 0 && <ControlledField name={'analysisGroupId'} label={'Groupe :'} variant={'horizontal'}>
-              <Input autoComplete={'off'} />
+              <AnalysisGroupSelect />
             </ControlledField>
             }
             { watched.isNewGroup === 1 && <ControlledField name={'analysisSectorId'} label={'Secteur :'} variant={'horizontal'}>
-              <Input autoComplete={'off'} />
+              <AnalysisSectorSelect />
             </ControlledField>
             }
             { watched.isNewGroup === 1 && <ControlledField name={'newAnalysisGroupName'} label={'Nom du nouveau groupe (optionnel) :'} variant={'horizontal'}>

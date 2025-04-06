@@ -16,7 +16,7 @@ const BaseDialog = ({ title, size = 'md', schema, watches = [], defaultValues, o
   const motion = useBreakpointValue({ base: 'scale', md: 'slide-in-bottom' })
 
   const form = useForm({
-    resolver: zodResolver(schema),
+    resolver: schema && zodResolver(schema),
     defaultValues
   })
 
@@ -33,8 +33,12 @@ const BaseDialog = ({ title, size = 'md', schema, watches = [], defaultValues, o
 
    const handleAction = useCallback(async data => {
       try {
-        await onSubmit(data)
-        onClose(false)
+        if (onSubmit) {
+          await onSubmit(data)
+          onClose(false)
+        } else {
+          onClose(false)
+        }
       } catch (e) {
         console.debug(e)
       }

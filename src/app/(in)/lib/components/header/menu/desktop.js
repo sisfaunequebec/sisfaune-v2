@@ -60,8 +60,8 @@ const DesktopMenu = ({ username, email }) => {
           <Menu.Trigger>
             <Avatar name={username} colorPalette={'green'} size={['md', null, 'sm']} variant={'solid'} cursor={'pointer'} />
           </Menu.Trigger>
-          <MenuContent minW={60} hideBelow={'md'} mt={4} isolation={'isolate'} isolate={'isolate'}  _hover={{ bg: 'white' }}>
-            <Menu.Item cursor={'default'} value={'info'}>
+          <MenuContent minW={60} hideBelow={'md'} mt={4} isolation={'isolate'} isolate={'isolate'} _hover={{ bg: 'white' }}>
+            <Menu.Item cursor={'default'} value={'info'} _hover={{ bg: 'white' }}>
               <VStack gap={0} flex={1} alignItems={'flex-start'}>
                 <Box flex={1} fontWeight={500}>{username}</Box>
                 <Box flex={1} color={'gray.500'}>{email}</Box>

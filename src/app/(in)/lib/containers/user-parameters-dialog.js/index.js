@@ -25,6 +25,7 @@ const UserParametersDialog = ({ close }) => {
               <Input autoComplete={'off'} type={'email'} />
             </ControlledField>
             <Separator />
+            <Fieldset.Legend mb={2}>Modification du mot de passe</Fieldset.Legend>
             <ControlledField name={'password'} label={'Mot de passe actuel :'} variant={'horizontal'}>
               <PasswordInput autoComplete={'off'} type={'password'} />
             </ControlledField>
