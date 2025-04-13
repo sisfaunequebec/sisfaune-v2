@@ -1,0 +1,18 @@
+[
+  {
+    "id": "0",
+    "methode": ""
+  },
+  {
+    "id": "1",
+    "methode": "Messagerie prioritaire"
+  },
+  {
+    "id": "2",
+    "methode": "Courrier régulier"
+  },
+  {
+    "id": "3",
+    "methode": "Livré directement au laboratoire"
+  }
+]

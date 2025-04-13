@@ -1,7 +1,7 @@
 'use client'
 import { useCallback, useEffect, useState } from 'react'
 
-import getEventStatuses from '@/logic/data/lookups/get-event-statuses'
+import getEventStatuses from '@/lib/data/lookups/get-event-statuses'
 
 import {
   Portal,
@@ -9,7 +9,7 @@ import {
   createListCollection
 } from '@chakra-ui/react'
 
-const StatusSelect = ({ value, onChange, onBlur, contentRef }) =>  {
+const StatusSelect = ({ value, onChange, onBlur, contentRef }) => {
   const [items, setItems] = useState([])
 
   useEffect(() => {
@@ -26,14 +26,14 @@ const StatusSelect = ({ value, onChange, onBlur, contentRef }) =>  {
   }, [onChange])
 
   const collection = createListCollection({ items })
-  
+
   return (
     <Select.Root
       collection={collection}
       value={[value]}
       onValueChange={handleValueChange}
       onInteractOutside={onBlur}
-      size={'sm'}
+      size='sm'
       positioning={{ sameWidth: true }}
     >
       <Select.HiddenSelect />

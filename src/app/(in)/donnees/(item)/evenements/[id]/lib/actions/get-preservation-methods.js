@@ -1,5 +1,5 @@
 'use server'
-import orm from '@/logic/data/database'
+import orm from '@/lib/data/database'
 
 const getPreservationMethods = async (value) => {
   console.debug('getPreservationMethods', value)

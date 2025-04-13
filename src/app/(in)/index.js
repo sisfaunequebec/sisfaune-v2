@@ -28,7 +28,7 @@ const defaultValues = {
 
 const AddAnalysisDialog = ({ close }) => {
   return (
-    <BaseDialog title={'Nouvelle analyse'} onClose={close} onSubmit={addAnalysis} submitBtnLabel={'Ajouter'} schema={addAnalysisSchema} defaultValues={defaultValues}>
+    <BaseDialog title='Nouvelle analyse' onClose={close} onSubmit={addAnalysis} submitBtnLabel='Ajouter' schema={addAnalysisSchema} defaultValues={defaultValues}>
       {(contentRef) => (
         <Fieldset.Root>
           <Fieldset.Content gap={3}>

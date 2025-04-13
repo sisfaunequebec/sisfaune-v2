@@ -1,6 +1,6 @@
 'use server'
 import orderBy from 'lodash.orderby'
-import orm from '@/logic/data/database'
+import orm from '@/lib/data/database'
 
 const getShippingMethods = async () => {
   const typesRaw = await orm.LutLabShippingMethod.findMany()

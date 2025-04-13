@@ -1,4 +1,3 @@
-
 'use client'
 import { useCallback } from 'react'
 
@@ -6,7 +5,7 @@ import { RxPlus } from 'react-icons/rx'
 
 import useDialog from '@/utilitaires/use-dialog'
 
-import ResponsiveButton from '@/components/responsive-button'
+import ResponsiveButton from '@/app/lib/components/responsive-button'
 
 import AddUserDialog from '../containers/add-user-dialog'
 
@@ -23,7 +22,7 @@ const NewUserButton = () => {
   return (
     <>
       {dialog}
-      <ResponsiveButton label={'Nouvel utilisateur'} colorPalette={'blue'} icon={<RxPlus />} onClick={handleClick} />
+      <ResponsiveButton label='Nouvel utilisateur' colorPalette='blue' icon={<RxPlus />} onClick={handleClick} />
     </>
   )
 }

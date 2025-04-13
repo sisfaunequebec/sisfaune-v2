@@ -5,4 +5,3 @@ const schema = z.object({
 })
 
 export default schema
-

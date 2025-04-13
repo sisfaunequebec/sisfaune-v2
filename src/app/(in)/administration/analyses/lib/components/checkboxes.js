@@ -38,12 +38,12 @@ const Checkboxes = ({ allChoicesLabel = 'Tous', choices = [], name, value, onCha
 
   return (
     <>
-      <Checkbox size={'sm'} colorPalette={'blue'} variant={'subtle'} checked={allChecked} mb={4} onCheckedChange={handleAllCheck}>{allChoicesLabel}</Checkbox>
+      <Checkbox size='sm' colorPalette='blue' variant='subtle' checked={allChecked} mb={4} onCheckedChange={handleAllCheck}>{allChoicesLabel}</Checkbox>
       <CheckboxGroup value={internalValue} name={name} onValueChange={handleChange} gap={1}>
         {choices.map(c => {
           const { value, label } = c
           return (
-            <Checkbox size={'sm'} colorPalette={'blue'} variant={'subtle'} value={value.toString()} key={value.toString()}>{label}</Checkbox>
+            <Checkbox size='sm' colorPalette='blue' variant='subtle' value={value.toString()} key={value.toString()}>{label}</Checkbox>
           )
         })}
       </CheckboxGroup>

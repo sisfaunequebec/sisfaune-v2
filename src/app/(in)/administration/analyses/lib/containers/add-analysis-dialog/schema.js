@@ -23,4 +23,3 @@ const schema = z.discriminatedUnion('isNewGroup', [
 // const schema = z.union([existingGroupSchema, newGroupSchema])
 
 export default schema
-

@@ -1,7 +1,7 @@
 'use server'
 import { unstable_cache } from 'next/cache'
 
-import orm from '@/logic/data/database'
+import orm from '@/lib/data/database'
 
 const getEventTypes = unstable_cache(
   async () => {
@@ -15,6 +15,6 @@ const getEventTypes = unstable_cache(
       }
     })
     return types
-}, ['event_types'], { revalidate: 20 })
+  }, ['event_types'], { revalidate: 20 })
 
 export default getEventTypes

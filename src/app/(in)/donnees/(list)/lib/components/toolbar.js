@@ -9,7 +9,7 @@ import { RxPlus, RxDownload, RxMagnifyingGlass } from 'react-icons/rx'
 
 import useDialog from '@/utilitaires/use-dialog'
 
-import ResponsiveButton from '@/components/responsive-button'
+import ResponsiveButton from '@/app/lib/components/responsive-button'
 
 import EvenementsSpecimens from './evenements-specimens-tabs'
 

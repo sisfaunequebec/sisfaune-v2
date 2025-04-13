@@ -19,7 +19,7 @@ import { Trigger, Content } from './lib/components/accordion-parts'
 
 import useDialog from '@/utilitaires/use-dialog'
 
-import PageSpinner from '@/components/page-spinner'
+import PageSpinner from '@/app/lib/components/page-spinner'
 
 import Toolbar from '../../../(list)/evenements/lib/components/toolbar'
 
@@ -50,7 +50,7 @@ const SectionHeading = ({ label, isSticky = false, children }) => {
 const Evenement = () => {
   const params = useParams()
   const { id } = params
-  
+
   const eventId = parseInt(id, 10)
 
   const [event, setEvent] = useState(null)
@@ -65,7 +65,7 @@ const Evenement = () => {
         // setActivePanel([section])
         setEditingSection(null)
       } else {
-        return
+
       }
     } else {
       setActivePanel([section])
@@ -138,7 +138,6 @@ const Evenement = () => {
     }
   }, [deleteSpecimen])
 
-
   if (!event) {
     return (
       <PageSpinner />
@@ -152,13 +151,12 @@ const Evenement = () => {
       {dialogs}
 
       <Toolbar />
-      <Flex flex={1} top={0} as={Container} direction={['column', null, 'row']} maxWidth={['6xl']} py={[0, 0, 4]} fontSize={['md', null, 'sm']}>
 
-        {/* <Flex flex={2} p={4} px={6} alignItems='stretch' bg='blue.100' position='sticky' borderColor='blue.300' borderTopWidth={1} hideBelow='md'>
-          <Flex alignSelf='flex-start' zIndex={1000} />
-        </Flex> */}
+      <Flex flex={1} top={0} as={Container} direction={['column', null, 'row']} maxWidth={['6xl']} px={[0, 0, 6, 8]} pt={[0, 0, 6]} fontSize={['md', null, 'sm']}>
 
-        <VStack flex={5} justifyContent='flex-start' alignItems='stretch' gap={[0, null, 2]}>
+        <Flex position='sticky' flex={2} h='calc(100vh - 162px)' overflowY='auto' top={154} p={3} px={6} alignItems='stretch' bg='blue.100' _dark={{ bg: 'blue.900' }} borderColor='blue.300' borderTopWidth={1} borderBottomWidth={1} hideBelow='md' />
+
+        <VStack flex={5} ps={[0, null, 2]} justifyContent='flex-start' alignItems='stretch' gap={[0, null, 2]}>
 
           <VStack alignItems='stretch' fontSize={['md', null, 'sm']} gap={0}>
 
@@ -166,7 +164,7 @@ const Evenement = () => {
               <DeleteEventButton eventId={eventId} />
             </SectionHeading>
 
-            <AccordionRoot size={['md', null, 'sm']} multiple value={activePanel} onValueChange={handleToggleActiveSection} lazyMount={true}>
+            <AccordionRoot size={['md', null, 'sm']} multiple value={activePanel} onValueChange={handleToggleActiveSection} lazyMount>
 
               <InfosGeneralesSection event={event} onToggleEditing={handleToggleEditingSection} editingSection={editingSection} />
               <LocalisationSection event={event} onToggleEditing={handleToggleEditingSection} editingSection={editingSection} />
@@ -178,18 +176,18 @@ const Evenement = () => {
 
           <VStack alignItems='stretch' fontSize={['md', null, 'sm']} gap={0}>
 
-            <SectionHeading label={'Spécimens'} isSticky>
+            <SectionHeading label='Spécimens' isSticky>
               <IconButton colorPalette='green' variant='solid' rounded='full' size={['xs']} onClick={handleCreateSpecimen}><RxPlus /></IconButton>
             </SectionHeading>
 
-            <AccordionRoot multiple size={['md', null, 'sm']} defaultValue={[]} lazyMount={true}>
-              { specimens.map(s => {
+            <AccordionRoot multiple size={['md', null, 'sm']} defaultValue={[]} lazyMount>
+              {specimens.map(s => {
                 const { id } = s
                 // console.debug(id)
                 return (
                   <SpecimenInformationSection key={id} specimen={s} onToggleEditing={handleToggleEditingSection} editingSection={editingSection} onDelete={handleDeleteSpecimen} />
                 )
-              }) }
+              })}
             </AccordionRoot>
           </VStack>
 
@@ -199,7 +197,7 @@ const Evenement = () => {
               <IconButton colorPalette='green' variant='solid' rounded='full' size={['xs']} onClick={handleCreateAnalysis}><RxPlus /></IconButton>
             </SectionHeading>
 
-            <AccordionRoot multiple size={['md', null, 'sm']} defaultValue={[]} lazyMount={true}>
+            <AccordionRoot multiple size={['md', null, 'sm']} defaultValue={[]} lazyMount>
 
               <AccordionItem value='dsc'>
                 <Box position='relative'>

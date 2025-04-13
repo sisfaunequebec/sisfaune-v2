@@ -1,7 +1,7 @@
 'use client'
 import { useCallback, useEffect, useState } from 'react'
 
-import getReportOrigins from '@/logic/data/lookups/get-report-origins'
+import getReportOrigins from '@/lib/data/lookups/get-report-origins'
 
 import {
   Portal,
@@ -9,12 +9,12 @@ import {
   createListCollection
 } from '@chakra-ui/react'
 
-const ReportOriginSelect = ({ value, onChange, onBlur, contentRef }) =>  {
+const ReportOriginSelect = ({ value, onChange, onBlur, contentRef }) => {
   const [items, setItems] = useState([])
 
   useEffect(() => {
     const loadItems = async () => {
-      const result = await getReportOrigins()
+      const result = await getReportOrigins({ activeOnly: true })
       setItems(result)
     }
     loadItems()
@@ -26,14 +26,14 @@ const ReportOriginSelect = ({ value, onChange, onBlur, contentRef }) =>  {
   }, [onChange])
 
   const collection = createListCollection({ items })
-  
+
   return (
     <Select.Root
       collection={collection}
       value={[value]}
       onValueChange={handleValueChange}
       onInteractOutside={onBlur}
-      size={'sm'}
+      size='sm'
       positioning={{ sameWidth: true }}
     >
       <Select.HiddenSelect />

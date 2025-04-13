@@ -1,0 +1,44 @@
+'use client'
+
+// import useSWR from 'swr'
+import useSWRInfinite from 'swr/infinite'
+
+import fetcher from '../fetcher'
+
+import {
+  createSerializer
+} from 'nuqs'
+
+import { searchParams, urlKeys } from './specimens-params'
+
+const serialize = createSerializer(searchParams, { urlKeys })
+const baseUrl = '/api/data/specimens'
+
+const useEvents = (params, take = 20) => {
+  const result = useSWRInfinite(
+    (pageIndex, previousPageData) => {
+      if (previousPageData && !previousPageData.length) return null
+      const mergedParams = {
+        ...params,
+        offset: pageIndex,
+        take
+      }
+
+      return { url: `${baseUrl}${serialize(mergedParams)}`, mergedParams }
+    },
+    ({ url }) => fetcher(url),
+    { keepPreviousData: true, initialSize: 1, revalidateFirstPage: false }
+  )
+
+  const { data, error, isLoading, isValidating, mutate, size, setSize } = result
+
+  return {
+    data,
+    isLoading,
+    isError: error,
+    size,
+    setSize
+  }
+}
+
+export default useEvents

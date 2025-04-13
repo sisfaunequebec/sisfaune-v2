@@ -17,7 +17,7 @@ import BaseDialog from '@/app/lib/components/base-dialog'
 
 const EditAnalysisDialog = ({ close }) => {
   return (
-    <BaseDialog title={'Modification d\'une analyse'} onClose={close} onSubmit={null} submitBtnLabel={'Modifier'} schema={null} defaultValues={null}>
+    <BaseDialog title={'Modification d\'une analyse'} onClose={close} onSubmit={null} submitBtnLabel='Modifier' schema={null} defaultValues={null}>
       {(contentRef) => (
         <Fieldset.Root>
           {/* <Fieldset.Content gap={3}>

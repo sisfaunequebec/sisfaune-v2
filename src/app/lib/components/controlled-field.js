@@ -1,7 +1,7 @@
 import { Children, cloneElement, useRef } from 'react'
 import { useController, useWatch } from 'react-hook-form'
 
-import Field from '@/components/field'
+import Field from '@/app/lib/components/field'
 
 const ControlledField = ({ name, label, control, watches, children, ...rest }) => {
   const {
@@ -29,7 +29,7 @@ const ControlledField = ({ name, label, control, watches, children, ...rest }) =
   const contentRef = useRef(null)
 
   const child = Children.only(children)
-  const inputElement = cloneElement(child, {...field, ...{ contentRef }})
+  const inputElement = cloneElement(child, { ...field, ...{ contentRef } })
 
   return (
     <Field formState={formState} name={name} label={label} {...rest} ref={contentRef}>

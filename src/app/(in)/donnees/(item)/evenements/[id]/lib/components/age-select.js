@@ -29,7 +29,7 @@ const AgeSelect = ({ label, value, group, isEditing, onChange }) => {
   }, [value])
 
   return (
-    <SelectFieldAdvanced isEditing={isEditing} label={label} value={value} onChange={onChange} valueLabelKey={'name'} getter={getter} />
+    <SelectFieldAdvanced isEditing={isEditing} label={label} value={value} onChange={onChange} valueLabelKey='name' getter={getter} />
   )
 }
 

@@ -1,4 +1,4 @@
-import PageSpinner from '@/components/page-spinner'
+import PageSpinner from '@/app/lib/components/page-spinner'
 
 const Loading = () => {
   return (

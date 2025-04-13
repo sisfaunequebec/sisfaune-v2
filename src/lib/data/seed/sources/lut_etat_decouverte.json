@@ -1,0 +1,14 @@
+[
+  {
+    "id": "0",
+    "etat": "Indéterminé"
+  },
+  {
+    "id": "1",
+    "etat": "Vivant"
+  },
+  {
+    "id": "2",
+    "etat": "Mort"
+  }
+]

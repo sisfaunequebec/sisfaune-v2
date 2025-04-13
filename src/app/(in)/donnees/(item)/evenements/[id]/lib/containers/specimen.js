@@ -25,15 +25,15 @@ import getPreservationMethods from '../actions/get-preservation-methods'
 
 import MeasuresSection from './measures-section'
 
-const MethodePreservationSelect = ({ label, value, isEditing }) =>  {
+const MethodePreservationSelect = ({ label, value, isEditing }) => {
   return (
-    <SelectFieldAdvanced isEditing={true} label={label} value={value} valueLabelKey={'name'} getter={() => getPreservationMethods(value)} />
+    <SelectFieldAdvanced isEditing label={label} value={value} valueLabelKey='name' getter={() => getPreservationMethods(value)} />
   )
 }
 
 const SpecimenForm = ({ specimen, isEditing, onToggleEditing }) => {
   console.debug(specimen)
-  const { 
+  const {
     id,
     specimenNumber,
     terrainIdentificationNumber,
@@ -49,7 +49,6 @@ const SpecimenForm = ({ specimen, isEditing, onToggleEditing }) => {
     preservationMethodId,
     notes,
     keywords,
-
 
     ageId,
     sexId,
@@ -67,7 +66,7 @@ const SpecimenForm = ({ specimen, isEditing, onToggleEditing }) => {
   const { name: specieName, binome, group } = specie
 
   return (
-    <Fieldset.Root as={'VStack'} alignItems={'stretch'} size={['lg', null, 'md']}>
+    <Fieldset.Root as='VStack' alignItems='stretch' size={['lg', null, 'md']}>
 
       <Fieldset.Legend>Identification du spécimen</Fieldset.Legend>
       <Fieldset.Content gap={0.5} mt={2}>
@@ -80,7 +79,7 @@ const SpecimenForm = ({ specimen, isEditing, onToggleEditing }) => {
         <EtatDecouverteSelect label={'État lors de la découverte\u00A0:'} value={discoveryState} isEditing={isEditing} />
         <CauseMortSelect label={'Cause de la mort\u00A0:'} value={deathCause} isEditing={isEditing} />
       </Fieldset.Content>
-      
+
       <Separator />
 
       <Fieldset.Legend>Mesures</Fieldset.Legend>
@@ -99,16 +98,16 @@ const SpecimenForm = ({ specimen, isEditing, onToggleEditing }) => {
         <TextField label={'Mesure de la patte arrière\u00A0:'} value={null} isEditing={isEditing} />
         <TextField label={'Poids\u00A0:'} value={null} isEditing={isEditing} /> */}
       </Fieldset.Content>
-      
+
       <Separator />
-      
+
       <Fieldset.Legend>Autres informations</Fieldset.Legend>
       <Fieldset.Content gap={0.5} mt={2}>
         <MethodePreservationSelect label={'Méthode de conservation\u00A0:'} value={preservationMethod} isEditing={isEditing} />
         <CommentField label={'Remarques\u00A0:'} value={notes} isEditing={isEditing} />
         <CommentField label={'Mots-clés\u00A0:'} value={keywords} isEditing={isEditing} />
       </Fieldset.Content>
-      
+
       <Separator />
 
     </Fieldset.Root>
@@ -136,4 +135,3 @@ const SpecimenInformationSection = ({ specimen, onDelete }) => {
 }
 
 export default SpecimenInformationSection
-

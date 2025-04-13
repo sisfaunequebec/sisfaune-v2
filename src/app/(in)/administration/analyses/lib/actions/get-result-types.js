@@ -1,5 +1,5 @@
 'use server'
-import orm from '@/logic/data/database'
+import orm from '@/lib/data/database'
 
 const getResultTypes = async () => {
   const raw = await orm.LutResultType.findMany()

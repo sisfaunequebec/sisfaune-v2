@@ -1,0 +1,93 @@
+[
+  {
+    "id": 0,
+    "cause": "Indéterminée",
+    "nom_cccsf": "Unknown",
+    "actif": "1",
+    "ordre_affichage": "1"
+  },
+  {
+    "id": 1,
+    "cause": "Euthanasie",
+    "nom_cccsf": "Euthanized",
+    "actif": "0",
+    "ordre_affichage": "2"
+  },
+  {
+    "id": 3,
+    "cause": "Arme à feu",
+    "nom_cccsf": "Recreational harvest (hunting, trapped fished)",
+    "actif": "1",
+    "ordre_affichage": "2"
+  },
+  {
+    "id": 4,
+    "cause": "Piège mortel",
+    "nom_cccsf": "Commercial harvest (hunting,trapped, fished)",
+    "actif": "1",
+    "ordre_affichage": "2"
+  },
+  {
+    "id": 5,
+    "cause": "Noyade",
+    "nom_cccsf": "Found Dead",
+    "actif": "1",
+    "ordre_affichage": "2"
+  },
+  {
+    "id": 6,
+    "cause": "Collision avec un véhicule",
+    "nom_cccsf": "Found Dead",
+    "actif": "1",
+    "ordre_affichage": "2"
+  },
+  {
+    "id": 7,
+    "cause": "Arc, arbalète",
+    "nom_cccsf": "Recreational harvest (hunting, trapped fished)",
+    "actif": "1",
+    "ordre_affichage": "2"
+  },
+  {
+    "id": 10,
+    "cause": "n/a - Remis en liberté",
+    "nom_cccsf": "Unknown",
+    "actif": "1",
+    "ordre_affichage": "3"
+  },
+  {
+    "id": 11,
+    "cause": "Électrocution",
+    "nom_cccsf": "Found Dead",
+    "actif": "1",
+    "ordre_affichage": "2"
+  },
+  {
+    "id": 99,
+    "cause": "Trauma autre",
+    "nom_cccsf": "Found Dead",
+    "actif": "1",
+    "ordre_affichage": "2"
+  },
+  {
+    "id": 100,
+    "cause": "Attaque d''un chien domestique",
+    "nom_cccsf": "Found Dead",
+    "actif": "1",
+    "ordre_affichage": "2"
+  },
+  {
+    "id": 101,
+    "cause": "Euthanasie - MFFP",
+    "nom_cccsf": "Found Dead",
+    "actif": "1",
+    "ordre_affichage": "2"
+  },
+  {
+    "id": 102,
+    "cause": "Euthanasie - Autre",
+    "nom_cccsf": "Found Dead",
+    "actif": "1",
+    "ordre_affichage": "2"
+  }
+]

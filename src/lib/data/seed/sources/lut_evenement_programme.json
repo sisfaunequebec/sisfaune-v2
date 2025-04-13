@@ -1,0 +1,68 @@
+[
+  {
+    "id": 1,
+    "code": "MDC",
+    "programme": "Surveillance de la MDC",
+    "actif": "1"
+  },
+  {
+    "id": 3,
+    "code": "AI",
+    "programme": "Surveillance de l''influenza aviaire",
+    "actif": "1"
+  },
+  {
+    "id": 4,
+    "code": "RARA",
+    "programme": "Surveillance de la rage du raton laveur",
+    "actif": "1"
+  },
+  {
+    "id": 5,
+    "code": "SHV",
+    "programme": "Surveillance de la septicémie hémorragique virale",
+    "actif": "1"
+  },
+  {
+    "id": 6,
+    "code": "SMB",
+    "programme": "Surveillance du syndrome du museau blanc",
+    "actif": "0"
+  },
+  {
+    "id": 7,
+    "code": "RACH",
+    "programme": "Surveillance de la rage de la chauve-souris",
+    "actif": "0"
+  },
+  {
+    "id": 8,
+    "code": "ACIA",
+    "programme": "Surveillance passive de la rage (analyse ACIA)",
+    "actif": "1"
+  },
+  {
+    "id": 9,
+    "code": "SALM",
+    "programme": "Surveillance des salmonelles",
+    "actif": "1"
+  },
+  {
+    "id": 10,
+    "code": "CQSAS",
+    "programme": "Surveillance régulière",
+    "actif": "1"
+  },
+  {
+    "id": 11,
+    "code": "PB",
+    "programme": "Évaluation de la contamination par le plomb",
+    "actif": "1"
+  },
+  {
+    "id": 12,
+    "code": "SCS",
+    "programme": "Surveillance de la santé des chauves-souris",
+    "actif": "1"
+  }
+]

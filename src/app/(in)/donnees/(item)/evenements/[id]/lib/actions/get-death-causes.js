@@ -1,5 +1,5 @@
 'use server'
-import orm from '@/logic/data/database'
+import orm from '@/lib/data/database'
 import orderBy from 'lodash.orderby'
 
 const getDeathCauses = async () => {

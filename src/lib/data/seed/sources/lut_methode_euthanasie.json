@@ -1,0 +1,32 @@
+[
+  {
+    "id_methode": 0,
+    "methode": "",
+    "actif": "1"
+  },
+  {
+    "id_methode": 1,
+    "methode": "Injection léthale",
+    "actif": "1"
+  },
+  {
+    "id_methode": 2,
+    "methode": "Dislocation cervicale",
+    "actif": "0"
+  },
+  {
+    "id_methode": 3,
+    "methode": "Congélation",
+    "actif": "1"
+  },
+  {
+    "id_methode": 4,
+    "methode": "Gaz anesthésique",
+    "actif": "1"
+  },
+  {
+    "id_methode": 5,
+    "methode": "Arme à feu",
+    "actif": "1"
+  }
+]

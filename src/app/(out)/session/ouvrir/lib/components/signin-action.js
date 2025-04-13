@@ -2,7 +2,7 @@
 
 import { redirect } from 'next/navigation'
 
-import { signIn } from '@/logic/auth'
+import { signIn } from '@/lib/auth'
 
 const signAction = async (formData) => {
   try {

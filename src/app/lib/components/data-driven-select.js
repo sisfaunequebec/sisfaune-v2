@@ -7,7 +7,7 @@ import {
   createListCollection
 } from '@chakra-ui/react'
 
-const DataDrivenSelect = ({ loader, value, onChange, onBlur, contentRef, ...rest }) =>  {
+const DataDrivenSelect = ({ loader, value, onChange, onBlur, contentRef, ...rest }) => {
   const [items, setItems] = useState([])
 
   useEffect(() => {
@@ -24,14 +24,14 @@ const DataDrivenSelect = ({ loader, value, onChange, onBlur, contentRef, ...rest
   }, [onChange])
 
   const collection = createListCollection({ items })
-  
+
   return (
     <Select.Root
       collection={collection}
       value={[value]}
       onValueChange={handleValueChange}
       onInteractOutside={onBlur}
-      size={'sm'}
+      size='sm'
       positioning={{ sameWidth: true }}
     >
       <Select.HiddenSelect />
@@ -59,4 +59,3 @@ const DataDrivenSelect = ({ loader, value, onChange, onBlur, contentRef, ...rest
 }
 
 export default DataDrivenSelect
-

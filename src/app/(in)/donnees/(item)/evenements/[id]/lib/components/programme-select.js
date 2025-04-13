@@ -23,13 +23,13 @@ import SelectFieldAdvanced from '../../../../../../../lib/components/select-fiel
 //   )
 // }
 
-const ProgrammeSelect = ({ label, value, isEditing }) =>  {
+const ProgrammeSelect = ({ label, value, isEditing }) => {
   const getter = useCallback(async () => {
     return getPrograms(value)
   }, [value])
 
   return (
-    <SelectFieldAdvanced isEditing={isEditing} label={label} value={value} valueLabelKey={'name'} getter={getter} />
+    <SelectFieldAdvanced isEditing={isEditing} label={label} value={value} valueLabelKey='name' getter={getter} />
   )
 }
 

@@ -1,0 +1,112 @@
+[
+  {
+    "id_groupe": "1",
+    "groupe": "Mammifères",
+    "id_parent": "0"
+  },
+  {
+    "id_groupe": "101",
+    "groupe": "Coyotes",
+    "id_parent": "1"
+  },
+  {
+    "id_groupe": "102",
+    "groupe": "Loups",
+    "id_parent": "1"
+  },
+  {
+    "id_groupe": "2",
+    "groupe": "Oiseaux",
+    "id_parent": "0"
+  },
+  {
+    "id_groupe": "107",
+    "groupe": "Chauves-souris",
+    "id_parent": "1"
+  },
+  {
+    "id_groupe": "3",
+    "groupe": "Amphibiens/Reptiles",
+    "id_parent": "0"
+  },
+  {
+    "id_groupe": "4",
+    "groupe": "Poissons",
+    "id_parent": "0"
+  },
+  {
+    "id_groupe": "5",
+    "groupe": "Invertébrés",
+    "id_parent": "0"
+  },
+  {
+    "id_groupe": "6",
+    "groupe": "Mammifères marins",
+    "id_parent": "0"
+  },
+  {
+    "id_groupe": "103",
+    "groupe": "Renards",
+    "id_parent": "1"
+  },
+  {
+    "id_groupe": "104",
+    "groupe": "Caribous",
+    "id_parent": "1"
+  },
+  {
+    "id_groupe": "105",
+    "groupe": "Cerfs",
+    "id_parent": "1"
+  },
+  {
+    "id_groupe": "106",
+    "groupe": "Orignaux",
+    "id_parent": "1"
+  },
+  {
+    "id_groupe": "108",
+    "groupe": "Moufettes rayées",
+    "id_parent": "1"
+  },
+  {
+    "id_groupe": "109",
+    "groupe": "Ratons laveur",
+    "id_parent": "1"
+  },
+  {
+    "id_groupe": "110",
+    "groupe": "Marmottes communes",
+    "id_parent": "1"
+  },
+  {
+    "id_groupe": "111",
+    "groupe": "Rats",
+    "id_parent": "1"
+  },
+  {
+    "id_groupe": "112",
+    "groupe": "Écureuils",
+    "id_parent": "1"
+  },
+  {
+    "id_groupe": "113",
+    "groupe": "Tamias",
+    "id_parent": "1"
+  },
+  {
+    "id_groupe": "114",
+    "groupe": "Ours",
+    "id_parent": "1"
+  },
+  {
+    "id_groupe": "115",
+    "groupe": "Lapins à queue blanche",
+    "id_parent": "1"
+  },
+  {
+    "id_groupe": "116",
+    "groupe": "Lièvres",
+    "id_parent": "1"
+  }
+]

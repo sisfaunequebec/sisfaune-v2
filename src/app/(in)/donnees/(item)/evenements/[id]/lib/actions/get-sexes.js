@@ -1,5 +1,5 @@
 'use server'
-import orm from '@/logic/data/database'
+import orm from '@/lib/data/database'
 
 const getSexes = async (group) => {
   const raw = await orm.LutAnimalSex.findMany()

@@ -1,0 +1,42 @@
+[
+  {
+    "id_type": "1",
+    "type": "Carcasse",
+    "id_ccwhc": "1"
+  },
+  {
+    "id_type": "2",
+    "type": "Viande ou autres tissus",
+    "id_ccwhc": "2"
+  },
+  {
+    "id_type": "3",
+    "type": "Oeuf ou fœtus",
+    "id_ccwhc": "3"
+  },
+  {
+    "id_type": "4",
+    "type": "Sang, sérum, plasma",
+    "id_ccwhc": "4"
+  },
+  {
+    "id_type": "5",
+    "type": "Autres liquides biologiques",
+    "id_ccwhc": "5"
+  },
+  {
+    "id_type": "6",
+    "type": "Matières fécales",
+    "id_ccwhc": "6"
+  },
+  {
+    "id_type": "7",
+    "type": "Parasites",
+    "id_ccwhc": "7"
+  },
+  {
+    "id_type": "8",
+    "type": "Autres",
+    "id_ccwhc": "8"
+  }
+]

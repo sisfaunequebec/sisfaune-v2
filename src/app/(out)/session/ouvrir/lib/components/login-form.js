@@ -7,7 +7,7 @@ import { Flex, Image, Fieldset, Input } from '@chakra-ui/react'
 
 import { PasswordInput } from '@/components/ui/password-input'
 
-import Field from '@/components/field'
+import Field from '@/app/lib/components/field'
 
 import signInSchema from './sign-in-schema'
 import signAction from './signin-action'

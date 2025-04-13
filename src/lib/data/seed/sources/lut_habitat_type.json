@@ -1,0 +1,102 @@
+[
+  {
+    "id": "0",
+    "habitat": "Indéterminé",
+    "type_habitat": ""
+  },
+  {
+    "id": "2",
+    "habitat": "Agricole",
+    "type_habitat": "Culture"
+  },
+  {
+    "id": "3",
+    "habitat": "Agricole",
+    "type_habitat": "Friche"
+  },
+  {
+    "id": "4",
+    "habitat": "Agricole",
+    "type_habitat": "Pâturage"
+  },
+  {
+    "id": "5",
+    "habitat": "Aquatique",
+    "type_habitat": "Étang"
+  },
+  {
+    "id": "6",
+    "habitat": "Aquatique",
+    "type_habitat": "Fleuve"
+  },
+  {
+    "id": "7",
+    "habitat": "Aquatique",
+    "type_habitat": "Lac"
+  },
+  {
+    "id": "8",
+    "habitat": "Aquatique",
+    "type_habitat": "Marais"
+  },
+  {
+    "id": "9",
+    "habitat": "Aquatique",
+    "type_habitat": "Rivière"
+  },
+  {
+    "id": "10",
+    "habitat": "Aquatique",
+    "type_habitat": "Ruisseau"
+  },
+  {
+    "id": "11",
+    "habitat": "Forestier",
+    "type_habitat": "Forêt boréale continue"
+  },
+  {
+    "id": "12",
+    "habitat": "Forestier",
+    "type_habitat": "Forêt décidue"
+  },
+  {
+    "id": "13",
+    "habitat": "Forestier",
+    "type_habitat": "Forêt mélangée"
+  },
+  {
+    "id": "14",
+    "habitat": "Forestier",
+    "type_habitat": "Taïga"
+  },
+  {
+    "id": "15",
+    "habitat": "Toundra arctique",
+    "type_habitat": "Toundra arbustive"
+  },
+  {
+    "id": "16",
+    "habitat": "Toundra arctique",
+    "type_habitat": "Toundra forestière"
+  },
+  {
+    "id": "17",
+    "habitat": "Toundra arctique",
+    "type_habitat": "Toundra herbacée"
+  },
+  {
+    "id": "18",
+    "habitat": "Urbain",
+    "type_habitat": "Banlieue"
+  },
+  {
+    "id": "19",
+    "habitat": "Urbain",
+    "type_habitat": "Village"
+  },
+  {
+    "id": "20",
+    "habitat": "Urbain",
+    "type_habitat": "Ville"
+  }
+]

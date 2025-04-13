@@ -1,5 +1,5 @@
 'use server'
-import orm from '@/logic/data/database'
+import orm from '@/lib/data/database'
 
 const getPrograms = async () => {
   const raw = await orm.LutEventProgram.findMany()

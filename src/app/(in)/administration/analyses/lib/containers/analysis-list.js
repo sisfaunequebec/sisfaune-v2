@@ -1,15 +1,15 @@
 'use client'
 
 import { useEffect, useCallback, useRef } from 'react'
-import { useIntersectionObserver } from '@react-hooks-library/core'
+// import { useIntersectionObserver } from '@react-hooks-library/core'
 
 import { DateTime } from 'luxon'
 
 import NextLink from 'next/link'
 
 import { Flex, Box, Stack, VStack, Text, IconButton, LinkOverlay } from '@chakra-ui/react'
-import { Button } from '@/components/ui/button'
-import { RxArrowRight } from 'react-icons/rx'
+// import { Button } from '@/components/ui/button'
+import { RxArrowRight, RxPencil1 } from 'react-icons/rx'
 
 import { useQueryStates } from 'nuqs'
 
@@ -29,14 +29,14 @@ const AnalysisItem = ({ id, name, code, groupName, sectorName, resultType, onCli
   return (
     <LinkListWrapper>
       <Stack flex={1} direction={['column', null, null, 'row']} gap={[0.4, null, null, 1]} onClick={onClick}>
-        <VStack alignItems={'flex-start'} gap={0.4} flex={1}>
+        <VStack alignItems='flex-start' gap={0.4} flex={1}>
           <LinkOverlay asChild>
-            <Flex flex={1} color={'green.600'} _dark={{ color: 'green.200' }}>
+            <Flex flex={1} color='green.600' _dark={{ color: 'green.200' }}>
               <Text fontWeight={500}>{name}</Text>&nbsp;
-              { code && <Text>({code})</Text> }
+              {code && <Text>({code})</Text>}
             </Flex>
           </LinkOverlay>
-          <Flex fontWeight={500} color={'fg.muted'}>Groupe : {groupName}</Flex>
+          <Flex fontWeight={500} color='fg.muted'>Groupe : {groupName}</Flex>
           <Flex display={['none', null, null, 'inherit']}>Secteur : {sectorName}</Flex>
         </VStack>
         <VStack alignItems={['flex-start', null, null, 'flex-end']} gap={0.4} flex={1}>
@@ -45,7 +45,7 @@ const AnalysisItem = ({ id, name, code, groupName, sectorName, resultType, onCli
           <Flex display={['none', null, null, 'inherit']}>Municipalité : {localityName ?? 'indéterminée'}</Flex> */}
         </VStack>
       </Stack>
-      {/* <IconButton as={NextLink} href={href} scroll colorPalette={'green'} variant={'ghost'} rounded={'full'} size={['xs']}><RxArrowRight /></IconButton> */}
+      {/* <IconButton colorPalette={'green'} variant={'ghost'} rounded={'full'} size={['xs']} onClick={onClick}><RxPencil1 /></IconButton> */}
     </LinkListWrapper>
   )
 }
@@ -82,7 +82,7 @@ const AnalysisList = () => {
   // const isEmpty = data?.[0]?.length === 0
   // const isReachingEnd = isEmpty || (data && data[data.length - 1]?.length < PAGE_SIZE)
 
-  // useEffect(() => { 
+  // useEffect(() => {
   //   // console.debug('useEffect', inView, isLoadingMore, size)
   //   setTimeout(() => {
   //     if (inView && !isLoadingMore) {
@@ -106,12 +106,12 @@ const AnalysisList = () => {
 
   return (
     <>
-      { editAnalysisDialog }
-      <VStack position={'relative'} alignItems={'stretch'} flex={1} gap={0} justifyContent={'stretch'} opacity={isLoadingMore && 0.5} mb={2}>
-        { analyses.map(analysis => {
+      {editAnalysisDialog}
+      <VStack position='relative' alignItems='stretch' flex={1} gap={0} justifyContent='stretch' opacity={isLoadingMore && 0.5} mb={2}>
+        {analyses.map(analysis => {
           const { id } = analysis
           return (
-            <AnalysisItem key={id} {...analysis}  onClick={e => { handleEditAnalysis(id) }} />
+            <AnalysisItem key={id} {...analysis} onClick={e => { handleEditAnalysis(id) }} />
           )
         })}
         {/* <Flex flex={1} position={'absolute'} bottom={0} w={'full'} height={'300px'} maxH={'100vh'} border={'solid 1px red'} display={triggerIsVisible ? 'inherit' : 'none'} ref={inner} /> */}

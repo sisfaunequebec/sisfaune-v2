@@ -1,0 +1,338 @@
+[
+  {
+    "id": "0",
+    "age": "",
+    "groupe": "Tous",
+    "age_cccsf": null,
+    "description": null,
+    "actif": "1"
+  },
+  {
+    "id": "10",
+    "age": "Indéterminé",
+    "groupe": "Mammifère",
+    "age_cccsf": "unknown",
+    "description": null,
+    "actif": "0"
+  },
+  {
+    "id": "11",
+    "age": "Fœtus",
+    "groupe": "Mammifère",
+    "age_cccsf": "foetus",
+    "description": null,
+    "actif": "1"
+  },
+  {
+    "id": "12",
+    "age": "Nouveau-né",
+    "groupe": "Mammifère",
+    "age_cccsf": "neonate",
+    "description": null,
+    "actif": "1"
+  },
+  {
+    "id": "13",
+    "age": "Jeune de l''année",
+    "groupe": "Mammifère",
+    "age_cccsf": "young of the year",
+    "description": null,
+    "actif": "1"
+  },
+  {
+    "id": "14",
+    "age": "Juvénile",
+    "groupe": "Mammifère",
+    "age_cccsf": "juvenile",
+    "description": null,
+    "actif": "1"
+  },
+  {
+    "id": "15",
+    "age": "Adulte",
+    "groupe": "Mammifère",
+    "age_cccsf": "adult",
+    "description": null,
+    "actif": "1"
+  },
+  {
+    "id": "20",
+    "age": "Indéterminé",
+    "groupe": "Oiseau",
+    "age_cccsf": null,
+    "description": null,
+    "actif": "0"
+  },
+  {
+    "id": "21",
+    "age": "Oeuf",
+    "groupe": "Oiseau",
+    "age_cccsf": "egg",
+    "description": null,
+    "actif": "1"
+  },
+  {
+    "id": "22",
+    "age": "L - Oisillon",
+    "groupe": "Oiseau",
+    "age_cccsf": "L - Local",
+    "description": "Jeune incapable de voler",
+    "actif": "1"
+  },
+  {
+    "id": "23",
+    "age": "HY- Juvénile",
+    "groupe": "Oiseau",
+    "age_cccsf": "HY - Hatch Year",
+    "description": "Jeune capable de voler, jusqu''au 31 décembre de l''année d''éclosion",
+    "actif": "1"
+  },
+  {
+    "id": "24",
+    "age": "AHY - Première année",
+    "groupe": "Oiseau",
+    "age_cccsf": "AHY - After Hatch Year",
+    "description": "Oiseau éclos pendant l''année calendrié précédente (avant le 1er janvier)",
+    "actif": "1"
+  },
+  {
+    "id": "25",
+    "age": "SY - Deuxième année",
+    "groupe": "Oiseau",
+    "age_cccsf": "SY - second year",
+    "description": "Oiseau dans la deuxième année calendrié suivant celle de son éclosion",
+    "actif": "1"
+  },
+  {
+    "id": "26",
+    "age": "HSY - Après la deuxième année",
+    "groupe": "Oiseau",
+    "age_cccsf": "HSY - After Second Year",
+    "description": "Oiseau dont la date d''éclosion est inconnue, mais qui a au moins deux année complète",
+    "actif": "1"
+  },
+  {
+    "id": "27",
+    "age": "TY - Troisième année",
+    "groupe": "Oiseau",
+    "age_cccsf": "TY - Third Year",
+    "description": "Oiseau dans la troisième année calendrié suivant celle de son éclosion",
+    "actif": "1"
+  },
+  {
+    "id": "28",
+    "age": "ATY - Après la troisième année",
+    "groupe": "Oiseau",
+    "age_cccsf": "ATY - After Third Year",
+    "description": "Oiseau dont la date d''éclosion est inconnue, mais qui a au moins trois année complète",
+    "actif": "1"
+  },
+  {
+    "id": "29",
+    "age": "Adulte",
+    "groupe": "Oiseau",
+    "age_cccsf": null,
+    "description": null,
+    "actif": "1"
+  },
+  {
+    "id": "40",
+    "age": "Indéterminé",
+    "groupe": "Amphibien/Reptile",
+    "age_cccsf": "other",
+    "description": null,
+    "actif": "0"
+  },
+  {
+    "id": "41",
+    "age": "Oeuf",
+    "groupe": "Amphibien/Reptile",
+    "age_cccsf": "egg",
+    "description": null,
+    "actif": "1"
+  },
+  {
+    "id": "42",
+    "age": "Larve",
+    "groupe": "Amphibien/Reptile",
+    "age_cccsf": "premetamorphic",
+    "description": "Amphibien - Présence de la queue sur les grenouilles et des branchies sur les salamandres",
+    "actif": "1"
+  },
+  {
+    "id": "43",
+    "age": "Post métamorphose - Juvénile",
+    "groupe": "Amphibien/Reptile",
+    "age_cccsf": "postmetamorphic",
+    "description": "Amphibien - Adulte non reproducteur",
+    "actif": "1"
+  },
+  {
+    "id": "44",
+    "age": "Post métamorphose - Adulte",
+    "groupe": "Amphibien/Reptile",
+    "age_cccsf": "postmetamorphic",
+    "description": "Amphibien - Adulte reproducteur",
+    "actif": "1"
+  },
+  {
+    "id": "50",
+    "age": "Indéterminé",
+    "groupe": "Poisson",
+    "age_cccsf": null,
+    "description": null,
+    "actif": "0"
+  },
+  {
+    "id": "51",
+    "age": "Oeuf",
+    "groupe": "Poisson",
+    "age_cccsf": "egg",
+    "description": null,
+    "actif": "1"
+  },
+  {
+    "id": "52",
+    "age": "Alevin",
+    "groupe": "Poisson",
+    "age_cccsf": "alevin",
+    "description": null,
+    "actif": "1"
+  },
+  {
+    "id": "53",
+    "age": "Tacon",
+    "groupe": "Poisson",
+    "age_cccsf": null,
+    "description": "Saumon uniquement",
+    "actif": "1"
+  },
+  {
+    "id": "54",
+    "age": "Saumonneau",
+    "groupe": "Poisson",
+    "age_cccsf": null,
+    "description": "Saumon uniquement",
+    "actif": "1"
+  },
+  {
+    "id": "55",
+    "age": "Juvénile",
+    "groupe": "Poisson",
+    "age_cccsf": null,
+    "description": null,
+    "actif": "1"
+  },
+  {
+    "id": "56",
+    "age": "Madeleineau",
+    "groupe": "Poisson",
+    "age_cccsf": null,
+    "description": "Saumon uniquement",
+    "actif": "1"
+  },
+  {
+    "id": "57",
+    "age": "Adulte",
+    "groupe": "Poisson",
+    "age_cccsf": "adult",
+    "description": "Équivalent à \"grand saumon\" pour les saumons",
+    "actif": "1"
+  },
+  {
+    "id": "60",
+    "age": "Indéterminé",
+    "groupe": "Invertébré",
+    "age_cccsf": null,
+    "description": null,
+    "actif": "0"
+  },
+  {
+    "id": "61",
+    "age": "Oeuf",
+    "groupe": "Invertébré",
+    "age_cccsf": "egg",
+    "description": null,
+    "actif": "1"
+  },
+  {
+    "id": "62",
+    "age": "Immature",
+    "groupe": "Invertébré",
+    "age_cccsf": "immature",
+    "description": null,
+    "actif": "1"
+  },
+  {
+    "id": "63",
+    "age": "Adulte ",
+    "groupe": "Invertébré",
+    "age_cccsf": "mature",
+    "description": null,
+    "actif": "1"
+  },
+  {
+    "id": "64",
+    "age": "Classes spécifiques",
+    "groupe": "Invertébré",
+    "age_cccsf": "special classes",
+    "description": null,
+    "actif": "1"
+  },
+  {
+    "id": "72",
+    "age": "Juvénile",
+    "groupe": "Amphibien/Reptile",
+    "age_cccsf": "other",
+    "description": "Reptile - Non reproducteur",
+    "actif": "1"
+  },
+  {
+    "id": "73",
+    "age": "Adulte",
+    "groupe": "Amphibien/Reptile",
+    "age_cccsf": "other",
+    "description": "Reptile - Reproducteur",
+    "actif": "1"
+  },
+  {
+    "id": "80",
+    "age": "Nouveau-né",
+    "groupe": "Mammifère marin",
+    "age_cccsf": "neonate",
+    "description": null,
+    "actif": "1"
+  },
+  {
+    "id": "81",
+    "age": "Jeune de l''année",
+    "groupe": "Mammifère marin",
+    "age_cccsf": "young of the year",
+    "description": null,
+    "actif": "1"
+  },
+  {
+    "id": "82",
+    "age": "Juvénile",
+    "groupe": "Mammifère marin",
+    "age_cccsf": "juvenile",
+    "description": null,
+    "actif": "1"
+  },
+  {
+    "id": "83",
+    "age": "Adulte",
+    "groupe": "Mammifère marin",
+    "age_cccsf": "adult",
+    "description": null,
+    "actif": "1"
+  },
+  {
+    "id": "84",
+    "age": "Indéterminé",
+    "groupe": "Mammifère marin",
+    "age_cccsf": "unknown",
+    "description": null,
+    "actif": "0"
+  }
+]

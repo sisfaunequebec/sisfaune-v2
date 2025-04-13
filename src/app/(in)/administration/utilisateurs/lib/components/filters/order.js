@@ -41,12 +41,12 @@ const Order = () => {
   const directionIsReversed = direction.toLowerCase() === 'asc'
 
   return (
-    <RadioGroup defaultValue={'date_creation'} size={'sm'} colorPalette={'blue'} variant={'subtle'} name={'ordre'} value={tri} onValueChange={handleChange}>
-      <VStack alignItems={'flex-start'} gap={1}>
-        <Radio value={'nom_utilisateur'}>Nom d&apos;utilisateur</Radio>
-        <Radio value={'email'}>Adresse courriel</Radio>
-        <Radio value={'organisation'}>Organisation</Radio>
-        <Checkbox size={'sm'} colorPalette={'blue'} variant={'subtle'} mt={4} checked={directionIsReversed} onCheckedChange={handleCheckedChange}>Inverser l&apos;ordre</Checkbox>
+    <RadioGroup defaultValue='date_creation' size='sm' colorPalette='blue' variant='subtle' name='ordre' value={tri} onValueChange={handleChange}>
+      <VStack alignItems='flex-start' gap={1}>
+        <Radio value='nom_utilisateur'>Nom d&apos;utilisateur</Radio>
+        <Radio value='email'>Adresse courriel</Radio>
+        <Radio value='organisation'>Organisation</Radio>
+        <Checkbox size='sm' colorPalette='blue' variant='subtle' mt={4} checked={directionIsReversed} onCheckedChange={handleCheckedChange}>Inverser l&apos;ordre</Checkbox>
       </VStack>
     </RadioGroup>
   )

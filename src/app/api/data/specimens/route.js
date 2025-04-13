@@ -1,19 +1,19 @@
-import { searchParams, urlKeys } from '@/logic/data/events/events-params'
+import { searchParams, urlKeys } from '@/lib/data/events/events-params'
 
 import {
   createLoader
 } from 'nuqs/server'
 
-import { getSpecimens } from '@/logic/data/specimens/service'
+import { getSpecimens } from '@/lib/data/specimens/service'
 
 const loader = createLoader(searchParams, { urlKeys })
 
-const GET  = async (request) => {
+const GET = async (request) => {
   const { nextUrl: { searchParams } } = request
 
   const params = loader(searchParams)
   const specimens = await getSpecimens(params)
-  
+
   return Response.json(specimens)
 }
 

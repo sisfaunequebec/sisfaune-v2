@@ -1,6 +1,6 @@
 'use server'
 import orderBy from 'lodash.orderby'
-import orm from '@/logic/data/database'
+import orm from '@/lib/data/database'
 
 const getHabitatTypes = async (group) => {
   const typesRaw = await orm.LutHabitatType.findMany()

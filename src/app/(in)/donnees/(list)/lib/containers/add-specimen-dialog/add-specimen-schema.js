@@ -9,4 +9,3 @@ const addEventSchema = z.object({
 })
 
 export default addEventSchema
-

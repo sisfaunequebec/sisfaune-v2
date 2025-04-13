@@ -1,4 +1,4 @@
-import orm from '@/logic/data/database'
+import orm from '@/lib/data/database'
 
 import { Flex, Fieldset, Separator as ChakraSeparator, Text, Icon, HStack } from '@chakra-ui/react'
 
@@ -12,7 +12,7 @@ import Secteur from './secteur'
 
 const FiltersContainer = ({ children }) => {
   return (
-    <Flex position={'sticky'} flex={2} h={'calc(100vh - 162px)'} overflowY={'auto'} top={154} p={3} px={6} alignItems={'stretch'} bg={'blue.100'} _dark={{ bg: 'blue.900' }} borderColor={'blue.300'} borderTopWidth={1} borderBottomWidth={1} hideBelow={'md'}>
+    <Flex position='sticky' flex={2} h='calc(100vh - 162px)' overflowY='auto' top={154} p={3} px={6} alignItems='stretch' bg='blue.100' _dark={{ bg: 'blue.900' }} borderColor='blue.300' borderTopWidth={1} borderBottomWidth={1} hideBelow='md'>
       {children}
     </Flex>
   )
@@ -23,32 +23,31 @@ const SectionTitle = ({ label }) => {
 }
 
 const Section = ({ children }) => {
-  return <Fieldset.Content gap={2} _last={{pb: 4}}>{children}</Fieldset.Content>
+  return <Fieldset.Content gap={2} _last={{ pb: 4 }}>{children}</Fieldset.Content>
 }
 
 const Separator = () => {
-  return <ChakraSeparator borderColor='blue.600' w={'full'} />
+  return <ChakraSeparator borderColor='blue.600' w='full' />
 }
 
 const FiltersForm = async () => {
   const secteurs = await orm.LutAnalysisSector.findMany()
 
   return (
-    <Fieldset.Root flex alignItems={'flex-start'} >
+    <Fieldset.Root flex alignItems='flex-start'>
 
-      <SectionTitle label={'Ordonner la liste par :'} />
+      <SectionTitle label='Ordonner la liste par :' />
       <Section><Order /></Section>
 
       <Separator />
 
-      <SectionTitle label={<HStack><Text>Rechercher dans le texte :</Text><Tooltip size={'xl'} content={'Rechercher par nom de l\'analyse ou du groupe d\'analyses'}><Icon fontSize={'xl'} cursor={'pointer'}><LuInfo /></Icon></Tooltip></HStack>} />
+      <SectionTitle label={<HStack><Text>Rechercher dans le texte :</Text><Tooltip size='xl' content={'Rechercher par nom de l\'analyse ou du groupe d\'analyses'}><Icon fontSize='xl' cursor='pointer'><LuInfo /></Icon></Tooltip></HStack>} />
       <Section><FullText /></Section>
 
       <Separator />
 
       <SectionTitle label={'Filtrer par secteur d\'analyse :'} />
       <Section><Secteur secteurs={secteurs} /></Section>
-
 
     </Fieldset.Root>
   )

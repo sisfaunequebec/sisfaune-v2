@@ -1,0 +1,116 @@
+[
+  {
+    "id": 1,
+    "provenance": "Centre de réhabilitation de la faune",
+    "provenance_raton": "Centre de réhabilitation",
+    "actif": "1"
+  },
+  {
+    "id": 2,
+    "provenance": "Activités de déprédation",
+    "provenance_raton": "Déprédation",
+    "actif": "1"
+  },
+  {
+    "id": 3,
+    "provenance": "Entreprise de récupération de carcasses",
+    "provenance_raton": "Entreprise de récupération",
+    "actif": "1"
+  },
+  {
+    "id": 4,
+    "provenance": "Étude de couverture vaccinale (rage)",
+    "provenance_raton": "Étude de couverture vaccinale",
+    "actif": "1"
+  },
+  {
+    "id": 5,
+    "provenance": "Fourrière municipale / SPA",
+    "provenance_raton": "Fourrière municipale / SPA",
+    "actif": "1"
+  },
+  {
+    "id": 6,
+    "provenance": "Piégeage ciblé pour la surveillance de la rage",
+    "provenance_raton": "Opération de piégeage ciblé",
+    "actif": "1"
+  },
+  {
+    "id": 7,
+    "provenance": "Patrouille sur le réseau routier par le MFFP",
+    "provenance_raton": "Patrouille sur le réseau routier",
+    "actif": "1"
+  },
+  {
+    "id": 8,
+    "provenance": "Piégeage pour la récolte de la fourrure",
+    "provenance_raton": "Piégeage commercial",
+    "actif": "1"
+  },
+  {
+    "id": 9,
+    "provenance": "Signalement par un citoyen",
+    "provenance_raton": "Signalement d''un citoyen",
+    "actif": "1"
+  },
+  {
+    "id": 10,
+    "provenance": "Professionnel ou technicien de la faune",
+    "provenance_raton": "Professionnel ou technicien de la faune",
+    "actif": "1"
+  },
+  {
+    "id": 11,
+    "provenance": "Projet de recherche sur la faune",
+    "provenance_raton": "Projet de recherche",
+    "actif": "1"
+  },
+  {
+    "id": 13,
+    "provenance": "Opération de contrôle de la rage",
+    "provenance_raton": "Opération de contrôle",
+    "actif": "1"
+  },
+  {
+    "id": 14,
+    "provenance": "Prélèvement à la chasse",
+    "provenance_raton": null,
+    "actif": "1"
+  },
+  {
+    "id": 15,
+    "provenance": "Prélèvement à la pêche sportive",
+    "provenance_raton": null,
+    "actif": "1"
+  },
+  {
+    "id": 16,
+    "provenance": "Prélèvement à la pêche commerciale",
+    "provenance_raton": null,
+    "actif": "1"
+  },
+  {
+    "id": 17,
+    "provenance": "Direction de la protection de la faune",
+    "provenance_raton": "Direction de la protection de la faune",
+    "actif": "1"
+  },
+  {
+    "id": 18,
+    "provenance": "Patrouilleur du ministère des Transports",
+    "provenance_raton": null,
+    "actif": "1"
+  },
+  {
+    "id": 19,
+    "provenance": "Signalement pour la surveillance passive",
+    "provenance_raton": null,
+    "actif": "0"
+  },
+  {
+    "id": 20,
+    "provenance": "Opération de contrôle de la MDC",
+    "provenance_raton": null,
+    "actif": "1"
+  }
+]

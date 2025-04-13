@@ -11,13 +11,13 @@ const Secteur = ({ secteurs }) => {
   const [value, setValue] = useQueryState('s', parseAsArrayOf(parseAsInteger).withDefault([]))
 
   const choices = useMemo(() => {
-    const choices = secteurs.map(p => { return { value: p.id, label: p.name }  })
+    const choices = secteurs.map(p => { return { value: p.id, label: p.name } })
     const sorted = orderBy(choices, ['label'], ['asc'])
     return sorted
   }, [secteurs])
 
   return (
-    <Checkboxes name={'secteur'} choices={choices} value={value} onChange={setValue} allChoicesLabel={'Tous les secteurs'} />
+    <Checkboxes name='secteur' choices={choices} value={value} onChange={setValue} allChoicesLabel='Tous les secteurs' />
   )
 }
 

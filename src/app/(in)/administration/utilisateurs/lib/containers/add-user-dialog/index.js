@@ -21,16 +21,16 @@ const CopyPasswordButton = ({ password }) => {
   const clipboard = useClipboard({ value: password })
   const { copy, copied } = clipboard
   return (
-    <IconButton variant={'ghost'} size={'xxs'} rounded={'full'} onClick={copy}>
-      { copied ? <RxCheckCircled  color={'green'} /> : <RxCopy /> }
+    <IconButton variant='ghost' size='xxs' rounded='full' onClick={copy}>
+      {copied ? <RxCheckCircled color='green' /> : <RxCopy />}
     </IconButton>
   )
 }
 
-const PasswordDisplay= ({ value }) => {
+const PasswordDisplay = ({ value }) => {
   return (
-    <InputGroup endElement={<CopyPasswordButton password={value} />} w={'100%'}>
-      <Input autoComplete={'off'} value={value} readOnly />
+    <InputGroup endElement={<CopyPasswordButton password={value} />} w='100%'>
+      <Input autoComplete='off' value={value} readOnly />
     </InputGroup>
   )
 }
@@ -44,18 +44,18 @@ const AddUserDialog = ({ close }) => {
   }
 
   return (
-    <BaseDialog title={'Nouvel utilisateur'} onClose={close} onSubmit={addUser} submitBtnLabel={'Inscrire'} schema={addUserSchema} defaultValues={defaultValues}>
+    <BaseDialog title='Nouvel utilisateur' onClose={close} onSubmit={addUser} submitBtnLabel='Inscrire' schema={addUserSchema} defaultValues={defaultValues}>
       {(contentRef) => (
         <Fieldset.Root>
           <Fieldset.Content gap={3}>
-            <ControlledField name={'fullName'} label={'Nom complet :'} variant={'horizontal'}>
-              <Input autoComplete={'off'} />
+            <ControlledField name='fullName' label='Nom complet :' variant='horizontal'>
+              <Input autoComplete='off' />
             </ControlledField>
-            <ControlledField name={'email'} label={'Adresse courriel :'} variant={'horizontal'}>
-              <Input autoComplete={'off'} type={'email'} />
+            <ControlledField name='email' label='Adresse courriel :' variant='horizontal'>
+              <Input autoComplete='off' type='email' />
             </ControlledField>
             <Separator />
-            <ControlledField name={'password'} label={'Mot de passe :'} variant={'horizontal'} helperText={'IMPORTANT : ce mot de passe a été généré automatiquement et sera envoyé par courriel à l\'utilisateur: il ne sera plus visible par la suite. Il est recommandé de le copier si nécessaire avant de continuer...'}>
+            <ControlledField name='password' label='Mot de passe :' variant='horizontal' helperText={'IMPORTANT : ce mot de passe a été généré automatiquement et sera envoyé par courriel à l\'utilisateur: il ne sera plus visible par la suite. Il est recommandé de le copier si nécessaire avant de continuer...'}>
               <PasswordDisplay />
             </ControlledField>
           </Fieldset.Content>

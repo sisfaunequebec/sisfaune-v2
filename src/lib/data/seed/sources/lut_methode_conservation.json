@@ -1,0 +1,51 @@
+[
+  {
+    "id": "0",
+    "methode": "",
+    "id_cccsf": "8",
+    "nom_cccsf": "Unknown",
+    "description": null
+  },
+  {
+    "id": "1",
+    "methode": "Mort réfrigéré",
+    "id_cccsf": "1",
+    "nom_cccsf": "Fresh",
+    "description": null
+  },
+  {
+    "id": "2",
+    "methode": "Congelé",
+    "id_cccsf": "2",
+    "nom_cccsf": "Frozen",
+    "description": null
+  },
+  {
+    "id": "3",
+    "methode": "Frais & fixé",
+    "id_cccsf": "4",
+    "nom_cccsf": "Fresh & Fixed",
+    "description": null
+  },
+  {
+    "id": "5",
+    "methode": "Frais & congelé",
+    "id_cccsf": "5",
+    "nom_cccsf": "Fresh & Frozen",
+    "description": null
+  },
+  {
+    "id": "7",
+    "methode": "Fixé & congelé",
+    "id_cccsf": "6",
+    "nom_cccsf": "Fixed & Frozen",
+    "description": null
+  },
+  {
+    "id": "8",
+    "methode": "Frais, Congelé, Formolé",
+    "id_cccsf": "7",
+    "nom_cccsf": "Fresh, Frozen, Fixed",
+    "description": null
+  }
+]

@@ -20,7 +20,7 @@ import addEventSchema from './add-event-schema'
 const defaultValues = {
   typeId: 0,
   programId: null,
-  reportOriginId: 1,
+  reportOriginId: null,
   statusId: 2,
   silabId: null,
   reportedAt: DateTime.utc().toJSDate()
@@ -28,26 +28,26 @@ const defaultValues = {
 
 const AddEventDialog = ({ close }) => {
   return (
-    <BaseDialog title={'Nouvel événement'} onClose={close} onSubmit={addEvent} submitBtnLabel={'Ajouter'} schema={addEventSchema} defaultValues={defaultValues}>
+    <BaseDialog title='Nouvel événement' onClose={close} onSubmit={addEvent} submitBtnLabel='Ajouter' schema={addEventSchema} defaultValues={defaultValues}>
       {(contentRef) => (
         <Fieldset.Root>
           <Fieldset.Content gap={3}>
-            <ControlledField name={'typeId'} label={'Type :'} variant={'horizontal'}>
+            <ControlledField name='typeId' label='Type :' variant='horizontal'>
               <TypeSelect contentRef={contentRef} />
             </ControlledField>
-            <ControlledField name={'statusId'} label={'Statut :'} variant={'horizontal'}>
+            <ControlledField name='statusId' label='Statut :' variant='horizontal'>
               <StatusSelect contentRef={contentRef} />
             </ControlledField>
-            <ControlledField name={'programId'} label={'Programme :'} variant={'horizontal'}>
+            <ControlledField name='programId' label='Programme :' variant='horizontal'>
               <ProgramSelect contentRef={contentRef} />
             </ControlledField>
-            <ControlledField name={'silabId'} label={'Numéro d\'identification SILAB :'} variant={'horizontal'}>
-              <Input autoComplete={'off'} />
+            <ControlledField name='silabId' label={'Numéro d\'identification SILAB :'} variant='horizontal'>
+              <Input autoComplete='off' />
             </ControlledField>
-            <ControlledField name={'reportOriginId'} label={'Provenance du signalement :'} variant={'horizontal'}>
+            <ControlledField name='reportOriginId' label='Provenance du signalement :' variant='horizontal'>
               <ReportOriginSelect contentRef={contentRef} />
             </ControlledField>
-            <ControlledField name={'reportedAt'} label={'Date du signalement :'} variant={'horizontal'}>
+            <ControlledField name='reportedAt' label='Date du signalement :' variant='horizontal'>
               <DateSelector />
             </ControlledField>
           </Fieldset.Content>

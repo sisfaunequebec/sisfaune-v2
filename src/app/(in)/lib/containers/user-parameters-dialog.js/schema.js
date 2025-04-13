@@ -8,4 +8,3 @@ const addAnalysisSchema = z.object({
 })
 
 export default addAnalysisSchema
-

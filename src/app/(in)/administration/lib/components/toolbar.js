@@ -7,15 +7,13 @@ import { useWindowScroll } from '@uidotdev/usehooks'
 import { usePathname, useSearchParams } from 'next/navigation'
 import NextLink from 'next/link'
 
-import { Tabs, Link } from '@chakra-ui/react'
-
-import { Flex, Container, HStack } from '@chakra-ui/react'
+import { Tabs, Link, Flex, Container, HStack } from '@chakra-ui/react'
 
 const StyledTrigger = ({ children, ...rest }) => {
   return (
     <Tabs.Trigger {...rest} borderRadius={['full', null, 'md']} borderBottomRadius={['full', null, 0]} borderBottomWidth={[null, null, '3px']}>
-      { children }
-   </Tabs.Trigger>
+      {children}
+    </Tabs.Trigger>
   )
 }
 
@@ -31,24 +29,24 @@ const NavTabs = () => {
       <Tabs.List>
         <StyledTrigger value={'utilisateurs'}>
           <Link asChild unstyled>
-            <NextLink href={`/administration/utilisateurs`}>Utilisateurs</NextLink>
+            <NextLink href={'/administration/utilisateurs'}>Utilisateurs</NextLink>
           </Link>
         </StyledTrigger>
         <StyledTrigger value={'analyses'}>
           <Link asChild unstyled>
-            <NextLink href={`/administration/analyses`}>Analyses</NextLink>
+            <NextLink href={'/administration/analyses'}>Analyses</NextLink>
           </Link>
         </StyledTrigger>
         <StyledTrigger value={'valeurs'}>
           <Link asChild unstyled>
-            <NextLink href={`/administration/valeurs`}>Tables de valeurs</NextLink>
+            <NextLink href={'/administration/valeurs'}>Tables de valeurs</NextLink>
           </Link>
         </StyledTrigger>
-        <StyledTrigger value={'systeme'}>
+        {/* <StyledTrigger value={'systeme'}>
           <Link asChild unstyled>
             <NextLink href={`/administration/systeme`}>Système</NextLink>
           </Link>
-        </StyledTrigger>
+        </StyledTrigger> */}
       </Tabs.List>
     </Tabs.Root>
   )
@@ -74,7 +72,7 @@ const Toolbar = ({ children }) => {
         <Container maxWidth={'6xl'} py={2}>
           <HStack justifyContent='space-between' gap={2}>
             <NavTabs />
-            { children }
+            {children}
           </HStack>
 
         </Container>

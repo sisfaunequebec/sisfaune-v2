@@ -14,7 +14,7 @@ import {
   PopoverBody,
   PopoverContent,
   PopoverRoot,
-  PopoverTrigger,
+  PopoverTrigger
 } from '@/components/ui/popover'
 
 const Calendar = ({ value, onSelect }) => {
@@ -44,33 +44,33 @@ const Calendar = ({ value, onSelect }) => {
   const {
     dayButton,
     addOffset,
-    subtractOffset,
+    subtractOffset
   } = propGetters
 
   return (
-    <VStack gap={1} p={0} m={0} alignItems={'stretch'}>
-      <HStack flex={1} mb={2} justifyContent={'space-between'}>
+    <VStack gap={1} p={0} m={0} alignItems='stretch'>
+      <HStack flex={1} mb={2} justifyContent='space-between'>
         <HStack>
-          <IconButton size={'xs'} variant={'subtle'} rounded={'full'} {...subtractOffset({ years: 1 })}>
+          <IconButton size='xs' variant='subtle' rounded='full' {...subtractOffset({ years: 1 })}>
             <RxDoubleArrowLeft />
           </IconButton>
-          <IconButton size={'xs'} variant={'subtle'} rounded={'full'} {...subtractOffset({ months: 1 })}>
+          <IconButton size='xs' variant='subtle' rounded='full' {...subtractOffset({ months: 1 })}>
             <RxChevronLeft />
           </IconButton>
         </HStack>
-        <Text fontSize={'xs'} fontWeight={'bold'} textTransform={'uppercase'} userSelect={'none'}>{month} {year}</Text>
+        <Text fontSize='xs' fontWeight='bold' textTransform='uppercase' userSelect='none'>{month} {year}</Text>
         <HStack>
-          <IconButton size={'xs'} variant={'subtle'} rounded={'full'} {...addOffset({ months: 1 })}>
+          <IconButton size='xs' variant='subtle' rounded='full' {...addOffset({ months: 1 })}>
             <RxChevronRight />
           </IconButton>
-          <IconButton size={'xs'} variant={'subtle'} rounded={'full'} {...addOffset({ years: 1 })}>
+          <IconButton size='xs' variant='subtle' rounded='full' {...addOffset({ years: 1 })}>
             <RxDoubleArrowRight />
           </IconButton>
         </HStack>
       </HStack>
       <SimpleGrid columns={7} gap={2} mb={2}>
         {weekDays.map(day => (
-          <Button key={`${month}-${day}`} size={'sm'} rounded={'full'} variant={'ghost'} disabled cursor={'default'}>{day.split('')[0].toUpperCase()}</Button>
+          <Button key={`${month}-${day}`} size='sm' rounded='full' variant='ghost' disabled cursor='default'>{day.split('')[0].toUpperCase()}</Button>
         ))}
       </SimpleGrid>
       <SimpleGrid columns={7} gap={2}>
@@ -78,7 +78,7 @@ const Calendar = ({ value, onSelect }) => {
           const buttonProps = dayButton(day)
           const { disabled, now, selected } = day
           return (
-            <Button key={day.$date.toDateString()} size={'xs'} rounded={'full'} disabled={disabled} variant={selected ? 'solid' : (now ? 'subtle' : 'subtle')} colorPalette={now || selected ? 'green' : null} {...buttonProps}>
+            <Button key={day.$date.toDateString()} size='xs' rounded='full' disabled={disabled} variant={selected ? 'solid' : (now ? 'subtle' : 'subtle')} colorPalette={now || selected ? 'green' : null} {...buttonProps}>
               {day.day}
             </Button>
           )
@@ -89,7 +89,7 @@ const Calendar = ({ value, onSelect }) => {
   )
 }
 
-const EditableDateField =  ({ label, value, onChange }) => {
+const EditableDateField = ({ label, value, onChange }) => {
   const [open, setOpen] = useState(false)
 
   const handleSelect = useCallback(value => {
@@ -101,8 +101,8 @@ const EditableDateField =  ({ label, value, onChange }) => {
     <PopoverRoot lazyMount unmountOnExit open={open} onOpenChange={(e) => setOpen(e.open)} positioning={{ placement: 'bottom-start' }}>
       <PopoverTrigger asChild>
         <Field label={label}>
-          <InputGroup startElement={<RxCalendar />} flex={1} >
-            <Input value={value ? DateTime.fromJSDate(value).toFormat('yyyy-LL-dd') : null} readOnly={true} flex={4} size={['lg', null, 'md']} bg={'bg'} borderColor={'border'} cursor={'pointer'} userSelect={'none'} />
+          <InputGroup startElement={<RxCalendar />} flex={1}>
+            <Input value={value ? DateTime.fromJSDate(value).toFormat('yyyy-LL-dd') : null} readOnly flex={4} size={['lg', null, 'md']} bg='bg' borderColor='border' cursor='pointer' userSelect='none' />
           </InputGroup>
         </Field>
       </PopoverTrigger>
@@ -123,7 +123,7 @@ const DateField = ({ label, value, isEditing = false, onChange }) => {
   } else {
     return (
       <Field label={label}>
-        <Input value={value ? DateTime.fromJSDate(value).toFormat('yyyy-LL-dd') : null} readOnly={true} flex={4} size={['lg', null, 'md']} cursor={'default'} />
+        <Input value={value ? DateTime.fromJSDate(value).toFormat('yyyy-LL-dd') : null} readOnly flex={4} size={['lg', null, 'md']} cursor='default' />
       </Field>
     )
   }

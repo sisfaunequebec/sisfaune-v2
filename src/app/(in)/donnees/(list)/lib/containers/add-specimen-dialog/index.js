@@ -22,24 +22,24 @@ const defaultValues = {
 }
 const AddSpecimenDialog = ({ close }) => {
   return (
-    <BaseDialog title={'Ajout d\'un spécimen'} onClose={close} onSubmit={addSpecimen} submitBtnLabel={'Ajouter'} schema={addSpecimenSchema} defaultValues={defaultValues}>
+    <BaseDialog title={'Ajout d\'un spécimen'} onClose={close} onSubmit={addSpecimen} submitBtnLabel='Ajouter' schema={addSpecimenSchema} defaultValues={defaultValues}>
       {(contentRef) => (
         <Fieldset.Root>
           <Fieldset.Content gap={3}>
-            <ControlledField name={'specieId'} label={'Espèce :'} variant={'horizontal'}>
-              <Input autoComplete={'off'} />
+            <ControlledField name='specieId' label='Espèce :' variant='horizontal'>
+              <Input autoComplete='off' />
             </ControlledField>
-            <ControlledField name={'discoveryStateId'} label={'État lors de la découverte :'} variant={'horizontal'}>
+            <ControlledField name='discoveryStateId' label='État lors de la découverte :' variant='horizontal'>
               <DiscoveryStateSelect contentRef={contentRef} />
             </ControlledField>
-            <ControlledField name={'silabIdentificationNumber'} label={'Numéro de spécimen SILAB :'} variant={'horizontal'}>
-              <Input autoComplete={'off'} />
+            <ControlledField name='silabIdentificationNumber' label='Numéro de spécimen SILAB :' variant='horizontal'>
+              <Input autoComplete='off' />
             </ControlledField>
-            <ControlledField name={'terrainIdentificationNumber'} label={'Numéro d\'identif. sur le terrain :'} variant={'horizontal'}>
-              <Input autoComplete={'off'} />
+            <ControlledField name='terrainIdentificationNumber' label={'Numéro d\'identif. sur le terrain :'} variant='horizontal'>
+              <Input autoComplete='off' />
             </ControlledField>
-            <ControlledField name={'huntingPermitNumber'} label={'Numéro de permis de chasse :'} variant={'horizontal'}>
-              <Input autoComplete={'off'} />
+            <ControlledField name='huntingPermitNumber' label='Numéro de permis de chasse :' variant='horizontal'>
+              <Input autoComplete='off' />
             </ControlledField>
             {/* <ControlledField name={'typeId'} label={'Type :'} variant={'horizontal'}>
               <TypeSelect contentRef={contentRef} />

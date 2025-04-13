@@ -1,17 +1,14 @@
-import { usePathname } from 'next/navigation'
+import { useSelectedLayoutSegment, useSearchParams } from 'next/navigation'
 
 import NextLink from 'next/link'
 
 import { Tabs, Link } from '@chakra-ui/react'
 
 const DataAdminTabs = () => {
-  const pathname = usePathname()
-
-  const splitedPathname = pathname.split('/')
-  const lastPathSegment = splitedPathname.at(-1)
+  const segment = useSelectedLayoutSegment()
 
   return (
-    <Tabs.Root defaultValue='donnees' value={lastPathSegment} variant='subtle' size={['md', null, 'sm']} colorPalette='green' hideBelow='md'>
+    <Tabs.Root defaultValue='donnees' value={segment} variant='subtle' size={['md', null, 'sm']} colorPalette='green' hideBelow='md'>
       <Tabs.List>
         <Tabs.Trigger value='donnees' borderRadius='full'>
           <Link asChild unstyled>

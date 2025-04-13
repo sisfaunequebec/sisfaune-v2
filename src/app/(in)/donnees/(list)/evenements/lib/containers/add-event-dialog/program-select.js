@@ -1,7 +1,7 @@
 'use client'
 import { useCallback, useEffect, useState } from 'react'
 
-import getPrograms from '@/logic/data/lookups/get-programs'
+import getPrograms from '@/lib/data/lookups/get-programs'
 
 import {
   Portal,
@@ -9,7 +9,7 @@ import {
   createListCollection
 } from '@chakra-ui/react'
 
-const ProgramSelect = ({ value, onChange, onBlur, contentRef }) =>  {
+const ProgramSelect = ({ value, onChange, onBlur, contentRef }) => {
   const [programs, setPrograms] = useState([])
 
   useEffect(() => {
@@ -26,16 +26,16 @@ const ProgramSelect = ({ value, onChange, onBlur, contentRef }) =>  {
   }, [onChange])
 
   const collection = createListCollection({ items: programs })
-  
+
   return (
     <Select.Root
       collection={collection}
       value={[value]}
       onValueChange={handleValueChange}
       onInteractOutside={onBlur}
-      size={'sm'}
+      size='sm'
       positioning={{ sameWidth: true }}
-      
+
     >
       <Select.HiddenSelect />
       <Select.Control>

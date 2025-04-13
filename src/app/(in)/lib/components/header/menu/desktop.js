@@ -55,30 +55,30 @@ const DesktopMenu = ({ username, email }) => {
     <>
       {parametersDialog}
 
-      <Flex hideBelow={'md'}>
-        <Menu.Root positioning={{ placement: 'bottom-end' }} size={'md'} lazyMount>
+      <Flex hideBelow='md'>
+        <Menu.Root positioning={{ placement: 'bottom-end' }} size='md' lazyMount>
           <Menu.Trigger>
-            <Avatar name={username} colorPalette={'green'} size={['md', null, 'sm']} variant={'solid'} cursor={'pointer'} />
+            <Avatar name={username} colorPalette='green' size={['md', null, 'sm']} variant='solid' cursor='pointer' />
           </Menu.Trigger>
-          <MenuContent minW={60} hideBelow={'md'} mt={4} isolation={'isolate'} isolate={'isolate'} _hover={{ bg: 'white' }}>
-            <Menu.Item cursor={'default'} value={'info'} _hover={{ bg: 'white' }}>
-              <VStack gap={0} flex={1} alignItems={'flex-start'}>
+          <MenuContent minW={60} hideBelow='md' mt={4} isolation='isolate' isolate='isolate' _hover={{ bg: 'white' }}>
+            <Menu.Item cursor='default' value='info' _hover={{ bg: 'white' }}>
+              <VStack gap={0} flex={1} alignItems='flex-start'>
                 <Box flex={1} fontWeight={500}>{username}</Box>
-                <Box flex={1} color={'gray.500'}>{email}</Box>
+                <Box flex={1} color='gray.500'>{email}</Box>
               </VStack>
             </Menu.Item>
             <Menu.Separator />
             <MenuRadioItemGroup value={secondPathSegment} onValueChange={handleMenuRadioItemGroupChange}>
-              <MenuRadioItem value={'donnees'}>Base de données</MenuRadioItem>
-              <MenuRadioItem value={'administration'}>Administration</MenuRadioItem>
+              <MenuRadioItem value='donnees'>Base de données</MenuRadioItem>
+              <MenuRadioItem value='administration'>Administration</MenuRadioItem>
             </MenuRadioItemGroup>
             <Menu.Separator />
-            <Menu.Item onClick={handleModifyParameters} value={'params'}>
+            <Menu.Item onClick={handleModifyParameters} value='params'>
               <RxGear />
               <Box flex={1} ms={0.5}>Vos paramètres...</Box>
             </Menu.Item>
             <Menu.Separator />
-            <Menu.Item onClick={() => { signOut() }} value={'signout'}>
+            <Menu.Item onClick={() => { signOut() }} value='signout'>
               <RxExit />
               <Box flex={1} ms={0.5}>Quitter...</Box>
             </Menu.Item>

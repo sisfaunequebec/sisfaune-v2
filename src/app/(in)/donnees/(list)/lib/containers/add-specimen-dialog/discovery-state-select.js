@@ -1,7 +1,7 @@
 'use client'
 import { useCallback, useEffect, useState } from 'react'
 
-import getDiscoveryStates from '@/logic/data/lookups/get-discovery-states'
+import getDiscoveryStates from '@/lib/data/lookups/get-discovery-states'
 
 import {
   Portal,
@@ -9,7 +9,7 @@ import {
   createListCollection
 } from '@chakra-ui/react'
 
-const DiscoveryStateSelect = ({ value, onChange, onBlur, contentRef }) =>  {
+const DiscoveryStateSelect = ({ value, onChange, onBlur, contentRef }) => {
   const [items, setItems] = useState([])
 
   useEffect(() => {
@@ -26,14 +26,14 @@ const DiscoveryStateSelect = ({ value, onChange, onBlur, contentRef }) =>  {
   }, [onChange])
 
   const collection = createListCollection({ items })
-  
+
   return (
     <Select.Root
       collection={collection}
       value={[value]}
       onValueChange={handleValueChange}
       onInteractOutside={onBlur}
-      size={'sm'}
+      size='sm'
       positioning={{ sameWidth: true }}
     >
       <Select.HiddenSelect />

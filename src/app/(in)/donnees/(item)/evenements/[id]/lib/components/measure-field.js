@@ -12,7 +12,7 @@ import {
   SelectLabel,
   SelectRoot,
   SelectTrigger,
-  SelectValueText,
+  SelectValueText
 } from '@/components/ui/select'
 
 const items = [
@@ -20,8 +20,6 @@ const items = [
   { value: 6, typeId: 1, label: 'cm', isDefault: true },
   { value: 7, typeId: 1, label: 'm', isDefault: false }
 ]
-
-
 
 const UnitSelect = ({ onChange, disabled }) => {
   // console.debug('UnitSelect', value, onChange)
@@ -63,7 +61,7 @@ const UnitSelect = ({ onChange, disabled }) => {
       </Select.Control>
       <Portal disabled={false}>
         <Select.Positioner>
-          <Select.Content >
+          <Select.Content>
             {collection.items.map((item) => (
               <Select.Item item={item} key={item.value}>
                 {item.label}
@@ -77,7 +75,7 @@ const UnitSelect = ({ onChange, disabled }) => {
   )
 }
 
-const MeasureInput =  ({ value: rawValue, isEditing = false, units, onChange }) => {
+const MeasureInput = ({ value: rawValue, isEditing = false, units, onChange }) => {
   console.debug('MeasureInput', rawValue, units)
   const { value = null, unit = null } = rawValue ?? {}
 
@@ -100,7 +98,7 @@ const MeasureInput =  ({ value: rawValue, isEditing = false, units, onChange }) 
   }, [measureValue, onChange])
 
   const handleMeasureChange = useCallback(e => {
-    const { target } = e 
+    const { target } = e
     const { value } = target
 
     setMeasureValue(value)
@@ -118,14 +116,14 @@ const MeasureInput =  ({ value: rawValue, isEditing = false, units, onChange }) 
   }, [unitValue, onChange])
 
   const currentUnit = unitValue ? units.find(u => u.value === unitValue) || {} : {}
-  
+
   const { label: unitLabel } = currentUnit
   const inputValue = isEditing ? (measureValue || '') : (measureValue ? [measureValue, unitLabel].join(' ') : '')
 
   return (
-    <HStack flex={1} alignSelf={'stretch'}>
+    <HStack flex={1} alignSelf='stretch'>
       <Input readOnly={!isEditing} size={['lg', null, 'md']} value={inputValue} onChange={handleMeasureChange} />
-      { isEditing && <UnitSelect value={unitValue} units={units} onChange={handleUnitChange} /> }
+      {isEditing && <UnitSelect value={unitValue} units={units} onChange={handleUnitChange} />}
     </HStack>
   )
 }
@@ -142,9 +140,9 @@ const MeasureField = ({ measure, isEditing = true, onChange }) => {
   ]
 
   const handleChange = v => console.debug(v)
-  
+
   return (
-    <Field label={name} descriptionText={description} >
+    <Field label={name} descriptionText={description}>
       <MeasureInput value={{ value, unit: unitId }} isEditing={isEditing} units={units} onChange={handleChange} />
     </Field>
   )

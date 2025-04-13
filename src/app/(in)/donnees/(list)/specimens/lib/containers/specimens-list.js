@@ -12,8 +12,8 @@ import { RxArrowRight } from 'react-icons/rx'
 
 import { useQueryStates } from 'nuqs'
 
-import useSpecimens from '@/logic/data/specimens/use-specimens'
-import { searchParams, urlKeys } from '@/logic/data/events/events-params'
+import useSpecimens from '@/lib/data/specimens/use-specimens'
+import { searchParams, urlKeys } from '@/lib/data/events/events-params'
 
 import { LinkListWrapper } from '@/app/(in)/lib/components/list'
 
@@ -38,22 +38,22 @@ const SpecimenItem = ({ id, eventId, specimenNumber, specieName, specieBinome, c
   return (
     <LinkListWrapper>
       <Stack flex={1} direction={['column', null, null, 'row']} gap={[0.4, null, null, 1]}>
-        <VStack alignItems={'flex-start'} gap={0.4} flex={1}>
+        <VStack alignItems='flex-start' gap={0.4} flex={1}>
           <LinkOverlay asChild>
-            <NextLink href={href} color={'green.600'} _dark={{ color: 'green.200' }}>
+            <NextLink href={href} color='green.600' _dark={{ color: 'green.200' }}>
               <Text fontWeight={500} color='green.600'>Spécimen no {specimenNumber}</Text>
             </NextLink>
           </LinkOverlay>
-          <Flex fontWeight={500} color={'fg.muted'}>{specieName} (<Text fontStyle={'italic'}>{specieBinome}</Text>)</Flex>
+          <Flex fontWeight={500} color='fg.muted'>{specieName} (<Text fontStyle='italic'>{specieBinome}</Text>)</Flex>
           <Flex display={['none', null, null, 'inherit']}>Numéro CQSAS : {cqsasNumber}</Flex>
         </VStack>
         <VStack alignItems={['flex-start', null, null, 'flex-end']} gap={0.4} flex={1}>
           <Flex display={['none', null, null, 'inherit']}>Soumis par : {submitterName}</Flex>
-          <Flex color={'blue.600'}>Date du signalement : {reportingDate}</Flex>
+          <Flex color='blue.600'>Date du signalement : {reportingDate}</Flex>
           <Flex display={['none', null, null, 'inherit']}>Municipalité : {localityName ?? 'indéterminée'}</Flex>
         </VStack>
       </Stack>
-      <IconButton as={NextLink} href={href} scroll colorPalette={'green'} variant={'ghost'} rounded={'full'} size={['xs']}><RxArrowRight /></IconButton>
+      <IconButton as={NextLink} href={href} scroll colorPalette='green' variant='ghost' rounded='full' size={['xs']}><RxArrowRight /></IconButton>
     </LinkListWrapper>
   )
 }
@@ -87,14 +87,14 @@ const SpecimensList = () => {
   // console.debug(isReachingEnd, isLoadingMore, triggerIsVisible)
 
   return (
-    <VStack position={'relative'} alignItems={'stretch'} flex={1} gap={0} justifyContent={'stretch'} opacity={isLoadingMore && 0.5} mb={2}>
+    <VStack position='relative' alignItems='stretch' flex={1} gap={0} justifyContent='stretch' opacity={isLoadingMore && 0.5} mb={2}>
       {specimens.map(specimen => {
         const { id } = specimen
         return (
           <SpecimenItem key={id} {...specimen} />
         )
       })}
-      { loadMoreButtonIsVisible && <Button mt={2} p={4} variant={'surface'} colorPalette={'blue'} onClick={isReachingEnd ? null : handleLoadMore} loading={isLoadingMore}>{loadMoreButtonLabel}</Button> }
+      {loadMoreButtonIsVisible && <Button mt={2} p={4} variant='surface' colorPalette='blue' onClick={isReachingEnd ? null : handleLoadMore} loading={isLoadingMore}>{loadMoreButtonLabel}</Button>}
     </VStack>
   )
 }

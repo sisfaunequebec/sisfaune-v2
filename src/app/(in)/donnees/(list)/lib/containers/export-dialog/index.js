@@ -1,13 +1,11 @@
 import { useQueryStates } from 'nuqs'
 
-import { useBreakpointValue } from '@chakra-ui/react'
+import { useBreakpointValue, Fieldset } from '@chakra-ui/react'
 
-import { searchParams, urlKeys } from '@/logic/data/events/events-params'
+import { searchParams, urlKeys } from '@/lib/data/events/events-params'
 
 import exportDataSchema from './export.schema'
 import exportData from './export.action'
-
-import { Fieldset } from '@chakra-ui/react'
 
 import BaseDialog from '@/app/lib/components/base-dialog'
 
@@ -26,11 +24,11 @@ const ExportDialog = ({ close, eventId }) => {
   const [params] = useQueryStates(searchParams, { urlKeys })
 
   return (
-    <BaseDialog title={'Exportation des événements ou spécimens'} onClose={close} onSubmit={exportData} submitBtnLabel={'Exporter'} schema={exportDataSchema} defaultValues={defaultValues}>
+    <BaseDialog title='Exportation des événements ou spécimens' onClose={close} onSubmit={exportData} submitBtnLabel='Exporter' schema={exportDataSchema} defaultValues={defaultValues}>
       {(contentRef) => (
         <Fieldset.Root>
           <Fieldset.Content gap={3}>
-            <ControlledField name={'format'} label={'Format :'} variant={'horizontal'}>
+            <ControlledField name='format' label='Format :' variant='horizontal'>
               <FormatSelect contentRef={contentRef} />
             </ControlledField>
           </Fieldset.Content>

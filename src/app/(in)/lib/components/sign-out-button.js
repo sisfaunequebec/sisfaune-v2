@@ -1,6 +1,6 @@
 // 'use client'
 
-import { auth, signOut } from '@/logic/auth'
+import { auth, signOut } from '@/lib/auth'
 
 import { IconButton } from '@chakra-ui/react'
 import { MdExitToApp } from 'react-icons/md'

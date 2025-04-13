@@ -11,7 +11,7 @@ import {
   DialogFooter
 } from '@/components/ui/dialog'
 
-const BaseDialog = ({ title, size = 'md', schema, watches = [], defaultValues, onClose, onSubmit, submitBtnLabel = 'Continuer', close, children }) => {
+const BaseDialog = ({ title, size = 'md', isAlert = false, schema, watches = [], defaultValues, onClose, onSubmit, submitBtnLabel = 'Continuer', close, children }) => {
   const rootSize = useBreakpointValue({ base: 'cover', md: size })
   const motion = useBreakpointValue({ base: 'scale', md: 'slide-in-bottom' })
 
@@ -31,52 +31,55 @@ const BaseDialog = ({ title, size = 'md', schema, watches = [], defaultValues, o
 
   // console.debug('watched', watched, formState.errors)
 
-   const handleAction = useCallback(async data => {
-      try {
-        if (onSubmit) {
-          await onSubmit(data)
-          onClose(false)
-        } else {
-          onClose(false)
-        }
-      } catch (e) {
-        console.debug(e)
+  const handleAction = useCallback(async data => {
+    try {
+      if (onSubmit) {
+        await onSubmit(data)
+        onClose(false)
+      } else {
+        onClose(false)
       }
-    }, [onClose, onSubmit])
-  
+    } catch (e) {
+      console.debug(e)
+    }
+  }, [onClose, onSubmit])
+
   const { isSubmitting } = formState
 
   const contentRef = useRef(null)
 
+  const role = isAlert ? 'alert' : undefined
+  const closeOnInteractOutside = !!isAlert
+
   return (
-    <Dialog.Root lazyMount open size={rootSize} placement={'center'} motionPreset={motion} onOpenChange={e => onClose(false)} closeOnInteractOutside>
+    <Dialog.Root lazyMount open size={rootSize} placement='center' motionPreset={motion} onOpenChange={e => onClose(false)} closeOnInteractOutside={closeOnInteractOutside} role={role}>
       <Portal>
         <Dialog.Backdrop />
         <Dialog.Positioner>
-        <Dialog.Content ref={contentRef}>
+          <Dialog.Content ref={contentRef}>
 
-          <Dialog.Header>
-            <Dialog.Title>{title}</Dialog.Title>
-          </Dialog.Header>
+            <Dialog.Header>
+              <Dialog.Title>{title}</Dialog.Title>
+            </Dialog.Header>
 
-          <FormProvider {...form}>
-            <Flex as={'form'} onSubmit={handleSubmit(handleAction)} direction={'column'} justifyContent={'stretch'} h={'100%'}>
+            <FormProvider {...form}>
+              <Flex as='form' onSubmit={handleSubmit(handleAction)} direction='column' justifyContent='stretch' h='100%'>
 
-              <Dialog.Body>
-                { children(contentRef, watched) }
-              </Dialog.Body>
+                <Dialog.Body>
+                  {children(contentRef, watched)}
+                </Dialog.Body>
 
-              <DialogFooter gap={2}>
-                <DialogActionTrigger asChild>
-                  <Button size='sm' variant='outline' onClick={() => onClose(false)} minW={24}>Annuler</Button>
-                </DialogActionTrigger>
-                <Button type='submit' size='sm' colorPalette='blue' minW={24} loading={isSubmitting}>{submitBtnLabel}</Button>
-              </DialogFooter>
+                <DialogFooter gap={2}>
+                  <DialogActionTrigger asChild>
+                    <Button size='sm' variant='outline' onClick={() => onClose(false)} minW={24}>Annuler</Button>
+                  </DialogActionTrigger>
+                  <Button type='submit' size='sm' colorPalette={isAlert ? 'red' : 'blue'} minW={24} loading={isSubmitting}>{submitBtnLabel}</Button>
+                </DialogFooter>
 
-            </Flex>
-          </FormProvider>
+              </Flex>
+            </FormProvider>
 
-        </Dialog.Content>
+          </Dialog.Content>
         </Dialog.Positioner>
       </Portal>
     </Dialog.Root>

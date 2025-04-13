@@ -5,7 +5,7 @@ import { Box, AbsoluteCenter, IconButton, HStack, Separator, Fieldset, Button } 
 import { RxPencil1 } from 'react-icons/rx'
 
 import {
-  AccordionItem,
+  AccordionItem
 } from '@/components/ui/accordion'
 
 import { Trigger, Content } from '../components/accordion-parts'
@@ -40,31 +40,29 @@ const InfosGeneralesForm = ({ event, isEditing, onToggleEditing }) => {
     habitatType,
     labShippingMethod,
     lab
-   } = event
+  } = event
 
   return (
-    <Fieldset.Root as={'VStack'} alignItems={'stretch'} size={['lg', null, 'md']}>
+    <Fieldset.Root as='VStack' alignItems='stretch' size={['lg', null, 'md']}>
 
       <Fieldset.Legend>Identification</Fieldset.Legend>
       <Fieldset.Content gap={0.5} mt={2}>
         <TextField label={'Numéro d\'événement\u00A0:'} value={id} isEditing={isEditing} />
-        <TypeEvenementSelect label={'Type d\'événement\u00A0:'} value={type} isEditing={isEditing}  />
+        <TypeEvenementSelect label={'Type d\'événement\u00A0:'} value={type} isEditing={isEditing} />
         <TextField label={'Numéro d\'identification SILAB\u00A0:'} value={silabId} isEditing={isEditing} />
         <TextField label={'Numéro d\'incident CQSAS\u00A0:'} value={cqsasIncidentNumber} isEditing={isEditing} />
         <TextField label={'Numéro de pathologie\u00A0:'} value={pathologyNumber} isEditing={isEditing} />
         <DateField label={'Date du signalement\u00A0:'} value={reportedAt} isEditing={isEditing} />
         <TextField label={'Numéro centrale MAPAQ\u00A0:'} value={mapaqId} isEditing={isEditing} />
-        <ProgrammeSelect label={'Programme\u00A0:'} value={program} isEditing={isEditing}  />
-        <ProvenanceSelect label={'Provenance du signalement\u00A0:'} value={reportOrigin} isEditing={isEditing}  />
-        <StatutSelect label={'Statut\u00A0:'} value={status} isEditing={isEditing}  />
+        <ProgrammeSelect label={'Programme\u00A0:'} value={program} isEditing={isEditing} />
+        <ProvenanceSelect label={'Provenance du signalement\u00A0:'} value={reportOrigin} isEditing={isEditing} />
+        <StatutSelect label={'Statut\u00A0:'} value={status} isEditing={isEditing} />
       </Fieldset.Content>
-      
+
       <Separator />
 
       <Fieldset.Legend>Personnes impliquées</Fieldset.Legend>
-      <Fieldset.Content gap={0.5} mt={2}>
-
-      </Fieldset.Content>
+      <Fieldset.Content gap={0.5} mt={2} />
 
       <Separator />
 
@@ -90,7 +88,7 @@ const InfosGeneralesForm = ({ event, isEditing, onToggleEditing }) => {
         <TextField label={'Numéro de connaissement\u00A0:'} value={labShippingTrackingNumber} isEditing={isEditing} />
         <LaboratoireSelect label={'Laboratoire de destination\u00A0:'} value={lab} isEditing={isEditing} />
       </Fieldset.Content>
-      
+
     </Fieldset.Root>
   )
 }
@@ -104,28 +102,25 @@ const InfosGeneralesSection = ({ event, editingSection, onToggleEditing }) => {
   }, [onToggleEditing])
 
   return (
-    <AccordionItem value={'general'} position={isEditing ? 'sticky' : 'static'} zIndex={isEditing && 1000} disabled={isEditing} >
+    <AccordionItem value='general' position={isEditing ? 'sticky' : 'static'} zIndex={isEditing && 1000} disabled={isEditing}>
       <Box position={isEditing ? 'sticky' : 'relative'} top={isEditing && [135, null, 130]} zIndex={isEditing && 1000}>
-        <AbsoluteCenter as={HStack} axis={'vertical'} insetEnd={5}  >
-            <HStack flex={1} justifyContent={'flex-end'} >
-            { isEditing ?
-              <>
-                <Button variant={'solid'} colorPalette={'blue'} size={'xs'} onClick={handleToggleEditing} borderRadius={'full'}>Sauvegarder les modifications</Button>
-                <Button variant={'surface'} colorPalette={'blue'} size={'xs'} onClick={handleToggleEditing} borderRadius={'full'}>Annuler</Button>
-              </>
-              : 
-              <IconButton colorPalette={'green'} variant={'surface'} rounded={'full'} size={['xs']} onClick={handleToggleEditing}><RxPencil1 /></IconButton>
-            }
-            </HStack>
+        <AbsoluteCenter as={HStack} axis='vertical' insetEnd={5}>
+          <HStack flex={1} justifyContent='flex-end'>
+            {isEditing
+              ? <>
+                <Button variant='solid' colorPalette='blue' size='xs' onClick={handleToggleEditing} borderRadius='full'>Sauvegarder les modifications</Button>
+                <Button variant='surface' colorPalette='blue' size='xs' onClick={handleToggleEditing} borderRadius='full'>Annuler</Button>
+                </>
+              : <IconButton colorPalette='green' variant='surface' rounded='full' size={['xs']} onClick={handleToggleEditing}><RxPencil1 /></IconButton>}
+          </HStack>
         </AbsoluteCenter>
-        <Trigger label={'Informations générales'} />
+        <Trigger label='Informations générales' />
       </Box>
       <Content>
         <InfosGeneralesForm event={event} isEditing={isEditing} onToggleEditing={handleToggleEditing} />
       </Content>
     </AccordionItem>
   )
-  
 }
 
 export default InfosGeneralesSection

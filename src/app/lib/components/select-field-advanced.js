@@ -9,8 +9,8 @@ import {
   SelectLabel,
   SelectRoot,
   SelectTrigger,
-  SelectValueText,
-} from "@/components/ui/select"
+  SelectValueText
+} from '@/components/ui/select'
 
 import { Field } from '@/components/ui/field'
 
@@ -39,10 +39,10 @@ const Select = ({ value, collection, onChange }) => {
       onValueChange={(e) => console.debug(e)}
       // _active={{ bg: 'blue.50' }}
     >
-      <SelectTrigger clearable >
+      <SelectTrigger clearable>
         <SelectValueText />
       </SelectTrigger>
-      <SelectContent >
+      <SelectContent>
         {collection?.items.map((item) => (
           <SelectItem item={item} key={item.value}>
             {item.label}
@@ -60,7 +60,7 @@ const SelectField = ({ label, value, valueLabelKey = 'label', getter, isEditing 
     const getItems = async () => {
       if (isEditing) {
         const rawItems = await getter()
-        const items = rawItems.map(i => { return { value: i.value.toString(), label: i.label} })
+        const items = rawItems.map(i => { return { value: i.value.toString(), label: i.label } })
         const collection = createListCollection({ items })
         setCollection(collection)
       }
@@ -75,7 +75,7 @@ const SelectField = ({ label, value, valueLabelKey = 'label', getter, isEditing 
 
   return (
     <Field label={label}>
-      { (isEditing && !!collection) ? <Select collection={collection} value={value?.id} cursor={'default'} /> : <Input value={valueLabel} readOnly flex={4} size={['md', null, 'md']} cursor={'default'} /> }
+      {(isEditing && !!collection) ? <Select collection={collection} value={value?.id} cursor='default' /> : <Input value={valueLabel} readOnly flex={4} size={['md', null, 'md']} cursor='default' />}
     </Field>
   )
 }

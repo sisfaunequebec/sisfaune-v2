@@ -1,0 +1,32 @@
+[
+  {
+    "id_laboratoire": 0,
+    "laboratoire": "",
+    "actif": "1"
+  },
+  {
+    "id_laboratoire": 1,
+    "laboratoire": "Centre québécois sur la santé des animaux sauvages (CQSAS)",
+    "actif": "1"
+  },
+  {
+    "id_laboratoire": 2,
+    "laboratoire": "Centre régional de pathologie animale de L''Assomption (CRP)",
+    "actif": "1"
+  },
+  {
+    "id_laboratoire": 3,
+    "laboratoire": "Laboratoire de santé animale de Québec (LSA-QC)",
+    "actif": "1"
+  },
+  {
+    "id_laboratoire": 4,
+    "laboratoire": "Agence canadienne d''inspection des aliments (ACIA)",
+    "actif": "1"
+  },
+  {
+    "id_laboratoire": 5,
+    "laboratoire": "Laboratoire de santé animale de Saint-Hyacinthe (LSA-SHY)",
+    "actif": "1"
+  }
+]

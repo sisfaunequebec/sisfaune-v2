@@ -34,7 +34,7 @@ const tokens = defineTokens({
     }
   },
   cursor: {
-    radio: { value: 'pointer' },
+    radio: { value: 'pointer' }
   }
 })
 
@@ -132,7 +132,7 @@ const selectRecipe = defineSlotRecipe({
     trigger: {
       cursor: 'pointer',
       _focus: {
-        bg: 'blue.50',
+        bg: 'blue.50'
       }
     },
     item: {
@@ -140,7 +140,6 @@ const selectRecipe = defineSlotRecipe({
     }
   }
 })
-
 
 const dialogRecipe = defineSlotRecipe({
   slots: dialogAnatomy.keys(),
@@ -186,7 +185,7 @@ const buttonRecipe = defineRecipe({
 const inputRecipe = defineRecipe({
   base: {
     _focus: {
-      bg: 'blue.50',
+      bg: 'blue.50'
     },
     _readOnly: {
       cursor: 'default',

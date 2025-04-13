@@ -14,16 +14,16 @@ import DiscoveryStateSelect from './discovery-state-select'
 import addAnalysisSchema from './add-analysis-schema'
 
 const defaultValues = {
-  analysisId: null,
+  analysisId: null
 }
 const AddAnalysisDialog = ({ close }) => {
   return (
-    <BaseDialog title={'Ajout d\'une analyse'} onClose={close} onSubmit={addAnalysis} submitBtnLabel={'Ajouter'} schema={addAnalysisSchema} defaultValues={defaultValues}>
+    <BaseDialog title={'Ajout d\'une analyse'} onClose={close} onSubmit={addAnalysis} submitBtnLabel='Ajouter' schema={addAnalysisSchema} defaultValues={defaultValues}>
       {(contentRef) => (
         <Fieldset.Root>
           <Fieldset.Content gap={3}>
-            <ControlledField name={'analysisId'} label={'Analyse ou groupe d\'analyses :'} variant={'horizontal'}>
-              <Input autoComplete={'off'} />
+            <ControlledField name='analysisId' label={'Analyse ou groupe d\'analyses :'} variant='horizontal'>
+              <Input autoComplete='off' />
             </ControlledField>
           </Fieldset.Content>
         </Fieldset.Root>

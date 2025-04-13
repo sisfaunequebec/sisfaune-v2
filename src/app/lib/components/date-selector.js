@@ -1,4 +1,3 @@
-
 import { useCallback, useRef, useState } from 'react'
 
 import { DateTime } from 'luxon'
@@ -15,7 +14,7 @@ import {
   PopoverBody,
   PopoverContent,
   PopoverRoot,
-  PopoverTrigger,
+  PopoverTrigger
 } from '@/components/ui/popover'
 
 const Calendar = ({ value, onSelect }) => {
@@ -47,33 +46,33 @@ const Calendar = ({ value, onSelect }) => {
   const {
     dayButton,
     addOffset,
-    subtractOffset,
+    subtractOffset
   } = propGetters
 
   return (
-    <VStack gap={1} p={0} m={0} alignItems={'stretch'}>
-      <HStack flex={1} mb={2} justifyContent={'space-between'}>
+    <VStack gap={1} p={0} m={0} alignItems='stretch'>
+      <HStack flex={1} mb={2} justifyContent='space-between'>
         <HStack>
-          <IconButton size={'xs'} variant={'subtle'} rounded={'full'} {...subtractOffset({ years: 1 })}>
+          <IconButton size='xs' variant='subtle' rounded='full' {...subtractOffset({ years: 1 })}>
             <RxDoubleArrowLeft />
           </IconButton>
-          <IconButton size={'xs'} variant={'subtle'} rounded={'full'} {...subtractOffset({ months: 1 })}>
+          <IconButton size='xs' variant='subtle' rounded='full' {...subtractOffset({ months: 1 })}>
             <RxChevronLeft />
           </IconButton>
         </HStack>
-        <Text fontSize={'xs'} fontWeight={'bold'} textTransform={'uppercase'} userSelect={'none'}>{month} {year}</Text>
+        <Text fontSize='xs' fontWeight='bold' textTransform='uppercase' userSelect='none'>{month} {year}</Text>
         <HStack>
-          <IconButton size={'xs'} variant={'subtle'} rounded={'full'} {...addOffset({ months: 1 })}>
+          <IconButton size='xs' variant='subtle' rounded='full' {...addOffset({ months: 1 })}>
             <RxChevronRight />
           </IconButton>
-          <IconButton size={'xs'} variant={'subtle'} rounded={'full'} {...addOffset({ years: 1 })}>
+          <IconButton size='xs' variant='subtle' rounded='full' {...addOffset({ years: 1 })}>
             <RxDoubleArrowRight />
           </IconButton>
         </HStack>
       </HStack>
       <SimpleGrid columns={7} gap={2} mb={2}>
         {weekDays.map(day => (
-          <Button key={`${month}-${day}`} size={'sm'} rounded={'full'} variant={'ghost'} disabled cursor={'default'}>{day.split('')[0].toUpperCase()}</Button>
+          <Button key={`${month}-${day}`} size='sm' rounded='full' variant='ghost' disabled cursor='default'>{day.split('')[0].toUpperCase()}</Button>
         ))}
       </SimpleGrid>
       <SimpleGrid columns={7} gap={2}>
@@ -81,7 +80,7 @@ const Calendar = ({ value, onSelect }) => {
           const buttonProps = dayButton(day)
           const { disabled, now, selected } = day
           return (
-            <Button key={day.$date.toDateString()} size={'xs'} rounded={'full'} disabled={disabled} variant={selected ? 'solid' : (now ? 'subtle' : 'subtle')} colorPalette={now || selected ? 'green' : null} {...buttonProps}>
+            <Button key={day.$date.toDateString()} size='xs' rounded='full' disabled={disabled} variant={selected ? 'solid' : (now ? 'subtle' : 'subtle')} colorPalette={now || selected ? 'green' : null} {...buttonProps}>
               {day.day}
             </Button>
           )
@@ -92,7 +91,7 @@ const Calendar = ({ value, onSelect }) => {
   )
 }
 
-const DateSelector =  ({ value, onChange, clearable = false, children }) => {
+const DateSelector = ({ value, onChange, clearable = false, children }) => {
   const [open, setOpen] = useState(false)
   const inputRef = useRef()
 
@@ -101,29 +100,29 @@ const DateSelector =  ({ value, onChange, clearable = false, children }) => {
     onChange(value)
   }, [setOpen, onChange])
 
-  const endElement = value ? (
-    <CloseButton
-      variant={'ghost'}
-      rounded={'full'}
-      size={'xs'}
-      me={-2}
-      onClick={(e) => {
-        e.stopPropagation()
-        inputRef.current.value = ''
-        onChange(null)
-      }}
-    />
-  ) : undefined
+  const endElement = value
+    ? (
+      <CloseButton
+        variant='ghost'
+        rounded='full'
+        size='xs'
+        me={-2}
+        onClick={(e) => {
+          e.stopPropagation()
+          inputRef.current.value = ''
+          onChange(null)
+        }}
+      />
+      )
+    : undefined
 
   return (
     <PopoverRoot lazyMount unmountOnExit open={open} onOpenChange={(e) => setOpen(e.open)} positioning={{ placement: 'bottom-start' }}>
-      <PopoverTrigger asChild >
-        {/* <Field label={label}> */}
-          <InputGroup startElement={<RxCalendar />} endElement={clearable && endElement} flex={1} >
-            <Input ref={inputRef} value={value ? DateTime.fromJSDate(value).toFormat('yyyy-LL-dd') : null} readOnly={true} flex={4} size={['lg', null, 'md']} bg={'bg'} borderColor={'border'} cursor={'pointer'} userSelect={'none'} />
-          </InputGroup>
-        {/* </Field> */}
-      </PopoverTrigger>
+      <InputGroup startElement={<RxCalendar />} endElement={clearable && endElement} flex={1}>
+        <PopoverTrigger asChild>
+          <Input ref={inputRef} value={value ? DateTime.fromJSDate(value).toFormat('yyyy-LL-dd') : null} variant='outline' flex={4} size={['lg', null, 'md']} bg='bg' cursor='pointer' userSelect='none' />
+        </PopoverTrigger>
+      </InputGroup>
       <PopoverContent>
         <PopoverBody>
           <Calendar value={value} onSelect={handleSelect} />

@@ -1,0 +1,66 @@
+[
+  {
+    "id_famille": "1",
+    "famille": "Coyotes"
+  },
+  {
+    "id_famille": "2",
+    "famille": "Loups"
+  },
+  {
+    "id_famille": "3",
+    "famille": "Renards"
+  },
+  {
+    "id_famille": "4",
+    "famille": "Caribous"
+  },
+  {
+    "id_famille": "5",
+    "famille": "Cerfs"
+  },
+  {
+    "id_famille": "6",
+    "famille": "Orignaux"
+  },
+  {
+    "id_famille": "7",
+    "famille": "Chauves-souris"
+  },
+  {
+    "id_famille": "8",
+    "famille": "Moufettes rayées"
+  },
+  {
+    "id_famille": "9",
+    "famille": "Ratons laveur"
+  },
+  {
+    "id_famille": "10",
+    "famille": "Marmottes communes"
+  },
+  {
+    "id_famille": "11",
+    "famille": "Rats"
+  },
+  {
+    "id_famille": "12",
+    "famille": "Écureuils"
+  },
+  {
+    "id_famille": "13",
+    "famille": "Tamias"
+  },
+  {
+    "id_famille": "14",
+    "famille": "Ours"
+  },
+  {
+    "id_famille": "18",
+    "famille": "Lapins à queue blanche"
+  },
+  {
+    "id_famille": "19",
+    "famille": "Lièvres"
+  }
+]

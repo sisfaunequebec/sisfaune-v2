@@ -11,7 +11,7 @@ import Link from 'next/link'
 import { Flex, Container, Button, IconButton, HStack } from '@chakra-ui/react'
 import { RxArrowLeft, RxFileText } from 'react-icons/rx'
 
-import ResponsiveButton from '@/components/responsive-button'
+import ResponsiveButton from '@/app/lib/components/responsive-button'
 
 const ReportButton = ({ id }) => {
   return (

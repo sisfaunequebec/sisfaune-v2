@@ -29,18 +29,18 @@ const UserItem = ({ id, username, fullName, email, organisation, isActive, onCli
   return (
     <LinkListWrapper>
       <Stack flex={1} direction={['column', null, null, 'row']} gap={[0.4, null, null, 1]} onClick={onClick}>
-        <VStack alignItems={'flex-start'} gap={0.4} flex={1}>
+        <VStack alignItems='flex-start' gap={0.4} flex={1}>
           <LinkOverlay asChild>
-            <Flex flex={1} color={'green.600'} _dark={{ color: 'green.200' }}>
+            <Flex flex={1} color='green.600' _dark={{ color: 'green.200' }}>
               <Text fontWeight={500}>{fullName}</Text>&nbsp;
               <Text>({username})</Text>
             </Flex>
           </LinkOverlay>
-          <Flex fontWeight={500} color={'fg.muted'}>{organisation}</Flex>
+          <Flex fontWeight={500} color='fg.muted'>{organisation}</Flex>
           <Flex display={['none', null, null, 'inherit']}>{email}</Flex>
         </VStack>
         <VStack alignItems={['flex-start', null, null, 'flex-end']} gap={0.4} flex={1}>
-          <Flex display={['none', null, null, 'inherit']}>Statut : {isActive ? 'Actif' : 'Inactif'}</Flex>
+          {/* <Flex display={['none', null, null, 'inherit']}>Statut : {isActive ? 'Actif' : 'Inactif'}</Flex> */}
           {/* <Flex color={'blue.600'}>Date du signalement : {reportingDate}</Flex>
           <Flex display={['none', null, null, 'inherit']}>Municipalité : {localityName ?? 'indéterminée'}</Flex> */}
         </VStack>
@@ -82,7 +82,7 @@ const UsersList = () => {
   // const isEmpty = data?.[0]?.length === 0
   // const isReachingEnd = isEmpty || (data && data[data.length - 1]?.length < PAGE_SIZE)
 
-  // useEffect(() => { 
+  // useEffect(() => {
   //   // console.debug('useEffect', inView, isLoadingMore, size)
   //   setTimeout(() => {
   //     if (inView && !isLoadingMore) {
@@ -106,9 +106,9 @@ const UsersList = () => {
 
   return (
     <>
-      { editUserDialog }
-      <VStack position={'relative'} alignItems={'stretch'} flex={1} gap={0} justifyContent={'stretch'} opacity={isLoadingMore && 0.5} mb={2}>
-        { users.map(user => {
+      {editUserDialog}
+      <VStack position='relative' alignItems='stretch' flex={1} gap={0} justifyContent='stretch' opacity={isLoadingMore && 0.5} mb={2}>
+        {users.map(user => {
           const { id } = user
           return (
             <UserItem key={id} {...user} onClick={e => { handleEditUser(id) }} />

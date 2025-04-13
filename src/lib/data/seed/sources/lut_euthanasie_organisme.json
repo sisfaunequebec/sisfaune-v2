@@ -1,0 +1,27 @@
+[
+  {
+    "id_organisme": 0,
+    "nom": "",
+    "actif": "1"
+  },
+  {
+    "id_organisme": 1,
+    "nom": "CQSAS",
+    "actif": "1"
+  },
+  {
+    "id_organisme": 2,
+    "nom": "MFFP (Tech surveillance rage)",
+    "actif": "1"
+  },
+  {
+    "id_organisme": 3,
+    "nom": "MFFP (Autre)",
+    "actif": "1"
+  },
+  {
+    "id_organisme": 4,
+    "nom": "Autre",
+    "actif": "1"
+  }
+]

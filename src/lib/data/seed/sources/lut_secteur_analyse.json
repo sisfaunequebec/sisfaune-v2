@@ -1,0 +1,50 @@
+[
+  {
+    "id": "1",
+    "nom": "Bactériologie"
+  },
+  {
+    "id": "2",
+    "nom": "Biochimie clinique"
+  },
+  {
+    "id": "3",
+    "nom": "Parasitologie"
+  },
+  {
+    "id": "4",
+    "nom": "Virologie"
+  },
+  {
+    "id": "5",
+    "nom": "Toxicologie"
+  },
+  {
+    "id": "9",
+    "nom": "Sérologie"
+  },
+  {
+    "id": "10",
+    "nom": "Nécropsie"
+  },
+  {
+    "id": "11",
+    "nom": "Histopathologie"
+  },
+  {
+    "id": "14",
+    "nom": "Tarification"
+  },
+  {
+    "id": "17",
+    "nom": "Description animale"
+  },
+  {
+    "id": "18",
+    "nom": "Anamnèse"
+  },
+  {
+    "id": "19",
+    "nom": "Échantillons"
+  }
+]

@@ -29,7 +29,7 @@ const EtatDecouverteSelect = ({ label, value, isEditing, onChange }) => {
   }, [value])
 
   return (
-    <SelectFieldAdvanced isEditing={isEditing} label={label} value={value} valueLabelKey={'name'} getter={getter} />
+    <SelectFieldAdvanced isEditing={isEditing} label={label} value={value} valueLabelKey='name' getter={getter} />
   )
 }
 

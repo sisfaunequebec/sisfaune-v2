@@ -1,6 +1,6 @@
 'use server'
-import orm from '@/logic/data/database'
-import orderBy from 'lodash.orderby'
+import orm from '@/lib/data/database'
+// import orderBy from 'lodash.orderby'
 
 const getAnalysisSectors = async () => {
   const raw = await orm.LutAnalysisSector.findMany({

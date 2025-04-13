@@ -8,25 +8,25 @@ import {
 } from '@chakra-ui/react'
 
 const formats = [
-  { value: 'csv', label: 'Texte (.csv)'},
-  { value: 'xls', label: 'Excel (.xlsx)'}
+  { value: 'csv', label: 'Texte (.csv)' },
+  { value: 'xls', label: 'Excel (.xlsx)' }
 ]
 
-const FormatSelect = ({ value, onChange, onBlur, contentRef }) =>  {
+const FormatSelect = ({ value, onChange, onBlur, contentRef }) => {
   const handleValueChange = useCallback((e) => {
     const { value } = e
     onChange(value[0])
   }, [onChange])
 
   const collection = createListCollection({ items: formats })
-  
+
   return (
     <Select.Root
       collection={collection}
       value={[value]}
       onValueChange={handleValueChange}
       onInteractOutside={onBlur}
-      size={'sm'}
+      size='sm'
       positioning={{ sameWidth: true }}
     >
       <Select.HiddenSelect />

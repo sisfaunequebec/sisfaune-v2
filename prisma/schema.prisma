@@ -1,6 +1,7 @@
 
 generator client {
   provider = "prisma-client-js"
+  extensions = [postgis(version: "3.5")]
 }
 
 datasource db {
@@ -133,9 +134,9 @@ model LutAnimalAge {
   @@map("lut_animal_age")
 
   id Int @db.SmallInt @id
-  name String @map(name: "age")
+  name String? @map(name: "age")
   group String @map(name: "groupe")
-  cccsFAge String? @map(name: "age_cccsf")
+  cccsfName String? @map(name: "age_cccsf")
   description String? @map(name: "description")
   isActive Boolean @default(true) @map(name: "actif")
 
@@ -147,7 +148,7 @@ model LutAnimalDeathCause {
 
   id Int @db.SmallInt @id
   name String @map(name: "nom")
-  cccsfAge String @map(name: "nom_cccsf")
+  cccsfName String @map(name: "nom_cccsf")
   isActive Boolean @default(true) @map(name: "actif")
   displayOrder Int @db.SmallInt @default(1) @map(name: "ordre_affichage")
 
@@ -166,7 +167,9 @@ model LutAnimalGroupV2 {
 
   id Int @db.SmallInt @id
   name String @map(name: "groupe")
-  parentId Int @db.SmallInt @map(name: "id_parent")
+  parentGroupId Int? @db.SmallInt @map(name: "id_parent")
+
+  species LutAnimalSpecie[]
 }
 
 model LutAnimalSex {
@@ -220,6 +223,8 @@ model LutEuthanasiaOrganisation {
   id Int @id @db.SmallInt
   name String @map(name: "nom")
   isActive Boolean @default(true) @map(name: "actif")
+
+  specimens Specimen[]
 }
 
 model LutEventType {
@@ -268,6 +273,8 @@ model LutLocality {
 
   id Int @id
   name String @map(name: "nom")
+  typeId String @map(name: "id_type")
+  typeName String @map(name: "type")
   mrcId Int @db.SmallInt @map(name: "id_mrc")
   mrcName String @map(name: "nom_mrc")
   regionId Int @db.SmallInt @map(name: "id_ra")
@@ -275,22 +282,26 @@ model LutLocality {
   province String @map(name: "province")
   version String @map(name: "version")
 
-  geometry LutLocalityGeometry?
+  // geometry LutLocalityGeometry?
   location Location[]
+  // event Event[]
 }
 
 model LutLocalityGeometry {
-  @@map("lut_muni_geo")
+  @@map("lut_muni_geom")
 
-  id Int @id @db.SmallInt
-  version String? @map(name: "version")
-  vertices BigInt? @map(name: "vertex")
+  id Int @id
+  version String @map(name: "version")
+  // nbVertices Int @map(name: "vertex")
 
-  localityId Int @unique() @map(name: "id_muni")
-  // TODO: 
-  // geometry String? @map(name: "geom") ?? PostGIS ?
+  localityId Int @map(name: "id_muni")
 
-  locality LutLocality @relation(fields: [localityId], references: [id])
+  geomAsText String @map(name: "geom_wkt")
+  
+  // geom Unsupported("geometry(MultiPolygon, 4326)")?
+  // @@index([geom], name: "geomidx", type: Gist)
+
+  // locality LutLocality @relation(fields: [localityId], references: [id])
 }
 
 model LutHabitatType {
@@ -298,7 +309,7 @@ model LutHabitatType {
 
   id Int @id @db.SmallInt
   name String @map(name: "nom")
-  group String? @map(name: "groupe")
+  group String @map(name: "group")
 
   event Event[]
 }
@@ -312,25 +323,28 @@ model LutLabShippingMethod {
   event Event[]
 }
 
-model LutAnimalFamily {
-  @@map("lut_animal_famille")
+// model LutAnimalFamily {
+//   @@map("lut_animal_famille")
 
-  id Int @id @db.SmallInt
-  name String @map(name: "nom")
+//   id Int @id @db.SmallInt
+//   name String @map(name: "nom")
 
-  specie LutAnimalSpecie[]
-}
+//   // specie LutAnimalSpecie[]
+// }
 
 model LutAnimalSpecie {
   @@map("lut_animal_espece")
 
   id Int @id @db.SmallInt
   name String @map(name: "nom")
-  group String @map(name: "groupe")
-  binome String @map(name: "binome")
+  // group String @map(name: "groupe")
+  binome String? @map(name: "binome")
 
-  familyId Int? @map(name: "id_famille")
-  family LutAnimalFamily? @relation(fields: [familyId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+  // familyId Int? @map(name: "id_famille")
+  // family LutAnimalFamily? @relation(fields: [familyId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+
+  groupId Int? @map(name: "id_groupe")
+  group LutAnimalGroupV2? @relation(fields: [groupId], references: [id], onDelete: Restrict, onUpdate: Restrict)
 
   eventAffectedSpecie1 Event[] @relation("EventAffectedSpecie1")
   eventAffectedSpecie2 Event[] @relation("EventAffectedSpecie2")
@@ -368,7 +382,7 @@ model LutPreservationMethod {
   @@map("lut_conservation_methode")
 
   id Int @id @db.SmallInt
-  name String @map(name: "nom")
+  name String? @map(name: "nom")
   description String? @map(name: "description")
   cccsfId Int @db.SmallInt @map(name: "id_cccsf")
   cccsfName String @map(name: "nom_cccsf")
@@ -382,14 +396,11 @@ model LutEuthanasiaMethod {
   id Int @id @db.SmallInt
   name String @map(name: "nom")
   isActive Boolean @default(true) @map(name: "actif")
+
+  specimens Specimen[]
 }
 
-// TODO :
-// lut_resultat_code_valeur
-// lut_type_resultat
-// lut_type_resultat_code
-// lut_type_resultat_plage
-// lut_type_resultat_texte
+
 
 model LutWeighUnit {
   @@map("lut_poids_unite")
@@ -430,23 +441,26 @@ model Collaborator {
 model Discoverer {
   @@map("data_decouvreur")
 
-  eventId Int @id @map(name: "id_evenement")
-  event Event[]
+  id Int @id @default(autoincrement())
 
-  // TODO :
-  // salutation	nvarchar(4)	YES	NO	NULL	
-  // nom	nvarchar(50)	YES	NO	NULL	
-  // prenom	nvarchar(50)	YES	NO	NULL	
-  // id_adresse	int	YES	NO	NULL	
-  // no_civique	nvarchar(20)	YES	NO	NULL	
-  // route	nvarchar(100)	YES	NO	NULL	
-  // courriel	nvarchar(50)	YES	NO	NULL	
-  // appartement	nvarchar(50)	YES	NO	NULL	
-  // id_muni	int	YES	NO	NULL	
-  // municipalite	nvarchar(100)	YES	NO	NULL	
-  // province	nvarchar(50)	YES	NO	NULL	
-  // code_postal	nchar(7)	YES	NO	NULL	
-  // telephone	nchar(12)	YES	NO	NULL	
+  greeting String? @map(name: "salutation")
+  lastName String? @map(name: "nom")
+  firstName String? @map(name: "prenom")
+
+  email String? @map(name: "courriel")
+  telephone String? @map(name: "telephone")
+
+  streetNumber String? @map(name: "no_civique")
+  street String? @map(name: "route")
+  apt String? @map(name: "appartement")
+
+  localityId Int? @map(name: "id_muni")
+  localityName String? @map(name: "municipalite")
+  province String? @map(name: "province")
+  code_postal String? @map(name: "code_postal")
+
+  eventId Int @map(name: "id_evenement")
+  event Event[]
 }
 
 model Result {
@@ -484,13 +498,14 @@ model Sample {
 model LabEvent {
   @@map("data_laboratoire")
 
-  @@id([eventId, labId])
+  id Int @id @default(autoincrement())
+  // @@id([eventId, labId])
 
   eventId Int @map(name: "id_evenement")
   event Event @relation(fields: [eventId], references: [id], onDelete: Restrict, onUpdate: Restrict)
 
-  labId Int @map(name: "id_laboratoire")
-  lab LutLaboratory @relation(fields: [labId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+  labId Int? @map(name: "id_laboratoire")
+  lab LutLaboratory? @relation(fields: [labId], references: [id], onDelete: Restrict, onUpdate: Restrict)
 
   receivedAt DateTime? @map(name: "date_reception")
   receivedBy String? @map(name: "recu_par")
@@ -520,13 +535,24 @@ model Specimen {
   identificationMarks String? @map(name: "marques_identification") 
 
   specieId Int @db.SmallInt @map(name: "id_animal_espece") @default(0)
-  ageId Int @db.SmallInt @map(name: "id_animal_age") @default(0)
+  ageId Int? @db.SmallInt @map(name: "id_animal_age") @default(0)
   sexId Int @db.SmallInt @map(name: "id_animal_sexe") @default(0)
 
   weight Decimal? @db.Decimal(10, 3) @map(name: "poids")
   weightUnitId Int? @db.SmallInt @map(name: "id_poids_unite") @default(0)
 
-  discoveryStateId Int @db.SmallInt @map(name: "id_etat_decouverte") @default(0)
+  // Euthanasia - merged from legacy table "euthanasie"
+  euthanasiaMethodId Int? @map(name: "id_euthanasie_methode")
+  euthanasiaMethod LutEuthanasiaMethod? @relation(fields: [euthanasiaMethodId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+
+  euthanizedAt DateTime? @db.Date @map(name: "date_euthanasie")
+  productAmount Decimal? @db.Decimal(18, 2) @map(name: "qtee_produit")
+  bottleNumber String? @map(name: "no_bouteille")
+
+  euthanasiaOrganisationId Int? @map(name: "id_euthanasie_organisme")
+  euthanasiaOrganisation LutEuthanasiaOrganisation? @relation(fields: [euthanasiaOrganisationId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+
+  discoveryStateId Int? @db.SmallInt @map(name: "id_etat_decouverte") @default(0)
   deathCauseId Int @db.SmallInt @map(name: "id_cause_mort") @default(0)
   preservationMethodId Int @db.SmallInt @map(name: "id_methode_conservation") @default(0)
 
@@ -539,10 +565,10 @@ model Specimen {
   // Relations
   event Event @relation(fields: [eventId], references: [id], onDelete: Restrict, onUpdate: Restrict)
   specie LutAnimalSpecie @relation(fields: [specieId], references: [id], onDelete: Restrict, onUpdate: Restrict)
-  age LutAnimalAge @relation(fields: [ageId], references: [id], onDelete: Restrict, onUpdate: Restrict)
-  sex LutAnimalSex @relation(fields: [sexId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+  age LutAnimalAge? @relation(fields: [ageId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+  sex LutAnimalSex? @relation(fields: [sexId], references: [id], onDelete: Restrict, onUpdate: Restrict)
   weightUnit LutWeighUnit? @relation(fields: [weightUnitId], references: [id], onDelete: Restrict, onUpdate: Restrict)
-  discoveryState LutDiscoveryState @relation(fields: [discoveryStateId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+  discoveryState LutDiscoveryState? @relation(fields: [discoveryStateId], references: [id], onDelete: Restrict, onUpdate: Restrict)
   deathCause LutAnimalDeathCause @relation(fields: [deathCauseId], references: [id], onDelete: Restrict, onUpdate: Restrict)
   preservationMethod LutPreservationMethod @relation(fields: [preservationMethodId], references: [id], onDelete: Restrict, onUpdate: Restrict)
 
@@ -551,19 +577,19 @@ model Specimen {
   measures SpecimenMeasure[]
 }
 
-model Euthanasia {
-  @@map("data_euthanasie")
+// model Euthanasia {
+//   @@map("data_euthanasie")
 
-  @@id([specimenId, methodId])
-  specimenId Int @map(name: "id_specimen")
-  methodId Int @map(name: "id_methode")
-  date DateTime? @db.Date
+//   @@id([specimenId, methodId])
+//   specimenId Int @map(name: "id_specimen")
+//   methodId Int @map(name: "id_methode")
+//   date DateTime? @db.Date
 
-  // TODO:
-  // qtee_ketamine	numeric(18,2)	YES	NO	NULL	
-  // no_bouteille	nvarchar(50)	YES	NO	NULL	
-  // id_organisme	int	NO	NO	((0))	 dbo.lut_euthanasie_organisme(id_organisme)
-}
+//   // TODO:
+//   // qtee_ketamine	numeric(18,2)	YES	NO	NULL	
+//   // no_bouteille	nvarchar(50)	YES	NO	NULL	
+//   // id_organisme	int	NO	NO	((0))	 dbo.lut_euthanasie_organisme(id_organisme)
+// }
 
 model Event {
   @@map("data_evenement")
@@ -588,7 +614,7 @@ model Event {
 
   // Discovery
   discovererId Int? @map(name: "id_decouvreur")
-  discoverer Discoverer? @relation(fields: [discovererId], references: [eventId], onDelete: Restrict, onUpdate: Restrict)
+  discoverer Discoverer? @relation(fields: [discovererId], references: [id], onDelete: Restrict, onUpdate: Restrict)
   discoveredAt DateTime? @db.Date @map(name: "date_decouverte")
 
   reportedAt DateTime?  @db.Date @map(name: "date_signalement")
@@ -612,11 +638,11 @@ model Event {
   habitatType LutHabitatType? @relation(fields: [habitatTypeId], references: [id], onDelete: Restrict, onUpdate: Restrict)
 
   // Lab
-  labId Int @map(name: "id_laboratoire") @default(0)
+  labId Int? @map(name: "id_laboratoire") @default(0)
   lab LutLaboratory? @relation(fields: [labId], references: [id], onDelete: Restrict, onUpdate: Restrict)
   labShippingDate DateTime? @map(name: "date_expedition_labo")
-  labShippingMethodId Int @db.SmallInt @map(name: "id_methode_expedition") @default(0)
-  labShippingMethod LutLabShippingMethod @relation(fields: [labShippingMethodId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+  labShippingMethodId Int? @db.SmallInt @map(name: "id_methode_expedition") @default(0)
+  labShippingMethod LutLabShippingMethod? @relation(fields: [labShippingMethodId], references: [id], onDelete: Restrict, onUpdate: Restrict)
   labShippingTrackingNumber String? @map(name: "no_suivi_transporteur")
 
   temperature Decimal? @db.Decimal(4, 1) @map(name: "temperature")
@@ -661,6 +687,14 @@ model Event {
   affectedSpecie5AliveCount Int? @db.SmallInt @map(name: "affect5_vivant")
   affectedSpecie5NotSpecifiedCount Int? @db.SmallInt @map(name: "affect5_non_specifie")
 
+  // // Location (legacy "localisation" table)
+  // locationTypeId LocationType @default(coordonnees) @map(name: "type_localisation")
+  // locationdDescription String? @map(name: "description_localisation")
+
+  // locationLocalityId Int? @map(name: "id_muni_localisation")
+  // locality LutLocality? @relation(fields: [locationLocalityId], references: [id])
+
+  // Metadata
   source String? @map("source")
   sourcePk Int? @map("pk_source")
 
@@ -675,29 +709,42 @@ model Event {
   location Location @relation(fields: [id], references: [id])
 }
 
+enum LocationType {
+  adresse
+  coordonnees
+}
+
 model Location {
   @@map("data_localisation")
 
   id Int @id
-  typeId Int @db.SmallInt @map(name: "id_type") @default(2)
+  // typeId Int @db.SmallInt @map(name: "id_type") @default(2)
+  typeId LocationType @default(coordonnees)
   description String? @map(name: "description")
 
+  // addressId Int? @map(name: "id_adresse") // not used in legacy
+  // precisionId Int? @map(name: "id_precision") // always 0 n legacy
+
+  latitude Decimal? @db.Decimal(10,6) @map(name: "latitude")
+  longitude Decimal? @db.Decimal(10,6) @map(name: "longitude")
+
+  streetNumber String? @map(name: "no_civique")
+  street String? @map(name: "route")
+  apt String? @map(name: "appartement")
+  intersection String? @map(name: "intersection")
+
   localityId Int? @map(name: "id_muni")
+  localityName String? @map(name: "municipalite")
+  province String? @map(name: "province")
+  code_postal String? @map(name: "code_postal")
+
   locality LutLocality? @relation(fields: [localityId], references: [id])
-
   event Event? 
-
-  // TODO:
-  // id_adresse	int	YES	NO	NULL	
-  // id_precision	tinyint	NO	NO	((0))	
-  // latitude	numeric(10,6)	YES	NO	NULL	
-  // longitude	numeric(10,6)	YES	NO	NULL	
-  // no_civique	nvarchar(20)	YES	NO	NULL	
-  // route	nvarchar(100)	YES	NO	NULL	
-  // appartement	nvarchar(50)	YES	NO	NULL	
-  // intersection	nvarchar(100)	YES	NO	NULL	
-  // municipalite	nvarchar(100)	YES	NO	NULL	
-  // province	nvarchar(50)	YES	NO	NULL	
-  // code_postal	nvarchar(7)	YES	NO	NULL	
-
 }
+
+// MODELS TODO :
+// lut_resultat_code_valeur
+// lut_type_resultat
+// lut_type_resultat_code
+// lut_type_resultat_plage
+// lut_type_resultat_texte

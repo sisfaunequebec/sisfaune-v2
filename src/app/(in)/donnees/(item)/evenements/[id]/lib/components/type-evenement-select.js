@@ -22,13 +22,13 @@ import SelectFieldAdvanced from '../../../../../../../lib/components/select-fiel
 //   )
 // }
 
-const TypeEvenementSelect = ({ label, value, isEditing }) =>  {
+const TypeEvenementSelect = ({ label, value, isEditing }) => {
   const getter = useCallback(async () => {
     return getEventTypes(value)
   }, [value])
 
   return (
-    <SelectFieldAdvanced isEditing={isEditing} label={label} value={value} valueLabelKey={'name'} getter={getter} />
+    <SelectFieldAdvanced isEditing={isEditing} label={label} value={value} valueLabelKey='name' getter={getter} />
   )
 }
 
