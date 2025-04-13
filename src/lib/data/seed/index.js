@@ -22,6 +22,12 @@ const lutLaboratories = require('./lut-laboratories')
 const lutReportOrigins = require('./lut-report-origins')
 const lutEuthanasiaMethods = require('./lut-euthanasia-methods')
 
+const dataCollaborators = require('./data-collaborators')
+const dataEvents = require('./data-events')
+const dataLocations = require('./data-locations')
+
+const adminUserPrograms = require('./admin-user-programs')
+
 async function main () {
   // await orm.$executeRaw`CREATE EXTENSION postgis;`
 
@@ -50,7 +56,14 @@ async function main () {
     orm.LutLaboratory.createMany({ data: lutLaboratories }),
     orm.LutReportOrigin.createMany({ data: lutReportOrigins }),
 
-    orm.LutEuthanasiaMethod.createMany({ data: lutEuthanasiaMethods })
+    orm.LutEuthanasiaMethod.createMany({ data: lutEuthanasiaMethods }),
+
+    orm.Collaborator.createMany({ data: dataCollaborators }),
+
+    orm.Event.createMany({ data: dataEvents }),
+    orm.Location.createMany({ data: dataLocations }),
+
+    orm.AdminUserProgram.createMany({ data: adminUserPrograms })
 
     // orm.$executeRaw`UPDATE lut_muni_geom SET geom = ST_GeomFromText(geom_wkt);`
   ])

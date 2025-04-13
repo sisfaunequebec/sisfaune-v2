@@ -1,0 +1,402 @@
+[
+  {
+    "id_intervenant": "0",
+    "nom": "Aucun",
+    "actif": "1"
+  },
+  {
+    "id_intervenant": "1000",
+    "nom": "Intervenant fictif",
+    "actif": "0"
+  },
+  {
+    "id_intervenant": "1001",
+    "nom": "Fourrière AMR 9078-3952 Québec Inc.",
+    "actif": "1"
+  },
+  {
+    "id_intervenant": "1002",
+    "nom": "Récupération Bernard Dupont",
+    "actif": "0"
+  },
+  {
+    "id_intervenant": "1003",
+    "nom": "R.I.E.D.S.B.M.",
+    "actif": "1"
+  },
+  {
+    "id_intervenant": "1004",
+    "nom": "Récupération Maillé Inc.",
+    "actif": "1"
+  },
+  {
+    "id_intervenant": "1005",
+    "nom": "Bouchard Récupération Inc.",
+    "actif": "0"
+  },
+  {
+    "id_intervenant": "1006",
+    "nom": "L''arche de Noé récupération Inc.",
+    "actif": "1"
+  },
+  {
+    "id_intervenant": "1007",
+    "nom": "Investissements Gilles Dorval Inc.",
+    "actif": "1"
+  },
+  {
+    "id_intervenant": "1008",
+    "nom": "Beakes, Donald",
+    "actif": "0"
+  },
+  {
+    "id_intervenant": "1009",
+    "nom": "Bergeron, Martin",
+    "actif": "0"
+  },
+  {
+    "id_intervenant": "1010",
+    "nom": "Bergeron, Jeanne",
+    "actif": "0"
+  },
+  {
+    "id_intervenant": "1011",
+    "nom": "Bergevin, Mario",
+    "actif": "0"
+  },
+  {
+    "id_intervenant": "1012",
+    "nom": "Bisaillon, Daniel",
+    "actif": "0"
+  },
+  {
+    "id_intervenant": "1013",
+    "nom": "Bissonnette, Serge",
+    "actif": "0"
+  },
+  {
+    "id_intervenant": "1014",
+    "nom": "Bolduc, Luc",
+    "actif": "0"
+  },
+  {
+    "id_intervenant": "1015",
+    "nom": "Brisebois, Sebastien",
+    "actif": "0"
+  },
+  {
+    "id_intervenant": "1016",
+    "nom": "Cloutier, Laurent",
+    "actif": "0"
+  },
+  {
+    "id_intervenant": "1017",
+    "nom": "Cote, Andre",
+    "actif": "0"
+  },
+  {
+    "id_intervenant": "1018",
+    "nom": "Dostie, Mario",
+    "actif": "0"
+  },
+  {
+    "id_intervenant": "1019",
+    "nom": "Dumouchel, Denis",
+    "actif": "0"
+  },
+  {
+    "id_intervenant": "1020",
+    "nom": "Dussault, Marc",
+    "actif": "0"
+  },
+  {
+    "id_intervenant": "1021",
+    "nom": "Morier, Eric",
+    "actif": "0"
+  },
+  {
+    "id_intervenant": "1022",
+    "nom": "Fontaine, Bernard",
+    "actif": "0"
+  },
+  {
+    "id_intervenant": "1023",
+    "nom": "Forget, Stephane",
+    "actif": "0"
+  },
+  {
+    "id_intervenant": "1024",
+    "nom": "Gagne, Stefan",
+    "actif": "0"
+  },
+  {
+    "id_intervenant": "1025",
+    "nom": "Gagnon, Claude",
+    "actif": "0"
+  },
+  {
+    "id_intervenant": "1026",
+    "nom": "Gilbert, Louisette",
+    "actif": "0"
+  },
+  {
+    "id_intervenant": "1027",
+    "nom": "Goyette, Robin",
+    "actif": "0"
+  },
+  {
+    "id_intervenant": "1028",
+    "nom": "Hamelin, Rene",
+    "actif": "0"
+  },
+  {
+    "id_intervenant": "1029",
+    "nom": "Hodge, Bernard",
+    "actif": "0"
+  },
+  {
+    "id_intervenant": "1030",
+    "nom": "Jette, Yves",
+    "actif": "0"
+  },
+  {
+    "id_intervenant": "1031",
+    "nom": "Labbe, Pierre",
+    "actif": "0"
+  },
+  {
+    "id_intervenant": "1032",
+    "nom": "Laniel, Jean-Pierre",
+    "actif": "0"
+  },
+  {
+    "id_intervenant": "1033",
+    "nom": "Larose, Onil",
+    "actif": "0"
+  },
+  {
+    "id_intervenant": "1034",
+    "nom": "Leboeuf, Stephane",
+    "actif": "0"
+  },
+  {
+    "id_intervenant": "1035",
+    "nom": "Lebrun, Alain",
+    "actif": "0"
+  },
+  {
+    "id_intervenant": "1036",
+    "nom": "Leonard, Pierre",
+    "actif": "0"
+  },
+  {
+    "id_intervenant": "1037",
+    "nom": "Marois, Olivier",
+    "actif": "0"
+  },
+  {
+    "id_intervenant": "1038",
+    "nom": "Martin, Pierre",
+    "actif": "0"
+  },
+  {
+    "id_intervenant": "1039",
+    "nom": "Morel, Daniel",
+    "actif": "0"
+  },
+  {
+    "id_intervenant": "1040",
+    "nom": "Nadeau, Gaetan",
+    "actif": "0"
+  },
+  {
+    "id_intervenant": "1041",
+    "nom": "Nadeau, Robert",
+    "actif": "0"
+  },
+  {
+    "id_intervenant": "1042",
+    "nom": "Peloquin, Denis",
+    "actif": "0"
+  },
+  {
+    "id_intervenant": "1043",
+    "nom": "Perras, Serge",
+    "actif": "0"
+  },
+  {
+    "id_intervenant": "1044",
+    "nom": "Poissant, Sylvain",
+    "actif": "0"
+  },
+  {
+    "id_intervenant": "1045",
+    "nom": "Robert, Gerald",
+    "actif": "0"
+  },
+  {
+    "id_intervenant": "1046",
+    "nom": "Roy, Normand",
+    "actif": "0"
+  },
+  {
+    "id_intervenant": "1047",
+    "nom": "Roy, Michel",
+    "actif": "0"
+  },
+  {
+    "id_intervenant": "1048",
+    "nom": "Roy, Arthur",
+    "actif": "0"
+  },
+  {
+    "id_intervenant": "1049",
+    "nom": "Royer, Christophe",
+    "actif": "0"
+  },
+  {
+    "id_intervenant": "1050",
+    "nom": "Theberge, Jean-Pier",
+    "actif": "0"
+  },
+  {
+    "id_intervenant": "1051",
+    "nom": "Tremblay, Denis",
+    "actif": "0"
+  },
+  {
+    "id_intervenant": "1052",
+    "nom": "Tremblay, Olivier",
+    "actif": "0"
+  },
+  {
+    "id_intervenant": "1053",
+    "nom": "VanHerck, Alphonse",
+    "actif": "0"
+  },
+  {
+    "id_intervenant": "1054",
+    "nom": "St-Mars, Richard",
+    "actif": "0"
+  },
+  {
+    "id_intervenant": "1055",
+    "nom": "Simard, Francois",
+    "actif": "0"
+  },
+  {
+    "id_intervenant": "1056",
+    "nom": "Boileau, Pierre",
+    "actif": "0"
+  },
+  {
+    "id_intervenant": "1057",
+    "nom": "Jacques, Michel",
+    "actif": "0"
+  },
+  {
+    "id_intervenant": "1058",
+    "nom": "Camiré, Serge",
+    "actif": "0"
+  },
+  {
+    "id_intervenant": "1059",
+    "nom": "Transports Québec",
+    "actif": "1"
+  },
+  {
+    "id_intervenant": "1060",
+    "nom": "Boucherie Himbeault",
+    "actif": "1"
+  },
+  {
+    "id_intervenant": "1061",
+    "nom": "Station de Fleurimont",
+    "actif": "1"
+  },
+  {
+    "id_intervenant": "1062",
+    "nom": "Station de Sainte-Barbe",
+    "actif": "1"
+  },
+  {
+    "id_intervenant": "1063",
+    "nom": "Station de Sainte-Clotilde",
+    "actif": "1"
+  },
+  {
+    "id_intervenant": "1064",
+    "nom": "Station dOrmstown",
+    "actif": "1"
+  },
+  {
+    "id_intervenant": "1065",
+    "nom": "Abattoir Campbell",
+    "actif": "1"
+  },
+  {
+    "id_intervenant": "1066",
+    "nom": "Boucherie André Lamontagne",
+    "actif": "1"
+  },
+  {
+    "id_intervenant": "1067",
+    "nom": "Boucherie Haineault Gibier",
+    "actif": "1"
+  },
+  {
+    "id_intervenant": "1068",
+    "nom": "Boucherie René et Richard",
+    "actif": "1"
+  },
+  {
+    "id_intervenant": "1069",
+    "nom": "Boucherie St-Chrysostome",
+    "actif": "1"
+  },
+  {
+    "id_intervenant": "1070",
+    "nom": "Épicerie Adamsville",
+    "actif": "1"
+  },
+  {
+    "id_intervenant": "1071",
+    "nom": "L''Artisan Boucher Charcutier",
+    "actif": "1"
+  },
+  {
+    "id_intervenant": "1072",
+    "nom": "Taxidermie P. Gentile",
+    "actif": "1"
+  },
+  {
+    "id_intervenant": "1073",
+    "nom": "Station de Mont-Tremblant",
+    "actif": "1"
+  },
+  {
+    "id_intervenant": "1074",
+    "nom": "Station de Wentworth-Nord",
+    "actif": "1"
+  },
+  {
+    "id_intervenant": "1075",
+    "nom": "Station de Saint-André-Avellin",
+    "actif": "1"
+  },
+  {
+    "id_intervenant": "1076",
+    "nom": "Station de Lochaber",
+    "actif": "1"
+  },
+  {
+    "id_intervenant": "1077",
+    "nom": "Station de Grenville-sur-la-Rouge",
+    "actif": "1"
+  },
+  {
+    "id_intervenant": "1078",
+    "nom": "Hollywood nettoyage spécialisé",
+    "actif": "1"
+  }
+]

@@ -12,7 +12,7 @@ datasource db {
 model User {
   @@map("auth_utilisateur")
 
-  id            String          @id @default(cuid())
+  id String @id @default(dbgenerated("gen_random_uuid()"))
   name          String? @map(name: "nom_complet")
   email         String          @unique @map(name: "adresse_courriel")
   emailVerified DateTime? @map(name: "meta_date_verification_courriel")
@@ -95,7 +95,7 @@ model LutAnalysisGroup {
   analysisSectorId Int @db.SmallInt @map(name: "id_analyse_secteur")
 
   analysisSector LutAnalysisSector @relation(fields: [analysisSectorId], references: [id], onDelete: Restrict, onUpdate: Restrict)
-  Analysis LutAnalysis[]
+  Analyses LutAnalysis[]
 }
 
 model LutResultType {
@@ -104,7 +104,7 @@ model LutResultType {
   id Int @db.SmallInt @id
   name String @map(name: "nom")
 
-  analysis LutAnalysis[]
+  analyses LutAnalysis[]
 }
 
 model LutAnalysis {
@@ -196,7 +196,7 @@ model LutAnimalMeasureType {
   defaultUnit LutMeasureUnit @relation(fields: [defaultUnitId], references: [id], onDelete: Restrict, onUpdate: Restrict)
   unitType LutUnitType @relation(fields: [unitTypeId], references: [id], onDelete: Restrict, onUpdate: Restrict)
 
-  specimenMeasure SpecimenMeasure[]
+  specimenMeasures SpecimenMeasure[]
 }
 
 model LutUnitType {
@@ -205,7 +205,7 @@ model LutUnitType {
   id Int @id @db.SmallInt
   name String @map(name: "nom")
 
-  animalMeasureType LutAnimalMeasureType[]
+  animalMeasureTypes LutAnimalMeasureType[]
 }
 
 model LutDiscoveryState {
@@ -233,7 +233,7 @@ model LutEventType {
   id Int @id @db.SmallInt
   name String @map(name: "nom")
 
-  event Event[]
+  events Event[]
 }
 
 model LutReportOrigin {
@@ -244,7 +244,7 @@ model LutReportOrigin {
   nameRacoon String? @map(name: "nom_raton")
   isActive Boolean @default(true) @map(name: "actif")
 
-  event Event[]
+  events Event[]
 }
 
 model LutEventProgram {
@@ -255,7 +255,8 @@ model LutEventProgram {
   name String @map(name: "nom")
   isActive Boolean @default(true) @map(name: "actif")
 
-  event Event[]
+  events Event[]
+  userPrograms AdminUserProgram[]
 }
 
 model LutEventStatus {
@@ -265,7 +266,7 @@ model LutEventStatus {
   name String @map(name: "nom")
   mapaqCode String @map(name: "code_mapaq")
 
-  event Event[]
+  events Event[]
 }
 
 model LutLocality {
@@ -283,7 +284,7 @@ model LutLocality {
   version String @map(name: "version")
 
   // geometry LutLocalityGeometry?
-  location Location[]
+  locations Location[]
   // event Event[]
 }
 
@@ -311,7 +312,7 @@ model LutHabitatType {
   name String @map(name: "nom")
   group String @map(name: "group")
 
-  event Event[]
+  events Event[]
 }
 
 model LutLabShippingMethod {
@@ -320,7 +321,7 @@ model LutLabShippingMethod {
   id Int @id @db.SmallInt
   name String @map(name: "nom")
 
-  event Event[]
+  events Event[]
 }
 
 // model LutAnimalFamily {
@@ -362,8 +363,8 @@ model LutLaboratory {
   name String @map(name: "nom")
   isActive Boolean @default(true) @map(name: "actif")
 
-  labEvent LabEvent[]
-  event Event[]
+  labEvents LabEvent[]
+  events Event[]
 }
 
 model LutMeasureUnit {
@@ -374,8 +375,8 @@ model LutMeasureUnit {
   name String? @map(name: "unite")
   multiplier Decimal? @db.Decimal(18, 10) @map(name: "facteur")
 
-  animalMeasureType LutAnimalMeasureType[]
-  specimenMeasure SpecimenMeasure[]
+  animalMeasureTypes LutAnimalMeasureType[]
+  specimenMeasures SpecimenMeasure[]
 }
 
 model LutPreservationMethod {
@@ -435,7 +436,7 @@ model Collaborator {
   name String @map(name: "nom")
   isActive Boolean @default(true) @map(name: "actif")
 
-  event Event[]
+  events Event[]
 }
 
 model Discoverer {
@@ -460,7 +461,7 @@ model Discoverer {
   code_postal String? @map(name: "code_postal")
 
   eventId Int @map(name: "id_evenement")
-  event Event[]
+  events Event[]
 }
 
 model Result {
@@ -617,22 +618,22 @@ model Event {
   discoverer Discoverer? @relation(fields: [discovererId], references: [id], onDelete: Restrict, onUpdate: Restrict)
   discoveredAt DateTime? @db.Date @map(name: "date_decouverte")
 
-  reportedAt DateTime?  @db.Date @map(name: "date_signalement")
-  collectedAt DateTime?  @db.Date @map(name: "date_recolte")
+  reportedAt DateTime? @db.Date @map(name: "date_signalement")
+  collectedAt DateTime? @db.Date @map(name: "date_recolte")
 
   closedAt DateTime? @db.Date @map("date_fermeture_dossier")
 
   // Submission
-  submitterId String @map(name: "id_soumissionnaire")
-  submitter User @relation("EventSubmitter", fields: [submitterId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+  submitterId String? @map(name: "id_soumissionnaire")
+  submitter User? @relation("EventSubmitter", fields: [submitterId], references: [id], onDelete: Restrict, onUpdate: Restrict)
 
   isDiscovererSameAsSubmitter Boolean @default(false) @map(name: "decouvreur_idem_soumissionnaire")
 
   hadHumanContact Boolean @default(false) @map(name: "contact_humain")
   hadAnimalContact Boolean @default(false) @map(name: "contact_animal")
  
-  collaboratorId Int @db.SmallInt @map(name: "id_intervenant") @default(0)
-  collaborator Collaborator @relation(fields: [collaboratorId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+  collaboratorId Int? @db.SmallInt @map(name: "id_intervenant")
+  collaborator Collaborator? @relation(fields: [collaboratorId], references: [id], onDelete: Restrict, onUpdate: Restrict)
 
   habitatTypeId Int? @db.SmallInt @map(name: "id_type_habitat")
   habitatType LutHabitatType? @relation(fields: [habitatTypeId], references: [id], onDelete: Restrict, onUpdate: Restrict)
@@ -640,7 +641,7 @@ model Event {
   // Lab
   labId Int? @map(name: "id_laboratoire") @default(0)
   lab LutLaboratory? @relation(fields: [labId], references: [id], onDelete: Restrict, onUpdate: Restrict)
-  labShippingDate DateTime? @map(name: "date_expedition_labo")
+  labShippedAt DateTime? @db.Date @map(name: "date_expedition_labo")
   labShippingMethodId Int? @db.SmallInt @map(name: "id_methode_expedition") @default(0)
   labShippingMethod LutLabShippingMethod? @relation(fields: [labShippingMethodId], references: [id], onDelete: Restrict, onUpdate: Restrict)
   labShippingTrackingNumber String? @map(name: "no_suivi_transporteur")
@@ -699,14 +700,13 @@ model Event {
   sourcePk Int? @map("pk_source")
 
   createdAt DateTime @default(now()) @map("meta_date_creation")
-  createdById String @map("meta_creation_par")
-  createdBy User @relation("EventCreator", fields: [createdById], references: [id], onDelete: Restrict, onUpdate: Restrict)
+  createdById String? @map("meta_creation_par")
+  createdBy User? @relation("EventCreator", fields: [createdById], references: [id], onDelete: Restrict, onUpdate: Restrict)
 
   // Relations
   specimens Specimen[]
   labEvents LabEvent[]
-
-  location Location @relation(fields: [id], references: [id])
+  // location Location @relation(fields: [id], references: [eventId])
 }
 
 enum LocationType {
@@ -717,13 +717,9 @@ enum LocationType {
 model Location {
   @@map("data_localisation")
 
-  id Int @id
-  // typeId Int @db.SmallInt @map(name: "id_type") @default(2)
+  eventId Int @id
   typeId LocationType @default(coordonnees)
   description String? @map(name: "description")
-
-  // addressId Int? @map(name: "id_adresse") // not used in legacy
-  // precisionId Int? @map(name: "id_precision") // always 0 n legacy
 
   latitude Decimal? @db.Decimal(10,6) @map(name: "latitude")
   longitude Decimal? @db.Decimal(10,6) @map(name: "longitude")
@@ -739,7 +735,30 @@ model Location {
   code_postal String? @map(name: "code_postal")
 
   locality LutLocality? @relation(fields: [localityId], references: [id])
-  event Event? 
+
+  // event Event?
+}
+
+enum AdminRole {
+  base
+  soumissionnaire
+  gestion
+  laboratoire
+  consultation
+}
+
+model AdminUserProgram {
+  @@map("admin_x_utilisateur_programme")
+
+  @@id([userId, programId])
+  userId String @map(name: "id_utilisateur")
+  programId Int @map(name: "id_programme")
+  roleId AdminRole @map(name: "id_role")
+  canSubmit Boolean @map(name: "peut_soumettre") @default(false)
+
+  // Relations
+  program LutEventProgram @relation(fields: [programId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+
 }
 
 // MODELS TODO :

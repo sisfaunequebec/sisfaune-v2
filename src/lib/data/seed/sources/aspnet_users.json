@@ -1,0 +1,2522 @@
+[
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "d74796c5-2328-44be-be9e-eae0ac8043c4",
+    "UserName": "admin",
+    "LoweredUserName": "admin",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2025-04-13 15:02:11.937"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "a0322777-fd6a-4750-995c-9e40b6f0c3ed",
+    "UserName": "alain_aspirault",
+    "LoweredUserName": "alain_aspirault",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2024-02-19 19:03:12.537"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "a4d27eaa-f192-4aa7-a7c0-7d034f51a13b",
+    "UserName": "alain_laperle",
+    "LoweredUserName": "alain_laperle",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2010-07-31 18:45:31.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "fa6e049e-f509-4e21-9a48-a506fa6755ba",
+    "UserName": "alain_mochon",
+    "LoweredUserName": "alain_mochon",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2011-02-01 19:06:02.633"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "0def3c8a-a185-45b7-aeed-52a6a94e61e5",
+    "UserName": "alain_tremblay",
+    "LoweredUserName": "alain_tremblay",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2010-07-31 18:45:31.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "ed1539a8-ad84-42dd-86f2-30705caba1a2",
+    "UserName": "alan_penn",
+    "LoweredUserName": "alan_penn",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2010-07-31 18:45:31.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "762a9f7a-ff4c-4951-81a9-e7f4c5f5dbf8",
+    "UserName": "Alexandre Lacroix",
+    "LoweredUserName": "alexandre lacroix",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2017-07-25 17:23:56.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "fc894d36-4a85-418a-9ca0-ab3d2a7437e5",
+    "UserName": "andre_dallaire",
+    "LoweredUserName": "andre_dallaire",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2010-04-03 01:57:28.953"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "db4c3c1d-e226-47aa-a8bd-3c1e4f7476c0",
+    "UserName": "andre_desilets",
+    "LoweredUserName": "andre_desilets",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2010-07-31 18:45:31.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "d748a911-45d5-4b25-b165-2249ce96eb9c",
+    "UserName": "andre_dumont",
+    "LoweredUserName": "andre_dumont",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2015-05-27 18:12:18.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "d3f048f2-d6af-48dc-b3de-5690a2cc8bbc",
+    "UserName": "andre_legare",
+    "LoweredUserName": "andre_legare",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2016-09-16 20:38:35.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "2f24a64a-8464-4885-9429-b92bf0f4735d",
+    "UserName": "andree_bourgault",
+    "LoweredUserName": "andree_bourgault",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2015-06-05 19:04:23.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "272e0163-55da-4764-aafc-5f740454fe6d",
+    "UserName": "anne_chiasson",
+    "LoweredUserName": "anne_chiasson",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2015-06-08 17:16:39.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "95748773-6567-4b27-b9a3-847a6a43f2a0",
+    "UserName": "anne-marie_bouchard",
+    "LoweredUserName": "anne-marie_bouchard",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2012-04-27 21:07:44.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "869937a1-0a60-49b6-9931-ae3e9fe784e3",
+    "UserName": "anne-marie_roth",
+    "LoweredUserName": "anne-marie_roth",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2010-07-31 18:45:31.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "7fbaf117-15dc-4adb-9948-a1b1c40b397e",
+    "UserName": "ariane_guertin",
+    "LoweredUserName": "ariane_guertin",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2025-03-31 14:06:34.130"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "a92d7210-6b4a-4c98-b584-34acada9edfb",
+    "UserName": "ariane_masse",
+    "LoweredUserName": "ariane_masse",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2024-10-09 12:31:51.843"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "e05ed4fe-949f-4c56-b5d9-ce785592dca2",
+    "UserName": "ariane_santamaria-bouvier",
+    "LoweredUserName": "ariane_santamaria-bouvier",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2012-04-29 13:45:34.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "a12fb734-9d74-410b-8402-0a095a77e08a",
+    "UserName": "audree_beaudin",
+    "LoweredUserName": "audree_beaudin",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2016-12-19 22:15:36.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "6ab9eb06-237a-4443-b6a4-3cd7e908da95",
+    "UserName": "audrey_daigneault_st_germain",
+    "LoweredUserName": "audrey_daigneault_st_germain",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2014-11-14 14:45:07.020"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "83c7a4e9-b9ae-4038-8153-e83ddea2cd87",
+    "UserName": "benjamin_jakobek",
+    "LoweredUserName": "benjamin_jakobek",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2024-12-10 16:28:31.297"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "76fd9fbd-a36a-410d-911c-79123eaae957",
+    "UserName": "Benjamin_Lamglait",
+    "LoweredUserName": "benjamin_lamglait",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2018-11-01 12:31:16.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "b4bf4833-c54f-4f97-a330-104024e393f9",
+    "UserName": "brigitte_mercier",
+    "LoweredUserName": "brigitte_mercier",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2010-07-31 18:45:31.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "139ad0e6-494f-4c34-8332-7c6fd745c153",
+    "UserName": "bruno_chartrand",
+    "LoweredUserName": "bruno_chartrand",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2012-04-27 21:07:43.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "ce53ef47-d68c-4483-9c08-1ed94863f0bb",
+    "UserName": "bruno_gendron",
+    "LoweredUserName": "bruno_gendron",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2024-12-20 20:09:02.223"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "e3e9b09e-2e71-4807-9d08-367a5addbdb7",
+    "UserName": "bruno_renaud",
+    "LoweredUserName": "bruno_renaud",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2016-12-19 22:04:11.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "7c7fba41-2f7d-4771-8737-2b878c780c64",
+    "UserName": "camille-antoine_ouimet",
+    "LoweredUserName": "camille-antoine_ouimet",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2010-07-31 18:45:31.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "0301dab5-2cb1-403a-a4d1-c695de5e2dcd",
+    "UserName": "catherine_brisson-bonenfant",
+    "LoweredUserName": "catherine_brisson-bonenfant",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2010-07-31 18:45:31.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "afac1149-2798-46b0-81e1-8d1e708a55d6",
+    "UserName": "catherine_greaves",
+    "LoweredUserName": "catherine_greaves",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2019-11-06 20:37:27.373"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "c5da11e4-a9de-4c46-aecc-daaf98f0f69e",
+    "UserName": "catherine_munger",
+    "LoweredUserName": "catherine_munger",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2010-07-31 18:45:31.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "5be60c41-78ba-4f49-8285-a088b607477c",
+    "UserName": "Céline Isaaz",
+    "LoweredUserName": "céline isaaz",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2017-11-22 13:08:20.960"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "a336a953-fb33-45b7-8fde-2fb319e8c99b",
+    "UserName": "chantal_proulx",
+    "LoweredUserName": "chantal_proulx",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2015-11-25 18:53:34.640"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "a398066b-158b-43e7-b0c7-e2f05a6d0c04",
+    "UserName": "chantal_raymond",
+    "LoweredUserName": "chantal_raymond",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2025-04-11 12:58:09.890"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "4c4966b6-a1c3-43d9-8e3f-d7ca6e4eb015",
+    "UserName": "charles_vigeant_langlois",
+    "LoweredUserName": "charles_vigeant_langlois",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2010-07-31 18:45:31.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "9a34e477-cee9-4df4-9501-141f1fa3f237",
+    "UserName": "christian_beaudoin",
+    "LoweredUserName": "christian_beaudoin",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2012-04-27 21:07:44.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "dd395beb-c39b-470f-b266-d594d4337579",
+    "UserName": "christian_pilon",
+    "LoweredUserName": "christian_pilon",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2010-07-31 18:45:31.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "07f5d200-bd1f-4e0f-8e67-2884fe8197d8",
+    "UserName": "christine_fehlner-gardiner",
+    "LoweredUserName": "christine_fehlner-gardiner",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2016-06-07 20:57:44.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "cfa046fa-8f99-4c4f-9998-12f8ac49df11",
+    "UserName": "christine_gagnon",
+    "LoweredUserName": "christine_gagnon",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2010-07-31 18:45:31.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "6a03fbd8-414f-45ec-b2b5-7c7d7e8c9149",
+    "UserName": "christine_thibeault",
+    "LoweredUserName": "christine_thibeault",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2023-02-13 14:28:03.320"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "7ce0215c-c6c0-401f-96b3-50c8c4c2872c",
+    "UserName": "christine_vadeboncoeur",
+    "LoweredUserName": "christine_vadeboncoeur",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2010-07-31 18:45:31.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "a7167c25-d70b-43b8-9d28-afeedb72356c",
+    "UserName": "Cin_Thang",
+    "LoweredUserName": "cin_thang",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2021-09-16 17:55:34.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "129c8be2-3c53-48d3-8723-14909c5a8e5a",
+    "UserName": "claire_grosset",
+    "LoweredUserName": "claire_grosset",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2016-09-16 20:28:56.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "bdedc713-beb8-4d2c-85f6-4eb5b9a37cb5",
+    "UserName": "claude_faubert",
+    "LoweredUserName": "claude_faubert",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2015-06-09 17:11:46.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "ba975414-35be-430a-9404-e58a8dc8e979",
+    "UserName": "claude_isabel",
+    "LoweredUserName": "claude_isabel",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2010-07-31 18:45:31.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "26a0bf0a-4ee0-4fd9-ab84-513ed965dbc1",
+    "UserName": "claude_sirois",
+    "LoweredUserName": "claude_sirois",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2010-07-31 18:45:31.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "9b78d8b1-b1bb-4327-b398-735f34c13f11",
+    "UserName": "claudia_lascelles",
+    "LoweredUserName": "claudia_lascelles",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2010-07-31 18:45:31.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "c89af7f5-3ef2-47da-88ea-1b569b6164b1",
+    "UserName": "colette_gaulin",
+    "LoweredUserName": "colette_gaulin",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2010-07-31 18:45:31.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "b1e9333f-58a1-4725-9208-068a0b20973b",
+    "UserName": "couture_louvigny",
+    "LoweredUserName": "couture_louvigny",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2024-11-29 20:43:25.657"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "f7b4c079-9e9d-4037-bab2-e5f191f3be2a",
+    "UserName": "Danaelle Page",
+    "LoweredUserName": "danaelle page",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2019-02-15 20:24:01.627"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "d4faca3e-304c-46f2-90d6-0acdd43836f9",
+    "UserName": "Daniel Brisson",
+    "LoweredUserName": "daniel brisson",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2017-07-25 17:57:26.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "984f9560-8cfd-43f5-8654-ba024e2a5d01",
+    "UserName": "daniel_demers",
+    "LoweredUserName": "daniel_demers",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2016-12-19 22:05:39.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "35468b84-3b9c-4e72-ab28-95fb235ea5a7",
+    "UserName": "daniel_guerin",
+    "LoweredUserName": "daniel_guerin",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2010-07-31 18:45:31.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "3fe21802-3a9b-45f5-a70e-1b95100013db",
+    "UserName": "daniel_pouliot",
+    "LoweredUserName": "daniel_pouliot",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2010-07-31 18:45:31.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "70d9677b-f76b-4fc9-86fb-f591cf676f95",
+    "UserName": "daniel_renaud",
+    "LoweredUserName": "daniel_renaud",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2018-11-01 12:42:54.530"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "b593764e-d8b4-45b3-b4fe-6c86b19bb0c2",
+    "UserName": "daniel_sigouin",
+    "LoweredUserName": "daniel_sigouin",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2010-07-31 20:21:55.573"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "8606b2a9-4f88-45c9-b93d-7cab2c48a2a2",
+    "UserName": "daniel_toussaint",
+    "LoweredUserName": "daniel_toussaint",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2010-07-31 18:45:31.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "2b2d72d3-7cce-44ea-b2e8-7a57d56ef29e",
+    "UserName": "daniel_venne",
+    "LoweredUserName": "daniel_venne",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2016-09-16 20:46:13.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "52600c66-cc6c-406e-b4ef-054e8f6d2a65",
+    "UserName": "danielle_chatillon",
+    "LoweredUserName": "danielle_chatillon",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2010-07-31 18:45:31.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "d6a314d9-1165-4571-866f-a735dd0faea0",
+    "UserName": "danielle_damours",
+    "LoweredUserName": "danielle_damours",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2010-07-31 18:45:31.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "c3a77227-19b4-456f-90d3-b4d5e0445cd9",
+    "UserName": "danielle_larochelle",
+    "LoweredUserName": "danielle_larochelle",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2015-06-08 17:12:49.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "f34b51ab-3b28-4fb1-a25b-7875f56372b0",
+    "UserName": "Dany Bureau",
+    "LoweredUserName": "dany bureau",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2017-12-15 19:58:33.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "8d9e8d5d-f532-44af-8a61-1a9b2a39a995",
+    "UserName": "David Repentigny",
+    "LoweredUserName": "david repentigny",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2017-09-26 15:44:22.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "436d7919-69bf-4a3a-b28d-3ad99e65d2b2",
+    "UserName": "demo",
+    "LoweredUserName": "demo",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2010-10-15 17:02:54.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "ac5a5aa4-8b9a-4b1a-ac1e-256880b76c52",
+    "UserName": "denis_fournier",
+    "LoweredUserName": "denis_fournier",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2010-07-31 18:45:31.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "3ac8ca69-6d28-4fa0-84c7-c452cf3753bc",
+    "UserName": "denis_lachance",
+    "LoweredUserName": "denis_lachance",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2010-07-31 18:45:31.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "5bd2cba2-c948-44b0-a0d0-d4d8b24a7c30",
+    "UserName": "denis_masse",
+    "LoweredUserName": "denis_masse",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2010-07-31 18:45:31.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "45307023-e955-4728-9f3b-28276fa059c6",
+    "UserName": "denis_viel",
+    "LoweredUserName": "denis_viel",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2016-12-19 21:59:16.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "de7b64bb-ea28-4d35-9029-d27d068ad52c",
+    "UserName": "denise_belanger",
+    "LoweredUserName": "denise_belanger",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2010-07-31 18:45:31.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "d692f0ac-d03e-4f45-a7af-613edee27c91",
+    "UserName": "denise_mondou",
+    "LoweredUserName": "denise_mondou",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2010-07-31 18:45:31.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "944d08b2-ccde-4f26-8fa7-d9e871101a51",
+    "UserName": "Dominic_Chambers",
+    "LoweredUserName": "dominic_chambers",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2020-01-29 19:20:20.423"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "3175ca0e-e0d7-46f3-8c44-6feab174468f",
+    "UserName": "dominique_crepin",
+    "LoweredUserName": "dominique_crepin",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2010-07-31 18:45:31.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "76437b38-0d7b-42aa-83b2-876bca1a748f",
+    "UserName": "dominique_fournier",
+    "LoweredUserName": "dominique_fournier",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2015-06-01 18:53:22.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "a280fc35-e104-4565-a62b-2241867b5f79",
+    "UserName": "donald_rodrigue",
+    "LoweredUserName": "donald_rodrigue",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2010-07-31 18:45:31.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "3e1fc24d-8c97-4825-9100-fb5b8cd1c5aa",
+    "UserName": "emiko_wong",
+    "LoweredUserName": "emiko_wong",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2010-07-31 18:45:31.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "305459b7-0978-4d44-962f-8aff7988b644",
+    "UserName": "Émilie_Couture",
+    "LoweredUserName": "émilie_couture",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2019-01-14 15:51:37.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "c053a6f5-a3a5-4595-8084-dbbdb4c873d3",
+    "UserName": "emilie_dorion",
+    "LoweredUserName": "emilie_dorion",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2010-07-31 18:45:31.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "927e01cf-1375-4f78-928e-bb04b851df83",
+    "UserName": "eric_grenier",
+    "LoweredUserName": "eric_grenier",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2018-05-10 14:50:18.617"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "1902238f-3880-4cb8-97a0-f3215d90588a",
+    "UserName": "eric_jaccard",
+    "LoweredUserName": "eric_jaccard",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2016-12-19 22:02:29.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "f5cc6913-9dc9-4ecc-b6fb-041d265bb101",
+    "UserName": "Éric_Langlois",
+    "LoweredUserName": "éric_langlois",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2017-03-31 17:55:18.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "0595353b-838f-4351-b358-179e16304fba",
+    "UserName": "eric_martin",
+    "LoweredUserName": "eric_martin",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2012-04-27 21:07:44.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "4ab424cd-fae9-4aa3-8843-ad486e9bbec7",
+    "UserName": "eric_savard",
+    "LoweredUserName": "eric_savard",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2010-07-31 18:45:31.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "387f1823-b9c4-491c-80de-f27d6889552c",
+    "UserName": "essai",
+    "LoweredUserName": "essai",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2024-02-20 20:56:10.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "ef4aba34-ba35-4f25-9361-a809ce00dc09",
+    "UserName": "eve_murray",
+    "LoweredUserName": "eve_murray",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2010-07-31 18:45:31.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "c301962b-0bdc-4f39-8c18-3b5ea7446d93",
+    "UserName": "felix_offroy",
+    "LoweredUserName": "felix_offroy",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2010-07-31 18:45:31.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "77652b95-d535-4b8c-b58a-964d50305053",
+    "UserName": "florent_lemieux",
+    "LoweredUserName": "florent_lemieux",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2016-06-09 14:18:25.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "6b7231ee-23e5-49e6-8c3e-235ab37d7552",
+    "UserName": "france_boily",
+    "LoweredUserName": "france_boily",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2010-07-31 18:45:31.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "183296ea-eaaf-4b6d-af2b-0b9c533f4595",
+    "UserName": "France_Sylvestre",
+    "LoweredUserName": "france_sylvestre",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2016-06-09 14:14:03.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "e5fcbf94-01bb-4425-aa00-25e3daccafeb",
+    "UserName": "francis_turcotte",
+    "LoweredUserName": "francis_turcotte",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2010-07-31 18:45:31.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "ec041c8e-3946-48a9-bd80-0bce1d5fd3eb",
+    "UserName": "francois_burelle",
+    "LoweredUserName": "francois_burelle",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2016-12-19 21:56:44.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "2af7e142-76fb-4348-bbb0-55cfe8d3e609",
+    "UserName": "francois_fournier",
+    "LoweredUserName": "francois_fournier",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2010-07-31 18:45:31.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "f1eb603f-e6aa-4123-aa43-226fa81ff593",
+    "UserName": "francois_milord",
+    "LoweredUserName": "francois_milord",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2010-07-31 18:45:31.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "96281628-4cc2-4ca2-907d-98c5482ca8d3",
+    "UserName": "frederick_lelievre",
+    "LoweredUserName": "frederick_lelievre",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2024-12-12 13:27:39.867"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "39cf90e9-8047-4b11-ad9e-72a3300b4bfd",
+    "UserName": "gabriel_bedard",
+    "LoweredUserName": "gabriel_bedard",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2010-07-31 18:45:31.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "7b567ca1-977e-4dc0-8961-09a20701649a",
+    "UserName": "genevieve_toupin",
+    "LoweredUserName": "genevieve_toupin",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2017-12-01 18:30:44.257"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "f77f7c65-1b53-4859-a591-6412b651894d",
+    "UserName": "gerald_guerin",
+    "LoweredUserName": "gerald_guerin",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2012-04-27 21:07:44.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "409fbc14-74b1-4054-b039-1b4386e29883",
+    "UserName": "gerome_deschamps",
+    "LoweredUserName": "gerome_deschamps",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2016-12-19 21:44:55.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "b13231c1-a444-4ba6-9bb1-d249e19d4429",
+    "UserName": "gregory_bulte",
+    "LoweredUserName": "gregory_bulte",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2010-07-31 18:45:31.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "c62b60d4-4e96-4a34-9f0d-12fdaac18e02",
+    "UserName": "guillaume_lemieux",
+    "LoweredUserName": "guillaume_lemieux",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2012-04-27 21:07:44.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "e74e5ce3-3132-4efd-a190-506340d30d46",
+    "UserName": "guillaume_tremblay",
+    "LoweredUserName": "guillaume_tremblay",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2021-02-18 15:48:28.897"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "e089f59e-904a-4eb5-a25c-c6aebc18f2de",
+    "UserName": "guy_fitzgerald",
+    "LoweredUserName": "guy_fitzgerald",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2013-08-15 19:28:26.297"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "d758f5fb-ba1d-440a-808e-01763c1c30d6",
+    "UserName": "guy_perron",
+    "LoweredUserName": "guy_perron",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2016-09-16 20:34:35.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "81fa364b-856a-4023-a953-287df3951ce4",
+    "UserName": "guylaine_seguin",
+    "LoweredUserName": "guylaine_seguin",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2024-03-12 16:15:14.980"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "436aea59-f651-429a-ae97-72d01a29ae2d",
+    "UserName": "Héloise Bastien",
+    "LoweredUserName": "héloise bastien",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2017-10-03 14:35:24.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "13b6f504-2dcf-4470-b276-628fb69d4e64",
+    "UserName": "heloise_bastien",
+    "LoweredUserName": "heloise_bastien",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2010-07-31 18:45:31.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "9bd79e67-c1de-40f1-a124-81df31ebe52a",
+    "UserName": "hugo_pilon",
+    "LoweredUserName": "hugo_pilon",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2016-12-19 21:54:43.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "f035b380-bec4-4fa3-a1aa-23cd5bea243f",
+    "UserName": "hugues_tennier",
+    "LoweredUserName": "hugues_tennier",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2010-07-31 18:45:31.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "073d64f2-7c5e-40e2-970f-9ddb86a26978",
+    "UserName": "Ilef_Ikhelef",
+    "LoweredUserName": "ilef_ikhelef",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2019-12-27 20:17:44.583"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "ea392c52-475d-4bdf-974e-ace42856edfc",
+    "UserName": "isabelle_chartier",
+    "LoweredUserName": "isabelle_chartier",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2010-07-31 18:45:31.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "0a6208db-6997-4859-92de-e385bff91578",
+    "UserName": "isabelle_gagnon",
+    "LoweredUserName": "isabelle_gagnon",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2020-04-15 14:22:04.563"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "3106d521-2d95-486d-8bee-f8310f4a50d0",
+    "UserName": "isabelle_lachance",
+    "LoweredUserName": "isabelle_lachance",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2016-01-07 21:50:48.260"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "c4febdeb-2dfe-487e-a3a4-3406a23d8c42",
+    "UserName": "isabelle_lanthier",
+    "LoweredUserName": "isabelle_lanthier",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2015-06-08 17:23:08.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "b93c549b-10ec-4ee3-9b79-f700bc53aed5",
+    "UserName": "isabelle_laurion",
+    "LoweredUserName": "isabelle_laurion",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2025-03-17 17:54:51.903"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "b2ee14fc-c01a-4d97-a51d-ef40428acc25",
+    "UserName": "isabelle_l-leblanc",
+    "LoweredUserName": "isabelle_l-leblanc",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2010-07-31 18:45:31.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "0de13c88-68fc-49af-9838-80cee3a712b3",
+    "UserName": "isabelle_st-pierre",
+    "LoweredUserName": "isabelle_st-pierre",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2015-06-03 16:07:49.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "8b7ce036-ba00-4ee2-be84-b373c3a177ab",
+    "UserName": "jacques_dancosse",
+    "LoweredUserName": "jacques_dancosse",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2010-07-31 18:45:31.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "c778b6aa-8f3c-4010-84a4-9379fcb22199",
+    "UserName": "jacques_jutras",
+    "LoweredUserName": "jacques_jutras",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2010-07-31 18:45:31.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "e5a335a9-1800-44e1-a2d0-a6c1ec88ebab",
+    "UserName": "jean_comtois",
+    "LoweredUserName": "jean_comtois",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2010-07-31 18:45:31.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "60c2375e-0017-4297-9fdd-aba7ca5b6a2c",
+    "UserName": "jean_gauthier",
+    "LoweredUserName": "jean_gauthier",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2012-04-27 21:07:44.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "b27e77e0-86fb-439c-94c6-4f172382a013",
+    "UserName": "jean_lamoureux",
+    "LoweredUserName": "jean_lamoureux",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2010-07-31 18:45:31.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "6d464644-5bbf-43ef-8ebf-3340fbdc62af",
+    "UserName": "jean_milette",
+    "LoweredUserName": "jean_milette",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2010-07-31 18:45:31.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "490840e9-98c8-4f41-b8bd-7016d52f24c2",
+    "UserName": "Jean_Philippe_Dion",
+    "LoweredUserName": "jean_philippe_dion",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2025-03-03 16:17:42.497"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "4c040a0a-40e3-4b7f-8ae7-ffb566e3c124",
+    "UserName": "jean_rodrigue",
+    "LoweredUserName": "jean_rodrigue",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2010-07-31 18:45:31.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "2afa628d-fa2e-408e-8c26-68363488920f",
+    "UserName": "jean-denis_brisson",
+    "LoweredUserName": "jean-denis_brisson",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2010-07-31 18:45:31.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "57f95bc9-523d-4d5d-a3ce-b38f633c5945",
+    "UserName": "jean-francois_desroches",
+    "LoweredUserName": "jean-francois_desroches",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2010-07-31 18:45:31.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "f37ac6a8-7ccd-4c6f-968c-fd1695897eb7",
+    "UserName": "jean-francois_dumont",
+    "LoweredUserName": "jean-francois_dumont",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2010-07-31 18:45:31.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "f607b792-cfe0-4044-81fc-befd3808a013",
+    "UserName": "jean-francois_houle",
+    "LoweredUserName": "jean-francois_houle",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2010-07-31 18:45:31.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "53b13372-a232-45db-b7dc-b2b95cfe0f9b",
+    "UserName": "jean-francois_poitras",
+    "LoweredUserName": "jean-francois_poitras",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2017-04-06 17:33:20.067"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "5d772eca-973f-4762-9eed-ca049b30ed68",
+    "UserName": "jean-francois_proulx",
+    "LoweredUserName": "jean-francois_proulx",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2010-07-31 18:45:31.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "e8447e38-2509-4a29-ac51-2df17383b189",
+    "UserName": "jean-marc_benoit",
+    "LoweredUserName": "jean-marc_benoit",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2012-10-26 16:35:14.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "b2ab0b70-7add-4c51-9d43-9233225d049c",
+    "UserName": "Jean-Sebastien_Messier",
+    "LoweredUserName": "jean-sebastien_messier",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2024-11-13 14:22:15.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "38c715e1-c69b-4333-b828-716a09e110ed",
+    "UserName": "jenny_guillemette",
+    "LoweredUserName": "jenny_guillemette",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2012-04-27 21:07:44.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "531f10a4-c91b-4c62-9d13-d6e52795c698",
+    "UserName": "jerome_carrier",
+    "LoweredUserName": "jerome_carrier",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2023-08-23 19:22:45.200"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "efb85d4b-6d67-4eda-b9da-97ab5d885973",
+    "UserName": "joanne_tataryn",
+    "LoweredUserName": "joanne_tataryn",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2018-04-11 23:12:28.037"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "559100f2-040c-4656-9d9c-fdbbd18ec630",
+    "UserName": "jocelyn_caron",
+    "LoweredUserName": "jocelyn_caron",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2016-06-09 14:17:05.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "cdeae24c-5bbd-452c-962a-756eb6d14706",
+    "UserName": "joelle_benoit",
+    "LoweredUserName": "joelle_benoit",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2013-08-23 20:10:16.450"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "ab0cf48c-1a3e-443e-a42e-fe775d9e79e3",
+    "UserName": "Joelle_Taillon",
+    "LoweredUserName": "joelle_taillon",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2019-03-07 13:35:01.407"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "7a2bb9e6-7de2-46d5-b0d3-b57962088dac",
+    "UserName": "johanne_charron",
+    "LoweredUserName": "johanne_charron",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2010-07-31 18:45:31.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "61585905-ed1f-45b7-b86e-23f3d2b233ea",
+    "UserName": "josee_deguise",
+    "LoweredUserName": "josee_deguise",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2010-07-31 18:45:31.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "9ae09264-1ef7-47e1-8fc0-27a8d24efaf9",
+    "UserName": "josee_tremblay",
+    "LoweredUserName": "josee_tremblay",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2010-07-31 18:45:31.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "bf58d1e5-fb59-4b32-a96d-1816b91dac78",
+    "UserName": "Joseph Mainguy",
+    "LoweredUserName": "joseph mainguy",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2017-07-25 18:20:45.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "0b789f09-1839-4a5a-828e-fbd659eb4991",
+    "UserName": "Josue_Groleau",
+    "LoweredUserName": "josue_groleau",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2020-12-17 14:39:33.743"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "6e3a1c64-2b67-49e7-9eb0-25766edb59e6",
+    "UserName": "Josué_Groleau",
+    "LoweredUserName": "josué_groleau",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2019-09-05 14:55:43.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "7d444cc5-145a-4f17-af2b-33c191be9f22",
+    "UserName": "judith_viau",
+    "LoweredUserName": "judith_viau",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2025-04-12 22:29:48.670"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "f964cdec-5660-4909-a4a1-7d8deba70466",
+    "UserName": "julie_ducrocq",
+    "LoweredUserName": "julie_ducrocq",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2010-07-31 18:45:31.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "794e6da0-51ab-4b0f-919a-60178ac401f2",
+    "UserName": "julie_picard",
+    "LoweredUserName": "julie_picard",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2010-07-31 18:45:31.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "567c1c27-77e6-43b6-b812-cb82d63b74d4",
+    "UserName": "julie_pilote",
+    "LoweredUserName": "julie_pilote",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2012-04-27 21:07:44.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "def3cc31-ef62-4eb6-8db4-d62509de8437",
+    "UserName": "julie_seguin",
+    "LoweredUserName": "julie_seguin",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2010-07-31 18:45:31.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "5baa04b2-d65e-4f36-8eee-189bf6ae37b1",
+    "UserName": "julie-francine_phaneuf",
+    "LoweredUserName": "julie-francine_phaneuf",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2010-07-31 18:45:31.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "5fb8b89d-45c1-45d3-943f-f6eb815a8b50",
+    "UserName": "julien_mainguy",
+    "LoweredUserName": "julien_mainguy",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2010-07-31 18:45:31.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "3a4bce15-02fd-491c-982d-564263416abc",
+    "UserName": "kathleen_brown",
+    "LoweredUserName": "kathleen_brown",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2025-04-10 19:30:55.370"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "9d4af3f9-16c6-49b9-a789-592a7ee2a3b5",
+    "UserName": "Kimberley Desgagné",
+    "LoweredUserName": "kimberley desgagné",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2019-09-13 17:53:36.820"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "5bf3d184-a1e6-40d6-906b-2fe9ac5ea1da",
+    "UserName": "Kimberly_Knowles",
+    "LoweredUserName": "kimberly_knowles",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2016-06-07 21:01:36.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "8f010106-38ae-4fc4-a7ca-d9284c4c53ca",
+    "UserName": "lena_measures",
+    "LoweredUserName": "lena_measures",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2010-07-31 18:45:31.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "2c9ed538-ba89-40e4-9fae-2662c695f295",
+    "UserName": "lilian_kandiliotis",
+    "LoweredUserName": "lilian_kandiliotis",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2010-07-31 18:45:31.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "f1eb22d4-2ef7-48c7-b451-af566dd52e18",
+    "UserName": "Louis_Lazure",
+    "LoweredUserName": "louis_lazure",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2019-01-21 20:35:05.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "486fa549-3820-4612-b8b5-254e4a167db3",
+    "UserName": "louise_champoux",
+    "LoweredUserName": "louise_champoux",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2010-07-31 18:45:31.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "44142cc3-41f6-4323-80f8-052a220df242",
+    "UserName": "louise_lambert",
+    "LoweredUserName": "louise_lambert",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2014-02-20 19:29:30.597"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "60798645-02e6-4fd9-b26d-78d2c0b5da53",
+    "UserName": "Louvigny_Couture",
+    "LoweredUserName": "louvigny_couture",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2024-05-15 17:08:41.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "b20cbfb1-df2d-4fa2-a69e-53d2c0f69a06",
+    "UserName": "luc_poisson",
+    "LoweredUserName": "luc_poisson",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2014-05-26 13:19:18.023"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "644d81fe-6a54-488d-8f8b-8736d7b195bb",
+    "UserName": "lucie_veilleux",
+    "LoweredUserName": "lucie_veilleux",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2016-09-16 20:42:47.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "e2dca9d5-dcc9-4558-b923-71dae3fd2ab3",
+    "UserName": "lynn_miller",
+    "LoweredUserName": "lynn_miller",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2010-07-31 18:45:31.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "f1b20d82-e8cd-410b-ba2a-463e5235b4af",
+    "UserName": "Lysanne_Lemay",
+    "LoweredUserName": "lysanne_lemay",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2017-03-31 18:17:26.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "a4076bc6-16d9-4c8f-bd1c-c1bb6955eb0a",
+    "UserName": "Magaly Bégin-Pépin",
+    "LoweredUserName": "magaly bégin-pépin",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2021-03-22 18:53:45.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "272cb457-0b66-41b8-ade7-37a368adfc50",
+    "UserName": "manon_paquette",
+    "LoweredUserName": "manon_paquette",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2010-07-31 18:45:31.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "dcc4764a-1554-4742-8d75-94be07c5e866",
+    "UserName": "manon_simard",
+    "LoweredUserName": "manon_simard",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2010-07-31 18:45:31.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "47658514-b61d-47d0-af30-f7488ab32207",
+    "UserName": "Marc Hébert",
+    "LoweredUserName": "marc hébert",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2017-09-06 20:12:15.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "5aeecd3f-d956-4f3a-927b-5355221caa67",
+    "UserName": "marc_belisle",
+    "LoweredUserName": "marc_belisle",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2010-07-31 18:45:31.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "a9b43b4b-897a-45ce-a48d-76fda01f1684",
+    "UserName": "marc_macquart",
+    "LoweredUserName": "marc_macquart",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2010-07-31 18:45:31.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "bda59e34-9e7f-49fd-bfbd-98e456674d4c",
+    "UserName": "marc_valentine",
+    "LoweredUserName": "marc_valentine",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2010-07-31 18:45:31.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "1d18cb80-a822-48d9-804d-655ba67aaadb",
+    "UserName": "Marcelo Ribotta",
+    "LoweredUserName": "marcelo ribotta",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2015-06-05 18:15:55.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "46944f6e-fd16-46da-bd3a-4cbed8756983",
+    "UserName": "marc-jacques_gosselin",
+    "LoweredUserName": "marc-jacques_gosselin",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2010-07-31 18:45:31.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "865f6713-2314-438a-9009-ee9f6821ee62",
+    "UserName": "maria_harding",
+    "LoweredUserName": "maria_harding",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2016-07-20 19:21:30.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "a1227e7c-3575-4387-838a-5267d085778f",
+    "UserName": "marianne_gagnier",
+    "LoweredUserName": "marianne_gagnier",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2025-04-11 13:23:01.077"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "414a8220-5d1d-4e44-9225-35a8060cfc3c",
+    "UserName": "marie-andree_piedalue",
+    "LoweredUserName": "marie-andree_piedalue",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2010-07-31 18:45:31.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "8f720d4d-cc53-4bc7-9934-a99a2df0995c",
+    "UserName": "marie-claude_benoit",
+    "LoweredUserName": "marie-claude_benoit",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2012-03-28 14:34:52.707"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "1beb8181-3e91-486b-9b2f-9ea8b6bbdce5",
+    "UserName": "marie-eve_gingras",
+    "LoweredUserName": "marie-eve_gingras",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2012-04-27 21:07:44.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "229a2f0b-2773-4c47-8838-2916fc060d66",
+    "UserName": "marie-eve_turcotte",
+    "LoweredUserName": "marie-eve_turcotte",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2019-11-25 19:44:05.160"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "2c3acfe0-f1f8-4bd6-9b94-08c0759764fc",
+    "UserName": "Marie-Josée Neveu",
+    "LoweredUserName": "marie-josée neveu",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2017-10-03 13:46:50.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "b64163fd-ce67-43cf-8177-70a5e71764b9",
+    "UserName": "marie-josee_limoges",
+    "LoweredUserName": "marie-josee_limoges",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2010-07-31 18:45:31.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "23750a9b-0448-4bf9-bb32-e08424918b85",
+    "UserName": "Mario Lemay",
+    "LoweredUserName": "mario lemay",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2017-12-28 21:09:38.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "88460652-a61f-4f35-b9de-994918956568",
+    "UserName": "mario_filion",
+    "LoweredUserName": "mario_filion",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2016-12-19 22:11:31.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "262426de-fc86-405b-b430-2699912693f6",
+    "UserName": "Marion_Jalenques",
+    "LoweredUserName": "marion_jalenques",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2018-11-08 19:45:52.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "5fd1d2d1-712b-4fc9-9945-45bb0b8021c0",
+    "UserName": "marlene_dionne",
+    "LoweredUserName": "marlene_dionne",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2010-07-31 18:45:31.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "3628fba2-32df-4407-9f9a-12e72027a62f",
+    "UserName": "martin_perreault",
+    "LoweredUserName": "martin_perreault",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2016-09-16 20:41:00.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "f7e7658e-4195-456a-8998-d66ea3d4a577",
+    "UserName": "Martine_Lavoie",
+    "LoweredUserName": "martine_lavoie",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2017-03-17 16:22:47.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "e38a7ef4-50c0-4514-85ba-cfeceafb282d",
+    "UserName": "mathieu_lemay",
+    "LoweredUserName": "mathieu_lemay",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2010-07-31 18:45:31.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "478f6e4c-1719-49ba-b61e-239240c02408",
+    "UserName": "mathieu_nadon",
+    "LoweredUserName": "mathieu_nadon",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2016-09-16 20:35:40.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "aa69e3ce-17ae-4997-8479-74fdc4de0321",
+    "UserName": "Matthew_Rokas-Berube",
+    "LoweredUserName": "matthew_rokas-berube",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2022-12-16 16:05:31.503"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "a1e85cc6-fd8f-419e-b193-71c97cafcd5d",
+    "UserName": "maxime_lavoie",
+    "LoweredUserName": "maxime_lavoie",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2018-11-07 15:49:52.653"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "7d52d685-d2ce-4357-9e07-69382c6a3faa",
+    "UserName": "melanie_trudel",
+    "LoweredUserName": "melanie_trudel",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2022-12-09 17:04:07.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "dccb18de-cc39-45c0-bf0d-fbe223525670",
+    "UserName": "melisa_brunet",
+    "LoweredUserName": "melisa_brunet",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2016-10-27 00:10:09.670"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "4b54f4ff-4bee-4fe1-b94c-a759a73e8b89",
+    "UserName": "melissa_dufour",
+    "LoweredUserName": "melissa_dufour",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2022-12-09 17:14:49.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "5104dfa2-a97e-486b-993d-0a214bd8e25a",
+    "UserName": "melissa_trudeau",
+    "LoweredUserName": "melissa_trudeau",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2013-08-22 12:33:34.040"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "d2e44e6e-c77d-40bd-b1aa-f42b679420ef",
+    "UserName": "michel_delorme",
+    "LoweredUserName": "michel_delorme",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2010-07-31 18:45:31.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "47799f81-7062-4d74-b044-5fba2137399a",
+    "UserName": "michel_desjardins",
+    "LoweredUserName": "michel_desjardins",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2016-09-16 20:43:58.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "33d88855-3fd6-467d-b313-b08c1833ce6b",
+    "UserName": "michel_hebert",
+    "LoweredUserName": "michel_hebert",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2010-07-31 18:45:31.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "990d167f-7c4c-43c5-b015-5b1bc861e385",
+    "UserName": "michel_henault",
+    "LoweredUserName": "michel_henault",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2015-06-05 19:09:49.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "07ce3ecd-a8cb-4929-a8fd-3e72bda4315e",
+    "UserName": "michel_huot",
+    "LoweredUserName": "michel_huot",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2010-07-31 18:45:31.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "23e26c67-f990-4caf-9ba5-c048e9823d11",
+    "UserName": "micheline_garceau",
+    "LoweredUserName": "micheline_garceau",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2010-07-31 18:45:31.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "9020ae31-c3b3-4f0f-b595-cdbd6f2ecf0c",
+    "UserName": "mireille_boulianne",
+    "LoweredUserName": "mireille_boulianne",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2010-07-31 18:45:31.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "61346597-2ac4-471a-9aef-e1e7ae178609",
+    "UserName": "miriane_tremblay",
+    "LoweredUserName": "miriane_tremblay",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2010-07-31 18:45:31.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "13cd3a15-33ce-4aec-8600-5faeee9260a6",
+    "UserName": "nathalie_bourbonnais",
+    "LoweredUserName": "nathalie_bourbonnais",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2010-07-31 18:45:31.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "07f5203f-5949-4b2b-aae5-b7f58fa971ba",
+    "UserName": "nathalie_cote",
+    "LoweredUserName": "nathalie_cote",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2014-06-05 13:16:17.600"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "e07a6dd8-d6cc-4cc5-9ade-e3a15dde8267",
+    "UserName": "nathalie_desrosiers",
+    "LoweredUserName": "nathalie_desrosiers",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2016-09-16 20:45:12.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "cbd44f1b-c231-46cf-9c5a-486aa97f71f5",
+    "UserName": "nathalie_girard",
+    "LoweredUserName": "nathalie_girard",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2010-07-31 18:45:31.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "0ab614f2-0f45-41fc-afa9-b83dcd140615",
+    "UserName": "nathalie_rivard",
+    "LoweredUserName": "nathalie_rivard",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2010-07-31 18:45:31.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "1036fa0e-d8a3-43ce-b174-21981c018acf",
+    "UserName": "nicole_blanchette",
+    "LoweredUserName": "nicole_blanchette",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2010-04-03 01:56:57.923"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "39758563-5a9e-4b14-8f51-d9f0a4c2ac57",
+    "UserName": "nicole_gougeon",
+    "LoweredUserName": "nicole_gougeon",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2010-07-31 18:45:31.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "a1bae0a5-1070-48e3-a0d7-f991bc792c2d",
+    "UserName": "normand_david",
+    "LoweredUserName": "normand_david",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2010-07-31 18:45:31.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "e674a42f-e1a1-48bb-b52a-18d399c54b01",
+    "UserName": "normand_tremblay",
+    "LoweredUserName": "normand_tremblay",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2016-09-16 20:39:51.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "5d6b99cb-1019-43e5-a8de-ccb191631d10",
+    "UserName": "Olivier Trudel",
+    "LoweredUserName": "olivier trudel",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2019-08-29 14:07:18.037"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "0061e81f-a77d-4f5d-a3b8-dd99b6b994e3",
+    "UserName": "Olivier_Trudel",
+    "LoweredUserName": "olivier_trudel",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2019-08-26 20:20:02.960"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "6ba30d90-2b25-41c3-b6fd-03bcdcdfa6c2",
+    "UserName": "pascal_gagnon",
+    "LoweredUserName": "pascal_gagnon",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2010-07-31 18:45:31.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "6d585bac-60ae-4fe9-a86e-9a5372ae1bd3",
+    "UserName": "patrice_deneault",
+    "LoweredUserName": "patrice_deneault",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2010-07-31 18:45:31.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "a8bab867-0d64-4347-adf7-c6a05e68a4bd",
+    "UserName": "patrice_lord",
+    "LoweredUserName": "patrice_lord",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2010-07-31 18:45:31.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "29b7d2b4-e67a-4871-b484-6f32be093f23",
+    "UserName": "patrick_durand",
+    "LoweredUserName": "patrick_durand",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2012-04-27 21:07:44.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "d8b0c0cd-1d52-48e2-a2e8-0255ea0132ff",
+    "UserName": "patrick_graillon",
+    "LoweredUserName": "patrick_graillon",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2010-07-31 18:45:31.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "498944f0-77cb-4b4f-b9ca-14200a1a639f",
+    "UserName": "patrick_pare",
+    "LoweredUserName": "patrick_pare",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2010-07-31 18:45:31.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "12b51882-09c2-49c6-90ad-33afb77aab09",
+    "UserName": "pauline_delnatte",
+    "LoweredUserName": "pauline_delnatte",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2015-06-01 18:58:49.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "4a0d6c3e-4b19-4fd2-abe0-5f800457748d",
+    "UserName": "philippe_beaulieu",
+    "LoweredUserName": "philippe_beaulieu",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2012-04-27 21:07:44.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "4b8cd815-1a1b-494d-be88-cbc847218133",
+    "UserName": "philippe_beaupre",
+    "LoweredUserName": "philippe_beaupre",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2012-11-07 18:20:31.900"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "025f51f5-86aa-4588-8d6f-aab809f88498",
+    "UserName": "pierre_brousseau",
+    "LoweredUserName": "pierre_brousseau",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2010-07-31 18:45:31.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "cb1362d4-90e1-4fab-a29e-52e0ff1ddd71",
+    "UserName": "pierre_canac-marquis",
+    "LoweredUserName": "pierre_canac-marquis",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2010-07-31 18:45:31.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "ac4160df-18fb-438e-ac00-a15fc6c5d04e",
+    "UserName": "pierre_dupuy",
+    "LoweredUserName": "pierre_dupuy",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2010-07-31 18:45:31.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "0e5473ca-ede8-41fa-a5cf-1c5942bd8c41",
+    "UserName": "pierre_fournier",
+    "LoweredUserName": "pierre_fournier",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2012-04-27 21:07:44.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "7ddd174f-5f97-4e65-bebb-e356b2238a55",
+    "UserName": "pierre_lagueux",
+    "LoweredUserName": "pierre_lagueux",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2016-07-20 19:16:32.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "f22c071e-4d88-4c12-adcd-9264fbcd366a",
+    "UserName": "pierre_molina",
+    "LoweredUserName": "pierre_molina",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2010-07-31 18:45:31.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "6eea303d-e106-4eab-adf5-7fb8f3dcd003",
+    "UserName": "pierre_pitre",
+    "LoweredUserName": "pierre_pitre",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2010-07-31 18:45:31.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "7b68d07d-5a4d-4762-8fdb-2181fa3553e2",
+    "UserName": "pierre-alexis_drolet",
+    "LoweredUserName": "pierre-alexis_drolet",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2016-05-25 13:14:25.480"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "9511a3f0-1484-4dfc-ba35-3f86cab92558",
+    "UserName": "pierre-yves_collin",
+    "LoweredUserName": "pierre-yves_collin",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2010-07-31 18:45:31.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "42d234df-4fe3-423a-b27a-873c1b217f01",
+    "UserName": "raphael_demers",
+    "LoweredUserName": "raphael_demers",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2010-07-31 18:45:31.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "c5dadfd7-bc0c-4c5e-982e-9138edf4aaf7",
+    "UserName": "real_vaudry",
+    "LoweredUserName": "real_vaudry",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2010-07-31 18:45:31.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "277aa444-566a-4cee-8f11-1f70f2477d92",
+    "UserName": "rejean_malo",
+    "LoweredUserName": "rejean_malo",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2010-07-31 18:45:31.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "1e671544-20df-472d-b186-ea682501397a",
+    "UserName": "rene_charest",
+    "LoweredUserName": "rene_charest",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2010-07-31 18:45:31.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "8884a01b-90a6-4954-a16d-27f02f5d1c60",
+    "UserName": "robert_carlin",
+    "LoweredUserName": "robert_carlin",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2010-07-31 18:45:31.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "783b6520-9018-4464-a9ee-5fc33ef8d528",
+    "UserName": "robert_patenaude",
+    "LoweredUserName": "robert_patenaude",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2010-04-03 01:56:33.673"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "886b61f3-5ea6-4253-80f8-4165d4c620ad",
+    "UserName": "Rozenn Le Net",
+    "LoweredUserName": "rozenn le net",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2016-06-09 14:09:49.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "7c948f1f-c0bd-41fc-96a5-0e02404e272a",
+    "UserName": "Ruthann Duivesteyn",
+    "LoweredUserName": "ruthann duivesteyn",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2018-09-06 17:25:16.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "589b130e-90e2-4177-a122-ba9878987778",
+    "UserName": "sabrina_nadeau",
+    "LoweredUserName": "sabrina_nadeau",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2023-11-30 22:51:41.347"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "1ad0c4ca-3ab6-45f9-9606-9e251e2864fd",
+    "UserName": "sandra_garneau",
+    "LoweredUserName": "sandra_garneau",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2010-07-31 18:45:31.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "c02bdb3f-725d-481b-8266-ce85defee41a",
+    "UserName": "sebastien_arbour",
+    "LoweredUserName": "sebastien_arbour",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2016-12-19 22:00:57.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "ff47dac6-164b-4a8c-aaba-6e96a8e00831",
+    "UserName": "sebastien_brisebois",
+    "LoweredUserName": "sebastien_brisebois",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2025-04-10 11:57:30.793"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "7987105a-8f09-4d82-8770-47387c45b26c",
+    "UserName": "sebastien_giguere",
+    "LoweredUserName": "sebastien_giguere",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2010-07-31 18:45:31.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "96bd5dd6-977c-421e-b134-96950cce2f66",
+    "UserName": "sebastien_ross",
+    "LoweredUserName": "sebastien_ross",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2010-07-31 18:45:31.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "13aa9a42-755a-4ed5-8d70-398d6e4c11dc",
+    "UserName": "serge_brouillet",
+    "LoweredUserName": "serge_brouillet",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2012-04-27 21:07:44.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "de203667-b421-41ee-a41e-520073766dc4",
+    "UserName": "serge_piche",
+    "LoweredUserName": "serge_piche",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2016-12-19 21:52:14.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "03b60b54-58fb-4c7a-a9f6-ebd82b93a6c4",
+    "UserName": "Shannon Ferrell",
+    "LoweredUserName": "shannon ferrell",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2019-01-14 15:44:32.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "49e31338-da3b-4faa-9c71-58c16f0008bc",
+    "UserName": "simon_dostaler",
+    "LoweredUserName": "simon_dostaler",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2010-07-31 18:45:31.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "1ecb97a0-88cb-4ea7-b8f5-d0f27df83f98",
+    "UserName": "sophie_plante",
+    "LoweredUserName": "sophie_plante",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2010-07-31 18:45:31.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "1e493f53-294a-49e2-bd14-a8781fdd2d4c",
+    "UserName": "sophie_robidoux",
+    "LoweredUserName": "sophie_robidoux",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2010-07-31 18:45:31.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "0837bc4f-0087-4a2c-bc41-b3d6ff9b0894",
+    "UserName": "soulyvane_nguon",
+    "LoweredUserName": "soulyvane_nguon",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2010-07-31 18:45:31.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "962f8b19-5c60-477d-bd45-d8a10b2368ee",
+    "UserName": "stephane_cholette",
+    "LoweredUserName": "stephane_cholette",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2016-12-19 22:13:22.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "f62c67c5-2691-478c-b3c1-292abdfa48e8",
+    "UserName": "stephane_lair",
+    "LoweredUserName": "stephane_lair",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2011-11-29 16:31:12.037"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "28e51f58-f0ee-4282-aabe-b5a51b7c583d",
+    "UserName": "stephane_poulin",
+    "LoweredUserName": "stephane_poulin",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2010-07-31 18:45:31.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "8d1e0a85-fbb4-4488-9626-00bee5cfe906",
+    "UserName": "stephanie_leblanc",
+    "LoweredUserName": "stephanie_leblanc",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2012-04-27 21:07:44.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "23067d76-0560-45e7-93ce-3bcd7c93be25",
+    "UserName": "sulvio_aucoin",
+    "LoweredUserName": "sulvio_aucoin",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2016-09-16 20:20:37.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "e5d4e4b4-9d15-4726-88a0-728eff916c6a",
+    "UserName": "suzanne_trudel",
+    "LoweredUserName": "suzanne_trudel",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2010-07-31 18:45:31.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "334d1731-e793-4c64-be46-464316ed03cf",
+    "UserName": "suzie_dubuc",
+    "LoweredUserName": "suzie_dubuc",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2025-04-11 12:35:14.720"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "b1cf183f-206e-4a74-b070-54806713e88b",
+    "UserName": "Sylvain Ménard",
+    "LoweredUserName": "sylvain ménard",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2017-09-06 20:18:29.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "460dbf7e-eded-423d-b878-541bca22f365",
+    "UserName": "sylvain_desbiens",
+    "LoweredUserName": "sylvain_desbiens",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2010-07-31 18:45:31.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "9e977f60-7243-484e-8a70-5c27b2d46c7d",
+    "UserName": "sylvain_larrat",
+    "LoweredUserName": "sylvain_larrat",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2012-04-29 13:45:34.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "6a627e0a-b439-4fd2-b91a-9c612c23ff35",
+    "UserName": "sylvie_beaudet",
+    "LoweredUserName": "sylvie_beaudet",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2010-07-31 18:45:31.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "dbeb2051-a1cb-410e-a37b-627f84511419",
+    "UserName": "sylvie_fortier",
+    "LoweredUserName": "sylvie_fortier",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2010-07-31 18:45:31.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "2cbaa5f5-f842-430f-924c-ff007a88ca9b",
+    "UserName": "tutu",
+    "LoweredUserName": "tutu",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2011-10-24 16:42:12.103"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "33d20184-b964-4e9b-8b35-1a76b29d2b77",
+    "UserName": "valerie_simard",
+    "LoweredUserName": "valerie_simard",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2012-04-27 21:07:44.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "f77ddd51-9e9f-46ca-81e0-08217f4506f9",
+    "UserName": "veronique_charron",
+    "LoweredUserName": "veronique_charron",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2013-04-04 18:47:58.663"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "e2400955-56e5-4753-bf6d-82cc1dac232b",
+    "UserName": "veronique_vermette",
+    "LoweredUserName": "veronique_vermette",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2010-07-31 18:45:31.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "832443cb-c45d-4a9c-b95f-e5329eaf20c5",
+    "UserName": "virginie_hamel",
+    "LoweredUserName": "virginie_hamel",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2016-09-16 20:37:28.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "454c9882-e076-475b-9fb9-36cc23564c19",
+    "UserName": "virginie_millien",
+    "LoweredUserName": "virginie_millien",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2010-07-31 18:45:31.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "18d319e9-1b9b-4e24-98e7-74e2dabf8ccb",
+    "UserName": "viviane_casaubon",
+    "LoweredUserName": "viviane_casaubon",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2025-04-10 13:02:11.167"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "8982a39d-d9fb-46e9-837e-f7bccb582010",
+    "UserName": "Xavier Mainguy",
+    "LoweredUserName": "xavier mainguy",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2017-07-25 17:36:20.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "d74870e2-7567-4ad2-b807-edb1ebb42220",
+    "UserName": "yana_desautels",
+    "LoweredUserName": "yana_desautels",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2010-07-31 18:45:31.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "4de87fa5-194f-4099-b4ca-ebff7b7298f2",
+    "UserName": "yann_troutet",
+    "LoweredUserName": "yann_troutet",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2010-07-31 18:45:31.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "b3e61722-d433-4576-9355-ed164c800f7e",
+    "UserName": "yannick_bilodeau",
+    "LoweredUserName": "yannick_bilodeau",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2019-05-21 18:01:55.513"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "c1508f83-c745-456f-a90d-49593dcc3a31",
+    "UserName": "yose_paquin",
+    "LoweredUserName": "yose_paquin",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2012-04-27 21:07:44.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "9650c58c-f814-4f98-8833-de5e05e276f5",
+    "UserName": "yovan_morin",
+    "LoweredUserName": "yovan_morin",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2010-07-31 18:45:31.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "08cf2dd1-04f7-40e4-969e-f60dfd8cf347",
+    "UserName": "yvan_turgeon",
+    "LoweredUserName": "yvan_turgeon",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2010-07-31 18:45:31.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "bf676f6c-5f3a-4c3f-a740-54289df60a63",
+    "UserName": "yves_dubord",
+    "LoweredUserName": "yves_dubord",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2010-07-31 18:45:31.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "58a061b9-f357-4561-871f-3ced904b6cae",
+    "UserName": "yves_robitaille",
+    "LoweredUserName": "yves_robitaille",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2012-04-27 21:07:44.000"
+  },
+  {
+    "ApplicationId": "f363f053-3f9f-419f-94c8-c568561bac23",
+    "UserId": "ca7d6bfb-5693-40c5-a6dd-2d14996a651c",
+    "UserName": "Zacharie Mainguy",
+    "LoweredUserName": "zacharie mainguy",
+    "MobileAlias": null,
+    "IsAnonymous": "0",
+    "LastActivityDate": "2017-12-15 22:23:24.000"
+  }
+]
