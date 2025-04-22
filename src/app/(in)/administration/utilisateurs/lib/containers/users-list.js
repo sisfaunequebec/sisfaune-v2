@@ -13,8 +13,9 @@ import { RxArrowRight } from 'react-icons/rx'
 
 import { useQueryStates } from 'nuqs'
 
-// import useEvents from '@/logic/data/events/use-events'
-// import { searchParams, urlKeys } from '@/logic/data/events/events-params'
+// import useUsers from '@/logic/data/users/use-users'
+import useUsers from '@/lib/data/users/use-users'
+import { searchParams, urlKeys } from '@/lib/data/users/users-params'
 
 import useDialog from '@/utilitaires/use-dialog'
 import EditUserDialog from './edit-user-dialog'
@@ -32,18 +33,18 @@ const UserItem = ({ id, username, fullName, email, organisation, isActive, onCli
         <VStack alignItems='flex-start' gap={0.4} flex={1}>
           <LinkOverlay asChild>
             <Flex flex={1} color='green.600' _dark={{ color: 'green.200' }}>
-              <Text fontWeight={500}>{fullName}</Text>&nbsp;
-              <Text>({username})</Text>
+              <Text fontWeight={500}>{fullName ?? username}</Text>&nbsp;
+              { fullName && <Text>({username})</Text> }
             </Flex>
           </LinkOverlay>
-          <Flex fontWeight={500} color='fg.muted'>{organisation}</Flex>
+          <Flex fontWeight={500} color='fg.muted'>{organisation ?? '\u00A0'}</Flex>
           <Flex display={['none', null, null, 'inherit']}>{email}</Flex>
         </VStack>
-        <VStack alignItems={['flex-start', null, null, 'flex-end']} gap={0.4} flex={1}>
+        {/* <VStack alignItems={['flex-start', null, null, 'flex-end']} gap={0.4} flex={1}> */}
           {/* <Flex display={['none', null, null, 'inherit']}>Statut : {isActive ? 'Actif' : 'Inactif'}</Flex> */}
           {/* <Flex color={'blue.600'}>Date du signalement : {reportingDate}</Flex>
           <Flex display={['none', null, null, 'inherit']}>Municipalité : {localityName ?? 'indéterminée'}</Flex> */}
-        </VStack>
+        {/* </VStack> */}
       </Stack>
       {/* <IconButton as={NextLink} href={href} scroll colorPalette={'green'} variant={'ghost'} rounded={'full'} size={['xs']}><RxArrowRight /></IconButton> */}
     </LinkListWrapper>
@@ -59,10 +60,10 @@ const UsersList = () => {
 
   // const { inView } = useIntersectionObserver(inner)
 
-  // const [ params ] = useQueryStates(searchParams, { urlKeys })
+  const [ params ] = useQueryStates(searchParams, { urlKeys })
 
-  // const result = useEvents(params, PAGE_SIZE)
-  // const { data = [], isLoading, size, setSize } = result
+  const result = useUsers(params, PAGE_SIZE)
+  const { data = [], isLoading, size, setSize } = result
 
   // const handleLoadMore = useCallback(() => {
   //   if (isLoading) {
@@ -71,9 +72,9 @@ const UsersList = () => {
   //   setSize(size + 1)
   // }, [setSize, size, isLoading])
 
-  const data = [
-    { id: 1, username: 'admin', fullName: 'Administrateur du système', email: 'admin@sisfaunequebec.ca', organisation: 'MAPAQ', isActive: true }
-  ]
+  // const data = [
+  //   { id: 1, username: 'admin', fullName: 'Administrateur du système', email: 'admin@sisfaunequebec.ca', organisation: 'MAPAQ', isActive: true }
+  // ]
 
   const users = data ? [].concat(...data) : []
   const total = users.length

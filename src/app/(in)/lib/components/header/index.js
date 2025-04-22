@@ -20,7 +20,7 @@ import Menu from './menu'
 
 const Toolbar = ({ session }) => {
   const { user } = session
-  const { name: username, email } = user
+  const { fullName: username, email } = user
 
   // const [{ y }] = useWindowScroll()
 

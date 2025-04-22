@@ -16,7 +16,7 @@ import SignInButton from './sign-in-button'
 const LoginForm = () => {
   const form = useForm({
     resolver: zodResolver(signInSchema, { reValidateMode: 'onSubmit' }),
-    defaultValues: { email: undefined, password: undefined }
+    defaultValues: { username: undefined, password: undefined }
   })
 
   const { register, handleSubmit, setError, formState } = form
@@ -25,6 +25,7 @@ const LoginForm = () => {
     const result = await signAction(data)
 
     const { errors } = result
+    // console.debug(errors)
     Object.entries(errors).forEach(([name, message]) => {
       setError(name, { type: 'server', message })
     })
@@ -37,10 +38,10 @@ const LoginForm = () => {
           <Image src='/logo_sisfaune_big.png' alt='logo' mb={8} />
           <Fieldset.Root size='lg' maxW='280px' invalid={false}>
             <Fieldset.Content>
-              <Field formState={formState} name='email' label='Adresse de courriel :'>
-                <Input type='email' autoComplete='off' {...register('email')} />
+              <Field formState={formState} name={'username'} label={'Nom d\'utilisateur :'}>
+                <Input autoComplete='off' {...register('username')} />
               </Field>
-              <Field formState={formState} name='password' label='Mot de passe :'>
+              <Field formState={formState} name={'password'} label={'Mot de passe :'}>
                 <PasswordInput autoComplete='off' {...register('password')} />
               </Field>
             </Fieldset.Content>

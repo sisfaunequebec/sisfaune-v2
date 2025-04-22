@@ -21,7 +21,7 @@ const UserParametersDialog = ({ close }) => {
       {(contentRef) => (
         <Fieldset.Root>
           <Fieldset.Content gap={3}>
-            <ControlledField name='email' label='Adresse courriel :' variant='horizontal'>
+            <ControlledField name='email' label='Adresse de courriel :' variant='horizontal'>
               <Input autoComplete='off' type='email' />
             </ControlledField>
             <Separator />

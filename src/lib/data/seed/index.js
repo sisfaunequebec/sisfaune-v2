@@ -26,6 +26,7 @@ const dataCollaborators = require('./data-collaborators')
 const dataEvents = require('./data-events')
 const dataLocations = require('./data-locations')
 
+const adminUsers = require('./admin-users')
 const adminUserPrograms = require('./admin-user-programs')
 
 async function main () {
@@ -63,6 +64,7 @@ async function main () {
     orm.Event.createMany({ data: dataEvents }),
     orm.Location.createMany({ data: dataLocations }),
 
+    orm.User.createMany({ data: adminUsers }),
     orm.AdminUserProgram.createMany({ data: adminUserPrograms })
 
     // orm.$executeRaw`UPDATE lut_muni_geom SET geom = ST_GeomFromText(geom_wkt);`

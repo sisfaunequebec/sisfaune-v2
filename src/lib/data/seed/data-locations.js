@@ -41,7 +41,7 @@ const transformed = source.map(p => {
     localityId,
     localityName: stringOrNull(municipalite),
     province: stringOrNull(province),
-    code_postal: stringOrNull(code_postal)
+    postalCode: stringOrNull(code_postal)
   }
 })
 

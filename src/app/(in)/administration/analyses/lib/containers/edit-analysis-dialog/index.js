@@ -24,7 +24,7 @@ const EditAnalysisDialog = ({ close }) => {
             <ControlledField name={'fullName'} label={'Nom complet :'} variant={'horizontal'}>
               <Input autoComplete={'off'} />
             </ControlledField>
-            <ControlledField name={'email'} label={'Adresse courriel :'} variant={'horizontal'}>
+            <ControlledField name={'email'} label={'Adresse de courriel :'} variant={'horizontal'}>
               <Input autoComplete={'off'} type={'email'} />
             </ControlledField>
             <Separator />

@@ -5,43 +5,47 @@ import wait from '@/utilitaires/wait'
 
 import { USERS } from './mocks'
 
+import orm from '../data/database'
+
 // class InvalidLoginError extends CredentialsSignin {
 //   code = "Invalid identifier or password"
 // }
 
 const credentialsProvider = Credentials({
-
   credentials: {
-    email: {},
+    username: {},
     password: {}
   },
 
   authorize: async (credentials) => {
-    await wait(Math.random() * 2000)
+    const { username, password } = credentials
 
-    const { email, password } = credentials
-
-    const user = USERS[email]
+    const user = await orm.User.findFirst({ 
+      where: {
+        username
+      }
+    })
 
     if (!user) {
       const error = new CredentialsSignin()
-      error.errors = { email: 'Cette adresse est inconnue...' }
+      error.errors = { password: 'Ce nom d\'utilisateur ou ce mot de passe sont inconnus...' }
       throw error
     }
 
-    const { password: userPassword } = user
-    if (userPassword !== password) {
-      const error = new CredentialsSignin()
-      error.errors = { password: 'Le mot de passe est erroné...' }
-      throw error
-    }
+    // const { password: userPassword } = user
 
-    const { name } = user
+    // if (userPassword !== password) {
+    //   const error = new CredentialsSignin()
+    //   error.errors = { password: 'Le mot de passe est erroné...' }
+    //   throw error
+    // }
+
+    const { name, email, firstName, lastName } = user
+    const fullName = [firstName, lastName].filter(Boolean).join(' ')
 
     return {
-      email,
-      name,
-      image: 'https://avatars.githubusercontent.com/u/67470890?s=200&v=4'
+      fullName,
+      email
     }
 
     // if (process.env.NODE_ENV === 'development') {
@@ -72,5 +76,19 @@ const credentialsProvider = Credentials({
 export const { handlers, signIn, signOut, auth } = NextAuth({
   providers: [
     credentialsProvider
-  ]
+  ],
+  callbacks: {
+    jwt({ token, user }) {
+      if (user) { // User is available during sign-in
+        token.id = user.id
+        token.fullName = user.fullName
+      }
+      return token
+    },
+    session({ session, token }) {
+      session.user.id = token.id
+      session.user.fullName = token.fullName
+      return session
+    }
+  }
 })

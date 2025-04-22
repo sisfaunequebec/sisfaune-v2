@@ -219,8 +219,13 @@ const textAreaRecipe = defineRecipe({
 const config = defineConfig({
   globalCss: {
     'html, body': {
-      bg: { base: 'gray.100', _dark: 'gray.900' },
-      minH: '100vh'
+      minH: '100vh',
+      margin: 0,
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'stretch',
+      alignItems: 'stretch',
+      bg: { base: 'gray.100', _dark: 'gray.900' }
     }
   },
   theme: {

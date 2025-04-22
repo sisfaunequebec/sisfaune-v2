@@ -44,7 +44,7 @@ const FiltersForm = async () => {
 
       <Separator />
 
-      <SectionTitle label={<HStack><Text>Rechercher dans le texte :</Text><Tooltip size='xl' content={'Rechercher par nom d\'utilisateurs, nom, organisme'}><Icon fontSize='xl' cursor='pointer'><LuInfo /></Icon></Tooltip></HStack>} />
+      <SectionTitle label={<HStack><Text>Rechercher dans le texte :</Text><Tooltip size='xl' content={'Rechercher par nom d\'utilisateur, nom, organisme'}><Icon fontSize='xl' cursor='pointer'><LuInfo /></Icon></Tooltip></HStack>} />
       <Section><FullText /></Section>
 
       <Separator />

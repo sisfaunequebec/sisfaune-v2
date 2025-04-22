@@ -1,8 +1,4 @@
 'use client'
-
-import { useMemo } from 'react'
-import orderBy from 'lodash.orderby'
-
 import { useQueryState, parseAsInteger, parseAsArrayOf } from 'nuqs'
 
 import Checkboxes from '../checkboxes'

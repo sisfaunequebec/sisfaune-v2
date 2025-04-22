@@ -5,21 +5,21 @@ import { useRouter, usePathname } from 'next/navigation'
 
 import { signOut } from 'next-auth/react'
 
-import { Box, Flex, VStack, Button, Menu } from '@chakra-ui/react'
+import { Box, Flex, VStack, Button, Menu, IconButton } from '@chakra-ui/react'
 
 import { Avatar } from '@/components/ui/avatar'
 
 import {
   MenuContent,
-  MenuItem,
-  MenuRoot,
-  MenuTrigger,
-  MenuSeparator,
+  // MenuItem,
+  // MenuRoot,
+  // MenuTrigger,
+  // MenuSeparator,
   MenuRadioItem,
   MenuRadioItemGroup
 } from '@/components/ui/menu'
 
-import { RxExit, RxGear } from 'react-icons/rx'
+import { RxExit, RxGear, RxHamburgerMenu } from 'react-icons/rx'
 
 import useDialog from '@/utilitaires/use-dialog'
 // import ParametresDialog from '../../../containers/parametres-dialog'
@@ -56,9 +56,12 @@ const DesktopMenu = ({ username, email }) => {
       {parametersDialog}
 
       <Flex hideBelow='md'>
-        <Menu.Root positioning={{ placement: 'bottom-end' }} size='md' lazyMount>
+        <Menu.Root positioning={{ placement: 'bottom-end' }} size={'md'} lazyMount>
           <Menu.Trigger>
-            <Avatar name={username} colorPalette='green' size={['md', null, 'sm']} variant='solid' cursor='pointer' />
+            <IconButton colorPalette='green' variant='solid' rounded='full' size={['md', null, 'sm']}>
+              <RxHamburgerMenu />
+            </IconButton>
+            {/* <Avatar name={username} colorPalette='green' size={['md', null, 'sm']} variant='solid' cursor='pointer' /> */}
           </Menu.Trigger>
           <MenuContent minW={60} hideBelow='md' mt={4} isolation='isolate' isolate='isolate' _hover={{ bg: 'white' }}>
             <Menu.Item cursor='default' value='info' _hover={{ bg: 'white' }}>

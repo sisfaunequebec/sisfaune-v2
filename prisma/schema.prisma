@@ -13,17 +13,43 @@ model User {
   @@map("auth_utilisateur")
 
   id String @id @default(dbgenerated("gen_random_uuid()"))
-  name          String? @map(name: "nom_complet")
-  email         String          @unique @map(name: "adresse_courriel")
-  emailVerified DateTime? @map(name: "meta_date_verification_courriel")
-  image         String?
-  accounts      Account[]
-  sessions      Session[]
-  // Optional for WebAuthn support
-  // Authenticator Authenticator[]
- 
+
+  username String @unique @map(name: "nom_utilisateur")
+  password String @map(name: "mot_de_passe")
+
+  email String @unique @map(name: "adresse_courriel")
+  emailVerified DateTime? @map(name: "meta_date_verification_courriel") @default(now())
+
+  isActive Boolean @default(true) @map(name: "est_actif")
+
+  firstName String? @map(name: "prenom")
+  lastName String? @map(name: "nom")
+
+  title String? @map(name: "titre")
+  organisation String? @map(name: "organisation")
+  division String? @map(name: "division")
+  service String? @map(name: "service")
+
+  streetNumber String? @map(name: "no_civique")
+  street String? @map(name: "route")
+  apt String? @map(name: "appartement")
+
+  localityName String? @map(name: "municipalite")
+  province String? @map(name: "province")
+  postalCode String? @map(name: "code_postal")
+
+  telephone String? @map(name: "telephone")
+  extension String? @map(name: "poste")
+  mobile String? @map(name: "cellulaire")
+  fax String? @map(name: "telecopieur")
+
+  isPathologist Boolean @default(false) @map(name: "est_pathologiste")
+
   createdAt DateTime @default(now()) @map(name: "meta_date_creation")
   updatedAt DateTime @updatedAt @map(name: "meta_date_maj")
+
+  accounts Account[]
+  sessions Session[]
 
   eventsCreated Event[] @relation("EventCreator")
   eventsSubmitted Event[] @relation("EventSubmitter")
@@ -458,7 +484,7 @@ model Discoverer {
   localityId Int? @map(name: "id_muni")
   localityName String? @map(name: "municipalite")
   province String? @map(name: "province")
-  code_postal String? @map(name: "code_postal")
+  postalCode String? @map(name: "code_postal")
 
   eventId Int @map(name: "id_evenement")
   events Event[]
@@ -732,7 +758,7 @@ model Location {
   localityId Int? @map(name: "id_muni")
   localityName String? @map(name: "municipalite")
   province String? @map(name: "province")
-  code_postal String? @map(name: "code_postal")
+  postalCode String? @map(name: "code_postal")
 
   locality LutLocality? @relation(fields: [localityId], references: [id])
 
