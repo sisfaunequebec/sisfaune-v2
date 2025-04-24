@@ -6,6 +6,8 @@ import system from '@/style'
 
 import { NuqsAdapter } from 'nuqs/adapters/next/app'
 
+import { SessionProvider } from 'next-auth/react'
+
 export const metadata = {
   title: 'SIS Faune'
 }
@@ -15,9 +17,12 @@ const RootLayout = async ({ children }) => {
     <html lang='fr' suppressHydrationWarning>
       <body>
         <Provider system={system}>
-          <NuqsAdapter>{children}</NuqsAdapter>
           {/* <ColorModeProvider> */}
-          {/* {children} */}
+          <NuqsAdapter>
+            <SessionProvider>
+              {children}
+            </SessionProvider>
+          </NuqsAdapter>
           {/* </ColorModeProvider> */}
         </Provider>
       </body>

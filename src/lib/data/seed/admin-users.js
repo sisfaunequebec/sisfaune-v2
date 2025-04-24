@@ -1,13 +1,15 @@
 const aspnetMembership = require('./sources/aspnet_membership.json')
 const aspnetUsers = require('./sources/aspnet_users.json')
+const aspnetUsersInRoles = require('./sources/aspnet_usersinroles.json')
 const users = require('./sources/utilisateur.json')
 
 const { stringOrNull, stringToBool, dateOrNull } = require('./utils')
 
 aspnetMembershipById = aspnetMembership.reduce((acc, m) => {
-  const { UserId: id, LoweredEmail: email } = m
+  const { UserId: id, LoweredEmail: email, IsLockedOut } = m
   acc[id] = {
-    email
+    email,
+    IsLockedOut
   }
   return acc
 }, {})
@@ -17,6 +19,12 @@ aspnetUsersyId = aspnetUsers.reduce((acc, m) => {
   acc[id] = {
     username
   }
+  return acc
+}, {})
+
+aspnetUsersInRolesById = aspnetUsersInRoles.reduce((acc, m) => {
+  const { UserId: id } = m
+  acc[id] = m
   return acc
 }, {})
 
@@ -46,12 +54,17 @@ const transformed = users.map(p => {
    const { username } = aspnetUser
 
    const aspnetMembership = aspnetMembershipById[id]
-   const { email } = aspnetMembership
+   const { email, IsLockedOut } = aspnetMembership
+
+   const admin = aspnetUsersInRolesById[id]
+   const isAdmin = !!admin
 
   return {
     id,
     username: stringOrNull(username),
     password: stringOrNull(username),
+
+    isActive: !stringToBool(IsLockedOut),
 
     firstName: stringOrNull(prenom),
     lastName: stringOrNull(nom),
@@ -77,6 +90,7 @@ const transformed = users.map(p => {
     mobile: stringOrNull(cellulaire),
     fax: stringOrNull(telecopieur),
 
+    isAdmin,
     isPathologist: stringToBool(est_pathologiste)
 
     // userId: id_utilisateur.trim(),

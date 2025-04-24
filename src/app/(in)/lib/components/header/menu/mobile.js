@@ -2,9 +2,9 @@
 import { useEffect, useCallback } from 'react'
 
 // import NextLink from 'next/link'
-import { useRouter, usePathname } from 'next/navigation'
+import { useRouter, usePathname, useSelectedLayoutSegment } from 'next/navigation'
 
-import { signOut } from 'next-auth/react'
+import { useSession, signOut } from 'next-auth/react'
 
 import { useToggle } from '@uidotdev/usehooks'
 
@@ -35,9 +35,11 @@ import UserParametersDialog from '../../../containers/user-parameters-dialog.js'
 const MobileMenu = ({ username, email }) => {
   const [on, toggle] = useToggle(false)
 
-  const pathname = usePathname()
-  const splitedPathname = pathname.split('/')
-  const secondPathSegment = splitedPathname.at(1)
+  const segment = useSelectedLayoutSegment()
+
+  const { data: session } = useSession()
+  const isAdmin = session?.user?.isAdmin
+  // const { user: { isAdmin } } = session
 
   const { ask: openParameters, dialog: parametersDialog } = useDialog(UserParametersDialog)
 
@@ -69,7 +71,7 @@ const MobileMenu = ({ username, email }) => {
       {parametersDialog}
 
       <Flex hideFrom='md'>
-        <IconButton variant='outline' rounded='full' size={['md', null, 'sm']} onClick={toggle}>
+        <IconButton variant={'solid'} rounded={'full'} colorPalette={'green'} size={['md', null, 'sm']} onClick={toggle}>
           {on ? <RxCross1 /> : <RxHamburgerMenu />}
         </IconButton>
         {on &&
@@ -86,11 +88,11 @@ const MobileMenu = ({ username, email }) => {
                 <VStack alignItems='stretch' justifyContent='center' px={0} gap={0}>
                   <Flex py={2} alignItems='center' justifyContent='space-between' onClick={() => handleLinkClick('donnees')}>
                     <Box>Base de données</Box>
-                    {(secondPathSegment === 'donnees') && <svg stroke='currentColor' fill='none' stroke-width='2' viewBox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' height='1em' width='1em' xmlns='http://www.w3.org/2000/svg'><polyline points='20 6 9 17 4 12' /></svg>}
+                    {(segment === 'donnees') && <svg stroke='currentColor' fill='none' stroke-width='2' viewBox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' height='1em' width='1em' xmlns='http://www.w3.org/2000/svg'><polyline points='20 6 9 17 4 12' /></svg>}
                   </Flex>
-                  <Flex py={2} alignItems='center' justifyContent='space-between' onClick={() => handleLinkClick('administration')}>
+                  <Flex py={2} alignItems='center' justifyContent='space-between' onClick={() => isAdmin && handleLinkClick('administration')} opacity={!isAdmin && 0.5}>
                     <Box>Administration</Box>
-                    {(secondPathSegment === 'administration') && <svg stroke='currentColor' fill='none' stroke-width='2' viewBox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' height='1em' width='1em' xmlns='http://www.w3.org/2000/svg'><polyline points='20 6 9 17 4 12' /></svg>}
+                    {(segment === 'administration') && <svg stroke='currentColor' fill='none' stroke-width='2' viewBox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' height='1em' width='1em' xmlns='http://www.w3.org/2000/svg'><polyline points='20 6 9 17 4 12' /></svg>}
                   </Flex>
                 </VStack>
                 <Separator />

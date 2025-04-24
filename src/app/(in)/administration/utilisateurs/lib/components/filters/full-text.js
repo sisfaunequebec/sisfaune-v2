@@ -16,9 +16,10 @@ const FullText = ({ onChange = () => null }) => {
 
   const handleChangeValue = useCallback(e => {
     const { target } = e
-    const { value } = target
-    setInternalValue(value)
-    onChange(value)
+    const { value: rawValue } = target
+    // const value = rawValue?.trim()
+    setInternalValue(rawValue)
+    onChange(rawValue)
   }, [setInternalValue, onChange])
 
   const handleClearValue = useCallback(() => {

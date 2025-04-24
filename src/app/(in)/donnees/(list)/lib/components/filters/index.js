@@ -73,12 +73,13 @@ const FiltersForm = async () => {
       <Separator />
 
       <SectionTitle label='Filtrer par groupe de spécimens :' />
-      <Section />
+      <Section>TODO</Section>
 
       <Separator />
 
       <SectionTitle label='Filtrer par date :' />
-      <Section><Dates /></Section>
+      <Section>TODO</Section>
+      {/* <Section><Dates /></Section> */}
 
     </Fieldset.Root>
   )

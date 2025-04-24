@@ -34,6 +34,7 @@ const tokens = defineTokens({
     }
   },
   cursor: {
+    checkbox: { value: 'pointer' },
     radio: { value: 'pointer' }
   }
 })

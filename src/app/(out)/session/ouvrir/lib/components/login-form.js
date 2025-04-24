@@ -25,7 +25,6 @@ const LoginForm = () => {
     const result = await signAction(data)
 
     const { errors } = result
-    // console.debug(errors)
     Object.entries(errors).forEach(([name, message]) => {
       setError(name, { type: 'server', message })
     })

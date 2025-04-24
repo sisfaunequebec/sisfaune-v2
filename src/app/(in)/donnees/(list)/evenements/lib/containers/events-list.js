@@ -29,17 +29,17 @@ const ItemEvenement = ({ id, silabId, mapaqId, typeName, programName, localityNa
         <VStack alignItems='flex-start' gap={0.4} flex={1}>
           <LinkOverlay asChild>
             <Flex as={NextLink} href={href} scroll={false} flex={1} color='green.600' _dark={{ color: 'green.200' }}>
-              <Text fontWeight={500}>Événement no {id}</Text>&nbsp;
-              {mapaqId && <Text>(MAPAQ {mapaqId})</Text>}
+              <Text fontWeight={500}>Événement&nbsp;{id}</Text>&nbsp;
+              {mapaqId && <Text>(MAPAQ&nbsp;{mapaqId})</Text>}
             </Flex>
           </LinkOverlay>
           <Flex fontWeight={500} color='fg.muted'>{programName}</Flex>
-          <Flex display={['none', null, null, 'inherit']}>Numéro SILAB : {silabId}</Flex>
+          <Flex display={['none', null, null, 'inherit']}>Numéro SILAB&nbsp;:&nbsp;{silabId}</Flex>
         </VStack>
         <VStack alignItems={['flex-start', null, null, 'flex-end']} gap={0.4} flex={1}>
-          <Flex display={['none', null, null, 'inherit']}>Soumis par : {submitterName}</Flex>
+          <Flex display={['none', null, null, 'inherit']}>Soumis par&nbsp;:&nbsp;{submitterName ?? 'indéterminé'}</Flex>
           <Flex color='blue.600'>Date du signalement : {reportingDate}</Flex>
-          <Flex display={['none', null, null, 'inherit']}>Municipalité : {localityName ?? 'indéterminée'}</Flex>
+          <Flex display={['none', null, null, 'inherit']}>Municipalité&nbsp;:&nbsp;{localityName ?? 'indéterminée'}</Flex>
         </VStack>
       </Stack>
       <IconButton as={NextLink} href={href} scroll colorPalette='green' variant='ghost' rounded='full' size={['xs']}><RxArrowRight /></IconButton>
@@ -97,7 +97,7 @@ const ListeEvenements = () => {
         )
       })}
       {/* <Flex flex={1} position={'absolute'} bottom={0} w={'full'} height={'300px'} maxH={'100vh'} border={'solid 1px red'} display={triggerIsVisible ? 'inherit' : 'none'} ref={inner} /> */}
-      {loadMoreButtonIsVisible && <Button mt={2} p={4} variant='surface' colorPalette='blue' onClick={isReachingEnd ? null : handleLoadMore} loading={isLoadingMore}>{loadMoreButtonLabel}</Button>}
+      {loadMoreButtonIsVisible && <Button mt={2} p={4} variant='surface' colorPalette='blue' onClick={isReachingEnd ? null : handleLoadMore} loading={isLoadingMore} disabled={isReachingEnd}>{loadMoreButtonLabel}</Button>}
     </VStack>
   )
 }

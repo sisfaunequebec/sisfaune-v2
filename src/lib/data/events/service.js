@@ -29,7 +29,13 @@ const getOrderByClause = (tri, direction) => {
 }
 
 const getEvents = async (params, context) => {
-  const { statut, programme, tri, direction, region, offset = 0, take = 25 } = params
+  const { statut, programme, tri, direction, region, texte: texteRaw, offset = 0, take = 25 } = params
+
+  const texte = texteRaw?.trim().length ? texteRaw?.trim() : undefined
+  // const textAsInt = parseInt(texte, 10)
+  const isTextNumber = isNaN(texte) ? false : true
+
+  // console.debug('getEvents', eventId)
 
   const whereClause = {
     statusId: statut ? { in: statut } : undefined,
@@ -38,7 +44,21 @@ const getEvents = async (params, context) => {
       locality: {
         regionId: region ? { in: region } : undefined
       }
-    }
+    },
+    OR: texte ? [
+      { id: isTextNumber ? parseInt(texte, 10) : undefined },
+      { silabId: texte ? { contains: texte, mode: 'insensitive' } : undefined },
+      { mapaqId: texte ? { contains: texte, mode: 'insensitive' } : undefined },
+      { pathologyNumber: texte ? { contains: texte, mode: 'insensitive' } : undefined },
+      { submitter: { lastName: texte ? { contains: texte, mode: 'insensitive' } : undefined } },
+      { submitter: { firstName: texte ? { contains: texte, mode: 'insensitive' } : undefined } },
+      { location: {
+          locality: {
+            name: texte ? { contains: texte, mode: 'insensitive' } : undefined
+          }
+        }
+      }
+    ] : undefined
   }
 
   const orderByClause = getOrderByClause(tri, direction)
@@ -60,17 +80,22 @@ const getEvents = async (params, context) => {
     take
   })
 
-  const payload = events.map(e => {
+  const count = await orm.Event.count({
+    where: whereClause
+  })
+
+  // console.debug(count)
+
+  const data = events.map(e => {
     const { id, silabId, mapaqId, reportedAt, type, program, submitter, location } = e
 
     const { name: typeName } = type
     const { name: programName } = program
-    const { name: submitterName } = submitter
-    const { locality } = location
 
+    const submitterName = [submitter?.firstName, submitter?.lastName].filter(Boolean).join(' ')
+
+    const locality = location?.locality
     const localityName = locality?.name
-
-    // const reportingDate = reportedAt ? DateTime.fromISO(reportedAt).toFormat('yyyy-LL-dd') : null
 
     return {
       id,
@@ -84,7 +109,7 @@ const getEvents = async (params, context) => {
     }
   })
 
-  return payload
+  return data
 }
 
 const getEvent = async (id, context) => {

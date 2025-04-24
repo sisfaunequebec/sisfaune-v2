@@ -36,39 +36,33 @@ const getActiveValue = (statut) => {
 }
 
 const getUsers = async (params, context) => {
-  const { statut, texte, tri, direction, offset = 0, take = 25 } = params
-  console.debug('getUsers', tri, direction)
+  const { statut, texte: texteRaw, tri, direction, offset = 0, take = 25 } = params
+
+  const texte = texteRaw?.trim().length ? texteRaw?.trim() : undefined
 
   const whereClause = {
     isActive: getActiveValue(statut),
     OR: texte ? [
-      { username: texte ? { contains: texte, mode: 'insensitive' } : undefined },
-      { email: texte ? { contains: texte, mode: 'insensitive' } : undefined },
-      { organisation: texte ? { contains: texte, mode: 'insensitive' } : undefined },
+      { username: { contains: texte, mode: 'insensitive' } },
+      { email: { contains: texte, mode: 'insensitive' } },
+      { organisation: { contains: texte, mode: 'insensitive' } },
     ] : undefined
   }
-// 
+
   const orderByClause = getOrderByClause(tri, direction)
 
   const users = await orm.User.findMany({
     where: whereClause,
-    // include: {
-    //   type: true,
-    //   program: true,
-    //   submitter: true,
-    //   location: {
-    //     include: {
-    //       locality: true
-    //     }
-    //   }
-    // },
+    include: {
+      // type: true
+    },
     orderBy: orderByClause,
     skip: (offset * take),
     take
   })
 
   const payload = users.map(u => {
-    const { id, username, firstName, lastName, email, organisation } = u
+    const { id, username, firstName, lastName, email, organisation, isActive } = u
     const fullName = [firstName, lastName].filter(Boolean).join(' ')
 
     return {
@@ -76,7 +70,8 @@ const getUsers = async (params, context) => {
       username,
       fullName: fullName.trim().length ? fullName : null,
       email,
-      organisation
+      organisation,
+      isActive
     }
   })
 

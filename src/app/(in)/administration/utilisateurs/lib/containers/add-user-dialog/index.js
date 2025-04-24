@@ -1,14 +1,14 @@
 'use client'
 import { useState } from 'react'
 
-import { DateTime } from 'luxon'
+// import { DateTime } from 'luxon'
 
 import generator from 'generate-password'
 
 import addUser from './action'
 
-import { Fieldset, Input, Separator, IconButton, useClipboard } from '@chakra-ui/react'
-import { RxCopy, RxCheckCircled } from 'react-icons/rx'
+import { Fieldset, Input, Button, Separator, IconButton, useClipboard } from '@chakra-ui/react'
+import { RxCopy, RxCheckCircled, RxCheck } from 'react-icons/rx'
 
 import BaseDialog from '@/app/lib/components/base-dialog'
 
@@ -21,9 +21,9 @@ const CopyPasswordButton = ({ password }) => {
   const clipboard = useClipboard({ value: password })
   const { copy, copied } = clipboard
   return (
-    <IconButton variant='ghost' size='xxs' rounded='full' onClick={copy}>
-      {copied ? <RxCheckCircled color='green' /> : <RxCopy />}
-    </IconButton>
+    <Button variant={'ghost'} size={'xxs'} rounded='full' onClick={copy} fontWeight={'normal'} color={copied && 'green'}>
+      {copied ? <>Copié{'\u00A0'}!</> : <RxCopy />}
+    </Button>
   )
 }
 

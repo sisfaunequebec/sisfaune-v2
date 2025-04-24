@@ -4,7 +4,7 @@ import { useController, useWatch } from 'react-hook-form'
 import Field from '@/app/lib/components/field'
 
 const ControlledField = ({ name, label, watches, children, ...rest }) => {
-  console.debug('ControlledField, name, control =>', name)
+  // console.debug('ControlledField, name, control =>', name)
   
   const {
     field,

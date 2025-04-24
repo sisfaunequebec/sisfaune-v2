@@ -1,11 +1,10 @@
 import NextAuth, { CredentialsSignin } from 'next-auth'
 import Credentials from 'next-auth/providers/credentials'
 
-import wait from '@/utilitaires/wait'
-
-import { USERS } from './mocks'
+// import wait from '@/utilitaires/wait'
 
 import orm from '../data/database'
+import { serialize } from 'v8'
 
 // class InvalidLoginError extends CredentialsSignin {
 //   code = "Invalid identifier or password"
@@ -23,6 +22,13 @@ const credentialsProvider = Credentials({
     const user = await orm.User.findFirst({ 
       where: {
         username
+      },
+      include: {
+        permissions: {
+          include: {
+            program: true
+          }
+        }
       }
     })
 
@@ -31,7 +37,7 @@ const credentialsProvider = Credentials({
       error.errors = { password: 'Ce nom d\'utilisateur ou ce mot de passe sont inconnus...' }
       throw error
     }
-
+    
     // const { password: userPassword } = user
 
     // if (userPassword !== password) {
@@ -40,12 +46,36 @@ const credentialsProvider = Credentials({
     //   throw error
     // }
 
-    const { name, email, firstName, lastName } = user
+    const { name, email, firstName, lastName, isAdmin, permissions: permissionsAsArray } = user
     const fullName = [firstName, lastName].filter(Boolean).join(' ')
+
+    // const permissionsByProgram = permissionsAsArray.reduce((acc, p) => {
+    //   const { program, programId, roleId: role, canSubmit } = p
+    //   const { name: programName } = program
+    //   acc[programId] = {
+    //     program: programName,
+    //     role,
+    //     canSubmit
+    //   }
+    //   return acc
+    // }, {})
+
+    const permissions = permissionsAsArray.map(p => {
+      const { program, programId, roleId: role, canSubmit } = p
+      const { name: programName } = program
+      return {
+        programId,
+        programName: programName,
+        role,
+        canSubmit
+      }
+    })
 
     return {
       fullName,
-      email
+      email,
+      isAdmin,
+      permissions
     }
 
     // if (process.env.NODE_ENV === 'development') {
@@ -82,12 +112,16 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       if (user) { // User is available during sign-in
         token.id = user.id
         token.fullName = user.fullName
+        token.isAdmin = user.isAdmin
+        token.permissions = user.permissions
       }
       return token
     },
     session({ session, token }) {
       session.user.id = token.id
       session.user.fullName = token.fullName
+      session.user.isAdmin = token.isAdmin
+      session.user.permissions = token.permissions
       return session
     }
   }

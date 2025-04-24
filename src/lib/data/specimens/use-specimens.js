@@ -14,7 +14,7 @@ import { searchParams, urlKeys } from './specimens-params'
 const serialize = createSerializer(searchParams, { urlKeys })
 const baseUrl = '/api/data/specimens'
 
-const useEvents = (params, take = 20) => {
+const useSpecimens = (params, take = 20) => {
   const result = useSWRInfinite(
     (pageIndex, previousPageData) => {
       if (previousPageData && !previousPageData.length) return null
@@ -41,4 +41,4 @@ const useEvents = (params, take = 20) => {
   }
 }
 
-export default useEvents
+export default useSpecimens

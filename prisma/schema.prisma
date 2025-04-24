@@ -43,10 +43,13 @@ model User {
   mobile String? @map(name: "cellulaire")
   fax String? @map(name: "telecopieur")
 
+  isAdmin Boolean @default(false) @map(name: "est_admin")
   isPathologist Boolean @default(false) @map(name: "est_pathologiste")
 
   createdAt DateTime @default(now()) @map(name: "meta_date_creation")
   updatedAt DateTime @updatedAt @map(name: "meta_date_maj")
+  
+  permissions AdminUserProgram[]
 
   accounts Account[]
   sessions Session[]
@@ -639,21 +642,22 @@ model Event {
   mapaqId String? @map(name: "no_mapaq")
   cqsasIncidentNumber String? @map(name: "no_incident_cqsas")
 
+  // Submission
+  submitterId String @map(name: "id_soumissionnaire")
+  submitter User @relation("EventSubmitter", fields: [submitterId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+
   // Discovery
   discovererId Int? @map(name: "id_decouvreur")
   discoverer Discoverer? @relation(fields: [discovererId], references: [id], onDelete: Restrict, onUpdate: Restrict)
   discoveredAt DateTime? @db.Date @map(name: "date_decouverte")
 
+  isDiscovererSameAsSubmitter Boolean @default(false) @map(name: "decouvreur_idem_soumissionnaire")
+
+
   reportedAt DateTime? @db.Date @map(name: "date_signalement")
   collectedAt DateTime? @db.Date @map(name: "date_recolte")
 
   closedAt DateTime? @db.Date @map("date_fermeture_dossier")
-
-  // Submission
-  submitterId String? @map(name: "id_soumissionnaire")
-  submitter User? @relation("EventSubmitter", fields: [submitterId], references: [id], onDelete: Restrict, onUpdate: Restrict)
-
-  isDiscovererSameAsSubmitter Boolean @default(false) @map(name: "decouvreur_idem_soumissionnaire")
 
   hadHumanContact Boolean @default(false) @map(name: "contact_humain")
   hadAnimalContact Boolean @default(false) @map(name: "contact_animal")
@@ -732,7 +736,7 @@ model Event {
   // Relations
   specimens Specimen[]
   labEvents LabEvent[]
-  // location Location @relation(fields: [id], references: [eventId])
+  location Location?
 }
 
 enum LocationType {
@@ -762,11 +766,10 @@ model Location {
 
   locality LutLocality? @relation(fields: [localityId], references: [id])
 
-  // event Event?
+  event Event @relation(fields: [eventId], references: [id])
 }
 
 enum AdminRole {
-  base
   soumissionnaire
   gestion
   laboratoire
@@ -779,12 +782,12 @@ model AdminUserProgram {
   @@id([userId, programId])
   userId String @map(name: "id_utilisateur")
   programId Int @map(name: "id_programme")
-  roleId AdminRole @map(name: "id_role")
+  roleId AdminRole? @map(name: "id_role")
   canSubmit Boolean @map(name: "peut_soumettre") @default(false)
 
   // Relations
   program LutEventProgram @relation(fields: [programId], references: [id], onDelete: Restrict, onUpdate: Restrict)
-
+  user User @relation(fields: [userId], references: [id], onDelete: Restrict, onUpdate: Restrict)
 }
 
 // MODELS TODO :

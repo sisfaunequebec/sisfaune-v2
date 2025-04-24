@@ -7,6 +7,8 @@ import { useWindowScroll } from '@uidotdev/usehooks'
 import { Flex, Container, IconButton, HStack } from '@chakra-ui/react'
 import { RxPlus, RxDownload, RxMagnifyingGlass } from 'react-icons/rx'
 
+import { canUserSubmitEvent } from '@/lib/auth/acl'
+
 import useDialog from '@/utilitaires/use-dialog'
 
 import ResponsiveButton from '@/app/lib/components/responsive-button'
@@ -52,11 +54,11 @@ const DownloadButton = () => {
   )
 }
 
-const Toolbar = () => {
+const Toolbar = ({ user }) => {
   const [{ y }] = useWindowScroll()
+  const canSubmitEvent = canUserSubmitEvent(user)
 
   const toolbarShadowSize = y > 70 ? 'md' : null
-  // const paddingTop = y > 70 ? 2 : null
 
   return (
     <Flex
@@ -79,7 +81,7 @@ const Toolbar = () => {
 
             <HStack justifyContent='space-between' gap={2}>
               <DownloadButton />
-              <NewEventButton />
+              { canSubmitEvent && <NewEventButton /> }
             </HStack>
 
           </HStack>

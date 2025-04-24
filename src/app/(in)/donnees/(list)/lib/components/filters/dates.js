@@ -47,7 +47,7 @@ const Dates = ({ }) => {
     })
   }, [values, setValues])
 
-  console.debug(values)
+  // console.debug(values)
   // const [value, setValue] = useQueryState('s', parseAsArrayOf(parseAsInteger).withDefault([]))
 
   // const choices = useMemo(() => {

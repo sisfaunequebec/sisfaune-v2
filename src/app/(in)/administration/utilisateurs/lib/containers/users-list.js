@@ -65,12 +65,12 @@ const UsersList = () => {
   const result = useUsers(params, PAGE_SIZE)
   const { data = [], isLoading, size, setSize } = result
 
-  // const handleLoadMore = useCallback(() => {
-  //   if (isLoading) {
-  //     return
-  //   }
-  //   setSize(size + 1)
-  // }, [setSize, size, isLoading])
+  const handleLoadMore = useCallback(() => {
+    if (isLoading) {
+      return
+    }
+    setSize(size + 1)
+  }, [setSize, size, isLoading])
 
   // const data = [
   //   { id: 1, username: 'admin', fullName: 'Administrateur du système', email: 'admin@sisfaunequebec.ca', organisation: 'MAPAQ', isActive: true }
@@ -79,9 +79,9 @@ const UsersList = () => {
   const users = data ? [].concat(...data) : []
   const total = users.length
 
-  const isLoadingMore = false // isLoading || (size > 0 && data && typeof data[size - 1] === 'undefined')
-  // const isEmpty = data?.[0]?.length === 0
-  // const isReachingEnd = isEmpty || (data && data[data.length - 1]?.length < PAGE_SIZE)
+  const isLoadingMore = isLoading || (size > 0 && data && typeof data[size - 1] === 'undefined')
+  const isEmpty = data?.[0]?.length === 0
+  const isReachingEnd = isEmpty || (data && data[data.length - 1]?.length < PAGE_SIZE)
 
   // useEffect(() => {
   //   // console.debug('useEffect', inView, isLoadingMore, size)
@@ -92,10 +92,10 @@ const UsersList = () => {
   //   }, 500)
   // }, [inView, size, isLoadingMore, handleLoadMore])
 
-  // const loadMoreButtonLabel = [`Événements 1 à ${total} `, (isReachingEnd ? null : 'Cliquer pour charger la suite')].filter(Boolean).join(' - ')
+  const loadMoreButtonLabel = [`Utilisateurs 1 à ${total} `, (isReachingEnd ? null : 'Cliquer pour charger la suite')].filter(Boolean).join(' - ')
 
-  // const loadMoreButtonIsVisible = events.length > 0
-  // const triggerIsVisible = (!isLoadingMore && !isReachingEnd)
+  const loadMoreButtonIsVisible = users.length > 0
+  const triggerIsVisible = (!isLoadingMore && !isReachingEnd)
   // console.debug(isReachingEnd, isLoadingMore, triggerIsVisible)
 
   const handleEditUser = useCallback(async (id) => {
@@ -116,7 +116,7 @@ const UsersList = () => {
           )
         })}
         {/* <Flex flex={1} position={'absolute'} bottom={0} w={'full'} height={'300px'} maxH={'100vh'} border={'solid 1px red'} display={triggerIsVisible ? 'inherit' : 'none'} ref={inner} /> */}
-        {/* { loadMoreButtonIsVisible && <Button mt={2} p={4} variant={'surface'} colorPalette={'blue'} onClick={isReachingEnd ? null : handleLoadMore} loading={isLoadingMore}>{loadMoreButtonLabel}</Button> } */}
+        { loadMoreButtonIsVisible && <Button mt={2} p={4} variant={'surface'} colorPalette={'blue'} onClick={isReachingEnd ? null : handleLoadMore} loading={isLoadingMore} disabled={isReachingEnd}>{loadMoreButtonLabel}</Button> }
       </VStack>
     </>
   )

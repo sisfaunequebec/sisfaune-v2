@@ -3,7 +3,6 @@ const source = require('./sources/admin_x_utilisateur_programme.json')
 const { stringToBool } = require('./utils')
 
 const rolesByLegacyId = {
-  0: 'base',
   1: 'soumissionnaire',
   100: 'gestion',
   101: 'laboratoire',
@@ -15,7 +14,7 @@ const transformed = source.map(p => {
   return {
     userId: id_utilisateur.trim(),
     programId: parseInt(id_programme, 10),
-    roleId: rolesByLegacyId[parseInt(id_role, 10)],
+    roleId: parseInt(id_role, 10) === 0 ? null : rolesByLegacyId[parseInt(id_role, 10)],
     canSubmit: stringToBool(peut_soumettre)
   }
 })

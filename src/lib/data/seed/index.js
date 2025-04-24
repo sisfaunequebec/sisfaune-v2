@@ -61,10 +61,11 @@ async function main () {
 
     orm.Collaborator.createMany({ data: dataCollaborators }),
 
+    orm.User.createMany({ data: adminUsers }),
+
     orm.Event.createMany({ data: dataEvents }),
     orm.Location.createMany({ data: dataLocations }),
 
-    orm.User.createMany({ data: adminUsers }),
     orm.AdminUserProgram.createMany({ data: adminUserPrograms })
 
     // orm.$executeRaw`UPDATE lut_muni_geom SET geom = ST_GeomFromText(geom_wkt);`

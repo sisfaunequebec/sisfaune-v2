@@ -34,6 +34,7 @@ const transformed = source.map(p => {
     date_recolte,
     date_fermeture_dossier,
 
+    id_soumissionnaire,
     decouvreur_idem_soumissionnaire,
 
     contact_humain,
@@ -109,14 +110,14 @@ const transformed = source.map(p => {
     mapaqId: stringOrNull(no_mapaq),
     cqsasIncidentNumber: stringOrNull(no_incident_cqsas),
 
-    discovererId: null, // TODO: discovererId
+    discovererId: null, // stringOrNull(id_decouvreur), // TODO: discovererId
     discoveredAt: dateOrNull(date_decouverte),
 
     reportedAt: dateOrNull(date_signalement),
     collectedAt: dateOrNull(date_recolte),
     closedAt: dateOrNull(date_fermeture_dossier),
 
-    submitterId: null, // TODO: submitterId
+    submitterId: stringOrNull(id_soumissionnaire), // TODO: submitterId
     isDiscovererSameAsSubmitter: stringToBool(decouvreur_idem_soumissionnaire),
 
     hadHumanContact: stringToBool(contact_humain),
@@ -172,7 +173,7 @@ const transformed = source.map(p => {
     sourcePk: parseInt(pk_source, 10),
 
     createdAt: dateOrNull(meta_date_creation),
-    createdById: null // stringOrNull(meta_creation_par) // TODO: createdById NOT NULL
+    createdById: stringOrNull(meta_creation_par) // TODO: createdById NOT NULL
   }
 })
 

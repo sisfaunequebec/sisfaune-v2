@@ -1,9 +1,14 @@
+import { auth } from '@/lib/auth'
+
 import Toolbar from './lib/components/toolbar'
 
-const ListLayout = ({ children }) => {
+const ListLayout = async ({ children }) => {
+  const session = await auth()
+  const { user } = session
+
   return (
     <>
-      <Toolbar />
+      <Toolbar user={user} />
       {children}
     </>
   )

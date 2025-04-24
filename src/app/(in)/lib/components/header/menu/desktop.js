@@ -1,9 +1,9 @@
 'use client'
 import { useCallback } from 'react'
 
-import { useRouter, usePathname } from 'next/navigation'
+import { useRouter, usePathname, useSelectedLayoutSegment } from 'next/navigation'
 
-import { signOut } from 'next-auth/react'
+import { useSession, signOut } from 'next-auth/react'
 
 import { Box, Flex, VStack, Button, Menu, IconButton } from '@chakra-ui/react'
 
@@ -27,9 +27,15 @@ import useDialog from '@/utilitaires/use-dialog'
 import UserParametersDialog from '../../../containers/user-parameters-dialog.js'
 
 const DesktopMenu = ({ username, email }) => {
-  const pathname = usePathname()
-  const splitedPathname = pathname.split('/')
-  const secondPathSegment = splitedPathname.at(1)
+  // const pathname = usePathname()
+  // const splitedPathname = pathname.split('/')
+  // const secondPathSegment = splitedPathname.at(1)
+
+  const segment = useSelectedLayoutSegment()
+  // console.debug(segment)
+
+  const { data: session } = useSession()
+  const isAdmin = session?.user?.isAdmin
 
   // const dialogs = []
 
@@ -57,11 +63,8 @@ const DesktopMenu = ({ username, email }) => {
 
       <Flex hideBelow='md'>
         <Menu.Root positioning={{ placement: 'bottom-end' }} size={'md'} lazyMount>
-          <Menu.Trigger>
-            <IconButton colorPalette='green' variant='solid' rounded='full' size={['md', null, 'sm']}>
-              <RxHamburgerMenu />
-            </IconButton>
-            {/* <Avatar name={username} colorPalette='green' size={['md', null, 'sm']} variant='solid' cursor='pointer' /> */}
+          <Menu.Trigger as={IconButton} colorPalette='green' variant='solid' rounded='full' size={['md', null, 'sm']}>
+            <RxHamburgerMenu />
           </Menu.Trigger>
           <MenuContent minW={60} hideBelow='md' mt={4} isolation='isolate' isolate='isolate' _hover={{ bg: 'white' }}>
             <Menu.Item cursor='default' value='info' _hover={{ bg: 'white' }}>
@@ -71,9 +74,9 @@ const DesktopMenu = ({ username, email }) => {
               </VStack>
             </Menu.Item>
             <Menu.Separator />
-            <MenuRadioItemGroup value={secondPathSegment} onValueChange={handleMenuRadioItemGroupChange}>
+            <MenuRadioItemGroup value={segment} onValueChange={handleMenuRadioItemGroupChange}>
               <MenuRadioItem value='donnees'>Base de données</MenuRadioItem>
-              <MenuRadioItem value='administration'>Administration</MenuRadioItem>
+              <MenuRadioItem value='administration' disabled={!isAdmin}>Administration</MenuRadioItem>
             </MenuRadioItemGroup>
             <Menu.Separator />
             <Menu.Item onClick={handleModifyParameters} value='params'>
