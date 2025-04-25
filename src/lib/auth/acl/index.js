@@ -1,21 +1,21 @@
-const isUserAdmin = (userPermissions) => {
-  if (!userPermissions) {
+const isUserAdmin = (user) => {
+  if (!user) {
     return false
   }
 
-  return userPermissions.isAdmin
+  return user.isAdmin
 }
 
 const canUserExport = () => {
   return true
 }
 
-const canUserSubmitEvent = (userPermissions) => {
-  if (!userPermissions) {
+const canUserSubmitEvent = (user) => {
+  if (!user) {
     return false
   }
 
-  const { permissions = [] } = userPermissions
+  const { permissions = [] } = user
 
   const can = permissions.some(p => p.canSubmit === true)
   return can
@@ -23,7 +23,7 @@ const canUserSubmitEvent = (userPermissions) => {
 
 const filterViewablePrograms = (p) => {
   const { role } = p
-  return !!role
+  return role !== null
 }
 
 const filterSubmitablePrograms = (p) => {
@@ -31,26 +31,24 @@ const filterSubmitablePrograms = (p) => {
   return canSubmit
 }
 
-const canUserViewProgram = (userPermissions, programId) => {
-  if (!userPermissions) {
+const canUserViewProgram = (user, programId) => {
+  if (!user) {
     return false
   }
 
-  const { permissions = [] } = userPermissions
-  
+  const { permissions = [] } = user
   const viewableProgramIds = permissions.filter(filterViewablePrograms).map(p => p.programId)
 
   const can = viewableProgramIds.includes(programId)
   return can
 }
 
-const canUserSubmitInProgram = (userPermissions, programId) => {
-  if (!userPermissions) {
+const canUserSubmitInProgram = (user, programId) => {
+  if (!user) {
     return false
   }
 
-  const { permissions = [] } = userPermissions
-  
+  const { permissions = [] } = user
   const viewableProgramIds = permissions.filter(filterSubmitablePrograms).map(p => p.programId)
 
   const can = viewableProgramIds.includes(programId)

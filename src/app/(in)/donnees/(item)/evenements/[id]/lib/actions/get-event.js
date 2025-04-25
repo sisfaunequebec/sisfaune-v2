@@ -1,7 +1,17 @@
 'use server'
+import 'server-only'
+
 import orm from '@/lib/data/database'
 
+import { canUserViewProgram } from '@/lib/auth/acl'
+
 const getEvent = async (id, context) => {
+  const { user } = context
+
+  if (!user) {
+    return
+  }
+
   const event = await orm.Event.findUnique({
     where: {
       id
@@ -34,6 +44,13 @@ const getEvent = async (id, context) => {
       labEvents: true
     }
   })
+
+  const { programId } = event
+
+  if (!canUserViewProgram(user, programId)) {
+    return null
+  }
+
   return event
 }
 

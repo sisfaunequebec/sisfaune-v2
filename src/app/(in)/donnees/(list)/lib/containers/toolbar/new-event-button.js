@@ -7,13 +7,13 @@ import useDialog from '@/utilitaires/use-dialog'
 
 import ResponsiveButton from '@/app/lib/components/responsive-button'
 
-import AddEventDialog from '../../../evenements/lib/containers/add-event-dialog'
+import AddEventDialog from './add-event-dialog'
 
-const NewEventButton = () => {
+const NewEventButton = ({ programs }) => {
   const { ask: createEvent, dialog: createEventDialog } = useDialog(AddEventDialog)
 
   const handleCreate = useCallback(async () => {
-    const result = await createEvent()
+    const result = await createEvent({ programs })
     if (result) {
       console.debug('Create !!!')
     }

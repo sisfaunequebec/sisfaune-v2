@@ -1,0 +1,27 @@
+[
+  {
+    "id": "0",
+    "unite": " ",
+    "facteur_conversion": "0"
+  },
+  {
+    "id": "1",
+    "unite": "mg",
+    "facteur_conversion": "0.000001"
+  },
+  {
+    "id": "2",
+    "unite": "g",
+    "facteur_conversion": "0.001"
+  },
+  {
+    "id": "3",
+    "unite": "kg",
+    "facteur_conversion": "1"
+  },
+  {
+    "id": "4",
+    "unite": "tonne métrique",
+    "facteur_conversion": "1000"
+  }
+]

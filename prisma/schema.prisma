@@ -437,7 +437,7 @@ model LutWeighUnit {
 
   id Int @id @db.SmallInt
   name String @map(name: "nom")
-  conversionFartor Float @map(name: "facteur_conversion")
+  conversionFactor Float @map(name: "facteur_conversion")
 
   specimens Specimen[]
 }
@@ -564,12 +564,12 @@ model Specimen {
   identifier String? @map(name: "identifie_par") // TODO : TOUJOURS VIDE
   identificationMarks String? @map(name: "marques_identification") 
 
-  specieId Int @db.SmallInt @map(name: "id_animal_espece") @default(0)
-  ageId Int? @db.SmallInt @map(name: "id_animal_age") @default(0)
-  sexId Int @db.SmallInt @map(name: "id_animal_sexe") @default(0)
+  specieId Int? @db.SmallInt @map(name: "id_animal_espece")
+  ageId Int? @db.SmallInt @map(name: "id_animal_age") // @default(0) // 0 requis => valeur CSSSF
+  sexId Int? @db.SmallInt @map(name: "id_animal_sexe")
 
   weight Decimal? @db.Decimal(10, 3) @map(name: "poids")
-  weightUnitId Int? @db.SmallInt @map(name: "id_poids_unite") @default(0)
+  weightUnitId Int? @db.SmallInt @map(name: "id_poids_unite")
 
   // Euthanasia - merged from legacy table "euthanasie"
   euthanasiaMethodId Int? @map(name: "id_euthanasie_methode")
@@ -582,9 +582,9 @@ model Specimen {
   euthanasiaOrganisationId Int? @map(name: "id_euthanasie_organisme")
   euthanasiaOrganisation LutEuthanasiaOrganisation? @relation(fields: [euthanasiaOrganisationId], references: [id], onDelete: Restrict, onUpdate: Restrict)
 
-  discoveryStateId Int? @db.SmallInt @map(name: "id_etat_decouverte") @default(0)
-  deathCauseId Int @db.SmallInt @map(name: "id_cause_mort") @default(0)
-  preservationMethodId Int @db.SmallInt @map(name: "id_methode_conservation") @default(0)
+  discoveryStateId Int? @db.SmallInt @map(name: "id_etat_decouverte")
+  deathCauseId Int @db.SmallInt @map(name: "id_cause_mort") @default(0) // 0 requis => valeur CSSSF
+  preservationMethodId Int @db.SmallInt @map(name: "id_methode_conservation") @default(0) // 0 requis => valeur CSSSF
 
   notes String? @map(name: "remarques")
   keywords String? @map(name: "motcles")
@@ -594,7 +594,7 @@ model Specimen {
 
   // Relations
   event Event @relation(fields: [eventId], references: [id], onDelete: Restrict, onUpdate: Restrict)
-  specie LutAnimalSpecie @relation(fields: [specieId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+  specie LutAnimalSpecie? @relation(fields: [specieId], references: [id], onDelete: Restrict, onUpdate: Restrict)
   age LutAnimalAge? @relation(fields: [ageId], references: [id], onDelete: Restrict, onUpdate: Restrict)
   sex LutAnimalSex? @relation(fields: [sexId], references: [id], onDelete: Restrict, onUpdate: Restrict)
   weightUnit LutWeighUnit? @relation(fields: [weightUnitId], references: [id], onDelete: Restrict, onUpdate: Restrict)

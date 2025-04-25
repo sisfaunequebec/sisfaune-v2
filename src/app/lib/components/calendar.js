@@ -6,7 +6,6 @@ import { VStack, HStack, IconButton, Text, SimpleGrid, Button } from '@chakra-ui
 import { RxDoubleArrowLeft, RxChevronLeft, RxChevronRight, RxDoubleArrowRight } from 'react-icons/rx'
 
 const Calendar = ({ value, onSelect }) => {
-
   const initialState = value ? [value] : []
   const [selectedDates, onDatesChange] = useState(initialState)
 

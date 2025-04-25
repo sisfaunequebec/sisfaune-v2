@@ -1,6 +1,6 @@
-import { auth } from '@/lib/auth'
-
 import orm from '@/lib/data/database'
+
+import getUser from '@/lib/auth/get-user'
 
 import { getViewableProgramsForUser } from '@/lib/data/lookups/event-programs'
 
@@ -38,8 +38,7 @@ const Separator = () => {
 }
 
 const FiltersForm = async () => {
-  const session = await auth()
-  const { user } = session
+  const user = await getUser()
 
   const programs = await getViewableProgramsForUser(user)
   const statuts = await orm.LutEventStatus.findMany()

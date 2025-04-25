@@ -12,11 +12,11 @@ const lutPreservationMethods = require('./lut-preservation-methods')
 const lutDiscoveryStates = require('./lut-discovery-states')
 const lutEventTypes = require('./lut-event-types')
 const labShippingMethods = require('./lut-lab-shipping-methods')
-const lutAnalysisSectors = require('./lut-analysis-sector')
+const lutAnalysisSectors = require('./lut-analysis-sectors')
 const lutSampleTypes = require('./lut-sample-types')
 const lutHabitatTypes = require('./lut-habitat-types')
-const lutLocalities = require('./lut-locality')
-const lutLocalitiesGeom = require('./lut-locality-geom')
+const lutLocalities = require('./lut-localities')
+const lutLocalityGeom = require('./lut-locality-geoms')
 const lutEuthanasiaOrganisations = require('./lut-euthanasia-organisations')
 const lutLaboratories = require('./lut-laboratories')
 const lutReportOrigins = require('./lut-report-origins')
@@ -28,6 +28,10 @@ const dataLocations = require('./data-locations')
 
 const adminUsers = require('./admin-users')
 const adminUserPrograms = require('./admin-user-programs')
+
+const lutWeightUnits = require('./lut-weight-units')
+
+const dataSpecimens = require('./data-specimens')
 
 async function main () {
   // await orm.$executeRaw`CREATE EXTENSION postgis;`
@@ -51,7 +55,7 @@ async function main () {
     orm.LutHabitatType.createMany({ data: lutHabitatTypes }),
 
     orm.LutLocality.createMany({ data: lutLocalities }),
-    orm.LutLocalityGeometry.createMany({ data: lutLocalitiesGeom }),
+    orm.LutLocalityGeometry.createMany({ data: lutLocalityGeom }),
 
     orm.LutEuthanasiaOrganisation.createMany({ data: lutEuthanasiaOrganisations }),
     orm.LutLaboratory.createMany({ data: lutLaboratories }),
@@ -66,7 +70,11 @@ async function main () {
     orm.Event.createMany({ data: dataEvents }),
     orm.Location.createMany({ data: dataLocations }),
 
-    orm.AdminUserProgram.createMany({ data: adminUserPrograms })
+    orm.AdminUserProgram.createMany({ data: adminUserPrograms }),
+
+    orm.LutWeighUnit.createMany({ data: lutWeightUnits }),
+
+    orm.Specimen.createMany({ data: dataSpecimens })
 
     // orm.$executeRaw`UPDATE lut_muni_geom SET geom = ST_GeomFromText(geom_wkt);`
   ])

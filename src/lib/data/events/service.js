@@ -28,15 +28,26 @@ const getOrderByClause = (tri, direction) => {
   return orderByClause
 }
 
-const getWhereClauseFromParams = (params) => {
+const filterViewablePrograms = (p) => {
+  const { role } = p
+  return !!role
+}
+
+const getWhereClauseFromParams = (params, context) => {
   const { statut, programme, tri, direction, region, texte: texteRaw } = params
+  const { user } = context
+
+  const { permissions } = user
+  const viewableProgramIds = permissions.filter(filterViewablePrograms).map(p => p.programId)
 
   const texte = texteRaw?.trim().length ? texteRaw?.trim() : undefined
   const isTextNumber = isNaN(texte) ? false : true
 
+  const programsIds = programme ? programme : viewableProgramIds
+
   const whereClause = {
     statusId: statut ? { in: statut } : undefined,
-    programId: programme ? { in: programme } : undefined,
+    programId: { in: programsIds },
     location: {
       locality: {
         regionId: region ? { in: region } : undefined
@@ -61,8 +72,15 @@ const getWhereClauseFromParams = (params) => {
   return whereClause
 }
 
-const getEventsCount = async (params, context) => {
-  const whereClause = getWhereClauseFromParams(params)
+const getEventsCount = async (params, context = {}) => {
+  const { user } = context
+
+  if (!user) {
+    return []
+  }
+
+  const whereClause = getWhereClauseFromParams(params, context)
+
   const count = await orm.Event.count({
     where: whereClause
   })
@@ -70,37 +88,15 @@ const getEventsCount = async (params, context) => {
   return count
 }
 
-const getEvents = async (params, context) => {
+const getEvents = async (params, context = {}) => {
   const { tri, direction, offset = 0, take = 25 } = params
+  const { user } = context
 
-  // const texte = texteRaw?.trim().length ? texteRaw?.trim() : undefined
-  // const isTextNumber = isNaN(texte) ? false : true
+  if (!user) {
+    return []
+  }
 
-  // const whereClause = {
-  //   statusId: statut ? { in: statut } : undefined,
-  //   programId: programme ? { in: programme } : undefined,
-  //   location: {
-  //     locality: {
-  //       regionId: region ? { in: region } : undefined
-  //     }
-  //   },
-  //   OR: texte ? [
-  //     { id: isTextNumber ? parseInt(texte, 10) : undefined },
-  //     { silabId: texte ? { contains: texte, mode: 'insensitive' } : undefined },
-  //     { mapaqId: texte ? { contains: texte, mode: 'insensitive' } : undefined },
-  //     { pathologyNumber: texte ? { contains: texte, mode: 'insensitive' } : undefined },
-  //     { submitter: { lastName: texte ? { contains: texte, mode: 'insensitive' } : undefined } },
-  //     { submitter: { firstName: texte ? { contains: texte, mode: 'insensitive' } : undefined } },
-  //     { location: {
-  //         locality: {
-  //           name: texte ? { contains: texte, mode: 'insensitive' } : undefined
-  //         }
-  //       }
-  //     }
-  //   ] : undefined
-  // }
-
-  const whereClause = getWhereClauseFromParams(params)
+  const whereClause = getWhereClauseFromParams(params, context)
   const orderByClause = getOrderByClause(tri, direction)
 
   const events = await orm.Event.findMany({

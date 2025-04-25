@@ -1,5 +1,4 @@
 'use client'
-
 import { useEffect, useCallback, useRef } from 'react'
 import { useIntersectionObserver } from '@react-hooks-library/core'
 
@@ -7,7 +6,7 @@ import { DateTime } from 'luxon'
 
 import NextLink from 'next/link'
 
-import { Flex, Box, Stack, VStack, Text, IconButton, LinkOverlay } from '@chakra-ui/react'
+import { Flex, Box, Stack, VStack, Text, IconButton, LinkOverlay, EmptyState } from '@chakra-ui/react'
 import { Button } from '@/app/lib/components/ui/button'
 import { RxArrowRight } from 'react-icons/rx'
 
@@ -20,6 +19,24 @@ import { searchParams, urlKeys } from '@/lib/data/events/events-params'
 
 import { LinkListWrapper } from '@/app/(in)/lib/components/list'
 
+const NoEvents = () => {
+    return (
+      <EmptyState.Root size={['md']} p={0} alignSelf={'center'} justifySelf={'center'}>
+        <EmptyState.Content gap={4}>
+          <EmptyState.Indicator>
+            {/* <RxExclamationTriangle /> */}
+          </EmptyState.Indicator>
+          <VStack textAlign={'center'}>
+            <EmptyState.Title fontSize={['2xl', null, 'xl']}>Désolé !</EmptyState.Title>
+            <EmptyState.Description fontSize={['lg', null, 'md']}>
+              Aucun événement ne correspond au critères
+            </EmptyState.Description>
+          </VStack>
+        </EmptyState.Content>
+      </EmptyState.Root>
+    )
+}
+
 const ItemEvenement = ({ id, silabId, mapaqId, typeName, programName, localityName, submitterName, reportedAt }) => {
   const href = `/donnees/evenements/${id}`
 
@@ -30,16 +47,16 @@ const ItemEvenement = ({ id, silabId, mapaqId, typeName, programName, localityNa
       <Stack flex={1} direction={['column', null, null, 'row']} gap={[0.4, null, null, 1]}>
         <VStack alignItems='flex-start' gap={0.4} flex={1}>
           <LinkOverlay asChild>
-            <Flex as={NextLink} href={href} scroll={false} flex={1} color='green.600' _dark={{ color: 'green.200' }}>
+            <Flex as={NextLink} href={href} scroll={false} flex={1} color={'green.600'} _dark={{ color: 'green.200' }}>
               <Text fontWeight={500}>Événement&nbsp;{id}</Text>&nbsp;
               {mapaqId && <Text>(MAPAQ&nbsp;{mapaqId})</Text>}
             </Flex>
           </LinkOverlay>
-          <Flex fontWeight={500} color='fg.muted'>{programName}</Flex>
+          <Flex fontWeight={500} color={'fg.muted'}>{programName}</Flex>
           <Flex display={['none', null, null, 'inherit']}>Numéro SILAB&nbsp;:&nbsp;{silabId}</Flex>
         </VStack>
         <VStack alignItems={['flex-start', null, null, 'flex-end']} gap={0.4} flex={1}>
-          <Flex as={Text} display={['none', null, null, 'inherit']} textAlign={'end'} truncate>{localityName ?? 'indéterminée'}</Flex>
+          <Flex as={Text} display={['none', null, null, 'inherit']} textAlign={'end'} truncate>{localityName ?? 'Localisation indéterminée'}</Flex>
           <Flex display={['none', null, null, 'inherit']}>Soumis par&nbsp;:&nbsp;{submitterName ?? 'indéterminé'}</Flex>
           <Flex color='blue.600'>Date du signalement : {reportingDate}</Flex>
         </VStack>
@@ -92,8 +109,14 @@ const ListeEvenements = () => {
   const triggerIsVisible = (!isLoadingMore && !isReachingEnd)
   // console.debug(isReachingEnd, isLoadingMore, triggerIsVisible)
 
+  if (!isLoadingMore && count === 0) {
+    return (
+      <NoEvents />
+    )
+  }
+
   return (
-    <VStack position='relative' alignItems='stretch' flex={1} gap={0} justifyContent='stretch' opacity={isLoadingMore && 0.5} mb={2}>
+    <VStack position={'relative'} alignItems={'stretch'} justifyContent={'stretch'} flex={1} gap={0} opacity={isLoadingMore && 0.5} mb={2}>
       {events.map(event => {
         const { id } = event
         return (

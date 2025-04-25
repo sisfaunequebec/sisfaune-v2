@@ -26,11 +26,11 @@ const getActivePrograms = async () => {
 
 const getViewableProgramsForUser = async (user) => {
   const programs = await getAllPrograms()
-  const activeProgramsForUser = programs
+  const viewableProgramsForUser = programs
     .filter(p => p.isActive)
     .filter(p => canUserViewProgram(user, p.id))
     .map(p => toChoicesViewModel(p))
-  return activeProgramsForUser
+  return viewableProgramsForUser
 }
 
 const getSubmitableProgramsForUser = async (user) => {

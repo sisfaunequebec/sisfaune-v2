@@ -26,7 +26,7 @@ const EditableDateField = ({ label, value, onChange }) => {
   }, [setOpen, onChange])
 
   return (
-    <PopoverRoot lazyMount unmountOnExit open={open} onOpenChange={(e) => setOpen(e.open)} positioning={{ placement: 'bottom-start' }}>
+    <PopoverRoot modal lazyMount unmountOnExit open={open} onOpenChange={(e) => setOpen(e.open)} positioning={{ placement: 'bottom-start' }}>
       <PopoverTrigger asChild>
         <Field label={label}>
           <InputGroup startElement={<RxCalendar />} flex={1}>
@@ -36,7 +36,7 @@ const EditableDateField = ({ label, value, onChange }) => {
       </PopoverTrigger>
       <PopoverContent>
         <PopoverBody>
-          <Calendar value={value} onSelect={handleSelect} />
+          {/* <Calendar value={value} onSelect={handleSelect} /> */}
         </PopoverBody>
       </PopoverContent>
     </PopoverRoot>
