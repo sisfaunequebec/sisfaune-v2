@@ -8,7 +8,7 @@ import { DateTime } from 'luxon'
 import NextLink from 'next/link'
 
 import { Flex, Box, Stack, VStack, Text, IconButton, LinkOverlay } from '@chakra-ui/react'
-import { Button } from '@/components/ui/button'
+import { Button } from '@/app/lib/components/ui/button'
 import { RxArrowRight } from 'react-icons/rx'
 
 import { useQueryStates } from 'nuqs'

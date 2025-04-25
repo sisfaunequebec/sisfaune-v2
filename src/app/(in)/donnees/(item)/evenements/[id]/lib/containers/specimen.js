@@ -4,7 +4,7 @@ import { RxPencil1, RxPlus, RxTrash } from 'react-icons/rx'
 import {
   AccordionItem,
   AccordionRoot
-} from '@/components/ui/accordion'
+} from '@/app/lib/components/ui/accordion'
 
 import { Trigger, Content } from '../components/accordion-parts'
 

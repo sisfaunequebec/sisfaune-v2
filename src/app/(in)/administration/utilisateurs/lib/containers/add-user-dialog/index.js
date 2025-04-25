@@ -15,7 +15,7 @@ import BaseDialog from '@/app/lib/components/base-dialog'
 import ControlledField from '@/app/lib/components/controlled-field'
 
 import addUserSchema from './schema'
-import { InputGroup } from '@/components/ui/input-group'
+import { InputGroup } from '@/app/lib/components/ui/input-group'
 
 const CopyPasswordButton = ({ password }) => {
   const clipboard = useClipboard({ value: password })

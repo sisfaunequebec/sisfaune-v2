@@ -1,7 +1,7 @@
 'use client'
 import { useQueryState, parseAsInteger, parseAsArrayOf } from 'nuqs'
 
-import Checkboxes from '../checkboxes'
+import Checkboxes from '@/app/lib/components/checkboxes'
 
 const Status = ({ statuts }) => {
   const [value, setValue] = useQueryState('s', parseAsArrayOf(parseAsInteger).withDefault([]))

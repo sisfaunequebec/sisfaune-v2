@@ -1,6 +1,9 @@
 'use client'
 import { DateTime } from 'luxon'
 
+// import { auth } from '@/lib/auth'
+
+// import { getSubmitableProgramsForUser } from '@/lib/data/lookups/event-programs'
 import addEvent from './add-event.action'
 
 import { Fieldset, Input } from '@chakra-ui/react'
@@ -27,6 +30,11 @@ const defaultValues = {
 }
 
 const AddEventDialog = ({ close }) => {
+  // const session = await auth()
+  // const { user } = session
+  
+  // const programs = await getSubmitableProgramsForUser(user)
+
   return (
     <BaseDialog title='Nouvel événement' onClose={close} onSubmit={addEvent} submitBtnLabel='Ajouter' schema={addEventSchema} defaultValues={defaultValues}>
       {(contentRef) => (
@@ -39,7 +47,7 @@ const AddEventDialog = ({ close }) => {
               <StatusSelect contentRef={contentRef} />
             </ControlledField>
             <ControlledField name='programId' label='Programme :' variant='horizontal'>
-              <ProgramSelect contentRef={contentRef} />
+              <ProgramSelect programs={[]} contentRef={contentRef} />
             </ControlledField>
             <ControlledField name='silabId' label={'Numéro d\'identification SILAB :'} variant='horizontal'>
               <Input autoComplete='off' />

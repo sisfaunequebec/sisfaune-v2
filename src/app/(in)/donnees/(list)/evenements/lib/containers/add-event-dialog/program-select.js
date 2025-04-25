@@ -1,24 +1,22 @@
 'use client'
 import { useCallback, useEffect, useState } from 'react'
 
-import getPrograms from '@/lib/data/lookups/get-programs'
-
 import {
   Portal,
   Select,
   createListCollection
 } from '@chakra-ui/react'
 
-const ProgramSelect = ({ value, onChange, onBlur, contentRef }) => {
-  const [programs, setPrograms] = useState([])
+const ProgramSelect = ({ programs, value, onChange, onBlur, contentRef }) => {
+  // const [programs, setPrograms] = useState([])
 
-  useEffect(() => {
-    const loadPrograms = async () => {
-      const result = await getPrograms()
-      setPrograms(result)
-    }
-    loadPrograms()
-  }, [setPrograms])
+  // useEffect(() => {
+  //   const loadPrograms = async () => {
+  //     const result = await getSubmitableProgramsForUser()
+  //     setPrograms(result)
+  //   }
+  //   loadPrograms()
+  // }, [setPrograms])
 
   const handleValueChange = useCallback((e) => {
     const { value } = e

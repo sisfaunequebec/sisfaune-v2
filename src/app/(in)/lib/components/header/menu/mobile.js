@@ -32,23 +32,21 @@ import useDialog from '@/utilitaires/use-dialog'
 import UserParametersDialog from '../../../containers/user-parameters-dialog.js'
 // import ParametresDialog from '../../../containers/parametres-dialog'
 
-const MobileMenu = ({ username, email }) => {
+const MobileMenu = ({ user }) => {
   const [on, toggle] = useToggle(false)
 
   const segment = useSelectedLayoutSegment()
 
-  const { data: session } = useSession()
-  const isAdmin = session?.user?.isAdmin
-  // const { user: { isAdmin } } = session
+  const { fullName, email, isAdmin } = user
 
   const { ask: openParameters, dialog: parametersDialog } = useDialog(UserParametersDialog)
 
   const handleModifyParameters = useCallback(async () => {
-    const result = await openParameters()
+    const result = await openParameters({ user })
     if (result) {
       console.debug('Modify !!!')
     }
-  }, [openParameters])
+  }, [openParameters, user])
 
   const router = useRouter()
 
@@ -80,7 +78,7 @@ const MobileMenu = ({ username, email }) => {
               <VStack alignItems='stretch' justifyContent='center' px={0}>
                 <Flex flex={1} py={2}>
                   <VStack gap={0} flex={1} alignItems='flex-start'>
-                    <Box flex={1} fontWeight={500}>{username}</Box>
+                    <Box flex={1} fontWeight={500}>{fullName}</Box>
                     <Box flex={1} color='gray.500'>{email}</Box>
                   </VStack>
                 </Flex>

@@ -7,7 +7,7 @@ import { RxPencil1 } from 'react-icons/rx'
 
 import {
   AccordionItem
-} from '@/components/ui/accordion'
+} from '@/app/lib/components/ui/accordion'
 
 import { Trigger, Content } from '../components/accordion-parts'
 

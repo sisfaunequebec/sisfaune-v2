@@ -1,6 +1,6 @@
 import { Input } from '@chakra-ui/react'
 
-import { Field } from '@/components/ui/field'
+import { Field } from '@/app/lib/components/ui/field'
 
 const TextField = ({ label, value, isEditing = false }) => {
   return (

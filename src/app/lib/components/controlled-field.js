@@ -1,3 +1,4 @@
+'use client'
 import { Children, cloneElement, useRef } from 'react'
 import { useController, useWatch } from 'react-hook-form'
 

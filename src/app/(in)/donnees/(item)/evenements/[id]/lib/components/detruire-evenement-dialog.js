@@ -1,6 +1,6 @@
 import { useBreakpointValue, Text, VStack } from '@chakra-ui/react'
 
-import { Button } from '@/components/ui/button'
+import { Button } from '@/app/lib/components/ui/button'
 
 import {
   DialogActionTrigger,
@@ -10,7 +10,7 @@ import {
   DialogHeader,
   DialogRoot,
   DialogTitle
-} from '@/components/ui/dialog'
+} from '@/app/lib/components/ui/dialog'
 
 const DetruireEvenementDialog = ({ close, eventId }) => {
   const size = useBreakpointValue({ base: 'cover', md: 'sm' })

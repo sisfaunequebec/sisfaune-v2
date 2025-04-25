@@ -5,7 +5,7 @@ import { useCallback } from 'react'
 import addAnalysis from './action'
 
 import { Fieldset, Input, Separator, VStack } from '@chakra-ui/react'
-import { Radio, RadioGroup } from '@/components/ui/radio'
+import { Radio, RadioGroup } from '@/app/lib/components/ui/radio'
 
 import BaseDialog from '@/app/lib/components/base-dialog'
 

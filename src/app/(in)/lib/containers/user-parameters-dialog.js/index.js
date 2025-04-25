@@ -4,7 +4,7 @@ import { DateTime } from 'luxon'
 import submit from './submit.action'
 
 import { Fieldset, Input, Separator, Stack } from '@chakra-ui/react'
-import { PasswordInput, PasswordStrengthMeter } from '@/components/ui/password-input'
+import { PasswordInput, PasswordStrengthMeter } from '@/app/lib/components/ui/password-input'
 
 import BaseDialog from '@/app/lib/components/base-dialog'
 
@@ -12,10 +12,13 @@ import ControlledField from '@/app/lib/components/controlled-field'
 
 import schema from './schema'
 
-const defaultValues = {
-  email: 'admin@sisfaunequebec.ca'
-}
-const UserParametersDialog = ({ close }) => {
+const UserParametersDialog = ({ user, close }) => {
+  const { email } = user
+
+  const defaultValues = {
+    email
+  }
+
   return (
     <BaseDialog title='Vos paramètres' onClose={close} onSubmit={submit} submitBtnLabel='Sauvegarder' schema={schema} defaultValues={defaultValues}>
       {(contentRef) => (

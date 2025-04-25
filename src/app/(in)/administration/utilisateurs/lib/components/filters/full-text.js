@@ -4,7 +4,7 @@ import { useCallback } from 'react'
 import { useQueryState } from 'nuqs'
 
 import { Input, IconButton } from '@chakra-ui/react'
-import { InputGroup } from '@/components/ui/input-group'
+import { InputGroup } from '@/app/lib/components/ui/input-group'
 
 import { RxMagnifyingGlass, RxCross2 } from 'react-icons/rx'
 

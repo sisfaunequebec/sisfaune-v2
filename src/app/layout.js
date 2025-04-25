@@ -1,4 +1,4 @@
-import Provider from '@/components/ui/provider'
+import Provider from '@/app/lib/components/ui/provider'
 
 // import { Flex, Container, Center, Text } from '@chakra-ui/react'
 import system from '@/style'

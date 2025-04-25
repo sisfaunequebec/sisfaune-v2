@@ -3,7 +3,7 @@
 // import { useFormStatus } from 'react-dom'
 import { useFormContext } from 'react-hook-form'
 
-import { Button } from '@/components/ui/button'
+import { Button } from '@/app/lib/components/ui/button'
 
 const SignInButton = () => {
   // const { pending } = useFormStatus()

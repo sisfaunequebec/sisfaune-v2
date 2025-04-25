@@ -1,9 +1,10 @@
+'use client'
 import { useCallback, useRef, useState } from 'react'
 
 import { DateTime } from 'luxon'
 
 import { Input, CloseButton } from '@chakra-ui/react'
-import { InputGroup } from '@/components/ui/input-group'
+import { InputGroup } from '@/app/lib/components/ui/input-group'
 import { RxCalendar } from 'react-icons/rx'
 
 import {
@@ -11,7 +12,7 @@ import {
   PopoverContent,
   PopoverRoot,
   PopoverTrigger
-} from '@/components/ui/popover'
+} from '@/app/lib/components/ui/popover'
 
 import Calendar from '@/app/lib/components/calendar'
 

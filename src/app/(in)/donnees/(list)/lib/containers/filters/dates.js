@@ -8,8 +8,8 @@ import { DateTime } from 'luxon'
 import { useQueryStates, parseAsString, parseAsIsoDateTime } from 'nuqs'
 import { VStack } from '@chakra-ui/react'
 
-import { Radio, RadioGroup } from '@/components/ui/radio'
-import { Field } from '@/components/ui/field'
+import { Radio, RadioGroup } from '@/app/lib/components/ui/radio'
+import { Field } from '@/app/lib/components/ui/field'
 
 import DateSelector from '@/app/lib/components/date-selector'
 

@@ -4,7 +4,6 @@ import Credentials from 'next-auth/providers/credentials'
 // import wait from '@/utilitaires/wait'
 
 import orm from '../data/database'
-import { serialize } from 'v8'
 
 // class InvalidLoginError extends CredentialsSignin {
 //   code = "Invalid identifier or password"
@@ -46,7 +45,7 @@ const credentialsProvider = Credentials({
     //   throw error
     // }
 
-    const { name, email, firstName, lastName, isAdmin, permissions: permissionsAsArray } = user
+    const { id, name, email, firstName, lastName, isAdmin, permissions: permissionsAsArray } = user
     const fullName = [firstName, lastName].filter(Boolean).join(' ')
 
     // const permissionsByProgram = permissionsAsArray.reduce((acc, p) => {
@@ -72,6 +71,7 @@ const credentialsProvider = Credentials({
     })
 
     return {
+      id,
       fullName,
       email,
       isAdmin,

@@ -10,9 +10,9 @@ import {
   SelectRoot,
   SelectTrigger,
   SelectValueText
-} from '@/components/ui/select'
+} from '@/app/lib/components/ui/select'
 
-import { Field } from '@/components/ui/field'
+import { Field } from '@/app/lib/components/ui/field'
 
 const Select = ({ items: rawItems, value, onChange }) => {
   const items = rawItems.map(i => { return { value: i.value.toString(), label: i.label } })

@@ -1,9 +1,12 @@
-// 'use client'
+import { auth } from '@/lib/auth'
+
 import orm from '@/lib/data/database'
+
+import { getViewableProgramsForUser } from '@/lib/data/lookups/event-programs'
 
 import { Flex, Fieldset, Separator as ChakraSeparator, Text, Icon, HStack } from '@chakra-ui/react'
 
-import { Tooltip } from '@/components/ui/tooltip'
+import { Tooltip } from '@/app/lib/components/ui/tooltip'
 // import { ToggleTip } from '@/components/ui/toggle-tip'
 import { LuInfo } from 'react-icons/lu'
 
@@ -35,7 +38,10 @@ const Separator = () => {
 }
 
 const FiltersForm = async () => {
-  const programmes = await orm.LutEventProgram.findMany({ where: { isActive: true } })
+  const session = await auth()
+  const { user } = session
+
+  const programs = await getViewableProgramsForUser(user)
   const statuts = await orm.LutEventStatus.findMany()
   const regions = await orm.LutLocality.groupBy({
     by: ['regionId', 'regionName'],
@@ -63,7 +69,7 @@ const FiltersForm = async () => {
       <Separator />
 
       <SectionTitle label='Filtrer par programme :' />
-      <Section><Program programmes={programmes} /></Section>
+      <Section><Program programs={programs} /></Section>
 
       <Separator />
 

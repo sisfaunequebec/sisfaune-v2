@@ -28,14 +28,11 @@ const getOrderByClause = (tri, direction) => {
   return orderByClause
 }
 
-const getEvents = async (params, context) => {
-  const { statut, programme, tri, direction, region, texte: texteRaw, offset = 0, take = 25 } = params
+const getWhereClauseFromParams = (params) => {
+  const { statut, programme, tri, direction, region, texte: texteRaw } = params
 
   const texte = texteRaw?.trim().length ? texteRaw?.trim() : undefined
-  // const textAsInt = parseInt(texte, 10)
   const isTextNumber = isNaN(texte) ? false : true
-
-  // console.debug('getEvents', eventId)
 
   const whereClause = {
     statusId: statut ? { in: statut } : undefined,
@@ -61,6 +58,49 @@ const getEvents = async (params, context) => {
     ] : undefined
   }
 
+  return whereClause
+}
+
+const getEventsCount = async (params, context) => {
+  const whereClause = getWhereClauseFromParams(params)
+  const count = await orm.Event.count({
+    where: whereClause
+  })
+
+  return count
+}
+
+const getEvents = async (params, context) => {
+  const { tri, direction, offset = 0, take = 25 } = params
+
+  // const texte = texteRaw?.trim().length ? texteRaw?.trim() : undefined
+  // const isTextNumber = isNaN(texte) ? false : true
+
+  // const whereClause = {
+  //   statusId: statut ? { in: statut } : undefined,
+  //   programId: programme ? { in: programme } : undefined,
+  //   location: {
+  //     locality: {
+  //       regionId: region ? { in: region } : undefined
+  //     }
+  //   },
+  //   OR: texte ? [
+  //     { id: isTextNumber ? parseInt(texte, 10) : undefined },
+  //     { silabId: texte ? { contains: texte, mode: 'insensitive' } : undefined },
+  //     { mapaqId: texte ? { contains: texte, mode: 'insensitive' } : undefined },
+  //     { pathologyNumber: texte ? { contains: texte, mode: 'insensitive' } : undefined },
+  //     { submitter: { lastName: texte ? { contains: texte, mode: 'insensitive' } : undefined } },
+  //     { submitter: { firstName: texte ? { contains: texte, mode: 'insensitive' } : undefined } },
+  //     { location: {
+  //         locality: {
+  //           name: texte ? { contains: texte, mode: 'insensitive' } : undefined
+  //         }
+  //       }
+  //     }
+  //   ] : undefined
+  // }
+
+  const whereClause = getWhereClauseFromParams(params)
   const orderByClause = getOrderByClause(tri, direction)
 
   const events = await orm.Event.findMany({
@@ -79,12 +119,6 @@ const getEvents = async (params, context) => {
     skip: (offset * take),
     take
   })
-
-  const count = await orm.Event.count({
-    where: whereClause
-  })
-
-  // console.debug(count)
 
   const data = events.map(e => {
     const { id, silabId, mapaqId, reportedAt, type, program, submitter, location } = e
@@ -123,5 +157,6 @@ const getEvent = async (id, context) => {
 
 export {
   getEvents,
+  getEventsCount,
   getEvent
 }

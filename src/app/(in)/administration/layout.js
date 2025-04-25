@@ -1,4 +1,4 @@
-import { auth } from '@/lib/auth'
+import getUser from '@/lib/auth/get-user'
 
 import { VStack, EmptyState, AbsoluteCenter } from '@chakra-ui/react'
 import { RxExclamationTriangle } from 'react-icons/rx'
@@ -22,8 +22,8 @@ const Unauthorized = () => {
 }
 
 const AdminLayout = async ({ children }) => {
-  const session = await auth()
-  const { user: { isAdmin } } = session
+  const user = await getUser
+  const { isAdmin } = user
 
   if (!isAdmin) {
     return (

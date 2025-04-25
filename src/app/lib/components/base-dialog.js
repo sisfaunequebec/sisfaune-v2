@@ -9,7 +9,7 @@ import { Dialog, Portal, Flex, Button, useBreakpointValue } from '@chakra-ui/rea
 import {
   DialogActionTrigger,
   DialogFooter
-} from '@/components/ui/dialog'
+} from '@/app/lib/components/ui/dialog'
 
 const BaseDialog = ({ title, size = 'md', isAlert = false, schema, watches = [], defaultValues, onClose, onSubmit, submitBtnLabel = 'Continuer', close, children }) => {
   const rootSize = useBreakpointValue({ base: 'cover', md: size })

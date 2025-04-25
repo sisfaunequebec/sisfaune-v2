@@ -1,3 +1,4 @@
+'use client'
 import { useSelectedLayoutSegment, useSearchParams } from 'next/navigation'
 
 import NextLink from 'next/link'

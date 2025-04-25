@@ -1,4 +1,5 @@
 import { redirect } from 'next/navigation'
+
 import { auth } from '@/lib/auth'
 
 import { Flex } from '@chakra-ui/react'
@@ -17,8 +18,8 @@ const Layout = async ({ children }) => {
   }
 
   return (
-    <Flex as='main' minH='100vh' flex={1} direction='column' justifyContent='flex-start' px={0} alignItems='flex-start'>
-      <Header session={session} />
+    <Flex as={'main'} minH={'100vh'} flex={1} direction={'column'} justifyContent={'flex-start'} px={0} alignItems={'flex-start'}>
+      <Header />
       {children}
     </Flex>
   )

@@ -1,6 +1,6 @@
 import { Textarea } from '@chakra-ui/react'
 
-import { Field } from '@/components/ui/field'
+import { Field } from '@/app/lib/components/ui/field'
 
 const CommentField = ({ label, value, isEditing = false }) => {
   return (

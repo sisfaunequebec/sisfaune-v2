@@ -1,14 +1,14 @@
 import { Flex, Stack, VStack, Text, Separator, Input } from '@chakra-ui/react'
 
-import { Field } from '@/components/ui/field'
+import { Field } from '@/app/lib/components/ui/field'
 
 import {
   NumberInputField,
   // NumberInputLabel,
   NumberInputRoot
-} from '@/components/ui/number-input'
+} from '@/app/lib/components/ui/number-input'
 
-import { Tooltip } from '@/components/ui/tooltip'
+import { Tooltip } from '@/app/lib/components/ui/tooltip'
 
 const NumberInput = ({ name, value, label, isEditing }) => {
   return (

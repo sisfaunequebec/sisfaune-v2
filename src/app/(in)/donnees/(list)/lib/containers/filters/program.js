@@ -5,19 +5,19 @@ import orderBy from 'lodash.orderby'
 
 import { useQueryState, parseAsInteger, parseAsArrayOf } from 'nuqs'
 
-import Checkboxes from '../checkboxes'
+import Checkboxes from '@/app/lib/components/checkboxes'
 
-const Program = ({ programmes = [] }) => {
+const Program = ({ programs = [] }) => {
   const [value, setValue] = useQueryState('p', parseAsArrayOf(parseAsInteger).withDefault([]))
 
   const choices = useMemo(() => {
-    const choices = programmes.map(p => { return { value: p.id, label: p.name } })
+    const choices = programs.map(p => { return { value: p.value, label: p.label } })
     const sorted = orderBy(choices, ['label'], ['asc'])
     return sorted
-  }, [programmes])
+  }, [programs])
 
   return (
-    <Checkboxes name='programme' choices={choices} value={value} onChange={setValue} allChoicesLabel='Tous les programmes' />
+    <Checkboxes name={'programme'} choices={choices} value={value} onChange={setValue} allChoicesLabel='Tous les programmes' />
   )
 }
 

@@ -2,7 +2,7 @@ import orm from '@/lib/data/database'
 
 import { Flex, Fieldset, Separator as ChakraSeparator, Text, Icon, HStack } from '@chakra-ui/react'
 
-import { Tooltip } from '@/components/ui/tooltip'
+import { Tooltip } from '@/app/lib/components/ui/tooltip'
 // import { ToggleTip } from '@/components/ui/toggle-tip'
 import { LuInfo } from 'react-icons/lu'
 

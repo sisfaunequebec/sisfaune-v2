@@ -43,7 +43,7 @@ const Toolbar = () => {
   const params = useParams()
   const { id: idEvenement } = params
 
-  const [{ y }] = useWindowScroll()
+  const [{ y = 0 }] = useWindowScroll()
   const toolbarShadowSize = y > 70 ? 'md' : null
 
   return (

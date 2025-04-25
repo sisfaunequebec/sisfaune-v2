@@ -2,7 +2,7 @@
 import { useState, useCallback, useMemo } from 'react'
 
 import { CheckboxGroup } from '@chakra-ui/react'
-import { Checkbox } from '@/components/ui/checkbox'
+import { Checkbox } from '@/app/lib/components/ui/checkbox'
 
 const Checkboxes = ({ allChoicesLabel = 'Tous', choices = [], name, value, onChange = () => {} }) => {
   const [internalValue, setInternalValue] = useState(value ?? [])

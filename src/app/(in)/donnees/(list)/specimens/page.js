@@ -1,7 +1,7 @@
 import { Flex, Container } from '@chakra-ui/react'
 
 import SpecimensList from './lib/containers/specimens-list'
-import Filters from '../lib/components/filters'
+import Filters from '../lib/containers/filters'
 
 const Specimens = async () => {
   return (

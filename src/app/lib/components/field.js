@@ -1,4 +1,4 @@
-import { Field as ChakraField } from '@/components/ui/field'
+import { Field as ChakraField } from '@/app/lib/components/ui/field'
 
 const Field = ({ formState, children, name, ...rest }) => {
   const { errors, isSubmitting } = formState

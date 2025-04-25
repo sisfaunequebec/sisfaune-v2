@@ -4,7 +4,7 @@ import { useMemo } from 'react'
 import orderBy from 'lodash.orderby'
 
 import { useQueryState, parseAsInteger, parseAsArrayOf } from 'nuqs'
-import Checkboxes from '../checkboxes'
+import Checkboxes from '../../../../../../lib/components/checkboxes'
 
 // const regionsRaw = [
 //   'Abitibi-Témiscamingue', 'Bas-Saint-Laurent', 'Capitale-Nationale', 'Centre-du-Québec', 'Chaudière-Appalaches', 'Côte-Nord', 'Estrie', 'Gaspésie - Îles-de-la-Madeleine', 'Lanaudière', 'Laurentides', 'Laval', 'Mauricie', 'Montérégie', 'Montréal', 'Nord-du-Québec', 'Outaouais', 'Saguenay - Lac-Saint-Jean'

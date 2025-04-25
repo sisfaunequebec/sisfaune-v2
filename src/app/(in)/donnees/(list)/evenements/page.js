@@ -3,7 +3,7 @@
 import { Flex, Container } from '@chakra-ui/react'
 
 import EventsList from './lib/containers/events-list'
-import Filters from '../lib/components/filters'
+import Filters from '../lib/containers/filters'
 
 const Evenements = async () => {
   return (

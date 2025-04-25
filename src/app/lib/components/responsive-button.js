@@ -1,7 +1,8 @@
 /* eslint-disable react/jsx-curly-brace-presence */
+'use client'
 
 import { IconButton } from '@chakra-ui/react'
-import { Button } from '@/components/ui/button'
+import { Button } from '@/app/lib/components/ui/button'
 
 const ResponsiveButton = ({ label, variant = 'solid', colorPalette, icon, onClick, ...rest }) => {
   return (

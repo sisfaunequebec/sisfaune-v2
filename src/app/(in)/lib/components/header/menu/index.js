@@ -1,11 +1,16 @@
+'use server'
+import getUser from '@/lib/auth/get-user'
+
 import DesktopMenu from './desktop'
 import MobileMenu from './mobile'
 
-const Menu = ({ username, email }) => {
+const Menu = async ({  }) => {
+  const user = await getUser()
+
   return (
     <>
-      <DesktopMenu username={username} email={email} />
-      <MobileMenu username={username} email={email} />
+      <DesktopMenu user={user} />
+      <MobileMenu user={user} />
     </>
   )
 }

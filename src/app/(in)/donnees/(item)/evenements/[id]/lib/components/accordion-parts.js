@@ -3,7 +3,7 @@ import {
   AccordionItemContent,
   AccordionItemTrigger,
   AccordionRoot
-} from '@/components/ui/accordion'
+} from '@/app/lib/components/ui/accordion'
 
 const Trigger = ({ label, ...rest }) => {
   return (

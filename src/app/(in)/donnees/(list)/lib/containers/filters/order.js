@@ -3,8 +3,8 @@ import { useQueryStates, parseAsString } from 'nuqs'
 
 import { VStack } from '@chakra-ui/react'
 
-import { Radio, RadioGroup } from '@/components/ui/radio'
-import { Checkbox } from '@/components/ui/checkbox'
+import { Radio, RadioGroup } from '@/app/lib/components/ui/radio'
+import { Checkbox } from '@/app/lib/components/ui/checkbox'
 import { useCallback } from 'react'
 
 const Order = () => {

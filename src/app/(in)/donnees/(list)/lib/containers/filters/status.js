@@ -5,7 +5,7 @@ import orderBy from 'lodash.orderby'
 
 import { useQueryState, parseAsInteger, parseAsArrayOf } from 'nuqs'
 
-import Checkboxes from '../checkboxes'
+import Checkboxes from '../../../../../../lib/components/checkboxes'
 
 // import { STATUSES } from '@/logic/data/events/service'
 

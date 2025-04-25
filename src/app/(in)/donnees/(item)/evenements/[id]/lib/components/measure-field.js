@@ -2,7 +2,7 @@ import { useState, useMemo, useCallback } from 'react'
 
 import { HStack, Input, createListCollection, Select, Portal } from '@chakra-ui/react'
 
-import { Field } from '@/components/ui/field'
+import { Field } from '@/app/lib/components/ui/field'
 // import { InputGroup } from '@/components/ui/input-group'
 // import { Tooltip } from "@/components/ui/tooltip"
 
@@ -13,7 +13,7 @@ import {
   SelectRoot,
   SelectTrigger,
   SelectValueText
-} from '@/components/ui/select'
+} from '@/app/lib/components/ui/select'
 
 const items = [
   { value: 5, typeId: 1, label: 'mm', isDefault: false },

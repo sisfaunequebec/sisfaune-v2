@@ -5,7 +5,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 
 import { Flex, Image, Fieldset, Input } from '@chakra-ui/react'
 
-import { PasswordInput } from '@/components/ui/password-input'
+import { PasswordInput } from '@/app/lib/components/ui/password-input'
 
 import Field from '@/app/lib/components/field'
 

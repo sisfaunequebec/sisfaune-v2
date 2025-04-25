@@ -1,31 +1,12 @@
-'use client'
-
-// import { useWindowScroll } from '@uidotdev/usehooks'
+import getUser from '@/lib/auth/get-user'
 
 import { Flex, HStack, Image, VStack, Container } from '@chakra-ui/react'
 
-// import { DataListItem, DataListRoot } from "@/components/ui/data-list"
-
-// import { RxExit, RxHamburgerMenu, RxGear, RxCross1, RxCheck, RxPencil1 } from 'react-icons/rx'
-// import DonneesAdministration from './donnees-admin-tabs'
-
 import Menu from './menu'
 
-// const colorPalette = ['red', 'blue', 'green', 'yellow', 'purple', 'orange']
-
-// const pickPalette = (name) => {
-//   const index = name.charCodeAt(0) % colorPalette.length
-//   return colorPalette[index]
-// }
-
-const Toolbar = ({ session }) => {
-  const { user } = session
-  const { fullName: username, email } = user
-
-  // const [{ y }] = useWindowScroll()
-
-  // const toolbarShadowSize = null // y > 0 ? 'md' : null
-  // const borderBottomWidth = y > 0 ? 0 : 8
+const Header = async () => {
+  const user = await getUser()
+  const { fullName } = user
 
   return (
     <Flex css={{ '--toolbar-height': '70px', '--toolbar-border-width': '2px', '--tabs-height': '0px' }} height='calc(var(--toolbar-height) + var(--tabs-height))' bg='white' _dark={{ bg: 'black' }} borderBottomColor='blue.600' borderBottomWidth='var(--toolbar-border-width)' position='sticky' zIndex={1002} alignItems='center' justifyContent='center' top={0} w='100%'>
@@ -35,8 +16,8 @@ const Toolbar = ({ session }) => {
             <Image src='/logo_sisfaune_small.png' alt='logo' position='relative' left='-2' />
           </Flex>
           <HStack gap={[3, null, 4]}>
-            <Flex hideBelow='md'>Bonjour&nbsp;<strong>{username}</strong></Flex>
-            <Menu username={username} email={email} />
+            <Flex hideBelow='md'>Bonjour&nbsp;<strong>{fullName}</strong></Flex>
+            <Menu />
           </HStack>
         </Container>
       </VStack>
@@ -44,136 +25,4 @@ const Toolbar = ({ session }) => {
   )
 }
 
-// const DesktopMenu = ({ username, email }) => {
-//   const pathname = usePathname()
-//   const splitedPathname = pathname.split('/')
-//   const secondPathSegment = splitedPathname.at(1)
-
-//   const router = useRouter()
-
-//   const handleMenuRadioItemGroupChange = useCallback(e => {
-//     const { value } = e
-//     const targetUrl = value === 'donnees' ? '/donnees/evenements' : '/administration'
-//     router.push(targetUrl)
-//   }, [router])
-
-//   return (
-//     <Flex hideBelow={'md'}>
-//       <MenuRoot positioning={{ placement: 'bottom-end' }} size={'md'}>
-//         <MenuTrigger >
-//           <Avatar name={username} colorPalette={'green'} size={['md', null, 'sm']} variant={'solid'} cursor={'pointer'} />
-//         </MenuTrigger>
-//         <MenuContent minW={'48'} hideBelow={'md'} mt={4}>
-//           <MenuItem _hover={{ bg: 'transparent' }} cursor={'default'}>
-//             <VStack gap={0} flex={1} alignItems={'flex-start'}>
-//               <Box flex={1} fontWeight={500}>{username}</Box>
-//               <Box flex={1} color={'gray.500'}>{email}</Box>
-//             </VStack>
-//           </MenuItem>
-//           <MenuSeparator />
-//           <MenuRadioItemGroup value={secondPathSegment} onValueChange={handleMenuRadioItemGroupChange}>
-//             <MenuRadioItem value={'donnees'}>Base de données</MenuRadioItem>
-//             <MenuRadioItem value={'administration'}>Administration</MenuRadioItem>
-//           </MenuRadioItemGroup>
-//           <MenuSeparator />
-//           <MenuItem>
-//             <RxGear />
-//             <Box flex={1} ms={0.5}>Vos paramètres</Box>
-//           </MenuItem>
-//           <MenuSeparator />
-//           <MenuItem onClick={() => { signOut() }}>
-//             <RxExit />
-//             <Box flex={1} ms={0.5}>Quitter</Box>
-//           </MenuItem>
-//         </MenuContent>
-//       </MenuRoot>
-//     </Flex>
-//   )
-// }
-
-// const MobileMenu = ({ username, email }) => {
-//   const [on, toggle] = useToggle(false)
-
-//   const pathname = usePathname()
-//   const splitedPathname = pathname.split('/')
-//   const secondPathSegment = splitedPathname.at(1)
-
-//   const router = useRouter()
-
-//   const handleLinkClick = useCallback(value => {
-//     const targetUrl = value === 'donnees' ? '/donnees/evenements' : '/administration'
-//     router.push(targetUrl)
-//     toggle()
-//   }, [router, toggle])
-
-//   useEffect(() => {
-//     if (on) {
-//       document.body.style.overflowY = 'hidden'
-//     } else {
-//       document.body.style.overflowY = 'scroll'
-//     }
-//  }, [on])
-
-//   return (
-//     <Flex hideFrom={'md'}>
-//       <IconButton variant={'outline'} rounded={'full'} size={['md', null, 'sm']} onClick={toggle} >
-//         { on ? <RxCross1 /> : <RxHamburgerMenu /> }
-//       </IconButton>
-//       { on &&
-//       <Flex data-state={on ? 'open' : 'closed'} animationStyle={{ _open: "scale-fade-in", _closed: "scale-fade-out" }} animationDuration="slow"  bg={'white'} position={'fixed'} inset={'calc(var(--toolbar-height) - var(--toolbar-border-width)) 0 0'} overscrollBehavior={'contain'} zIndex={2001}>
-//         <Container maxW={'6xl'} fontSize={'lg'}>
-//           <VStack alignItems={'stretch'} justifyContent={'center'} px={0}>
-//             <Flex flex={1} py={2}>
-//               <VStack gap={0} flex={1} alignItems={'flex-start'}>
-//                 <Box flex={1} fontWeight={500}>{username}</Box>
-//                 <Box flex={1} color={'gray.500'}>{email}</Box>
-//               </VStack>
-//             </Flex>
-//             <Separator />
-//             <VStack alignItems={'stretch'} justifyContent={'center'} px={0} gap={0}>
-//               <Flex py={2} alignItems={'center'} justifyContent={'space-between'} onClick={() => handleLinkClick('donnees')}>
-//                 <Box>Base de données</Box>
-//                 {(secondPathSegment === 'donnees') && <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><polyline points="20 6 9 17 4 12"></polyline></svg>}
-//               </Flex>
-//               <Flex py={2} alignItems={'center'} justifyContent={'space-between'} onClick={() => handleLinkClick('administration')}>
-//                 <Box>Administration</Box>
-//                 {(secondPathSegment === 'administration') && <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><polyline points="20 6 9 17 4 12"></polyline></svg>}
-//               </Flex>
-//             </VStack>
-//             <Separator />
-//             <Flex as={Link} py={2} alignItems={'center'} justifyContent={'space-between'} >
-//               <Box>Vos paramètres</Box>
-//               <RxGear />
-//             </Flex>
-//             <Separator />
-//             <Flex as={Link} onClick={() => { signOut() }} py={2}>
-//               <Box flex={1}>Quitter</Box>
-//               <RxExit />
-//             </Flex>
-//           </VStack>
-//         </Container>
-//       </Flex>
-//       }
-//       {/* <DrawerRoot placement={'top'} size={'full'}>
-//         <DrawerBackdrop />
-//         <DrawerTrigger asChild>
-//           <IconButton variant={'outline'} rounded={'full'} size={'sm'} >
-//             <RxHamburgerMenu />
-//           </IconButton>
-//         </DrawerTrigger>
-//         <DrawerContent hideFrom={'md'}>
-//           <DrawerHeader as={Flex} minH={24} flexDirection={'row'} alignItems={'center'}>
-//             <DrawerTitle>Drawer Title</DrawerTitle>
-//             <DrawerCloseTrigger flex={1} />
-//           </DrawerHeader>
-//           <DrawerBody>
-//             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-//             eiusmod tempor incididunt ut labore et dolore magna aliqua.
-//           </DrawerBody>
-//         </DrawerContent>
-//       </DrawerRoot> */}
-//     </Flex>
-//   )
-// }
-
-export default Toolbar
+export default Header

@@ -8,12 +8,14 @@ import { DateTime } from 'luxon'
 import NextLink from 'next/link'
 
 import { Flex, Box, Stack, VStack, Text, IconButton, LinkOverlay } from '@chakra-ui/react'
-import { Button } from '@/components/ui/button'
+import { Button } from '@/app/lib/components/ui/button'
 import { RxArrowRight } from 'react-icons/rx'
 
 import { useQueryStates } from 'nuqs'
 
 import useEvents from '@/lib/data/events/use-events'
+import useEventsCount from '@/lib/data/events/use-events-count'
+
 import { searchParams, urlKeys } from '@/lib/data/events/events-params'
 
 import { LinkListWrapper } from '@/app/(in)/lib/components/list'
@@ -37,9 +39,9 @@ const ItemEvenement = ({ id, silabId, mapaqId, typeName, programName, localityNa
           <Flex display={['none', null, null, 'inherit']}>Numéro SILAB&nbsp;:&nbsp;{silabId}</Flex>
         </VStack>
         <VStack alignItems={['flex-start', null, null, 'flex-end']} gap={0.4} flex={1}>
+          <Flex as={Text} display={['none', null, null, 'inherit']} textAlign={'end'} truncate>{localityName ?? 'indéterminée'}</Flex>
           <Flex display={['none', null, null, 'inherit']}>Soumis par&nbsp;:&nbsp;{submitterName ?? 'indéterminé'}</Flex>
           <Flex color='blue.600'>Date du signalement : {reportingDate}</Flex>
-          <Flex display={['none', null, null, 'inherit']}>Municipalité&nbsp;:&nbsp;{localityName ?? 'indéterminée'}</Flex>
         </VStack>
       </Stack>
       <IconButton as={NextLink} href={href} scroll colorPalette='green' variant='ghost' rounded='full' size={['xs']}><RxArrowRight /></IconButton>
@@ -56,6 +58,8 @@ const ListeEvenements = () => {
 
   const [params] = useQueryStates(searchParams, { urlKeys })
 
+  const { data: total } = useEventsCount(params)
+
   const result = useEvents(params, PAGE_SIZE)
   const { data = [], isLoading, size, setSize } = result
 
@@ -67,7 +71,7 @@ const ListeEvenements = () => {
   }, [setSize, size, isLoading])
 
   const events = data ? [].concat(...data) : []
-  const total = events.length
+  const count = events.length
 
   const isLoadingMore = isLoading || (size > 0 && data && typeof data[size - 1] === 'undefined')
   const isEmpty = data?.[0]?.length === 0
@@ -82,7 +86,7 @@ const ListeEvenements = () => {
     }, 500)
   }, [inView, size, isLoadingMore, handleLoadMore])
 
-  const loadMoreButtonLabel = [`Événements 1 à ${total} `, (isReachingEnd ? null : 'Cliquer pour charger la suite')].filter(Boolean).join(' - ')
+  const loadMoreButtonLabel = [`Événements 1 à ${count} de ${total}`, (isReachingEnd ? null : 'Cliquer pour charger la suite')].filter(Boolean).join(' - ')
 
   const loadMoreButtonIsVisible = events.length > 0
   const triggerIsVisible = (!isLoadingMore && !isReachingEnd)
