@@ -1,8 +1,9 @@
-import orderBy from 'lodash.orderby'
-
-import { DateTime } from 'luxon'
+'use server'
+import 'server-only'
 
 import orm from '../database'
+
+import { canUserViewProgram, filterViewablePrograms } from '@/lib/auth/acl'
 
 const SORT_MAP = {
   date_signalement: 'reportedAt',
@@ -26,11 +27,6 @@ const getOrderByClause = (tri, direction) => {
   const orderByClause = { [sortField]: sortClause }
 
   return orderByClause
-}
-
-const filterViewablePrograms = (p) => {
-  const { role } = p
-  return !!role
 }
 
 const getWhereClauseFromParams = (params, context) => {
@@ -143,16 +139,79 @@ const getEvents = async (params, context = {}) => {
 }
 
 const getEvent = async (id, context) => {
-  const event = await orm.Event.find({
-    where: {
-      id
+  const { user } = context
+
+  if (!id) {
+    return null
+  }
+
+  if (!user) {
+    return
+  }
+
+  try {
+
+    const event = await orm.Event.findUnique({
+      where: {
+        id
+      },
+      include: {
+        type: true,
+        program: true,
+        reportOrigin: true,
+        status: true,
+        habitatType: true,
+        labShippingMethod: true,
+        lab: true,
+        location: true,
+        specimens: {
+          include: {
+            specie: true,
+            age: true,
+            sex: true,
+            discoveryState: true,
+            deathCause: true,
+            preservationMethod: true,
+            measures: {
+              include: {
+                type: true,
+                unit: true
+              }
+            }
+          }
+        },
+        labEvents: true
+      }
+    })
+  
+    if (!event) {
+      return null
     }
-  })
-  return event
+  
+    const { programId } = event
+  
+    if (!canUserViewProgram(user, programId)) {
+      return null
+    }
+  
+    return event
+
+  } catch (e) {
+    console.warn(e)
+    return null
+  }
 }
 
+// const getEvent = async (id, context) => {
+//   const event = await orm.Event.find({
+//     where: {
+//       id
+//     }
+//   })
+//   return event
+// }
+
 export {
-  getEvents,
-  getEventsCount,
-  getEvent
+  getEvent, getEvents, getEventsCount
 }
+

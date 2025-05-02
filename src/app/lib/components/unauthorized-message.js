@@ -7,7 +7,7 @@ import CenteredMessage from './centered-message'
 const UnauthorizedMessage = () => {
   return (
     <CenteredMessage level={'warning'} title={'Désolé'} description={'Vous n\'êtes pas autorisé à consulter cette page'}>
-      <Button as={NextLink} href={'/donnees'} variant={'solid'} colorPalette={'black'}>Revenir à la base de données</Button>
+      <Button as={NextLink} size={['lg', null, 'md']} href={'/donnees'} variant={'surface'} colorPalette={'green'}>Revenir à la base de données</Button>
     </CenteredMessage>
   )
 }

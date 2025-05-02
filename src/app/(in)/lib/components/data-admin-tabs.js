@@ -1,14 +1,14 @@
-import { useSelectedLayoutSegment, useSearchParams } from 'next/navigation'
+import { useSelectedLayoutSegment } from 'next/navigation'
 
 import NextLink from 'next/link'
 
-import { Tabs, Link } from '@chakra-ui/react'
+import { Link, Tabs } from '@chakra-ui/react'
 
 const DataAdminTabs = () => {
   const segment = useSelectedLayoutSegment()
 
   return (
-    <Tabs.Root defaultValue='donnees' value={segment} variant='subtle' size={['md', null, 'sm']} colorPalette='green' hideBelow='md'>
+    <Tabs.Root defaultValue='donnees' value={segment} variant='subtle' size={['lg', null, 'sm']} colorPalette='green' hideBelow='md'>
       <Tabs.List>
         <Tabs.Trigger value='donnees' borderRadius='full'>
           <Link asChild unstyled>

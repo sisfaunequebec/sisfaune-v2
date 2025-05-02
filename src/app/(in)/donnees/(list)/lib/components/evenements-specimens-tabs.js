@@ -1,9 +1,9 @@
 'use client'
-import { useSelectedLayoutSegment, useSearchParams } from 'next/navigation'
+import { useSearchParams, useSelectedLayoutSegment } from 'next/navigation'
 
 import NextLink from 'next/link'
 
-import { Tabs, Link } from '@chakra-ui/react'
+import { Link, Tabs } from '@chakra-ui/react'
 
 const StyledTrigger = ({ children, ...rest }) => {
   return (
@@ -18,16 +18,16 @@ const EvenementsSpecimens = () => {
   const segment = useSelectedLayoutSegment()
 
   return (
-    <Tabs.Root defaultValue='evenements' value={segment} variant='subtle' size={['md', null, 'sm']} colorPalette='blue'>
+    <Tabs.Root defaultValue='evenements' value={segment} variant='subtle' size={['lg', null, 'sm']} colorPalette='green'>
       <Tabs.List>
         <StyledTrigger value='evenements'>
           <Link asChild unstyled>
-            <NextLink href={`/donnees/evenements?${params}`}>Par événement</NextLink>
+            <NextLink href={`/donnees/evenements?${params}`}>Événements</NextLink>
           </Link>
         </StyledTrigger>
         <StyledTrigger value='specimens'>
           <Link asChild unstyled>
-            <NextLink href={`/donnees/specimens?${params}`}>Par spécimen</NextLink>
+            <NextLink href={`/donnees/specimens?${params}`}>Spécimens</NextLink>
           </Link>
         </StyledTrigger>
       </Tabs.List>

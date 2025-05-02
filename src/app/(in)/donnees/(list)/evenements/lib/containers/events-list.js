@@ -1,14 +1,13 @@
 'use client'
-import { useEffect, useCallback, useRef } from 'react'
 import { useIntersectionObserver } from '@react-hooks-library/core'
+import { useCallback, useEffect, useRef } from 'react'
 
 import { DateTime } from 'luxon'
 
 import NextLink from 'next/link'
 
-import { Flex, Box, Stack, VStack, Text, IconButton, LinkOverlay, EmptyState, Container } from '@chakra-ui/react'
-import { Button } from '@/app/lib/components/ui/button'
-import { RxArrowRight, RxPlus, RxPlusCircled } from 'react-icons/rx'
+import { Flex, IconButton, LinkOverlay, Stack, Text, VStack } from '@chakra-ui/react'
+import { RxArrowRight } from 'react-icons/rx'
 
 import { useQueryStates } from 'nuqs'
 
@@ -17,7 +16,7 @@ import useEventsCount from '@/lib/data/events/use-events-count'
 
 import { searchParams, urlKeys } from '@/lib/data/events/events-params'
 
-import { ListContainer, LinkListWrapper, LoadMoreButton } from '@/app/(in)/lib/components/list'
+import { LinkListWrapper, ListContainer, LoadMoreButton } from '@/app/(in)/lib/components/list'
 
 import CenteredMessage from '@/app/lib/components/centered-message'
 
@@ -25,7 +24,7 @@ const PAGE_SIZE = 25
 
 const NoEvents = () => {
   return (
-    <CenteredMessage level={'info'} title={'Oups'} description={'Aucun événement correspondant aux critères'} />
+    <CenteredMessage level={'info'} description={'Aucun événement correspondant aux critères'} />
   )
 }
 

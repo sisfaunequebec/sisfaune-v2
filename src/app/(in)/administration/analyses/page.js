@@ -6,6 +6,10 @@ import NewAnalysisButton from './lib/components/new-analysis-button'
 import Filters from './lib/components/filters'
 import AnalysisList from './lib/containers/analysis-list'
 
+export const metadata = {
+  title: 'Administration - Analyses | SIS Faune'
+}
+
 const AnalysisAdminPage = async () => {
   return (
     <>

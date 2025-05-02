@@ -7,7 +7,7 @@ import { Flex } from '@chakra-ui/react'
 import Header from './lib/components/header'
 
 export const metadata = {
-  title: 'SIS Faune :: Gestion des événements '
+  title: 'SIS Faune'
 }
 
 const Layout = async ({ children }) => {

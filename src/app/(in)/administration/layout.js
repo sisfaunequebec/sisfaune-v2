@@ -5,6 +5,10 @@ import { RxExclamationTriangle } from 'react-icons/rx'
 
 import UnauthorizedMessage from '@/app/lib/components/unauthorized-message'
 
+export const metadata = {
+  title: 'Administration | SIS Faune'
+}
+
 const AdminLayout = async ({ children }) => {
   const user = await getUser()
   const { isAdmin } = user

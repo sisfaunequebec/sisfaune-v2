@@ -6,6 +6,10 @@ import NewUserButton from './lib/components/new-user-button'
 import Filters from './lib/components/filters'
 import UsersList from './lib/containers/users-list'
 
+export const metadata = {
+  title: 'Administration - Utilisateurs | SIS Faune'
+}
+
 const UsersAdminPage = async () => {
   return (
     <>

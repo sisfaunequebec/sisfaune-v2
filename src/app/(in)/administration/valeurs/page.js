@@ -2,6 +2,10 @@ import { AbsoluteCenter, Container, Flex, VStack } from '@chakra-ui/react'
 
 import Toolbar from '../lib/components/toolbar'
 
+export const metadata = {
+  title: 'Administration - Tables de valeurs | SIS Faune'
+}
+
 const TablesAdminPage = async () => {
   return (
     <>

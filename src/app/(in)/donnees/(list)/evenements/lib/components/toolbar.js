@@ -31,11 +31,7 @@ const BackButton = () => {
   }, [router])
 
   return (
-    <ResponsiveButton label={'Retour à la liste'} variant={'subtle'} colorPalette={'blue'} icon={<RxArrowLeft />} onClick={handleGoBack} />
-    // <>
-    //   <Button size={['md', null, 'sm']} rounded={'full' variant={'subtle' colorPalette={'blue' display={['none', null, 'inherit']} onClick={handleClick}><RxArrowLeft />Retour à la liste</Button>
-    //   <IconButton size={['md', null, 'sm']} rounded={'full' variant={'subtle' colorPalette={'blue' aria-label={'Retour' display={['inherit', null, 'none']} onClick={handleClick}><RxArrowLeft /></IconButton>
-    // </>
+    <ResponsiveButton label={'Retour à la liste'} variant={'subtle'} colorPalette={'green'} icon={<RxArrowLeft />} onClick={handleGoBack} />
   )
 }
 

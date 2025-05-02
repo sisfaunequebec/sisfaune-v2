@@ -1,13 +1,12 @@
 /* eslint-disable react/jsx-curly-brace-presence */
 'use client'
-import { useCallback } from 'react'
 
 import { useWindowScroll } from '@uidotdev/usehooks'
 
-import { usePathname, useSearchParams } from 'next/navigation'
 import NextLink from 'next/link'
+import { usePathname, useSearchParams } from 'next/navigation'
 
-import { Tabs, Link, Flex, Container, HStack } from '@chakra-ui/react'
+import { Container, Flex, HStack, Link, Tabs } from '@chakra-ui/react'
 
 const StyledTrigger = ({ children, ...rest }) => {
   return (
@@ -25,7 +24,7 @@ const NavTabs = () => {
   const lastPathSegment = splitedPathname.at(-1)
 
   return (
-    <Tabs.Root defaultValue='utilisateurs' value={lastPathSegment} variant='subtle' size={['md', null, 'sm']} colorPalette='blue'>
+    <Tabs.Root defaultValue='utilisateurs' value={lastPathSegment} variant='subtle' size={['lg', null, 'sm']} colorPalette='green'>
       <Tabs.List>
         <StyledTrigger value={'utilisateurs'}>
           <Link asChild unstyled>

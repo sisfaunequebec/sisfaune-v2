@@ -114,7 +114,7 @@ const SpecimenForm = ({ specimen, isEditing, onToggleEditing }) => {
   )
 }
 
-const SpecimenInformationSection = ({ specimen, onDelete }) => {
+const SpecimenInformationSection = ({ specimen, onToggleEditing, onDelete }) => {
   // console.debug(specimen)
   const { id, specimenNumber, specie } = specimen
   const { name: specieName, binome } = specie
@@ -122,8 +122,8 @@ const SpecimenInformationSection = ({ specimen, onDelete }) => {
     <AccordionItem key={id} value={id}>
       <Box position='relative'>
         <AbsoluteCenter as={HStack} axis='vertical' insetEnd={5}>
-          <IconButton colorPalette='green' variant='subtle' rounded='full' size={['xs']}><RxPencil1 /></IconButton>
-          <IconButton colorPalette='red' variant='surface' rounded='full' size={['xs']} onClick={onDelete}><RxTrash /></IconButton>
+          { onToggleEditing && <IconButton colorPalette='green' variant='subtle' rounded='full' size={['xs']}><RxPencil1 /></IconButton> }
+          { onDelete && <IconButton colorPalette='red' variant='surface' rounded='full' size={['xs']} onClick={onDelete}><RxTrash /></IconButton> }
         </AbsoluteCenter>
         <Trigger label={`${specimenNumber} - ${specieName} (${binome})`} />
       </Box>

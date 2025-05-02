@@ -3,6 +3,10 @@ import { Flex, Container } from '@chakra-ui/react'
 import SpecimensList from './lib/containers/specimens-list'
 import Filters from '../lib/containers/filters'
 
+export const metadata = {
+  title: 'Base de données - Spécimens | SIS Faune'
+}
+
 const Specimens = async () => {
   return (
     <>

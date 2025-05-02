@@ -7,7 +7,7 @@ import useDialog from '@/utilitaires/use-dialog'
 
 import DeleteEventDialog from './detruire-evenement-dialog'
 
-const DeleteEventButton = ({ eventId }) => {
+const DeleteEventButton = ({ eventId, ...rest }) => {
   const { ask: deleteEvent, dialog: deleteEventDialog } = useDialog(DeleteEventDialog)
 
   const handleDeleteEvent = useCallback(async () => {
@@ -20,7 +20,7 @@ const DeleteEventButton = ({ eventId }) => {
   return (
     <>
       {deleteEventDialog}
-      <IconButton colorPalette='red' variant='surface' rounded='full' size={['xs']} onClick={handleDeleteEvent}><RxTrash /></IconButton>
+      <IconButton colorPalette='red' variant='surface' rounded='full' size={['xs']} onClick={handleDeleteEvent} {...rest}><RxTrash /></IconButton>
     </>
   )
 }

@@ -1,8 +1,8 @@
-import orderBy from 'lodash.orderby'
 
-import { DateTime } from 'luxon'
 
 import orm from '../database'
+
+import { filterViewablePrograms } from '@/lib/auth/acl'
 
 const getOrderByClause = (tri, direction) => {
   const sortDirection = direction ?? 'desc'
@@ -23,12 +23,6 @@ const getOrderByClause = (tri, direction) => {
         }
       }
   }
-}
-
-
-const filterViewablePrograms = (p) => {
-  const { role } = p
-  return !!role
 }
 
 const getWhereClauseFromParams = (params, context) => {
