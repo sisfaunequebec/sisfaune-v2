@@ -6,7 +6,9 @@ import { useParams } from 'next/navigation'
 import getUser from '@/lib/auth/get-user'
 import getEvent from './lib/actions/get-event'
 
-import { Box, Flex, Container, VStack, AbsoluteCenter, IconButton, Text, HStack, Separator, Fieldset, Input, EmptyState } from '@chakra-ui/react'
+import NextLink from 'next/link'
+
+import { Box, Flex, Container, VStack, AbsoluteCenter, Button, IconButton, Text, HStack, Separator, Fieldset, Input, EmptyState } from '@chakra-ui/react'
 import { RxPencil1, RxPlus, RxTrash, RxExclamationTriangle } from 'react-icons/rx'
 
 import {
@@ -21,6 +23,7 @@ import { Trigger, Content } from './lib/components/accordion-parts'
 import useDialog from '@/utilitaires/use-dialog'
 
 import PageSpinner from '@/app/lib/components/page-spinner'
+import CenteredMessage from '@/app/lib/components/centered-message'
 
 import Toolbar from '../../../(list)/evenements/lib/components/toolbar'
 
@@ -39,21 +42,11 @@ import LaboratoireSection from './lib/containers/laboratoire'
 
 import SpecimenInformationSection from './lib/containers/specimen'
 
-const Unauthorized = () => {
+const UnauthorizedOrNotFound = () => {
   return (
-    <EmptyState.Root size={['md']} p={0} alignSelf={'center'} justifySelf={'center'}>
-      <EmptyState.Content gap={4}>
-        <EmptyState.Indicator>
-          <RxExclamationTriangle />
-        </EmptyState.Indicator>
-        <VStack textAlign={'center'}>
-          <EmptyState.Title fontSize={['2xl', null, 'xl']}>Désolé !</EmptyState.Title>
-          <EmptyState.Description fontSize={['lg', null, 'md']}>
-            Cet événement est introuvable ou vous n&apos;êtes pas autorisé à le consulter
-          </EmptyState.Description>
-        </VStack>
-      </EmptyState.Content>
-    </EmptyState.Root>
+    <CenteredMessage level={'warning'} title={'Désolé !'} description={'Cet événement est introuvable ou vous n\'êtes pas autorisé à le consulter'}>
+      <Button as={NextLink} href={'/donnees'} variant={'solid'}>Revenir à la base de données</Button>
+    </CenteredMessage>
   )
 }
 
@@ -167,11 +160,13 @@ const Evenement = () => {
 
   if (event === null) {
     return (
-      <AbsoluteCenter><Unauthorized /></AbsoluteCenter>
+      <AbsoluteCenter as={Container}>
+        <UnauthorizedOrNotFound />
+      </AbsoluteCenter>
     )
   }
 
-  const { specimens } = event
+  // const { specimens } = event
 
   return (
     <>
@@ -208,7 +203,7 @@ const Evenement = () => {
             </SectionHeading>
 
             <AccordionRoot multiple size={['md', null, 'sm']} defaultValue={[]} lazyMount>
-              {specimens.map(s => {
+              {event.specimens.map(s => {
                 const { id } = s
                 // console.debug(id)
                 return (

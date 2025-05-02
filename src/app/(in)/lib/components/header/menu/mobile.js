@@ -56,13 +56,13 @@ const MobileMenu = ({ user }) => {
     toggle()
   }, [router, toggle])
 
-  useEffect(() => {
-    if (on) {
-      document.body.style.overflowY = 'hidden'
-    } else {
-      document.body.style.overflowY = 'scroll'
-    }
-  }, [on])
+  // useEffect(() => {
+  //   if (on) {
+  //     document.body.style.overflowY = 'hidden'
+  //   } else {
+  //     document.body.style.overflowY = 'auto'
+  //   }
+  // }, [on])
 
   return (
     <>

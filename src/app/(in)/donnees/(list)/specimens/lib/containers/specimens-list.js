@@ -6,9 +6,9 @@ import { DateTime } from 'luxon'
 
 import NextLink from 'next/link'
 
-import { Flex, Stack, VStack, Text, IconButton, LinkOverlay, AbsoluteCenter, EmptyState } from '@chakra-ui/react'
+import { Flex, Stack, VStack, Text, IconButton, LinkOverlay, AbsoluteCenter, EmptyState, Container } from '@chakra-ui/react'
 import { Button } from '@/app/lib/components/ui/button'
-import { RxArrowRight } from 'react-icons/rx'
+import { RxArrowRight, RxPlus, RxPlusCircled } from 'react-icons/rx'
 
 import { useQueryStates } from 'nuqs'
 
@@ -17,33 +17,16 @@ import useSpecimensCount from '@/lib/data/specimens/use-specimens-count'
 
 import { searchParams, urlKeys } from '@/lib/data/events/events-params'
 
-import { LinkListWrapper } from '@/app/(in)/lib/components/list'
+import { ListContainer, LinkListWrapper, LoadMoreButton } from '@/app/(in)/lib/components/list'
 
-// "id": 13866,
-// "eventId": 8766,
-// "specimenNumber": "8766.1",
-// "specieName": "Raton laveur",
-// "specieBinome": "Procyon lotor",
-// "cqsasNumber": null,
-// "reportedAt": "2007-06-21T00:00:00.000Z",
-// "submitterName": "Pierre Canac-Marquis"
+import CenteredMessage from '@/app/lib/components/centered-message'
+
+const PAGE_SIZE = 25
 
 const NoSpecimens = () => {
-    return (
-      <EmptyState.Root size={['md']} p={0} alignSelf={'center'} justifySelf={'center'}>
-        <EmptyState.Content gap={4}>
-          <EmptyState.Indicator>
-            {/* <RxExclamationTriangle /> */}
-          </EmptyState.Indicator>
-          <VStack textAlign={'center'}>
-            <EmptyState.Title fontSize={['2xl', null, 'xl']}>Désolé !</EmptyState.Title>
-            <EmptyState.Description fontSize={['lg', null, 'md']}>
-              Aucun spécimen ne correspond au critères
-            </EmptyState.Description>
-          </VStack>
-        </EmptyState.Content>
-      </EmptyState.Root>
-    )
+  return (
+    <CenteredMessage level={'info'} title={'Désolé'} description={'Aucun spécimen correspondant aux critères'} />
+  )
 }
 
 const SpecimenItem = ({ id, eventId, specimenNumber, specieName, specieBinome, cqsasNumber, localityName, submitterName, reportedAt }) => {
@@ -78,7 +61,13 @@ const SpecimenItem = ({ id, eventId, specimenNumber, specieName, specieBinome, c
   )
 }
 
-const PAGE_SIZE = 25
+// const LoadMoreButton = ({ count, total, isReachingEnd, isLoading, onClick }) => {
+//   const loadMoreButtonLabel = [`Événements 1 à ${count} de ${total}`, (isReachingEnd ? null : '')].filter(Boolean).join(' - ')
+
+//   return (
+//     <Button size={['lg', null, 'sm']} py={[6, null, 6]} borderRadius={0} variant={'surface'} colorPalette={'blue'} onClick={isReachingEnd ? null : onClick} loading={isLoading} disabled={isReachingEnd} alignItems={'center'}>{loadMoreButtonLabel} <RxPlus /></Button>
+//   )
+// }
 
 const SpecimensList = () => {
   const [params] = useQueryStates(searchParams, { urlKeys })
@@ -115,15 +104,15 @@ const SpecimensList = () => {
   }
 
   return (
-    <VStack position='relative' alignItems={'stretch'} justifyContent={'stretch'} flex={1} gap={0} opacity={isLoadingMore && 0.5} mb={2}>
-      {specimens.map(specimen => {
+    <ListContainer isLoading={isLoadingMore}>
+      {specimens.map((specimen, i) => {
         const { id } = specimen
         return (
-          <SpecimenItem key={id} {...specimen} />
+          <SpecimenItem key={[id, i].join('-')} {...specimen} />
         )
       })}
-      {loadMoreButtonIsVisible && <Button mt={2} p={4} variant='surface' colorPalette='blue' onClick={isReachingEnd ? null : handleLoadMore} loading={isLoadingMore}>{loadMoreButtonLabel}</Button>}
-    </VStack>
+      {loadMoreButtonIsVisible && <LoadMoreButton label={'Spécimens'} count={count} total={total} isReachingEnd={isReachingEnd} isLoading={isLoadingMore} onClick={handleLoadMore} />}
+    </ListContainer>
   )
 }
 

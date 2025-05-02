@@ -6,9 +6,9 @@ import { DateTime } from 'luxon'
 
 import NextLink from 'next/link'
 
-import { Flex, Box, Stack, VStack, Text, IconButton, LinkOverlay, EmptyState } from '@chakra-ui/react'
+import { Flex, Box, Stack, VStack, Text, IconButton, LinkOverlay, EmptyState, Container } from '@chakra-ui/react'
 import { Button } from '@/app/lib/components/ui/button'
-import { RxArrowRight } from 'react-icons/rx'
+import { RxArrowRight, RxPlus, RxPlusCircled } from 'react-icons/rx'
 
 import { useQueryStates } from 'nuqs'
 
@@ -17,24 +17,16 @@ import useEventsCount from '@/lib/data/events/use-events-count'
 
 import { searchParams, urlKeys } from '@/lib/data/events/events-params'
 
-import { LinkListWrapper } from '@/app/(in)/lib/components/list'
+import { ListContainer, LinkListWrapper, LoadMoreButton } from '@/app/(in)/lib/components/list'
+
+import CenteredMessage from '@/app/lib/components/centered-message'
+
+const PAGE_SIZE = 25
 
 const NoEvents = () => {
-    return (
-      <EmptyState.Root size={['md']} p={0} alignSelf={'center'} justifySelf={'center'}>
-        <EmptyState.Content gap={4}>
-          <EmptyState.Indicator>
-            {/* <RxExclamationTriangle /> */}
-          </EmptyState.Indicator>
-          <VStack textAlign={'center'}>
-            <EmptyState.Title fontSize={['2xl', null, 'xl']}>Désolé !</EmptyState.Title>
-            <EmptyState.Description fontSize={['lg', null, 'md']}>
-              Aucun événement ne correspond au critères
-            </EmptyState.Description>
-          </VStack>
-        </EmptyState.Content>
-      </EmptyState.Root>
-    )
+  return (
+    <CenteredMessage level={'info'} title={'Oups'} description={'Aucun événement correspondant aux critères'} />
+  )
 }
 
 const ItemEvenement = ({ id, silabId, mapaqId, typeName, programName, localityName, submitterName, reportedAt }) => {
@@ -58,7 +50,7 @@ const ItemEvenement = ({ id, silabId, mapaqId, typeName, programName, localityNa
         <VStack alignItems={['flex-start', null, null, 'flex-end']} gap={0.4} flex={1}>
           <Flex as={Text} display={['none', null, null, 'inherit']} textAlign={'end'} truncate>{localityName ?? 'Localisation indéterminée'}</Flex>
           <Flex display={['none', null, null, 'inherit']}>Soumis par&nbsp;:&nbsp;{submitterName ?? 'indéterminé'}</Flex>
-          <Flex color='blue.600'>Date du signalement : {reportingDate}</Flex>
+          <Flex color={'blue.600'}>Date du signalement : {reportingDate}</Flex>
         </VStack>
       </Stack>
       <IconButton as={NextLink} href={href} scroll colorPalette='green' variant='ghost' rounded='full' size={['xs']}><RxArrowRight /></IconButton>
@@ -66,7 +58,13 @@ const ItemEvenement = ({ id, silabId, mapaqId, typeName, programName, localityNa
   )
 }
 
-const PAGE_SIZE = 25
+// const LoadMoreButton = ({ count, total, isReachingEnd, isLoading, onClick }) => {
+//   const loadMoreButtonLabel = [`Événements 1 à ${count} de ${total}`, (isReachingEnd ? null : '')].filter(Boolean).join(' - ')
+
+//   return (
+//     <Button size={['lg', null, 'sm']} py={[6, null, 6]} borderRadius={0} variant={'surface'} colorPalette={'blue'} onClick={isReachingEnd ? null : onClick} loading={isLoading} disabled={isReachingEnd} alignItems={'center'}>{loadMoreButtonLabel} <RxPlus /></Button>
+//   )
+// }
 
 const ListeEvenements = () => {
   const inner = useRef(null)
@@ -103,10 +101,8 @@ const ListeEvenements = () => {
     }, 500)
   }, [inView, size, isLoadingMore, handleLoadMore])
 
-  const loadMoreButtonLabel = [`Événements 1 à ${count} de ${total}`, (isReachingEnd ? null : 'Cliquer pour charger la suite')].filter(Boolean).join(' - ')
-
   const loadMoreButtonIsVisible = events.length > 0
-  const triggerIsVisible = (!isLoadingMore && !isReachingEnd)
+  // const triggerIsVisible = (!isLoadingMore && !isReachingEnd)
   // console.debug(isReachingEnd, isLoadingMore, triggerIsVisible)
 
   if (!isLoadingMore && count === 0) {
@@ -116,16 +112,16 @@ const ListeEvenements = () => {
   }
 
   return (
-    <VStack position={'relative'} alignItems={'stretch'} justifyContent={'stretch'} flex={1} gap={0} opacity={isLoadingMore && 0.5} mb={2}>
-      {events.map(event => {
+    <ListContainer isLoading={isLoadingMore}>
+      {events.map((event, i) => {
         const { id } = event
         return (
-          <ItemEvenement key={id} {...event} />
+          <ItemEvenement key={[id, i].join('-')} {...event} />
         )
       })}
       {/* <Flex flex={1} position={'absolute'} bottom={0} w={'full'} height={'300px'} maxH={'100vh'} border={'solid 1px red'} display={triggerIsVisible ? 'inherit' : 'none'} ref={inner} /> */}
-      {loadMoreButtonIsVisible && <Button mt={2} p={4} variant='surface' colorPalette='blue' onClick={isReachingEnd ? null : handleLoadMore} loading={isLoadingMore} disabled={isReachingEnd}>{loadMoreButtonLabel}</Button>}
-    </VStack>
+      {loadMoreButtonIsVisible && <LoadMoreButton label={'Événements'} count={count} total={total} isReachingEnd={isReachingEnd} isLoading={isLoadingMore} onClick={handleLoadMore} />}
+    </ListContainer>
   )
 }
 

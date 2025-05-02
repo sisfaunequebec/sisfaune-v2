@@ -20,7 +20,7 @@ import { searchParams, urlKeys } from '@/lib/data/users/users-params'
 import useDialog from '@/utilitaires/use-dialog'
 import EditUserDialog from './edit-user-dialog'
 
-import { LinkListWrapper } from '@/app/(in)/lib/components/list'
+import { ListContainer, LinkListWrapper, LoadMoreButton } from '@/app/(in)/lib/components/list'
 
 const UserItem = ({ id, username, fullName, email, organisation, isActive, onClick }) => {
   // const href = `/donnees/evenements/${id}`
@@ -92,7 +92,7 @@ const UsersList = () => {
   //   }, 500)
   // }, [inView, size, isLoadingMore, handleLoadMore])
 
-  const loadMoreButtonLabel = [`Utilisateurs 1 à ${total} `, (isReachingEnd ? null : 'Cliquer pour charger la suite')].filter(Boolean).join(' - ')
+  // const loadMoreButtonLabel = [`Utilisateurs 1 à ${total} `, (isReachingEnd ? null : 'Cliquer pour charger la suite')].filter(Boolean).join(' - ')
 
   const loadMoreButtonIsVisible = users.length > 0
   const triggerIsVisible = (!isLoadingMore && !isReachingEnd)
@@ -108,7 +108,7 @@ const UsersList = () => {
   return (
     <>
       {editUserDialog}
-      <VStack position='relative' alignItems='stretch' flex={1} gap={0} justifyContent='stretch' opacity={isLoadingMore && 0.5} mb={2}>
+      <ListContainer isLoading={isLoadingMore}>
         {users.map(user => {
           const { id } = user
           return (
@@ -116,8 +116,7 @@ const UsersList = () => {
           )
         })}
         {/* <Flex flex={1} position={'absolute'} bottom={0} w={'full'} height={'300px'} maxH={'100vh'} border={'solid 1px red'} display={triggerIsVisible ? 'inherit' : 'none'} ref={inner} /> */}
-        { loadMoreButtonIsVisible && <Button mt={2} p={4} variant={'surface'} colorPalette={'blue'} onClick={isReachingEnd ? null : handleLoadMore} loading={isLoadingMore} disabled={isReachingEnd}>{loadMoreButtonLabel}</Button> }
-      </VStack>
+        {loadMoreButtonIsVisible && <LoadMoreButton label={'Utilisateurs'} count={0} total={total} isReachingEnd={isReachingEnd} isLoading={isLoadingMore} onClick={handleLoadMore} />}      </ListContainer>
     </>
   )
 }

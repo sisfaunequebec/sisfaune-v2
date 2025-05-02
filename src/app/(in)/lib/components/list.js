@@ -1,15 +1,25 @@
-import { HStack, LinkBox } from '@chakra-ui/react'
+import { Flex, Box, Stack, HStack, VStack, LinkBox, Text, IconButton, LinkOverlay, EmptyState, Container } from '@chakra-ui/react'
+import { Button } from '@/app/lib/components/ui/button'
+import { RxArrowRight, RxPlus, RxPlusCircled } from 'react-icons/rx'
+
+const ListContainer = ({ children, isLoading }) => {
+  return (
+    <VStack position={'relative'} alignItems={'stretch'} justifyContent={'stretch'} flex={1} gap={0} opacity={isLoading && 0.5} mb={[0, null, 2]}>
+      { children }
+    </VStack>
+  )
+}
 
 const LinkListWrapper = ({ href, children }) => {
   return (
     <LinkBox
       as={HStack}
-      gap={4}
+      gap={2}
       direction='row'
       alignItems='center'
       justifyContent='space-between'
       ps={5}
-      pe={5}
+      pe={3}
       py={3}
       borderBottomColor='green.300'
       borderBottomWidth={1}
@@ -30,6 +40,16 @@ const LinkListWrapper = ({ href, children }) => {
   )
 }
 
+const LoadMoreButton = ({ count, total, label = 'Items', isReachingEnd, isLoading, onClick }) => {
+  const loadMoreButtonLabel = [`${label} 1 à ${count} de ${total}`, (isReachingEnd ? null : '')].filter(Boolean).join(' - ')
+
+  return (
+    <Button size={['lg', null, 'sm']} py={[6, null, 6]} mt={[0, null, 2]} borderRadius={0} variant={'surface'} colorPalette={'blue'} onClick={isReachingEnd ? null : onClick} loading={isLoading} disabled={isReachingEnd} alignItems={'center'}>{loadMoreButtonLabel} <RxPlus /></Button>
+  )
+}
+
 export {
-  LinkListWrapper
+  LinkListWrapper,
+  ListContainer,
+  LoadMoreButton
 }
