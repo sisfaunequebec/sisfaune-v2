@@ -1,6 +1,11 @@
+'use server'
+import 'server-only'
 
+import wait from '@/utilitaires/wait'
 
 import orm from '../database'
+
+import getUser from '@/lib/auth/get-user'
 
 import { filterViewablePrograms } from '@/lib/auth/acl'
 
@@ -25,9 +30,8 @@ const getOrderByClause = (tri, direction) => {
   }
 }
 
-const getWhereClauseFromParams = (params, context) => {
+const getWhereClauseFromParams = (params, user) => {
   const { statut, programme, tri, direction, region, texte: texteRaw } = params
-  const { user } = context
 
   const { permissions } = user
   const viewableProgramIds = permissions.filter(filterViewablePrograms).map(p => p.programId)
@@ -90,14 +94,14 @@ const getWhereClauseFromParams = (params, context) => {
   return whereClause
 }
 
-const getSpecimensCount = async (params, context = {}) => {
-  const { user } = context
+const getSpecimensCount = async (params) => {
+  const user = await getUser()
 
   if (!user) {
     return []
   }
 
-  const whereClause = getWhereClauseFromParams(params, context)
+  const whereClause = getWhereClauseFromParams(params, user)
 
   const count = await orm.Specimen.count({
     where: whereClause
@@ -106,10 +110,12 @@ const getSpecimensCount = async (params, context = {}) => {
   return count
 }
 
-const getSpecimens = async (params, context = {}) => {
+const getSpecimens = async (params) => {
   const { statut, programme, tri, direction, region, offset = 0, take = 25 } = params
 
-  const whereClause = getWhereClauseFromParams(params, context)
+  const user = await getUser()
+
+  const whereClause = getWhereClauseFromParams(params, user)
   const orderByClause = getOrderByClause(tri, direction)
 
   const specimens = await orm.Specimen.findMany({

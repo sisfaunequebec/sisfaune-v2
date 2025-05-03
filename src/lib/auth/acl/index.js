@@ -21,6 +21,10 @@ const canUserSubmitEvent = (user) => {
   return can
 }
 
+const canUserDeleteEvent = (user) => {
+  return isUserAdmin(user)
+}
+
 const filterViewablePrograms = (p) => {
   const { role } = p
   return role !== null
@@ -144,11 +148,15 @@ const getCanForAnalysisSection = (user, programId, minimumRoleLevel = 8) => {
   return effectivePermission >= minimumRoleLevel
 }
 
+const userCanViewAnalysisSection = (user, programId) => {
+  return getCanForAnalysisSection(user, programId, PERMISSION_LEVEL['consultation'])
+}
+
 const userCanEditAnalysisSection = (user, programId) => {
   return getCanForAnalysisSection(user, programId, PERMISSION_LEVEL['modification'])
 }
 
-const userCanAddAnalysis= (user, programId) => {
+const userCanAddAnalysis = (user, programId) => {
   return getCanForAnalysisSection(user, programId, PERMISSION_LEVEL['ajout'])
 }
 
@@ -157,16 +165,30 @@ const userCanDeleteAnalysis = (user, programId) => {
 }
 
 export {
+  isUserAdmin,
+
   canUserExport,
   canUserSubmitEvent,
+
+  canUserDeleteEvent,
 
   canUserSubmitInProgram,
   canUserViewProgram,
 
   filterSubmitablePrograms,
-  filterViewablePrograms, isUserAdmin, userCanAddAnalysis, userCanAddSpecimen, userCanDeleteAnalysis, userCanDeleteSpecimen, userCanEditEventSection, userCanEditSpecimenSection, userCanViewEventSection,
+  filterViewablePrograms,
+
+  userCanViewEventSection,
+  userCanEditEventSection,
 
   userCanViewSpecimenSection,
-  userCanEditAnalysisSection
+  userCanEditSpecimenSection,
+  userCanAddSpecimen,
+  userCanDeleteSpecimen,
+
+  userCanViewAnalysisSection,
+  userCanEditAnalysisSection,
+  userCanAddAnalysis,
+  userCanDeleteAnalysis,
 }
 

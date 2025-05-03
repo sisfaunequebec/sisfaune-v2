@@ -532,13 +532,15 @@ model LabEvent {
   // @@id([eventId, labId])
 
   eventId Int @map(name: "id_evenement")
-  event Event @relation(fields: [eventId], references: [id], onDelete: Restrict, onUpdate: Restrict)
 
   labId Int? @map(name: "id_laboratoire")
   lab LutLaboratory? @relation(fields: [labId], references: [id], onDelete: Restrict, onUpdate: Restrict)
 
   receivedAt DateTime? @map(name: "date_reception")
   receivedBy String? @map(name: "recu_par")
+
+  // Relations
+  event Event @relation(fields: [eventId], references: [id], onDelete: Cascade, onUpdate: Cascade)
 
   // TODO: 
   // id_responsable	uniqueidentifier	YES	NO	NULL	 dbo.utilisateur(id_utilisateur)
@@ -593,7 +595,7 @@ model Specimen {
   createdById String? @map("meta_creation_par") 
 
   // Relations
-  event Event @relation(fields: [eventId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+  event Event @relation(fields: [eventId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   specie LutAnimalSpecie? @relation(fields: [specieId], references: [id], onDelete: Restrict, onUpdate: Restrict)
   age LutAnimalAge? @relation(fields: [ageId], references: [id], onDelete: Restrict, onUpdate: Restrict)
   sex LutAnimalSex? @relation(fields: [sexId], references: [id], onDelete: Restrict, onUpdate: Restrict)
@@ -652,7 +654,6 @@ model Event {
   discoveredAt DateTime? @db.Date @map(name: "date_decouverte")
 
   isDiscovererSameAsSubmitter Boolean @default(false) @map(name: "decouvreur_idem_soumissionnaire")
-
 
   reportedAt DateTime? @db.Date @map(name: "date_signalement")
   collectedAt DateTime? @db.Date @map(name: "date_recolte")
@@ -764,9 +765,8 @@ model Location {
   province String? @map(name: "province")
   postalCode String? @map(name: "code_postal")
 
-  locality LutLocality? @relation(fields: [localityId], references: [id])
-
-  event Event @relation(fields: [eventId], references: [id])
+  locality LutLocality? @relation(fields: [localityId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+  event Event @relation(fields: [eventId], references: [id], onDelete: Cascade, onUpdate: Cascade)
 }
 
 enum AdminRole {

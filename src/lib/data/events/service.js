@@ -1,9 +1,13 @@
 'use server'
 import 'server-only'
 
+import wait from '@/utilitaires/wait'
+
 import orm from '../database'
 
-import { canUserViewProgram, filterViewablePrograms } from '@/lib/auth/acl'
+import getUser from '@/lib/auth/get-user'
+
+import { canUserViewProgram, canUserDeleteEvent, filterViewablePrograms, userCanViewAnalysisSection, userCanViewSpecimenSection } from '@/lib/auth/acl'
 
 const SORT_MAP = {
   date_signalement: 'reportedAt',
@@ -29,9 +33,8 @@ const getOrderByClause = (tri, direction) => {
   return orderByClause
 }
 
-const getWhereClauseFromParams = (params, context) => {
+const getWhereClauseFromParams = (params, user) => {
   const { statut, programme, tri, direction, region, texte: texteRaw } = params
-  const { user } = context
 
   const { permissions } = user
   const viewableProgramIds = permissions.filter(filterViewablePrograms).map(p => p.programId)
@@ -68,14 +71,14 @@ const getWhereClauseFromParams = (params, context) => {
   return whereClause
 }
 
-const getEventsCount = async (params, context = {}) => {
-  const { user } = context
+const getEventsCount = async (params) => {
+  const user = await getUser()
 
   if (!user) {
     return []
   }
 
-  const whereClause = getWhereClauseFromParams(params, context)
+  const whereClause = getWhereClauseFromParams(params, user)
 
   const count = await orm.Event.count({
     where: whereClause
@@ -84,35 +87,8 @@ const getEventsCount = async (params, context = {}) => {
   return count
 }
 
-const getEvents = async (params, context = {}) => {
-  const { tri, direction, offset = 0, take = 25 } = params
-  const { user } = context
-
-  if (!user) {
-    return []
-  }
-
-  const whereClause = getWhereClauseFromParams(params, context)
-  const orderByClause = getOrderByClause(tri, direction)
-
-  const events = await orm.Event.findMany({
-    where: whereClause,
-    include: {
-      type: true,
-      program: true,
-      submitter: true,
-      location: {
-        include: {
-          locality: true
-        }
-      }
-    },
-    orderBy: orderByClause,
-    skip: (offset * take),
-    take
-  })
-
-  const data = events.map(e => {
+const toEventsDTO = (events) => {
+  const transformed = events.map(e => {
     const { id, silabId, mapaqId, reportedAt, type, program, submitter, location } = e
 
     const { name: typeName } = type
@@ -135,22 +111,53 @@ const getEvents = async (params, context = {}) => {
     }
   })
 
-  return data
+  return transformed
 }
 
-const getEvent = async (id, context) => {
-  const { user } = context
+const getEvents = async (params) => {
+  const { tri, direction, offset = 0, take = 25 } = params
+
+  const user = await getUser()
+
+  if (!user) {
+    return []
+  }
+
+  const whereClause = getWhereClauseFromParams(params, user)
+  const orderByClause = getOrderByClause(tri, direction)
+
+  const events = await orm.Event.findMany({
+    where: whereClause,
+    include: {
+      type: true,
+      program: true,
+      submitter: true,
+      location: {
+        include: {
+          locality: true
+        }
+      }
+    },
+    orderBy: orderByClause,
+    skip: (offset * take),
+    take
+  })
+
+  return toEventsDTO(events)
+}
+
+const getEvent = async (id) => {
+  const user = await getUser()
 
   if (!id) {
     return null
   }
 
   if (!user) {
-    return
+    return null
   }
 
   try {
-
     const event = await orm.Event.findUnique({
       where: {
         id
@@ -193,25 +200,50 @@ const getEvent = async (id, context) => {
     if (!canUserViewProgram(user, programId)) {
       return null
     }
-  
-    return event
+
+    const canUserViewSpecimensSection = userCanViewSpecimenSection(user, programId)
+    const canUserViewAnalysisSection = userCanViewAnalysisSection(user, programId)
+
+    const { specimens, ...restEvent } = event
+
+    const transformed = {
+      ...restEvent,
+      specimens: canUserViewSpecimensSection ? specimens : []
+    }
+
+    return transformed
 
   } catch (e) {
-    console.warn(e)
+    // console.warn(e)
     return null
   }
 }
 
-// const getEvent = async (id, context) => {
-//   const event = await orm.Event.find({
-//     where: {
-//       id
-//     }
-//   })
-//   return event
-// }
+const deleteEvent = async (id) => {
+  const user = await getUser()
+
+  if (!user) {
+    throw new Error()
+  }
+
+  const canDeleteEvent = canUserDeleteEvent(user)
+
+  if (!canDeleteEvent) {
+    throw new Error()
+  }
+
+  await orm.event.delete({
+    where: {
+      id
+    }
+  })
+  // await wait(1000)
+
+  return null
+}
 
 export {
-  getEvent, getEvents, getEventsCount
+  getEvent, getEvents, getEventsCount,
+  deleteEvent
 }
 

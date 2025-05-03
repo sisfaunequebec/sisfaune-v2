@@ -43,7 +43,7 @@ const AddAnalysisDialog = ({ close }) => {
             </ControlledField>
             <ControlledField name={'silabId'} label={'Numéro d\'identification SILAB :'} variant={'horizontal'}>
               <Input autoComplete={'off'} />
-            </ControlledField>
+            </ControlledField>/
             <ControlledField name={'reportOriginId'} label={'Provenance du signalement :'} variant={'horizontal'}>
               <ReportOriginSelect contentRef={contentRef} />
             </ControlledField>

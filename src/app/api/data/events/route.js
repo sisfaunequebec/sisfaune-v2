@@ -12,10 +12,8 @@ const loader = createLoader(searchParams, { urlKeys })
 const GET = async (request) => {
   const { nextUrl: { searchParams } } = request
 
-  const user = await getUser()
-
   const params = loader(searchParams)
-  const events = await getEvents(params, { user })
+  const events = await getEvents(params)
 
   return Response.json(events)
 }

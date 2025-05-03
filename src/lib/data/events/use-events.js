@@ -27,7 +27,7 @@ const useEvents = (params, take = 20) => {
       return { url: `${baseUrl}${serialize(mergedParams)}`, mergedParams }
     },
     ({ url }) => fetcher(url),
-    { keepPreviousData: true, initialSize: 1, revalidateFirstPage: false }
+    { keepPreviousData: true, initialSize: 1, revalidateAll: true }
   )
 
   const { data, error, isLoading, isValidating, mutate, size, setSize } = result

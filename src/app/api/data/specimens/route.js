@@ -12,10 +12,8 @@ const loader = createLoader(searchParams, { urlKeys })
 const GET = async (request) => {
   const { nextUrl: { searchParams } } = request
 
-  const user = await getUser()
-
   const params = loader(searchParams)
-  const specimens = await getSpecimens(params, { user })
+  const specimens = await getSpecimens(params)
 
   return Response.json(specimens)
 }

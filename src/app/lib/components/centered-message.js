@@ -1,19 +1,19 @@
 import { EmptyState, Flex, VStack } from '@chakra-ui/react'
 import { RiInformationFill } from 'react-icons/ri'
 
-// const COLORS = {
-//   info: 'blue.600',
-//   warning: 'orange.600',
-//   error: 'red.600',
-// }
+const COLORS = {
+  // info: 'blue.600',
+  // warning: 'orange.600',
+  error: 'red.600',
+}
 
 const CenteredMessage = ({ title = 'Désolé !', description, level = 'info', children }) => {
-  // const color = COLORS[level]
+  const color = COLORS[level] ?? 'green.500'
 
   return (
     <EmptyState.Root size={['md']} flex={1} alignSelf={'center'} justifySelf={'center'}>
       <EmptyState.Content gap={2}>
-        <EmptyState.Indicator color={'green.500'}>
+        <EmptyState.Indicator color={color}>
           <RiInformationFill  />
         </EmptyState.Indicator>
         <VStack textAlign={'center'}>
