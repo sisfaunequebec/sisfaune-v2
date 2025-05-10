@@ -5,8 +5,8 @@ const { stringOrNull, stringToBool, dateOrNull } = require('./utils')
 
 const euthanasiaBySpecimenId = euthanasia.reduce((acc, e) => {
   const { id_specimen, id_methode, date, qtee_ketamine, no_bouteille, id_organisme } = e
-  const idSpecimen = parseInt(id_specimen, 10)
-  acc[idSpecimen] = {
+  const specimenId = parseInt(id_specimen, 10)
+  acc[specimenId] = {
     euthanasiaMethodId: parseInt(id_methode, 10),
     euthanizedAt: dateOrNull(date),
     productAmount: parseFloat(qtee_ketamine),
@@ -62,7 +62,7 @@ const transformed = source.map(p => {
   return {
     id: specimenId,
     eventId: parseInt(id_evenement, 10),
-    n: parseInt(n, 10),
+    // n: parseInt(n, 10),
     sequenceId: parseInt(id_sequentiel, 10),
     specimenNumber: stringOrNull(numero_specimen),
     silabIdentificationNumber: stringOrNull(numero_identification_silab),

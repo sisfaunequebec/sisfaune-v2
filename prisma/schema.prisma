@@ -56,6 +56,8 @@ model User {
 
   eventsCreated Event[] @relation("EventCreator")
   eventsSubmitted Event[] @relation("EventSubmitter")
+
+  eventsResponsible Event[] @relation("EventLabResponsible")
 }
  
 model Account {
@@ -312,9 +314,8 @@ model LutLocality {
   province String @map(name: "province")
   version String @map(name: "version")
 
-  // geometry LutLocalityGeometry?
+  geometry LutLocalityGeometry[]
   locations Location[]
-  // event Event[]
 }
 
 model LutLocalityGeometry {
@@ -322,16 +323,16 @@ model LutLocalityGeometry {
 
   id Int @id
   version String @map(name: "version")
-  // nbVertices Int @map(name: "vertex")
 
   localityId Int @map(name: "id_muni")
 
   geomAsText String @map(name: "geom_wkt")
   
-  // geom Unsupported("geometry(MultiPolygon, 4326)")?
-  // @@index([geom], name: "geomidx", type: Gist)
+  // TODO - Complete
+  geom Unsupported("geometry(MultiPolygon, 4326)")?
+  @@index([geom], name: "geomidx", type: Gist)
 
-  // locality LutLocality @relation(fields: [localityId], references: [id])
+  locality LutLocality @relation(fields: [localityId], references: [id])
 }
 
 model LutHabitatType {
@@ -352,26 +353,12 @@ model LutLabShippingMethod {
 
   events Event[]
 }
-
-// model LutAnimalFamily {
-//   @@map("lut_animal_famille")
-
-//   id Int @id @db.SmallInt
-//   name String @map(name: "nom")
-
-//   // specie LutAnimalSpecie[]
-// }
-
 model LutAnimalSpecie {
   @@map("lut_animal_espece")
 
   id Int @id @db.SmallInt
   name String @map(name: "nom")
-  // group String @map(name: "groupe")
   binome String? @map(name: "binome")
-
-  // familyId Int? @map(name: "id_famille")
-  // family LutAnimalFamily? @relation(fields: [familyId], references: [id], onDelete: Restrict, onUpdate: Restrict)
 
   groupId Int? @map(name: "id_groupe")
   group LutAnimalGroupV2? @relation(fields: [groupId], references: [id], onDelete: Restrict, onUpdate: Restrict)
@@ -392,7 +379,7 @@ model LutLaboratory {
   name String @map(name: "nom")
   isActive Boolean @default(true) @map(name: "actif")
 
-  labEvents LabEvent[]
+  // labEvents LabEvent[]
   events Event[]
 }
 
@@ -465,13 +452,15 @@ model Collaborator {
   name String @map(name: "nom")
   isActive Boolean @default(true) @map(name: "actif")
 
+ // Relations
   events Event[]
 }
 
 model Discoverer {
   @@map("data_decouvreur")
 
-  id Int @id @default(autoincrement())
+  // id Int @id @default(autoincrement())
+  eventId Int @id @map(name: "id_evenement")
 
   greeting String? @map(name: "salutation")
   lastName String? @map(name: "nom")
@@ -489,8 +478,11 @@ model Discoverer {
   province String? @map(name: "province")
   postalCode String? @map(name: "code_postal")
 
-  eventId Int @map(name: "id_evenement")
-  events Event[]
+  legacyAddressId Int? @map(name: "id_adresse_egacy")
+
+  // Relations
+  // event Event @relation(fields: [eventId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  // events Event[]
 }
 
 model Result {
@@ -504,55 +496,13 @@ model Result {
   specimen Specimen @relation(fields: [specimenId], references: [id], onDelete: Restrict, onUpdate: Restrict)
   analysis LutAnalysis @relation(fields: [analysisId], references: [id], onDelete: Restrict, onUpdate: Restrict)
 }
-
-model LutSampleType {
-  @@map("lut_echantillon_type")
-
-  id Int @db.SmallInt @id
-  name String @map(name: "nom")
-  ccwhcId Int @db.SmallInt @map(name: "id_ccwhc")
-
-  samples Sample[]
-}
-model Sample {
-  @@map("data_echantillon")
-
-  id Int @id
-  specimenId Int @map(name: "id_specimen")
-  sampleTypeId Int @db.SmallInt @default(0) @map(name: "id_type_echantillon")
-
-  specimen Specimen @relation(fields: [specimenId], references: [id], onDelete: Restrict, onUpdate: Restrict)
-  type LutSampleType @relation(fields: [sampleTypeId], references: [id], onDelete: Restrict, onUpdate: Restrict)
-}
-
-model LabEvent {
-  @@map("data_laboratoire")
-
-  id Int @id @default(autoincrement())
-  // @@id([eventId, labId])
-
-  eventId Int @map(name: "id_evenement")
-
-  labId Int? @map(name: "id_laboratoire")
-  lab LutLaboratory? @relation(fields: [labId], references: [id], onDelete: Restrict, onUpdate: Restrict)
-
-  receivedAt DateTime? @map(name: "date_reception")
-  receivedBy String? @map(name: "recu_par")
-
-  // Relations
-  event Event @relation(fields: [eventId], references: [id], onDelete: Cascade, onUpdate: Cascade)
-
-  // TODO: 
-  // id_responsable	uniqueidentifier	YES	NO	NULL	 dbo.utilisateur(id_utilisateur)
-}
-
 model Specimen {
   @@map("data_specimen")
 
   id Int @id
   eventId Int @map(name: "id_evenement")
 
-  n Int @db.SmallInt @map(name: "n") @default(0)
+  // n Int @db.SmallInt @map(name: "n") @default(0)
   sequenceId Int @db.SmallInt	@map(name: "id_sequentiel") @default(0)
   specimenNumber String? @map(name: "numero_specimen")
   
@@ -604,25 +554,9 @@ model Specimen {
   deathCause LutAnimalDeathCause @relation(fields: [deathCauseId], references: [id], onDelete: Restrict, onUpdate: Restrict)
   preservationMethod LutPreservationMethod @relation(fields: [preservationMethodId], references: [id], onDelete: Restrict, onUpdate: Restrict)
 
-  samples Sample[]
   results Result[]
   measures SpecimenMeasure[]
 }
-
-// model Euthanasia {
-//   @@map("data_euthanasie")
-
-//   @@id([specimenId, methodId])
-//   specimenId Int @map(name: "id_specimen")
-//   methodId Int @map(name: "id_methode")
-//   date DateTime? @db.Date
-
-//   // TODO:
-//   // qtee_ketamine	numeric(18,2)	YES	NO	NULL	
-//   // no_bouteille	nvarchar(50)	YES	NO	NULL	
-//   // id_organisme	int	NO	NO	((0))	 dbo.lut_euthanasie_organisme(id_organisme)
-// }
-
 model Event {
   @@map("data_evenement")
 
@@ -649,8 +583,8 @@ model Event {
   submitter User @relation("EventSubmitter", fields: [submitterId], references: [id], onDelete: Restrict, onUpdate: Restrict)
 
   // Discovery
-  discovererId Int? @map(name: "id_decouvreur")
-  discoverer Discoverer? @relation(fields: [discovererId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+  // discovererId Int? @map(name: "id_decouvreur")
+  // discoverer Discoverer? @relation(fields: [id], references: [eventId], onDelete: Restrict, onUpdate: Restrict)
   discoveredAt DateTime? @db.Date @map(name: "date_decouverte")
 
   isDiscovererSameAsSubmitter Boolean @default(false) @map(name: "decouvreur_idem_soumissionnaire")
@@ -676,6 +610,11 @@ model Event {
   labShippingMethodId Int? @db.SmallInt @map(name: "id_methode_expedition") @default(0)
   labShippingMethod LutLabShippingMethod? @relation(fields: [labShippingMethodId], references: [id], onDelete: Restrict, onUpdate: Restrict)
   labShippingTrackingNumber String? @map(name: "no_suivi_transporteur")
+
+  // Legacy data_laboratoire
+  labReceivedAt DateTime? @map(name: "labo_date_reception")
+  labReceivedBy String? @map(name: "labo_recu_par")
+  labResponsibleId String? @map(name: "labo_id_responsable")
 
   temperature Decimal? @db.Decimal(4, 1) @map(name: "temperature")
   observations String? @map(name: "observations")
@@ -719,13 +658,6 @@ model Event {
   affectedSpecie5AliveCount Int? @db.SmallInt @map(name: "affect5_vivant")
   affectedSpecie5NotSpecifiedCount Int? @db.SmallInt @map(name: "affect5_non_specifie")
 
-  // // Location (legacy "localisation" table)
-  // locationTypeId LocationType @default(coordonnees) @map(name: "type_localisation")
-  // locationdDescription String? @map(name: "description_localisation")
-
-  // locationLocalityId Int? @map(name: "id_muni_localisation")
-  // locality LutLocality? @relation(fields: [locationLocalityId], references: [id])
-
   // Metadata
   source String? @map("source")
   sourcePk Int? @map("pk_source")
@@ -736,8 +668,10 @@ model Event {
 
   // Relations
   specimens Specimen[]
-  labEvents LabEvent[]
   location Location?
+  // discoverer Discoverer? TODO - re-enable
+
+  labResponsible User? @relation("EventLabResponsible", fields: [labResponsibleId], references: [id], onDelete: Restrict, onUpdate: Restrict)
 }
 
 enum LocationType {
@@ -748,7 +682,7 @@ enum LocationType {
 model Location {
   @@map("data_localisation")
 
-  eventId Int @id
+  eventId Int @id @map(name: "id_evenement")
   typeId LocationType @default(coordonnees)
   description String? @map(name: "description")
 

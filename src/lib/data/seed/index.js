@@ -33,10 +33,14 @@ const lutWeightUnits = require('./lut-weight-units')
 
 const dataSpecimens = require('./data-specimens')
 
-async function main () {
-  // await orm.$executeRaw`CREATE EXTENSION postgis;`
+const dataDiscoverers = require('./data-discoverers')
 
+async function main () {
   await orm.$transaction([
+    orm.$executeRaw`SET session_replication_role = replica;`,
+
+    // orm.$executeRaw`CREATE EXTENSION IF NOT EXISTS postgis;`,
+
     orm.LutEventProgram.createMany({ data: lutEventPrograms }),
     orm.LutEventStatus.createMany({ data: lutEventStatuses }),
     // orm.LutAnimalFamily.createMany({ data: lutAnimalFamilies }),
@@ -51,11 +55,13 @@ async function main () {
     orm.LutEventType.createMany({ data: lutEventTypes }),
     orm.LutLabShippingMethod.createMany({ data: labShippingMethods }),
     orm.LutAnalysisSector.createMany({ data: lutAnalysisSectors }),
-    orm.LutSampleType.createMany({ data: lutSampleTypes }),
+    // orm.LutSampleType.createMany({ data: lutSampleTypes }),
     orm.LutHabitatType.createMany({ data: lutHabitatTypes }),
 
     orm.LutLocality.createMany({ data: lutLocalities }),
+
     orm.LutLocalityGeometry.createMany({ data: lutLocalityGeom }),
+    orm.$executeRaw`UPDATE lut_muni_geom SET geom = ST_GeomFromText(geom_wkt);`,
 
     orm.LutEuthanasiaOrganisation.createMany({ data: lutEuthanasiaOrganisations }),
     orm.LutLaboratory.createMany({ data: lutLaboratories }),
@@ -67,6 +73,8 @@ async function main () {
 
     orm.User.createMany({ data: adminUsers }),
 
+    orm.Discoverer.createMany({ data: dataDiscoverers }),
+
     orm.Event.createMany({ data: dataEvents }),
     orm.Location.createMany({ data: dataLocations }),
 
@@ -74,9 +82,11 @@ async function main () {
 
     orm.LutWeighUnit.createMany({ data: lutWeightUnits }),
 
-    orm.Specimen.createMany({ data: dataSpecimens })
+    // orm.Specimen.createMany({ data: dataSpecimens })
 
-    // orm.$executeRaw`UPDATE lut_muni_geom SET geom = ST_GeomFromText(geom_wkt);`
+
+
+    orm.$executeRaw`SET session_replication_role = DEFAULT;`
   ])
 }
 

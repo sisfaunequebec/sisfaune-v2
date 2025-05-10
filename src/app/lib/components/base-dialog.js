@@ -4,14 +4,14 @@ import { useCallback, useMemo, useRef } from 'react'
 import { useForm, FormProvider, useController } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 
-import { Dialog, Portal, Flex, Button, useBreakpointValue } from '@chakra-ui/react'
+import { Dialog, Portal, Flex, Button, useBreakpointValue, VStack, Text } from '@chakra-ui/react'
 
 import {
   DialogActionTrigger,
   DialogFooter
 } from '@/app/lib/components/ui/dialog'
 
-const BaseDialog = ({ title, size = 'md', isAlert = false, schema, watches = [], defaultValues, onClose, onSubmit, submitBtnLabel = 'Continuer', close, children }) => {
+const BaseDialog = ({ title, message, size = 'md', isAlert = false, schema, watches = [], defaultValues, onClose, onSubmit, submitBtnLabel = 'Continuer', close, children }) => {
   const rootSize = useBreakpointValue({ base: 'cover', md: size })
   const motion = useBreakpointValue({ base: 'scale', md: 'slide-in-bottom' })
 
@@ -66,7 +66,8 @@ const BaseDialog = ({ title, size = 'md', isAlert = false, schema, watches = [],
               <Flex as='form' onSubmit={handleSubmit(handleAction)} direction='column' justifyContent='stretch' h='100%'>
 
                 <Dialog.Body>
-                  {children(contentRef, watched)}
+                  { message && <Text textStyle={['md', null, 'sm']} mb={8} lineHeight={'shorter'}>{message}</Text> }
+                  <Flex>{ children(contentRef, watched) }</Flex>
                 </Dialog.Body>
 
                 <DialogFooter gap={2}>

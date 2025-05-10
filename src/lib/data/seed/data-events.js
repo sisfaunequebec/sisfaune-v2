@@ -1,6 +1,18 @@
 const source = require('./sources/evenement.json')
+const laboratories = require('./sources/laboratoire.json')
 
 const { stringOrNull, stringToBool, dateOrNull } = require('./utils')
+
+const laboratoriesByEventId = laboratories.reduce((acc, e) => {
+  const { id_evenement, date_reception, recu_par, id_responsable } = e
+  const eventId = parseInt(id_evenement, 10)
+  acc[eventId] = {
+    labReceivedAt: dateOrNull(date_reception),
+    labReceivedBy: stringOrNull(recu_par),
+    labResponsibleId: stringOrNull(id_responsable)
+  }
+  return acc
+}, {})
 
 // const idsOnly = source.map(p => parseInt(p.id_evenement, 10))
 // const idsOnlyById = idsOnly.reduce((acc, p) => {
@@ -27,7 +39,7 @@ const transformed = source.map(p => {
     no_mapaq,
     no_incident_cqsas,
 
-    id_decouvreur,
+    // id_decouvreur,
     date_decouverte,
 
     date_signalement,
@@ -91,13 +103,22 @@ const transformed = source.map(p => {
     meta_creation_par
   } = p
 
+  const eventId = parseInt(id_evenement, 10)
+
   const habitatTypeId = parseInt(id_type_habitat, 10)
   const collaboratorId = parseInt(id_intervenant, 10)
   const labShippingMethodId = parseInt(id_methode_expedition, 10)
   const labId = parseInt(id_laboratoire, 10)
+
+  const laboratory = laboratoriesByEventId[eventId] ?? {}
+  const {
+    labReceivedAt,
+    labReceivedBy,
+    labResponsibleId
+  } = laboratory
   
   return {
-    id: parseInt(id_evenement, 10),
+    id: eventId,
     typeId: parseInt(id_type, 10),
 
     reportOriginId: parseInt(id_provenance_signalement, 10),
@@ -110,14 +131,14 @@ const transformed = source.map(p => {
     mapaqId: stringOrNull(no_mapaq),
     cqsasIncidentNumber: stringOrNull(no_incident_cqsas),
 
-    discovererId: null, // stringOrNull(id_decouvreur), // TODO: discovererId
+    // discovererId: stringOrNull(id_decouvreur), // TODO: discovererId
     discoveredAt: dateOrNull(date_decouverte),
 
     reportedAt: dateOrNull(date_signalement),
     collectedAt: dateOrNull(date_recolte),
     closedAt: dateOrNull(date_fermeture_dossier),
 
-    submitterId: stringOrNull(id_soumissionnaire), // TODO: submitterId
+    submitterId: stringOrNull(id_soumissionnaire),
     isDiscovererSameAsSubmitter: stringToBool(decouvreur_idem_soumissionnaire),
 
     hadHumanContact: stringToBool(contact_humain),
@@ -131,6 +152,10 @@ const transformed = source.map(p => {
     labShippedAt: dateOrNull(date_expedition_labo),
     labShippingMethodId: labShippingMethodId === 0 ? null : labShippingMethodId,
     labShippingTrackingNumber: stringOrNull(no_suivi_transporteur),
+
+    labReceivedAt,
+    labReceivedBy,
+    labResponsibleId,
 
     temperature: parseFloat(temperature),
     // observations: stringOrNull(observations), // TODO

@@ -30,7 +30,7 @@ const defaultValues = {
 }
 
 const AddEventDialog = ({ programs, close }) => {
-  console.debug(programs)
+  // console.debug(programs)
   return (
     <BaseDialog title='Nouvel événement' onClose={close} onSubmit={addEvent} submitBtnLabel='Ajouter' schema={addEventSchema} defaultValues={defaultValues}>
       {(contentRef) => (

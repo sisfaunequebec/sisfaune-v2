@@ -72,6 +72,14 @@ const tabsRecipe = defineSlotRecipe({
           }
         }
       }
+    },
+    size: {
+      lg: {
+        root: {
+          // Same height as buttons
+          "--tabs-height": "sizes.10",
+        }
+      }
     }
   }
 })

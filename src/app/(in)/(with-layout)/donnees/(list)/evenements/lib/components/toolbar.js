@@ -11,6 +11,7 @@ import Link from 'next/link'
 import { Flex, Container, Button, IconButton, HStack } from '@chakra-ui/react'
 import { RxArrowLeft, RxFileText } from 'react-icons/rx'
 
+import ToolbarWrapper from '@/app/lib/components/toolbar-wrapper'
 import ResponsiveButton from '@/app/lib/components/responsive-button'
 
 const ReportButton = ({ id }) => {
@@ -39,32 +40,20 @@ const Toolbar = () => {
   const params = useParams()
   const { id: idEvenement } = params
 
-  const [{ y = 0 }] = useWindowScroll()
-  const toolbarShadowSize = y > 70 ? 'md' : null
+  // const [{ y = 0 }] = useWindowScroll()
+  // const toolbarShadowSize = y > 70 ? 'md' : null
 
   return (
-    <Flex
-      flex={0}
-      position={'sticky'}
-      top={'70px'}
-      alignSelf={'flex-start'}
-      width={'full'}
-      zIndex={1001}
-      shadow={[null, null, toolbarShadowSize]}
-    >
-      <Flex flex={1} bg={'white'} py={1}>
-        <Container maxWidth={'6xl'} py={2}>
-          <HStack justifyContent={'space-between'} gap={2}>
-            <HStack justifyContent={'space-between'} gap={2}>
-              <BackButton />
-            </HStack>
-            <HStack justifyContent={'space-between'} gap={1}>
-              <ReportButton id={idEvenement} />
-            </HStack>
-          </HStack>
-        </Container>
-      </Flex>
-    </Flex>
+    <ToolbarWrapper>
+      <HStack justifyContent={'space-between'} gap={2}>
+        <HStack justifyContent={'space-between'} gap={2}>
+          <BackButton />
+        </HStack>
+        <HStack justifyContent={'space-between'} gap={1}>
+          <ReportButton id={idEvenement} />
+        </HStack>
+      </HStack>
+    </ToolbarWrapper>
   )
 }
 

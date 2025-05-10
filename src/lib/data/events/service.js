@@ -186,8 +186,7 @@ const getEvent = async (id) => {
               }
             }
           }
-        },
-        labEvents: true
+        }
       }
     })
   
