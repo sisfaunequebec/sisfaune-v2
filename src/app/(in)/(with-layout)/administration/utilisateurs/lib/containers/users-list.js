@@ -77,7 +77,7 @@ const UsersList = () => {
   // ]
 
   const users = data ? [].concat(...data) : []
-  const total = users.length
+  const count = users.length
 
   const isLoadingMore = isLoading || (size > 0 && data && typeof data[size - 1] === 'undefined')
   const isEmpty = data?.[0]?.length === 0
@@ -116,7 +116,7 @@ const UsersList = () => {
           )
         })}
         {/* <Flex flex={1} position={'absolute'} bottom={0} w={'full'} height={'300px'} maxH={'100vh'} border={'solid 1px red'} display={triggerIsVisible ? 'inherit' : 'none'} ref={inner} /> */}
-        {loadMoreButtonIsVisible && <LoadMoreButton label={'Utilisateurs'} count={0} total={total} isReachingEnd={isReachingEnd} isLoading={isLoadingMore} onClick={handleLoadMore} />}      </ListContainer>
+        {loadMoreButtonIsVisible && <LoadMoreButton label={'Utilisateurs'} count={count} total={0} isReachingEnd={isReachingEnd} isLoading={isLoadingMore} onClick={handleLoadMore} />}      </ListContainer>
     </>
   )
 }

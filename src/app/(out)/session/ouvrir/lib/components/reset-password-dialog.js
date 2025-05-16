@@ -24,11 +24,11 @@ const defaultValues = {
 const ResetPasswordDialog = ({ close }) => {
 
   return (
-    <BaseDialog title='Récupération du mot de passe' message={'Veuillez fournir votre nom d\'utilisateur afin de recevoir un nouveau mot de passe temporaire par courriel :'} onClose={close} onSubmit={close} submitBtnLabel={'Envoyer'} schema={resetPasswordSchema} defaultValues={defaultValues}>
+    <BaseDialog title='Récupération du mot de passe' message={'Veuillez inscrire votre nom d\'utilisateur et cliquer sur "Envoyer" afin de recevoir un nouveau mot de passe temporaire par courriel :'} onClose={close} onSubmit={close} submitBtnLabel={'Envoyer'} schema={resetPasswordSchema} defaultValues={defaultValues}>
       {(contentRef, watched) => (
         <Fieldset.Root>
           <Fieldset.Content gap={3}>
-            <ControlledField name='username' variant='vertical'>
+            <ControlledField label={'Nom d\'utilisateur :'} name='username' variant='vertical'>
               <Input autoComplete='off' />
             </ControlledField>
           </Fieldset.Content>

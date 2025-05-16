@@ -66,7 +66,7 @@ const BaseDialog = ({ title, message, size = 'md', isAlert = false, schema, watc
               <Flex as='form' onSubmit={handleSubmit(handleAction)} direction='column' justifyContent='stretch' h='100%'>
 
                 <Dialog.Body>
-                  { message && <Text textStyle={['md', null, 'sm']} mb={8} lineHeight={'shorter'}>{message}</Text> }
+                  { message && <Text textStyle={['md', null, 'sm']} mb={4} lineHeight={'shorter'}>{message}</Text> }
                   <Flex>{ children(contentRef, watched) }</Flex>
                 </Dialog.Body>
 

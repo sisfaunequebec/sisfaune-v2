@@ -1,143 +1,65 @@
 import {
-  Body,
-  Container,
-  Head,
-  Heading,
   Html,
+  Head,
+  Tailwind,
+  Body,
+  Preview,
+  Container,
+  Section,
+
+  Heading,
+  Hr,
+
   Img,
   Link,
-  Preview,
+
   Text,
+
 } from '@react-email/components'
 
-const baseUrl = process.env.VERCEL_URL
-  ? `https://${process.env.VERCEL_URL}`
-  : ''
+const baseUrl = process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'http://localhost:4501/'
 
-export const NotionMagicLinkEmail = ({ loginCode, }) => (
+export const ResetPasswordEmail = ({ username, password }) => (
   <Html>
     <Head />
-    <Body style={main}>
-      <Preview>Log in with this magic link</Preview>
-      <Container style={container}>
-        <Heading style={h1}>Login</Heading>
-        <Link
-          href='https://notion.so'
-          target='_blank'
-          style={{
-            ...link,
-            display: 'block',
-            marginBottom: '16px',
-          }}
-        >
-          Click here to log in with this magic link
-        </Link>
-        <Text style={{ ...text, marginBottom: '14px' }}>
-          Or, copy and paste this temporary login code:
-        </Text>
-        <code style={code}>{loginCode}</code>
-        <Text
-          style={{
-            ...text,
-            color: '#ababab',
-            marginTop: '14px',
-            marginBottom: '16px',
-          }}
-        >
-          If you didn&apost try to login, you can safely ignore this email.
-        </Text>
-        <Text
-          style={{
-            ...text,
-            color: '#ababab',
-            marginTop: '12px',
-            marginBottom: '38px',
-          }}
-        >
-          Hint: You can set a permanent password in Settings & members → My
-          account.
-        </Text>
-        <Img
-          src={`${baseUrl}/static/notion-logo.png`}
-          width='32'
-          height='32'
-          alt='Logo'
-        />
-        <Text style={footer}>
-          <Link
-            href='https://notion.so'
-            target='_blank'
-            style={{ ...link, color: '#898989' }}
-          >
-            Notion.so
-          </Link>
-          , the all-in-one-workspace
-          <br />
-          for your notes, tasks, wikis, and databases.
-        </Text>
-      </Container>
-    </Body>
+    <Tailwind>
+      <Body className={'my-auto mx-auto font-sans px-2 pb-[20px]'} >
+        <Preview>SIS-Faune | Inscription</Preview>
+        <Container className={'mx-auto my-[40px] max-w-[465px] px-[20px] items-center'}>
+          <Section className={'font-bold text-center'}>
+            <Img src={`${baseUrl}/logo_sisfaune_big.png`} alt={'Logo SIS'} width={240} className={'mx-auto'} />
+            <Heading className={'mx-0 my-[30px] p-0 text-[18px]'}>Votre inscription</Heading>
+            <Hr />
+          </Section>
+          <Section>
+            <Text className={'text-[16px]'}>Bienvenue !</Text>
+            <Text className={'text-[16px]'}>Vous avez été invité.e à utiliser la base de données <br/><strong>SIS-Faune</strong>.</Text>
+            <Text className={'text-[16px]'}>Pour y accéder, veuillez cliquer sur ce <Link href={'https://sisfaunequebec.ca'}>lien</Link>, ou coller l&apos;adresse suivante (<span className={'underline'}>sisfaunequebec.ca</span>) dans votre navigateur, et utiliser les informations de connexion ci-dessous :</Text>
+          </Section>
+          <Section className={'bg-gray-100 text-[14px] rounded px-6 py-4'}>
+            <Text className={'m-0 p-0'}>
+              Nom d&apos;utilisateur : <strong>{ username }</strong><br />
+              Mot de passe : <strong>{ password }</strong>
+            </Text>
+          </Section>
+          <Section>
+            <Text className={'text-[16px]'}>Nous vous recommandons fortement de changer votre mot de passe lors de votre première session.</Text>
+            <Text className={'text-[16px]'}>Bonne utilisation !</Text>
+            <Hr />
+            <Text className={'text-[16px]'}>
+              <strong>SIS-Faune</strong><br />
+              <Link href={'https://sisfaunequebec.ca'}>sisfaunequebec.ca</Link>
+            </Text>
+          </Section>
+        </Container>
+      </Body>
+    </Tailwind>
   </Html>
 )
 
-NotionMagicLinkEmail.PreviewProps = {
-  loginCode: 'sparo-ndigo-amurt-secan',
+ResetPasswordEmail.PreviewProps = {
+  username: 'bruno_gendron',
+  password: 'password'
 }
 
-export default NotionMagicLinkEmail
-
-const main = {
-  backgroundColor: '#ffffff',
-}
-
-const container = {
-  paddingLeft: '12px',
-  paddingRight: '12px',
-  margin: '0 auto',
-}
-
-const h1 = {
-  color: '#333',
-  // fontFamily:
-  //   '-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif',
-  fontSize: '24px',
-  fontWeight: 'bold',
-  margin: '40px 0',
-  padding: '0',
-}
-
-const link = {
-  color: '#2754C5',
-  // fontFamily:
-  //   '-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif',
-  fontSize: '14px',
-  textDecoration: 'underline',
-}
-
-const text = {
-  color: '#333',
-  // fontFamily:
-  //   '-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif',
-  fontSize: '14px',
-  margin: '24px 0',
-}
-
-const footer = {
-  color: '#898989',
-  // fontFamily:
-  //   '-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif',
-  fontSize: '12px',
-  lineHeight: '22px',
-  marginTop: '12px',
-  marginBottom: '24px',
-}
-
-const code = {
-  display: 'inline-block',
-  padding: '16px 4.5%',
-  width: '90.5%',
-  backgroundColor: '#f4f4f4',
-  borderRadius: '5px',
-  border: '1px solid #eee',
-  color: '#333',
-}
+export default ResetPasswordEmail
