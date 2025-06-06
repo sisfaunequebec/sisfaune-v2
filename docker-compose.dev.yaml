@@ -4,9 +4,19 @@ services:
     image: postgis/postgis:16-3.5
     restart: always
     ports:
-      - 5440:5432
+      - 5450:5432
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: jojoba123
       POSTGRES_DB: sisfaune-v2-dev
     container_name: sisfaune-v2-dev-db
+  test_db:
+    image: postgis/postgis:16-3.5
+    restart: always
+    ports:
+      - 5451:5432
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: jojoba123
+      POSTGRES_DB: sisfaune-v2-test
+    container_name: sisfaune-v2-test-db

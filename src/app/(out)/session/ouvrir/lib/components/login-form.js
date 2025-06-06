@@ -2,18 +2,35 @@
 
 import { useForm, FormProvider } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { valibotResolver } from '@hookform/resolvers/valibot'
 
 import { Flex, Image, Fieldset, Input, Link } from '@chakra-ui/react'
 
 import { PasswordInput } from '@/app/lib/components/ui/password-input'
 
-import useDialog from '@/utilitaires/use-dialog'
+import useDialog from '@/utils/use-dialog'
 
 import Field from '@/app/lib/components/field'
 
 import signInSchema from './sign-in-schema'
-import signAction from './signin-action'
+import signAction from './signin.action'
 import SignInButton from './sign-in-button'
+
+import * as v from 'valibot'
+
+const valibotSignInSchema = v.object({
+  username: v.pipe(
+    v.string(),
+    v.trim(),
+    v.nonEmpty('Le nom d\'utilisateur est requis')
+    // v.endsWith('cool', 'Needs to end with `cool`'),
+  ),
+  password: v.pipe(
+    v.string(),
+    v.trim(),
+    v.nonEmpty('Le mot de passe est requis')
+  )
+})
 
 import ResetPasswordDialog from './reset-password-dialog'
 
@@ -21,7 +38,7 @@ const LoginForm = () => {
   const { ask: resetPassword, dialog: resetPasswordDialog } = useDialog(ResetPasswordDialog)
 
   const form = useForm({
-    resolver: zodResolver(signInSchema, { reValidateMode: 'onSubmit' }),
+    resolver: valibotResolver(valibotSignInSchema, { reValidateMode: 'onSubmit' }),
     defaultValues: { username: undefined, password: undefined }
   })
 

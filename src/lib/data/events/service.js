@@ -1,7 +1,7 @@
 'use server'
 import 'server-only'
 
-import wait from '@/utilitaires/wait'
+import wait from '@/utils/wait'
 
 import orm from '../database'
 

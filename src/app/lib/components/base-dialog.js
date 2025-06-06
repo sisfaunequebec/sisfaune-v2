@@ -20,7 +20,7 @@ const BaseDialog = ({ title, message, size = 'md', isAlert = false, schema, watc
     defaultValues
   })
 
-  const { handleSubmit, formState, watch } = form
+  const { handleSubmit, setError, clearErrors, formState: { errors, isValid, isSubmitting }, watch } = form
 
   const watchedArray = watch(watches)
 
@@ -29,27 +29,46 @@ const BaseDialog = ({ title, message, size = 'md', isAlert = false, schema, watc
     return acc
   }, {})
 
-  // console.debug('watched', watched, formState.errors)
+  // console.debug('watched', watched, errors)
 
-  const handleAction = useCallback(async data => {
+  const handleSubmitAction = useCallback(async data => {
+    // console.debug('here')
     try {
+      // console.debug('try')
       if (onSubmit) {
-        await onSubmit(data)
-        onClose(false)
+        const result = await onSubmit(data)
+        // console.debug('onSubmit', result)
+        // const { payload } = result
+        onClose(result)
+        // if (errors) {
+        //   Object.entries(errors).forEach(([key, value]) => {
+        //     console.debug(key, value)
+        //     setError(key, { message: value })
+        //   })
+        // } else {
+        //   onClose(false)
+        // }
       } else {
         onClose(false)
       }
     } catch (e) {
       console.debug(e)
+      // console.debug('here', e.errors)
+      // Object.entries(errors).forEach(([key, value]) => {
+        // console.debug(key, value)
+        setError('username', { message: 'shit' })
+      // })
     }
-  }, [onClose, onSubmit])
+  }, [onClose, onSubmit, clearErrors, setError, clearErrors])
 
-  const { isSubmitting } = formState
+  // const { isSubmitting } = formState
 
   const contentRef = useRef(null)
 
   const role = isAlert ? 'alert' : undefined
   const closeOnInteractOutside = !!isAlert
+
+  const hasErrors = Object.keys(errors)?.length > 0
 
   return (
     <Dialog.Root lazyMount open size={rootSize} placement='center' motionPreset={motion} onOpenChange={e => onClose(false)} closeOnInteractOutside={closeOnInteractOutside} role={role}>
@@ -63,7 +82,7 @@ const BaseDialog = ({ title, message, size = 'md', isAlert = false, schema, watc
             </Dialog.Header>
 
             <FormProvider {...form}>
-              <Flex as='form' onSubmit={handleSubmit(handleAction)} direction='column' justifyContent='stretch' h='100%'>
+              <Flex as='form' onSubmit={handleSubmit(handleSubmitAction)} direction='column' justifyContent='stretch' h='100%'>
 
                 <Dialog.Body>
                   { message && <Text textStyle={['md', null, 'sm']} mb={4} lineHeight={'shorter'}>{message}</Text> }
@@ -74,7 +93,7 @@ const BaseDialog = ({ title, message, size = 'md', isAlert = false, schema, watc
                   <DialogActionTrigger asChild>
                     <Button size='sm' variant='outline' onClick={() => onClose(false)} minW={24}>Annuler</Button>
                   </DialogActionTrigger>
-                  <Button type='submit' size='sm' colorPalette={isAlert ? 'red' : 'blue'} minW={24} loading={isSubmitting}>{submitBtnLabel}</Button>
+                  <Button type='submit' size='sm' colorPalette={(isAlert || hasErrors) ? 'red' : 'blue'} minW={24} loading={isSubmitting} onClick={() => clearErrors()}>{submitBtnLabel}</Button>
                 </DialogFooter>
 
               </Flex>

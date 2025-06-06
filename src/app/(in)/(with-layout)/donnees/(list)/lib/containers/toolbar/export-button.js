@@ -3,7 +3,7 @@ import { useCallback } from 'react'
 
 import { RxPlus, RxDownload, RxMagnifyingGlass } from 'react-icons/rx'
 
-import useDialog from '@/utilitaires/use-dialog'
+import useDialog from '@/utils/use-dialog'
 
 import ResponsiveButton from '@/app/lib/components/responsive-button'
 import ExportDialog from '../export-dialog'

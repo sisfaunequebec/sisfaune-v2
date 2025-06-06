@@ -1,8 +1,6 @@
 'use server'
 import 'server-only'
 
-import wait from '@/utilitaires/wait'
-
 import orm from '../database'
 
 import getUser from '@/lib/auth/get-user'
@@ -111,9 +109,13 @@ const getSpecimensCount = async (params) => {
 }
 
 const getSpecimens = async (params) => {
-  const { statut, programme, tri, direction, region, offset = 0, take = 25 } = params
+  const { tri, direction, offset = 0, take = 25 } = params
 
   const user = await getUser()
+
+  if (!user) {
+    return []
+  }
 
   const whereClause = getWhereClauseFromParams(params, user)
   const orderByClause = getOrderByClause(tri, direction)

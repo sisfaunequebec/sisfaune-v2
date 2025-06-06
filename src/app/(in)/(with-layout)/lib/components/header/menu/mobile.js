@@ -27,7 +27,7 @@ import { Box, Flex, VStack, IconButton, Container, Separator, Link } from '@chak
 
 import { RxExit, RxHamburgerMenu, RxGear, RxCross1 } from 'react-icons/rx'
 
-import useDialog from '@/utilitaires/use-dialog'
+import useDialog from '@/utils/use-dialog.js'
 
 import UserParametersDialog from '../../../containers/user-parameters-dialog.js/index.js'
 // import ParametresDialog from '../../../containers/parametres-dialog'

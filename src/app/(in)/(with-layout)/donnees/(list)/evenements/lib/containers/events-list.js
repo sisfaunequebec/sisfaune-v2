@@ -100,7 +100,7 @@ const ListeEvenements = () => {
     }, 500)
   }, [inView, size, isLoadingMore, handleLoadMore])
 
-  const loadMoreButtonIsVisible = events.length > 0
+  const loadMoreButtonIsVisible = count > 0
   // const triggerIsVisible = (!isLoadingMore && !isReachingEnd)
   // console.debug(isReachingEnd, isLoadingMore, triggerIsVisible)
 

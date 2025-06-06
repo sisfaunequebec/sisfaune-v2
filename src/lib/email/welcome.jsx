@@ -1,3 +1,4 @@
+import React from 'react'
 import {
   Html,
   Head,
@@ -19,7 +20,7 @@ import {
 
 const baseUrl = process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'http://localhost:4501/'
 
-export const ResetPasswordEmail = ({ username, password }) => (
+export const WelcomeEmail = ({ firstName, username, password }) => (
   <Html>
     <Head />
     <Tailwind>
@@ -32,7 +33,7 @@ export const ResetPasswordEmail = ({ username, password }) => (
             <Hr />
           </Section>
           <Section>
-            <Text className={'text-[16px]'}>Bienvenue !</Text>
+            <Text className={'text-[16px]'}>Bienvenue { firstName } !</Text>
             <Text className={'text-[16px]'}>Vous avez été invité.e à utiliser la base de données <br/><strong>SIS-Faune</strong>.</Text>
             <Text className={'text-[16px]'}>Pour y accéder, veuillez cliquer sur ce <Link href={'https://sisfaunequebec.ca'}>lien</Link>, ou coller l&apos;adresse suivante (<span className={'underline'}>sisfaunequebec.ca</span>) dans votre navigateur, et utiliser les informations de connexion ci-dessous :</Text>
           </Section>
@@ -43,7 +44,7 @@ export const ResetPasswordEmail = ({ username, password }) => (
             </Text>
           </Section>
           <Section>
-            <Text className={'text-[16px]'}>Nous vous recommandons fortement de changer votre mot de passe lors de votre première session.</Text>
+            <Text className={'text-[16px]'}>Nous vous recommandons fortement de changer votre mot de passe lors de votre première session de travail.</Text>
             <Text className={'text-[16px]'}>Bonne utilisation !</Text>
             <Hr />
             <Text className={'text-[16px]'}>
@@ -57,9 +58,10 @@ export const ResetPasswordEmail = ({ username, password }) => (
   </Html>
 )
 
-ResetPasswordEmail.PreviewProps = {
+WelcomeEmail.PreviewProps = {
+  greeting: 'Bruno',
   username: 'bruno_gendron',
   password: 'password'
 }
 
-export default ResetPasswordEmail
+export default WelcomeEmail

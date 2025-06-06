@@ -604,10 +604,10 @@ model Event {
   habitatType LutHabitatType? @relation(fields: [habitatTypeId], references: [id], onDelete: Restrict, onUpdate: Restrict)
 
   // Lab
-  labId Int? @map(name: "id_laboratoire") @default(0)
-  lab LutLaboratory? @relation(fields: [labId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+  labId Int? @map(name: "id_laboratoire")
+
   labShippedAt DateTime? @db.Date @map(name: "date_expedition_labo")
-  labShippingMethodId Int? @db.SmallInt @map(name: "id_methode_expedition") @default(0)
+  labShippingMethodId Int? @db.SmallInt @map(name: "id_methode_expedition")
   labShippingMethod LutLabShippingMethod? @relation(fields: [labShippingMethodId], references: [id], onDelete: Restrict, onUpdate: Restrict)
   labShippingTrackingNumber String? @map(name: "no_suivi_transporteur")
 
@@ -669,6 +669,7 @@ model Event {
   // Relations
   specimens Specimen[]
   location Location?
+  lab LutLaboratory? @relation(fields: [labId], references: [id], onDelete: Restrict, onUpdate: Restrict)
   // discoverer Discoverer? TODO - re-enable
 
   labResponsible User? @relation("EventLabResponsible", fields: [labResponsibleId], references: [id], onDelete: Restrict, onUpdate: Restrict)

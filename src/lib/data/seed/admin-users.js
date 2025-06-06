@@ -1,3 +1,5 @@
+const bcrypt = require('bcrypt')
+
 const aspnetMembership = require('./sources/aspnet_membership.json')
 const aspnetUsers = require('./sources/aspnet_users.json')
 const aspnetUsersInRoles = require('./sources/aspnet_usersinroles.json')
@@ -48,21 +50,25 @@ const transformed = users.map(p => {
     cellulaire,
     telecopieur,
     est_pathologiste
-   } = p
+  } = p
 
-   const aspnetUser = aspnetUsersyId[id]
-   const { username } = aspnetUser
+  const aspnetUser = aspnetUsersyId[id]
+  const { username: rawUsername } = aspnetUser
 
-   const aspnetMembership = aspnetMembershipById[id]
-   const { email, IsLockedOut } = aspnetMembership
+  const aspnetMembership = aspnetMembershipById[id]
+  const { email, IsLockedOut } = aspnetMembership
 
-   const admin = aspnetUsersInRolesById[id]
-   const isAdmin = !!admin
+  const admin = aspnetUsersInRolesById[id]
+  const isAdmin = !!admin
+  
+  const username = stringOrNull(rawUsername)
+
+  const hashedPassword = bcrypt.hashSync(username, 10)
 
   return {
     id,
-    username: stringOrNull(username),
-    password: stringOrNull(username),
+    username: username,
+    password: hashedPassword,
 
     isActive: !stringToBool(IsLockedOut),
 

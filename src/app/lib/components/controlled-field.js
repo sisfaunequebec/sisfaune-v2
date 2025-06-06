@@ -15,6 +15,8 @@ const ControlledField = ({ name, label, watches, children, ...rest }) => {
     name
   })
 
+  // console.debug(field, fieldState)
+
   // const { errors, isSubmitting } = formState
 
   // const onlyFirstError = Object.entries(errors).slice(0, 1).reduce((acc, e) => {

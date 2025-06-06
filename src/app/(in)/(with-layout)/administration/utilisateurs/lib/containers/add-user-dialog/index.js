@@ -2,8 +2,7 @@
 import { useState } from 'react'
 
 // import { DateTime } from 'luxon'
-
-import generator from 'generate-password'
+import generatePassword from '@/lib/data/users/generate-password'
 
 import addUser from './action'
 
@@ -36,7 +35,7 @@ const PasswordDisplay = ({ value }) => {
 }
 
 const AddUserDialog = ({ close }) => {
-  const [password, setPassword] = useState(generator.generate({ length: 10, numbers: true, excludeSimilarCharacters: true, strict: true }))
+  const [password, setPassword] = useState(generatePassword())
   const defaultValues = {
     fullName: null,
     email: null,

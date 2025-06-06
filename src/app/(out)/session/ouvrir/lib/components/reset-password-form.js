@@ -10,24 +10,23 @@ import { PasswordInput } from '@/app/lib/components/ui/password-input'
 import Field from '@/app/lib/components/field'
 
 import resetPasswordSchema from './reset-password-schema'
-// import signAction from './signin-action'
-// import SignInButton from './sign-in-button'
 
 const ResetPasswordForm = () => {
   const form = useForm({
-    resolver: zodResolver(signInSchema, { reValidateMode: 'onSubmit' }),
+    resolver: zodResolver(resetPasswordSchema, { reValidateMode: 'onSubmit' }),
     defaultValues: { username: undefined, password: undefined }
   })
 
   const { register, handleSubmit, setError, formState } = form
 
   const onSubmit = async (data) => {
-    const result = await signAction(data)
+    console.debug('onSubmit')
+    // const result = await signAction(data)
 
-    const { errors } = result
-    Object.entries(errors).forEach(([name, message]) => {
-      setError(name, { type: 'server', message })
-    })
+    // const { errors } = result
+    // Object.entries(errors).forEach(([name, message]) => {
+    //   setError(name, { type: 'server', message })
+    // })
   }
 
   return (
@@ -40,7 +39,6 @@ const ResetPasswordForm = () => {
                 <Input autoComplete='off' {...register('username')} />
               </Field>
             </Fieldset.Content>
-            {/* <SignInButton /> */}
           </Fieldset.Root>
         </Flex>
       </FormProvider>

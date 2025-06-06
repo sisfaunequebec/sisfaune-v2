@@ -16,7 +16,7 @@ import { useQueryStates } from 'nuqs'
 // import useEvents from '@/logic/data/events/use-events'
 // import { searchParams, urlKeys } from '@/logic/data/events/events-params'
 
-import useDialog from '@/utilitaires/use-dialog'
+import useDialog from '@/utils/use-dialog'
 import EditAnalysisDialog from './edit-analysis-dialog'
 
 import { LinkListWrapper } from '@/app/(in)/(with-layout)/lib/components/list'
