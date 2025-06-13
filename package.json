@@ -6,6 +6,8 @@
     "dev": "next dev --turbopack -p 4501",
     "db:dev:push": "dotenv -e .env.development.local -- prisma db push",
     "db:dev:generate": "dotenv -e .env.development.local -- prisma generate",
+    "db:dev:migration-create": "dotenv -e .env.development.local -- prisma migrate dev --create-only",
+    "db:dev:migrate-up": "dotenv -e .env.development.local -- prisma migrate dev",
     "db:dev:reset": "dotenv -e .env.development.local -- prisma migrate reset --skip-seed",
     "db:dev:seed": "dotenv -e .env.development.local -- prisma db seed",
     "db:dev:test-seed": "npm run db:dev:reset && npm run db:dev:push && npm run db:dev:seed",

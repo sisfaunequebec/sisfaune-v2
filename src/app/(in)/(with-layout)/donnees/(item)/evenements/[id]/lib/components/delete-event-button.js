@@ -13,13 +13,11 @@ import { deleteEvent } from '@/lib/data/events/service'
 
 import useDialog from '@/utils/use-dialog'
 
-import DeleteEventDialog from './detruire-evenement-dialog'
+import DeleteEventDialog from './delete-event-dialog'
 
 const DeleteEventButton = ({ eventId, ...rest }) => {
   const router = useRouter()
   const { mutate, cache } = useSWRConfig()
-
-
 
   const { ask: confirmDelete, dialog: deleteEventDialog } = useDialog(DeleteEventDialog)
 
