@@ -17,7 +17,7 @@ export const metadata = {
 
 const RootLayout = async ({ children }) => {
   return (
-    <html lang='fr' suppressHydrationWarning>
+    <html lang={'fr'} suppressHydrationWarning>
       <body>
         <Provider system={system}>
           <Toaster />
