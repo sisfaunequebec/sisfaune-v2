@@ -18,7 +18,7 @@ const LinkListWrapper = ({ href, children }) => {
       direction='row'
       alignItems='center'
       justifyContent='space-between'
-      ps={5}
+      ps={4}
       pe={3}
       py={3}
       borderBottomColor='green.300'

@@ -4,18 +4,23 @@ import { Text } from '@chakra-ui/react'
 
 import BaseDialog from '@/app/lib/components/base-dialog'
 
-const DeleteEventDialog = ({ close, eventId }) => {
-  const handleSubmit = async (data) => {
+const DeleteEventDialog = ({ close, eventId, onDelete }) => {
+  // console.debug('here', eventId, onAdd)
+
+  const handleSubmit = async () => {
+    // console.debug('onDelete', onDelete)
+    await onDelete(eventId)
     await wait(300)
     close(true)
   }
 
   return (
-    <BaseDialog title={'Effacement d\'un événement'} message={null} onClose={close} onSubmit={handleSubmit} isAlert>
+    <BaseDialog title={'Effacement d\'un événement'} message={null} onClose={close} onSubmit={handleSubmit} isAlert submitBtnLabel={'Effacer'}>
       {(contentRef, watched) => (
         <>
-          <Text fontWeight='bold'>Attention&nbsp;! Voulez-vous réellement effacer l&apos;événement no {eventId}&nbsp;?</Text>
-          <Text>Cette action est irréversible...</Text>
+          <Text fontWeight={'bold'}>Vous vous apprêtez à effacer l&apos;événement no {eventId} :</Text>
+          <Text>Les spécimens associés et les analyses associées à ces spécimens seront aussi effacés.</Text>
+          <Text>Cette action est irréversible !</Text>
         </>
       )}
     </BaseDialog>

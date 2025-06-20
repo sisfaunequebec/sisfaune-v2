@@ -1,15 +1,15 @@
 import getUser from '@/lib/auth/get-user'
 import { getSubmitableProgramsForUser } from '@/lib/data/lookups/event-programs'
 
-import NewEventButton from './new-event-button'
+import AddEventButton from './add-event-button'
 
-const NewEvent = async () => {
+const AddEvent = async () => {
   const user = await getUser()
   const programs = await getSubmitableProgramsForUser(user)
 
   return (
-    <NewEventButton programs={programs} />
+    <AddEventButton programs={programs} />
   )
 }
 
-export default NewEvent
+export default AddEvent

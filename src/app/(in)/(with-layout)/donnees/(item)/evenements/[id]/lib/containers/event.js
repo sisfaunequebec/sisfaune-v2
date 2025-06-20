@@ -15,7 +15,7 @@ import useDialog from '@/utils/use-dialog'
 
 import Toolbar from '@/app/(in)/(with-layout)/donnees/(list)/evenements/lib/components/toolbar'
 
-import DeleteEventButton from '../components/delete-event-button'
+import DeleteEventButtonOld from '../components/delete-event-button'
 
 import InfosGeneralesSection from './infogenerales'
 import LaboratoireSection from './laboratoire'
@@ -25,7 +25,7 @@ import SpecimenInformationSection from './specimen'
 
 const SectionHeading = ({ label, isSticky = false, children }) => {
   return (
-    <Flex as='section' bg='green.100' color='green.600' px={5} py={2} fontWeight={500} borderColor='green.300' borderTopWidth={1} alignItems='center' justifyContent='space-between' position={isSticky && 'sticky'} top={[135, null, 130]} justifySelf='flex-start' zIndex={1000}>
+    <Flex as='section' bg='green.50' color='green.600' px={4} py={2} fontWeight={500} borderColor='green.300' borderTopWidth={1} alignItems='center' justifyContent='space-between' position={isSticky && 'sticky'} top={[135, null, 130]} justifySelf='flex-start' zIndex={1000}>
       <Text as='h3' userSelect='none'>{label}</Text>
       {children}
     </Flex>
@@ -70,24 +70,24 @@ const Event = ({
 
   return (
     <>
-      <Toolbar />
+      <Toolbar canDeleteEvent={canDeleteEvent} />
       <Flex flex={1} top={0} as={Container} direction={['column', null, 'row']} maxWidth={['6xl']} px={[0, 0, 6, 8]} pt={[0, 0, 6]} fontSize={['md', null, 'sm']}>
         <Flex position='sticky' flex={2} h='calc(100vh - 162px)' overflowY='auto' top={154} p={3} px={6} alignItems='stretch' bg='blue.100' _dark={{ bg: 'blue.900' }} borderColor='blue.300' borderTopWidth={1} borderBottomWidth={1} hideBelow='md' />
 
-        <VStack flex={5} ps={[0, null, 2]} justifyContent='flex-start' alignItems='stretch' gap={[0, null, 2]}>
+        <VStack flex={5} ps={[0, null, 2]} justifyContent='flex-start' alignItems='stretch' gap={[0, null, 0]}>
           <VStack alignItems='stretch' fontSize={['md', null, 'sm']} gap={0}>
             <SectionHeading label={`Événement no ${eventId}`} isSticky>
-              <DeleteEventButton eventId={eventId} visibility={!canDeleteEvent && 'hidden'} />
+              <DeleteEventButtonOld eventId={eventId} visibility={'hidden'} />
             </SectionHeading>
             <AccordionRoot size={['md', null, 'sm']} multiple value={activePanel} onValueChange={handleToggleActiveSection} lazyMount>
               {/* <InfosGeneralesSection event={event} onToggleEditing={handleToggleEditingSection} editingSection={editingSection} />
               <LocalisationSection event={event} onToggleEditing={handleToggleEditingSection} editingSection={editingSection} />
-              <LaboratoireSection event={event} onToggleEditing={handleToggleEditingSection} editingSection={editingSection} /> */}
+              <LaboratoireSection event={event} ongleEditing={handleToggleEditingSection} editingSection={editingSection} /> */}
             </AccordionRoot>
           </VStack>
           <VStack alignItems='stretch' fontSize={['md', null, 'sm']} gap={0}>
             <SectionHeading label='Spécimens' isSticky>
-              <IconButton colorPalette='green' variant='solid' rounded='full' size={['xs']} onClick={null} visibility={!canUserAddSpecimen && 'hidden'}><RxPlus /></IconButton>
+              <IconButton colorPalette='green' variant='solid' rounded='full' size={['md', null, 'sm']} onClick={null} visibility={!canUserAddSpecimen && 'hidden'}><RxPlus /></IconButton>
             </SectionHeading>
             {/* <AccordionRoot multiple size={['md', null, 'sm']} defaultValue={[]} lazyMount>
               {event.specimens.map(s => {
@@ -100,7 +100,7 @@ const Event = ({
           </VStack>
           <VStack alignItems='stretch' fontSize={['md', null, 'sm']} gap={0}>
             <SectionHeading label='Analyses'>
-              <IconButton colorPalette='green' variant='solid' rounded='full' size={['xs']} onClick={null} visibility={!canUserAddAnalysis && 'hidden'}><RxPlus /></IconButton>
+              <IconButton colorPalette='green' variant='solid' rounded='full' size={['md', null, 'sm']} onClick={null} visibility={!canUserAddAnalysis && 'hidden'}><RxPlus /></IconButton>
             </SectionHeading>
             {/* <AccordionRoot multiple size={['md', null, 'sm']} defaultValue={[]} lazyMount>
               <AccordionItem value='dsc'>

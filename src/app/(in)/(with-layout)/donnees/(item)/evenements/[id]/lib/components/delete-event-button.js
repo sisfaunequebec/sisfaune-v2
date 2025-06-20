@@ -15,17 +15,17 @@ import useDialog from '@/utils/use-dialog'
 
 import DeleteEventDialog from './delete-event-dialog'
 
-const DeleteEventButton = ({ eventId, ...rest }) => {
+const DeleteEventButtonOld = ({ eventId }) => {
   const router = useRouter()
   const { mutate, cache } = useSWRConfig()
 
   const { ask: confirmDelete, dialog: deleteEventDialog } = useDialog(DeleteEventDialog)
 
   const handleDeleteEvent = useCallback(async () => {
-    const result = await confirmDelete({ eventId })
-    if (result) {
-      router.back()
-      await deleteEvent(eventId, { user: { permissions: [] } })
+    const deleted = await confirmDelete({ eventId, onAdd: 123 })
+
+    if (deleted) {
+      router.replace(`/donnees/evenements/`)
       for (const key of cache.keys()) {
         if (key.includes('/api/data/events')) {
           mutate(key)
@@ -34,21 +34,22 @@ const DeleteEventButton = ({ eventId, ...rest }) => {
           mutate(key)
         }
       }
+
       toaster.create({
         title: 'Événement effacé',
         description: `L'événement no ${eventId} a été effacé avec succès...`,
         type: 'success',
-        duration: 6000,
+        duration: 6000
       })
     }
-  }, [confirmDelete, eventId, router])
+  }, [confirmDelete, eventId, router, mutate, cache])
 
   return (
     <>
       {deleteEventDialog}
-      <IconButton colorPalette='red' variant='solid' rounded='full' size={['xs']} onClick={handleDeleteEvent} {...rest}><RxTrash /></IconButton>
+      <IconButton colorPalette={'red'} variant={'solid'} rounded={'full'} size={['md', null, 'sm']} onClick={handleDeleteEvent} visibility={'hidden'}><RxTrash /></IconButton>
     </>
   )
 }
 
-export default DeleteEventButton
+export default DeleteEventButtonOld

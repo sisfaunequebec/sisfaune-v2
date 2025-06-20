@@ -37,6 +37,8 @@ const dataDiscoverers = require('./data-discoverers')
 
 async function main () {
   await orm.$transaction([
+
+    // Disable triggers
     orm.$executeRaw`SET session_replication_role = replica;`,
 
     // orm.$executeRaw`CREATE EXTENSION IF NOT EXISTS postgis;`,
@@ -84,8 +86,18 @@ async function main () {
 
     // orm.Specimen.createMany({ data: dataSpecimens })
 
+    // Reset sequences
+    orm.$executeRaw`
+      do $$
+      DECLARE max_id int;
+      BEGIN
+          SELECT max(id) + 1 FROM data_evenement INTO max_id;
+          EXECUTE 'alter SEQUENCE data_evenement_id_seq RESTART with '|| max_id;   
+      END;
+      $$ LANGUAGE plpgsql
+    `,
 
-
+    // Enable triggers
     orm.$executeRaw`SET session_replication_role = DEFAULT;`
   ])
 }

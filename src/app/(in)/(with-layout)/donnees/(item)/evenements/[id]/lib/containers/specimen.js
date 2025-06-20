@@ -134,7 +134,7 @@ const SpecimenInformationSection = ({ specimen, onToggleEditing, onDelete }) => 
   )
 }
 
-const SAnalysisInformationSection = ({ analysis, onToggleEditing, onDelete }) => {
+const AnalysisInformationSection = ({ analysis, onToggleEditing, onDelete }) => {
   // console.debug(specimen)
   const { id, specimenNumber, specie } = specimen
   const { name: specieName, binome } = specie

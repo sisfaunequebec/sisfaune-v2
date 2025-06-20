@@ -1,10 +1,6 @@
-'use client'
 import { DateTime } from 'luxon'
 
-// import { auth } from '@/lib/auth'
-
-// import { getSubmitableProgramsForUser } from '@/lib/data/lookups/event-programs'
-import addEvent from './add-event.action'
+import wait from '@/utils/wait'
 
 import { Fieldset, Input } from '@chakra-ui/react'
 
@@ -29,10 +25,16 @@ const defaultValues = {
   reportedAt: DateTime.utc().toJSDate()
 }
 
-const AddEventDialog = ({ programs, close }) => {
-  // console.debug(programs)
+const AddEventDialog = ({ close, programs, onAdd }) => {
+  
+  const handleSubmit = async (data) => {
+    const added = await onAdd(data)
+    await wait(300)
+    close(added)
+  }
+
   return (
-    <BaseDialog title='Nouvel événement' onClose={close} onSubmit={addEvent} submitBtnLabel='Ajouter' schema={addEventSchema} defaultValues={defaultValues}>
+    <BaseDialog title='Nouvel événement' onClose={close} onSubmit={handleSubmit} submitBtnLabel='Ajouter' schema={addEventSchema} defaultValues={defaultValues}>
       {(contentRef) => (
         <Fieldset.Root>
           <Fieldset.Content gap={3}>

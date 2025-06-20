@@ -1,11 +1,8 @@
-import { useQueryStates } from 'nuqs'
+import wait from '@/utils/wait'
 
-import { useBreakpointValue, Fieldset } from '@chakra-ui/react'
-
-import { searchParams, urlKeys } from '@/lib/data/events/events-params'
+import { Fieldset } from '@chakra-ui/react'
 
 import exportDataSchema from './export.schema'
-import exportData from './export.action'
 
 import BaseDialog from '@/app/lib/components/base-dialog'
 
@@ -17,18 +14,22 @@ const defaultValues = {
   format: 'csv'
 }
 
-const ExportDialog = ({ close, eventId }) => {
-  const size = useBreakpointValue({ base: 'cover', md: 'md' })
-  const motion = useBreakpointValue({ base: 'scale', md: 'slide-in-bottom' })
+const ExportDialog = ({ close, filters, onExport }) => {
 
-  const [params] = useQueryStates(searchParams, { urlKeys })
+  const handleSubmit = async (data) => {
+    const allParams = {...filters, ...data}
+    // console.debug('allParams', allParams)
+    const result = await onExport(allParams)
+    await wait(300)
+    close(result)
+  }
 
   return (
-    <BaseDialog title='Exportation des événements ou spécimens' onClose={close} onSubmit={exportData} submitBtnLabel='Exporter' schema={exportDataSchema} defaultValues={defaultValues}>
+    <BaseDialog title={'Exportation des événements ou spécimens'} onClose={close} onSubmit={handleSubmit} submitBtnLabel={'Exporter'} schema={exportDataSchema} defaultValues={defaultValues}>
       {(contentRef) => (
         <Fieldset.Root>
           <Fieldset.Content gap={3}>
-            <ControlledField name='format' label='Format :' variant='horizontal'>
+            <ControlledField name={'format'} label={'Format :'} variant={'horizontal'}>
               <FormatSelect contentRef={contentRef} />
             </ControlledField>
           </Fieldset.Content>

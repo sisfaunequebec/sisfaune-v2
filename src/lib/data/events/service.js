@@ -1,13 +1,16 @@
 'use server'
 import 'server-only'
 
-import wait from '@/utils/wait'
+import { DateTime } from 'luxon'
+
+import * as XLSX from 'xlsx'
+import { writeToBuffer  } from '@fast-csv/format'
 
 import orm from '../database'
 
 import getUser from '@/lib/auth/get-user'
 
-import { canUserViewProgram, canUserDeleteEvent, filterViewablePrograms, userCanViewAnalysisSection, userCanViewSpecimenSection } from '@/lib/auth/acl'
+import { canUserViewProgram, canUserDeleteEvent, canUserSubmitInProgram, filterViewablePrograms, userCanViewAnalysisSection, userCanViewSpecimenSection } from '@/lib/auth/acl'
 
 const SORT_MAP = {
   date_signalement: 'reportedAt',
@@ -114,7 +117,8 @@ const toEventsDTO = (events) => {
   return transformed
 }
 
-const getEvents = async (params) => {
+
+const getEventsData = async (params, include) => {
   const { tri, direction, offset = 0, take = 25 } = params
 
   const user = await getUser()
@@ -128,21 +132,27 @@ const getEvents = async (params) => {
 
   const events = await orm.Event.findMany({
     where: whereClause,
-    include: {
-      type: true,
-      program: true,
-      submitter: true,
-      location: {
-        include: {
-          locality: true
-        }
-      }
-    },
+    include,
     orderBy: orderByClause,
-    skip: (offset * take),
-    take
+    skip: take ? (offset * take) : undefined,
+    take: take ? take : undefined
   })
 
+  return events
+}
+
+const getEvents =  async (params) => {
+  const include = {
+    type: true,
+    program: true,
+    submitter: true,
+    location: {
+      include: {
+        locality: true
+      }
+    }
+  }
+  const events = await getEventsData(params, include)
   return toEventsDTO(events)
 }
 
@@ -207,7 +217,8 @@ const getEvent = async (id) => {
 
     const transformed = {
       ...restEvent,
-      specimens: canUserViewSpecimensSection ? specimens : []
+      specimens: canUserViewSpecimensSection ? specimens : null,
+      analyses: canUserViewAnalysisSection ? [] : null
     }
 
     return transformed
@@ -216,6 +227,56 @@ const getEvent = async (id) => {
     // console.warn(e)
     return null
   }
+}
+
+const addEvent = async (data) => {
+  const user = await getUser()
+
+  if (!user) {
+    throw new Error()
+  }
+
+  const { reportOriginId, typeId, statusId, programId, ...rest } = data
+
+  const canAddEvent = canUserSubmitInProgram(user, programId)
+  if (!canAddEvent) {
+    throw new Error()
+  }
+
+  const { id: submitterId } = user
+
+  const added = await orm.Event.create({
+    data: {
+      ...rest,
+      type: {
+        connect: {
+          id: typeId
+        }
+      },
+      program: {
+        connect: {
+          id: programId
+        }
+      },
+      status: {
+        connect: {
+          id: statusId
+        }
+      },
+      submitter: {
+        connect: {
+          id: submitterId
+        }
+      },
+      reportOrigin: {
+        connect: {
+          id: reportOriginId
+        }
+      }
+    }
+  })
+
+  return added
 }
 
 const deleteEvent = async (id) => {
@@ -236,13 +297,73 @@ const deleteEvent = async (id) => {
       id
     }
   })
-  // await wait(1000)
 
   return null
 }
 
+const toArrayBuffer = (buffer) => {
+  const arrayBuffer = new ArrayBuffer(buffer.length)
+  const view = new Uint8Array(arrayBuffer)
+  for (let i = 0; i < buffer.length; ++i) {
+    view[i] = buffer[i]
+  }
+  return arrayBuffer
+}
+
+const generateExcelFile = async (rows) => {
+  const worksheet = XLSX.utils.aoa_to_sheet(rows)
+
+  const workbook = XLSX.utils.book_new()
+  XLSX.utils.book_append_sheet(workbook, worksheet)
+
+  const arrayBuffer = XLSX.write(workbook, { type: 'array' })
+  return arrayBuffer
+}
+
+const generateCsvFile = async (rows) => {
+  const buffer = await writeToBuffer(rows)
+  const arrayBuffer = toArrayBuffer(buffer)
+  return arrayBuffer
+}
+
+
+const exportEvents = async (params) => {
+  const { format, ...rest } = params
+
+  const data = await getEventsData(rest)
+
+  // Transform to array of arrays
+
+  const [firstRow] = data
+  const headers = Object.keys(firstRow)
+
+  const rows = []
+  rows.push(headers)
+
+  data.forEach(record => {
+    rows.push(Object.values(record))
+  })
+
+  const now = DateTime.now()
+  const shortDate = now.toFormat('yyyyLLdd')
+
+  const fileName = format === 'csv' ? `specimens-${shortDate}.csv` : `specimens-${shortDate}.xlsx`
+  const mimeType = format === 'csv' ? 'text/csv' : 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+
+  const exporter = format === 'csv' ? generateCsvFile : generateExcelFile
+  const file = await exporter(rows)
+
+  return {
+    file,
+    fileName,
+    mimeType
+  }
+}
+
 export {
   getEvent, getEvents, getEventsCount,
-  deleteEvent
+  addEvent,
+  deleteEvent,
+  exportEvents
 }
 

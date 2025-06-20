@@ -11,7 +11,7 @@ import {
   DialogFooter
 } from '@/app/lib/components/ui/dialog'
 
-const BaseDialog = ({ title, message, size = 'md', isAlert = false, schema, watches = [], defaultValues, onClose, onSubmit, submitBtnLabel = 'Continuer', close, children }) => {
+const BaseDialog = ({ title, message, size = 'md', isAlert = false, schema, watches = [], defaultValues, onClose, onSubmit, submitBtnLabel = 'OK', close, children }) => {
   const rootSize = useBreakpointValue({ base: 'cover', md: size })
   const motion = useBreakpointValue({ base: 'scale', md: 'slide-in-bottom' })
 
@@ -78,22 +78,22 @@ const BaseDialog = ({ title, message, size = 'md', isAlert = false, schema, watc
           <Dialog.Content ref={contentRef}>
 
             <Dialog.Header>
-              <Dialog.Title>{title}</Dialog.Title>
+              <Dialog.Title textStyle={['xl', null, 'lg']} >{title}</Dialog.Title>
             </Dialog.Header>
 
             <FormProvider {...form}>
               <Flex as={'form'} onSubmit={handleSubmit(handleSubmitAction)} direction={'column'} justifyContent={'stretch'} h={'100%'}>
 
-                <Dialog.Body>
-                  { message && <Text textStyle={['md', null, 'sm']} mb={4} lineHeight={'shorter'}>{message}</Text> }
+                <Dialog.Body textStyle={['md', null, 'sm']} >
+                  { message && <Text mb={4} lineHeight={'shorter'}>{message}</Text> }
                   <VStack flex={1} alignItems={'stretch'}>{ children(contentRef, watched) }</VStack>
                 </Dialog.Body>
 
                 <DialogFooter gap={2}>
                   <DialogActionTrigger asChild>
-                    <Button size={'sm'} variant={'outline'} onClick={() => onClose(false)} minW={24}>Annuler</Button>
+                    <Button size={['lg', null, 'sm']} variant={'outline'} onClick={() => onClose(false)} minW={24}>Annuler</Button>
                   </DialogActionTrigger>
-                  <Button type={'submit'} size={'sm'} colorPalette={isSubmitting ? 'blue' : ((isAlert || hasErrors) ? 'red' : 'blue')} minW={24} loading={isSubmitting} onClick={() => clearErrors()}>{submitBtnLabel}</Button>
+                  <Button type={'submit'} size={['lg', null, 'sm']} colorPalette={isSubmitting ? 'blue' : ((isAlert || hasErrors) ? 'red' : 'blue')} minW={24} loading={isSubmitting} onClick={() => clearErrors()}>{submitBtnLabel}</Button>
                 </DialogFooter>
 
               </Flex>

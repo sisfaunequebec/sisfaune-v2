@@ -1,9 +1,9 @@
 'use server'
 
-import prisma from '@/lib/data/database'
+import { addEvent } from '@/lib/data/events/service'
 
-const addEvent = async (data) => {
-  console.debug(data)
+const addEventAction = async (data) => {
+  await addEvent(data)
 }
 
-export default addEvent
+export default addEventAction
