@@ -8,8 +8,8 @@ import {
 } from '@chakra-ui/react'
 
 const formats = [
-  { value: 'csv', label: 'Texte (.csv)' },
-  { value: 'xls', label: 'Excel (.xlsx)' }
+  { value: 'xlsx', label: 'Excel (.xlsx)' },
+  { value: 'csv', label: 'Texte (.csv)' }
 ]
 
 const FormatSelect = ({ value, onChange, onBlur, contentRef }) => {

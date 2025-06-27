@@ -314,7 +314,7 @@ const generateExcelFile = async (rows) => {
   const worksheet = XLSX.utils.aoa_to_sheet(rows)
 
   const workbook = XLSX.utils.book_new()
-  XLSX.utils.book_append_sheet(workbook, worksheet)
+  XLSX.utils.book_append_sheet(workbook, worksheet, 'Spécimens')
 
   const arrayBuffer = XLSX.write(workbook, { type: 'array' })
   return arrayBuffer

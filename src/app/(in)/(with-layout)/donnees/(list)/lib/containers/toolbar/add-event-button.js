@@ -5,6 +5,8 @@ import { useRouter } from 'next/navigation'
 
 import { useSWRConfig } from 'swr'
 
+import wait from '@/utils/wait'
+
 import { toaster } from '@/app/lib/components/ui/toaster'
 
 import { RxPlus } from 'react-icons/rx'
@@ -29,6 +31,7 @@ const AddEventButton = ({ programs }) => {
     if (added) {
       const { id: addedEventId } = added
       router.replace(`/donnees/evenements/${addedEventId}`)
+      await wait(1000)
       for (const key of cache.keys()) {
         if (key.includes('/api/data/events')) {
           mutate(key)

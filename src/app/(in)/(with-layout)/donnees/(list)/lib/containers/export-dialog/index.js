@@ -11,7 +11,7 @@ import ControlledField from '@/app/lib/components/controlled-field'
 import FormatSelect from './format-select'
 
 const defaultValues = {
-  format: 'csv'
+  format: 'xlsx'
 }
 
 const ExportDialog = ({ close, filters, onExport }) => {
