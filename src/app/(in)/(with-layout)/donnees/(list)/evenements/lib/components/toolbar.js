@@ -8,7 +8,7 @@ import { useSWRConfig } from 'swr'
 
 // import { useWindowScroll } from '@uidotdev/usehooks'
 
-import Link from 'next/link'
+// import Link from 'next/link'
 
 import { Flex, Container, Button, IconButton, HStack } from '@chakra-ui/react'
 import { toaster } from '@/app/lib/components/ui/toaster'
@@ -23,7 +23,8 @@ import DeleteEventDialog from '../../../../(item)/evenements/[id]/lib/components
 
 import ToolbarWrapper from '@/app/lib/components/toolbar-wrapper'
 import ResponsiveButton from '@/app/lib/components/responsive-button'
-import { parse } from 'path'
+
+import ReportButton from '../../../lib/containers/toolbar/report-button'
 
 // import DeleteEventButton from '../../../../(item)/evenements/[id]/lib/components/delete-event-button'
 
@@ -63,17 +64,11 @@ const DeleteEventButton = ({ eventId }) => {
   )
 }
 
-const ReportButton = ({ eventId }) => {
-  return (
-    <ResponsiveButton label={'Rapport'} variant={'solid'} colorPalette={'blue'} icon={<RxFileText />} as={Link} href={`/donnees/evenements/${eventId}/rapport`} target={'_blank'} />
-  )
-}
-
 const BackButton = () => {
   const router = useRouter()
 
   const handleGoBack = useCallback(() => {
-    router.back()
+    router.push('/donnees')
   }, [router])
 
   return (

@@ -5,7 +5,7 @@ import NextLink from 'next/link'
 
 import { AbsoluteCenter, Button, Container } from '@chakra-ui/react'
 
-import { userCanAddAnalysis, userCanAddSpecimen, userCanDeleteAnalysis, userCanDeleteSpecimen, userCanEditSpecimenSection, userCanEditAnalysisSection, canUserDeleteEvent } from '@/lib/auth/acl'
+import { userCanViewEventSection, userCanAddAnalysis, userCanAddSpecimen, userCanDeleteAnalysis, userCanDeleteSpecimen, userCanEditSpecimenSection, userCanEditAnalysisSection, canUserDeleteEvent } from '@/lib/auth/acl'
 
 import Event from './lib/containers/event'
 import CenteredMessage from '@/app/lib/components/centered-message'
@@ -81,6 +81,16 @@ const Evenement = async ({ params }) => {
   }
 
   const { programId } = event
+
+  const canViewEvent = userCanViewEventSection(user, programId)
+
+  if (!canViewEvent) {
+   return (
+      <AbsoluteCenter as={Container}>
+        <UnauthorizedOrNotFound />
+      </AbsoluteCenter>
+    )
+  }
 
   const canDeleteEvent = canUserDeleteEvent(user) 
 

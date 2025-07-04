@@ -47,7 +47,7 @@ const DeleteEventButtonOld = ({ eventId }) => {
   return (
     <>
       {deleteEventDialog}
-      <IconButton colorPalette={'red'} variant={'solid'} rounded={'full'} size={['md', null, 'sm']} onClick={handleDeleteEvent} visibility={'hidden'}><RxTrash /></IconButton>
+      <IconButton colorPalette={'red'} variant={'solid'} rounded={'full'} size={'xs'} onClick={handleDeleteEvent} visibility={'hidden'}><RxTrash /></IconButton>
     </>
   )
 }

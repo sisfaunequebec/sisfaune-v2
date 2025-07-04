@@ -75,20 +75,22 @@ const LocalisationSection = ({ event, editingSection, onToggleEditing }) => {
   }, [onToggleEditing])
 
   return (
-    <AccordionItem value='localisation' position={isEditing ? 'sticky' : 'static'} zIndex={isEditing && 1000} disabled={isEditing}>
-      <Box position={isEditing ? 'sticky' : 'relative'} top={isEditing && [135, null, 130]} zIndex={isEditing && 1000}>
-        <AbsoluteCenter as={HStack} axis='vertical' insetEnd={5} zIndex={1000}>
-          <HStack flex={1} justifyContent='flex-end'>
-            {isEditing
+    <AccordionItem value={'localisation'} position={isEditing ? 'sticky' : 'static'} zIndex={isEditing && 1000} disabled={isEditing}>
+      <Flex position={isEditing ? 'sticky' : 'relative'} top={isEditing && [135, null, 130]} zIndex={isEditing && 1000}>
+        <AbsoluteCenter as={HStack} axis={'vertical'} insetEnd={4} zIndex={1000}>
+          {/* <HStack flex={1} justifyContent={'center'} > */}
+            <IconButton colorPalette='green' variant='surface' rounded='full' size={['xs']} onClick={handleToggleEditing}><RxPencil1 /></IconButton>
+            {/* {isEditing
               ? <>
                 <Button variant='solid' colorPalette='blue' size='xs' onClick={handleToggleEditing} borderRadius='full'>Sauvegarder les modifications</Button>
                 <Button variant='surface' colorPalette='blue' size='xs' onClick={handleToggleEditing} borderRadius='full'>Annuler</Button>
                 </>
-              : <IconButton colorPalette='green' variant='surface' rounded='full' size={['xs']} onClick={handleToggleEditing}><RxPencil1 /></IconButton>}
-          </HStack>
+              : <IconButton colorPalette='green' variant='surface' rounded='full' size={['sm']} onClick={handleToggleEditing}><RxPencil1 /></IconButton>
+            } */}
+          {/* </HStack> */}
         </AbsoluteCenter>
-        <Trigger label='Localisation géographique' />
-      </Box>
+        <Trigger label={'Localisation géographique'} />
+      </Flex>
       <Content>
         <LocalisationSectionForm />
       </Content>

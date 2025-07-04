@@ -4,9 +4,9 @@ import { RxFileText } from 'react-icons/rx'
 
 import ResponsiveButton from '@/app/lib/components/responsive-button'
 
-const ReportButton = ({ id }) => {
+const ReportButton = ({ eventId }) => {
   return (
-    <ResponsiveButton label={'Rapport'} variant={'solid'} colorPalette={'blue'} icon={<RxFileText />} as={Link} href={`/donnees/evenements/${id}/rapport`} target={'_blank'} />
+    <ResponsiveButton label={'Rapport (PDF)'} variant={'solid'} colorPalette={'blue'} icon={<RxFileText />} as={Link} href={`/donnees/evenements/${eventId}/rapport`} target={'_blank'} />
   )
 }
 

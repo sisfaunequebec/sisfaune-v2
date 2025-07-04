@@ -80,14 +80,14 @@ const Event = ({
               <DeleteEventButtonOld eventId={eventId} visibility={'hidden'} />
             </SectionHeading>
             <AccordionRoot size={['md', null, 'sm']} multiple value={activePanel} onValueChange={handleToggleActiveSection} lazyMount>
-              {/* <InfosGeneralesSection event={event} onToggleEditing={handleToggleEditingSection} editingSection={editingSection} />
+              {/* <InfosGeneralesSection event={event} onToggleEditing={handleToggleEditingSection} editingSection={editingSection} /> */}
               <LocalisationSection event={event} onToggleEditing={handleToggleEditingSection} editingSection={editingSection} />
-              <LaboratoireSection event={event} ongleEditing={handleToggleEditingSection} editingSection={editingSection} /> */}
+              {/* <LaboratoireSection event={event} ongleEditing={handleToggleEditingSection} editingSection={editingSection} /> */}
             </AccordionRoot>
           </VStack>
           <VStack alignItems='stretch' fontSize={['md', null, 'sm']} gap={0}>
             <SectionHeading label='Spécimens' isSticky>
-              <IconButton colorPalette='green' variant='solid' rounded='full' size={['md', null, 'sm']} onClick={null} visibility={!canUserAddSpecimen && 'hidden'}><RxPlus /></IconButton>
+              <IconButton colorPalette='green' variant='solid' rounded='full' size={['xs']} onClick={null} visibility={!canUserAddSpecimen && 'hidden'}><RxPlus /></IconButton>
             </SectionHeading>
             {/* <AccordionRoot multiple size={['md', null, 'sm']} defaultValue={[]} lazyMount>
               {event.specimens.map(s => {
@@ -100,7 +100,7 @@ const Event = ({
           </VStack>
           <VStack alignItems='stretch' fontSize={['md', null, 'sm']} gap={0}>
             <SectionHeading label='Analyses'>
-              <IconButton colorPalette='green' variant='solid' rounded='full' size={['md', null, 'sm']} onClick={null} visibility={!canUserAddAnalysis && 'hidden'}><RxPlus /></IconButton>
+              <IconButton colorPalette='green' variant='solid' rounded='full' size={['xs']} onClick={null} visibility={!canUserAddAnalysis && 'hidden'}><RxPlus /></IconButton>
             </SectionHeading>
             {/* <AccordionRoot multiple size={['md', null, 'sm']} defaultValue={[]} lazyMount>
               <AccordionItem value='dsc'>
