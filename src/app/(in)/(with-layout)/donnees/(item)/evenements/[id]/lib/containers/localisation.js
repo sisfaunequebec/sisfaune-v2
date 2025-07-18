@@ -79,7 +79,7 @@ const LocalisationSection = ({ event, editingSection, onToggleEditing }) => {
       <Flex position={isEditing ? 'sticky' : 'relative'} top={isEditing && [135, null, 130]} zIndex={isEditing && 1000}>
         <AbsoluteCenter as={HStack} axis={'vertical'} insetEnd={4} zIndex={1000}>
           {/* <HStack flex={1} justifyContent={'center'} > */}
-            <IconButton colorPalette='green' variant='surface' rounded='full' size={['xs']} onClick={handleToggleEditing}><RxPencil1 /></IconButton>
+            {/* <IconButton colorPalette='green' variant='surface' rounded='full' size={['xs']} onClick={handleToggleEditing}><RxPencil1 /></IconButton> */}
             {/* {isEditing
               ? <>
                 <Button variant='solid' colorPalette='blue' size='xs' onClick={handleToggleEditing} borderRadius='full'>Sauvegarder les modifications</Button>

@@ -17,7 +17,7 @@ const Program = ({ programs = [] }) => {
   }, [programs])
 
   return (
-    <Checkboxes name={'programme'} choices={choices} value={value} onChange={setValue} allChoicesLabel='Tous les programmes' />
+    <Checkboxes name={'programme'} choices={choices} value={value} onChange={setValue} allChoicesLabel={'Tous les programmes'} />
   )
 }
 

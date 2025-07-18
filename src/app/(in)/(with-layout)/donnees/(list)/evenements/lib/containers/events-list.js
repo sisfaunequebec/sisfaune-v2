@@ -38,7 +38,7 @@ const ItemEvenement = ({ id, silabId, mapaqId, typeName, programName, localityNa
       <Stack flex={1} direction={['column', null, null, 'row']} gap={[0.4, null, null, 1]}>
         <VStack alignItems='flex-start' gap={0.4} flex={1}>
           <LinkOverlay asChild>
-            <Flex as={NextLink} href={href} scroll={false} flex={1} color={'green.600'} _dark={{ color: 'green.200' }}>
+            <Flex as={NextLink} href={href} scroll={true} flex={1} color={'green.600'} _dark={{ color: 'green.200' }}>
               <Text fontWeight={500}>Événement&nbsp;{id}</Text>&nbsp;
               {mapaqId && <Text>(MAPAQ&nbsp;{mapaqId})</Text>}
             </Flex>

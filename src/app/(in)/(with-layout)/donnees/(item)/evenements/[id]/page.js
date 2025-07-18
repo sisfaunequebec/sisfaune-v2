@@ -30,7 +30,7 @@ import CenteredMessage from '@/app/lib/components/centered-message'
 
 const UnauthorizedOrNotFound = () => {
   return (
-    <CenteredMessage level={'warning'} title={'Désolé !'} description={'Cet événement est introuvable ou vous n\'êtes pas autorisé à le consulter'}>
+    <CenteredMessage level={'warning'} title={'Désolé'} description={'Cet événement est introuvable ou vous n\'êtes pas autorisé à le consulter'}>
       <Button as={NextLink} size={['lg', null, 'md']} href={'/donnees'} variant={'surface'} colorPalette={'green'}>Revenir à la base de données</Button>
     </CenteredMessage>
   )

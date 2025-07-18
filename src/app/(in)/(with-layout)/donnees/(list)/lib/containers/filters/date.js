@@ -13,7 +13,7 @@ import { Field } from '@/app/lib/components/ui/field'
 
 import DateSelector from '@/app/lib/components/date-selector'
 
-const Dates = ({ }) => {
+const Date = () => {
   const [values, setValues] = useQueryStates({
     date: parseAsString.withDefault('date_signalement'),
     start: parseAsString.withDefault(null),
@@ -29,7 +29,7 @@ const Dates = ({ }) => {
   const handleDateTypeChange = useCallback(e => {
     const { value } = e
     const { start, end } = values
-    // if (!start && !end) { return }
+
     setValues({
       date: value,
       start,
@@ -39,30 +39,35 @@ const Dates = ({ }) => {
 
   const handleStartDateChange = useCallback(value => {
     const { date, end } = values
-    // console.debug(value)
+    
+    const startDate = (date && value) ? DateTime.fromJSDate(value) : null
+    const endDate = end ? DateTime.fromFormat(end, 'yyyy-LL-dd') : null
+    const isOver = startDate >= endDate 
+
     setValues({
       date,
-      start: (date && value) ? DateTime.fromJSDate(value).toFormat('yyyy-LL-dd') : null,
-      end
+      start: startDate ? startDate.toFormat('yyyy-LL-dd') : null,
+      end: isOver ? null : (endDate ? endDate.toFormat('yyyy-LL-dd') : null)
     })
   }, [values, setValues])
 
-  // console.debug(values)
-  // const [value, setValue] = useQueryState('s', parseAsArrayOf(parseAsInteger).withDefault([]))
-
-  // const choices = useMemo(() => {
-  //   const choices = statuts.map(p => { return { value: p.id, label: p.name }  })
-  //   const sorted = orderBy(choices, ['label'], ['asc'])
-  //   return sorted
-  // }, [statuts])
+   const handleEndDateChange = useCallback(value => {
+    const { date, start } = values
+    setValues({
+      date,
+      start,
+      end: (date && value) ? DateTime.fromJSDate(value).toFormat('yyyy-LL-dd') : null,
+    })
+  }, [values, setValues])
 
   const { date, start, end } = values
 
   const startDate = start && DateTime.fromISO(start).toJSDate()
+  const endDate = end && DateTime.fromISO(end).toJSDate()
 
   return (
     // <VStack>
-    <VStack gap={3} alignItems='flex-start'>
+    <VStack gap={2} alignItems='flex-start'>
       <RadioGroup defaultValue='date_signalement' size='sm' colorPalette='blue' variant='subtle' name='date' value={date} onValueChange={handleDateTypeChange}>
         <VStack alignItems='flex-start' gap={1}>
           <Radio value='date_signalement'>Date du signalement</Radio>
@@ -74,10 +79,10 @@ const Dates = ({ }) => {
         <DateSelector value={startDate} clearable onChange={handleStartDateChange} />
       </Field>
       <Field label='Fin :' variant='vertical'>
-        <DateSelector value={end} clearable />
+        <DateSelector value={endDate} minDate={startDate} clearable onChange={handleEndDateChange} />
       </Field>
     </VStack>
   )
 }
 
-export default Dates
+export default Date

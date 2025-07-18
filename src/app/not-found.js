@@ -10,7 +10,7 @@ export const metadata = {
 const NotFoundPage = () => {
   return (
     <AbsoluteCenter as={Container}>
-      <CenteredMessage level={'warning'} title={'Désolé !'} description={'Cette page est introuvable'}>
+      <CenteredMessage level={'warning'} title={'Désolé'} description={'Cette page est introuvable'}>
         <Button as={NextLink} size={['lg', null, 'md']} href={'/'} variant={'surface'} colorPalette={'green'}>Revenir à la page d&apos;accueil</Button>
       </CenteredMessage>
     </AbsoluteCenter>

@@ -21,7 +21,7 @@
     "email-dev": "email dev --dir src/lib/email --port 4502"
   },
   "dependencies": {
-    "@chakra-ui/react": "^3.8.0",
+    "@chakra-ui/react": "^3.22.0",
     "@choc-ui/chakra-autocomplete": "^6.1.0",
     "@emotion/react": "^11.13.3",
     "@fast-csv/format": "^5.0.2",

@@ -2,7 +2,7 @@
 
 import { defineConfig, defaultConfig, defineRecipe, defineSlotRecipe, defineTokens, defineSemanticTokens, createSystem } from '@chakra-ui/react'
 
-import { avatarAnatomy, menuAnatomy, tabsAnatomy, accordionAnatomy, checkboxAnatomy, radioGroupAnatomy, dialogAnatomy, selectAnatomy } from '@chakra-ui/react/anatomy'
+import { avatarAnatomy, menuAnatomy, tabsAnatomy, accordionAnatomy, checkboxAnatomy, radioGroupAnatomy, dialogAnatomy, selectAnatomy, treeViewAnatomy, checkmarkAnatomy } from '@chakra-ui/react/anatomy'
 
 const tokens = defineTokens({
   colors: {
@@ -118,7 +118,7 @@ const radioGroupRecipe = defineSlotRecipe({
   slots: radioGroupAnatomy.keys(),
   base: {
     item: {
-      cursor: 'pointer',
+      // cursor: 'pointer',
       fontWeight: 'normal'
     }
   }
@@ -128,7 +128,7 @@ const checkboxRecipe = defineSlotRecipe({
   slots: checkboxAnatomy.keys(),
   base: {
     label: {
-      cursor: 'pointer',
+      // cursor: 'pointer',
       fontWeight: 'normal'
     }
   }
@@ -137,7 +137,6 @@ const checkboxRecipe = defineSlotRecipe({
 const selectRecipe = defineSlotRecipe({
   slots: selectAnatomy.keys(),
   base: {
-
     trigger: {
       cursor: 'pointer',
       _focus: {
@@ -216,6 +215,35 @@ const textAreaRecipe = defineRecipe({
   }
 })
 
+const checkmarkRecipe = defineRecipe({
+  variants: {
+    size: {
+      sm: {
+        boxSize: '14.4px',
+      }
+    }
+  }
+})
+
+const treeViewRecipe = defineSlotRecipe({
+  slots: treeViewAnatomy.keys(),
+  base: {
+    branchControl: {
+      '&:hover, &:focus-visible': {
+        bg: 'none'
+      },
+      fontWeight: 'medium',
+      py: 0.5
+    },
+    item: {
+      '&:hover, &:focus-visible': {
+        bg: 'none'
+      },
+      py: 0.5
+    }
+  }
+})
+
 // const textStyles = defineTextStyles({
 //   // body: {
 //   //   description: 'The body text style',
@@ -234,7 +262,11 @@ const config = defineConfig({
       flexDirection: 'column',
       justifyContent: 'stretch',
       alignItems: 'stretch',
-      bg: { base: 'gray.100', _dark: 'gray.900' }
+      bg: { base: 'gray.100', _dark: 'gray.900' },
+
+    },
+    'body': {
+      overflowY: 'scroll'
     }
   },
   theme: {
@@ -242,7 +274,8 @@ const config = defineConfig({
     recipes: {
       button: buttonRecipe,
       input: inputRecipe,
-      textarea: textAreaRecipe
+      textarea: textAreaRecipe,
+      checkmark: checkmarkRecipe
     },
     slotRecipes: {
       avatar: avatarRecipe,
@@ -252,7 +285,8 @@ const config = defineConfig({
       radioGroup: radioGroupRecipe,
       checkbox: checkboxRecipe,
       dialog: dialogRecipe,
-      select: selectRecipe
+      select: selectRecipe,
+      treeView: treeViewRecipe
     }
     // textStyles
   }

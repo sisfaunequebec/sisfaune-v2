@@ -68,7 +68,7 @@ const BackButton = () => {
   const router = useRouter()
 
   const handleGoBack = useCallback(() => {
-    router.push('/donnees')
+    router.push('/donnees', { scroll: false })
   }, [router])
 
   return (

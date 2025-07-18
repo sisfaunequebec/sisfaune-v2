@@ -7,7 +7,7 @@ const COLORS = {
   error: 'red.600',
 }
 
-const CenteredMessage = ({ title = 'Désolé !', description, level = 'info', children }) => {
+const CenteredMessage = ({ title = 'Désolé', description, level = 'info', children }) => {
   const color = COLORS[level] ?? 'green.500'
 
   return (

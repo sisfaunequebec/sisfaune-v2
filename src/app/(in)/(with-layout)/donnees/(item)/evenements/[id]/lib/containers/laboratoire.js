@@ -58,7 +58,7 @@ const LaboratoireSection = ({ event, editingSection, onToggleEditing }) => {
   return (
     <AccordionItem value='laboratoire' position={isEditing ? 'sticky' : 'static'} zIndex={isEditing && 1000} disabled={isEditing}>
       <Box position={isEditing ? 'sticky' : 'relative'} top={isEditing && [135, null, 130]} zIndex={isEditing && 1000}>
-        <AbsoluteCenter as={HStack} axis='vertical' insetEnd={5} zIndex={1000}>
+        {/* <AbsoluteCenter as={HStack} axis='vertical' insetEnd={5} zIndex={1000}>
           <HStack flex={1} justifyContent='flex-end'>
             {isEditing
               ? <>
@@ -67,7 +67,7 @@ const LaboratoireSection = ({ event, editingSection, onToggleEditing }) => {
                 </>
               : <IconButton colorPalette='green' variant='surface' rounded='full' size={['xs']} onClick={handleToggleEditing}><RxPencil1 /></IconButton>}
           </HStack>
-        </AbsoluteCenter>
+        </AbsoluteCenter> */}
         <Trigger label='Laboratoire' />
       </Box>
       <Content>

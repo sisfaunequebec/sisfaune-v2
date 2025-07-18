@@ -15,7 +15,7 @@ const RootError = ({ error, reset }) => {
  
   return (
     <AbsoluteCenter as={Container}>
-      <CenteredMessage level={'error'} title={'Désolé !'} description={'Une erreur s\'est produite'}>
+      <CenteredMessage level={'error'} title={'Désolé'} description={'Une erreur s\'est produite'}>
         <Button as={NextLink} size={['lg', null, 'md']} href={'/'} variant={'surface'} colorPalette={'green'}>Revenir à la page d&apos;accueil</Button>
       </CenteredMessage>
     </AbsoluteCenter>

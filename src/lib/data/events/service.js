@@ -18,6 +18,12 @@ const SORT_MAP = {
   id: 'id'
 }
 
+const DATE_MAP = {
+  date_signalement: 'reportedAt',
+  date_decouverte: 'discoveredAt',
+  date_recolte: 'collectedAt'
+}
+
 const getSortField = (value) => {
   if (!value) {
     return 'createdAt'
@@ -36,8 +42,21 @@ const getOrderByClause = (tri, direction) => {
   return orderByClause
 }
 
+const getPartialDateClause = (date, start, end) => {
+  const fieldName = DATE_MAP[date] || 'reportedAt'
+
+  const conditions = [
+    start ? { [fieldName]: { gte: DateTime.fromFormat(start, 'yyyy-LL-dd').toJSDate() } } : null,
+    end ? { [fieldName]: { lte: DateTime.fromFormat(end, 'yyyy-LL-dd').toJSDate() } } : null
+  ]
+
+  return {
+    AND: conditions.filter(Boolean)
+  }
+}
+
 const getWhereClauseFromParams = (params, user) => {
-  const { statut, programme, tri, direction, region, texte: texteRaw } = params
+  const { statut, programme, region, groupe, texte: texteRaw, date, start, end } = params
 
   const { permissions } = user
   const viewableProgramIds = permissions.filter(filterViewablePrograms).map(p => p.programId)
@@ -47,14 +66,25 @@ const getWhereClauseFromParams = (params, user) => {
 
   const programsIds = programme ? programme : viewableProgramIds
 
+  const partialDateClause = getPartialDateClause(date, start, end) 
+  // console.debug('partialDateClause', partialDateClause)
+
   const whereClause = {
     statusId: statut ? { in: statut } : undefined,
     programId: { in: programsIds },
+    specimens: groupe ? {
+      some: {
+        specie: {
+          groupId: { in: groupe } 
+        }
+      }
+    } : undefined,
     location: {
       locality: {
         regionId: region ? { in: region } : undefined
       }
     },
+    ...partialDateClause,
     OR: texte ? [
       { id: isTextNumber ? parseInt(texte, 10) : undefined },
       { silabId: texte ? { contains: texte, mode: 'insensitive' } : undefined },
@@ -70,6 +100,8 @@ const getWhereClauseFromParams = (params, user) => {
       }
     ] : undefined
   }
+
+
 
   return whereClause
 }
@@ -152,6 +184,7 @@ const getEvents =  async (params) => {
       }
     }
   }
+
   const events = await getEventsData(params, include)
   return toEventsDTO(events)
 }

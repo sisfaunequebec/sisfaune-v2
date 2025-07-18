@@ -5,10 +5,9 @@ import { VStack, HStack, IconButton, Text, SimpleGrid, Button } from '@chakra-ui
 
 import { RxDoubleArrowLeft, RxChevronLeft, RxChevronRight, RxDoubleArrowRight, RxChevronDown  } from 'react-icons/rx'
 
-const Calendar = ({ value, onSelect }) => {
+const Calendar = ({ value, minDate, onSelect }) => {
   const initialState = value ? [value] : []
   const [selectedDates, onDatesChange] = useState(initialState)
-  // const [offsetDate, onOffsetChange] = useState(new Date())
 
   const handleChange = useCallback((value) => {
     onDatesChange(value)
@@ -25,7 +24,7 @@ const Calendar = ({ value, onSelect }) => {
     calendar: {
       startDay: 0
     },
-    dates: { toggle: false }
+    dates: { toggle: false, minDate }
   })
 
   const { weekDays, calendars } = data
@@ -34,12 +33,6 @@ const Calendar = ({ value, onSelect }) => {
   const {
     dayButton, addOffset, subtractOffset, setOffset
   } = propGetters
-
-  const nowButtonProps = dayButton({$date: new Date()})
-  // console.debug(nowButtonProps)
-  const { onClick: onNowButtonClick } = nowButtonProps
-
-  const onNow = () => { console.debug('shit'); setOffset(new Date()) }
 
   return (
     <VStack gap={1} p={0} m={0} alignItems={'stretch'}>

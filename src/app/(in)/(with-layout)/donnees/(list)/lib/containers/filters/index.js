@@ -15,7 +15,8 @@ import FullText from './full-text'
 import Status from './status'
 import Program from './program'
 import Region from './region'
-import Dates from './dates'
+import Date from './date'
+import Group from './group'
 
 const FiltersContainer = ({ children }) => {
   return (
@@ -49,6 +50,8 @@ const FiltersForm = async () => {
     }
   })
 
+  const groups = await orm.LutAnimalGroupV2.findMany()
+
   return (
     <Fieldset.Root flex alignItems='flex-start'>
 
@@ -78,13 +81,12 @@ const FiltersForm = async () => {
       <Separator />
 
       <SectionTitle label='Filtrer par groupe de spécimens :' />
-      <Section>TODO</Section>
+      <Section><Group groups={groups} /></Section>
 
       <Separator />
 
       <SectionTitle label='Filtrer par date :' />
-      <Section>TODO</Section>
-      {/* <Section><Dates /></Section> */}
+      <Section><Date /></Section>
 
     </Fieldset.Root>
   )

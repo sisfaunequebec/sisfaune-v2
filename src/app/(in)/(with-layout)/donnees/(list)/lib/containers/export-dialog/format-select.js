@@ -8,8 +8,8 @@ import {
 } from '@chakra-ui/react'
 
 const formats = [
-  { value: 'xlsx', label: 'Excel (.xlsx)' },
-  { value: 'csv', label: 'Texte (.csv)' }
+  { value: 'xlsx', label: 'Un seul fichier Excel (.xlsx)' },
+  { value: 'csv', label: 'Plusieurs fichiers texte (.csv)' }
 ]
 
 const FormatSelect = ({ value, onChange, onBlur, contentRef }) => {
@@ -26,7 +26,7 @@ const FormatSelect = ({ value, onChange, onBlur, contentRef }) => {
       value={[value]}
       onValueChange={handleValueChange}
       onInteractOutside={onBlur}
-      size='sm'
+      size={'sm'}
       positioning={{ sameWidth: true }}
     >
       <Select.HiddenSelect />

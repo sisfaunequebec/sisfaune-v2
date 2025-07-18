@@ -104,7 +104,7 @@ const InfosGeneralesSection = ({ event, editingSection, onToggleEditing }) => {
   return (
     <AccordionItem value='general' position={isEditing ? 'sticky' : 'static'} zIndex={isEditing && 1000} disabled={isEditing}>
       <Box position={isEditing ? 'sticky' : 'relative'} top={isEditing && [135, null, 130]} zIndex={isEditing && 1000}>
-        <AbsoluteCenter as={HStack} axis='vertical' insetEnd={5}>
+        {/* <AbsoluteCenter as={HStack} axis='vertical' insetEnd={5}>
           <HStack flex={1} justifyContent='flex-end'>
             {isEditing
               ? <>
@@ -113,7 +113,7 @@ const InfosGeneralesSection = ({ event, editingSection, onToggleEditing }) => {
                 </>
               : <IconButton colorPalette='green' variant='surface' rounded='full' size={['xs']} onClick={handleToggleEditing}><RxPencil1 /></IconButton>}
           </HStack>
-        </AbsoluteCenter>
+        </AbsoluteCenter> */}
         <Trigger label='Informations générales' />
       </Box>
       <Content>

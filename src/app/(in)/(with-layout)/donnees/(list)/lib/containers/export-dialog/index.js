@@ -29,7 +29,7 @@ const ExportDialog = ({ close, filters, onExport }) => {
       {(contentRef) => (
         <Fieldset.Root>
           <Fieldset.Content gap={3}>
-            <ControlledField name={'format'} label={'Format :'} variant={'horizontal'}>
+            <ControlledField name={'format'} label={'Format d\'exportation :'} variant={'horizontal'}>
               <FormatSelect contentRef={contentRef} />
             </ControlledField>
           </Fieldset.Content>
