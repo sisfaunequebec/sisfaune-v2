@@ -11,7 +11,7 @@ import {
   DialogFooter
 } from '@/app/lib/components/ui/dialog'
 
-const BaseDialog = ({ title, message, size = 'md', isAlert = false, schema, watches = [], defaultValues, onClose, onSubmit, submitBtnLabel = 'OK', close, children }) => {
+const BaseDialog = ({ title, message, size = 'md', isAlert = false, schema, watches = [], defaultValues, onClose, onSubmit, submitBtnLabel = 'OK', children }) => {
   const rootSize = useBreakpointValue({ base: 'cover', md: size })
   const motion = useBreakpointValue({ base: 'scale', md: 'slide-in-bottom' })
 

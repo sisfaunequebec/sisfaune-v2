@@ -14,10 +14,9 @@ import {
   AccordionItem
 } from '@/app/lib/components/ui/accordion'
 
-import { Trigger, Content } from '../components/accordion-parts'
+import { Trigger, Content } from '../../components/accordion-parts'
 
-import TextField from '../components/text-field'
-import DateField from '../components/date-field'
+import ResponsiveButton from '@/app/lib/components/responsive-button'
 
 const StaticMap = ({ lat = 45, lng = -72, zoom }) => {
   const [ref, { width, height }] = useMeasure()
@@ -66,31 +65,21 @@ const LocalisationSectionForm = ({ event, isEditing, onToggleEditing }) => {
   )
 }
 
-const LocalisationSection = ({ event, editingSection, onToggleEditing }) => {
-  // console.debug(event)
-  const isEditing = editingSection === 'localisation'
+const LocalisationSection = ({ event, canEdit = false }) => {
+  const isEditing = false
 
-  const handleToggleEditing = useCallback(() => {
-    onToggleEditing('localisation')
-  }, [onToggleEditing])
+  // const handleToggleEditing = useCallback(() => {
+  //   onToggleEditing('localisation')
+  // }, [onToggleEditing])
 
   return (
     <AccordionItem value={'localisation'} position={isEditing ? 'sticky' : 'static'} zIndex={isEditing && 1000} disabled={isEditing}>
-      <Flex position={isEditing ? 'sticky' : 'relative'} top={isEditing && [135, null, 130]} zIndex={isEditing && 1000}>
-        <AbsoluteCenter as={HStack} axis={'vertical'} insetEnd={4} zIndex={1000}>
-          {/* <HStack flex={1} justifyContent={'center'} > */}
-            {/* <IconButton colorPalette='green' variant='surface' rounded='full' size={['xs']} onClick={handleToggleEditing}><RxPencil1 /></IconButton> */}
-            {/* {isEditing
-              ? <>
-                <Button variant='solid' colorPalette='blue' size='xs' onClick={handleToggleEditing} borderRadius='full'>Sauvegarder les modifications</Button>
-                <Button variant='surface' colorPalette='blue' size='xs' onClick={handleToggleEditing} borderRadius='full'>Annuler</Button>
-                </>
-              : <IconButton colorPalette='green' variant='surface' rounded='full' size={['sm']} onClick={handleToggleEditing}><RxPencil1 /></IconButton>
-            } */}
-          {/* </HStack> */}
+      <Box position={isEditing ? 'sticky' : 'relative'} top={isEditing && [135, null, 130]} zIndex={isEditing && 1000} minH={'48px'}>
+        <AbsoluteCenter as={HStack} axis={'vertical'} insetEnd={2}>
+          { canEdit && <ResponsiveButton colorPalette={'green'} variant={'subtle'} size={'sm'} label={'Modifier'} icon={<RxPencil1 />} me={[2, null, 1]} /> }
         </AbsoluteCenter>
         <Trigger label={'Localisation géographique'} />
-      </Flex>
+      </Box>
       <Content>
         <LocalisationSectionForm />
       </Content>

@@ -8,7 +8,7 @@ const ResponsiveButton = ({ label, size = 'md', variant = 'solid', colorPalette,
   const sizes = size === 'md' ? ['md', null, 'sm'] : ['sm', null, 'xs']
   return (
     <>
-      <Button {...rest} size={sizes} rounded={['full', null, 'md']} variant={variant} colorPalette={colorPalette} display={['none', null, 'inherit']} onClick={onClick}>{icon}{label}</Button>
+      <Button {...rest} size={sizes} rounded={['full', null, 'md']} variant={variant} colorPalette={colorPalette} display={['none', null, 'inherit']} onClick={onClick} minW={90}>{icon}{label}</Button>
       <IconButton {...rest} size={sizes} rounded={['full', null, 'md']} variant={variant} colorPalette={colorPalette} aria-label={label} display={['inherit', null, 'none']} onClick={onClick}>{icon}</IconButton>
     </>
   )

@@ -10,6 +10,8 @@ import {
 
 import { Trigger, Content } from '../components/accordion-parts'
 
+import ResponsiveButton from '@/app/lib/components/responsive-button'
+
 import TextField from '../components/text-field'
 import DateField from '../components/date-field'
 import CommentField from '../components/comment-field'
@@ -93,31 +95,19 @@ const InfosGeneralesForm = ({ event, isEditing, onToggleEditing }) => {
   )
 }
 
-const InfosGeneralesSection = ({ event, editingSection, onToggleEditing }) => {
-  // const [isEditing, toggleEditing] = useToggle(false)
-  const isEditing = editingSection === 'general'
-
-  const handleToggleEditing = useCallback(() => {
-    onToggleEditing('general')
-  }, [onToggleEditing])
+const InfosGeneralesSection = ({ event, canEdit = false }) => {
+  const isEditing = false
 
   return (
-    <AccordionItem value='general' position={isEditing ? 'sticky' : 'static'} zIndex={isEditing && 1000} disabled={isEditing}>
-      <Box position={isEditing ? 'sticky' : 'relative'} top={isEditing && [135, null, 130]} zIndex={isEditing && 1000}>
-        {/* <AbsoluteCenter as={HStack} axis='vertical' insetEnd={5}>
-          <HStack flex={1} justifyContent='flex-end'>
-            {isEditing
-              ? <>
-                <Button variant='solid' colorPalette='blue' size='xs' onClick={handleToggleEditing} borderRadius='full'>Sauvegarder les modifications</Button>
-                <Button variant='surface' colorPalette='blue' size='xs' onClick={handleToggleEditing} borderRadius='full'>Annuler</Button>
-                </>
-              : <IconButton colorPalette='green' variant='surface' rounded='full' size={['xs']} onClick={handleToggleEditing}><RxPencil1 /></IconButton>}
-          </HStack>
-        </AbsoluteCenter> */}
+    <AccordionItem value='general' position={isEditing ? 'sticky' : 'static'} zIndex={isEditing && 1000} disabled={isEditing} >
+      <Box position={isEditing ? 'sticky' : 'relative'} top={isEditing && [135, null, 130]} zIndex={isEditing && 1000} minH={'48px'}>
+        <AbsoluteCenter as={HStack} axis={'vertical'} insetEnd={2}>
+          { canEdit && <ResponsiveButton colorPalette='green' variant='subtle' size={'sm'} label={'Modifier'} icon={<RxPencil1 />} me={[2, null, 1]} /> }
+        </AbsoluteCenter>
         <Trigger label='Informations générales' />
       </Box>
       <Content>
-        <InfosGeneralesForm event={event} isEditing={isEditing} onToggleEditing={handleToggleEditing} />
+        <InfosGeneralesForm event={event} isEditing={isEditing}  />
       </Content>
     </AccordionItem>
   )

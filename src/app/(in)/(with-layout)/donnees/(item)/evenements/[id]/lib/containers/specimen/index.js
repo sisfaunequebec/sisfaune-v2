@@ -6,24 +6,27 @@ import {
   AccordionRoot
 } from '@/app/lib/components/ui/accordion'
 
-import { Trigger, Content } from '../components/accordion-parts'
+import { Trigger, Content } from '../../components/accordion-parts'
 
-import TextField from '../components/text-field'
-import CommentField from '../components/comment-field'
+import ResponsiveButton from '@/app/lib/components/responsive-button'
 
-import DateField from '../components/date-field'
+import TextField from '../../components/text-field'
+import CommentField from '../../components/comment-field'
 
-import AgeSelect from '../components/age-select'
-import SexSelect from '../components/sex-select'
-import EtatDecouverteSelect from '../components/etat-decouverte-select'
-import CauseMortSelect from '../components/cause-mort-select'
+import DateField from '../../components/date-field'
 
-import MeasureField from '../components/measure-field'
+import AgeSelect from '../../components/age-select'
+import SexSelect from '../../components/sex-select'
+import EtatDecouverteSelect from '../../components/etat-decouverte-select'
+import CauseMortSelect from '../../components/cause-mort-select'
 
-import SelectFieldAdvanced from '../../../../../../../../lib/components/select-field-advanced'
-import getPreservationMethods from '../actions/get-preservation-methods'
+// import MeasureField from '../components/measure-field'
 
-import MeasuresSection from './measures-section'
+// import SelectFieldAdvanced
+import SelectFieldAdvanced from '@/app/lib/components/select-field-advanced'
+import getPreservationMethods from '../../actions/get-preservation-methods'
+
+import MeasuresSection from '../measures-section'
 
 const MethodePreservationSelect = ({ label, value, isEditing }) => {
   return (
@@ -114,22 +117,23 @@ const SpecimenForm = ({ specimen, isEditing, onToggleEditing }) => {
   )
 }
 
-const SpecimenInformationSection = ({ specimen, onToggleEditing, onDelete }) => {
+const SpecimenInformationSection = ({ specimen, canEdit = false, canDelete = false, onDelete }) => {
   // console.debug(specimen)
   const { id, specimenNumber, specie } = specimen
   // const { name: specieName, binome } = specie
+  const isEditing = false
   return (
     <AccordionItem key={id} value={id}>
-      <Box position='relative'>
-        {/* <AbsoluteCenter as={HStack} axis='vertical' insetEnd={5}>
-          { onToggleEditing && <IconButton colorPalette='green' variant='subtle' rounded='full' size={['xs']}><RxPencil1 /></IconButton> }
-          { onDelete && <IconButton colorPalette='red' variant='subtle' rounded='full' size={['xs']} onClick={onDelete}><RxTrash /></IconButton> }
-        </AbsoluteCenter> */}
-        <Trigger label={`Test`} />
+      <Box position={isEditing ? 'sticky' : 'relative'} top={isEditing && [135, null, 130]} zIndex={isEditing && 1000} minH={'48px'}>
+        <AbsoluteCenter as={HStack} axis={'vertical'} insetEnd={2} gap={0.5}>
+          {/* <EditLaboratoryButton /> */}
+          { canDelete && <ResponsiveButton colorPalette={'red'} variant={'subtle'} size={'sm'} label={'Effacer'} icon={<RxTrash />} me={[2, null, 1]} /> }
+          { canEdit && <ResponsiveButton colorPalette={'green'} variant={'subtle'} size={'sm'} label={'Modifier'} icon={<RxPencil1 />} me={[2, null, 1]} /> }
+        </AbsoluteCenter>
+        <Trigger label={`Specimen id `} />
         {/* <Trigger label={`${specimenNumber} - ${specieName} (${binome})`} /> */}
       </Box>
       <Content>
-        {/* <SpecimenForm specimen={specimen} /> */}
       </Content>
     </AccordionItem>
   )

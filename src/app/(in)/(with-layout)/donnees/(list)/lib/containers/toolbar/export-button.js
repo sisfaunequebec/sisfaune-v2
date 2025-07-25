@@ -20,15 +20,25 @@ const ExportButton = () => {
 
   const { ask: confirmDownload, dialog: downloadEventsDialog } = useDialog(ExportDialog)
 
-  const handleDownload = useCallback(async () => {
-    const result = await confirmDownload({ filters, onExport: exportEvents })
+  const handleExport = useCallback(async (params) => {
+    const result = await exportEvents(params)
     if (result) {
       // console.debug('Download', result)
       const { file, fileName, mimeType } = result
       const blob = new Blob([file], {type: `${mimeType}; charset=utf-8`})
       saveAs(blob, fileName)
     }
-  }, [confirmDownload, filters])
+  }, [])
+
+  const handleDownload = useCallback(async () => {
+    const result = await confirmDownload({ filters, onExport: handleExport })
+    // if (result) {
+    //   // console.debug('Download', result)
+    //   const { file, fileName, mimeType } = result
+    //   const blob = new Blob([file], {type: `${mimeType}; charset=utf-8`})
+    //   saveAs(blob, fileName)
+    // }
+  }, [confirmDownload, filters, handleExport])
 
   return (
     <>

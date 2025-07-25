@@ -18,9 +18,8 @@ const ExportDialog = ({ close, filters, onExport }) => {
 
   const handleSubmit = async (data) => {
     const allParams = {...filters, ...data}
-    // console.debug('allParams', allParams)
     const result = await onExport(allParams)
-    await wait(300)
+    await wait(1500)
     close(result)
   }
 
