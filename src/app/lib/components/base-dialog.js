@@ -2,7 +2,9 @@
 import { useCallback, useMemo, useRef } from 'react'
 
 import { useForm, FormProvider, useController } from 'react-hook-form'
+
 import { zodResolver } from '@hookform/resolvers/zod'
+import { valibotResolver } from '@hookform/resolvers/valibot'
 
 import { Dialog, Portal, Flex, Button, useBreakpointValue, VStack, Text } from '@chakra-ui/react'
 
@@ -11,16 +13,24 @@ import {
   DialogFooter
 } from '@/app/lib/components/ui/dialog'
 
-const BaseDialog = ({ title, message, size = 'md', isAlert = false, schema, watches = [], defaultValues, onClose, onSubmit, submitBtnLabel = 'OK', children }) => {
+const getResolver = (type, schema) => {
+  if (!schema) return null
+  return type === 'zod' ? zodResolver(schema) : valibotResolver(schema, { reValidateMode: 'onSubmit' })
+}
+
+const BaseDialog = ({ title, message, size = 'md', isAlert = false, schema, schemaType = 'zod', watches = [], defaultValues, onClose, onSubmit, submitBtnLabel = 'OK', children }) => {
   const rootSize = useBreakpointValue({ base: 'cover', md: size })
   const motion = useBreakpointValue({ base: 'scale', md: 'slide-in-bottom' })
 
+  const resolver = getResolver(schemaType, schema)
+
   const form = useForm({
-    resolver: schema && zodResolver(schema),
+    resolver,
     defaultValues
   })
 
-  const { handleSubmit, setError, clearErrors, formState: { errors, isValid, isSubmitting }, watch } = form
+  const { handleSubmit, setError, clearErrors, formState, watch } = form
+  const { errors, isSubmitting } = formState
 
   const watchedArray = watch(watches)
 
@@ -56,7 +66,7 @@ const BaseDialog = ({ title, message, size = 'md', isAlert = false, schema, watc
       // console.debug('here', e.errors)
       // Object.entries(errors).forEach(([key, value]) => {
         // console.debug(key, value)
-        setError('username', { message: 'shit' })
+        // setError('username', { message: 'shit' })
       // })
     }
   }, [onClose, onSubmit, clearErrors, setError, clearErrors])

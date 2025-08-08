@@ -73,7 +73,7 @@ const LocalisationSection = ({ event, canEdit = false }) => {
   // }, [onToggleEditing])
 
   return (
-    <AccordionItem value={'localisation'} position={isEditing ? 'sticky' : 'static'} zIndex={isEditing && 1000} disabled={isEditing}>
+    <AccordionItem value={'location'} position={isEditing ? 'sticky' : 'static'} zIndex={isEditing && 1000} disabled={isEditing}>
       <Box position={isEditing ? 'sticky' : 'relative'} top={isEditing && [135, null, 130]} zIndex={isEditing && 1000} minH={'48px'}>
         <AbsoluteCenter as={HStack} axis={'vertical'} insetEnd={2}>
           { canEdit && <ResponsiveButton colorPalette={'green'} variant={'subtle'} size={'sm'} label={'Modifier'} icon={<RxPencil1 />} me={[2, null, 1]} /> }

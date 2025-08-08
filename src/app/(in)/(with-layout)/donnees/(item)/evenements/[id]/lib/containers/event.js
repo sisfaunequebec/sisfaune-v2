@@ -45,10 +45,10 @@ const Event = ({
   canUserDeleteAnalyses,
   canUserEditAnalyses
 }) => {
-  const [activePanel, setActivePanel] = useState(['general'])
+  const [activePanels, setActivePanels] = useState(['general'])
 
   const handleToggleActiveSection = useCallback(e => {
-    setActivePanel(e.value)
+    setActivePanels(e.value)
   }, [])
 
   const { id: eventId } = event
@@ -58,6 +58,10 @@ const Event = ({
     { id: 1 },
     { id: 2 }
   ]
+
+  const showEditEventSectionButton = activePanels.includes('general') && canUserEditEventSection
+  const showEditLocationSectionButton = activePanels.includes('location') && canUserEditEventSection
+  const showEditLaboratorySectionButton = activePanels.includes('laboratory') && canUserEditEventSection
 
   return (
     <>
@@ -71,10 +75,10 @@ const Event = ({
             <SectionHeading label={`Événement no ${eventId}`} isSticky>
               <DeleteEventButtonOld eventId={eventId} visibility={'hidden'} />
             </SectionHeading>
-            <AccordionRoot size={['md', null, 'sm']} multiple value={activePanel} onValueChange={handleToggleActiveSection}>
-              <InfosGeneralesSection event={event} canEdit={canUserEditEventSection} />
-              <LocalisationSection event={event} canEdit={canUserEditEventSection} />
-              <LaboratoireSection event={event} canEdit={canUserEditEventSection} />
+            <AccordionRoot size={['md', null, 'sm']} multiple value={activePanels} onValueChange={handleToggleActiveSection}>
+              <InfosGeneralesSection event={event} canEdit={showEditEventSectionButton} />
+              <LocalisationSection event={event} canEdit={showEditLocationSectionButton} />
+              <LaboratoireSection event={event} canEdit={showEditLaboratorySectionButton} />
             </AccordionRoot>
           </VStack>
 

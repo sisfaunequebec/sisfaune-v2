@@ -2,7 +2,7 @@ import { useCallback, useState } from 'react'
 
 import { DateTime } from 'luxon'
 
-import { Input, Flex } from '@chakra-ui/react'
+import { Input, CloseButton } from '@chakra-ui/react'
 import { InputGroup } from '@/app/lib/components/ui/input-group'
 import { RxCalendar } from 'react-icons/rx'
 
@@ -20,6 +20,17 @@ import Calendar from '@/app/lib/components/calendar'
 const EditableDateField = ({ label, value, onChange }) => {
   const [open, setOpen] = useState(false)
 
+  const endElement = value ? (
+    <CloseButton
+      size="xs"
+      onClick={() => {
+        setValue("")
+        inputRef.current?.focus()
+      }}
+      me="-2"
+    />
+  ) : undefined
+
   const handleSelect = useCallback(value => {
     setOpen(false)
     onChange(value)
@@ -29,8 +40,12 @@ const EditableDateField = ({ label, value, onChange }) => {
     <PopoverRoot modal lazyMount unmountOnExit open={open} onOpenChange={(e) => setOpen(e.open)} positioning={{ placement: 'bottom-start' }}>
       <PopoverTrigger asChild>
         <Field label={label}>
-          <InputGroup startElement={<RxCalendar />} flex={1}>
-            <Input value={value ? DateTime.fromJSDate(value).toFormat('yyyy-LL-dd') : null} readOnly flex={4} size={['lg', null, 'md']} bg='bg' borderColor='border' cursor='pointer' userSelect='none' />
+          <InputGroup 
+            startElement={<RxCalendar />}
+            endElement={endElement}
+            flex={1}
+          >
+            <Input ref={inputRef} value={value ? DateTime.fromJSDate(value).toFormat('yyyy-LL-dd') : null} readOnly flex={4} size={['lg', null, 'md']} bg='bg' borderColor='border' cursor='pointer' userSelect='none' />
           </InputGroup>
         </Field>
       </PopoverTrigger>

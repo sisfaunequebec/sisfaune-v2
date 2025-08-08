@@ -17,11 +17,11 @@ const RecuParCombo = () => {
 }
 
 const LaboratoryFormContent = ({ data = {}, isEditing = false }) => {
-  console.debug(data)
+  const { labReceivedAt } =  data
   return (
     <Fieldset.Content gap={0.5} mt={2}>
       <ResponsableCombo isEditing={isEditing} />
-      <DateField label={'Spécimen(s) reçu(s) le\u00A0:'} value={null} isEditing={isEditing} />
+      <DateField label={'Spécimen(s) reçu(s) le\u00A0:'} value={labReceivedAt} isEditing={isEditing} />
       <RecuParCombo isEditing={isEditing} />
     </Fieldset.Content>
   )

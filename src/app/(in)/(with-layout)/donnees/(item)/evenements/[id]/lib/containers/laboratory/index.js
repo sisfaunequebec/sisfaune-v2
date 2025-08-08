@@ -21,10 +21,10 @@ const LaboratoireSection = ({ event, canEdit }) => {
   const isEditing = false
 
   return (
-    <AccordionItem value='laboratoire' position={isEditing ? 'sticky' : 'static'} zIndex={isEditing && 1000} disabled={isEditing}>
+    <AccordionItem value='laboratory' position={isEditing ? 'sticky' : 'static'} zIndex={isEditing && 1000} disabled={isEditing}>
       <Box position={isEditing ? 'sticky' : 'relative'} top={isEditing && [135, null, 130]} zIndex={isEditing && 1000} minH={'48px'}>
           <AbsoluteCenter as={HStack} axis={'vertical'} insetEnd={2}>
-            { canEdit && <EditLaboratoryButton /> }
+            { canEdit && <EditLaboratoryButton event={event} /> }
           </AbsoluteCenter>
         <Trigger label={'Laboratoire'} />
       </Box>

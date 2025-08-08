@@ -34,7 +34,7 @@ const AddEventDialog = ({ close, programs, onAdd }) => {
   }
 
   return (
-    <BaseDialog title='Nouvel événement' onClose={close} onSubmit={handleSubmit} submitBtnLabel='Ajouter' schema={addEventSchema} defaultValues={defaultValues}>
+    <BaseDialog title={'Nouvel événement'} onClose={close} onSubmit={handleSubmit} submitBtnLabel={'Ajouter'} schema={addEventSchema} defaultValues={defaultValues}>
       {(contentRef) => (
         <Fieldset.Root>
           <Fieldset.Content gap={3}>

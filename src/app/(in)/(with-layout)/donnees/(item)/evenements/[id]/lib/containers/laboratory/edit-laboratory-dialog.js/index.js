@@ -1,34 +1,36 @@
 'use client'
+import { useCallback } from 'react'
+
 import { DateTime } from 'luxon'
 
-// import addAnalysis from './add-analysis.action'
+import updateLaboratory from '../update-laboratory.action'
 
 import { Fieldset, Input } from '@chakra-ui/react'
 
 import BaseDialog from '@/app/lib/components/base-dialog'
 
-// import ControlledField from '@/app/lib/components/controlled-field'
+import ControlledField from '@/app/lib/components/controlled-field'
+import DateSelector from '@/app/lib/components/date-selector'
 
-// import DiscoveryStateSelect from './discovery-state-select'
+import editLaboratorySchema from './edit-laboratory.schema'
 
-// import addAnalysisSchema from './add-analysis-schema'
+const EditLaboratoryDialog = ({ close, eventId, laboratoryData }) => {
+  console.debug(eventId, laboratoryData)
 
-import LaboratoryFormContent from '../laboratory-form-content'
+  const handleSubmit = useCallback(async (data) => {
+    await updateLaboratory(eventId, data)
+    close()
+  }, [close, eventId])
 
-const defaultValues = {
-  // analysisId: null
-}
-const EditLaboratoryDialog = ({ close }) => {
   return (
-    <BaseDialog title={'Laboratoire'} size={'lg'} onClose={close} onSubmit={null} submitBtnLabel={'Sauvegarder'} schema={null} defaultValues={null}>
+    <BaseDialog title={'Laboratoire'} size={'lg'} onClose={close} onSubmit={handleSubmit} submitBtnLabel={'Sauvegarder'} schema={editLaboratorySchema} schemaType={'valibot'} defaultValues={laboratoryData}>
       {(contentRef) => (
         <Fieldset.Root>
-          <LaboratoryFormContent isEditing={true} />
-          {/* <Fieldset.Content gap={3}> */}
-            {/* <ControlledField name='analysisId' label={'Analyse ou groupe d\'analyses :'} variant='horizontal'>
-              <Input autoComplete='off' />
-            </ControlledField> */}
-          {/* </Fieldset.Content> */}
+          <Fieldset.Content gap={3}>
+            <ControlledField label={'Spécimen(s) reçu(s) le\u00A0:'} name={'labReceivedAt'} variant={'horizontal'}>
+              <DateSelector contentRef={contentRef} clearable />
+            </ControlledField>
+          </Fieldset.Content>
         </Fieldset.Root>
       )}
     </BaseDialog>
