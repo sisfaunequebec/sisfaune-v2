@@ -2,7 +2,7 @@
 import { useCallback } from 'react'
 
 import { useQueryStates } from 'nuqs'
-import { searchParams, urlKeys } from '@/lib/data/events/events-params'
+import { searchParams, urlKeys } from '@/lib/data/events/get-events.params'
 
 import { saveAs } from 'file-saver'
 

@@ -1,28 +1,50 @@
-import { Box, AbsoluteCenter, IconButton, HStack, Separator, Fieldset, Button } from '@chakra-ui/react'
-import { RxPencil1 } from 'react-icons/rx'
+import { useCallback } from 'react'
+
+import isFunction from 'lodash.isfunction'
+
+import { Fieldset } from '@chakra-ui/react'
 
 import TextField from '../../components/text-field'
 import DateField from '../../components/date-field'
 
-const ResponsableCombo = () => {
+const DisplayField = ({ label, value, valueDisplayKey, isEditing }) => {
+  const textValue = value ? (valueDisplayKey ? (isFunction(valueDisplayKey) ? valueDisplayKey(value) : value[valueDisplayKey]) : value) : ''
   return (
-    <TextField label={'Responsable du dossier\u00A0:'} value='TODO' isEditing={false} />
+    <TextField label={label} value={textValue} isEditing={isEditing}  />
   )
 }
 
-const RecuParCombo = () => {
+const Responsible = ({ value, isEditing }) => {
+  const valueDisplayKey = useCallback(value => {
+    const fullName = [value?.firstName, value?.lastName].join(' ')
+    return [fullName, value?.organisation].join(', ')
+  }, [])
+
   return (
-    <TextField label={'Reçu(s) par\u00A0:'} value='TODO' isEditing={false} />
+    <DisplayField label={'Responsable du dossier\u00A0:'} value={value} valueDisplayKey={valueDisplayKey} isEditing={isEditing} />
+  )
+}
+
+const ReceivedAt = ({ value, isEditing }) => {
+  return (
+    <DateField label={'Spécimen(s) reçu(s) le\u00A0:'} value={value} isEditing={isEditing} />
+  )
+}
+
+
+const ReceivedBy = ({ value, isEditing }) => {
+  return (
+    <TextField label={'Spécimen(s) reçu(s) par\u00A0:'} value={value} isEditing={isEditing} />
   )
 }
 
 const LaboratoryFormContent = ({ data = {}, isEditing = false }) => {
-  const { labReceivedAt } =  data
+  const { labResponsible, labReceivedAt, receivedBy } =  data
   return (
     <Fieldset.Content gap={0.5} mt={2}>
-      <ResponsableCombo isEditing={isEditing} />
-      <DateField label={'Spécimen(s) reçu(s) le\u00A0:'} value={labReceivedAt} isEditing={isEditing} />
-      <RecuParCombo isEditing={isEditing} />
+      <Responsible value={labResponsible} isEditing={isEditing} />
+      <ReceivedAt value={labReceivedAt} isEditing={isEditing} />
+      <ReceivedBy value={receivedBy} isEditing={isEditing} />
     </Fieldset.Content>
   )
 }

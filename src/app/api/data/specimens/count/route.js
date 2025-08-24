@@ -1,4 +1,4 @@
-import { searchParams, urlKeys } from '@/lib/data/events/events-params'
+import { searchParams, urlKeys } from '@/lib/data/events/get-events.params'
 
 import {
   createLoader

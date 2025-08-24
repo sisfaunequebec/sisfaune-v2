@@ -499,7 +499,7 @@ model Result {
 model Specimen {
   @@map("data_specimen")
 
-  id Int @id
+  id Int @id @default(autoincrement())
   eventId Int @map(name: "id_evenement")
 
   // n Int @db.SmallInt @map(name: "n") @default(0)

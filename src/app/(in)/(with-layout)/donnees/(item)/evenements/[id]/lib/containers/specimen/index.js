@@ -10,6 +10,8 @@ import { Trigger, Content } from '../../components/accordion-parts'
 
 import ResponsiveButton from '@/app/lib/components/responsive-button'
 
+import DeleteSpecimenButton from '../../components/delete-specimen-button'
+
 import TextField from '../../components/text-field'
 import CommentField from '../../components/comment-field'
 
@@ -35,7 +37,7 @@ const MethodePreservationSelect = ({ label, value, isEditing }) => {
 }
 
 const SpecimenForm = ({ specimen, isEditing, onToggleEditing }) => {
-  console.debug(specimen)
+  // console.debug(specimen)
   const {
     id,
     specimenNumber,
@@ -117,21 +119,19 @@ const SpecimenForm = ({ specimen, isEditing, onToggleEditing }) => {
   )
 }
 
-const SpecimenInformationSection = ({ specimen, canEdit = false, canDelete = false, onDelete }) => {
-  // console.debug(specimen)
-  const { id, specimenNumber, specie } = specimen
-  // const { name: specieName, binome } = specie
+const SpecimenSection = ({ specimen, canEdit = false, canDelete = false, onDelete }) => {
+  const { id: specimenId, eventId, sequenceId, specie } = specimen
+  const { name: specieName, binome } = specie
   const isEditing = false
+
   return (
-    <AccordionItem key={id} value={id}>
+    <AccordionItem key={specimenId} value={specimenId}>
       <Box position={isEditing ? 'sticky' : 'relative'} top={isEditing && [135, null, 130]} zIndex={isEditing && 1000} minH={'48px'}>
         <AbsoluteCenter as={HStack} axis={'vertical'} insetEnd={2} gap={0.5}>
-          {/* <EditLaboratoryButton /> */}
-          { canDelete && <ResponsiveButton colorPalette={'red'} variant={'subtle'} size={'sm'} label={'Effacer'} icon={<RxTrash />} me={[2, null, 1]} /> }
+          { canEdit && <DeleteSpecimenButton specimenId={specimenId}/> }
           { canEdit && <ResponsiveButton colorPalette={'green'} variant={'subtle'} size={'sm'} label={'Modifier'} icon={<RxPencil1 />} me={[2, null, 1]} /> }
         </AbsoluteCenter>
-        <Trigger label={`Specimen id `} />
-        {/* <Trigger label={`${specimenNumber} - ${specieName} (${binome})`} /> */}
+        <Trigger label={`${eventId}.${sequenceId} - ${specieName}`} />
       </Box>
       <Content>
       </Content>
@@ -159,4 +159,4 @@ const AnalysisInformationSection = ({ analysis, onToggleEditing, onDelete }) => 
   )
 }
 
-export default SpecimenInformationSection
+export default SpecimenSection

@@ -1,7 +1,7 @@
 'use server'
 import 'server-only'
 
-import { DateTime } from 'luxon'
+// import { DateTime } from 'luxon'
 import orm from '../database'
 
 import getUser from '@/lib/auth/get-user'
@@ -14,8 +14,6 @@ const updateLaboratory = async (eventId, data) => {
   if (!user) {
     throw new Error()
   }
-
-  console.debug(data)
 
   const updated = await orm.event.update({
     where: {

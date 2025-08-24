@@ -7,6 +7,8 @@ import orm from '../database'
 
 import getUser from '@/lib/auth/get-user'
 
+import { userCanDeleteSpecimen } from '@/lib/auth/acl'
+
 import { filterViewablePrograms } from '@/lib/auth/acl'
 
 const getOrderByClause = (tri, direction) => {
@@ -171,7 +173,47 @@ const getSpecimens = async (params) => {
   return payload
 }
 
+const deleteSpecimen = async (id) => {
+  const user = await getUser()
+
+  if (!user) {
+    throw new Error()
+  }
+
+  const specimen = await orm.Specimen.findFirst({
+    where: {
+      id
+    },
+    include: {
+      event: {
+        include: {
+          program: true
+        }
+      }
+    }
+  })
+
+  const { event } = specimen
+  const { program } = event 
+  const { id: programId } = program
+
+  const canDeleteSpecimen = userCanDeleteSpecimen(user, programId)
+
+  if (!canDeleteSpecimen) {
+    throw new Error()
+  }
+
+  await orm.Specimen.delete({
+    where: {
+      id
+    }
+  })
+
+  return null
+}
+
 export {
   getSpecimens,
-  getSpecimensCount
+  getSpecimensCount,
+  deleteSpecimen
 }

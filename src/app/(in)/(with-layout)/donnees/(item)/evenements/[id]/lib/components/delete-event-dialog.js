@@ -8,7 +8,6 @@ const DeleteEventDialog = ({ close, eventId, onDelete }) => {
   // console.debug('here', eventId, onAdd)
 
   const handleSubmit = async () => {
-    // console.debug('onDelete', onDelete)
     await onDelete(eventId)
     await wait(300)
     close(true)

@@ -21,9 +21,11 @@ import InfosGeneralesSection from './infogenerales'
 import LaboratoireSection from './laboratory'
 import LocalisationSection from './location'
 
-import SpecimenInformationSection from './specimen'
+import SpecimenSection from './specimen'
 
 import ResponsiveButton from '@/app/lib/components/responsive-button'
+
+import AddSpecimenButton from './add-specimen-dialog/add-specimen-button'
 
 const SectionHeading = ({ label, isSticky = false, children }) => {
   return (
@@ -52,16 +54,16 @@ const Event = ({
   }, [])
 
   const { id: eventId } = event
-  // const { specimens } = event
+  const { specimens } = event
 
-  const specimens = [
-    { id: 1 },
-    { id: 2 }
-  ]
+  // const specimens = [
+  //   { id: 1 },
+  //   { id: 2 }
+  // ]
 
-  const showEditEventSectionButton = activePanels.includes('general') && canUserEditEventSection
-  const showEditLocationSectionButton = activePanels.includes('location') && canUserEditEventSection
-  const showEditLaboratorySectionButton = activePanels.includes('laboratory') && canUserEditEventSection
+  const showEditEventSectionButton = canUserEditEventSection // activePanels.includes('general') && canUserEditEventSection
+  const showEditLocationSectionButton = canUserEditEventSection // activePanels.includes('location') && canUserEditEventSection
+  const showEditLaboratorySectionButton = canUserEditEventSection // activePanels.includes('laboratory') && canUserEditEventSection
 
   return (
     <>
@@ -83,14 +85,14 @@ const Event = ({
           </VStack>
 
           <VStack alignItems={'stretch'} fontSize={['md', null, 'sm']} gap={0}>
-            <SectionHeading label={'Spécimens'} isSticky>
-              { canUserAddSpecimen && <ResponsiveButton colorPalette={'green'} variant={'solid'} size={'sm'} label={'Ajouter'} icon={<RxPlus />} me={[2, null, 1]} /> }
+            <SectionHeading label={'Spécimens associés à l\'événement'} isSticky>
+              { canUserAddSpecimen && <AddSpecimenButton eventId={eventId}  /> }
             </SectionHeading>
             <AccordionRoot multiple size={['md', null, 'sm']} defaultValue={[]} lazyMount>
               {specimens.map(s => {
                 const { id } = s
                 return (
-                  <SpecimenInformationSection key={id} specimen={s} onDelete={canUserDeleteSpecimens} canEdit={canUserEditSpecimens} canDelete={canUserDeleteSpecimens}  />
+                  <SpecimenSection key={id} specimen={s} onDelete={canUserDeleteSpecimens} canEdit={canUserEditSpecimens} canDelete={canUserDeleteSpecimens}  />
                 )
               })}
             </AccordionRoot>

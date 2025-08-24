@@ -101,8 +101,6 @@ const getWhereClauseFromParams = (params, user) => {
     ] : undefined
   }
 
-
-
   return whereClause
 }
 
@@ -214,6 +212,7 @@ const getEvent = async (id) => {
         labShippingMethod: true,
         lab: true,
         location: true,
+        labResponsible: true,
         specimens: {
           include: {
             specie: true,
@@ -334,6 +333,57 @@ const deleteEvent = async (id) => {
   return null
 }
 
+const addSpecimenToEvent = async (eventId, data) => {
+  const user = await getUser()
+
+  if (!user) {
+    throw new Error()
+  }
+
+  // const { reportOriginId, typeId, statusId, programId, ...rest } = data
+
+  // const canAddEvent = canUserSubmitInProgram(user, programId)
+  // if (!canAddEvent) {
+  //   throw new Error()
+  // }
+
+  // const { id: submitterId } = user
+
+  const added = await orm.Specimen.create({
+    data: {
+      eventId,
+      ...data,
+      // type: {
+      //   connect: {
+      //     id: typeId
+      //   }
+      // },
+      // program: {
+      //   connect: {
+      //     id: programId
+      //   }
+      // },
+      // status: {
+      //   connect: {
+      //     id: statusId
+      //   }
+      // },
+      // submitter: {
+      //   connect: {
+      //     id: submitterId
+      //   }
+      // },
+      // reportOrigin: {
+      //   connect: {
+      //     id: reportOriginId
+      //   }
+      // }
+    }
+  })
+
+  return added
+}
+
 const toArrayBuffer = (buffer) => {
   const arrayBuffer = new ArrayBuffer(buffer.length)
   const view = new Uint8Array(arrayBuffer)
@@ -397,6 +447,7 @@ export {
   getEvent, getEvents, getEventsCount,
   addEvent,
   deleteEvent,
-  exportEvents
+  exportEvents,
+  addSpecimenToEvent
 }
 

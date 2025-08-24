@@ -21,11 +21,14 @@ const EditLaboratoryButton = ({ event }) => {
   const { ask: startEditing, dialog: editLaboratoryDialog } = useDialog(EditLaboratoryDialog)
 
   const handleClick = useCallback(async () => {
-    const { id: eventId, labReceivedAt } = event
-    const laboratoryData = {
+    // console.debug(event)
+    const { id: eventId, labReceivedAt, labResponsible } = event
+    const data = {
+      labResponsible,
+      labResponsible,
       labReceivedAt
     }
-    await startEditing({ eventId, laboratoryData })
+    await startEditing({ eventId, data })
     mutate()
   }, [startEditing, event, mutate])
 

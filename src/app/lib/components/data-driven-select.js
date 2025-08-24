@@ -31,7 +31,7 @@ const DataDrivenSelect = ({ loader, value, onChange, onBlur, contentRef, ...rest
       value={[value]}
       onValueChange={handleValueChange}
       onInteractOutside={onBlur}
-      size='sm'
+      size={'sm'}
       positioning={{ sameWidth: true }}
     >
       <Select.HiddenSelect />

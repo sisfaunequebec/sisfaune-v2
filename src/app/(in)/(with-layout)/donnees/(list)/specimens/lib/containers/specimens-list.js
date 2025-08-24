@@ -15,7 +15,7 @@ import { useQueryStates } from 'nuqs'
 import useSpecimens from '@/lib/data/specimens/use-specimens'
 import useSpecimensCount from '@/lib/data/specimens/use-specimens-count'
 
-import { searchParams, urlKeys } from '@/lib/data/events/events-params'
+import { searchParams, urlKeys } from '@/lib/data/events/get-events.params'
 
 import { ListContainer, LinkListWrapper, LoadMoreButton } from '@/app/(in)/(with-layout)/lib/components/list'
 

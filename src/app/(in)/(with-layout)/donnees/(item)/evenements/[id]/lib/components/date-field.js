@@ -22,12 +22,12 @@ const EditableDateField = ({ label, value, onChange }) => {
 
   const endElement = value ? (
     <CloseButton
-      size="xs"
+      size={'xs'}
       onClick={() => {
-        setValue("")
+        setValue('')
         inputRef.current?.focus()
       }}
-      me="-2"
+      me={-2}
     />
   ) : undefined
 
@@ -45,7 +45,7 @@ const EditableDateField = ({ label, value, onChange }) => {
             endElement={endElement}
             flex={1}
           >
-            <Input ref={inputRef} value={value ? DateTime.fromJSDate(value).toFormat('yyyy-LL-dd') : null} readOnly flex={4} size={['lg', null, 'md']} bg='bg' borderColor='border' cursor='pointer' userSelect='none' />
+            <Input ref={inputRef} value={value ? DateTime.fromJSDate(value).toFormat('yyyy-LL-dd') : ''} readOnly flex={4} size={['lg', null, 'md']} bg='bg' borderColor='border' cursor='pointer' userSelect='none' />
           </InputGroup>
         </Field>
       </PopoverTrigger>
@@ -66,7 +66,7 @@ const DateField = ({ label, value, isEditing = false, onChange }) => {
   } else {
     return (
       <Field label={label}>
-        <Input value={value ? DateTime.fromJSDate(value).toFormat('yyyy-LL-dd') : null} readOnly flex={4} size={['lg', null, 'md']} cursor='default' />
+        <Input value={value ? DateTime.fromJSDate(value).toFormat('yyyy-LL-dd') : ''} readOnly flex={4} size={['lg', null, 'md']} cursor='default' />
       </Field>
     )
   }

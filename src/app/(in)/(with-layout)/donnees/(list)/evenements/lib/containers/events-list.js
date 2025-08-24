@@ -14,7 +14,7 @@ import { useQueryStates } from 'nuqs'
 import useEvents from '@/lib/data/events/use-events'
 import useEventsCount from '@/lib/data/events/use-events-count'
 
-import { searchParams, urlKeys } from '@/lib/data/events/events-params'
+import { searchParams, urlKeys } from '@/lib/data/events/get-events.params'
 
 import { LinkListWrapper, ListContainer, LoadMoreButton } from '@/app/(in)/(with-layout)/lib/components/list'
 

@@ -9,7 +9,7 @@ import {
   createSerializer
 } from 'nuqs'
 
-import { searchParams, urlKeys } from './events-params'
+import { searchParams, urlKeys } from './get-events.params'
 
 const serialize = createSerializer(searchParams, { urlKeys })
 const baseUrl = '/api/data/events'

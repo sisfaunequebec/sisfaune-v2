@@ -9,10 +9,7 @@ const Field = ({ formState, children, name, ...rest }) => {
     return acc
   }, {})
 
-  // console.debug(onlyFirstError)
   const error = onlyFirstError[name]
-  // console.debug(errors, name)
-  // const error = errors[name]
 
   return (
     <ChakraField variant={'vertical'} invalid={!!error} errorText={error?.message} disabled={isSubmitting} {...rest}>

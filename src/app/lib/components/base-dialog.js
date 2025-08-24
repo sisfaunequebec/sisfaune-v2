@@ -96,7 +96,7 @@ const BaseDialog = ({ title, message, size = 'md', isAlert = false, schema, sche
 
                 <Dialog.Body textStyle={['md', null, 'sm']} >
                   { message && <Text mb={4} lineHeight={'shorter'}>{message}</Text> }
-                  <VStack flex={1} alignItems={'stretch'}>{ children(contentRef, watched) }</VStack>
+                  <VStack flex={1} alignItems={'stretch'} gap={1}>{ children(contentRef, watched) }</VStack>
                 </Dialog.Body>
 
                 <DialogFooter gap={2}>
