@@ -5,7 +5,6 @@ import updateLaboratory from '../update-laboratory.action'
 
 import { Fieldset } from '@chakra-ui/react'
 
-
 import BaseDialog from '@/app/lib/components/base-dialog'
 
 import ControlledField from '@/app/lib/components/controlled-field'

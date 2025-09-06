@@ -39,7 +39,7 @@ const Select = ({ value, collection, onChange }) => {
       onValueChange={(e) => console.debug(e)}
       // _active={{ bg: 'blue.50' }}
     >
-      <SelectTrigger clearable>
+      <SelectTrigger>
         <SelectValueText />
       </SelectTrigger>
       <SelectContent>

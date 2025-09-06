@@ -42,6 +42,7 @@ const DiscoveryStateSelect = ({ value, onChange, onBlur, contentRef }) => {
           <Select.ValueText />
         </Select.Trigger>
         <Select.IndicatorGroup>
+          { value && <Select.ClearTrigger /> }
           <Select.Indicator />
         </Select.IndicatorGroup>
       </Select.Control>

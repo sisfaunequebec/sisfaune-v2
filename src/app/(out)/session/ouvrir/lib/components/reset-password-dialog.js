@@ -33,7 +33,7 @@ const ResetPasswordDialog = ({ close }) => {
       title: 'Nouveau mot de passe',
       description: `Un nouveau mot de passe vous a été envoyé\u00A0: veuillez consulter votre boîte réception...`,
       type: 'success',
-      duration: 10000,
+      duration: 30000,
     })
   }
 

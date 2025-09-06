@@ -44,10 +44,10 @@ const AddEventButton = ({ programs }) => {
       const { id: addEventId } = added
 
       toaster.create({
-        title: 'Événement ajouté',
-        description: `L'événement no ${addEventId} a été ajouté avec succès...`,
+        // title: 'Événement ajouté',
+        title: `L'événement no ${addEventId} a été ajouté avec succès...`,
         type: 'success',
-        duration: 6000
+        duration: 3000
       })
     }
   }, [confirmAdd, programs, router, mutate, cache])

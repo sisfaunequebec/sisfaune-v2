@@ -29,7 +29,7 @@ const NoSpecimens = () => {
   )
 }
 
-const SpecimenItem = ({ id, eventId, specimenNumber, specieName, specieBinome, cqsasNumber, localityName, submitterName, reportedAt }) => {
+const SpecimenItem = ({ id, eventId, sequenceId, specieName, specieBinome, cqsasNumber, localityName, submitterName, reportedAt }) => {
   const href = `/donnees/evenements/${eventId}`
 
   const reportingDate = reportedAt ? DateTime.fromISO(reportedAt).toFormat('yyyy-LL-dd') : null
@@ -44,7 +44,7 @@ const SpecimenItem = ({ id, eventId, specimenNumber, specieName, specieBinome, c
         <VStack alignItems='flex-start' gap={0.4} flex={1}>
           <LinkOverlay asChild>
             <NextLink href={href} color='green.600' _dark={{ color: 'green.200' }}>
-              <Text fontWeight={500} color='green.600'>Spécimen no {specimenNumber}</Text>
+              <Text fontWeight={500} color='green.600'>Spécimen {eventId}.{sequenceId}</Text>
             </NextLink>
           </LinkOverlay>
           <Text minWidth={0} fontWeight={500} color={'fg.muted'}>{specieName} ({specieBinome})</Text>

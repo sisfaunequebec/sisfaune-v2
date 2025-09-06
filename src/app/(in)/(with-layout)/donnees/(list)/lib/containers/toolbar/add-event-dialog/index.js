@@ -47,14 +47,15 @@ const AddEventDialog = ({ close, programs, onAdd }) => {
             <ControlledField name='programId' label='Programme :' variant='horizontal'>
               <ProgramSelect programs={programs} contentRef={contentRef} />
             </ControlledField>
-            <ControlledField name='silabId' label={'Numéro d\'identification SILAB :'} variant='horizontal'>
-              <Input autoComplete='off' />
-            </ControlledField>
+    
             <ControlledField name='reportOriginId' label='Provenance du signalement :' variant='horizontal'>
               <ReportOriginSelect contentRef={contentRef} />
             </ControlledField>
             <ControlledField name='reportedAt' label='Date du signalement :' variant='horizontal'>
               <DateSelector />
+            </ControlledField>
+                    <ControlledField name='silabId' label={'Numéro d\'identification SILAB :'} variant='horizontal'>
+              <Input autoComplete='off' />
             </ControlledField>
           </Fieldset.Content>
         </Fieldset.Root>

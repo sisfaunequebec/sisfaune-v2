@@ -8,12 +8,16 @@ import { VStack, Flex } from '@chakra-ui/react'
 import {
   Combobox,
   useListCollection,
+  Highlight,
   useCombobox
 } from "@chakra-ui/react"
 import { useState } from "react"
 import { useAsync } from "react-use"
 
-const Autocomplete = ({ value, valueKey = 'id', labelKey = 'name', onLookup, onChange, onRenderItem }) => {
+const HILIGHTSTYLE = { bg: 'blue.200', color: 'blue.900' }
+
+const Autocomplete = ({ value, minChars = 2,  valueKey = 'id', labelKey = 'name', onLookup, onChange, onRenderItem }) => {
+  
   const [inputValue, setInputValue] = useState()
 
   const { collection, set } = useListCollection({
@@ -36,7 +40,7 @@ const Autocomplete = ({ value, valueKey = 'id', labelKey = 'name', onLookup, onC
   const combobox = useCombobox({
     collection,
     defaultValue: value ? [value[valueKey]] : [],
-    openOnChange: (e) => e.inputValue.length > 1,
+    openOnChange: (e) => e.inputValue.length > (minChars - 1),
     onValueChange: handleOnValueChange,
     onInputValueChange: (e) => setInputValue(e.inputValue),
   })
@@ -55,7 +59,7 @@ const Autocomplete = ({ value, valueKey = 'id', labelKey = 'name', onLookup, onC
   }, [inputValue, set])
 
   return (
-    <Combobox.RootProvider value={combobox}>
+    <Combobox.RootProvider value={combobox} size={'sm'}>
       <Combobox.Control>
         <Combobox.Input />
         <Combobox.IndicatorGroup>
@@ -71,12 +75,16 @@ const Autocomplete = ({ value, valueKey = 'id', labelKey = 'name', onLookup, onC
               const [title, description] = rendered
               return (
                 <Combobox.Item key={item.id} item={item}>
-                  <VStack gap={0} alignItems={'flex-start'} lineHeight={1.2}>
-                    <Flex as={'span'} truncate>
-                      {title}
+                  <VStack gap={0} alignItems={'flex-start'} lineHeight={1.2}>              
+                    <Flex as={'span'}>
+                      {/* <Highlight query={inputValue} styles={HILIGHTSTYLE} ignoreCase matchAll> */}
+                        {title}
+                      {/* </Highlight> */}
                     </Flex>
                     { description && <Flex as={'span'} fontSize={'xs'} color={'gray.500'} truncate>
-                      {description}
+                      {/* <Highlight query={inputValue} styles={HILIGHTSTYLE} ignoreCase> */}
+                        {description}
+                      {/* </Highlight> */}
                     </Flex>  
                     } 
                   </VStack>

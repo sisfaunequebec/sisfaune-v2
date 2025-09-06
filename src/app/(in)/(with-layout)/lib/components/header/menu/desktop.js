@@ -46,11 +46,11 @@ const DesktopMenu = ({ user }) => {
       {parametersDialog}
 
       <Flex hideBelow='md'>
-        <Menu.Root positioning={{ placement: 'bottom-end' }} size={'md'} lazyMount>
+        <Menu.Root positioning={{ placement: 'bottom-end' }} size={'md'} lazyMount >
           <Menu.Trigger as={IconButton} colorPalette='green' variant='solid' rounded='full' size={['md', null, 'sm']}>
             <RxHamburgerMenu />
           </Menu.Trigger>
-          <MenuContent minW={60} hideBelow='md' mt={4} isolation='isolate' isolate='isolate' _hover={{ bg: 'white' }}>
+          <MenuContent minW={60} hideBelow='md' mt={4} isolation='isolate' isolate='isolate' zIndex={1001} _hover={{ bg: 'white' }}>
             <Menu.Item cursor='default' value='info' _hover={{ bg: 'white' }}>
               <VStack gap={0} flex={1} alignItems='flex-start'>
                 <Box flex={1} fontWeight={500}>{fullName}</Box>

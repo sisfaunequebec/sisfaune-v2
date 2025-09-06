@@ -360,6 +360,9 @@ model LutAnimalSpecie {
   name String @map(name: "nom")
   binome String? @map(name: "binome")
 
+  @@index([name])
+  @@index([binome])
+
   groupId Int? @map(name: "id_groupe")
   group LutAnimalGroupV2? @relation(fields: [groupId], references: [id], onDelete: Restrict, onUpdate: Restrict)
 

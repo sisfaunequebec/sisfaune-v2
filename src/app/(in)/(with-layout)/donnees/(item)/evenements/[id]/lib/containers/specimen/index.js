@@ -128,7 +128,7 @@ const SpecimenSection = ({ specimen, canEdit = false, canDelete = false, onDelet
     <AccordionItem key={specimenId} value={specimenId}>
       <Box position={isEditing ? 'sticky' : 'relative'} top={isEditing && [135, null, 130]} zIndex={isEditing && 1000} minH={'48px'}>
         <AbsoluteCenter as={HStack} axis={'vertical'} insetEnd={2} gap={0.5}>
-          { canEdit && <DeleteSpecimenButton specimenId={specimenId}/> }
+          { canEdit && <DeleteSpecimenButton specimen={specimen}/> }
           { canEdit && <ResponsiveButton colorPalette={'green'} variant={'subtle'} size={'sm'} label={'Modifier'} icon={<RxPencil1 />} me={[2, null, 1]} /> }
         </AbsoluteCenter>
         <Trigger label={`${eventId}.${sequenceId} - ${specieName}`} />

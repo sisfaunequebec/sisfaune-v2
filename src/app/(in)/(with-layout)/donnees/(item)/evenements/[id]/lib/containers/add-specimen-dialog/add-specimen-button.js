@@ -47,10 +47,10 @@ const AddSpecimenButton = ({ eventId }) => {
     //   const { id: addEventId } = added
 
       toaster.create({
-        title: 'Spécimen ajouté',
-        description: `Le spécimen no ${addedSpecimentId} a été ajouté avec succès...`,
+        // title: 'Spécimen ajouté',
+        title: `Le spécimen no ${addedSpecimentId} a été ajouté avec succès...`,
         type: 'success',
-        duration: 6000
+        duration: 3000
       })
     }
   }, [eventId, cache, mutate, confirmAdd])

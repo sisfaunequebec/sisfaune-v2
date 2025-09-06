@@ -16,34 +16,34 @@ import useDialog from '@/utils/use-dialog'
 import ResponsiveButton from '@/app/lib/components/responsive-button'
 import DeleteSpecimenDialog from './delete-specimen-dialog'
 
-const DeleteSpecimenButton = ({ specimenId }) => {
+const DeleteSpecimenButton = ({ specimen }) => {
   const router = useRouter()
   const { mutate, cache } = useSWRConfig()
 
   const { ask: confirmDelete, dialog: deleteSpecimenDialog } = useDialog(DeleteSpecimenDialog)
 
   const handleDeleteSpecimen = useCallback(async () => {
-    await confirmDelete({ specimenId, onDelete: deleteSpecimen })
+    const result = await confirmDelete({ specimen, onDelete: deleteSpecimen })
 
-    router.refresh()
+    if (result) {
+      router.refresh()
 
-    for (const key of cache.keys()) {
-      if (key.includes('/api/data/events')) {
-        mutate(key)
+      for (const key of cache.keys()) {
+        if (key.includes('/api/data/events')) {
+          mutate(key)
+        }
+        if (key.includes('/api/data/specimens')) {
+          mutate(key)
+        }
       }
-      if (key.includes('/api/data/specimens')) {
-        mutate(key)
-      }
-    }
 
-    toaster.create({
-      title: 'Spécimen effacé',
-      description: `Le spécimen no ${specimenId} a été effacé avec succès...`,
-      type: 'success',
-      duration: 6000
+      toaster.create({
+        title: `Le spécimen ${specimen.eventId}.${specimen.sequenceId} a été effacé avec succès...`,
+        type: 'success',
+        duration: 3000
     })
-
-  }, [confirmDelete, specimenId, router, mutate, cache])
+    }
+  }, [confirmDelete, specimen, router, mutate, cache])
 
   return (
     <>

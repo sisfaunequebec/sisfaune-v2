@@ -48,10 +48,10 @@ const DeleteEventButton = ({ eventId }) => {
         }
       }
       toaster.create({
-        title: 'Événement effacé',
-        description: `L'événement no ${eventId} a été effacé avec succès...`,
+        // title: 'Événement effacé',
+        title: `L'événement no ${eventId} a été effacé avec succès...`,
         type: 'success',
-        duration: 6000,
+        duration: 3000,
       })
     }
   }, [confirmDelete, eventId, router])

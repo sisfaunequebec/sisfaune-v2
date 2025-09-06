@@ -147,7 +147,7 @@ const getSpecimens = async (params) => {
   })
 
   const payload = specimens.map(s => {
-    const { id, eventId, specimenNumber, cqsasNumber, specie, event } = s
+    const { id, eventId, sequenceId, cqsasNumber, specie, event } = s
 
     const { submitter, location, reportedAt } = event
     const { name: specieName, binome: specieBinome } = specie
@@ -160,7 +160,7 @@ const getSpecimens = async (params) => {
     return {
       id,
       eventId,
-      specimenNumber,
+      sequenceId,
       specieName,
       specieBinome,
       cqsasNumber,
