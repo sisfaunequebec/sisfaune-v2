@@ -147,6 +147,41 @@ const toEventsDTO = (events) => {
   return transformed
 }
 
+const toLocationDTO = (location) => {
+  const { latitude, longitude, locality, ...rest } = location
+  const name = locality?.name
+  const province = locality?.province
+  // const { name, province } = locality
+  const transformed = {
+    ...rest,
+    latitude: latitude ? parseFloat(latitude.toString()) : 0,
+    longitude: longitude ? parseFloat(longitude.toString()) : 0,
+    locality: { name, province }
+  }
+  return transformed
+}
+
+const toEventDTO = (user) => (event) => {
+ const { programId } = event
+  
+  if (!canUserViewProgram(user, programId)) {
+    return null
+  }
+
+  const canUserViewSpecimensSection = userCanViewSpecimenSection(user, programId)
+  const canUserViewAnalysisSection = userCanViewAnalysisSection(user, programId)
+
+  const { specimens, location: locationRaw, ...rest } = event
+  
+  const transformed = {
+    ...rest,
+    location: toLocationDTO(locationRaw),
+    specimens: canUserViewSpecimensSection ? specimens : null,
+    analyses: canUserViewAnalysisSection ? [] : null
+  }
+
+  return transformed
+}
 
 const getEventsData = async (params, include) => {
   const { tri, direction, offset = 0, take = 25 } = params
@@ -184,7 +219,9 @@ const getEvents =  async (params) => {
   }
 
   const events = await getEventsData(params, include)
-  return toEventsDTO(events)
+
+  const transformed = toEventsDTO(events)
+  return transformed
 }
 
 const getEvent = async (id) => {
@@ -211,7 +248,11 @@ const getEvent = async (id) => {
         habitatType: true,
         labShippingMethod: true,
         lab: true,
-        location: true,
+        location: {
+          include: {
+            locality: true
+          }
+        },
         labResponsible: true,
         specimens: {
           include: {
@@ -236,27 +277,11 @@ const getEvent = async (id) => {
       return null
     }
   
-    const { programId } = event
-  
-    if (!canUserViewProgram(user, programId)) {
-      return null
-    }
-
-    const canUserViewSpecimensSection = userCanViewSpecimenSection(user, programId)
-    const canUserViewAnalysisSection = userCanViewAnalysisSection(user, programId)
-
-    const { specimens, ...restEvent } = event
-
-    const transformed = {
-      ...restEvent,
-      specimens: canUserViewSpecimensSection ? specimens : null,
-      analyses: canUserViewAnalysisSection ? [] : null
-    }
-
+    const transformed = toEventDTO(user)(event)
     return transformed
 
   } catch (e) {
-    // console.warn(e)
+    console.warn(e)
     return null
   }
 }
@@ -409,7 +434,6 @@ const generateCsvFile = async (rows) => {
   return arrayBuffer
 }
 
-
 const exportEvents = async (params) => {
   const { format, ...rest } = params
 
@@ -444,7 +468,9 @@ const exportEvents = async (params) => {
 }
 
 export {
-  getEvent, getEvents, getEventsCount,
+  getEvents,
+  getEventsCount,
+  getEvent,
   addEvent,
   deleteEvent,
   exportEvents,

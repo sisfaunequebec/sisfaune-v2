@@ -37,7 +37,7 @@ const AddEventDialog = ({ close, programs, onAdd }) => {
     <BaseDialog title={'Nouvel événement'} onClose={close} onSubmit={handleSubmit} submitBtnLabel={'Ajouter'} schema={addEventSchema} defaultValues={defaultValues}>
       {(contentRef) => (
         <Fieldset.Root>
-          <Fieldset.Content gap={3}>
+          <Fieldset.Content gap={1}>
             <ControlledField name='typeId' label='Type :' variant='horizontal'>
               <TypeSelect contentRef={contentRef} />
             </ControlledField>

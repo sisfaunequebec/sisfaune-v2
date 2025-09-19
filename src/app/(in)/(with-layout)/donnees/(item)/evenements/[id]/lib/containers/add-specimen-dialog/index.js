@@ -51,7 +51,7 @@ const AddSpecimenDialog = ({ eventId, close }) => {
     <BaseDialog title={`Ajout d'un spécimen à l'événement ${eventId}`} size={'lg'} onClose={close} onSubmit={handleSubmit} submitBtnLabel={'Ajouter'} schema={addSpecimenSchema} schemaType={'valibot'} defaultValues={defaultValues}>
       {(contentRef) => (
         <Fieldset.Root>
-          <Fieldset.Content gap={3}>
+          <Fieldset.Content gap={1}>
             <ControlledField name={'specie'} label={'Espèce :'} variant={'horizontal'}>
               <SpeciesCombo contentRef={contentRef} />
             </ControlledField>

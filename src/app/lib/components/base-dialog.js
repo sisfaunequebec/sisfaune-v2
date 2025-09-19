@@ -18,8 +18,8 @@ const getResolver = (type, schema) => {
   return type === 'zod' ? zodResolver(schema) : valibotResolver(schema, { reValidateMode: 'onSubmit' })
 }
 
-const BaseDialog = ({ title, message, size = 'md', isAlert = false, schema, schemaType = 'zod', watches = [], defaultValues, onClose, onSubmit, submitBtnLabel = 'OK', children }) => {
-  const rootSize = useBreakpointValue({ base: 'cover', md: size })
+const BaseDialog = ({ title, message, size, isAlert = false, schema, schemaType = 'zod', watches = [], defaultValues, onClose, onSubmit, submitBtnLabel = 'OK', children }) => {
+  const rootSize = useBreakpointValue({ base: 'cover', md: size || (isAlert ? 'sm' : 'lg') })
   const motion = useBreakpointValue({ base: 'scale', md: 'slide-in-bottom' })
 
   const resolver = getResolver(schemaType, schema)
@@ -38,8 +38,6 @@ const BaseDialog = ({ title, message, size = 'md', isAlert = false, schema, sche
     acc[watches[i]] = w
     return acc
   }, {})
-
-  // console.debug('watched', watched, errors)
 
   const handleSubmitAction = useCallback(async data => {
     // console.debug('here')

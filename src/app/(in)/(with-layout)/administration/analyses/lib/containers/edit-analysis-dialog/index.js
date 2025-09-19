@@ -20,7 +20,7 @@ const EditAnalysisDialog = ({ close }) => {
     <BaseDialog title={'Modification d\'une analyse'} onClose={close} onSubmit={null} submitBtnLabel='Modifier' schema={null} defaultValues={null}>
       {(contentRef) => (
         <Fieldset.Root>
-          {/* <Fieldset.Content gap={3}>
+          {/* <Fieldset.Content gap={1}>
             <ControlledField name={'fullName'} label={'Nom complet :'} variant={'horizontal'}>
               <Input autoComplete={'off'} />
             </ControlledField>

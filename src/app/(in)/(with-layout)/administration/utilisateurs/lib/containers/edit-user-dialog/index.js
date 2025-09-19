@@ -45,7 +45,7 @@ const EditUserDialog = ({ userId, close }) => {
       {(contentRef) => (
         <Fieldset.Root>
           { JSON.stringify(user) }
-          {/* <Fieldset.Content gap={3}>
+          {/* <Fieldset.Content gap={1}>
             <ControlledField name={'fullName'} label={'Nom complet :'} variant={'horizontal'}>
               <Input autoComplete={'off'} />
             </ControlledField>

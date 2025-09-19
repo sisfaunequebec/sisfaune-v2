@@ -6,13 +6,15 @@ import { updateLaboratory } from '@/lib/data/laboratory/service'
 
 const updateLaboratoryAction = async (eventId, data) => {
   
-  const { labResponsible, ...rest } = data
+  const { labResponsible, labReceivedBy: labReceivedByRaw, ...rest } = data
   const labResponsibleId = labResponsible?.id ?? null
+  const labReceivedById = labReceivedByRaw?.id ?? null
   // console.debug('updateLaboratoryAction', data, labResponsibleId)
   await updateLaboratory(eventId, 
     {
       ...rest,
-      labResponsibleId
+      labResponsibleId,
+      labReceivedBy: labReceivedById
     }
   )
   revalidatePath(`donnees/evenements/${eventId}`)

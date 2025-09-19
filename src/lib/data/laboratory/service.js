@@ -6,8 +6,6 @@ import orm from '../database'
 
 import getUser from '@/lib/auth/get-user'
 
-// import { canUserViewProgram, canUserDeleteEvent, canUserSubmitInProgram, filterViewablePrograms, userCanViewAnalysisSection, userCanViewSpecimenSection } from '@/lib/auth/acl'
-
 const updateLaboratory = async (eventId, data) => {
   const user = await getUser()
 

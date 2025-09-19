@@ -2,8 +2,7 @@ import { Input } from '@chakra-ui/react'
 
 import { Field } from '@/app/lib/components/ui/field'
 
-const TextField = ({ label, value, disabled = false, isEditing = true, onChange, contentRef, ...rest }) => {
-
+const TextField = ({ label, value, disabled = false, isEditing = false, onChange, contentRef, ...rest }) => {
   const handleChange = (v) => {
     onChange(v ? v : undefined)
   }

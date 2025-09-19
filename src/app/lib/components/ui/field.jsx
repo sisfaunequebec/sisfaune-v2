@@ -23,7 +23,7 @@ export const Field = forwardRef(function Field(props, ref) {
           </Tooltip>
         )}
         <Flex flex={childrenFlexValue} w={'full'} direction={'column'}>
-          <Flex mb={1}>{children}</Flex>
+          <Flex>{children}</Flex>
           {helperText && (
             <ChakraField.HelperText>{helperText}</ChakraField.HelperText>
           )}

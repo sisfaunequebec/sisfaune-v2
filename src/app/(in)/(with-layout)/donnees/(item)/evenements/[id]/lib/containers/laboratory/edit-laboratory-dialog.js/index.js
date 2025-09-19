@@ -13,6 +13,24 @@ import Autocomplete from '../../../components/autocomplete'
 
 import editLaboratorySchema from './edit-laboratory.schema'
 
+const ReceivedByCombo = ({ value, onChange }) => {
+  const handleLookup = useCallback(async (inputValue) => {
+    const response = await fetch(`/api/lookup/lab-receivers?t=${inputValue}`)
+    const data = await response.json()
+    return data
+  } , [])
+
+  const handleRenderItem = useCallback(item => {
+    return [[item?.label].join(' ')]
+  }, [])
+
+  const labelKey = useCallback(item => [item?.label].join(' '), [])
+
+  return (
+    <Autocomplete value={value} valueKey={'id'} labelKey={labelKey} onLookup={handleLookup} onRenderItem={handleRenderItem} onChange={onChange} />
+  )
+}
+
 const ResponsibleCombo = ({ value, onChange }) => {
   const handleLookup = useCallback(async (inputValue) => {
     const response = await fetch(`/api/lookup/lab-responsibles?t=${inputValue}`)
@@ -38,18 +56,21 @@ const EditLaboratoryDialog = ({ close, eventId, data }) => {
     close()
   }, [close, eventId])
 
-  const { labResponsible } = data
+  const { labResponsible, labReceivedBy } = data
 
   return (
     <BaseDialog title={'Laboratoire'} size={'lg'} onClose={close} onSubmit={handleSubmit} submitBtnLabel={'Sauvegarder'} schema={editLaboratorySchema} schemaType={'valibot'} defaultValues={data}>
       {(contentRef) => (
         <Fieldset.Root>
-          <Fieldset.Content gap={3}>
+          <Fieldset.Content gap={1}>
             <ControlledField label={'Responsable du dossier\u00A0:'} name={'labResponsible'} variant={'horizontal'}>
               <ResponsibleCombo contentRef={contentRef} />
             </ControlledField>
             <ControlledField label={'Spécimen(s) reçu(s) le\u00A0:'} name={'labReceivedAt'} variant={'horizontal'}>
               <DateSelector contentRef={contentRef} clearable />
+            </ControlledField>
+            <ControlledField label={'Spécimen(s) reçu(s) par\u00A0:'} name={'labReceivedBy'} variant={'horizontal'}>
+              <ReceivedByCombo contentRef={contentRef} />
             </ControlledField>
           </Fieldset.Content>
         </Fieldset.Root>

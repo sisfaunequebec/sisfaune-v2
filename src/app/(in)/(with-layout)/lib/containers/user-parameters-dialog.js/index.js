@@ -24,7 +24,7 @@ const UserParametersDialog = ({ user, close }) => {
     <BaseDialog title='Vos paramètres' onClose={close} onSubmit={submit} submitBtnLabel='Sauvegarder' schema={schema} defaultValues={defaultValues} watches={['password', 'newPassword']}>
       {(contentRef, watched) => (
         <Fieldset.Root>
-          <Fieldset.Content gap={3}>
+          <Fieldset.Content gap={1}>
             <ControlledField name='email' label='Adresse de courriel :' variant='horizontal'>
               <TextField autoComplete='off' type='email' readOnly={true} />
             </ControlledField>

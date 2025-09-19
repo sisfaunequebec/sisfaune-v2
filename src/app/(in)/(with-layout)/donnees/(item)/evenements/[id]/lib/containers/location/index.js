@@ -7,7 +7,7 @@ import {
   Path
 } from 'react-static-google-map'
 
-import { Box, Flex, AbsoluteCenter, IconButton, Stack, HStack, Separator, Fieldset, Button } from '@chakra-ui/react'
+import { Box, Flex, AbsoluteCenter, IconButton, Stack, HStack, Separator, Fieldset, Button, VStack } from '@chakra-ui/react'
 import { RxPencil1 } from 'react-icons/rx'
 
 import {
@@ -17,6 +17,11 @@ import {
 import { Trigger, Content } from '../../components/accordion-parts'
 
 import ResponsiveButton from '@/app/lib/components/responsive-button'
+import CenteredMessage from '@/app/lib/components/centered-message'
+
+import EditLocationButton from './edit-location-button'
+
+import TextField from '../../components/text-field'
 
 const StaticMap = ({ lat = 45, lng = -72, zoom }) => {
   const [ref, { width, height }] = useMeasure()
@@ -26,40 +31,73 @@ const StaticMap = ({ lat = 45, lng = -72, zoom }) => {
 
   return (
     <Flex w='100%' bg='gray.200' aspectRatio='3/2.3' ref={ref}>
-      <StaticGoogleMap size={mapSize} apiKey='AIzaSyDIb9gr86ch2p6T5ULbVqwuBmc80S683Uk' center={mapCenter} zoom={zoom}>
+      <StaticGoogleMap size={mapSize} apiKey={process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY} center={mapCenter} zoom={zoom}>
         <Marker location={mapCenter} />
       </StaticGoogleMap>
     </Flex>
   )
 }
 
-const MapField = () => {
-  const lat = 45
-  const lng = -72
+const MapField = ( { location  }) => {
+  const { latitude, longitude } = location
+  // const lat = 45
+  // const lng = -72
   return (
     <Stack direction={['column', 'row']} gap={4}>
-      <StaticMap zoom={8} lat={lat} lng={lng} />
-      <StaticMap zoom={12} lat={lat} lng={lng} />
-      <StaticMap zoom={16} lat={lat} lng={lng} />
+      <StaticMap zoom={8} lat={latitude} lng={longitude} />
+      <StaticMap zoom={12} lat={latitude} lng={longitude} />
+      <StaticMap zoom={16} lat={latitude} lng={longitude} />
     </Stack>
   )
 }
 
-const LocalisationSectionForm = ({ event, isEditing, onToggleEditing }) => {
+const CoordinatesLocation = ({ location }) => {
+  const { latitude, longitude, locality } = location
+  const { name, province } = locality
+  const coordinates = [latitude.toFixed(6), longitude.toFixed(6)].join(', ')
+  const address = [name, province].join(', ')
   return (
-    <Fieldset.Root as='VStack' alignItems='stretch' size={['lg', null, 'md']}>
+    <>
+      <TextField label={'Latitude, longitude :'} value={coordinates} />
+      <TextField label={'(adresse dérivée) :'} value={address} />
+    </>
+  )
+}
 
-      {/* <Fieldset.Legend>Personnes impliquées</Fieldset.Legend> */}
-      <Fieldset.Content gap={0.5} mt={2}>
-        {/* <MapField /> */}
-      </Fieldset.Content>
+const AddressLocation = ({ location }) => {
+  const { latitude, longitude } = location
+  const coordinates = [latitude.toFixed(6), longitude.toFixed(6)].join(', ')
+  return (
+    <>
+      <TextField label={'Adresse :'} value={null} />
+      <TextField label={'(coordonnées dérivées) :'} value={coordinates} />
+    </>
+  )
+}
 
-      <Separator />
+const LocalisationSectionForm = ({ event, isEditing, onToggleEditing }) => {
+  const { location } = event
+  const { latitude, longitude, typeId } = location
 
-      {/* <Fieldset.Legend>Personnes impliquées</Fieldset.Legend> */}
-      <Fieldset.Content gap={0.5} mt={2}>
-        <MapField />
-      </Fieldset.Content>
+  const hasLocation = !!latitude && !!longitude
+  const isCoordinateBased = typeId === 'coordonnees'
+
+  return (
+    <Fieldset.Root as={'VStack'} alignItems={'stretch'} size={['lg', null, 'md']}>
+
+    { hasLocation ? 
+      <>
+        <Fieldset.Content gap={0.5} mt={2}>
+          { isCoordinateBased ? <CoordinatesLocation location={location}/> :  <AddressLocation location={location} /> }
+        </Fieldset.Content>
+        <Separator />
+        <Fieldset.Content gap={0.5} mt={4}>
+          <MapField location={location} />
+        </Fieldset.Content>
+      </>
+    : 
+      <CenteredMessage title={'Localisation indéterminée'} size={'sm'} />
+    } 
 
     </Fieldset.Root>
   )
@@ -67,6 +105,7 @@ const LocalisationSectionForm = ({ event, isEditing, onToggleEditing }) => {
 
 const LocalisationSection = ({ event, canEdit = false }) => {
   const isEditing = false
+  // const { location } = event
 
   // const handleToggleEditing = useCallback(() => {
   //   onToggleEditing('localisation')
@@ -76,12 +115,12 @@ const LocalisationSection = ({ event, canEdit = false }) => {
     <AccordionItem value={'location'} position={isEditing ? 'sticky' : 'static'} zIndex={isEditing && 1000} disabled={isEditing}>
       <Box position={isEditing ? 'sticky' : 'relative'} top={isEditing && [135, null, 130]} zIndex={isEditing && 1000} minH={'48px'}>
         <AbsoluteCenter as={HStack} axis={'vertical'} insetEnd={2}>
-          { canEdit && <ResponsiveButton colorPalette={'green'} variant={'subtle'} size={'sm'} label={'Modifier'} icon={<RxPencil1 />} me={[2, null, 1]} /> }
+          { canEdit && <EditLocationButton event={event} /> }
         </AbsoluteCenter>
         <Trigger label={'Localisation géographique'} />
       </Box>
       <Content>
-        <LocalisationSectionForm />
+        <LocalisationSectionForm event={event} />
       </Content>
     </AccordionItem>
   )

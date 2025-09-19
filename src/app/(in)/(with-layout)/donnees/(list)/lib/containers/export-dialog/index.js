@@ -27,7 +27,7 @@ const ExportDialog = ({ close, filters, onExport }) => {
     <BaseDialog title={'Exportation des événements ou spécimens'} onClose={close} onSubmit={handleSubmit} submitBtnLabel={'Exporter'} schema={exportDataSchema} defaultValues={defaultValues}>
       {(contentRef) => (
         <Fieldset.Root>
-          <Fieldset.Content gap={3}>
+          <Fieldset.Content gap={1}>
             <ControlledField name={'format'} label={'Format d\'exportation :'} variant={'horizontal'}>
               <FormatSelect contentRef={contentRef} />
             </ControlledField>

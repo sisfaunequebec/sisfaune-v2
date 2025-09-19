@@ -46,7 +46,7 @@ const AddUserDialog = ({ close }) => {
     <BaseDialog title='Nouvel utilisateur' onClose={close} onSubmit={addUser} submitBtnLabel='Inscrire' schema={addUserSchema} defaultValues={defaultValues}>
       {(contentRef) => (
         <Fieldset.Root>
-          <Fieldset.Content gap={3}>
+          <Fieldset.Content gap={1}>
             <ControlledField name='fullName' label='Nom complet :' variant='horizontal'>
               <Input autoComplete='off' />
             </ControlledField>

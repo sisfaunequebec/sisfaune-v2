@@ -21,7 +21,7 @@ const AddAnalysisDialog = ({ close }) => {
     <BaseDialog title={'Ajout d\'une analyse'} onClose={close} onSubmit={addAnalysis} submitBtnLabel='Ajouter' schema={addAnalysisSchema} defaultValues={defaultValues}>
       {(contentRef) => (
         <Fieldset.Root>
-          <Fieldset.Content gap={3}>
+          <Fieldset.Content gap={1}>
             <ControlledField name='analysisId' label={'Analyse ou groupe d\'analyses :'} variant='horizontal'>
               <Input autoComplete='off' />
             </ControlledField>

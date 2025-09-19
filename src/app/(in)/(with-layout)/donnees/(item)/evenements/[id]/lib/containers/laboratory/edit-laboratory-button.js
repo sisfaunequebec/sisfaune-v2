@@ -22,10 +22,10 @@ const EditLaboratoryButton = ({ event }) => {
 
   const handleClick = useCallback(async () => {
     // console.debug(event)
-    const { id: eventId, labReceivedAt, labResponsible } = event
+    const { id: eventId, labReceivedAt, labResponsible, labReceivedBy: labReceivedById } = event
     const data = {
       labResponsible,
-      labResponsible,
+      labReceivedBy: labReceivedById ? { id: labReceivedById, label: labReceivedById } : null,
       labReceivedAt
     }
     await startEditing({ eventId, data })

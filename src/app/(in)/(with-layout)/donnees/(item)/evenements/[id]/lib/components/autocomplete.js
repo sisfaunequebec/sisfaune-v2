@@ -16,8 +16,7 @@ import { useAsync } from "react-use"
 
 const HILIGHTSTYLE = { bg: 'blue.200', color: 'blue.900' }
 
-const Autocomplete = ({ value, minChars = 2,  valueKey = 'id', labelKey = 'name', onLookup, onChange, onRenderItem }) => {
-  
+const Autocomplete = ({ value, minChars = 2, valueKey = 'id', labelKey = 'name', onLookup, onChange, onRenderItem }) => {
   const [inputValue, setInputValue] = useState()
 
   const { collection, set } = useListCollection({
@@ -74,7 +73,7 @@ const Autocomplete = ({ value, minChars = 2,  valueKey = 'id', labelKey = 'name'
               const rendered = onRenderItem ? onRenderItem(item) : [ isFunction(labelKey) ? labelKey(item) : item[labelKey] ]
               const [title, description] = rendered
               return (
-                <Combobox.Item key={item.id} item={item}>
+                <Combobox.Item key={item[valueKey]} item={item}>
                   <VStack gap={0} alignItems={'flex-start'} lineHeight={1.2}>              
                     <Flex as={'span'}>
                       {/* <Highlight query={inputValue} styles={HILIGHTSTYLE} ignoreCase matchAll> */}

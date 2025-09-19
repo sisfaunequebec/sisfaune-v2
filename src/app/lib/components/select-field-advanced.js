@@ -15,23 +15,6 @@ import {
 import { Field } from '@/app/lib/components/ui/field'
 
 const Select = ({ value, collection, onChange }) => {
-  // const [collection, setCollection] = useState(null)
-
-  // useEffect(() => {
-  //   const getItems = async () => {
-  //     const rawItems = await getter()
-  //     const items = rawItems.map(i => { return { value: i.value.toString(), label: i.label} })
-  //     const collection = createListCollection({ items })
-  //     setCollection(collection)
-  //   }
-
-  //   getItems()
-  // }, [getter])
-
-  // if (!collection) {
-  //   return null
-  // }
-
   return (
     <SelectRoot
       collection={collection}
@@ -81,3 +64,5 @@ const SelectField = ({ label, value, valueLabelKey = 'label', getter, isEditing 
 }
 
 export default SelectField
+
+

@@ -31,7 +31,7 @@ const AddAnalysisDialog = ({ close }) => {
     <BaseDialog title='Nouvelle analyse' onClose={close} onSubmit={addAnalysis} submitBtnLabel='Ajouter' schema={addAnalysisSchema} defaultValues={defaultValues}>
       {(contentRef) => (
         <Fieldset.Root>
-          <Fieldset.Content gap={3}>
+          <Fieldset.Content gap={1}>
             {/* <ControlledField name={'typeId'} label={'Type :'} variant={'horizontal'}>
               <TypeSelect contentRef={contentRef} />
             </ControlledField>

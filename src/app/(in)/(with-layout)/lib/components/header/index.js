@@ -3,6 +3,7 @@ import getUser from '@/lib/auth/get-user'
 import { Flex, HStack, Image, VStack, Container } from '@chakra-ui/react'
 
 import Menu from './menu'
+import Hello from './hello'
 
 const Header = async () => {
   const user = await getUser()
@@ -16,7 +17,7 @@ const Header = async () => {
             <Image src='/logo_sisfaune_small.png' alt='logo' position='relative' left='-2' />
           </Flex>
           <HStack gap={[3, null, 4]}>
-            <Flex hideBelow='md'>Bonjour&nbsp;<strong>{fullName}</strong></Flex>
+            <Flex hideBelow='md'><Hello name={fullName} /></Flex>
             <Menu />
           </HStack>
         </Container>
