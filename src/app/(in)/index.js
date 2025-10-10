@@ -5,15 +5,9 @@ import addAnalysis from './action'
 
 import { Fieldset, Input } from '@chakra-ui/react'
 
-import BaseDialog from '@/app/lib/components/base-dialog'
+import BaseDialog from '@/app/lib/components/dialogs/base'
 
 import ControlledField from '@/app/lib/components/controlled-field'
-// import DateSelector from '@/app/lib/components/date-selector'
-
-// import ProgramSelect from './program-select'
-// import TypeSelect from './type-select'
-// import StatusSelect from './status-select'
-// import ReportOriginSelect from './report-origin-select'
 
 import addAnalysisSchema from './schema'
 

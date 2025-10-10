@@ -164,31 +164,31 @@ const transformed = source.map(p => {
 
     pathologyNumber: stringOrNull(numero_pathologie),
 
-    // affectedSpecie1Id: parseInt(affect1_espece, 10),
+    affectedSpecie1Id: parseInt(affect1_espece, 10),
     affectedSpecie1UnhealtyCount: parseInt(affect1_malade, 10),
     affectedSpecie1DeadCount: parseInt(affect1_mort, 10),
     affectedSpecie1AliveCount: parseInt(affect1_vivant, 10),
     affectedSpecie1NotSpecifiedCount: parseInt(affect1_non_specifie, 10),
 
-    // affectedSpecie2Id: parseInt(affect2_espece, 10),
+    affectedSpecie2Id: parseInt(affect2_espece, 10),
     affectedSpecie2UnhealtyCount: parseInt(affect2_malade, 10),
     affectedSpecie2DeadCount: parseInt(affect2_mort, 10),
     affectedSpecie2AliveCount: parseInt(affect2_vivant, 10),
     affectedSpecie2NotSpecifiedCount: parseInt(affect2_non_specifie, 10),
 
-    // affectedSpecie3Id: parseInt(affect3_espece, 10),
+    affectedSpecie3Id: parseInt(affect3_espece, 10),
     affectedSpecie3UnhealtyCount: parseInt(affect3_malade, 10),
     affectedSpecie3DeadCount: parseInt(affect3_mort, 10),
     affectedSpecie3AliveCount: parseInt(affect3_vivant, 10),
     affectedSpecie3NotSpecifiedCount: parseInt(affect3_non_specifie, 10),
 
-    // affectedSpecie4Id: parseInt(affect4_espece, 10),
+    affectedSpecie4Id: parseInt(affect4_espece, 10),
     affectedSpecie4UnhealtyCount: parseInt(affect4_malade, 10),
     affectedSpecie4DeadCount: parseInt(affect4_mort, 10),
     affectedSpecie4AliveCount: parseInt(affect4_vivant, 10),
     affectedSpecie4NotSpecifiedCount: parseInt(affect4_non_specifie, 10),
 
-    // affectedSpecie5Id: parseInt(affect5_espece, 10),
+    affectedSpecie5Id: parseInt(affect5_espece, 10),
     affectedSpecie5UnhealtyCount: parseInt(affect5_malade, 10),
     affectedSpecie5DeadCount: parseInt(affect5_mort, 10),
     affectedSpecie5AliveCount: parseInt(affect5_vivant, 10),

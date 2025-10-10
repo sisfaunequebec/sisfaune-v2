@@ -6,7 +6,7 @@ import submit from './submit.action'
 import { Fieldset, Input, Separator } from '@chakra-ui/react'
 import { PasswordInput } from '@/app/lib/components/ui/password-input'
 
-import BaseDialog from '@/app/lib/components/base-dialog'
+import BaseDialog from '@/app/lib/components/dialogs/base'
 
 import ControlledField from '@/app/lib/components/controlled-field'
 import TextField from '../../../donnees/(item)/evenements/[id]/lib/components/text-field'

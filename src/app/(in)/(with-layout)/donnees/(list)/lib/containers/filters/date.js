@@ -11,7 +11,7 @@ import { VStack } from '@chakra-ui/react'
 import { Radio, RadioGroup } from '@/app/lib/components/ui/radio'
 import { Field } from '@/app/lib/components/ui/field'
 
-import DateSelector from '@/app/lib/components/date-selector'
+import DateInput from '@/app/lib/components/inputs/base/date'
 
 const Date = () => {
   const [values, setValues] = useQueryStates({
@@ -76,10 +76,10 @@ const Date = () => {
         </VStack>
       </RadioGroup>
       <Field label='Début :' variant='vertical'>
-        <DateSelector value={startDate} clearable onChange={handleStartDateChange} />
+        <DateInput value={startDate} clearable onChange={handleStartDateChange} />
       </Field>
       <Field label='Fin :' variant='vertical'>
-        <DateSelector value={endDate} minDate={startDate} clearable onChange={handleEndDateChange} />
+        <DateInput value={endDate} minDate={startDate} clearable onChange={handleEndDateChange} />
       </Field>
     </VStack>
   )

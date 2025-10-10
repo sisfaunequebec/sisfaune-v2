@@ -4,7 +4,7 @@ import { Fieldset } from '@chakra-ui/react'
 
 import exportDataSchema from './export.schema'
 
-import BaseDialog from '@/app/lib/components/base-dialog'
+import BaseDialog from '@/app/lib/components/dialogs/base'
 
 import ControlledField from '@/app/lib/components/controlled-field'
 

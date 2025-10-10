@@ -14,10 +14,11 @@ import {
 import { useState } from "react"
 import { useAsync } from "react-use"
 
-const HILIGHTSTYLE = { bg: 'blue.200', color: 'blue.900' }
+const HILIGHTSTYLE = { bg: 'orange.200', px: 0.25 }
 
-const Autocomplete = ({ value, minChars = 2, valueKey = 'id', labelKey = 'name', onLookup, onChange, onRenderItem }) => {
+const Autocomplete = ({ value, minChars = 2, valueKey = 'id', labelKey = 'name', allowCustomValue = false, hilite = true, onLookup, onChange, onRenderItem }) => {
   const [inputValue, setInputValue] = useState()
+
 
   const { collection, set } = useListCollection({
     initialItems: value ? [value] : [],
@@ -36,12 +37,23 @@ const Autocomplete = ({ value, minChars = 2, valueKey = 'id', labelKey = 'name',
     }
   }, [collectionItems, valueKey, onChange])
 
+  const handleOnInputValueChange = useCallback((e) => {
+    const { inputValue } = e
+    setInputValue(inputValue)
+    const selectedItem = collectionItems.find(item => item[valueKey] === inputValue)
+    if (!selectedItem && allowCustomValue) {
+      console.debug('handleOnValueChange', inputValue)
+      onChange({ id: inputValue, value: inputValue })
+    }
+  }, [collectionItems, setInputValue, valueKey, onChange, allowCustomValue])
+
   const combobox = useCombobox({
     collection,
     defaultValue: value ? [value[valueKey]] : [],
+    allowCustomValue,
     openOnChange: (e) => e.inputValue.length > (minChars - 1),
     onValueChange: handleOnValueChange,
-    onInputValueChange: (e) => setInputValue(e.inputValue),
+    onInputValueChange: handleOnInputValueChange
   })
 
   const hydrated = useRef(false)
@@ -74,16 +86,16 @@ const Autocomplete = ({ value, minChars = 2, valueKey = 'id', labelKey = 'name',
               const [title, description] = rendered
               return (
                 <Combobox.Item key={item[valueKey]} item={item}>
-                  <VStack gap={0} alignItems={'flex-start'} lineHeight={1.2}>              
+                  <VStack gap={1} alignItems={'flex-start'} lineHeight={1.2}>              
                     <Flex as={'span'}>
-                      {/* <Highlight query={inputValue} styles={HILIGHTSTYLE} ignoreCase matchAll> */}
+                      <Highlight query={inputValue || ''} styles={hilite && HILIGHTSTYLE} ignoreCase matchAll>
                         {title}
-                      {/* </Highlight> */}
+                      </Highlight>
                     </Flex>
-                    { description && <Flex as={'span'} fontSize={'xs'} color={'gray.500'} truncate>
-                      {/* <Highlight query={inputValue} styles={HILIGHTSTYLE} ignoreCase> */}
+                    { description && <Flex as={'span'} fontSize={'sm'} color={'gray.600'} truncate>
+                      <Highlight query={inputValue || ''} styles={hilite && HILIGHTSTYLE} ignoreCase matchAll>
                         {description}
-                      {/* </Highlight> */}
+                      </Highlight>
                     </Flex>  
                     } 
                   </VStack>

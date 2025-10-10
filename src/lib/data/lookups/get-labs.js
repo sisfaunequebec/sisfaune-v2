@@ -1,9 +1,13 @@
 'use server'
 import orderBy from 'lodash.orderby'
-import orm from '@/lib/data/database'
+import prisma from '@/lib/data/database'
 
-const getShippingMethods = async () => {
-  const typesRaw = await orm.LutLabShippingMethod.findMany()
+const getLabs = async () => {
+  const typesRaw = await prisma.LutLaboratory.findMany({
+    where: {
+      isActive: true
+    }
+  })
   const types = typesRaw.map(t => {
     const { id: value, name: label } = t
     return {
@@ -14,4 +18,4 @@ const getShippingMethods = async () => {
   return orderBy(types, 'label')
 }
 
-export default getShippingMethods
+export default getLabs

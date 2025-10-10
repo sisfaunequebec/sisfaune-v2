@@ -2,7 +2,7 @@ import wait from '@/utils/wait'
 
 import { Text } from '@chakra-ui/react'
 
-import BaseDialog from '@/app/lib/components/base-dialog'
+import BaseDialog from '@/app/lib/components/dialogs/base'
 
 const DeleteEventDialog = ({ close, eventId, onDelete }) => {
   // console.debug('here', eventId, onAdd)

@@ -7,7 +7,7 @@ import addSpecimenAction from './add-specimen.action'
 
 import { Fieldset, Input } from '@chakra-ui/react'
 
-import BaseDialog from '@/app/lib/components/base-dialog'
+import BaseDialog from '@/app/lib/components/dialogs/base'
 
 import ControlledField from '@/app/lib/components/controlled-field'
 import Autocomplete from '../../components/autocomplete'
@@ -51,7 +51,7 @@ const AddSpecimenDialog = ({ eventId, close }) => {
     <BaseDialog title={`Ajout d'un spécimen à l'événement ${eventId}`} size={'lg'} onClose={close} onSubmit={handleSubmit} submitBtnLabel={'Ajouter'} schema={addSpecimenSchema} schemaType={'valibot'} defaultValues={defaultValues}>
       {(contentRef) => (
         <Fieldset.Root>
-          <Fieldset.Content gap={1}>
+          <Fieldset.Content gap={2}>
             <ControlledField name={'specie'} label={'Espèce :'} variant={'horizontal'}>
               <SpeciesCombo contentRef={contentRef} />
             </ControlledField>

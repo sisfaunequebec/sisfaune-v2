@@ -1,7 +1,7 @@
 'use client'
 import { useCallback } from 'react'
 
-import getHabitatTypes from '../actions/get-habitat-types'
+import getHabitatTypes from '@/lib/data/lookups/get-habitat-types'
 
 // import SelectField from './select-field'
 import SelectFieldAdvanced from '../../../../../../../../lib/components/select-field-advanced'

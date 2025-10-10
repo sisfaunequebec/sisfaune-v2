@@ -13,7 +13,7 @@ import { exportEvents } from '@/lib/data/events/service'
 import useDialog from '@/utils/use-dialog'
 
 import ResponsiveButton from '@/app/lib/components/responsive-button'
-import ExportDialog from '../export-dialog'
+import ExportDialog from './export-dialog'
 
 const ExportButton = () => {
   const [filters] = useQueryStates(searchParams, { urlKeys })
@@ -23,7 +23,6 @@ const ExportButton = () => {
   const handleExport = useCallback(async (params) => {
     const result = await exportEvents(params)
     if (result) {
-      // console.debug('Download', result)
       const { file, fileName, mimeType } = result
       const blob = new Blob([file], {type: `${mimeType}; charset=utf-8`})
       saveAs(blob, fileName)
@@ -32,12 +31,6 @@ const ExportButton = () => {
 
   const handleDownload = useCallback(async () => {
     const result = await confirmDownload({ filters, onExport: handleExport })
-    // if (result) {
-    //   // console.debug('Download', result)
-    //   const { file, fileName, mimeType } = result
-    //   const blob = new Blob([file], {type: `${mimeType}; charset=utf-8`})
-    //   saveAs(blob, fileName)
-    // }
   }, [confirmDownload, filters, handleExport])
 
   return (

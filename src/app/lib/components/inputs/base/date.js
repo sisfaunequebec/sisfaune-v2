@@ -16,7 +16,7 @@ import {
 
 import Calendar from '@/app/lib/components/calendar'
 
-const DateSelector = ({ value, onChange, minDate, clearable = false, children }) => {
+const DateInput = ({ value, onChange, minDate, clearable = false, disabled = false, size, children }) => {
   const [open, setOpen] = useState(false)
   const inputRef = useRef()
 
@@ -43,9 +43,9 @@ const DateSelector = ({ value, onChange, minDate, clearable = false, children })
 
   return (
     <PopoverRoot modal lazyMount unmountOnExit open={open} onOpenChange={(e) => setOpen(e.open)} positioning={{ placement: 'bottom-start' }}>
-      <InputGroup startElement={<RxCalendar />} endElement={clearable && endElement} flex={1}>
+      <InputGroup startElement={<RxCalendar />} endElement={clearable && endElement} flex={1} size={size} >
         <PopoverTrigger asChild>
-          <Input ref={inputRef} value={value ? DateTime.fromJSDate(value).toFormat('yyyy-LL-dd') : ''} variant='outline' flex={4} size={['lg', null, 'md']} bg='bg' cursor='pointer' userSelect='none' />
+          <Input ref={inputRef} value={value ? DateTime.fromJSDate(value).toFormat('yyyy-LL-dd') : ''} disabled={disabled} variant='outline' flex={4} size={['lg', null, 'md']} bg='bg' cursor={disabled ? 'disabled' : 'pointer'} userSelect='none' />
         </PopoverTrigger>
       </InputGroup>
       <PopoverContent>
@@ -57,4 +57,4 @@ const DateSelector = ({ value, onChange, minDate, clearable = false, children })
   )
 }
 
-export default DateSelector
+export default DateInput

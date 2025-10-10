@@ -9,23 +9,23 @@ import {
   AccordionRoot
 } from '@/app/lib/components/ui/accordion'
 
-import { Content, Trigger } from '../components/accordion-parts'
+import { Content, Trigger } from '../../components/accordion-parts'
 
 import useDialog from '@/utils/use-dialog'
 
 import Toolbar from '@/app/(in)/(with-layout)/donnees/(list)/evenements/lib/components/toolbar'
 
-import DeleteEventButtonOld from '../components/delete-event-button'
+import DeleteEventButtonOld from '../../components/delete-event-button'
 
 import InfosGeneralesSection from './infogenerales'
-import LaboratoireSection from './laboratory'
-import LocalisationSection from './location'
+import LaboratoireSection from '../laboratory'
+import LocalisationSection from '../location'
 
-import SpecimenSection from './specimen'
+import SpecimenSection from '../specimen'
 
 import ResponsiveButton from '@/app/lib/components/responsive-button'
 
-import AddSpecimenButton from './add-specimen-dialog/add-specimen-button'
+import AddSpecimenButton from '../add-specimen-dialog/add-specimen-button'
 
 const SectionHeading = ({ label, isSticky = false, children }) => {
   return (

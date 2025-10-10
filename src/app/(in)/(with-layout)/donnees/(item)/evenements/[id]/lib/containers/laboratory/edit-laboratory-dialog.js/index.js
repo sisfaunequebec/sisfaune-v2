@@ -5,10 +5,10 @@ import updateLaboratory from '../update-laboratory.action'
 
 import { Fieldset } from '@chakra-ui/react'
 
-import BaseDialog from '@/app/lib/components/base-dialog'
+import BaseDialog from '@/app/lib/components/dialogs/base'
 
 import ControlledField from '@/app/lib/components/controlled-field'
-import DateSelector from '@/app/lib/components/date-selector'
+import DateInput from '@/app/lib/components/inputs/base/date'
 import Autocomplete from '../../../components/autocomplete'
 
 import editLaboratorySchema from './edit-laboratory.schema'
@@ -27,7 +27,7 @@ const ReceivedByCombo = ({ value, onChange }) => {
   const labelKey = useCallback(item => [item?.label].join(' '), [])
 
   return (
-    <Autocomplete value={value} valueKey={'id'} labelKey={labelKey} onLookup={handleLookup} onRenderItem={handleRenderItem} onChange={onChange} />
+    <Autocomplete value={value} valueKey={'id'} labelKey={labelKey} onLookup={handleLookup} onRenderItem={handleRenderItem} onChange={onChange} allowCustomValue={true} />
   )
 }
 
@@ -62,12 +62,12 @@ const EditLaboratoryDialog = ({ close, eventId, data }) => {
     <BaseDialog title={'Laboratoire'} size={'lg'} onClose={close} onSubmit={handleSubmit} submitBtnLabel={'Sauvegarder'} schema={editLaboratorySchema} schemaType={'valibot'} defaultValues={data}>
       {(contentRef) => (
         <Fieldset.Root>
-          <Fieldset.Content gap={1}>
+          <Fieldset.Content gap={2}>
             <ControlledField label={'Responsable du dossier\u00A0:'} name={'labResponsible'} variant={'horizontal'}>
               <ResponsibleCombo contentRef={contentRef} />
             </ControlledField>
             <ControlledField label={'Spécimen(s) reçu(s) le\u00A0:'} name={'labReceivedAt'} variant={'horizontal'}>
-              <DateSelector contentRef={contentRef} clearable />
+              <DateInput contentRef={contentRef} clearable />
             </ControlledField>
             <ControlledField label={'Spécimen(s) reçu(s) par\u00A0:'} name={'labReceivedBy'} variant={'horizontal'}>
               <ReceivedByCombo contentRef={contentRef} />

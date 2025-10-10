@@ -20,7 +20,7 @@ const ResetPasswordForm = () => {
   const { register, handleSubmit, setError, formState } = form
 
   const onSubmit = async (data) => {
-    console.debug('onSubmit')
+    // console.debug('onSubmit')
     // const result = await signAction(data)
 
     // const { errors } = result
@@ -36,7 +36,7 @@ const ResetPasswordForm = () => {
           <Fieldset.Root size='lg' maxW='280px' invalid={false}>
             <Fieldset.Content>
               <Field formState={formState} name={'username'} label={'Nom d\'utilisateur :'}>
-                <Input autoComplete='off' {...register('username')} />
+                <Input autoComplete={'off'} {...register('username')} />
               </Field>
             </Fieldset.Content>
           </Fieldset.Root>

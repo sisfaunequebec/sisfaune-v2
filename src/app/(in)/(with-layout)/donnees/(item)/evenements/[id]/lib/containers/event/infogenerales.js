@@ -8,22 +8,24 @@ import {
   AccordionItem
 } from '@/app/lib/components/ui/accordion'
 
-import { Trigger, Content } from '../components/accordion-parts'
+import { Trigger, Content } from '../../components/accordion-parts'
 
-import ResponsiveButton from '@/app/lib/components/responsive-button'
+// import ResponsiveButton from '@/app/lib/components/responsive-button'
 
-import TextField from '../components/text-field'
-import DateField from '../components/date-field'
-import CommentField from '../components/comment-field'
+import TextField from '../../components/text-field'
+import DateField from '../../components/date-field'
+import CommentField from '../../components/comment-field'
 
-import TypeEvenementSelect from '../components/type-evenement-select'
-import StatutSelect from '../components/statut-select'
-import ProgrammeSelect from '../components/programme-select'
-import ProvenanceSelect from '../components/provenance-select'
-import HabitatSelect from '../components/habitat-select'
-import MethodeExpeditionSelect from '../components/methode-expedition-select'
-import LaboratoireSelect from '../components/laboratoire-select'
-import AffectedSpeciesField from '../components/affected-species-field'
+import TypeEvenementSelect from '../../components/type-evenement-select'
+import StatutSelect from '../../components/statut-select'
+import ProgrammeSelect from '../../components/programme-select'
+import ProvenanceSelect from '../../components/provenance-select'
+import HabitatSelect from '../../components/habitat-select'
+import MethodeExpeditionSelect from '../../components/methode-expedition-select'
+import LaboratoireSelect from '../../components/laboratoire-select'
+import AffectedSpeciesField from '../../components/affected-species-field'
+
+import EditGeneralInfosButton from './edit-general-infos-button'
 
 // import MeasureField from '../components/measure-field'
 
@@ -48,7 +50,7 @@ const InfosGeneralesForm = ({ event, isEditing, onToggleEditing }) => {
     <Fieldset.Root as='VStack' alignItems='stretch' size={['lg', null, 'md']}>
 
       <Fieldset.Legend>Identification</Fieldset.Legend>
-      <Fieldset.Content gap={0.5} mt={2}>
+      <Fieldset.Content gap={1} mt={2}>
         <TextField label={'Numéro d\'événement\u00A0:'} value={id} isEditing={isEditing} />
         <TypeEvenementSelect label={'Type d\'événement\u00A0:'} value={type} isEditing={isEditing} />
         <TextField label={'Numéro d\'identification SILAB\u00A0:'} value={silabId} isEditing={isEditing} />
@@ -64,12 +66,12 @@ const InfosGeneralesForm = ({ event, isEditing, onToggleEditing }) => {
       <Separator />
 
       <Fieldset.Legend>Personnes impliquées</Fieldset.Legend>
-      <Fieldset.Content gap={0.5} mt={2} />
+      <Fieldset.Content gap={1} mt={2} />
 
       <Separator />
 
       <Fieldset.Legend>Description de l&apos;événement</Fieldset.Legend>
-      <Fieldset.Content gap={0.5} mt={2}>
+      <Fieldset.Content gap={1} mt={2}>
         <DateField label={'Date de la découverte\u00A0:'} value={discoveredAt} isEditing={isEditing} />
         <DateField label={'Date de la récolte\u00A0:'} value={collectedAt} isEditing={isEditing} />
         <TextField label={'Contacts possibles\u00A0:'} value={null} isEditing={isEditing} />
@@ -84,7 +86,7 @@ const InfosGeneralesForm = ({ event, isEditing, onToggleEditing }) => {
       <Separator />
 
       <Fieldset.Legend>Expédition des spécimens</Fieldset.Legend>
-      <Fieldset.Content gap={0.5} mt={2}>
+      <Fieldset.Content gap={1} mt={2}>
         <DateField label={'Spécimen(s) expédié(s) le\u00A0:'} value={labShippingDate} isEditing={isEditing} />
         <MethodeExpeditionSelect label={'Méthode d\'expédition\u00A0:'} value={labShippingMethod} isEditing={isEditing} />
         <TextField label={'Numéro de connaissement\u00A0:'} value={labShippingTrackingNumber} isEditing={isEditing} />
@@ -102,7 +104,7 @@ const InfosGeneralesSection = ({ event, canEdit = false }) => {
     <AccordionItem value='general' position={isEditing ? 'sticky' : 'static'} zIndex={isEditing && 1000} disabled={isEditing} >
       <Box position={isEditing ? 'sticky' : 'relative'} top={isEditing && [135, null, 130]} zIndex={isEditing && 1000} minH={'48px'}>
         <AbsoluteCenter as={HStack} axis={'vertical'} insetEnd={2}>
-          { canEdit && <ResponsiveButton colorPalette='green' variant='subtle' size={'sm'} label={'Modifier'} icon={<RxPencil1 />} me={[2, null, 1]} /> }
+          { canEdit && <EditGeneralInfosButton event={event} /> }
         </AbsoluteCenter>
         <Trigger label='Informations générales' />
       </Box>

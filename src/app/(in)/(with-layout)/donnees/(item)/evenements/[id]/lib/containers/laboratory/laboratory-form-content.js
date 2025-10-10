@@ -39,12 +39,13 @@ const ReceivedBy = ({ value, isEditing }) => {
 }
 
 const LaboratoryFormContent = ({ data = {}, isEditing = false }) => {
-  const { labResponsible, labReceivedAt, receivedBy } =  data
+  const { labResponsible, labReceivedAt, labReceivedBy } =  data
+  // console.debug(labReceivedBy)
   return (
-    <Fieldset.Content gap={0.5} mt={2}>
+    <Fieldset.Content gap={1}>
       <Responsible value={labResponsible} isEditing={isEditing} />
       <ReceivedAt value={labReceivedAt} isEditing={isEditing} />
-      <ReceivedBy value={receivedBy} isEditing={isEditing} />
+      <ReceivedBy value={labReceivedBy} isEditing={isEditing} />
     </Fieldset.Content>
   )
 }

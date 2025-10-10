@@ -21,7 +21,7 @@ const getAnimalSpecies = async (filter) => {
     }
   })
 
-  const sorted = matchSorter(result, filter, { keys: ['name'], threshold: matchSorter.rankings.MATCHES })
+  const sorted = matchSorter(result, filter, { keys: ['name', 'binome'], threshold: matchSorter.rankings.MATCHES })
 
   return sorted.slice(0, 50)
 }

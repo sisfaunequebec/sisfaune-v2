@@ -79,7 +79,7 @@ const BaseDialog = ({ title, message, size, isAlert = false, schema, schemaType 
   const hasErrors = Object.keys(errors)?.length > 0
 
   return (
-    <Dialog.Root lazyMount open size={rootSize} placement='center' motionPreset={motion} onOpenChange={e => onClose(false)} closeOnInteractOutside={closeOnInteractOutside} role={role}>
+    <Dialog.Root lazyMount open size={rootSize} placement={'center'} motionPreset={motion} onOpenChange={e => onClose(false)} closeOnInteractOutside={closeOnInteractOutside} role={role}>
       <Portal>
         <Dialog.Backdrop />
         <Dialog.Positioner>

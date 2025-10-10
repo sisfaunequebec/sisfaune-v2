@@ -33,7 +33,7 @@ const ControlledField = ({ name, label, watches, children, ...rest }) => {
   const contentRef = useRef(null)
 
   const child = Children.only(children)
-  const inputElement = cloneElement(child, { ...field, ...{ contentRef } })
+  const inputElement = cloneElement(child, { ...field, ...{ contentRef, size: 'sm' } })
 
   return (
     <Field formState={formState} name={name} label={label} {...rest} ref={contentRef}>

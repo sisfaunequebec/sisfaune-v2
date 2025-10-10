@@ -9,7 +9,7 @@ import addUser from './action'
 import { Fieldset, Input, Button, Separator, IconButton, useClipboard } from '@chakra-ui/react'
 import { RxCopy, RxCheckCircled, RxCheck } from 'react-icons/rx'
 
-import BaseDialog from '@/app/lib/components/base-dialog'
+import BaseDialog from '@/app/lib/components/dialogs/base'
 
 import ControlledField from '@/app/lib/components/controlled-field'
 

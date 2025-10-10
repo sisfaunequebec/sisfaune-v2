@@ -8,7 +8,7 @@ import { useState } from 'react'
 import { Fieldset, Input, Separator } from '@chakra-ui/react'
 // import { RxCopy, RxCheckCircled } from 'react-icons/rx'
 
-import BaseDialog from '@/app/lib/components/base-dialog'
+import BaseDialog from '@/app/lib/components/dialogs/base'
 
 // import ControlledField from '@/app/lib/components/controlled-field'
 

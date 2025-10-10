@@ -16,7 +16,7 @@ import { FaMapMarkerAlt } from 'react-icons/fa'
 
 import { useFormContext } from 'react-hook-form'
 
-import BaseDialog from '@/app/lib/components/base-dialog'
+import BaseDialog from '@/app/lib/components/dialogs/base'
 
 import { AdvancedMarker, APIProvider, Map, MapControl, Marker, useMap, useMapsLibrary, ControlPosition } from '@vis.gl/react-google-maps'
 
@@ -25,7 +25,7 @@ import TextField from '../../../components/text-field'
 
 import schema from './edit-location.schema'
 
-import Select from '@/app/lib/components/inputs/select'
+import SelectInput from '@/app/lib/components/inputs/base/select'
 
 const DEFAULT_CENTER = { lat: 46.5, lng: -73.5 }
 
@@ -35,7 +35,7 @@ const LocationTypeSelect = ({ value, onChange, onBlur, contentRef }) => {
     { value: 'adresse', label: 'Adresse' }
   ]
   return (
-    <Select options={options} value={value} onChange={onChange} onBlur={onBlur} contentRef={contentRef}  />
+    <SelectInput options={options} value={value} onChange={onChange} onBlur={onBlur} contentRef={contentRef}  />
   )
 }
 
@@ -184,11 +184,11 @@ const CenterButton = ({ currentPosition, bounds }) => {
   )
 }
 
-const LocationMarker = ({ position, onChange }) => {
+const LocationMarker = ({ position, isDraggable, onChange }) => {
   const { setValue } = useFormContext()
 
   const [geocoder, setGeocoder] = useState(null)
-  const initialized = useRef(false)
+  // const initialized = useRef(false)
   
   const geocodeLib = useMapsLibrary('geocoding')
 
@@ -213,13 +213,13 @@ const LocationMarker = ({ position, onChange }) => {
 
   }, [geocoder])
 
-  useUpdateEffect(() => {
+  useEffect(() => {
     const updateAdress = async (position) => {
       const address = await geocode(position)
       setValue('address', address)
     }
     updateAdress(position)
-  }, [position])
+  }, [position, geocode, setValue])
 
   const handleChange = useCallback(async (e) => {
     const { latLng } = e
@@ -233,11 +233,11 @@ const LocationMarker = ({ position, onChange }) => {
   }, [geocode, onChange, setValue])
   
   return (
-    <AdvancedMarker position={position} draggable onDragEnd={handleChange} />
+    <AdvancedMarker position={position} draggable={isDraggable} onDragEnd={isDraggable ? handleChange : null} />
   )
 }
 
-const EditableMap = ({ value, onChange }) => {
+const EditableMap = ({ value, locationType, onChange }) => {
   const { setValue } = useFormContext()
 
   const [bounds, setBounds] = useState(null)
@@ -250,8 +250,8 @@ const EditableMap = ({ value, onChange }) => {
     // const { latLng } = e
     // const center = { lat: Number(latLng.lat().toFixed(6)), lng: Number(latLng.lng().toFixed(6)) }
     onChange(position)
-    setValue('locationTypeId', 'coordonnees')
-  }, [onChange, setValue])
+    // setValue('locationTypeId', 'coordonnees')
+  }, [onChange])
 
   const showMarker = (value) => {
     if (value) {
@@ -263,23 +263,28 @@ const EditableMap = ({ value, onChange }) => {
     return false
   }
 
+  const isMarkerDraggable = locationType === 'coordonnees'
+
   return (
     <APIProvider apiKey={process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}>
       <Map
         language={'fr-CA'}
         mapId={'dark'}
         style={{ width: '100%', height: '250px', cursor: 'default' }}
-        defaultCenter={value ?? { lat: 46.5, lng: -73.5 }}
-        defaultZoom={value ? 10 : 6}
+        defaultCenter={isMarkerDraggable ? (value ?? { lat: 46.5, lng: -73.5 }) : undefined}
+        center={isMarkerDraggable ? undefined : (value ?? { lat: 46.5, lng: -73.5 })}
+        defaultZoom={isMarkerDraggable ? (value ? 10 : 6) : undefined}
+        zoom={isMarkerDraggable ? undefined : (value ? 10 : 6)}
         gestureHandling={'greedy'}
         disableDefaultUI={true}
         onBoundsChanged={handleBoundsChanged}
+        controlled={!isMarkerDraggable}
       >
         {/* <Geocoder currentPosition={value} /> */}
         <MapControl position={ControlPosition.TOP_LEFT}>
           <CenterButton currentPosition={value} bounds={bounds} />
         </MapControl>
-        { showMarker(value) && <LocationMarker position={value} onChange={handleChange} /> }
+        { showMarker(value) && <LocationMarker position={value} onChange={handleChange} isDraggable={isMarkerDraggable} /> }
       </Map>
     </APIProvider>
   )
@@ -337,7 +342,7 @@ const EditLocationDialog = ({ close, event }) => {
                 <TextField contentRef={contentRef} isEditing={!isCoordinateBased} size={'sm'} />
               </ControlledField>
               <ControlledField name={'coordinates'} variant={'horizontal'} mt={4}>
-                <EditableMap />
+                <EditableMap locationType={locationTypeId} />
               </ControlledField>  
             </Fieldset.Content>
           </Fieldset.Root>

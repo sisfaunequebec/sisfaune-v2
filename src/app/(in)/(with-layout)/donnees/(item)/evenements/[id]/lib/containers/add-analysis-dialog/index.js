@@ -5,7 +5,7 @@ import addAnalysis from './add-analysis.action'
 
 import { Fieldset, Input } from '@chakra-ui/react'
 
-import BaseDialog from '@/app/lib/components/base-dialog'
+import BaseDialog from '@/app/lib/components/dialogs/base'
 
 import ControlledField from '@/app/lib/components/controlled-field'
 

@@ -7,7 +7,7 @@ import { AbsoluteCenter, Button, Container } from '@chakra-ui/react'
 
 import { userCanViewEventSection, userCanEditEventSection, userCanAddAnalysis, userCanAddSpecimen, userCanDeleteAnalysis, userCanDeleteSpecimen, userCanEditSpecimenSection, userCanEditAnalysisSection, canUserDeleteEvent } from '@/lib/auth/acl'
 
-import Event from './lib/containers/event'
+import Event from './lib/containers/event/index.js'
 import CenteredMessage from '@/app/lib/components/centered-message'
 
 const UnauthorizedOrNotFound = () => {
