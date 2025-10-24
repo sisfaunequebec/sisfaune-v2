@@ -30,12 +30,12 @@ import SelectInput from '@/app/lib/components/inputs/base/select'
 const DEFAULT_CENTER = { lat: 46.5, lng: -73.5 }
 
 const LocationTypeSelect = ({ value, onChange, onBlur, contentRef }) => {
-  const options = [
+  const items = [
     { value: 'coordonnees', label: 'Coordonnées géographiques' },
     { value: 'adresse', label: 'Adresse' }
   ]
   return (
-    <SelectInput options={options} value={value} onChange={onChange} onBlur={onBlur} contentRef={contentRef}  />
+    <SelectInput items={items} value={value} onChange={onChange} onBlur={onBlur} contentRef={contentRef}  />
   )
 }
 
@@ -306,8 +306,8 @@ const EditableMap = ({ value, locationType, onChange }) => {
 //     )
 // }
 
-const EditLocationDialog = ({ close, event }) => {
-  const { id: eventId, location } = event
+const EditLocationDialog = ({ close, eventId, data }) => {
+  // const { id: eventId, location } = event
   // console.debug(location)
  
   const handleSubmit = useCallback(async (data) => {
@@ -316,7 +316,7 @@ const EditLocationDialog = ({ close, event }) => {
   }, [close, eventId])
 
   // Calculate initial values for dialog
-  const { typeId: locationTypeId, latitude, longitude, description } = location
+  const { typeId: locationTypeId, latitude, longitude, description } = data
   const coordinates = (latitude && longitude) ? { lat: latitude, lng: longitude } : null
   const defaultValues = { locationTypeId, coordinates: coordinates, address: description }
 

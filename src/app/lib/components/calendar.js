@@ -65,8 +65,9 @@ const Calendar = ({ value, minDate, onSelect }) => {
         {days.map((day, i) => {
           const buttonProps = dayButton(day)
           const { disabled, now, selected, inCurrentMonth } = day
+          const bgColor = now ? 'green' : (inCurrentMonth && 'blue')
           return (
-            <Button key={day.$date.toDateString()} size={'2xs'} minH={8} fontWeight={selected ? 'bold' : 'normal'} disabled={disabled} variant={selected ? 'solid' : (now ? 'subtle' : 'subtle')} colorPalette={now ? 'green' : (selected ? 'green' : (inCurrentMonth && 'blue') )} {...buttonProps}>
+            <Button key={day.$date.toDateString()} size={'2xs'} minH={8} fontWeight={selected ? 'bold' : 'normal'} disabled={disabled} variant={selected ? 'subtle' : (now ? 'subtle' : 'subtle')} colorPalette={bgColor /*now ? 'green' : (selected ? 'green' : (inCurrentMonth && 'blue') )*/} borderWidth={selected && 2} borderColor={selected && `${bgColor}.700`} {...buttonProps}>
               {day.day}
             </Button>
           )

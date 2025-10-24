@@ -1,6 +1,7 @@
 import { useCallback, useState } from 'react'
 
 import { DateTime } from 'luxon'
+import { isoUTCStringToFormat } from '@/utils/dates'
 
 import { Input, CloseButton } from '@chakra-ui/react'
 import { InputGroup } from '@/app/lib/components/ui/input-group'
@@ -45,7 +46,7 @@ const EditableDateField = ({ label, value, onChange }) => {
             endElement={endElement}
             flex={1}
           >
-            <Input ref={inputRef} value={value ? DateTime.fromJSDate(value).toFormat('yyyy-LL-dd') : ''} readOnly flex={4} size={['lg', null, 'md']} bg='bg' borderColor='border' cursor='pointer' userSelect='none' />
+            <Input ref={inputRef} value={value ? DateTime.fromJSDate(value, { zone: 'America/New_York' }).toFormat('yyyy-LL-dd', { zone: 'America/New_York' }) : ''} readOnly flex={4} size={['lg', null, 'md']} bg='bg' borderColor='border' cursor='pointer' userSelect='none' />
           </InputGroup>
         </Field>
       </PopoverTrigger>
@@ -66,7 +67,7 @@ const DateField = ({ label, value, isEditing = false, onChange }) => {
   } else {
     return (
       <Field label={label}>
-        <Input value={value ? DateTime.fromJSDate(value).toFormat('yyyy-LL-dd') : ''} readOnly flex={4} size={['lg', null, 'md']} cursor='default' />
+        <Input value={value ? isoUTCStringToFormat(value) : ''} readOnly flex={4} size={['lg', null, 'md']} cursor='default' />
       </Field>
     )
   }

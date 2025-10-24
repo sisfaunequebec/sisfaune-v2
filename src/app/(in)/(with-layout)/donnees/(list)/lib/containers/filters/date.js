@@ -3,7 +3,8 @@
 import { useMemo, useCallback } from 'react'
 // import orderBy from 'lodash.orderby'
 
-import { DateTime } from 'luxon'
+// import { DateTime } from 'luxon'
+import { isoUTCStringToFormat } from '@/utils/dates'
 
 import { useQueryStates, parseAsString, parseAsIsoDateTime } from 'nuqs'
 import { VStack } from '@chakra-ui/react'
@@ -46,8 +47,8 @@ const Date = () => {
 
     setValues({
       date,
-      start: startDate ? startDate.toFormat('yyyy-LL-dd') : null,
-      end: isOver ? null : (endDate ? endDate.toFormat('yyyy-LL-dd') : null)
+      start: isoUTCStringToFormat(startDate), //startDate ? isoUTCStringToFormat(startDate) /*startDate.toFormat('yyyy-LL-dd')*/ : null,
+      end: isOver ? null : isoUTCStringToFormat(startDate)
     })
   }, [values, setValues])
 
@@ -56,7 +57,7 @@ const Date = () => {
     setValues({
       date,
       start,
-      end: (date && value) ? DateTime.fromJSDate(value).toFormat('yyyy-LL-dd') : null,
+      end: (date && value) ? isoUTCStringToFormat(value) : null,
     })
   }, [values, setValues])
 

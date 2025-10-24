@@ -29,13 +29,13 @@ import EditGeneralInfosButton from './edit-general-infos-button'
 
 // import MeasureField from '../components/measure-field'
 
-const InfosGeneralesForm = ({ event, isEditing, onToggleEditing }) => {
+const GeneralInfos = ({ event, isEditing, onToggleEditing }) => {
   // console.debug(event)
   const {
     id, typeId, silabId, cqsasIncidentNumber, pathologyNumber, reportedAt, mapaqId, programId, reportOriginId, statusId,
-    labShippingDate, labShippingTrackingNumber, labShippingMethodId, labId,
+    labShippedAt, labShippingTrackingNumber, labShippingMethodId, labId,
     discoveredAt, collectedAt, temperature, habitatTypeId,
-    observations, commentaires, keywords,
+    observations, commentaires, keywords, closedAt,
 
     type,
     program,
@@ -61,6 +61,7 @@ const InfosGeneralesForm = ({ event, isEditing, onToggleEditing }) => {
         <ProgrammeSelect label={'Programme\u00A0:'} value={program} isEditing={isEditing} />
         <ProvenanceSelect label={'Provenance du signalement\u00A0:'} value={reportOrigin} isEditing={isEditing} />
         <StatutSelect label={'Statut\u00A0:'} value={status} isEditing={isEditing} />
+        { closedAt && <DateField label={'Date de fermeture du dossier\u00A0:'} value={closedAt} isEditing={isEditing} />}
       </Fieldset.Content>
 
       <Separator />
@@ -76,7 +77,7 @@ const InfosGeneralesForm = ({ event, isEditing, onToggleEditing }) => {
         <DateField label={'Date de la récolte\u00A0:'} value={collectedAt} isEditing={isEditing} />
         <TextField label={'Contacts possibles\u00A0:'} value={null} isEditing={isEditing} />
         <HabitatSelect label={'Type d\'habitat\u00A0:'} value={habitatType} isEditing={isEditing} />
-        <TextField label={'Température\u00A0:'} value={temperature} isEditing={isEditing} />
+        <TextField label={'Température (en celsius)\u00A0:'} value={temperature} isEditing={isEditing} />
         <AffectedSpeciesField label={'Individus affectés, par espèce\u00A0:'} value={temperature} isEditing={isEditing} />
         <CommentField label={'Observations sur le terrain\u00A0:'} value={observations} isEditing={isEditing} />
         <CommentField label={'Commentaires généraux\u00A0:'} value={commentaires} isEditing={isEditing} />
@@ -87,7 +88,7 @@ const InfosGeneralesForm = ({ event, isEditing, onToggleEditing }) => {
 
       <Fieldset.Legend>Expédition des spécimens</Fieldset.Legend>
       <Fieldset.Content gap={1} mt={2}>
-        <DateField label={'Spécimen(s) expédié(s) le\u00A0:'} value={labShippingDate} isEditing={isEditing} />
+        <DateField label={'Spécimen(s) expédié(s) le\u00A0:'} value={labShippedAt} isEditing={isEditing} />
         <MethodeExpeditionSelect label={'Méthode d\'expédition\u00A0:'} value={labShippingMethod} isEditing={isEditing} />
         <TextField label={'Numéro de connaissement\u00A0:'} value={labShippingTrackingNumber} isEditing={isEditing} />
         <LaboratoireSelect label={'Laboratoire de destination\u00A0:'} value={lab} isEditing={isEditing} />
@@ -109,7 +110,7 @@ const InfosGeneralesSection = ({ event, canEdit = false }) => {
         <Trigger label='Informations générales' />
       </Box>
       <Content>
-        <InfosGeneralesForm event={event} isEditing={isEditing}  />
+        <GeneralInfos event={event} isEditing={isEditing}  />
       </Content>
     </AccordionItem>
   )

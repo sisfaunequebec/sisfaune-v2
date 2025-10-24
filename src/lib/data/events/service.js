@@ -12,6 +12,8 @@ import getUser from '@/lib/auth/get-user'
 
 import { canUserViewProgram, canUserDeleteEvent, canUserSubmitInProgram, filterViewablePrograms, userCanViewAnalysisSection, userCanViewSpecimenSection } from '@/lib/auth/acl'
 
+import { eventTransformer } from '../transformers/event'
+
 const SORT_MAP = {
   date_signalement: 'reportedAt',
   date_creation: 'createdAt',
@@ -132,7 +134,7 @@ const toEventsDTO = (events) => {
     const locality = location?.locality
     const localityName = locality?.name
 
-    return {
+    const transformed = {
       id,
       silabId,
       mapaqId,
@@ -142,46 +144,52 @@ const toEventsDTO = (events) => {
       submitterName,
       localityName
     }
+
+    return JSON.parse(JSON.stringify(transformed))
   })
 
   return transformed
 }
 
-const toLocationDTO = (location) => {
-  const { latitude, longitude, locality, ...rest } = location
-  const name = locality?.name
-  const province = locality?.province
-  // const { name, province } = locality
-  const transformed = {
-    ...rest,
-    latitude: latitude ? parseFloat(latitude.toString()) : 0,
-    longitude: longitude ? parseFloat(longitude.toString()) : 0,
-    locality: { name, province }
-  }
-  return transformed
-}
+// const toLocationDTO = (location) => {
+//   const { latitude, longitude, locality, ...rest } = location
+//   const name = locality?.name
+//   const province = locality?.province
+//   // const { name, province } = locality
+//   const transformed = {
+//     ...rest,
+//     latitude: latitude ? parseFloat(latitude.toString()) : 0,
+//     longitude: longitude ? parseFloat(longitude.toString()) : 0,
+//     locality: { name, province }
+//   }
+//   return transformed
+// }
 
-const toEventDTO = (user) => (event) => {
- const { programId } = event
+// const toEventDTO = (user) => (event) => {
+//  const { programId } = event
   
-  if (!canUserViewProgram(user, programId)) {
-    return null
-  }
+//   if (!canUserViewProgram(user, programId)) {
+//     return null
+//   }
 
-  const canUserViewSpecimensSection = userCanViewSpecimenSection(user, programId)
-  const canUserViewAnalysisSection = userCanViewAnalysisSection(user, programId)
+//   const canUserViewSpecimensSection = userCanViewSpecimenSection(user, programId)
+//   const canUserViewAnalysisSection = userCanViewAnalysisSection(user, programId)
 
-  const { specimens, location: locationRaw, ...rest } = event
-  
-  const transformed = {
-    ...rest,
-    location: toLocationDTO(locationRaw),
-    specimens: canUserViewSpecimensSection ? specimens : null,
-    analyses: canUserViewAnalysisSection ? [] : null
-  }
+//   const { specimens, location: locationRaw, reportedAt, ...rest } = event
 
-  return transformed
-}
+//   // const test1 = DateTime.fromJSDate(reportedAt, { zone: 'UTC', setZone: true }).toISODate()
+//   // console.debug('toEventDTO', reportedAt, test1)
+
+//   const transformed = {
+//     ...rest,
+//     reportedAt: dbDateToIso(reportedAt),
+//     location: toLocationDTO(locationRaw),
+//     specimens: canUserViewSpecimensSection ? specimens : null,
+//     analyses: canUserViewAnalysisSection ? [] : null
+//   }
+
+//   return JSON.parse(JSON.stringify(transformed))
+// }
 
 const getEventsData = async (params, include) => {
   const { tri, direction, offset = 0, take = 25 } = params
@@ -276,10 +284,15 @@ const getEvent = async (id) => {
     if (!event) {
       return null
     }
-  
-    const transformed = toEventDTO(user)(event)
-    return transformed
 
+    const { programId } = event
+    
+    if (!canUserViewProgram(user, programId)) {
+      return null
+    }
+  
+    const transformed = eventTransformer(event, user)
+    return JSON.parse(JSON.stringify(transformed))
   } catch (e) {
     console.warn(e)
     return null
@@ -365,44 +378,10 @@ const addSpecimenToEvent = async (eventId, data) => {
     throw new Error()
   }
 
-  // const { reportOriginId, typeId, statusId, programId, ...rest } = data
-
-  // const canAddEvent = canUserSubmitInProgram(user, programId)
-  // if (!canAddEvent) {
-  //   throw new Error()
-  // }
-
-  // const { id: submitterId } = user
-
   const added = await orm.Specimen.create({
     data: {
       eventId,
-      ...data,
-      // type: {
-      //   connect: {
-      //     id: typeId
-      //   }
-      // },
-      // program: {
-      //   connect: {
-      //     id: programId
-      //   }
-      // },
-      // status: {
-      //   connect: {
-      //     id: statusId
-      //   }
-      // },
-      // submitter: {
-      //   connect: {
-      //     id: submitterId
-      //   }
-      // },
-      // reportOrigin: {
-      //   connect: {
-      //     id: reportOriginId
-      //   }
-      // }
+      ...data
     }
   })
 
@@ -467,6 +446,28 @@ const exportEvents = async (params) => {
   }
 }
 
+const updateGeneralInfos = async (eventId, data) => {
+  const user = await getUser()
+
+  if (!user) {
+    throw new Error()
+  }
+
+  const { id, ...rest } = data
+
+  const transformed = eventTransformer(rest, { user }, 'toDB')
+  // console.debug('updateGeneralInfos', transformed)
+
+  const updated = await orm.event.update({
+    where: {
+      id: eventId,
+    },
+    data: transformed
+  })
+
+  return null
+}
+
 export {
   getEvents,
   getEventsCount,
@@ -474,6 +475,7 @@ export {
   addEvent,
   deleteEvent,
   exportEvents,
-  addSpecimenToEvent
+  addSpecimenToEvent,
+  updateGeneralInfos
 }
 

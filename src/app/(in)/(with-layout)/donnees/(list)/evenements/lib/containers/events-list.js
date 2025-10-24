@@ -2,7 +2,7 @@
 import { useIntersectionObserver } from '@react-hooks-library/core'
 import { useCallback, useEffect, useRef } from 'react'
 
-import { DateTime } from 'luxon'
+// import { DateTime } from 'luxon'
 
 import NextLink from 'next/link'
 
@@ -10,6 +10,8 @@ import { Flex, IconButton, LinkOverlay, Stack, Text, VStack } from '@chakra-ui/r
 import { RxArrowRight } from 'react-icons/rx'
 
 import { useQueryStates } from 'nuqs'
+
+import { isoUTCStringToFormat } from '@/utils/dates'
 
 import useEvents from '@/lib/data/events/use-events'
 import useEventsCount from '@/lib/data/events/use-events-count'
@@ -31,7 +33,7 @@ const NoEvents = () => {
 const ItemEvenement = ({ id, silabId, mapaqId, typeName, programName, localityName, submitterName, reportedAt }) => {
   const href = `/donnees/evenements/${id}`
 
-  const reportingDate = reportedAt ? DateTime.fromISO(reportedAt).toFormat('yyyy-LL-dd') : null
+  const reportingDate = isoUTCStringToFormat(reportedAt)
 
   return (
     <LinkListWrapper>

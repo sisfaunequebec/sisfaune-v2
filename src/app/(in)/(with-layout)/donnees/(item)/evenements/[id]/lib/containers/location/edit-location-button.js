@@ -22,15 +22,11 @@ const EditLocationButton = ({ event }) => {
   const { ask: startEditing, dialog } = useDialog(EditLocationDialog)
 
   const handleClick = useCallback(async () => {
-    // // console.debug(event)
-    // const data = {
-    //   labResponsible,
-    //   labReceivedBy: labReceivedById ? { id: labReceivedById, label: labReceivedById } : null,
-    //   labReceivedAt
-    // }
-{    await startEditing({ event })
-}    // mutate()
-  }, [event, mutate])
+    const { id: eventId } = event
+    const { location } = event
+    await startEditing({ eventId, data: location })
+    // mutate()
+  }, [event, startEditing])
 
   return (
     <>

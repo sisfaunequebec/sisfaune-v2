@@ -2,7 +2,7 @@ import { useMemo, useCallback } from 'react'
 
 import { Flex, VStack, Select, createListCollection, Portal } from '@chakra-ui/react'
 
-const SelectInput = ({ items = [], name, value, onChange, onBlur, disabled = false, contentRef }) => {
+const SelectInput = ({ items = [], name, value, onChange, onBlur, disabled = false, clearable = false, contentRef }) => {
   const collection = useMemo(() => {
     return createListCollection({
       items
@@ -10,17 +10,16 @@ const SelectInput = ({ items = [], name, value, onChange, onBlur, disabled = fal
   }, [items])
 
   const handleValueChange = useCallback((e) => {
+    // console.debug('here', e)
     const { value } = e
-    onChange(value[0])
+    onChange(value.length ? value[0] : null)
   }, [onChange])
 
-  const handleClear = useCallback((e) => {
-    onChange(null)
-  }, [onChange])
+  // const handleClear = useCallback((e) => {
+  //   onChange(null)
+  // }, [onChange])
 
   const isDisabled = disabled || collection.items.length === 0
-
-  // console.debug(name, value)
 
   return (
     <Select.Root 
@@ -31,7 +30,7 @@ const SelectInput = ({ items = [], name, value, onChange, onBlur, disabled = fal
       onInteractOutside={onBlur}
       size={'sm'}
       positioning={{ sameWidth: true }}
-      // deselectable
+      deselectable
     >
       <Select.HiddenSelect />
       <Select.Control >
@@ -39,7 +38,7 @@ const SelectInput = ({ items = [], name, value, onChange, onBlur, disabled = fal
           <Select.ValueText />
         </Select.Trigger>
         <Select.IndicatorGroup>
-          {/* <Select.ClearTrigger onClick={handleClear} /> */}
+          { clearable && <Select.ClearTrigger /> }
           <Select.Indicator />
         </Select.IndicatorGroup>
       </Select.Control>

@@ -7,11 +7,14 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { valibotResolver } from '@hookform/resolvers/valibot'
 
 import { Dialog, Portal, Flex, Button, useBreakpointValue, VStack, Text } from '@chakra-ui/react'
+import { Fieldset, Input, Separator } from '@chakra-ui/react'
 
 import {
   DialogActionTrigger,
   DialogFooter
 } from '@/app/lib/components/ui/dialog'
+
+import ControlledField from '@/app/lib/components/controlled-field'
 
 const getResolver = (type, schema) => {
   if (!schema) return null
@@ -114,4 +117,40 @@ const BaseDialog = ({ title, message, size, isAlert = false, schema, schemaType 
   )
 }
 
+const Fields = ({ formSchema, contentRef, watched, data }) => {
+  return (
+     <VStack gap={2} flex={1}>
+      {formSchema.map(section => {
+        const { title, fields } = section
+        return (
+          <Fieldset.Root key={title} gap={2} pt={4}>
+            <Fieldset.Legend>{title}</Fieldset.Legend>
+            <Fieldset.Content gap={2}>
+              {fields.map(f => {
+                const { label, name, type, disabled = false, visible = true, component, props = {} } = f
+                const isDisabled = (typeof disabled === 'function') ? disabled(data, watched) : disabled
+                const isVisible = (typeof visible === 'function') ? visible(data, watched) : visible
+                const Component = component || Input
+                console.debug(name, Component.displayName)
+                if (!isVisible) { return null }
+                return (
+                  <ControlledField key={name} label={label} name={name} variant={'horizontal'}>
+                    <Component contentRef={contentRef} disabled={isDisabled} {...props} />
+                  </ControlledField>
+                )
+              })}
+            </Fieldset.Content>
+            <Separator />
+          </Fieldset.Root>
+        )
+      })}
+    </VStack>
+  )
+  
+}
+
 export default BaseDialog
+
+export {
+  Fields
+}

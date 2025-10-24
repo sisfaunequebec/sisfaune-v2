@@ -17,7 +17,7 @@ import Toolbar from '@/app/(in)/(with-layout)/donnees/(list)/evenements/lib/comp
 
 import DeleteEventButtonOld from '../../components/delete-event-button'
 
-import InfosGeneralesSection from '../event/infogenerales'
+import InfosGeneralesSection from '../event/general-infos'
 import LaboratoireSection from '../laboratory'
 import LocalisationSection from '../location'
 

@@ -21,15 +21,8 @@ const EditGeneralInfosButton = ({ event }) => {
   const { ask: startEditing, dialog } = useDialog(EditGeneralInfosDialog)
 
   const handleClick = useCallback(async () => {
-    // console.debug(event)
     const { id: eventId } = event
-    const data = {
-      ...event
-      // labResponsible,
-      // labReceivedBy: labReceivedById ? { id: labReceivedById, label: labReceivedById } : null,
-      // labReceivedAt
-    }
-    await startEditing({ eventId, data })
+    await startEditing({ eventId, data: event })
     mutate()
   }, [startEditing, event, mutate])
 

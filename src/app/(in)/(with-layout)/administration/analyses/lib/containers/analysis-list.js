@@ -22,10 +22,6 @@ import EditAnalysisDialog from './edit-analysis-dialog'
 import { LinkListWrapper } from '@/app/(in)/(with-layout)/lib/components/list'
 
 const AnalysisItem = ({ id, name, code, groupName, sectorName, resultType, onClick }) => {
-  // const href = `/donnees/evenements/${id}`
-
-  // const reportingDate = reportedAt ? DateTime.fromISO(reportedAt).toFormat('yyyy-LL-dd') : null
-
   return (
     <LinkListWrapper>
       <Stack flex={1} direction={['column', null, null, 'row']} gap={[0.4, null, null, 1]} onClick={onClick}>

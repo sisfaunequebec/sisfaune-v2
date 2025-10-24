@@ -615,7 +615,7 @@ model Event {
   labShippingTrackingNumber String? @map(name: "no_suivi_transporteur")
 
   // Legacy data_laboratoire
-  labReceivedAt DateTime? @map(name: "labo_date_reception")
+  labReceivedAt DateTime? @db.Date @map(name: "labo_date_reception")
   labReceivedBy String? @map(name: "labo_recu_par")
   labResponsibleId String? @map(name: "labo_id_responsable")
 

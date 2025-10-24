@@ -53,7 +53,7 @@ const SelectField = ({ label, value, valueLabelKey = 'label', getter, isEditing 
     getItems()
   }, [getter, isEditing])
 
-  // console.debug(collection, value, valueLabelKey)
+  console.debug(collection, value, valueLabelKey)
 
   const valueLabel = value?.[valueLabelKey]
 

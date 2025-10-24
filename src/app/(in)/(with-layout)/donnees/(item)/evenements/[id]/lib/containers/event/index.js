@@ -17,7 +17,7 @@ import Toolbar from '@/app/(in)/(with-layout)/donnees/(list)/evenements/lib/comp
 
 import DeleteEventButtonOld from '../../components/delete-event-button'
 
-import InfosGeneralesSection from './infogenerales'
+import InfosGeneralesSection from './general-infos'
 import LaboratoireSection from '../laboratory'
 import LocalisationSection from '../location'
 
@@ -48,6 +48,8 @@ const Event = ({
   canUserEditAnalyses
 }) => {
   const [activePanels, setActivePanels] = useState(['general'])
+
+  console.debug(event)
 
   const handleToggleActiveSection = useCallback(e => {
     setActivePanels(e.value)

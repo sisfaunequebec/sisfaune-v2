@@ -1,7 +1,7 @@
 'use client'
 import { useCallback } from 'react'
 
-import updateLaboratory from '../update-laboratory.action'
+import updateLaboratoryAction from '../update-laboratory.action'
 
 import { Fieldset } from '@chakra-ui/react'
 
@@ -50,9 +50,16 @@ const ResponsibleCombo = ({ value, onChange }) => {
 }
 
 const EditLaboratoryDialog = ({ close, eventId, data }) => {
- 
   const handleSubmit = useCallback(async (data) => {
-    await updateLaboratory(eventId, data)
+    const { labResponsible, labReceivedBy, ...rest } = data
+
+    const payload = {
+      ...rest,
+      labResponsibleId: labResponsible?.id ?? null,
+      labReceivedBy: labReceivedBy?.id ?? null
+    }
+
+    await updateLaboratoryAction(eventId, payload)
     close()
   }, [close, eventId])
 

@@ -1,10 +1,11 @@
 'use server'
 import 'server-only'
 
-// import { DateTime } from 'luxon'
 import orm from '../database'
 
 import getUser from '@/lib/auth/get-user'
+
+import { eventTransformer } from '../transformers/event'
 
 const updateLaboratory = async (eventId, data) => {
   const user = await getUser()
@@ -13,11 +14,13 @@ const updateLaboratory = async (eventId, data) => {
     throw new Error()
   }
 
-  const updated = await orm.event.update({
+  const transformed = eventTransformer(data, { user }, 'toDB')
+
+  await orm.event.update({
     where: {
       id: eventId,
     },
-    data: data
+    data: transformed
   })
 
   return null

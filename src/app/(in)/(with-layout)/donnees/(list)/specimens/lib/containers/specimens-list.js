@@ -12,6 +12,8 @@ import { RxArrowRight, RxPlus, RxPlusCircled } from 'react-icons/rx'
 
 import { useQueryStates } from 'nuqs'
 
+import { isoUTCStringToFormat } from '@/utils/dates'
+
 import useSpecimens from '@/lib/data/specimens/use-specimens'
 import useSpecimensCount from '@/lib/data/specimens/use-specimens-count'
 
@@ -32,7 +34,7 @@ const NoSpecimens = () => {
 const SpecimenItem = ({ id, eventId, sequenceId, specieName, specieBinome, cqsasNumber, localityName, submitterName, reportedAt }) => {
   const href = `/donnees/evenements/${eventId}`
 
-  const reportingDate = reportedAt ? DateTime.fromISO(reportedAt).toFormat('yyyy-LL-dd') : null
+  const reportingDate = isoUTCStringToFormat(reportedAt) // reportedAt ? DateTime.fromISO(reportedAt).toFormat('yyyy-LL-dd') : null
 
   // const handleDelete = useCallback(() => {
   //   window.alert(`Effacer specimen id = ${id}`)
