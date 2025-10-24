@@ -17,7 +17,6 @@ import {
 
 import Calendar from '@/app/lib/components/calendar'
 
-
 const DateInput = ({ value, onChange, minDate, clearable = false, disabled = false, size, children }) => {
   const [open, setOpen] = useState(false)
   const inputRef = useRef()
@@ -44,7 +43,8 @@ const DateInput = ({ value, onChange, minDate, clearable = false, disabled = fal
       )
     : undefined
 
-  const jsDate = value ? DateTime.fromISO(value, { setZone: true }).toJSDate() : null
+  const valueAsJsDate = value ? DateTime.fromISO(value, { setZone: true }).toJSDate() : null
+  const minDateAsJsDate = minDate ? DateTime.fromISO(minDate, { setZone: true }).toJSDate() : null
 
   return (
     <PopoverRoot modal lazyMount unmountOnExit open={open} onOpenChange={(e) => setOpen(e.open)} positioning={{ placement: 'bottom-start' }}>
@@ -55,7 +55,7 @@ const DateInput = ({ value, onChange, minDate, clearable = false, disabled = fal
       </InputGroup>
       <PopoverContent>
         <PopoverBody>
-          <Calendar value={jsDate} minDate={minDate} onSelect={handleSelect} />
+          <Calendar value={valueAsJsDate} minDate={minDateAsJsDate} onSelect={handleSelect} />
         </PopoverBody>
       </PopoverContent>
     </PopoverRoot>

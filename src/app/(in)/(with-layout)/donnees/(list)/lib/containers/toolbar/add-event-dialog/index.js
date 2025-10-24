@@ -4,6 +4,10 @@ import wait from '@/utils/wait'
 
 import { Fieldset, Input } from '@chakra-ui/react'
 
+import { DEFAULT_FORMAT } from '@/utils/dates'
+// import { isoDateToDb } from '@/lib/data/transformers/utils'
+import { eventTransformer } from '@/lib/data/transformers/event'
+
 import BaseDialog from '@/app/lib/components/dialogs/base'
 
 import ControlledField from '@/app/lib/components/controlled-field'
@@ -22,19 +26,19 @@ const defaultValues = {
   reportOriginId: null,
   statusId: 2,
   silabId: null,
-  reportedAt: DateTime.utc().toJSDate()
+  reportedAt: DateTime.utc().toFormat(DEFAULT_FORMAT)
 }
 
 const AddEventDialog = ({ close, programs, onAdd }) => {
-  
   const handleSubmit = async (data) => {
-    const added = await onAdd(data)
+    const transformed = eventTransformer(data, {}, 'toDB')
+    const added = await onAdd(transformed)
     await wait(300)
     close(added)
   }
 
   return (
-    <BaseDialog title={'Nouvel événement'} onClose={close} onSubmit={handleSubmit} submitBtnLabel={'Ajouter'} schema={addEventSchema} defaultValues={defaultValues}>
+    <BaseDialog title={'Nouvel événement'} onClose={close} onSubmit={handleSubmit} submitBtnLabel={'Ajouter'} schema={addEventSchema} schemaType={'valibot'} defaultValues={defaultValues}>
       {(contentRef) => (
         <Fieldset.Root>
           <Fieldset.Content gap={2}>

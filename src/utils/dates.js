@@ -30,6 +30,7 @@ const jsToFormat = (jsDate, format = DEFAULT_FORMAT) => {
 module.exports = { 
   DB_TZ,
   LOCAL_TZ,
+  DEFAULT_FORMAT,
 
   sqlStringToJs,
   isoUTCStringToFormat,

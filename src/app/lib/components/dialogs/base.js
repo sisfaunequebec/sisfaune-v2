@@ -7,7 +7,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { valibotResolver } from '@hookform/resolvers/valibot'
 
 import { Dialog, Portal, Flex, Button, useBreakpointValue, VStack, Text } from '@chakra-ui/react'
-import { Fieldset, Input, Separator } from '@chakra-ui/react'
+import { Fieldset, Separator } from '@chakra-ui/react'
 
 import {
   DialogActionTrigger,
@@ -15,6 +15,8 @@ import {
 } from '@/app/lib/components/ui/dialog'
 
 import ControlledField from '@/app/lib/components/controlled-field'
+
+import TextInput from '@/app/lib/components/inputs/base/text'
 
 const getResolver = (type, schema) => {
   if (!schema) return null
@@ -127,11 +129,11 @@ const Fields = ({ formSchema, contentRef, watched, data }) => {
             <Fieldset.Legend>{title}</Fieldset.Legend>
             <Fieldset.Content gap={2}>
               {fields.map(f => {
-                const { label, name, type, disabled = false, visible = true, component, props = {} } = f
+                const { label, name, disabled = false, visible = true, component, props = {} } = f
                 const isDisabled = (typeof disabled === 'function') ? disabled(data, watched) : disabled
                 const isVisible = (typeof visible === 'function') ? visible(data, watched) : visible
-                const Component = component || Input
-                console.debug(name, Component.displayName)
+                const Component = component || TextInput
+                // console.debug(name, Component.displayName)
                 if (!isVisible) { return null }
                 return (
                   <ControlledField key={name} label={label} name={name} variant={'horizontal'}>

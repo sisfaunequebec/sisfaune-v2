@@ -106,9 +106,7 @@ const EditGeneralInfosDialog = ({ close, eventId, data }) => {
     <BaseDialog title={'Informations générales'} size={'lg'} onClose={close} onSubmit={handleSubmit} submitBtnLabel={'Sauvegarder'} schema={null} schemaType={'valibot'} defaultValues={defaultValues} watches={['statusId']}>
       {(contentRef, watched) => {
         return (
-          // <VStack gap={2}>
-            <Fields formSchema={formSchema} contentRef={contentRef} watched={watched} data={defaultValues} />
-          // </VStack>
+          <Fields formSchema={formSchema} contentRef={contentRef} watched={watched} data={defaultValues} />
         )}
       }
     </BaseDialog>

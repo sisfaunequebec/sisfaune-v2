@@ -3,7 +3,7 @@
 import { useMemo, useCallback } from 'react'
 // import orderBy from 'lodash.orderby'
 
-// import { DateTime } from 'luxon'
+import { DateTime } from 'luxon'
 import { isoUTCStringToFormat } from '@/utils/dates'
 
 import { useQueryStates, parseAsString, parseAsIsoDateTime } from 'nuqs'
@@ -41,7 +41,7 @@ const Date = () => {
   const handleStartDateChange = useCallback(value => {
     const { date, end } = values
     
-    const startDate = (date && value) ? DateTime.fromJSDate(value) : null
+    const startDate = (date && value) ? DateTime.fromISO(value) : null
     const endDate = end ? DateTime.fromFormat(end, 'yyyy-LL-dd') : null
     const isOver = startDate >= endDate 
 
@@ -54,17 +54,23 @@ const Date = () => {
 
    const handleEndDateChange = useCallback(value => {
     const { date, start } = values
+
+    const endDate = (date && value) ? DateTime.fromISO(value) : null
+    const startDate = start ? DateTime.fromFormat(start, 'yyyy-LL-dd') : null
+
     setValues({
       date,
-      start,
-      end: (date && value) ? isoUTCStringToFormat(value) : null,
+      start: isoUTCStringToFormat(startDate),
+      end: isoUTCStringToFormat(endDate)  // (date && value) ? DateTime.fromISO(value) : null,
     })
   }, [values, setValues])
 
   const { date, start, end } = values
 
-  const startDate = start && DateTime.fromISO(start).toJSDate()
-  const endDate = end && DateTime.fromISO(end).toJSDate()
+  const startDate = start && DateTime.fromISO(start).toISODate()
+  const endDate = end && DateTime.fromISO(end).toISODate()
+
+  // console.debug(startDate, endDate)
 
   return (
     // <VStack>
