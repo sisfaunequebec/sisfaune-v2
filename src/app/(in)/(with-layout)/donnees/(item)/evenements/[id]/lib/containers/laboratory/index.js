@@ -1,4 +1,4 @@
-import { Box, AbsoluteCenter, HStack, Fieldset } from '@chakra-ui/react'
+import { Box, AbsoluteCenter, HStack, Textarea } from '@chakra-ui/react'
 
 import {
   AccordionItem
@@ -6,30 +6,46 @@ import {
 
 import { Trigger, Content } from '../../components/accordion-parts'
 
-import EditLaboratoryButton from './edit-laboratory-button'
-import LaboratoryFormContent from './laboratory-form-content'
+import Fields from '@/app/lib/components/display/fields'
 
-const LaboratoireSectionForm = ({ data }) => {
+import DateDisplay from '@/app/lib/components/display/base/date'
+import CommentDisplay from '@/app/lib/components/display/base/comment'
+
+import EditLaboratoryButton from './edit-laboratory-button'
+
+const LabResponsibleDisplay = ({ value }) => {
+  let text = ''
+  if (value) {
+    const { firstName, lastName, organisation } = value
+    text = `${[firstName, lastName].join(' ')}\r${organisation}`
+  }
   return (
-    <Fieldset.Root as='VStack' alignItems='stretch' size={['lg', null, 'md']}>
-      <LaboratoryFormContent data={data} />
-    </Fieldset.Root>
+    <CommentDisplay value={text} whiteSpace={'pre'} />
   )
 }
 
-const LaboratoireSection = ({ event, canEdit }) => {
-  const isEditing = false
+const schema = [
+  { 
+    title: null,
+    fields: [
+      { label: 'Responsable du dossier\u00A0:', name: 'labResponsible', component: LabResponsibleDisplay },
+      { label: 'Spécimen(s) reçu(s) le\u00A0:', name: 'labReceivedAt', component: DateDisplay },
+      { label: 'Spécimen(s) reçu(s) par\u00A0:', name: 'labReceivedBy' }
+    ]
+  }
+]
 
+const LaboratoireSection = ({ event, canEdit }) => {
   return (
-    <AccordionItem value='laboratory' position={isEditing ? 'sticky' : 'static'} zIndex={isEditing && 1000} disabled={isEditing}>
-      <Box position={isEditing ? 'sticky' : 'relative'} top={isEditing && [135, null, 130]} zIndex={isEditing && 1000} minH={'48px'}>
+    <AccordionItem value={'laboratory'} position={'static'}>
+      <Box position={'relative'} minH={'48px'}>
           <AbsoluteCenter as={HStack} axis={'vertical'} insetEnd={2}>
             { canEdit && <EditLaboratoryButton event={event} /> }
           </AbsoluteCenter>
         <Trigger label={'Laboratoire'} />
       </Box>
       <Content>
-        <LaboratoireSectionForm data={event} />
+        <Fields schema={schema} data={event} />
       </Content>
     </AccordionItem>
   )

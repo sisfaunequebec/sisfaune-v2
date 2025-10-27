@@ -1,15 +1,14 @@
-import { Input, IconButton } from '@chakra-ui/react'
-import { InputGroup } from '@/app/lib/components/ui/input-group'
+import { Input, InputGroup } from '@chakra-ui/react'
 
-const TextDisplay = ({ value, ...rest }) => {
+const TextDisplay = ({ value, prefix, suffix, ...rest }) => {
   return (
-    // <InputGroup
-    //   flex={1}
-    //   startElement={decoration}
-    //   endElement={showClearButton && <IconButton variant='ghost' size='xs' rounded='full' me={-1} onClick={handleClearValue}><RxCross2 /></IconButton>}
-    // >
+    <InputGroup
+      flex={1}
+      startElement={prefix}
+      endElement={suffix}
+    >
       <Input size={['lg', null, 'md']} value={value ?? ''} readOnly {...rest} />
-    // </InputGroup>
+    </InputGroup>
   )
 }
 

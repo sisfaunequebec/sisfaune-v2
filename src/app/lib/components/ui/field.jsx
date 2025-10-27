@@ -11,6 +11,8 @@ export const Field = forwardRef(function Field(props, ref) {
   const labelFlexValue =  variant === 'horizontal' ? [1, null, 1] : 1
   const childrenFlexValue =  variant === 'horizontal' ? 2 : 1
 
+  // console.debug('field, disabled', rest)
+
   return (
     <ChakraField.Root ref={ref} {...rest} justifyContent={'stretch'}>
       <Flex direction={flexDirection} alignItems={alignItems} w={'full'}>

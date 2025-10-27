@@ -3,11 +3,8 @@ import { useCallback } from 'react'
 
 import updateLaboratoryAction from '../update-laboratory.action'
 
-import { Fieldset } from '@chakra-ui/react'
+import BaseDialog, { Fields } from '@/app/lib/components/dialogs/base'
 
-import BaseDialog from '@/app/lib/components/dialogs/base'
-
-import ControlledField from '@/app/lib/components/controlled-field'
 import DateInput from '@/app/lib/components/inputs/base/date'
 import Autocomplete from '../../../components/autocomplete'
 
@@ -49,6 +46,17 @@ const ResponsibleCombo = ({ value, onChange }) => {
   )
 }
 
+const formSchema = [
+  { 
+    title: null,
+    fields: [
+      { label: 'Responsable du dossier\u00A0:', name: 'labResponsible', component: ResponsibleCombo },
+      { label: 'Spécimen(s) reçu(s) le\u00A0:', name: 'labReceivedAt', component: DateInput },
+      { label: 'Spécimen(s) reçu(s) par\u00A0:', name: 'labReceivedBy', component: ReceivedByCombo }
+    ]
+  }
+]
+
 const EditLaboratoryDialog = ({ close, eventId, data }) => {
   const handleSubmit = useCallback(async (data) => {
     const { labResponsible, labReceivedBy, ...rest } = data
@@ -63,25 +71,13 @@ const EditLaboratoryDialog = ({ close, eventId, data }) => {
     close()
   }, [close, eventId])
 
-  const { labResponsible, labReceivedBy } = data
-
   return (
     <BaseDialog title={'Laboratoire'} size={'lg'} onClose={close} onSubmit={handleSubmit} submitBtnLabel={'Sauvegarder'} schema={editLaboratorySchema} schemaType={'valibot'} defaultValues={data}>
-      {(contentRef) => (
-        <Fieldset.Root>
-          <Fieldset.Content gap={2}>
-            <ControlledField label={'Responsable du dossier\u00A0:'} name={'labResponsible'} variant={'horizontal'}>
-              <ResponsibleCombo contentRef={contentRef} />
-            </ControlledField>
-            <ControlledField label={'Spécimen(s) reçu(s) le\u00A0:'} name={'labReceivedAt'} variant={'horizontal'}>
-              <DateInput contentRef={contentRef} clearable />
-            </ControlledField>
-            <ControlledField label={'Spécimen(s) reçu(s) par\u00A0:'} name={'labReceivedBy'} variant={'horizontal'}>
-              <ReceivedByCombo contentRef={contentRef} />
-            </ControlledField>
-          </Fieldset.Content>
-        </Fieldset.Root>
-      )}
+      {(contentRef, watched) => {
+        return (
+          <Fields formSchema={formSchema} contentRef={contentRef} watched={watched} data={data} />
+        )}
+      }
     </BaseDialog>
   )
 }

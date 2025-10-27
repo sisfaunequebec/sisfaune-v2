@@ -10,7 +10,7 @@ const Fields = ({ schema, data }) => {
         const { title, fields } = section
         return (
           <Fieldset.Root key={title} gap={2} mt={4} _first={{ mt: 0 }}>
-            <Fieldset.Legend>{title}</Fieldset.Legend>
+            {title && <Fieldset.Legend>{title}</Fieldset.Legend> }
             <Fieldset.Content gap={2}>
               {fields.map(f => {
                 const { label, name, visible = true, component, props = {} } = f

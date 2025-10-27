@@ -1,7 +1,7 @@
-import { Textarea } from '@chakra-ui/react'
+import CommentInput from '../../inputs/base/comment'
 
-const CommentDisplay = ({ value, ...rest }) => {
-  return (<Textarea autoresize={'autoresize'} rows={3} value={value ?? ''} readOnly {...rest} />)
+const CommentDisplay = ({ ...rest }) => {
+  return (<CommentInput readOnly {...rest} />)
 } 
 
 export default CommentDisplay

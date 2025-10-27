@@ -2,7 +2,7 @@ import { useMemo, useCallback } from 'react'
 
 import { Flex, VStack, Select, createListCollection, Portal } from '@chakra-ui/react'
 
-const SelectInput = ({ items = [], name, value, onChange, onBlur, disabled = false, clearable = false, contentRef }) => {
+const SelectInput = ({ items = [], name, value, onChange, onBlur, disabled = false, clearable = true, contentRef }) => {
   const collection = useMemo(() => {
     return createListCollection({
       items
@@ -10,16 +10,13 @@ const SelectInput = ({ items = [], name, value, onChange, onBlur, disabled = fal
   }, [items])
 
   const handleValueChange = useCallback((e) => {
-    // console.debug('here', e)
     const { value } = e
     onChange(value.length ? value[0] : null)
   }, [onChange])
 
-  // const handleClear = useCallback((e) => {
-  //   onChange(null)
-  // }, [onChange])
-
+  const hasValue = value !== undefined && value !== null
   const isDisabled = disabled || collection.items.length === 0
+  const showClearButton = clearable && hasValue && !disabled
 
   return (
     <Select.Root 
@@ -38,7 +35,7 @@ const SelectInput = ({ items = [], name, value, onChange, onBlur, disabled = fal
           <Select.ValueText />
         </Select.Trigger>
         <Select.IndicatorGroup>
-          { clearable && <Select.ClearTrigger /> }
+          { showClearButton && <Select.ClearTrigger /> }
           <Select.Indicator />
         </Select.IndicatorGroup>
       </Select.Control>

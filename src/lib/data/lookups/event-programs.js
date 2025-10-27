@@ -1,12 +1,15 @@
 'use server'
+import { cache } from 'react'
+
 import prisma from '@/lib/data/database'
 
 import { canUserSubmitInProgram, canUserViewProgram } from '@/lib/auth/acl'
 
-const getAllPrograms = async () => {
+const getAllPrograms = cache(async () => {
+  console.debug('getAllPrograms')
   const programs = await prisma.LutEventProgram.findMany()
   return programs
-}
+})
 
 const toChoicesViewModel = (program) => {
   const { id: value, name: label } = program
@@ -16,13 +19,14 @@ const toChoicesViewModel = (program) => {
   }
 }
 
-const getActivePrograms = async () => {
+const getActivePrograms = cache(async () => {
+  console.debug('getActivePrograms')
   const programs = await getAllPrograms()
   const activePrograms = programs
     .filter(p => p.isActive)
     .map(p => toChoicesViewModel(p))
   return activePrograms
-}
+})
 
 const getViewableProgramsForUser = async (user) => {
   const programs = await getAllPrograms()

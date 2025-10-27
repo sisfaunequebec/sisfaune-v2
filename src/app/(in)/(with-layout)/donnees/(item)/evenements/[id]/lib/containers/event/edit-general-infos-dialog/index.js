@@ -21,8 +21,9 @@ import NumberInput from '@/app/lib/components/inputs/base/number'
 import HabitatTypeSelect from './habitat-type-select'
 import ShippingMethodSelect from './shipping-method-select'
 import LabSelect from './lab-select'
+import CollaboratorSelect from './collaborator-select'
 
-// import editLaboratorySchema from './edit-laboratory.schema'
+// import UnimplementedDisplay from '@/app/lib/components/display/base/unimplemented'
 
 const ProgramSelect = (props) => {
   const [items, setItems] = useState([])
@@ -47,7 +48,7 @@ const formSchema = [
       { label: 'Numéro d\'identification SILAB\u00A0:', name: 'silabId' },
       { label: 'Numéro d\'incident CQSAS\u00A0:', name: 'cqsasIncidentNumber' },
       { label: 'Numéro de pathologie\u00A0:', name: 'pathologyNumber' },
-      { label: 'Date du signalement\u00A0:', name: 'reportedAt', component: DateInput, props: { clearable: true } },
+      { label: 'Date du signalement\u00A0:', name: 'reportedAt', component: DateInput },
       { label: 'Numéro centrale MAPAQ\u00A0:', name: 'mapaqId' },
       { label: 'Programme\u00A0:', name: 'programId', component: ProgramSelect },
       { label: 'Provenance du signalement\u00A0:', name: 'reportOriginId', component: ReportOriginSelect },
@@ -58,6 +59,9 @@ const formSchema = [
   { 
     title: 'Personnes impliquées',
     fields: [
+      // { label: 'Soumis par\u00A0:', name: 'submitter', component: UnimplementedDisplay },
+      // { label: 'Découvert par\u00A0:', name: 'discoveredBy', component: UnimplementedDisplay },
+      { label: 'Récolté par (contractuel)\u00A0:', name: 'collaboratorId', component: CollaboratorSelect }
     ]
   },
   { 
@@ -65,10 +69,10 @@ const formSchema = [
     fields: [
       { label: 'Date de la découverte\u00A0:', name: 'discoveredAt', component: DateInput, props: { clearable: true } },
       { label: 'Date de la récolte\u00A0:', name: 'collectedAt', component: DateInput, props: { clearable: true }  },
-      // { label: 'Contacts possibles\u00A0:', name: 'toto'  },
+      // { label: 'Contacts possibles\u00A0:', name: 'hadAnimalContact', component: UnimplementedDisplay  },
       { label: 'Type d\'habitat\u00A0:', name: 'habitatTypeId', component: HabitatTypeSelect, props: { clearable: true } },
-      { label: 'Température (en celsius)\u00A0:', name: 'temperature', component: NumberInput, props: { precision: 1 } },
-      // { label: 'Individus affectés, par espèce\u00A0:', name: 'titi' },
+      { label: 'Température\u00A0:', name: 'temperature', component: NumberInput, props: { precision: 1, suffix: '(en celsius)' } },
+      // { label: 'Individus affectés, par espèce\u00A0:', name: 'affectedSpecie1Id', component: UnimplementedDisplay },
       { label: 'Observations sur le terrain\u00A0:', name: 'observations', component: CommentInput },
       { label: 'Commentaires généraux\u00A0:', name: 'comments', component: CommentInput  },
       { label: 'Mots-clés\u00A0:', name: 'keywords', component: CommentInput },
@@ -80,7 +84,7 @@ const formSchema = [
       { label: 'Spécimen(s) expédié(s) le\u00A0:', name: 'labShippedAt', component: DateInput, props: { clearable: true } },
       { label: 'Méthode d\'expédition\u00A0:', name: 'labShippingMethodId', component: ShippingMethodSelect  },
       { label: 'Numéro de connaissement\u00A0:', name: 'labShippingTrackingNumber'  },
-      { label: 'Laboratoire de destination\u00A0:', name: 'labId', component: LabSelect   }
+      { label: 'Laboratoire de destination\u00A0:', name: 'labId', component: LabSelect, props: { clearable: true }  }
     ]
   },
 ]

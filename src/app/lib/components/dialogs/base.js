@@ -99,7 +99,7 @@ const BaseDialog = ({ title, message, size, isAlert = false, schema, schemaType 
 
                 <Dialog.Body textStyle={['md', null, 'sm']} >
                   { message && <Text mb={4} lineHeight={'shorter'}>{message}</Text> }
-                  <VStack flex={1} alignItems={'stretch'} gap={1}>{ children(contentRef, watched) }</VStack>
+                  <VStack flex={1} alignItems={'stretch'} gap={1}>{ children(contentRef, watched, isSubmitting) }</VStack>
                 </Dialog.Body>
 
                 <DialogFooter gap={2}>
@@ -126,7 +126,7 @@ const Fields = ({ formSchema, contentRef, watched, data }) => {
         const { title, fields } = section
         return (
           <Fieldset.Root key={title} gap={2} pt={4}>
-            <Fieldset.Legend>{title}</Fieldset.Legend>
+            { title && <Fieldset.Legend>{title}</Fieldset.Legend> }
             <Fieldset.Content gap={2}>
               {fields.map(f => {
                 const { label, name, disabled = false, visible = true, component, props = {} } = f

@@ -1,15 +1,14 @@
 import { useCallback, useState, useEffect } from 'react'
 
-import { Input, IconButton } from '@chakra-ui/react'
-import { InputGroup } from '@/app/lib/components/ui/input-group'
+import { Input, InputGroup, IconButton } from '@chakra-ui/react'
 
 import { RxCross2 } from 'react-icons/rx'
 
-const TextInput = ({ value, onChange, clearable = false, decoration, ...rest }) => {
+const TextInput = ({ value, onChange, clearable = false, prefix, suffix, ...rest }) => {
   const handleChange = useCallback(e => {
     const { target } = e
     const { value } = target
-    onChange(value ? value : undefined)
+    onChange(value ? value : null)
   }, [onChange])
 
   const handleClearValue = useCallback(() => {
@@ -21,8 +20,8 @@ const TextInput = ({ value, onChange, clearable = false, decoration, ...rest }) 
   return (
     <InputGroup
       flex={1}
-      startElement={decoration}
-      endElement={showClearButton && <IconButton variant='ghost' size='xs' rounded='full' me={-1} onClick={handleClearValue}><RxCross2 /></IconButton>}
+      startElement={prefix}
+      endElement={showClearButton ? <IconButton variant='ghost' size='xs' rounded='full' me={-1} onClick={handleClearValue}><RxCross2 /></IconButton> : suffix}
     >
       <Input flex={1} value={value ?? ''} onChange={handleChange} {...rest} />
     </InputGroup>

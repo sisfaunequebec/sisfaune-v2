@@ -192,6 +192,7 @@ const buttonRecipe = defineRecipe({
 
 const inputRecipe = defineRecipe({
   base: {
+    size: ['lg'],
     _focus: {
       bg: 'blue.50'
     },

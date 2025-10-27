@@ -21,6 +21,7 @@ const schema = {
 
 const eventTransformer = (event, context, direction = 'fromDB') => {
   const transformed = transform(schema, event, context, direction) 
+  // console.debug('eventTransformer', event, transformed)
   
   // const canUserViewSpecimensSection = userCanViewSpecimenSection(user, programId)
   // const canUserViewAnalysisSection = userCanViewAnalysisSection(user, programId)

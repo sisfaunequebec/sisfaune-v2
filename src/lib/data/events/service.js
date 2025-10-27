@@ -262,6 +262,8 @@ const getEvent = async (id) => {
           }
         },
         labResponsible: true,
+        submitter: true,
+        collaborator: true,
         specimens: {
           include: {
             specie: true,
@@ -456,7 +458,6 @@ const updateGeneralInfos = async (eventId, data) => {
   const { id, ...rest } = data
 
   const transformed = eventTransformer(rest, { user }, 'toDB')
-  // console.debug('updateGeneralInfos', transformed)
 
   const updated = await orm.event.update({
     where: {

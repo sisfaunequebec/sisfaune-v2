@@ -17,7 +17,7 @@ import Toolbar from '@/app/(in)/(with-layout)/donnees/(list)/evenements/lib/comp
 
 import DeleteEventButtonOld from '../../components/delete-event-button'
 
-import InfosGeneralesSection from './general-infos'
+import GeneralInfosSection from './general-infos'
 import LaboratoireSection from '../laboratory'
 import LocalisationSection from '../location'
 
@@ -80,7 +80,7 @@ const Event = ({
               <DeleteEventButtonOld eventId={eventId} visibility={'hidden'} />
             </SectionHeading>
             <AccordionRoot size={['md', null, 'sm']} multiple value={activePanels} onValueChange={handleToggleActiveSection}>
-              <InfosGeneralesSection event={event} canEdit={showEditEventSectionButton} />
+              <GeneralInfosSection event={event} canEdit={showEditEventSectionButton} />
               <LocalisationSection event={event} canEdit={showEditLocationSectionButton} />
               <LaboratoireSection event={event} canEdit={showEditLaboratorySectionButton} />
             </AccordionRoot>

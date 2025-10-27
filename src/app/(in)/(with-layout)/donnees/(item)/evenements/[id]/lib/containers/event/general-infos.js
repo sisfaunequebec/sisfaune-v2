@@ -4,31 +4,49 @@ import {
   AccordionItem
 } from '@/app/lib/components/ui/accordion'
 
-import { Field } from '@/app/lib/components/ui/field'
-
 import { Trigger, Content } from '../../components/accordion-parts'
 
 import Fields from '@/app/lib/components/display/fields'
 
-// import TextDisplay from '@/app/lib/components/display/base/text'
 import SelectDisplay from '@/app/lib/components/display/base/select'
+import NumberDisplay from '@/app/lib/components/display/base/number'
 import DateDisplay from '@/app/lib/components/display/base/date'
 import CommentDisplay from '@/app/lib/components/display/base/comment'
 
-// import TextField from '../../components/text-field'
-// import DateField from '../../components/date-field'
-// import CommentField from '../../components/comment-field'
-
-// import TypeEvenementSelect from '../../components/type-evenement-select'
-// import StatutSelect from '../../components/statut-select'
-// import ProgrammeSelect from '../../components/programme-select'
-// import ProvenanceSelect from '../../components/provenance-select'
-// import HabitatSelect from '../../components/habitat-select'
-// import MethodeExpeditionSelect from '../../components/methode-expedition-select'
-// import LaboratoireSelect from '../../components/laboratoire-select'
-// import AffectedSpeciesField from '../../components/affected-species-field'
+import UnimplementedDisplay from '@/app/lib/components/display/base/unimplemented'
 
 import EditGeneralInfosButton from './edit-general-infos-button'
+
+const CollaboratorDisplay = ({ value }) => {
+  let text = null
+  
+  if (value) {
+    const {
+      firstName, lastName,
+      title,
+      organisation,
+      division,
+      service,
+      streetNumber, street,
+      localityName, province,
+      postalCode,
+      telephone, extension,
+      email: emailRaw
+    } = value
+
+    const fullName = [firstName, lastName].join(' ')
+    const address = (streetNumber || localityName) ? ['\u00A0', [streetNumber, street].filter(Boolean).join(', ')].join('\r') : null
+    const city =  [localityName, province].filter(Boolean).join(', ')
+    const phone = telephone ? `Téléphone : ${[telephone, extension].filter(Boolean).join(' #')}` : null
+    const email = emailRaw ? `Courriel : ${[emailRaw].join(' ')}` : null
+
+    text = [fullName, title, organisation, division, service, address, city, postalCode, '\u00A0', phone, email].filter(Boolean).join('\r')
+  }
+
+  return (
+    <CommentDisplay value={text} />
+  )
+}
 
 // import MeasureField from '../components/measure-field'
 
@@ -52,6 +70,9 @@ const schema = [
   { 
     title: 'Personnes impliquées',
     fields: [
+      { label: 'Soumis par\u00A0:', name: 'submitter', component: CollaboratorDisplay },
+      { label: 'Découvert par\u00A0:', name: 'discoveredBy', component: UnimplementedDisplay },
+      { label: 'Récolté par (contractuel)\u00A0:', name: 'collaborator' , component: SelectDisplay }
     ]
   },
   { 
@@ -59,10 +80,10 @@ const schema = [
     fields: [
       { label: 'Date de la découverte\u00A0:', name: 'discoveredAt', component: DateDisplay },
       { label: 'Date de la récolte\u00A0:', name: 'collectedAt', component: DateDisplay },
-      // { label: 'Contacts possibles\u00A0:', name: 'toto'  },
+      { label: 'Contacts possibles\u00A0:', name: 'toto' , component: UnimplementedDisplay },
       { label: 'Type d\'habitat\u00A0:', name: 'habitatType', component: SelectDisplay },
-      { label: 'Température (en celsius)\u00A0:', name: 'temperature' },
-      // { label: 'Individus affectés, par espèce\u00A0:', name: 'titi' },
+      { label: 'Température\u00A0:', name: 'temperature', component: NumberDisplay, props: { precision: 1, suffix: '(en celsius)' } },
+      { label: 'Individus affectés, par espèce\u00A0:', name: 'titi', component: UnimplementedDisplay },
       { label: 'Observations sur le terrain\u00A0:', name: 'observations', component: CommentDisplay },
       { label: 'Commentaires généraux\u00A0:', name: 'comments', component: CommentDisplay },
       { label: 'Mots-clés\u00A0:', name: 'keywords', component: CommentDisplay },
@@ -79,93 +100,7 @@ const schema = [
   },
 ]
 
-const GeneralInfos = ({ event }) => {
-  return (
-    <Fields schema={schema} data={event} />
-  )
-
-  // return (
-  //   <VStack gap={2} flex={1}>
-  //     {formSchema.map(section => {
-  //       const { title, fields } = section
-  //       return (
-  //         <Fieldset.Root key={title} gap={2} mt={4} _first={{ mt: 0 }}>
-  //           <Fieldset.Legend>{title}</Fieldset.Legend>
-  //           <Fieldset.Content gap={2}>
-  //             {fields.map(f => {
-  //               const { label, name, visible = true, component, props = {} } = f
-  //               const isVisible = (typeof visible === 'function') ? visible(data) : visible
-  //               const Component = component || TextDisplay
-  //               const value = event[name] 
-  //               // console.debug(name, Component.displayName)
-  //               if (!isVisible) { return null }
-  //               return (
-  //                 <Field key={name} label={label} name={name} variant={'horizontal'}>
-  //                   <Component value={value} {...props} />
-  //                 </Field>
-  //               )
-  //             })}
-  //           </Fieldset.Content>
-  //           <Separator />
-  //         </Fieldset.Root>
-  //       )
-  //     })}
-  //   </VStack>
-  // )
-
-  // return (
-  //   <Fieldset.Root as='VStack' alignItems='stretch' size={['lg', null, 'md']}>
-
-  //     <Fieldset.Legend>Identification</Fieldset.Legend>
-  //     <Fieldset.Content gap={1} mt={2}>
-  //       <TextField label={'Numéro d\'événement\u00A0:'} value={id} isEditing={isEditing} />
-  //       <TypeEvenementSelect label={'Type d\'événement\u00A0:'} value={type} isEditing={isEditing} />
-  //       <TextField label={'Numéro d\'identification SILAB\u00A0:'} value={silabId} isEditing={isEditing} />
-  //       <TextField label={'Numéro d\'incident CQSAS\u00A0:'} value={cqsasIncidentNumber} isEditing={isEditing} />
-  //       <TextField label={'Numéro de pathologie\u00A0:'} value={pathologyNumber} isEditing={isEditing} />
-  //       <DateField label={'Date du signalement\u00A0:'} value={reportedAt} isEditing={isEditing} />
-  //       <TextField label={'Numéro centrale MAPAQ\u00A0:'} value={mapaqId} isEditing={isEditing} />
-  //       <ProgrammeSelect label={'Programme\u00A0:'} value={program} isEditing={isEditing} />
-  //       <ProvenanceSelect label={'Provenance du signalement\u00A0:'} value={reportOrigin} isEditing={isEditing} />
-  //       <StatutSelect label={'Statut\u00A0:'} value={status} isEditing={isEditing} />
-  //       { closedAt && <DateField label={'Date de fermeture du dossier\u00A0:'} value={closedAt} isEditing={isEditing} />}
-  //     </Fieldset.Content>
-
-  //     <Separator />
-
-  //     <Fieldset.Legend>Personnes impliquées</Fieldset.Legend>
-  //     <Fieldset.Content gap={1} mt={2} />
-
-  //     <Separator />
-
-  //     <Fieldset.Legend>Description de l&apos;événement</Fieldset.Legend>
-  //     <Fieldset.Content gap={1} mt={2}>
-  //       <DateField label={'Date de la découverte\u00A0:'} value={discoveredAt} isEditing={isEditing} />
-  //       <DateField label={'Date de la récolte\u00A0:'} value={collectedAt} isEditing={isEditing} />
-  //       <TextField label={'Contacts possibles\u00A0:'} value={null} isEditing={isEditing} />
-  //       <HabitatSelect label={'Type d\'habitat\u00A0:'} value={habitatType} isEditing={isEditing} />
-  //       <TextField label={'Température (en celsius)\u00A0:'} value={temperature} isEditing={isEditing} />
-  //       <AffectedSpeciesField label={'Individus affectés, par espèce\u00A0:'} value={temperature} isEditing={isEditing} />
-  //       <CommentField label={'Observations sur le terrain\u00A0:'} value={observations} isEditing={isEditing} />
-  //       <CommentField label={'Commentaires généraux\u00A0:'} value={commentaires} isEditing={isEditing} />
-  //       <CommentField label={'Mots-clés\u00A0:'} value={keywords} isEditing={isEditing} />
-  //     </Fieldset.Content>
-
-  //     <Separator />
-
-  //     <Fieldset.Legend>Expédition des spécimens</Fieldset.Legend>
-  //     <Fieldset.Content gap={1} mt={2}>
-  //       <DateField label={'Spécimen(s) expédié(s) le\u00A0:'} value={labShippedAt} isEditing={isEditing} />
-  //       <MethodeExpeditionSelect label={'Méthode d\'expédition\u00A0:'} value={labShippingMethod} isEditing={isEditing} />
-  //       <TextField label={'Numéro de connaissement\u00A0:'} value={labShippingTrackingNumber} isEditing={isEditing} />
-  //       <LaboratoireSelect label={'Laboratoire de destination\u00A0:'} value={lab} isEditing={isEditing} />
-  //     </Fieldset.Content>
-
-  //   </Fieldset.Root>
-  // )
-}
-
-const InfosGeneralesSection = ({ event, canEdit = false }) => {
+const GeneralInfosSection = ({ event, canEdit = false }) => {
   const isEditing = false
 
   return (
@@ -177,10 +112,10 @@ const InfosGeneralesSection = ({ event, canEdit = false }) => {
         <Trigger label='Informations générales' />
       </Box>
       <Content>
-        <GeneralInfos event={event} isEditing={isEditing}  />
+        <Fields schema={schema} data={event} />
       </Content>
     </AccordionItem>
   )
 }
 
-export default InfosGeneralesSection
+export default GeneralInfosSection
