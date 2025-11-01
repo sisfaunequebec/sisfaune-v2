@@ -120,9 +120,10 @@ const BaseDialog = ({ title, message, size, isAlert = false, schema, schemaType 
 }
 
 const Fields = ({ formSchema, contentRef, watched, data }) => {
+  const sectionsCount = formSchema.length
   return (
      <VStack gap={2} flex={1}>
-      {formSchema.map(section => {
+      {formSchema.map((section, i) => {
         const { title, fields } = section
         return (
           <Fieldset.Root key={title} gap={2} pt={4}>
@@ -142,7 +143,7 @@ const Fields = ({ formSchema, contentRef, watched, data }) => {
                 )
               })}
             </Fieldset.Content>
-            <Separator />
+            { (sectionsCount > i + 1) && <Separator /> }
           </Fieldset.Root>
         )
       })}

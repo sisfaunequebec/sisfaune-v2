@@ -43,7 +43,7 @@ const ResetPasswordDialog = ({ close }) => {
         <Fieldset.Root>
           <Fieldset.Content gap={1}>
             <ControlledField label={'Nom d\'utilisateur :'} name={'username'} variant={'vertical'}>
-              <TextField autoComplete={'off'} isEditing={true} />
+              <Input autoComplete={'off'} />
             </ControlledField>
           </Fieldset.Content>
         </Fieldset.Root>

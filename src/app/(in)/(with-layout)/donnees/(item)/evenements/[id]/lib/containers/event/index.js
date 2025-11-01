@@ -58,10 +58,6 @@ const Event = ({
   const { id: eventId } = event
   const { specimens } = event
 
-  // const specimens = [
-  //   { id: 1 },
-  //   { id: 2 }
-  // ]
 
   const showEditEventSectionButton = canUserEditEventSection // activePanels.includes('general') && canUserEditEventSection
   const showEditLocationSectionButton = canUserEditEventSection // activePanels.includes('location') && canUserEditEventSection

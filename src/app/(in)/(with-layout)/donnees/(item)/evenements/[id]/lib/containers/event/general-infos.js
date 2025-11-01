@@ -104,7 +104,7 @@ const GeneralInfosSection = ({ event, canEdit = false }) => {
   const isEditing = false
 
   return (
-    <AccordionItem value='general' position={isEditing ? 'sticky' : 'static'} zIndex={isEditing && 1000} disabled={isEditing} >
+    <AccordionItem value={'general'} position={isEditing ? 'sticky' : 'static'} zIndex={isEditing && 1000} disabled={isEditing} >
       <Box position={isEditing ? 'sticky' : 'relative'} top={isEditing && [135, null, 130]} zIndex={isEditing && 1000} minH={'48px'}>
         <AbsoluteCenter as={HStack} axis={'vertical'} insetEnd={2}>
           { canEdit && <EditGeneralInfosButton event={event} /> }

@@ -1,7 +1,7 @@
 import { Textarea } from '@chakra-ui/react'
 
-const CommentInput = ({ value, ...rest }) => {
-  return (<Textarea autoresize={'autoresize'} rows={1} value={value ?? ''} {...rest} />)
+const CommentInput = ({ value, minRows = 2, ...rest }) => {
+  return (<Textarea autoresize={'autoresize'} rows={minRows} value={value ?? ''} {...rest} />)
 } 
 
 export default CommentInput

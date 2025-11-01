@@ -4,9 +4,10 @@ import { Field } from '../ui/field'
 import TextDisplay from '@/app/lib/components/display/base/text'
 
 const Fields = ({ schema, data }) => {
+  const sectionsCount = schema.length
   return (
     <VStack gap={2} flex={1}>
-      {schema.map(section => {
+      {schema.map((section, i) => {
         const { title, fields } = section
         return (
           <Fieldset.Root key={title} gap={2} mt={4} _first={{ mt: 0 }}>
@@ -26,7 +27,7 @@ const Fields = ({ schema, data }) => {
                 )
               })}
             </Fieldset.Content>
-            <Separator />
+            { (sectionsCount > i + 1) && <Separator /> }
           </Fieldset.Root>
         )
       })}
