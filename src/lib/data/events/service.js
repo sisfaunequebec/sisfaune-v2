@@ -265,13 +265,18 @@ const getEvent = async (id) => {
         submitter: true,
         collaborator: true,
         specimens: {
+          orderBy: {
+            sequenceId: 'asc',
+          },
           include: {
             specie: true,
             age: true,
             sex: true,
             discoveryState: true,
             deathCause: true,
+            euthanasiaMethod: true,
             preservationMethod: true,
+            euthanasiaOrganisation: true,
             measures: {
               include: {
                 type: true,

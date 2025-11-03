@@ -8,7 +8,9 @@ const Fields = ({ schema, data }) => {
   return (
     <VStack gap={2} flex={1}>
       {schema.map((section, i) => {
-        const { title, fields } = section
+        const { title, visible, fields } = section
+        const isVisible = visible !== undefined ? (typeof visible === 'function') ? visible(data) : visible : true
+        if (!isVisible) { return null }
         return (
           <Fieldset.Root key={title} gap={2} mt={4} _first={{ mt: 0 }}>
             {title && <Fieldset.Legend>{title}</Fieldset.Legend> }

@@ -17,7 +17,7 @@ const ToolbarWrapper = ({ children }) => {
       alignSelf={'flex-start'}
       width={'full'}
       zIndex={1001}
-      shadow={[null, null, toolbarShadowSize]}
+      // shadow={[null, null, toolbarShadowSize]}
     >
       <Flex flex={1} bg={'white'} py={1}>
         <Container maxWidth={'6xl'} py={2}>

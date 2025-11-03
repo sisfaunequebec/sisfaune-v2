@@ -27,8 +27,9 @@ export const AccordionItemTrigger = forwardRef(
 
 export const AccordionItemContent = forwardRef(
   function AccordionItemContent(props, ref) {
+    const { h } =  props
     return (
-      <Accordion.ItemContent>
+      <Accordion.ItemContent h={h}>
         <Accordion.ItemBody {...props} ref={ref} />
       </Accordion.ItemContent>
     )

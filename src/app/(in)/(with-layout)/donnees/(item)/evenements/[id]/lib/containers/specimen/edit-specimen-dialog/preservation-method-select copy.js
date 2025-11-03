@@ -1,16 +1,16 @@
 'use client'
 import { useEffect, useState } from 'react'
 
-import getCollaborators from '@/lib/data/lookups/get-collaborators'
+import getPreservationMethods from '../../../actions/get-preservation-methods'
 
 import SelectInput from '@/app/lib/components/inputs/base/select'
 
-const CollaboratorSelect = (props) => {
+const PreservationMethodSelect = (props) => {
   const [items, setItems] = useState([])
 
   useEffect(() => {
     const load = async () => {
-      const result = await getCollaborators(true)
+      const result = await getPreservationMethods()
       setItems(result)
     }
     load()
@@ -21,4 +21,4 @@ const CollaboratorSelect = (props) => {
   )
 }
 
-export default CollaboratorSelect
+export default PreservationMethodSelect

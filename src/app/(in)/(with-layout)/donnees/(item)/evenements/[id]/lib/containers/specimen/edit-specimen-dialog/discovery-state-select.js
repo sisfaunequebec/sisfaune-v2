@@ -1,16 +1,17 @@
 'use client'
 import { useEffect, useState } from 'react'
 
-import getCollaborators from '@/lib/data/lookups/get-collaborators'
+// import getDeathCauses from '@/lib/data/lookups/get-death-causes
+import getDiscoveryStates from '@/lib/data/lookups/get-discovery-states'
 
 import SelectInput from '@/app/lib/components/inputs/base/select'
 
-const CollaboratorSelect = (props) => {
+const DiscoveryStateSelect = (props) => {
   const [items, setItems] = useState([])
 
   useEffect(() => {
     const load = async () => {
-      const result = await getCollaborators(true)
+      const result = await getDiscoveryStates()
       setItems(result)
     }
     load()
@@ -21,4 +22,4 @@ const CollaboratorSelect = (props) => {
   )
 }
 
-export default CollaboratorSelect
+export default DiscoveryStateSelect

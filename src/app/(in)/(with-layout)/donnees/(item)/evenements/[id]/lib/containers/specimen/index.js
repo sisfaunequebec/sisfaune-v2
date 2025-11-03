@@ -7,7 +7,7 @@ import {
 
 import { Trigger, Content } from '../../components/accordion-parts'
 
-import ResponsiveButton from '@/app/lib/components/responsive-button'
+import EditSpecimenButton from './edit-specimen-button'
 import DeleteSpecimenButton from '../../components/delete-specimen-button'
 
 import Fields from '@/app/lib/components/display/fields'
@@ -18,114 +18,6 @@ import DateDisplay from '@/app/lib/components/display/base/date'
 import CommentDisplay from '@/app/lib/components/display/base/comment'
 
 import UnimplementedDisplay from '@/app/lib/components/display/base/unimplemented'
-
-
-// import TextField from '../../components/text-field'
-// import CommentField from '../../components/comment-field'
-
-// import DateField from '../../components/date-field'
-
-// import AgeSelect from '../../components/age-select'
-// import SexSelect from '../../components/sex-select'
-// import EtatDecouverteSelect from '../../components/etat-decouverte-select'
-// import CauseMortSelect from '../../components/cause-mort-select'
-
-// import MeasureField from '../components/measure-field'
-
-// import SelectFieldAdvanced
-// import SelectFieldAdvanced from '@/app/lib/components/select-field-advanced'
-// import getPreservationMethods from '../../actions/get-preservation-methods'
-
-// import MeasuresSection from '../measures-section'
-
-// const MethodePreservationSelect = ({ label, value, isEditing }) => {
-//   return (
-//     <SelectFieldAdvanced isEditing label={label} value={value} valueLabelKey='name' getter={() => getPreservationMethods(value)} />
-//   )
-// }
-
-// const SpecimenForm = ({ specimen, isEditing, onToggleEditing }) => {
-//   // console.debug(specimen)
-//   const {
-//     id,
-//     specimenNumber,
-//     terrainIdentificationNumber,
-//     silabIdentificationNumber,
-//     cqsasNumber,
-//     sefaqNumber,
-//     huntingPermitNumber,
-//     identificationMarks,
-
-//     discoveryStateId,
-//     deathCauseId,
-
-//     preservationMethodId,
-//     notes,
-//     keywords,
-
-//     ageId,
-//     sexId,
-
-//     discoveryState,
-//     deathCause,
-//     specie,
-//     age,
-//     sex,
-//     preservationMethod,
-
-//     measures
-//   } = specimen
-
-//   const { name: specieName, binome, group } = specie
-
-//   return (
-//     <Fieldset.Root as='VStack' alignItems='stretch' size={['lg', null, 'md']}>
-
-//       <Fieldset.Legend>Identification du spécimen</Fieldset.Legend>
-//       <Fieldset.Content gap={0.5} mt={2}>
-//         <TextField label={'Numéro d\'identification sur le terrain\u00A0:'} value={terrainIdentificationNumber} isEditing={isEditing} />
-//         <TextField label={'Numéro de spécimen SILAB\u00A0:'} value={silabIdentificationNumber} isEditing={isEditing} />
-//         <TextField label={'Numéro de spécimen CQSAS\u00A0:'} value={cqsasNumber} isEditing={isEditing} />
-//         <TextField label={'Numéro d\'enregistement SEFAQ\u00A0:'} value={sefaqNumber} isEditing={isEditing} />
-//         <TextField label={'Numéro de permis de chasse\u00A0:'} value={huntingPermitNumber} isEditing={isEditing} />
-//         <CommentField label={'Marques d\'identification\u00A0:'} value={identificationMarks} isEditing={isEditing} />
-//         <EtatDecouverteSelect label={'État lors de la découverte\u00A0:'} value={discoveryState} isEditing={isEditing} />
-//         <CauseMortSelect label={'Cause de la mort\u00A0:'} value={deathCause} isEditing={isEditing} />
-//       </Fieldset.Content>
-
-//       <Separator />
-
-//       <Fieldset.Legend>Mesures</Fieldset.Legend>
-//       <Fieldset.Content gap={0.5} mt={2}>
-//         <AgeSelect label={'Âge\u00A0:'} value={age} group={group} isEditing={isEditing} />
-//         <SexSelect label={'Sexe\u00A0:'} value={sex} isEditing={isEditing} />
-
-//         <MeasuresSection measures={measures} />
-
-//         {/* <MeasureField label={'Circonférence du cou\u00A0:'} value={null} isEditing={true} />
-//         <TextField label={'Circonférence du thorax\u00A0:'} value={null} isEditing={isEditing} />
-//         <TextField label={'Hauteur au garrot\u00A0:'} value={null} isEditing={isEditing} />
-//         <TextField label={'Longueur totale (MB)\u00A0:'} value={null} isEditing={isEditing} />
-//         <TextField label={'Longueur totale (MQ) \u00A0:'} value={null} isEditing={isEditing} />
-//         <TextField label={'Longueur totale (MV)\u00A0:'} value={null} isEditing={isEditing} />
-//         <TextField label={'Mesure de la patte arrière\u00A0:'} value={null} isEditing={isEditing} />
-//         <TextField label={'Poids\u00A0:'} value={null} isEditing={isEditing} /> */}
-//       </Fieldset.Content>
-
-//       <Separator />
-
-//       <Fieldset.Legend>Autres informations</Fieldset.Legend>
-//       <Fieldset.Content gap={0.5} mt={2}>
-//         <MethodePreservationSelect label={'Méthode de conservation\u00A0:'} value={preservationMethod} isEditing={isEditing} />
-//         <CommentField label={'Remarques\u00A0:'} value={notes} isEditing={isEditing} />
-//         <CommentField label={'Mots-clés\u00A0:'} value={keywords} isEditing={isEditing} />
-//       </Fieldset.Content>
-
-//       <Separator />
-
-//     </Fieldset.Root>
-//   )
-// }
 
 const schema = [
   { 
@@ -138,17 +30,26 @@ const schema = [
       { label: 'Numéro de permis de chasse\u00A0:', name: 'huntingPermitNumber' },
       { label: 'Marques d\'identification\u00A0:', name: 'identificationMarks', component: CommentDisplay },
       { label: 'État lors de la découverte\u00A0:', name: 'discoveryState', component: SelectDisplay },
-      { label: 'Cause de la mort\u00A0:', name: 'deathCause', component: SelectDisplay },
-      // { label: 'Provenance du signalement\u00A0:', name: 'reportOrigin', component: SelectDisplay  },
-      // { label: 'Statut\u00A0:', name: 'status', component: SelectDisplay  },
-      // { label: 'Date de fermeture du dossier\u00A0:', component: DateDisplay, name: 'closedAt', visible: (data) => { const { statusId, closedAt } = data; return (statusId === 3 && closedAt) } },
+      { label: 'Cause de la mort\u00A0:', name: 'deathCause', component: SelectDisplay }
+    ]
+  },
+  { 
+    title: 'Détails sur l\'euthanasie',
+    visible: (data) => { const { deathCauseId } = data; return [1, 101, 102].includes(deathCauseId) },
+    fields: [
+      { label: 'Organisme reponsable\u00A0:', name: 'euthanasiaOrganisation', component: SelectDisplay },
+      { label: 'Date d\'euthanasie\u00A0:', name: 'euthanizedAt', component: DateDisplay },
+      { label: 'Méthode utilisée\u00A0:', name: 'euthanasiaMethod', component: SelectDisplay },
+      { label: 'Quantité d\'immobilisant utilisée\u00A0:', name: 'productAmount', component: NumberDisplay, props: { precision: 2 } , visible: (data) => { const { euthanasiaMethodId } = data; return (euthanasiaMethodId === 1) } },
+      { label: 'Numéro de bouteille\u00A0:', name: 'bottleNumber', visible: (data) => { const { euthanasiaMethodId } = data; return (euthanasiaMethodId === 1) } }
     ]
   },
   { 
     title: 'Mesures',
     fields: [
       { label: 'Âge\u00A0:', name: 'sex', component: SelectDisplay },
-      { label: 'Sexe\u00A0:', name: 'age', component: SelectDisplay }
+      { label: 'Sexe\u00A0:', name: 'age', component: SelectDisplay },
+      { label: 'Mesures et poids\u00A0:', name: 'measures', component: UnimplementedDisplay }
     ]
   },
   { 
@@ -168,13 +69,13 @@ const SpecimenSection = ({ specimen, canEdit = false }) => {
   console.debug(specimen)
 
   return (
-      <AccordionItem key={specimenId} value={specimenId} >
-        <Box position={'relative'} /*top={[135, null, 130]} zIndex={1000}*/ minH={'48px'}>
+      <AccordionItem key={specimenId} value={specimenId}>
+        <Box position={'sticky'} top={[181, null, 176]} zIndex={999} h={'46px'}>
           <AbsoluteCenter as={HStack} axis={'vertical'} insetEnd={2} gap={0.5}>
-            { canEdit && <DeleteSpecimenButton specimen={specimen}/> }
-            { canEdit && <ResponsiveButton colorPalette={'green'} variant={'subtle'} size={'sm'} label={'Modifier'} icon={<RxPencil1 />} me={[2, null, 1]} /> }
+            { canEdit && <DeleteSpecimenButton specimen={specimen} /> }
+            { canEdit && <EditSpecimenButton specimen={specimen} /> }
           </AbsoluteCenter>
-          <Trigger label={`${eventId}.${sequenceId} - ${specieName}`} />
+          <Trigger label={`${eventId}.${sequenceId} - ${specieName}`} h={'46px'} />
         </Box>
         <Content id={`#specimen_id_${specimenId}`}>
           <Fields schema={schema} data={specimen} />

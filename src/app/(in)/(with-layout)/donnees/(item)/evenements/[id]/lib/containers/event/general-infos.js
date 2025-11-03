@@ -101,15 +101,13 @@ const schema = [
 ]
 
 const GeneralInfosSection = ({ event, canEdit = false }) => {
-  const isEditing = false
-
   return (
-    <AccordionItem value={'general'} position={isEditing ? 'sticky' : 'static'} zIndex={isEditing && 1000} disabled={isEditing} >
-      <Box position={isEditing ? 'sticky' : 'relative'} top={isEditing && [135, null, 130]} zIndex={isEditing && 1000} minH={'48px'}>
+    <AccordionItem value={'general'} position={'sticky'} zIndex={1000}>
+      <Box position={'sticky'} top={[181, null, 176]} zIndex={1000} h={'46px'}>
         <AbsoluteCenter as={HStack} axis={'vertical'} insetEnd={2}>
           { canEdit && <EditGeneralInfosButton event={event} /> }
         </AbsoluteCenter>
-        <Trigger label='Informations générales' />
+        <Trigger label='Informations générales' h={'46px'} />
       </Box>
       <Content>
         <Fields schema={schema} data={event} />

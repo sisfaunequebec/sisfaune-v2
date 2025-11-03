@@ -104,7 +104,7 @@ const LocalisationSectionForm = ({ event, isEditing, onToggleEditing }) => {
 }
 
 const LocalisationSection = ({ event, canEdit = false }) => {
-  const isEditing = false
+  const isEditing = true
   // const { location } = event
 
   // const handleToggleEditing = useCallback(() => {
@@ -112,12 +112,12 @@ const LocalisationSection = ({ event, canEdit = false }) => {
   // }, [onToggleEditing])
 
   return (
-    <AccordionItem value={'location'} position={isEditing ? 'sticky' : 'static'} zIndex={isEditing && 1000} disabled={isEditing}>
-      <Box position={isEditing ? 'sticky' : 'relative'} top={isEditing && [135, null, 130]} zIndex={isEditing && 1000} minH={'48px'}>
+    <AccordionItem value={'location'} position={'sticky'} zIndex={1000}>
+      <Box position={'sticky'} top={[181, null, 176]} zIndex={1000} h={'46px'}>
         <AbsoluteCenter as={HStack} axis={'vertical'} insetEnd={2}>
           { canEdit && <EditLocationButton event={event} /> }
         </AbsoluteCenter>
-        <Trigger label={'Localisation géographique'} />
+        <Trigger label={'Localisation géographique'} h={'46px'} />
       </Box>
       <Content>
         <LocalisationSectionForm event={event} />

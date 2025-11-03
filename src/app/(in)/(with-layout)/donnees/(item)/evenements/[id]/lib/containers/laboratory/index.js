@@ -37,12 +37,12 @@ const schema = [
 
 const LaboratoireSection = ({ event, canEdit }) => {
   return (
-    <AccordionItem value={'laboratory'} position={'static'}>
-      <Box position={'relative'} minH={'48px'}>
-          <AbsoluteCenter as={HStack} axis={'vertical'} insetEnd={2}>
-            { canEdit && <EditLaboratoryButton event={event} /> }
-          </AbsoluteCenter>
-        <Trigger label={'Laboratoire'} />
+    <AccordionItem value={'laboratory'} position={'sticky'} zIndex={1000}>
+      <Box position={'sticky'} top={[181, null, 176]} zIndex={1000} h={'46px'}>
+        <AbsoluteCenter as={HStack} axis={'vertical'} insetEnd={2}>
+          { canEdit && <EditLaboratoryButton event={event} /> }
+        </AbsoluteCenter>
+        <Trigger label={'Laboratoire'} h={'46px'} />
       </Box>
       <Content>
         <Fields schema={schema} data={event} />

@@ -124,7 +124,9 @@ const Fields = ({ formSchema, contentRef, watched, data }) => {
   return (
      <VStack gap={2} flex={1}>
       {formSchema.map((section, i) => {
-        const { title, fields } = section
+        const { title, visible, fields } = section
+        const isVisible = visible !== undefined ? (typeof visible === 'function') ? visible(data, watched) : visible : true
+        if (!isVisible) { return null }
         return (
           <Fieldset.Root key={title} gap={2} pt={4}>
             { title && <Fieldset.Legend>{title}</Fieldset.Legend> }
