@@ -42,19 +42,19 @@ const SelectInput = ({ items = [], name, value, onChange, onBlur, disabled = fal
       <Portal container={contentRef}>
         <Select.Positioner>
           <Select.Content>
-             {collection.items.map(item => {
-               const { label, value, description, isDisabled = false } = item
-               return (
-                 <Select.Item item={item} key={value} isDisabled={isDisabled}>
-                   <VStack gap={1} alignItems={'flex-start'} lineHeight={1.2}>
-                     <Select.ItemText>{label}</Select.ItemText>
-                     { description && <Flex as={'span'} fontSize={'sm'} color={'gray.600'} truncate>
-                       {description}
-                     </Flex> }
-                   </VStack>
-                 </Select.Item>
-               )
-             })}
+            {collection.items.map(item => {
+              const { label, value, description, isDisabled = false } = item
+              return (
+                <Select.Item item={item} key={value} isDisabled={isDisabled}>
+                  <VStack gap={1} alignItems={'flex-start'} lineHeight={1.2}>
+                    <Select.ItemText>{label}</Select.ItemText>
+                    { description && <Flex as={'span'} fontSize={'sm'} color={'gray.600'} truncate>
+                      {description}
+                    </Flex> }
+                  </VStack>
+                </Select.Item>
+              )
+            })}
           </Select.Content>
         </Select.Positioner>
       </Portal>

@@ -1,11 +1,11 @@
 const source = require('./sources/evenement.json')
 const laboratories = require('./sources/laboratoire.json')
 
-const { stringOrNull, stringToBool, dateOrNull } = require('./utils')
+const { stringOrNull, stringToBool, dateOrNull, stringToInteger } = require('./utils')
 
 const laboratoriesByEventId = laboratories.reduce((acc, e) => {
   const { id_evenement, date_reception, recu_par, id_responsable } = e
-  const eventId = parseInt(id_evenement, 10)
+  const eventId = stringToInteger(id_evenement)
   acc[eventId] = {
     labReceivedAt: dateOrNull(date_reception),
     labReceivedBy: stringOrNull(recu_par),
@@ -14,7 +14,7 @@ const laboratoriesByEventId = laboratories.reduce((acc, e) => {
   return acc
 }, {})
 
-// const idsOnly = source.map(p => parseInt(p.id_evenement, 10))
+// const idsOnly = source.map(p => parseInt(p.id_evenement))
 // const idsOnlyById = idsOnly.reduce((acc, p) => {
 //   let current = acc[p] || 0
 //   current++
@@ -103,12 +103,12 @@ const transformed = source.map(p => {
     meta_creation_par
   } = p
 
-  const eventId = parseInt(id_evenement, 10)
+  const eventId = stringToInteger(id_evenement)
 
-  const habitatTypeId = parseInt(id_type_habitat, 10)
-  const collaboratorId = parseInt(id_intervenant, 10)
-  const labShippingMethodId = parseInt(id_methode_expedition, 10)
-  const labId = parseInt(id_laboratoire, 10)
+  const habitatTypeId = stringToInteger(id_type_habitat)
+  const collaboratorId = stringToInteger(id_intervenant)
+  const labShippingMethodId = stringToInteger(id_methode_expedition)
+  const labId = stringToInteger(id_laboratoire)
 
   const laboratory = laboratoriesByEventId[eventId] ?? {}
   const {
@@ -119,13 +119,13 @@ const transformed = source.map(p => {
   
   return {
     id: eventId,
-    typeId: parseInt(id_type, 10),
+    typeId: stringToInteger(id_type),
 
-    reportOriginId: parseInt(id_provenance_signalement, 10),
+    reportOriginId: stringToInteger(id_provenance_signalement),
 
-    programId: parseInt(id_programme, 10),
+    programId: stringToInteger(id_programme),
 
-    statusId: parseInt(id_statut, 10),
+    statusId: stringToInteger(id_statut),
 
     silabId: stringOrNull(id_silab),
     mapaqId: stringOrNull(no_mapaq),
@@ -164,38 +164,38 @@ const transformed = source.map(p => {
 
     pathologyNumber: stringOrNull(numero_pathologie),
 
-    affectedSpecie1Id: parseInt(affect1_espece, 10),
-    affectedSpecie1UnhealtyCount: parseInt(affect1_malade, 10),
-    affectedSpecie1DeadCount: parseInt(affect1_mort, 10),
-    affectedSpecie1AliveCount: parseInt(affect1_vivant, 10),
-    affectedSpecie1NotSpecifiedCount: parseInt(affect1_non_specifie, 10),
+    affectedSpecie1Id: stringToInteger(affect1_espece),
+    affectedSpecie1UnhealtyCount: stringToInteger(affect1_malade),
+    affectedSpecie1DeadCount: stringToInteger(affect1_mort),
+    affectedSpecie1AliveCount: stringToInteger(affect1_vivant),
+    affectedSpecie1NotSpecifiedCount: stringToInteger(affect1_non_specifie),
 
-    affectedSpecie2Id: parseInt(affect2_espece, 10),
-    affectedSpecie2UnhealtyCount: parseInt(affect2_malade, 10),
-    affectedSpecie2DeadCount: parseInt(affect2_mort, 10),
-    affectedSpecie2AliveCount: parseInt(affect2_vivant, 10),
-    affectedSpecie2NotSpecifiedCount: parseInt(affect2_non_specifie, 10),
+    affectedSpecie2Id: stringToInteger(affect2_espece),
+    affectedSpecie2UnhealtyCount: stringToInteger(affect2_malade),
+    affectedSpecie2DeadCount: stringToInteger(affect2_mort),
+    affectedSpecie2AliveCount: stringToInteger(affect2_vivant),
+    affectedSpecie2NotSpecifiedCount: stringToInteger(affect2_non_specifie),
 
-    affectedSpecie3Id: parseInt(affect3_espece, 10),
-    affectedSpecie3UnhealtyCount: parseInt(affect3_malade, 10),
-    affectedSpecie3DeadCount: parseInt(affect3_mort, 10),
-    affectedSpecie3AliveCount: parseInt(affect3_vivant, 10),
-    affectedSpecie3NotSpecifiedCount: parseInt(affect3_non_specifie, 10),
+    affectedSpecie3Id: stringToInteger(affect3_espece),
+    affectedSpecie3UnhealtyCount: stringToInteger(affect3_malade),
+    affectedSpecie3DeadCount: stringToInteger(affect3_mort),
+    affectedSpecie3AliveCount: stringToInteger(affect3_vivant),
+    affectedSpecie3NotSpecifiedCount: stringToInteger(affect3_non_specifie),
 
-    affectedSpecie4Id: parseInt(affect4_espece, 10),
-    affectedSpecie4UnhealtyCount: parseInt(affect4_malade, 10),
-    affectedSpecie4DeadCount: parseInt(affect4_mort, 10),
-    affectedSpecie4AliveCount: parseInt(affect4_vivant, 10),
-    affectedSpecie4NotSpecifiedCount: parseInt(affect4_non_specifie, 10),
+    affectedSpecie4Id: stringToInteger(affect4_espece),
+    affectedSpecie4UnhealtyCount: stringToInteger(affect4_malade),
+    affectedSpecie4DeadCount: stringToInteger(affect4_mort),
+    affectedSpecie4AliveCount: stringToInteger(affect4_vivant),
+    affectedSpecie4NotSpecifiedCount: stringToInteger(affect4_non_specifie),
 
-    affectedSpecie5Id: parseInt(affect5_espece, 10),
-    affectedSpecie5UnhealtyCount: parseInt(affect5_malade, 10),
-    affectedSpecie5DeadCount: parseInt(affect5_mort, 10),
-    affectedSpecie5AliveCount: parseInt(affect5_vivant, 10),
-    affectedSpecie5NotSpecifiedCount: parseInt(affect5_non_specifie, 10),
+    affectedSpecie5Id: stringToInteger(affect5_espece),
+    affectedSpecie5UnhealtyCount: stringToInteger(affect5_malade),
+    affectedSpecie5DeadCount: stringToInteger(affect5_mort),
+    affectedSpecie5AliveCount: stringToInteger(affect5_vivant),
+    affectedSpecie5NotSpecifiedCount: stringToInteger(affect5_non_specifie),
 
     source: stringOrNull(source),
-    sourcePk: parseInt(pk_source, 10),
+    sourcePk: stringToInteger(pk_source),
 
     createdAt: dateOrNull(meta_date_creation),
     createdById: stringOrNull(meta_creation_par) // TODO: createdById NOT NULL

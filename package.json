@@ -18,7 +18,9 @@
     "lint": "next lint",
     "standard": "standard --fix",
     "test": "dotenv -e .env.test.local -- vitest",
-    "email-dev": "email dev --dir src/lib/email --port 4502"
+    "email-dev": "email dev --dir src/lib/email --port 4502",
+    "postinstall": "prisma generate --no-engine",
+    "postbuild": "npx prisma migrate deploy"
   },
   "dependencies": {
     "@chakra-ui/react": "^3.26.0",

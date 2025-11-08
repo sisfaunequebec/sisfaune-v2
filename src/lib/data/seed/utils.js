@@ -1,18 +1,27 @@
 const { DateTime } = require('luxon')
 
+const trimmedString = (str) => {
+  if (!str) return null
+  const result = str.trim().replaceAll("''", "'")
+  return result
+}
+
 const stringOrNull = (str) => {
   try {
-    if (!str) return null
-    const trimmed = str.trim().replaceAll("''", "'")
-    return trimmed.length ? trimmed : null
+    const trimmed = trimmedString(str) // str.trim().replaceAll("''", "'")
+    const result = trimmed.length ? trimmed : null
+    return result
   } catch (e) {
-    console.debug('stringOrNull', str)
+    // console.debug('stringOrNull', str)
+    return null
   }
 }
 
 const stringToBool = (str) => {
   if (!str) return false
-  return str.trim() === '1'
+  const trimmed = trimmedString(str)
+  const result = trimmed === '1'
+  return result
 }
 
 // 1. We parse a datetime string from SQL Server but we only are interested in the date part
@@ -26,8 +35,17 @@ const dateOrNull = (str) => {
   return result
 }
 
+const stringToInteger = (str) => {
+  if (!str) return false
+  // const trimmed = trimmedString(str)
+  const result = parseInt(str, 10)
+  return result
+}
+
 module.exports = {
+  trimmedString,
   stringOrNull,
   stringToBool,
-  dateOrNull
+  dateOrNull,
+  stringToInteger
 }

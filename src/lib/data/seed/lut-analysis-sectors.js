@@ -1,10 +1,12 @@
+const { stringOrNull, stringToBool, dateOrNull, stringToInteger, trimmedString } = require('./utils')
+
 const source = require('./sources/lut_secteur_analyse.json')
 
 const transformed = source.map(p => {
   const { id, nom } = p
   return {
-    id: parseInt(id, 10),
-    name: nom.trim().replaceAll("''", "'")
+    id: stringToInteger(id),
+    name: trimmedString(nom)
   }
 })
 

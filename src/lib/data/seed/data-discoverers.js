@@ -1,6 +1,6 @@
 const source = require('./sources/decouvreur.json')
 
-const { stringOrNull, stringToBool } = require('./utils')
+const { stringOrNull, stringToBool, stringToInteger } = require('./utils')
 
 // "id_evenement": 1004,
 // "salutation": null,
@@ -43,7 +43,7 @@ const transformed = source.map(p => {
   const localityId = parseInt(id_muni, 10)
 
   return {
-    eventId: parseInt(id_evenement, 10),
+    eventId: stringToInteger(id_evenement),
 
     greeting: stringOrNull(salutation),
     lastName: stringOrNull(nom),
@@ -61,7 +61,7 @@ const transformed = source.map(p => {
     province: stringOrNull(province),
     postalCode: stringOrNull(code_postal),
 
-    legacyAddressId: parseInt(id_adresse, 10)
+    legacyAddressId: stringToInteger(id_adresse)
   }
 })
 

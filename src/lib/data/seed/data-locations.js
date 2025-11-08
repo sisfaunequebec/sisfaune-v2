@@ -1,6 +1,6 @@
 const source = require('./sources/localisation.json')
 
-const { stringOrNull, stringToBool } = require('./utils')
+const { stringOrNull, stringToInteger } = require('./utils')
 
 const transformed = source.map(p => {
   const { 
@@ -23,10 +23,10 @@ const transformed = source.map(p => {
   } = p
 
   const typeId = id_type.trim() === '1' ? 'adresse' : 'coordonnees'
-  const localityId = parseInt(id_muni, 10)
+  const localityId = stringToInteger(id_muni)
 
   return {
-    eventId: parseInt(id_evenement, 10),
+    eventId: stringToInteger(id_evenement),
     typeId: typeId,
     description: stringOrNull(description),
 

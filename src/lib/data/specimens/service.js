@@ -63,7 +63,6 @@ const getWhereClauseFromParams = (params, user) => {
   const programsIds = programme ? programme : viewableProgramIds
 
   const partialDateClause = getPartialDateClause(date, start, end) 
-  // console.debug('partialDateClause', date, start, end)
 
   const whereClause = {
     specie: groupe ? { groupId: { in: groupe } } : undefined, 

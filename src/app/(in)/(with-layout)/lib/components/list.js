@@ -41,6 +41,8 @@ const LinkListWrapper = ({ href, children }) => {
 }
 
 const LoadMoreButton = ({ count, total, label = 'Items', isReachingEnd, isLoading, onClick }) => {
+  if (!total) { return null }
+  
   const loadMoreButtonLabel = [`${label} 1 à ${count} de ${total}`, (isReachingEnd ? null : '')].filter(Boolean).join(' - ')
 
   return (

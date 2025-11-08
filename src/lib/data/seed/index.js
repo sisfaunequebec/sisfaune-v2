@@ -84,7 +84,7 @@ async function main () {
 
     orm.LutWeighUnit.createMany({ data: lutWeightUnits }),
 
-    // orm.Specimen.createMany({ data: dataSpecimens })
+    orm.Specimen.createMany({ data: dataSpecimens }),
 
     // Reset sequences
     orm.$executeRaw`
@@ -93,6 +93,9 @@ async function main () {
       BEGIN
           SELECT max(id) + 1 FROM data_evenement INTO max_id;
           EXECUTE 'alter SEQUENCE data_evenement_id_seq RESTART with '|| max_id;   
+
+          SELECT max(id) + 1 FROM data_specimen INTO max_id;
+          EXECUTE 'alter SEQUENCE data_specimen_id_seq RESTART with '|| max_id;   
       END;
       $$ LANGUAGE plpgsql
     `,

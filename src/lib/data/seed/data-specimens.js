@@ -1,17 +1,17 @@
 const source = require('./sources/specimen.json')
 const euthanasia = require('./sources/euthanasie.json')
 
-const { stringOrNull, stringToBool, dateOrNull } = require('./utils')
+const { stringOrNull, stringToBool, dateOrNull, stringToInteger } = require('./utils')
 
 const euthanasiaBySpecimenId = euthanasia.reduce((acc, e) => {
   const { id_specimen, id_methode, date, qtee_ketamine, no_bouteille, id_organisme } = e
-  const specimenId = parseInt(id_specimen, 10)
+  const specimenId = stringToInteger(id_specimen)
   acc[specimenId] = {
-    euthanasiaMethodId: parseInt(id_methode, 10),
+    euthanasiaMethodId: stringToInteger(id_methode),
     euthanizedAt: dateOrNull(date),
     productAmount: parseFloat(qtee_ketamine),
     bottleNumber: stringOrNull(no_bouteille),
-    euthanasiaOrganisationId: parseInt(id_organisme, 10)
+    euthanasiaOrganisationId: stringToInteger(id_organisme)
   }
   return acc
 }, {})
@@ -41,16 +41,19 @@ const transformed = source.map(p => {
     numero_sefaq
    } = p
 
-   const specimenId = parseInt(id_specimen, 10)
+   const specimenId = stringToInteger(id_specimen)
 
-   const specidId = parseInt(id_espece, 10)
-   const sexId = parseInt(id_sexe, 10)
-   const ageId = parseInt(id_age, 10)
-   const weightUnitId = parseInt(id_poids_unite, 10)
+   const specidId = stringToInteger(id_espece)
+   const sexId = stringToInteger(id_sexe)
+   const ageId = stringToInteger(id_age)
+   const weightUnitId = stringToInteger(id_poids_unite)
+   const deathCauseId = stringToInteger(id_cause_mort)
 
-   const discoveryStateId = parseInt(id_etat_decouverte, 10)
+   const discoveryStateId = stringToInteger(id_etat_decouverte)
+   const preservationMethodId = stringToInteger(id_methode_conservation) 
 
    const euthanasia = euthanasiaBySpecimenId[specimenId] ?? {}
+
    const {
     euthanasiaMethodId,
     euthanizedAt,
@@ -61,9 +64,9 @@ const transformed = source.map(p => {
 
   return {
     id: specimenId,
-    eventId: parseInt(id_evenement, 10),
-    // n: parseInt(n, 10),
-    sequenceId: parseInt(id_sequentiel, 10),
+    eventId: stringToInteger(id_evenement),
+    // n: stringToInteger(n),
+    sequenceId: stringToInteger(id_sequentiel),
     specimenNumber: stringOrNull(numero_specimen),
     silabIdentificationNumber: stringOrNull(numero_identification_silab),
     cqsasNumber: stringOrNull(numero_cqsas),
@@ -73,9 +76,9 @@ const transformed = source.map(p => {
     sefaqNumber: stringOrNull(numero_sefaq),
     identifier: stringOrNull(identifie_par),
     identificationMarks: stringOrNull(marques_identification),
-    specieId: specidId ? specidId : null,
-    ageId: ageId ? ageId : null,
-    sexId: sexId !== 0 ? sexId : null,
+    specieId: specidId,
+    ageId: ageId,
+    sexId: sexId,
     weight: parseFloat(poids), 
     weightUnitId: weightUnitId !== 0 ? weightUnitId : null,
     euthanasiaMethodId: euthanasiaMethodId !== 0 ? euthanasiaMethodId : null,
@@ -84,8 +87,8 @@ const transformed = source.map(p => {
     bottleNumber,
     euthanasiaOrganisationId: euthanasiaOrganisationId !== 0 ? euthanasiaOrganisationId : null,
     discoveryStateId: discoveryStateId !== 0 ? discoveryStateId : null,
-    deathCauseId: parseInt(id_cause_mort, 10),
-    preservationMethodId: parseInt(id_methode_conservation, 10),
+    deathCauseId: deathCauseId,
+    preservationMethodId: preservationMethodId,
     notes: stringOrNull(remarques),
     keywords: stringOrNull(motcles),
     createdAt: dateOrNull(meta_date_creation),

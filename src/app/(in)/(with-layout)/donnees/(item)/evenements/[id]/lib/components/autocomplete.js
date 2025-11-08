@@ -88,14 +88,14 @@ const Autocomplete = ({ value, minChars = 2, valueKey = 'id', labelKey = 'name',
                 <Combobox.Item key={item[valueKey]} item={item}>
                   <VStack gap={1} alignItems={'flex-start'} lineHeight={1.2}>              
                     <Flex as={'span'}>
-                      <Highlight query={inputValue || ''} styles={hilite && HILIGHTSTYLE} ignoreCase matchAll>
+                      {/* <Highlight query={inputValue || ''} styles={hilite && HILIGHTSTYLE} ignoreCase matchAll> */}
                         {title}
-                      </Highlight>
+                      {/* </Highlight> */}
                     </Flex>
                     { description && <Flex as={'span'} fontSize={'sm'} color={'gray.600'} truncate>
-                      <Highlight query={inputValue || ''} styles={hilite && HILIGHTSTYLE} ignoreCase matchAll>
+                      {/* <Highlight query={inputValue || ''} styles={hilite && HILIGHTSTYLE} ignoreCase matchAll> */}
                         {description}
-                      </Highlight>
+                      {/* </Highlight> */}
                     </Flex>  
                     } 
                   </VStack>
