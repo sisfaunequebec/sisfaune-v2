@@ -1,4 +1,4 @@
-const loader = createLoader(searchParams, { urlKeys })
+// const loader = createLoader(searchParams, { urlKeys })
 
 const GET = async (request) => {
   const { nextUrl: { searchParams } } = request
