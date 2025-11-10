@@ -13,13 +13,15 @@
     "db:dev:test-seed": "npm run db:dev:reset && npm run db:dev:push && npm run db:dev:seed",
     "db:test:push": "dotenv -e .env.test.local -- prisma db push",
     "db:test:reset": "dotenv -e .env.test.local -- prisma migrate reset --skip-seed",
+    "db:prod:push": "dotenv -e .env.netlify -- prisma db push",
+    "db:prod:seed": "dotenv -e .env.netlify -- prisma db seed",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
     "standard": "standard --fix",
     "test": "dotenv -e .env.test.local -- vitest",
     "email-dev": "email dev --dir src/lib/email --port 4502",
-    "postinstall": "prisma generate --no-engine",
+    "postinstall": "prisma generate",
     "postbuild": "npx prisma migrate deploy"
   },
   "dependencies": {
