@@ -239,9 +239,9 @@ const getEvent = async (id) => {
     return null
   }
 
-  if (!user) {
-    return null
-  }
+  // if (!user) {
+  //   return null
+  // }
 
   try {
     const event = await orm.Event.findUnique({
@@ -292,11 +292,11 @@ const getEvent = async (id) => {
       return null
     }
 
-    const { programId } = event
+    // const { programId } = event
     
-    if (!canUserViewProgram(user, programId)) {
-      return null
-    }
+    // if (!canUserViewProgram(user, programId)) {
+    //   return null
+    // }
   
     const transformed = eventTransformer(event, user)
     return JSON.parse(JSON.stringify(transformed))
