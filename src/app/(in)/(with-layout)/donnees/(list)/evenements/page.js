@@ -8,7 +8,6 @@ import Filters from '../lib/containers/filters'
 export const metadata = {
   title: 'Base de données - Événements | SIS Faune'
 }
-
 const Evenements = async () => {
   return (
     <>

@@ -4,11 +4,14 @@ import { auth } from '@/lib/auth'
 
 import { Flex } from '@chakra-ui/react'
 
+import wait from '@/utils/wait'
+
 export const metadata = {
   title: 'SIS Faune'
 }
 
 const Layout = async ({ children }) => {
+  // await wait(3000)
   const session = await auth()
 
   if (!session) {
