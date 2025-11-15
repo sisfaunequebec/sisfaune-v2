@@ -14,9 +14,9 @@ const Layout = async ({ children }) => {
   // await wait(3000)
   const session = await auth()
 
-  if (!session) {
-    return redirect('/session/ouvrir')
-  }
+  // if (!session) {
+  //   return redirect('/session/ouvrir')
+  // }
 
   return (
     <Flex as={'main'} minH={'100vh'} flex={1} direction={'column'} justifyContent={'flex-start'} px={0} alignItems={'flex-start'}>

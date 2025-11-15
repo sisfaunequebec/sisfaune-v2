@@ -2,7 +2,7 @@ import { redirect } from 'next/navigation'
 
 import { auth } from '@/lib/auth'
 
-import wait from '@/utils/wait'
+// import wait from '@/utils/wait'
 
 const Root = async () => {
   // await wait(5000)

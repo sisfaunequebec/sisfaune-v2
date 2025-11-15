@@ -379,15 +379,6 @@
     csstype "^3.1.3"
     fast-safe-stringify "^2.1.1"
 
-"@choc-ui/chakra-autocomplete@^6.1.0":
-  version "6.1.0"
-  resolved "https://registry.yarnpkg.com/@choc-ui/chakra-autocomplete/-/chakra-autocomplete-6.1.0.tgz#3cecfec096a3b5badc041c8b8d67498be6d7567b"
-  integrity sha512-WdR8KHmwQysNmZfdTfTKEn03eOn50kqb5MiAA1TrapkvHczA20CGAuvv8tZm9M7Z8cSGTk4cAO4cWo05QjfsDQ==
-  dependencies:
-    next-themes "^0.4.3"
-    react-icons "^5.3.0"
-    react-nanny "2.15.0"
-
 "@cspotcode/source-map-support@^0.8.0":
   version "0.8.1"
   resolved "https://registry.yarnpkg.com/@cspotcode/source-map-support/-/source-map-support-0.8.1.tgz#00629c35a688e05a88b1cda684fb9d5e73f000a1"
@@ -1221,18 +1212,6 @@
   dependencies:
     "@jridgewell/resolve-uri" "^3.1.0"
     "@jridgewell/sourcemap-codec" "^1.4.14"
-
-"@netlify/functions@^5.1.0":
-  version "5.1.0"
-  resolved "https://registry.yarnpkg.com/@netlify/functions/-/functions-5.1.0.tgz#c11159b4eae3b91854bf96359717f4d708c1e320"
-  integrity sha512-LZtiQtf/QzPHIeNDZuIBxx04kmU7lCipWqZ26ejX7mYSB3yj2wvpZfF49kD8B8FoKTydSvgFmBpIcCO5FvpEXA==
-  dependencies:
-    "@netlify/types" "2.2.0"
-
-"@netlify/types@2.2.0":
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/@netlify/types/-/types-2.2.0.tgz#ea9ee1001c944fe9543161cccd8876e85d2a4c06"
-  integrity sha512-XOWlZ2wPpdRKkAOcQbjIf/Qz7L4RjcSVINVNQ9p3F6U8V6KSEOsB3fPrc6Ly8EOeJioHUepRPuzHzJE/7V5EsA==
 
 "@next/env@15.0.2":
   version "15.0.2"
@@ -7508,11 +7487,6 @@ next-themes@^0.3.0:
   resolved "https://registry.yarnpkg.com/next-themes/-/next-themes-0.3.0.tgz#b4d2a866137a67d42564b07f3a3e720e2ff3871a"
   integrity sha512-/QHIrsYpd6Kfk7xakK4svpDI5mmXP0gfvCoJdGpZQ2TOrQZmsW0QxjaiLn8wbIKjtm4BTSqLoix4lxYYOnLJ/w==
 
-next-themes@^0.4.3:
-  version "0.4.6"
-  resolved "https://registry.yarnpkg.com/next-themes/-/next-themes-0.4.6.tgz#8d7e92d03b8fea6582892a50a928c9b23502e8b6"
-  integrity sha512-pZvgD5L0IEvX5/9GWyHMf3m8BKiVQwsCMHfoFosXtXBMnaS0ZnIJ9ST4b4NqLVKDEm8QBxoNNGNaBv2JNF6XNA==
-
 next@15.0.2:
   version "15.0.2"
   resolved "https://registry.yarnpkg.com/next/-/next-15.0.2.tgz#4a2224c007856118010b8cef5e9b2383cd743388"
@@ -8146,11 +8120,6 @@ react-is@^16.13.1, react-is@^16.7.0:
   version "16.13.1"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
   integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
-
-react-nanny@2.15.0:
-  version "2.15.0"
-  resolved "https://registry.yarnpkg.com/react-nanny/-/react-nanny-2.15.0.tgz#9472984af45761263b92b209f925e773fd761653"
-  integrity sha512-fn6tAnJ+UEdD0pq5YytlZJb5XmjVcvXoxq3i2r1o/BavgipwRWsw7oOXNJ8bJd33iedlkNyAQMXVC6qTl0Hv4A==
 
 react-number-format@^5.4.4:
   version "5.4.4"
