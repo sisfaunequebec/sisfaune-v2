@@ -519,7 +519,7 @@ model Specimen {
   identifier String? @map(name: "identifie_par") // TODO : TOUJOURS VIDE
   identificationMarks String? @map(name: "marques_identification") 
 
-  specieId Int @db.SmallInt @map(name: "id_animal_espece")
+  specieId Int? @db.SmallInt @map(name: "id_animal_espece")
   ageId Int? @db.SmallInt @map(name: "id_animal_age") // @default(0) // 0 requis => valeur CSSSF
   sexId Int? @db.SmallInt @map(name: "id_animal_sexe")
 

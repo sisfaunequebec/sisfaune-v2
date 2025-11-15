@@ -1,12 +1,11 @@
-// const loader = createLoader(searchParams, { urlKeys })
+const orm = require('@/lib/data/database')
+const doSeed = require('@/lib/data/seed/do-seed')
 
 const GET = async (request) => {
   const { nextUrl: { searchParams } } = request
 
-  // const params = loader(searchParams)
-  // const events = await getEvents(params)
-
-  return Response.json({ test: 'test '})
+  await doSeed(orm)
+  return Response.json({ status: 'ok' })
 }
 
 export {

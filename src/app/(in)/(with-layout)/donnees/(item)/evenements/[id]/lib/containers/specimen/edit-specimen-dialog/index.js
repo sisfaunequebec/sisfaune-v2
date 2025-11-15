@@ -17,7 +17,7 @@ import DiscoveryStateSelect from './discovery-state-select'
 import DeathCauseSelect from './death-cause-select'
 import EuthanasiaOrganisationSelect from './euthanasia-organisation-select'
 import EuthanasiaMethodSelect from './euthanasia-method-select'
-import PreservationMethodSelect from './preservation-method-select copy'
+import PreservationMethodSelect from './preservation-method-select'
 
 const formSchema = [
   { 
@@ -30,7 +30,7 @@ const formSchema = [
       { label: 'Numéro de permis de chasse\u00A0:', name: 'huntingPermitNumber' },
       { label: 'Marques d\'identification\u00A0:', name: 'identificationMarks', component: CommentInput },
       { label: 'État lors de la découverte\u00A0:', name: 'discoveryStateId', component: DiscoveryStateSelect },
-      { label: 'Cause de la mort\u00A0:', name: 'deathCauseId', component: DeathCauseSelect }
+      { label: 'Cause de la mort\u00A0:', name: 'deathCauseId', component: DeathCauseSelect, props: { clearable: false } }
     ]
   },
   { 
@@ -55,7 +55,7 @@ const formSchema = [
   { 
     title: 'Autres informations',
     fields: [
-      { label: 'Méthode de conservation\u00A0:', name: 'preservationMethod', component: PreservationMethodSelect },
+      { label: 'Méthode de conservation\u00A0:', name: 'preservationMethodId', component: PreservationMethodSelect, props: { clearable: false } },
       { label: 'Remarques\u00A0:', name: 'notes', component: CommentInput },
       { label: 'Mots-clés\u00A0:', name: 'keywords', component: CommentInput }
     ]

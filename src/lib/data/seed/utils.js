@@ -35,11 +35,15 @@ const dateOrNull = (str) => {
   return result
 }
 
-const stringToInteger = (str) => {
-  if (!str) return false
+const parseIntegerOrNull = (str) => {
+  // if (!str) return null
   // const trimmed = trimmedString(str)
-  const result = parseInt(str, 10)
-  return result
+  try {
+    const result = parseInt(str, 10)
+    return result
+  } catch (e) {
+    return null
+  }
 }
 
 module.exports = {
@@ -47,5 +51,5 @@ module.exports = {
   stringOrNull,
   stringToBool,
   dateOrNull,
-  stringToInteger
+  parseIntegerOrNull
 }

@@ -4,7 +4,7 @@ import prisma from '../database'
 const getPreservationMethods = async () => {
   const raw = await prisma.LutPreservationMethod.findMany({
     orderBy: {
-      name: 'asc'
+      id: 'asc'
     }
   })
   const items = raw.map(t => {

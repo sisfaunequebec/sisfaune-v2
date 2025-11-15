@@ -44,10 +44,11 @@ const SelectInput = ({ items = [], name, value, onChange, onBlur, disabled = fal
           <Select.Content>
             {collection.items.map(item => {
               const { label, value, description, isDisabled = false } = item
+              const itemLabel = label?.length ? label : '\u00A0'
               return (
                 <Select.Item item={item} key={value} isDisabled={isDisabled}>
                   <VStack gap={1} alignItems={'flex-start'} lineHeight={1.2}>
-                    <Select.ItemText>{label}</Select.ItemText>
+                    <Select.ItemText>{itemLabel}</Select.ItemText>
                     { description && <Flex as={'span'} fontSize={'sm'} color={'gray.600'} truncate>
                       {description}
                     </Flex> }
