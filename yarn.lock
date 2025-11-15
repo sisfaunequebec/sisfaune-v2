@@ -1213,6 +1213,18 @@
     "@jridgewell/resolve-uri" "^3.1.0"
     "@jridgewell/sourcemap-codec" "^1.4.14"
 
+"@netlify/functions@^5.1.0":
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/@netlify/functions/-/functions-5.1.0.tgz#c11159b4eae3b91854bf96359717f4d708c1e320"
+  integrity sha512-LZtiQtf/QzPHIeNDZuIBxx04kmU7lCipWqZ26ejX7mYSB3yj2wvpZfF49kD8B8FoKTydSvgFmBpIcCO5FvpEXA==
+  dependencies:
+    "@netlify/types" "2.2.0"
+
+"@netlify/types@2.2.0":
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/@netlify/types/-/types-2.2.0.tgz#ea9ee1001c944fe9543161cccd8876e85d2a4c06"
+  integrity sha512-XOWlZ2wPpdRKkAOcQbjIf/Qz7L4RjcSVINVNQ9p3F6U8V6KSEOsB3fPrc6Ly8EOeJioHUepRPuzHzJE/7V5EsA==
+
 "@next/env@15.0.2":
   version "15.0.2"
   resolved "https://registry.yarnpkg.com/@next/env/-/env-15.0.2.tgz#4e921af3faf8a16c6be98ec6a81a32a40050a8b7"
