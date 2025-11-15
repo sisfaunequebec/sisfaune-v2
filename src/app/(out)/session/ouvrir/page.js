@@ -9,7 +9,7 @@ const OuvrirSession = async () => {
   const session = await auth()
 
   if (session) {
-    // return redirect('/donnees/evenements')
+    return redirect('/donnees/evenements')
   }
 
   return (
