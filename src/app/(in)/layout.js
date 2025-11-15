@@ -12,7 +12,7 @@ const Layout = async ({ children }) => {
   const session = await auth()
 
   if (!session) {
-    // return redirect('/session/ouvrir')
+    return redirect('/session/ouvrir')
   }
 
   return (

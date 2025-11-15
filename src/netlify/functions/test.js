@@ -6,5 +6,5 @@ const handler = async (req) => {
 export default handler
 
 export const config = {
-    schedule: "* * * * *"
+    schedule: "*0 * * * *"
 }
