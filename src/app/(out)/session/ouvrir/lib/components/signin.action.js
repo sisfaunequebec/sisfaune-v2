@@ -11,7 +11,7 @@ const signAction = async (formData) => {
     const { errors } = error
     return { errors }
   }
-  redirect('/donnees/evenements')
+  // redirect('/donnees/evenements')
 }
 
 export default signAction
