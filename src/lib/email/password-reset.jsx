@@ -17,7 +17,7 @@ import {
 
 } from '@react-email/components'
 
-const baseUrl = process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'http://localhost:4501/'
+const baseUrl = process.env.URL ? `https://${process.env.URL}` : 'http://localhost:4501/'
 
 export const ResetPasswordEmail = ({ username, password }) => (
   <Html>
