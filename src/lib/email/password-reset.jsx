@@ -44,6 +44,7 @@ export const ResetPasswordEmail = ({ username, password }) => (
             <Hr />
             <Text className={'text-[16px]'}>
               <strong>SIS-Faune</strong><br />
+              <p>Test: `{baseUrl}`</p>
               <Link href={'https://sisfaunequebec.ca'}>sisfaunequebec.ca</Link>
             </Text>
           </Section>

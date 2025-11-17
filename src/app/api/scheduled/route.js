@@ -10,10 +10,12 @@ const GET = async (request) => {
     return Response.json({ status: 'error', error: ftpResult.error })
   }
 
-  const data = await readCsv(tempFile)
-  const results = await insertData(data)
+  const data = await readCsv(ftpResult.file)
 
-  return Response.json({ status: 'ok', results })
+  const insertResult = await insertData(data)
+  console.debug(insertResult)
+
+  return Response.json({ status: 'ok', insertResult })
 }
 
 export {

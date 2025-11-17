@@ -1,4 +1,3 @@
-
 import { Prisma } from '@prisma/client'
 
 const isNil = require('lodash.isnil')
@@ -6,6 +5,15 @@ const isNil = require('lodash.isnil')
 import orm from '@/lib/data/database'
 
 import getToday from './get-today'
+
+import {
+  dropTempTableQuery,
+  createTempTableQuery,
+  getInsertQuery,
+  selectFromTempTableQuery
+} from './queries'
+
+const TEMP_TABLE_NAME = 'mapapbulkinsert'
 
 const SPECIES_MAP = {
   1: 777, // raton laveur 
@@ -35,7 +43,6 @@ const insertData = async (data) => {
 
   try {
     const statuses = await orm.LutEventStatus.findMany() // mssql.query`SELECT * FROM lut_evenement_statut;`
-    // console.debug(statuses)
 
     const statusesByCode = statuses.reduce((acc, s) => {
       const { code_mapaq } = s
@@ -45,7 +52,6 @@ const insertData = async (data) => {
 
     const adminUser = await orm.User.findFirst({ where: { username: 'admin' } }) // mssql.query`SELECT * FROM aspnet_users WHERE username = 'Admin';`
     const { id: adminUserId } = adminUser
-    // console.debug(adminUserId)
 
     const dataToInsert = data.map(r => {
       const { pk, noMapaq, statut, dateCreation, dateDecouverte, latitude, longitude, identAnimal } = r
@@ -78,89 +84,16 @@ const insertData = async (data) => {
       }
     })
 
-    const testToInsert = dataToInsert.map(d => {
-      const { sourcePk } = d
-      return {
-        sourcePk
-      }
-    })
+    // console.debug('here')
 
-    // Construct the values clause for the INSERT statement
-    const values = Prisma.join(dataToInsert.map(d => {
-      console.debug(d)
-      return Prisma.sql`(${Prisma.join(Object.values(d))})`
-    }))
-
-  //   ${Prisma.join(
-  //   testArr.map((row) => Prisma.sql`(${Prisma.join(row)})`)
-  // )}
-
-    console.debug(values)
-
-    const [a, b, inserted, selected] = await orm.$transaction([
-      orm.$executeRaw`DROP TABLE IF EXISTS my_temp_table;`,
-      orm.$executeRaw`
-        CREATE TEMPORARY TABLE my_temp_table (
-          sourcePk INT NOT NULL,
-          source VARCHAR(50),
-          mapaqId VARCHAR(50),
-          statusId INT NOT NULL,
-          reportedAt TEXT,
-          discoveredAt TEXT,
-          reportOriginId INT NOT NULL,
-          programId INT NOT NULL,
-          observations TEXT,
-          latitude NUMERIC(18, 6),
-          longitude NUMERIC(18, 6),
-          affectedSpecie1Id INT,
-          affectedSpecie1AliveCount INT,
-          affectedSpecie1UnhealtyCount INT,
-          affectedSpecie1DeadCount INT,
-          createdById TEXT
-        );
-      `,
-      orm.$executeRaw`
-        INSERT INTO my_temp_table (
-          sourcePk,
-          source,
-          mapaqId,
-          statusId,
-          reportedAt,
-          discoveredAt,
-          reportOriginId,
-          programId,
-          observations,
-          latitude,
-          longitude,
-          affectedSpecie1Id,
-          affectedSpecie1AliveCount,
-          affectedSpecie1UnhealtyCount,
-          affectedSpecie1DeadCount,
-          createdById
-        ) VALUES ${values}
-      `,
-      orm.$queryRaw`SELECT 
-        sourcePk,
-        source,
-        mapaqId,
-        statusId,
-        reportedAt,
-        discoveredAt,
-        reportOriginId,
-        programId,
-        observations,
-        latitude,
-        longitude,
-        affectedSpecie1Id,
-        affectedSpecie1AliveCount,
-        affectedSpecie1UnhealtyCount,
-        affectedSpecie1DeadCount,
-        createdById
-      FROM my_temp_table;`,
+    const results = await orm.$transaction([
+      dropTempTableQuery,
+      createTempTableQuery,
+      getInsertQuery(dataToInsert),
+      selectFromTempTableQuery
     ])
 
-   
-
+    // console.debug('results', results)
 
     // transaction = await new mssql.Transaction()
     // await transaction.begin()
@@ -225,19 +158,18 @@ const insertData = async (data) => {
     // await transaction.commit()
     // await conn.close()
 
-    return inserted
+    return {
+      data: results,
+      error: null
+    }
+
   } catch (err) {
-    return err
-    console.error(err)
+    console.error('Insert data error :', err)
 
-    // await transaction.rollback()
-    // await conn.close()
-
-    const { message } = err
-
-    const exception = new Error('InsertDataException')
-    exception.detail = message
-    return  exception
+    return {
+      data: null,
+      error: err
+    }
   }
 
 }

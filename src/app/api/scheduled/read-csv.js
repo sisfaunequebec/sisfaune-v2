@@ -85,6 +85,7 @@ const readCsv = (file) => {
         if (obj) data.push(obj)
       })
       .on('end', () => {
+        console.debug(`Done...`)
         resolve(data)
       })
   })

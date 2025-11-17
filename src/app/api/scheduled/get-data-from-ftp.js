@@ -24,7 +24,7 @@ const getDataFromFtp = async () => {
 
   try {
     // Download CSV file from FTP...
-    const today = getToday()
+    const today = '20251116' // getToday()
 
     const sourceFileName = `RAGE_REPONSES_V_VOLET_4_${today}.csv`
 
@@ -51,7 +51,6 @@ const getDataFromFtp = async () => {
       file: tempFile,
       error: null
     }
-
   } catch(err) {
     console.error(err)
 
@@ -60,11 +59,10 @@ const getDataFromFtp = async () => {
     const exception = new Error('GetDataFromFtpException')
     exception.detail = message
 
-   return {
+    return {
       file: null,
       error: exception
     }
-    // throw exception
   } finally {
     fromFtpClient.close()
   }
