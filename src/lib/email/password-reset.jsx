@@ -17,7 +17,7 @@ import {
 
 } from '@react-email/components'
 
-const baseUrl = process.env.URL ? `https://${process.env.URL}` : 'http://localhost:4501/'
+const baseUrl = process.env.URL
 
 export const ResetPasswordEmail = ({ username, password }) => (
   <Html>
@@ -44,7 +44,6 @@ export const ResetPasswordEmail = ({ username, password }) => (
             <Hr />
             <Text className={'text-[16px]'}>
               <strong>SIS-Faune</strong><br />
-              <p>Test: `{baseUrl}`</p>
               <Link href={'https://sisfaunequebec.ca'}>sisfaunequebec.ca</Link>
             </Text>
           </Section>
