@@ -8,9 +8,13 @@ import getToday from './get-today'
 
 import {
   dropTempTableQuery,
+  dropInsertTableQuery,
   createTempTableQuery,
-  getInsertQuery,
-  selectFromTempTableQuery
+  createInsertTableQuery,
+  getLoadTempQuery,
+  intermediateQuery,
+  insertQuery,
+  updateLocationQuery
 } from './queries'
 
 const TEMP_TABLE_NAME = 'mapapbulkinsert'
@@ -75,7 +79,7 @@ const insertData = async (data) => {
         observations: [comportement, comportement2, commentaires, commentaires2, raison].filter(Boolean).join(' // '),
         latitude,
         longitude,
-        // idMuni: null, // on laisse tomber le code de municipalité du MAPAQ (avant fusions)  
+        idMuni: null, // on laisse tomber le code de municipalité du MAPAQ (avant fusions)  
         affectedSpecie1Id: affect1Espece,
         affectedSpecie1AliveCount: getAffect1Vivant(r), // (animalMort === 1 && nuisible === 1) ? nbreAnimal : null,
         affectedSpecie1UnhealtyCount: getAffect1Malade(r), // (animalMort === 1 && isNil(nuisible)) ? nbreAnimal : null,
@@ -84,79 +88,24 @@ const insertData = async (data) => {
       }
     })
 
-    // console.debug('here')
-
     const results = await orm.$transaction([
+      // drop temp tables
       dropTempTableQuery,
+      dropInsertTableQuery,
+      // recreate temp tables
       createTempTableQuery,
-      getInsertQuery(dataToInsert),
-      selectFromTempTableQuery
+      createInsertTableQuery,
+      // bulk load from csv
+      getLoadTempQuery(dataToInsert),
+      // filter out existing rows
+      intermediateQuery,
+      // insert
+      insertQuery,
+      // update location coordinates
+      updateLocationQuery
     ])
 
-    // console.debug('results', results)
-
-    // transaction = await new mssql.Transaction()
-    // await transaction.begin()
-
-    // // Create temporary table...
-
-    // const table = await new mssql.Table('#mapaqbulkinsert')
-    // table.create = true
-
-    // table.columns.add('pk_source', mssql.Int, { nullable: false })
-    // table.columns.add('source', mssql.NVarChar(50), { nullable: true })
-    // table.columns.add('no_mapaq', mssql.NVarChar(50), { nullable: true })
-    // table.columns.add('id_statut', mssql.TinyInt, { nullable: false })
-    // table.columns.add('date_signalement', mssql.SmallDateTime, { nullable: true })
-    // table.columns.add('date_decouverte', mssql.SmallDateTime, { nullable: true })
-    // table.columns.add('id_provenance_signalement', mssql.TinyInt, { nullable: false })
-    // table.columns.add('id_programme', mssql.TinyInt, { nullable: false })
-    // table.columns.add('observations', mssql.NVarChar(mssql.MAX), { nullable: true })
-    // table.columns.add('latitude', mssql.Numeric(18, 6), { nullable: true })
-    // table.columns.add('longitude', mssql.Numeric(18, 6), { nullable: true })
-    // table.columns.add('id_muni', mssql.NVarChar(50), { nullable: true })
-    // table.columns.add('affect1_espece', mssql.SmallInt, { nullable: true })
-    // table.columns.add('affect1_vivant', mssql.SmallInt, { nullable: true })
-    // table.columns.add('affect1_malade', mssql.SmallInt, { nullable: true })
-    // table.columns.add('affect1_mort', mssql.SmallInt, { nullable: true })
-    // table.columns.add('meta_creation_par', mssql.UniqueIdentifier, { nullable: true })
-
-    // // Insert into temporary table...
-
-    // dataToInsert.forEach(r => {
-    //   const { 
-    //     pkSource, source, noMapaq, idStatut, dateSignalement, dateDecouverte, 
-    //     idProvenanceSignalement, idProgramme, observations, latitude, longitude,
-    //     idMuni, affect1Espece, affect1Vivant, affect1Malade, affect1Mort, metaCreationPar
-    //   } = r
-    //   table.rows.add(pkSource, source, noMapaq, idStatut, dateSignalement, dateDecouverte, 
-    //     idProvenanceSignalement, idProgramme, observations, latitude, longitude,
-    //     idMuni, affect1Espece, affect1Vivant, affect1Malade, affect1Mort, metaCreationPar
-    //   )
-    // })
-
-    // const insertRequest = await new mssql.Request(transaction)
-    // await insertRequest.bulk(table)
-
-    // // Insert into events table and update
-    // // skipping records already present
-
-    // const updateRequest = await new mssql.Request(transaction)
-    // const updateResult = await updateRequest.query(
-    //   `
-    //   DECLARE @inserted TABLE (pk_source INT, id_evenement INT);
-    //   INSERT INTO dbo.evenement (pk_source, source, no_mapaq, id_statut, date_signalement, date_decouverte, id_provenance_signalement, id_programme, observations, affect1_espece, affect1_vivant, affect1_malade, affect1_mort, id_soumissionnaire, meta_creation_par) OUTPUT inserted.pk_source, inserted.id_evenement INTO @inserted SELECT pk_source, source, no_mapaq, id_statut, date_signalement, date_decouverte, id_provenance_signalement, id_programme, observations, affect1_espece, affect1_vivant, affect1_malade, affect1_mort, meta_creation_par AS id_soumissionnaire, meta_creation_par FROM #mapaqbulkinsert WHERE NOT EXISTS (SELECT no_mapaq FROM evenement WHERE no_mapaq = #mapaqbulkinsert.no_mapaq);
-    //   UPDATE dbo.localisation SET latitude = bk.latitude, longitude = bk.longitude, id_muni = bk.id_muni FROM dbo.localisation l INNER JOIN @inserted i ON l.id_evenement = i.id_evenement INNER JOIN #mapaqbulkinsert bk ON (i.pk_source = bk.pk_source);
-    //   `
-    // )
-
-    // const { rowsAffected } = updateResult
-    // const [ insertedRows, ...rest ] = rowsAffected
-
-    // // console.debug(updateResult)
-
-    // await transaction.commit()
-    // await conn.close()
+    // throw new Error('shit')
 
     return {
       data: results,
@@ -164,7 +113,7 @@ const insertData = async (data) => {
     }
 
   } catch (err) {
-    console.error('Insert data error :', err)
+    // console.error('Insert data error :', err)
 
     return {
       data: null,

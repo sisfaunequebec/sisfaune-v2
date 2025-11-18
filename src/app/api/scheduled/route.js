@@ -13,9 +13,18 @@ const GET = async (request) => {
   const data = await readCsv(ftpResult.file)
 
   const insertResult = await insertData(data)
-  console.debug(insertResult)
 
-  return Response.json({ status: 'ok', insertResult })
+  if (insertResult.error) {
+    return Response.json({ status: 'error', error: insertResult.error })
+    // send error email
+  }
+
+  console.debug('insertResult', insertResult)
+  const insertedRowCount = insertResult.data[5]
+
+  // send success email
+
+  return Response.json({ status: 'ok', insertedRowCount })
 }
 
 export {

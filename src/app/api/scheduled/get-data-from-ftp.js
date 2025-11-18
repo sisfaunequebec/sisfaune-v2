@@ -24,7 +24,7 @@ const getDataFromFtp = async () => {
 
   try {
     // Download CSV file from FTP...
-    const today = '20251116' // getToday()
+    const today = '20251117' // getToday()
 
     const sourceFileName = `RAGE_REPONSES_V_VOLET_4_${today}.csv`
 
