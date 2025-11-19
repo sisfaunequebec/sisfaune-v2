@@ -20,7 +20,7 @@ import Group from './group'
 
 const FiltersContainer = ({ children }) => {
   return (
-    <Flex position='sticky' flex={2} h='calc(100vh - 162px)' overflowY='auto' top={154} p={3} px={6} alignItems='stretch' bg='blue.100' _dark={{ bg: 'blue.900' }} borderColor='blue.300' borderTopWidth={1} borderBottomWidth={1} hideBelow='md'>
+    <Flex position='sticky' flex={2} h='calc(100vh - 130px)' overflowY='auto' top={130} p={3} px={6} alignItems='stretch' bg='blue.100' _dark={{ bg: 'blue.900' }} borderColor='blue.300' borderTopWidth={1} borderBottomWidth={1} hideBelow='md'>
       {children}
     </Flex>
   )

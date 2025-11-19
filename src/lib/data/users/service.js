@@ -16,6 +16,8 @@ import getAuthUser from '@/lib/auth/get-user'
 import WelcomeEmail from '@/lib/email/welcome'
 import ResetPasswordEmail  from '@/lib/email/password-reset'
 
+const { RESEND_API_KEY } = process.env
+
 const SORT_MAP = {
   'nom_utilisateur': 'username',
   courriel: 'email',
@@ -168,7 +170,7 @@ const buildCreateUserPayload = async(userToCreate) => {
 
 const sendWelcomeEmail = async ({ email, firstName, username, password }) => {
   if (isProduction()) {
-    const resend = new Resend('re_2yfMGRwd_KLCB8QCGuyUKb9D7UnPoDtkR')
+    const resend = new Resend(RESEND_API_KEY)
     const { data, error } = await resend.emails.send({
       from: process.env.SENDING_NAME,
       to: [email],
@@ -199,7 +201,7 @@ const createUser = async (userToCreate) => {
 }
 
 const sendResetPasswordEmail = async ({ email, username, password }) => {
-  const resend = new Resend('re_2yfMGRwd_KLCB8QCGuyUKb9D7UnPoDtkR')
+  const resend = new Resend(RESEND_API_KEY)
   const { data, error } = await resend.emails.send({
     from: process.env.SENDING_NAME,
     to: [email],

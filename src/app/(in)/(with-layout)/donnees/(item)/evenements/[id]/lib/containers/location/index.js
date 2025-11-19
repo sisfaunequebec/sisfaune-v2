@@ -16,7 +16,7 @@ import {
 
 import { Trigger, Content } from '../../components/accordion-parts'
 
-import ResponsiveButton from '@/app/lib/components/responsive-button'
+// import ResponsiveButton from '@/app/lib/components/responsive-button'
 import CenteredMessage from '@/app/lib/components/centered-message'
 
 import EditLocationButton from './edit-location-button'
@@ -30,7 +30,7 @@ const StaticMap = ({ lat = 45, lng = -72, zoom }) => {
   const mapCenter = [lat, lng].join(', ')
 
   return (
-    <Flex w='100%' bg='gray.200' aspectRatio='3/2.3' ref={ref}>
+    <Flex w='100%' bg='gray.200' aspectRatio='4/3' ref={ref}>
       <StaticGoogleMap size={mapSize} apiKey={process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY} center={mapCenter} zoom={zoom}>
         <Marker location={mapCenter} />
       </StaticGoogleMap>
@@ -44,9 +44,9 @@ const MapField = ( { location  }) => {
   // const lng = -72
   return (
     <Stack direction={['column', 'row']} gap={4}>
-      <StaticMap zoom={8} lat={latitude} lng={longitude} />
       <StaticMap zoom={12} lat={latitude} lng={longitude} />
-      <StaticMap zoom={16} lat={latitude} lng={longitude} />
+      {/* <StaticMap zoom={14} lat={latitude} lng={longitude} /> */}
+      <StaticMap zoom={17} lat={latitude} lng={longitude} />
     </Stack>
   )
 }
