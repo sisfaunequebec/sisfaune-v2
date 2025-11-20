@@ -1,49 +1,57 @@
 const transform = (schema, data, context, direction = 'fromDB') => {
-  const transformed = Object.entries(data).reduce((acc, [key, entry]) => {
-    const transformerEntry = schema[key]
-    if (!transformerEntry) {
-      acc[key] = entry
-      return acc
-    }
-    const transformer = transformerEntry[direction]
+
+  const keysToRemoveFromData = Object.keys(schema)
+
+  const transformed = Object.entries(schema).reduce((acc, [key, entry]) => { 
+    const transformer = entry[direction]
+    const value = data[key]
     if (!transformer) {
-      acc[key] = entry
+      acc[key] = value
       return acc
     }
     if (typeof transformer === 'function') {
-      acc[key] = transformer(entry, context, direction)
+      const returned = transformer(value, data, context, direction)
+      if (returned && typeof returned === 'object' && 'values' in returned && Array.isArray(returned.values)) {
+        acc[key] = returned.values
+        if (returned.keysToRemove && Array.isArray(returned.keysToRemove)) {
+          keysToRemoveFromData.push(...returned.keysToRemove)
+        }
+      } else {
+        acc[key] = returned
+      }
+      acc[key] = transformer(value, data, context, direction)
     } else {
       acc[key] = transformer
     }
     return acc
   }, {})
 
-  // const keysToAdd = Object.entries(schema).filter(([key, _]) => { return !dataKeys.includes(key) }).reduce((acc, [key, entry]) => { acc[key] = entry; return acc; }, {})
-  // // console.debug(keysToAdd)
+  const dataFiltered = removeKeys(data, keysToRemoveFromData)
+  const combined = { ...dataFiltered, ...transformed }
 
-  // // Then add any entry in schema but not already in data
-  // const added = Object.entries(keysToAdd).reduce((acc, [key, entry]) => {
-  //   // console.debug(key)
-  //   const transformerEntry = entry
-  //   if (!transformerEntry) {
-  //     acc[key] = undefined
-  //     return acc
-  //   }
-  //   const transformer = transformerEntry[direction]
-  //   if (!transformer) {
-  //     acc[key] = undefined
-  //     return acc
-  //   }
-  //   if (typeof transformer === 'function') {
-  //     acc[key] = transformer(data, context, direction)
-  //   } else {
-  //     acc[key] = transformer
-  //   }
-  //   // console.debug(acc)
-  //   return acc
-  // }, {})
-
-  return transformed
+  return combined
 }
 
 export default transform
+
+// remove array of keys from an object
+export const removeKeys = (obj, keys) => {
+  const filtered = Object.entries(obj).reduce((acc, [key, value]) => {
+    if (!keys.includes(key)) {
+      acc[key] = value
+    }
+    return acc
+  }, {})
+  return filtered
+}
+
+// pick array of keys from an object
+export const pickKeys = (obj, keys) => {
+  const picked = Object.entries(obj).reduce((acc, [key, value]) => {
+    if (keys.includes(key)) {
+      acc[key] = value
+    }
+    return acc
+  }, {})
+  return picked
+}

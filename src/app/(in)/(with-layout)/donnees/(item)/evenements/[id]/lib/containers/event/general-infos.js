@@ -8,6 +8,7 @@ import { Trigger, Content } from '../../components/accordion-parts'
 
 import Fields from '@/app/lib/components/display/fields'
 
+import TextDisplay from '@/app/lib/components/display/base/text'
 import SelectDisplay from '@/app/lib/components/display/base/select'
 import NumberDisplay from '@/app/lib/components/display/base/number'
 import DateDisplay from '@/app/lib/components/display/base/date'
@@ -16,6 +17,21 @@ import CommentDisplay from '@/app/lib/components/display/base/comment'
 import UnimplementedDisplay from '@/app/lib/components/display/base/unimplemented'
 
 import EditGeneralInfosButton from './edit-general-infos-button'
+
+
+const AffectedSpeciesDisplay = ({ value }) => {
+  return (
+    <TextDisplay value={'Espèces affichées ici selon une future implémentation'} color={'red'} />
+  )
+}
+
+const DiscovererDisplay = ({ value }) => {
+  // TODO : manage related to event status (message if not applicable/)
+  // L'événement est terminé : les informations sur le découvreur ne sont plus disponibles.
+  return (
+    <TextDisplay value={'À développer'} color={'red'} />
+  )
+}
 
 const CollaboratorDisplay = ({ value }) => {
   let text = null
@@ -71,7 +87,7 @@ const schema = [
     title: 'Personnes impliquées',
     fields: [
       { label: 'Soumis par\u00A0:', name: 'submitter', component: CollaboratorDisplay },
-      { label: 'Découvert par\u00A0:', name: 'discoveredBy', component: UnimplementedDisplay },
+      { label: 'Découvert par\u00A0:', name: 'discoveredBy', component: DiscovererDisplay },
       { label: 'Récolté par (contractuel)\u00A0:', name: 'collaborator' , component: SelectDisplay }
     ]
   },
@@ -83,7 +99,7 @@ const schema = [
       { label: 'Contacts possibles\u00A0:', name: 'toto' , component: UnimplementedDisplay },
       { label: 'Type d\'habitat\u00A0:', name: 'habitatType', component: SelectDisplay },
       { label: 'Température\u00A0:', name: 'temperature', component: NumberDisplay, props: { precision: 1, suffix: '(en celsius)' } },
-      { label: 'Individus affectés, par espèce\u00A0:', name: 'titi', component: UnimplementedDisplay },
+      { label: 'Individus affectés, par espèce\u00A0:', name: 'titi', component: AffectedSpeciesDisplay },
       { label: 'Observations sur le terrain\u00A0:', name: 'observations', component: CommentDisplay },
       { label: 'Commentaires généraux\u00A0:', name: 'comments', component: CommentDisplay },
       { label: 'Mots-clés\u00A0:', name: 'keywords', component: CommentDisplay },

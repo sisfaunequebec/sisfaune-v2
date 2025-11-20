@@ -12,7 +12,7 @@ const schema = {
   locality: { fromDB: (locality) => { return { name: locality?.name, province: locality?.province }} },
 }
 
-const locationTransformer = (location, context, direction = 'fromDB') => {
+const locationTransformer = (location, data, context, direction = 'fromDB') => {
   const transformed = transform(schema, location, context, direction) 
   return transformed
 }
