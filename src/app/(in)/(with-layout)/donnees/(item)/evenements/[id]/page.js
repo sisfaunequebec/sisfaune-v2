@@ -42,7 +42,8 @@ const Evenement = async ({ params }) => {
     )
   }
 
-  const { programId } = event
+  const { program } = event
+  const { id: programId } = program
 
   const canViewEvent = userCanViewEventSection(user, programId)
 

@@ -2,7 +2,7 @@
 import orm from '../database'
 
 const getReportOrigins = async ({ activeOnly = true }) => {
-  const raw = await orm.LutReportOrigin.findMany({
+  const origins = await orm.LutReportOrigin.findMany({
     where: {
       isActive: activeOnly ? true : undefined
     },
@@ -10,15 +10,11 @@ const getReportOrigins = async ({ activeOnly = true }) => {
       name: 'asc'
     }
   })
-  const items = raw.map(t => {
-    const { id: value, name: label, isActive } = t
-    return {
-      value,
-      label,
-      isActive
-    }
-  })
-  return items
+  // const items = raw.map(t => {
+  //   const { id: value, name: label, isActive } = t
+  //   return t
+  // })
+  return origins
 }
 
 export default getReportOrigins

@@ -12,7 +12,8 @@ import getUser from '@/lib/auth/get-user'
 
 import { canUserViewProgram, canUserDeleteEvent, canUserSubmitInProgram, filterViewablePrograms, userCanViewAnalysisSection, userCanViewSpecimenSection } from '@/lib/auth/acl'
 
-import { eventTransformer } from '../transformers/event'
+import fromDbEventTransformer from '../transformers/from-db/event'
+import toDbEventTransformer from '../transformers/to-db/event'
 
 const SORT_MAP = {
   date_signalement: 'reportedAt',
@@ -270,6 +271,11 @@ const getEvent = async (id) => {
             locality: true
           }
         },
+        affectedSpecie1: true,
+        affectedSpecie2: true,
+        affectedSpecie3: true, 
+        affectedSpecie4: true,
+        affectedSpecie5: true,
         labResponsible: true,
         submitter: true,
         collaborator: true,
@@ -307,7 +313,7 @@ const getEvent = async (id) => {
       return null
     }
   
-    const transformed = eventTransformer(event, user)
+    const transformed = fromDbEventTransformer(event, { user })
     return JSON.parse(JSON.stringify(transformed))
   } catch (e) {
     console.warn(e)
@@ -471,7 +477,8 @@ const updateGeneralInfos = async (eventId, data) => {
 
   const { id, ...rest } = data
 
-  const transformed = eventTransformer(rest, { user }, 'toDB')
+  const transformed = toDbEventTransformer(rest, { user })
+  console.debug('updateGeneralInfos transformed data', transformed)
 
   const updated = await orm.event.update({
     where: {

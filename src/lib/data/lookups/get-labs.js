@@ -8,14 +8,14 @@ const getLabs = async () => {
       isActive: true
     }
   })
-  const types = typesRaw.map(t => {
-    const { id: value, name: label } = t
-    return {
-      value,
-      label
-    }
-  })
-  return orderBy(types, 'label')
+  // const types = typesRaw.map(t => {
+  //   const { id: value, name: label } = t
+  //   return {
+  //     value,
+  //     label
+  //   }
+  // })
+return orderBy(typesRaw, 'name')
 }
 
 export default getLabs

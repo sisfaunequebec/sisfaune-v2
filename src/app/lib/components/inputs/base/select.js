@@ -1,33 +1,41 @@
 import { useMemo, useCallback } from 'react'
 
 import { Flex, VStack, Select, createListCollection, Portal } from '@chakra-ui/react'
+// import { imei } from 'valibot'
 
-const SelectInput = ({ items = [], name, value, onChange, onBlur, disabled = false, clearable = true, contentRef }) => {
+const SelectInput = ({ items = [], valueKey = 'value', labelKey = 'label', name, value, onChange, onBlur, disabled = false, clearable = true, contentRef }) => {
   const collection = useMemo(() => {
     return createListCollection({
-      items
+      items: items.map(item => ({
+        value: item[valueKey],
+        label: item[labelKey]
+      }))
     })
-  }, [items])
+  }, [items, valueKey, labelKey])
 
   const handleValueChange = useCallback((e) => {
     const { value } = e
-    onChange(value.length ? value[0] : null)
-  }, [onChange])
+    //  console.debug('SelectInput', { name, value })
+    const selectedItem = items.find(item => item[valueKey] === value[0])
+    onChange(selectedItem ? { [valueKey]: value[0], [labelKey]: selectedItem ? selectedItem[labelKey] : null } : { [valueKey]: null })
+  }, [onChange, items, valueKey, labelKey])
 
   const hasValue = value !== undefined && value !== null
   const isDisabled = disabled || collection.items.length === 0
   const showClearButton = clearable && hasValue && !disabled
 
+ 
+
   return (
     <Select.Root 
       collection={collection}
-      value={[value]}
+      value={[value ? value[valueKey] : null]}
       disabled={isDisabled}
       onValueChange={handleValueChange}
       onInteractOutside={onBlur}
       size={'sm'}
       positioning={{ sameWidth: true }}
-      deselectable
+      // deselectable
     >
       <Select.HiddenSelect />
       <Select.Control >

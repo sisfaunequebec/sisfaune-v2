@@ -25,6 +25,7 @@ const getResolver = (type, schema) => {
 
 const BaseDialog = ({ title, message, size, isAlert = false, schema, schemaType = 'zod', watches = [], defaultValues, onClose, onSubmit, submitBtnLabel = 'OK', children }) => {
   const rootSize = useBreakpointValue({ base: 'cover', md: size || (isAlert ? 'sm' : 'lg') })
+  const placement = useBreakpointValue({ base: 'bottom', md: 'center' }) 
   const motion = useBreakpointValue({ base: 'scale', md: 'slide-in-bottom' })
 
   const resolver = getResolver(schemaType, schema)
@@ -45,36 +46,17 @@ const BaseDialog = ({ title, message, size, isAlert = false, schema, schemaType 
   }, {})
 
   const handleSubmitAction = useCallback(async data => {
-    // console.debug('here')
     try {
-      // console.debug('try')
       if (onSubmit) {
         const result = await onSubmit(data)
-        // console.debug('onSubmit', result)
-        // const { payload } = result
         onClose(result)
-        // if (errors) {
-        //   Object.entries(errors).forEach(([key, value]) => {
-        //     console.debug(key, value)
-        //     setError(key, { message: value })
-        //   })
-        // } else {
-        //   onClose(false)
-        // }
       } else {
         onClose(false)
       }
     } catch (e) {
-      console.debug(e)
-      // console.debug('here', e.errors)
-      // Object.entries(errors).forEach(([key, value]) => {
-        // console.debug(key, value)
-        // setError('username', { message: 'shit' })
-      // })
+      console.warn(e)
     }
   }, [onClose, onSubmit, clearErrors, setError, clearErrors])
-
-  // const { isSubmitting } = formState
 
   const contentRef = useRef(null)
 
@@ -84,7 +66,7 @@ const BaseDialog = ({ title, message, size, isAlert = false, schema, schemaType 
   const hasErrors = Object.keys(errors)?.length > 0
 
   return (
-    <Dialog.Root lazyMount open size={rootSize} placement={'center'} motionPreset={motion} onOpenChange={e => onClose(false)} closeOnInteractOutside={closeOnInteractOutside} role={role}>
+    <Dialog.Root lazyMount open size={rootSize} placement={placement} motionPreset={motion} onOpenChange={e => onClose(false)} closeOnInteractOutside={closeOnInteractOutside} role={role}>
       <Portal>
         <Dialog.Backdrop />
         <Dialog.Positioner>
@@ -136,7 +118,6 @@ const Fields = ({ formSchema, contentRef, watched, data }) => {
                 const isDisabled = (typeof disabled === 'function') ? disabled(data, watched) : disabled
                 const isVisible = (typeof visible === 'function') ? visible(data, watched) : visible
                 const Component = component || TextInput
-                // console.debug(name, Component.displayName)
                 if (!isVisible) { return null }
                 return (
                   <ControlledField key={name} label={label} name={name} variant={'horizontal'}>

@@ -24,7 +24,7 @@ const Fields = ({ schema, data }) => {
                 if (!isVisible) { return null }
                 return (
                   <Field key={name} label={label} name={name} variant={'horizontal'}>
-                    <Component value={value} {...props} />
+                    <Component value={value} data={data} {...props} />
                   </Field>
                 )
               })}

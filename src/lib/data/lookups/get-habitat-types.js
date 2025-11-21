@@ -4,14 +4,14 @@ import prisma from '../database'
 
 const getHabitatTypes = async () => {
   const typesRaw = await prisma.LutHabitatType.findMany()
-  const types = typesRaw.map(t => {
-    const { id: value, name: label } = t
-    return {
-      value,
-      label
-    }
-  })
-  return orderBy(types, 'label')
+  // const types = typesRaw.map(t => {
+  //   const { id: value, name: label } = t
+  //   return {
+  //     value,
+  //     label
+  //   }
+  // })
+  return orderBy(typesRaw, 'name')
 }
 
 export default getHabitatTypes

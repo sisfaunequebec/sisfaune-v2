@@ -49,15 +49,14 @@ const Event = ({
 }) => {
   const [activePanels, setActivePanels] = useState(['general'])
 
-  console.debug(event)
+  console.debug('Event', event)
 
   const handleToggleActiveSection = useCallback(e => {
     setActivePanels(e.value)
   }, [])
 
   const { id: eventId } = event
-  const { specimens } = event
-
+  const { specimens = [] } = event
 
   const showEditEventSectionButton = canUserEditEventSection // activePanels.includes('general') && canUserEditEventSection
   const showEditLocationSectionButton = canUserEditEventSection // activePanels.includes('location') && canUserEditEventSection

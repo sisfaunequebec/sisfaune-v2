@@ -25,11 +25,21 @@ const AffectedSpeciesDisplay = ({ value }) => {
   )
 }
 
-const DiscovererDisplay = ({ value }) => {
+const DiscovererDisplay = ({ value, data }) => {
+  const { statusId } = data
+  const isClosed = statusId === 3
+  const message = isClosed ? 'L\'événement est terminé : les informations sur le découvreur ne sont plus disponibles.' : value
   // TODO : manage related to event status (message if not applicable/)
   // L'événement est terminé : les informations sur le découvreur ne sont plus disponibles.
   return (
-    <TextDisplay value={'À développer'} color={'red'} />
+    <CommentDisplay value={message} bg={isClosed && 'white'} />
+  )
+}
+
+const ContactDisplay = ({ value }) => {
+  const message = value ? 'Oui' : 'Non'
+  return (
+    <TextDisplay value={message} />
   )
 }
 
@@ -96,10 +106,11 @@ const schema = [
     fields: [
       { label: 'Date de la découverte\u00A0:', name: 'discoveredAt', component: DateDisplay },
       { label: 'Date de la récolte\u00A0:', name: 'collectedAt', component: DateDisplay },
-      { label: 'Contacts possibles\u00A0:', name: 'toto' , component: UnimplementedDisplay },
+      { label: 'Un humain a été en contact\u00A0?', name: 'hadHumanContact' , component: ContactDisplay },
+      { label: 'Un animal domestique a été en contact\u00A0?', name: 'hadAnimalContact' , component: ContactDisplay },
       { label: 'Type d\'habitat\u00A0:', name: 'habitatType', component: SelectDisplay },
       { label: 'Température\u00A0:', name: 'temperature', component: NumberDisplay, props: { precision: 1, suffix: '(en celsius)' } },
-      { label: 'Individus affectés, par espèce\u00A0:', name: 'titi', component: AffectedSpeciesDisplay },
+      { label: 'Individus affectés, par espèce\u00A0:', name: 'affectedSpecies', component: AffectedSpeciesDisplay },
       { label: 'Observations sur le terrain\u00A0:', name: 'observations', component: CommentDisplay },
       { label: 'Commentaires généraux\u00A0:', name: 'comments', component: CommentDisplay },
       { label: 'Mots-clés\u00A0:', name: 'keywords', component: CommentDisplay },

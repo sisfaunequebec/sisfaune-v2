@@ -3,16 +3,16 @@ import { cache } from 'react'
 
 import prisma from '../database'
 
-const getEventTypes = async () => {
+const getEventTypes = cache(async () => {
   const raw = await prisma.LutEventType.findMany()
   const types = raw.map(t => {
-    const { id: value, name: label } = t
+    const { id, name } = t
     return {
-      value,
-      label
+      id,
+      name
     }
   })
   return types
-}
+})
 
 export default getEventTypes

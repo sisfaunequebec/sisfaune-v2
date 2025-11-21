@@ -586,11 +586,10 @@ model Event {
   submitter User @relation("EventSubmitter", fields: [submitterId], references: [id], onDelete: Restrict, onUpdate: Restrict)
 
   // Discovery
-  // discovererId Int? @map(name: "id_decouvreur")
+  discovererId Int? @map(name: "id_decouvreur")
+  isDiscovererSameAsSubmitter Boolean @default(false) @map(name: "decouvreur_idem_soumissionnaire")
   // discoverer Discoverer? @relation(fields: [id], references: [eventId], onDelete: Restrict, onUpdate: Restrict)
   discoveredAt DateTime? @db.Date @map(name: "date_decouverte")
-
-  isDiscovererSameAsSubmitter Boolean @default(false) @map(name: "decouvreur_idem_soumissionnaire")
 
   reportedAt DateTime? @db.Date @map(name: "date_signalement")
   collectedAt DateTime? @db.Date @map(name: "date_recolte")

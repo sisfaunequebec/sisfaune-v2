@@ -16,7 +16,7 @@ const EventStatusSelect = (props) => {
     loadItems()
   }, [setItems])
 
-  return (<SelectInput items={items} {...props} />)
+  return (<SelectInput labelKey={'name'} valueKey={'id'} items={items} {...props} />)
 }
 
 export default EventStatusSelect

@@ -1,6 +1,8 @@
 'use client'
 import { useState, useEffect, useCallback } from 'react'
 
+import { Checkbox } from '@/app/lib/components/ui/checkbox'
+
 import updateGeneralInfos from '../update-general-infos.action'
 
 import getActivePrograms from '@/lib/data/lookups/event-programs'
@@ -23,7 +25,20 @@ import ShippingMethodSelect from './shipping-method-select'
 import LabSelect from './lab-select'
 import CollaboratorSelect from './collaborator-select'
 
-// import UnimplementedDisplay from '@/app/lib/components/display/base/unimplemented'
+import UnimplementedDisplay from '@/app/lib/components/display/base/unimplemented'
+
+const ContactSelect = (props) => {
+  const items = [
+    { id: 1, name: 'Oui' },
+    { id: 0, name: 'Non' }
+  ]
+  // console.debug('ContactSelect', props.value, props.value === true)
+  const handleChange = (selected) => {
+    console.debug('ContactSelect handleChange', selected)
+    props.onChange(selected.id === 1)
+  }
+  return (<SelectInput valueKey={'id'} labelKey={'name'} items={items} {...props} onChange={handleChange} value={{ id: (props.value === true ? 1 : 0) }} />)
+}
 
 const ProgramSelect = (props) => {
   const [items, setItems] = useState([])
@@ -36,7 +51,7 @@ const ProgramSelect = (props) => {
     loadItems()
   }, [setItems])
 
-  return (<SelectInput items={items} {...props} />)
+  return (<SelectInput valueKey={'id'} labelKey={'name'} items={items} {...props} />)
 }
 
 const formSchema = [
@@ -44,24 +59,24 @@ const formSchema = [
     title: 'Identification',
     fields: [
       { label: 'Numéro d\'événement\u00A0:', name: 'id', disabled: true },
-      { label: 'Type d\'événement\u00A0:', name: 'typeId', component: EventTypeSelect, disabled: true },
+      { label: 'Type d\'événement\u00A0:', name: 'type', component: EventTypeSelect, disabled: true },
       { label: 'Numéro d\'identification SILAB\u00A0:', name: 'silabId' },
       { label: 'Numéro d\'incident CQSAS\u00A0:', name: 'cqsasIncidentNumber' },
       { label: 'Numéro de pathologie\u00A0:', name: 'pathologyNumber' },
       { label: 'Date du signalement\u00A0:', name: 'reportedAt', component: DateInput },
       { label: 'Numéro centrale MAPAQ\u00A0:', name: 'mapaqId' },
-      { label: 'Programme\u00A0:', name: 'programId', component: ProgramSelect },
-      { label: 'Provenance du signalement\u00A0:', name: 'reportOriginId', component: ReportOriginSelect },
-      { label: 'Statut\u00A0:', name: 'statusId', component: EventStatusSelect, disabled: (data) => { const { statusId } = data; return statusId === 3 } },
-      { label: 'Date de fermeture du dossier\u00A0:', name: 'closedAt', component: DateInput, props: { clearable: false }, disabled: (data, watched) => { const { statusId } = watched; return statusId === 3 }, visible: (data, watched) => { const { closedAt } = data; const { statusId } = watched; return (statusId === 3 && closedAt) } },
+      { label: 'Programme\u00A0:', name: 'program', component: ProgramSelect },
+      { label: 'Provenance du signalement\u00A0:', name: 'reportOrigin', component: ReportOriginSelect },
+      { label: 'Statut\u00A0:', name: 'status', component: EventStatusSelect, disabled: (data) => { const { status } = data; const {id: statusId } = status; return statusId === 3 } },
+      { label: 'Date de fermeture du dossier\u00A0:', name: 'closedAt', component: DateInput, props: { clearable: false }, disabled: (data, watched) => { const { status } = watched; const { id: statusId } = status; return statusId === 3 }, visible: (data, watched) => { const { closedAt } = data; const { status } = watched; const { id: statusId } = status; return (statusId === 3 && closedAt) } },
     ]
   },
   { 
     title: 'Personnes impliquées',
     fields: [
-      // { label: 'Soumis par\u00A0:', name: 'submitter', component: UnimplementedDisplay },
-      // { label: 'Découvert par\u00A0:', name: 'discoveredBy', component: UnimplementedDisplay },
-      { label: 'Récolté par (contractuel)\u00A0:', name: 'collaboratorId', component: CollaboratorSelect }
+      { label: 'Soumis par\u00A0:', name: 'submitter', component: UnimplementedDisplay },
+      { label: 'Découvert par\u00A0:', name: 'discoveredBy', component: UnimplementedDisplay },
+      { label: 'Récolté par (contractuel)\u00A0:', name: 'collaborator', component: CollaboratorSelect }
     ]
   },
   { 
@@ -69,8 +84,10 @@ const formSchema = [
     fields: [
       { label: 'Date de la découverte\u00A0:', name: 'discoveredAt', component: DateInput, props: { clearable: true } },
       { label: 'Date de la récolte\u00A0:', name: 'collectedAt', component: DateInput, props: { clearable: true }  },
-      // { label: 'Contacts possibles\u00A0:', name: 'hadAnimalContact', component: UnimplementedDisplay  },
-      { label: 'Type d\'habitat\u00A0:', name: 'habitatTypeId', component: HabitatTypeSelect, props: { clearable: true } },
+      { label: 'Date de la récolte\u00A0:', name: 'collectedAt', component: DateInput, props: { clearable: true }  },
+      { label: 'Un humain a été en contact\u00A0?', name: 'hadHumanContact' , component: ContactSelect, props: { clearable: false } },
+      { label: 'Un animal domestique a été en contact\u00A0?', name: 'hadAnimalContact' , component: ContactSelect, props: { clearable: false } },
+      { label: 'Type d\'habitat\u00A0:', name: 'habitatType', component: HabitatTypeSelect, props: { clearable: true } },
       { label: 'Température\u00A0:', name: 'temperature', component: NumberInput, props: { precision: 1, suffix: '(en celsius)' } },
       // { label: 'Individus affectés, par espèce\u00A0:', name: 'affectedSpecie1Id', component: UnimplementedDisplay },
       { label: 'Observations sur le terrain\u00A0:', name: 'observations', component: CommentInput },
@@ -82,15 +99,16 @@ const formSchema = [
     title: 'Expédition des spécimens',
     fields: [
       { label: 'Spécimen(s) expédié(s) le\u00A0:', name: 'labShippedAt', component: DateInput, props: { clearable: true } },
-      { label: 'Méthode d\'expédition\u00A0:', name: 'labShippingMethodId', component: ShippingMethodSelect  },
+      { label: 'Méthode d\'expédition\u00A0:', name: 'labShippingMethod', component: ShippingMethodSelect  },
       { label: 'Numéro de connaissement\u00A0:', name: 'labShippingTrackingNumber'  },
-      { label: 'Laboratoire de destination\u00A0:', name: 'labId', component: LabSelect, props: { clearable: true }  }
+      { label: 'Laboratoire de destination\u00A0:', name: 'lab', component: LabSelect, props: { clearable: true }  }
     ]
   },
 ]
 
 const EditGeneralInfosDialog = ({ close, eventId, data }) => {
   const handleSubmit = useCallback(async (data) => {
+    console.debug('EditGeneralInfosDialog submit', data)
     await updateGeneralInfos(eventId, data)
     close()
   }, [close, eventId])
@@ -107,7 +125,7 @@ const EditGeneralInfosDialog = ({ close, eventId, data }) => {
   }, {})
 
   return (
-    <BaseDialog title={'Informations générales'} size={'lg'} onClose={close} onSubmit={handleSubmit} submitBtnLabel={'Sauvegarder'} schema={null} schemaType={'valibot'} defaultValues={defaultValues} watches={['statusId']}>
+    <BaseDialog title={'Informations générales'} size={'lg'} onClose={close} onSubmit={handleSubmit} submitBtnLabel={'Sauvegarder'} schema={null} schemaType={'valibot'} defaultValues={defaultValues} watches={['status']}>
       {(contentRef, watched) => {
         return (
           <Fields formSchema={formSchema} contentRef={contentRef} watched={watched} data={defaultValues} />

@@ -11,14 +11,13 @@ const EventTypeSelect = (props) => {
   useEffect(() => {
     const loadTypes = async () => {
       const result = await getEventTypes()
-      // console.debug(result)
       setTypes(result)
     }
     loadTypes()
   }, [setTypes])
 
   return (
-    <SelectInput items={types} {...props} />
+    <SelectInput valueKey={'id'} labelKey={'name'} items={types} {...props} />
   )
 }
 

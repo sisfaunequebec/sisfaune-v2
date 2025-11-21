@@ -17,7 +17,7 @@ const ShippingMethodSelect = (props) => {
   }, [setItems])
 
   return (
-    <SelectInput items={items} {...props} />
+    <SelectInput valueKey={'id'} labelKey={'name'} items={items} {...props} />
   )
 }
 

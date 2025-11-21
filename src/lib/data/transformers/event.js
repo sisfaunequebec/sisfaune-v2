@@ -4,7 +4,7 @@ import { dbDateToIso, isoDateToDb } from './utils'
 import transform from './transform'
 
 import { locationTransformer } from './location'
-import affectedSpeciesTransformer from './affected-species'
+import affectedSpeciesTransformer from './from-db/affected-species'
 
 const schema = {
   discoveredAt: { fromDB: dbDateToIso, toDB: isoDateToDb },
@@ -22,7 +22,7 @@ const schema = {
   // specimens: { fromDB: null },
 }
 
-const eventTransformer = (event, context, direction = 'fromDB') => {
+const eventTransformer = (event, context) => {
   const transformed = transform(schema, event, context, direction) 
   return transformed
 }

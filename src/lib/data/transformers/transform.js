@@ -1,35 +1,39 @@
-const transform = (schema, data, context, direction = 'fromDB') => {
+const transform = (schema, data, context) => {
 
-  const keysToRemoveFromData = Object.keys(schema)
+  // const keysToRemoveFromData = Object.keys(schema)
 
   const transformed = Object.entries(schema).reduce((acc, [key, entry]) => { 
-    const transformer = entry[direction]
-    const value = data[key]
+    const transformer = entry
+
     if (!transformer) {
-      acc[key] = value
+      acc[key] = data[key]
       return acc
     }
+
     if (typeof transformer === 'function') {
-      const returned = transformer(value, data, context, direction)
-      if (returned && typeof returned === 'object' && 'values' in returned && Array.isArray(returned.values)) {
-        acc[key] = returned.values
-        if (returned.keysToRemove && Array.isArray(returned.keysToRemove)) {
-          keysToRemoveFromData.push(...returned.keysToRemove)
-        }
-      } else {
-        acc[key] = returned
-      }
-      acc[key] = transformer(value, data, context, direction)
-    } else {
-      acc[key] = transformer
+      const returned = transformer(data, context)
+      acc[key] = returned
+      // if (returned && typeof returned === 'object' && 'values' in returned) {
+      //   console.debug('transformer with values for key', key, returned)
+      //   acc[key] = returned.values
+      //   if (returned.keysToRemove && Array.isArray(returned.keysToRemove)) {
+      //     keysToRemoveFromData.push(...returned.keysToRemove)
+      //   }
+      // } else {
+      //   acc[key] = returned
+      // }
+      return acc
     }
+    
     return acc
   }, {})
 
-  const dataFiltered = removeKeys(data, keysToRemoveFromData)
-  const combined = { ...dataFiltered, ...transformed }
+  // console.debug('transform result', transformed, keysToRemoveFromData)
+  // const dataFiltered = removeKeys(data, keysToRemoveFromData)
+  // const combined = { ...transformed }
+  // console.debug('transform result', transformed)
 
-  return combined
+  return transformed
 }
 
 export default transform
