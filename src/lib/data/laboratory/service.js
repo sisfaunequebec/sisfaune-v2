@@ -5,7 +5,8 @@ import orm from '../database'
 
 import getUser from '@/lib/auth/get-user'
 
-import { eventTransformer } from '../transformers/event'
+// import eventTransformer from '../transformers/to-db/event'
+import laboratoryTransformer from '../transformers/to-db/laboratory'
 
 const updateLaboratory = async (eventId, data) => {
   const user = await getUser()
@@ -14,7 +15,8 @@ const updateLaboratory = async (eventId, data) => {
     throw new Error()
   }
 
-  const transformed = eventTransformer(data, { user }, 'toDB')
+  const transformed = laboratoryTransformer(data, { user })
+  console.debug('transformed', eventId, transformed)
 
   await orm.event.update({
     where: {

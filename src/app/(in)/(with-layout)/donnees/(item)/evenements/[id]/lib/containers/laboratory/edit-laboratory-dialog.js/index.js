@@ -10,7 +10,7 @@ import Autocomplete from '../../../components/autocomplete'
 
 import editLaboratorySchema from './edit-laboratory.schema'
 
-const ReceivedByCombo = ({ value, onChange }) => {
+const ReceivedByCombo = ({ value, onChange, ...rest }) => {
   const handleLookup = useCallback(async (inputValue) => {
     const response = await fetch(`/api/lookup/lab-receivers?t=${inputValue}`)
     const data = await response.json()
@@ -24,11 +24,11 @@ const ReceivedByCombo = ({ value, onChange }) => {
   const labelKey = useCallback(item => [item?.label].join(' '), [])
 
   return (
-    <Autocomplete value={value} valueKey={'id'} labelKey={labelKey} onLookup={handleLookup} onRenderItem={handleRenderItem} onChange={onChange} allowCustomValue={true} />
+    <Autocomplete value={value} valueKey={'id'} labelKey={labelKey} onLookup={handleLookup} onRenderItem={handleRenderItem} onChange={onChange} allowCustomValue={true} {...rest} />
   )
 }
 
-const ResponsibleCombo = ({ value, onChange }) => {
+const ResponsibleCombo = ({ value, onChange, ...rest }) => {
   const handleLookup = useCallback(async (inputValue) => {
     const response = await fetch(`/api/lookup/lab-responsibles?t=${inputValue}`)
     const data = await response.json()
@@ -42,7 +42,7 @@ const ResponsibleCombo = ({ value, onChange }) => {
   const labelKey = useCallback(item => [item?.firstName, item?.lastName].join(' '), [])
 
   return (
-    <Autocomplete value={value} labelKey={labelKey} onLookup={handleLookup} onRenderItem={handleRenderItem} onChange={onChange} />
+    <Autocomplete value={value} labelKey={labelKey} onLookup={handleLookup} onRenderItem={handleRenderItem} onChange={onChange} {...rest} />
   )
 }
 
@@ -50,24 +50,16 @@ const formSchema = [
   { 
     title: null,
     fields: [
-      { label: 'Responsable du dossier\u00A0:', name: 'labResponsible', component: ResponsibleCombo },
-      { label: 'Spécimen(s) reçu(s) le\u00A0:', name: 'labReceivedAt', component: DateInput },
-      { label: 'Spécimen(s) reçu(s) par\u00A0:', name: 'labReceivedBy', component: ReceivedByCombo }
+      { label: 'Responsable du dossier\u00A0:', name: 'labResponsible', component: ResponsibleCombo, props: { placeholder: 'Taper pour rechercher une personne...' } },
+      { label: 'Spécimen(s) reçu(s) le\u00A0:', name: 'labReceivedAt', component: DateInput, props: { clearable: true } },
+      { label: 'Spécimen(s) reçu(s) par\u00A0:', name: 'labReceivedBy', component: ReceivedByCombo, props: { placeholder: 'Taper pour rechercher une personne...' } }
     ]
   }
 ]
 
 const EditLaboratoryDialog = ({ close, eventId, data }) => {
   const handleSubmit = useCallback(async (data) => {
-    const { labResponsible, labReceivedBy, ...rest } = data
-
-    const payload = {
-      ...rest,
-      labResponsibleId: labResponsible?.id ?? null,
-      labReceivedBy: labReceivedBy?.id ?? null
-    }
-
-    await updateLaboratoryAction(eventId, payload)
+    await updateLaboratoryAction(eventId, data)
     close()
   }, [close, eventId])
 

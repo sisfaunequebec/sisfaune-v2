@@ -41,6 +41,10 @@ const schema = {
 
   location: (event, context) => locationTransformer(event.location, context),
 
+  labReceivedAt: event => dbDateToIso(event.labReceivedAt),
+  labResponsible: null,
+  labReceivedBy: null,
+
   // analyses: { fromDB: null },
   specimens: null
 }

@@ -10,7 +10,9 @@ const HabitatTypeSelect = (props) => {
 
   useEffect(() => {
     const loadTypes = async () => {
-      const result = await getHabitatTypes()
+      // const result = await getHabitatTypes()
+      const res = await fetch('/api/lookup/habitat-types', { cache: 'force-cache', next: { tags: ['habitat-types'] } })
+      const result = await res.json()
       setItems(result)
     }
     loadTypes()

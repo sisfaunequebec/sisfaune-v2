@@ -10,7 +10,9 @@ const ReportOriginSelect = (props) => {
 
   useEffect(() => {
     const loadItems = async () => {
-      const result = await getReportOrigins({ activeOnly: true })
+      // const result = await getReportOrigins({ activeOnly: true })
+      const res = await fetch('/api/lookup/report-origins', { cache: 'force-cache', next: { tags: ['report-origins'] } })
+      const result = await res.json()
       setItems(result)
     }
     loadItems()

@@ -49,7 +49,7 @@ const getOrderByClause = (tri, direction) => {
     orderByClause.push({ id: 'desc' })
   }
 
-  console.debug(orderByClause)
+  // console.debug(orderByClause)
 
   return orderByClause
 }

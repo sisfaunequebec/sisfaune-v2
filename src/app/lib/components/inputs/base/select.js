@@ -20,7 +20,8 @@ const SelectInput = ({ items = [], valueKey = 'value', labelKey = 'label', name,
     onChange(selectedItem ? { [valueKey]: value[0], [labelKey]: selectedItem ? selectedItem[labelKey] : null } : { [valueKey]: null })
   }, [onChange, items, valueKey, labelKey])
 
-  const hasValue = value !== undefined && value !== null
+  // console.debug('SelectInput render', { name, value, disabled, collectionItemsLength: collection.items.length })
+  const hasValue = value !== undefined && value !== null && value[valueKey] !== undefined && value[valueKey] !== null
   const isDisabled = disabled || collection.items.length === 0
   const showClearButton = clearable && hasValue && !disabled
 

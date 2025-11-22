@@ -16,7 +16,7 @@ import { useAsync } from "react-use"
 
 const HILIGHTSTYLE = { bg: 'orange.200', px: 0.25 }
 
-const Autocomplete = ({ value, minChars = 2, valueKey = 'id', labelKey = 'name', allowCustomValue = false, hilite = true, onLookup, onChange, onRenderItem }) => {
+const Autocomplete = ({ value, minChars = 2, valueKey = 'id', labelKey = 'name', allowCustomValue = false, hilite = true, placeholder, onLookup, onChange, onRenderItem }) => {
   const [inputValue, setInputValue] = useState()
 
 
@@ -72,7 +72,7 @@ const Autocomplete = ({ value, minChars = 2, valueKey = 'id', labelKey = 'name',
   return (
     <Combobox.RootProvider value={combobox} size={'sm'}>
       <Combobox.Control>
-        <Combobox.Input />
+        <Combobox.Input placeholder={placeholder} />
         <Combobox.IndicatorGroup>
           <Combobox.ClearTrigger />
           <Combobox.Trigger />

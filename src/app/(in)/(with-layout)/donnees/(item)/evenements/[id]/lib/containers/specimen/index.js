@@ -66,7 +66,7 @@ const SpecimenSection = ({ specimen, canEdit = false }) => {
   const { id: specimenId, eventId, sequenceId, specie } = specimen
   const { name: specieName } = specie
 
-  console.debug(specimen)
+  // console.debug(specimen)
 
   return (
       <AccordionItem key={specimenId} value={specimenId}>

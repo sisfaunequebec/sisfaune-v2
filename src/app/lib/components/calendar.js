@@ -77,6 +77,9 @@ const Calendar = ({ value, minDate, onSelect }) => {
       <Button size={'xs'} variant={'subtle'} colorPalette={'green'} mt={1} {...dayButton({ $date: new Date() })}>
         Aujourd&apos;hui
       </Button>
+      <Button size={'xs'} variant={'subtle'} colorPalette={'white'} mt={1} onClick={() => onSelect(null)}>
+        Effacer
+      </Button>
     </VStack>
   )
 }

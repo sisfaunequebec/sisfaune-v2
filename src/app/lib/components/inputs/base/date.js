@@ -48,7 +48,7 @@ const DateInput = ({ value, onChange, minDate, clearable = false, disabled = fal
 
   return (
     <PopoverRoot modal lazyMount unmountOnExit open={open} onOpenChange={(e) => setOpen(e.open)} positioning={{ placement: 'bottom-start' }}>
-      <InputGroup startElement={<RxCalendar />} endElement={clearable && ClearButton} flex={1} size={size} >
+      <InputGroup startElement={<RxCalendar />} endElement={false && ClearButton} flex={1} size={size} >
         <PopoverTrigger asChild>
           <Input ref={inputRef} value={value ? isoUTCStringToFormat(value) : ''} disabled={disabled} variant={'outline'} flex={4} size={['lg', null, 'md']} bg='bg' cursor={disabled ? 'disabled' : 'pointer'} userSelect={'none'}_focus= {{ bg: 'blue.50' }} />
         </PopoverTrigger>

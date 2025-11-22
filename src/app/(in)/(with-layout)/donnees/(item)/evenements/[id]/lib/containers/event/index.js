@@ -49,7 +49,7 @@ const Event = ({
 }) => {
   const [activePanels, setActivePanels] = useState(['general'])
 
-  console.debug('Event', event)
+  // console.debug('Event', event)
 
   const handleToggleActiveSection = useCallback(e => {
     setActivePanels(e.value)

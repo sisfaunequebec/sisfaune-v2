@@ -1,7 +1,7 @@
 'use client'
 import { useEffect, useState } from 'react'
 
-import getEventStatuses from '@/lib/data/lookups/get-event-statuses'
+// import getEventStatuses from '@/lib/data/lookups/get-event-statuses'
 
 import SelectInput from '@/app/lib/components/inputs/base/select'
 
@@ -10,7 +10,8 @@ const EventStatusSelect = (props) => {
 
   useEffect(() => {
     const loadItems = async () => {
-      const result = await getEventStatuses()
+      const res = await fetch('/api/lookup/event-status', { cache: 'force-cache', next: { tags: ['event-status'] } })
+      const result = await res.json()
       setItems(result)
     }
     loadItems()

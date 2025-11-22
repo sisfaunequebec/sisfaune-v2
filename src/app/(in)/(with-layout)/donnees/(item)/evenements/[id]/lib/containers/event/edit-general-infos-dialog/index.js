@@ -34,7 +34,7 @@ const ContactSelect = (props) => {
   ]
   // console.debug('ContactSelect', props.value, props.value === true)
   const handleChange = (selected) => {
-    console.debug('ContactSelect handleChange', selected)
+    // console.debug('ContactSelect handleChange', selected)
     props.onChange(selected.id === 1)
   }
   return (<SelectInput valueKey={'id'} labelKey={'name'} items={items} {...props} onChange={handleChange} value={{ id: (props.value === true ? 1 : 0) }} />)
@@ -108,7 +108,7 @@ const formSchema = [
 
 const EditGeneralInfosDialog = ({ close, eventId, data }) => {
   const handleSubmit = useCallback(async (data) => {
-    console.debug('EditGeneralInfosDialog submit', data)
+    // console.debug('EditGeneralInfosDialog submit', data)
     await updateGeneralInfos(eventId, data)
     close()
   }, [close, eventId])
