@@ -64,6 +64,7 @@ const BaseDialog = ({ title, message, size, isAlert = false, schema, schemaType 
   const closeOnInteractOutside = !!isAlert
 
   const hasErrors = Object.keys(errors)?.length > 0
+  console.debug('BaseDialog.render', { title, isSubmitting, hasErrors, errors, watched })
 
   return (
     <Dialog.Root lazyMount open size={rootSize} placement={placement} motionPreset={motion} onOpenChange={e => onClose(false)} closeOnInteractOutside={closeOnInteractOutside} role={role}>
@@ -121,7 +122,7 @@ const Fields = ({ formSchema, contentRef, watched, data }) => {
                 if (!isVisible) { return null }
                 return (
                   <ControlledField key={name} label={label} name={name} variant={'horizontal'}>
-                    <Component contentRef={contentRef} disabled={isDisabled} {...props} />
+                    <Component contentRef={contentRef} disabled={isDisabled} data={data} {...props} />
                   </ControlledField>
                 )
               })}

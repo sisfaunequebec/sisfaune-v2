@@ -10,7 +10,7 @@ import { Fieldset, Input } from '@chakra-ui/react'
 import BaseDialog from '@/app/lib/components/dialogs/base'
 
 import ControlledField from '@/app/lib/components/controlled-field'
-import Autocomplete from '../../components/autocomplete'
+import Autocomplete from '../../../../../../../lib/components/autocomplete'
 
 import DiscoveryStateSelect from './discovery-state-select'
 

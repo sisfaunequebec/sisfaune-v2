@@ -15,7 +15,7 @@ model User {
   id String @id @default(dbgenerated("gen_random_uuid()"))
 
   username String @unique @map(name: "nom_utilisateur")
-  password String @map(name: "mot_de_passe")
+  password String @unique @map(name: "mot_de_passe")
 
   email String @unique @map(name: "adresse_courriel")
   emailVerified DateTime? @map(name: "meta_date_verification_courriel") @default(now())

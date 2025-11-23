@@ -5,8 +5,6 @@ import wait from '@/utils/wait'
 import { Fieldset, Input } from '@chakra-ui/react'
 
 import { DEFAULT_FORMAT } from '@/utils/dates'
-// import { isoDateToDb } from '@/lib/data/transformers/utils'
-import { eventTransformer } from '@/lib/data/transformers/event'
 
 import BaseDialog from '@/app/lib/components/dialogs/base'
 
@@ -17,22 +15,31 @@ import ProgramSelect from '@/app/lib/components/inputs/program-select'
 import EventStatusSelect from '@/app/lib/components/inputs/event-status-select'
 import EventTypeSelect from '@/app/lib/components/inputs/event-type-select'
 import ReportOriginSelect from '@/app/lib/components/inputs/report-origin-select'
+import { isoDateToDb } from '@/lib/data/transformers/utils'
 
 import addEventSchema from './add-event-schema'
 
 const defaultValues = {
-  typeId: 0,
-  programId: null,
-  reportOriginId: null,
-  statusId: 2,
+  type: { id: 0 },
+  program: null,
+  reportOrigin: null,
+  status: { id: 2 },
   silabId: null,
   reportedAt: DateTime.utc().toFormat(DEFAULT_FORMAT)
 }
 
 const AddEventDialog = ({ close, programs, onAdd }) => {
   const handleSubmit = async (data) => {
-    const transformed = eventTransformer(data, {}, 'toDB')
-    const added = await onAdd(transformed)
+    const { type, status, reportOrigin, program, reportedAt, ...rest } = data
+    const payload = {
+      typeId: type?.id ?? undefined,
+      programId: program?.id ?? null,
+      reportOriginId: reportOrigin?.id ?? null,
+      statusId: status?.id ?? null,
+      reportedAt: reportedAt ? isoDateToDb(reportedAt) : null,
+      ...rest
+    }
+    const added = await onAdd(payload)
     await wait(300)
     close(added)
   }
@@ -42,16 +49,16 @@ const AddEventDialog = ({ close, programs, onAdd }) => {
       {(contentRef) => (
         <Fieldset.Root>
           <Fieldset.Content gap={2}>
-            <ControlledField name='typeId' label='Type :' variant='horizontal'>
+            <ControlledField name='type' label='Type :' variant='horizontal'>
               <EventTypeSelect contentRef={contentRef} />
             </ControlledField>
-            <ControlledField name='statusId' label='Statut :' variant='horizontal'>
+            <ControlledField name='status' label='Statut :' variant='horizontal'>
               <EventStatusSelect contentRef={contentRef} />
             </ControlledField>
-            <ControlledField name='programId' label='Programme :' variant='horizontal'>
+            <ControlledField name='program' label='Programme :' variant='horizontal'>
               <ProgramSelect programs={programs} contentRef={contentRef} />
             </ControlledField>
-            <ControlledField name='reportOriginId' label='Provenance du signalement :' variant='horizontal'>
+            <ControlledField name='reportOrigin' label='Provenance du signalement :' variant='horizontal'>
               <ReportOriginSelect contentRef={contentRef} />
             </ControlledField>
             <ControlledField name='reportedAt' label='Date du signalement :' variant='horizontal'>

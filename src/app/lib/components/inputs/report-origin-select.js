@@ -19,7 +19,7 @@ const ReportOriginSelect = (props) => {
   }, [setItems])
 
   return (
-    <SelectInput valueKey={'id'} labelKey={'name'} items={items} {...props} />
+    <SelectInput valueKey={'id'} labelKey={'name'} items={items} {...props} clearable={false} />
   )
 }
 

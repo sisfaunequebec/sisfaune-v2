@@ -11,6 +11,8 @@ import BaseDialog, { Fields } from '@/app/lib/components/dialogs/base'
 
 // import ControlledField from '@/app/lib/components/controlled-field'
 
+import CommentDisplay from '@/app/lib/components/display/base/comment'
+
 import DateInput from '@/app/lib/components/inputs/base/date'
 import SelectInput from '@/app/lib/components/inputs/base/select'
 
@@ -26,6 +28,16 @@ import LabSelect from './lab-select'
 import CollaboratorSelect from './collaborator-select'
 
 import UnimplementedDisplay from '@/app/lib/components/display/base/unimplemented'
+
+const DiscovererInput = ({ value, data }) => {
+  const { status } = data
+  const statusId = status?.id
+  const isClosed = statusId === 3
+  const message = isClosed ? 'L\'événement est terminé : les informations sur le découvreur ne sont plus disponibles.' : value
+  return (
+    <CommentDisplay value={message} />
+  )
+}
 
 const ContactSelect = (props) => {
   const items = [
@@ -59,15 +71,15 @@ const formSchema = [
     title: 'Identification',
     fields: [
       { label: 'Numéro d\'événement\u00A0:', name: 'id', disabled: true },
-      { label: 'Type d\'événement\u00A0:', name: 'type', component: EventTypeSelect, disabled: true },
+      { label: 'Type d\'événement\u00A0:', name: 'type', component: EventTypeSelect, disabled: true, props: { clearable: false } },
       { label: 'Numéro d\'identification SILAB\u00A0:', name: 'silabId' },
       { label: 'Numéro d\'incident CQSAS\u00A0:', name: 'cqsasIncidentNumber' },
       { label: 'Numéro de pathologie\u00A0:', name: 'pathologyNumber' },
       { label: 'Date du signalement\u00A0:', name: 'reportedAt', component: DateInput },
       { label: 'Numéro centrale MAPAQ\u00A0:', name: 'mapaqId' },
-      { label: 'Programme\u00A0:', name: 'program', component: ProgramSelect },
-      { label: 'Provenance du signalement\u00A0:', name: 'reportOrigin', component: ReportOriginSelect },
-      { label: 'Statut\u00A0:', name: 'status', component: EventStatusSelect, disabled: (data) => { const { status } = data; const {id: statusId } = status; return statusId === 3 } },
+      { label: 'Programme\u00A0:', name: 'program', component: ProgramSelect, props: { clearable: false } },
+      { label: 'Provenance du signalement\u00A0:', name: 'reportOrigin', component: ReportOriginSelect, props: { clearable: false } },
+      { label: 'Statut\u00A0:', name: 'status', component: EventStatusSelect, disabled: (data) => { const { status } = data; const {id: statusId } = status; return statusId === 3 }, props: { clearable: false } },
       { label: 'Date de fermeture du dossier\u00A0:', name: 'closedAt', component: DateInput, props: { clearable: false }, disabled: (data, watched) => { const { status } = watched; const { id: statusId } = status; return statusId === 3 }, visible: (data, watched) => { const { closedAt } = data; const { status } = watched; const { id: statusId } = status; return (statusId === 3 && closedAt) } },
     ]
   },
@@ -75,7 +87,7 @@ const formSchema = [
     title: 'Personnes impliquées',
     fields: [
       { label: 'Soumis par\u00A0:', name: 'submitter', component: UnimplementedDisplay },
-      { label: 'Découvert par\u00A0:', name: 'discoveredBy', component: UnimplementedDisplay },
+      { label: 'Découvert par\u00A0:', name: 'discoveredBy', component: DiscovererInput },
       { label: 'Récolté par (contractuel)\u00A0:', name: 'collaborator', component: CollaboratorSelect }
     ]
   },

@@ -27,7 +27,7 @@ const EventTypeSelect = (props) => {
   // }, [setTypes])
 
   return (
-    <SelectInput valueKey={'id'} labelKey={'name'} items={types} {...props} />
+    <SelectInput valueKey={'id'} labelKey={'name'} items={types} {...props} clearable={false} />
   )
 }
 

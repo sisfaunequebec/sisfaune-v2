@@ -8,7 +8,7 @@ const formats = [
 
 const FormatSelect = (props) => {
   return (
-    <SelectInput items={formats} {...props} clearable={false} />
+    <SelectInput valueKey={'value'} labelKey={'label'} items={formats} {...props} clearable={false} />
   )
 }
 

@@ -1,4 +1,4 @@
-import { Box, AbsoluteCenter, VStack, HStack, Separator, Fieldset } from '@chakra-ui/react'
+import { Box, Flex, AbsoluteCenter, VStack, HStack, Separator, Fieldset } from '@chakra-ui/react'
 
 import {
   AccordionItem
@@ -18,21 +18,46 @@ import UnimplementedDisplay from '@/app/lib/components/display/base/unimplemente
 
 import EditGeneralInfosButton from './edit-general-infos-button'
 
+const AffectedSpeciesDisplay = ({ value = [] }) => {
+  if (value.length === 0) {
+    return (
+      <TextDisplay value={'Aucune espèce affectée'} />
+    )
+  }
 
-const AffectedSpeciesDisplay = ({ value }) => {
   return (
-    <TextDisplay value={'Espèces affichées ici selon une future implémentation'} color={'red'} />
+    <VStack spacing={1} flex={1} bg={'gray.100'} borderRadius={'md'} px={3} py={2} lineHeight={'1.1rem'}>
+      <HStack justifyContent={'stretch'} w={'100%'} fontWeight={'medium'}>
+        <Flex flex={4}>Espèce</Flex>
+        <Flex flex={1} justifyContent={'center'}>Sains</Flex>
+        <Flex flex={1} justifyContent={'center'}>Malades</Flex>
+        <Flex flex={1} justifyContent={'center'}>Morts</Flex>
+        <Flex flex={1} justifyContent={'center'}>N/S</Flex>
+      </HStack>
+      {value.map((item, index) => {
+        const { specieName, specieBinome, aliveCount, unhealthyCount, deadCount, notSpecifiedCount } = item
+        return (
+          <HStack key={index} justifyContent={'stretch'} w={'100%'}>
+            <Flex flex={4}>{specieName}</Flex>
+            <Flex flex={1} justifyContent={'center'}>{aliveCount || 0}</Flex>
+            <Flex flex={1} justifyContent={'center'}>{unhealthyCount || 0}</Flex>
+            <Flex flex={1} justifyContent={'center'}>{deadCount || 0}</Flex>
+            <Flex flex={1} justifyContent={'center'}>{notSpecifiedCount || 0}</Flex>
+          </HStack>
+        )
+      })}
+    </VStack>
   )
+
 }
 
 const DiscovererDisplay = ({ value, data }) => {
-  const { statusId } = data
+  const { status } = data
+  const statusId = status?.id
   const isClosed = statusId === 3
   const message = isClosed ? 'L\'événement est terminé : les informations sur le découvreur ne sont plus disponibles.' : value
-  // TODO : manage related to event status (message if not applicable/)
-  // L'événement est terminé : les informations sur le découvreur ne sont plus disponibles.
   return (
-    <CommentDisplay value={message} bg={isClosed && 'white'} />
+    <CommentDisplay value={message} />
   )
 }
 

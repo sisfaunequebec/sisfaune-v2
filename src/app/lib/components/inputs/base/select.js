@@ -15,17 +15,13 @@ const SelectInput = ({ items = [], valueKey = 'value', labelKey = 'label', name,
 
   const handleValueChange = useCallback((e) => {
     const { value } = e
-    //  console.debug('SelectInput', { name, value })
     const selectedItem = items.find(item => item[valueKey] === value[0])
-    onChange(selectedItem ? { [valueKey]: value[0], [labelKey]: selectedItem ? selectedItem[labelKey] : null } : { [valueKey]: null })
+    onChange(selectedItem ? { [valueKey]: value[0], [labelKey]: selectedItem ? selectedItem[labelKey] : null } : null /*{ [valueKey]: null }*/)
   }, [onChange, items, valueKey, labelKey])
 
-  // console.debug('SelectInput render', { name, value, disabled, collectionItemsLength: collection.items.length })
   const hasValue = value !== undefined && value !== null && value[valueKey] !== undefined && value[valueKey] !== null
   const isDisabled = disabled || collection.items.length === 0
   const showClearButton = clearable && hasValue && !disabled
-
- 
 
   return (
     <Select.Root 

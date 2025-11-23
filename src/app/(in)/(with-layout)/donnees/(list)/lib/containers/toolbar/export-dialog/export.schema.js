@@ -1,7 +1,7 @@
 import { z } from 'zod'
 
 const exportDataSchema = z.object({
-  format: z.string()
+  // format: z.string()
   // typeId: z.number({ message: 'Le type doit être précisé' }),
   // statusId: z.number({ message: 'Le statut doit être précisé' }),
   // programId: z.number({ message: 'Le programme doit être précisé' }),

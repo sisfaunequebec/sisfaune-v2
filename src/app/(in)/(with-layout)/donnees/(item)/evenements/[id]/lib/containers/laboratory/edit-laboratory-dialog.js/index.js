@@ -6,7 +6,7 @@ import updateLaboratoryAction from '../update-laboratory.action'
 import BaseDialog, { Fields } from '@/app/lib/components/dialogs/base'
 
 import DateInput from '@/app/lib/components/inputs/base/date'
-import Autocomplete from '../../../components/autocomplete'
+import Autocomplete from '../../../../../../../../lib/components/autocomplete'
 
 import editLaboratorySchema from './edit-laboratory.schema'
 

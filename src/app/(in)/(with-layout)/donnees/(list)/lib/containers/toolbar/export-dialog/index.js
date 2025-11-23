@@ -2,7 +2,7 @@ import wait from '@/utils/wait'
 
 import { Fieldset } from '@chakra-ui/react'
 
-import exportDataSchema from './export.schema'
+// import exportDataSchema from './export.schema'
 
 import BaseDialog from '@/app/lib/components/dialogs/base'
 
@@ -11,20 +11,23 @@ import ControlledField from '@/app/lib/components/controlled-field'
 import FormatSelect from './format-select'
 
 const defaultValues = {
-  format: 'xlsx'
+  format:  { value: 'xlsx'}
 }
 
 const ExportDialog = ({ close, filters, onExport }) => {
 
   const handleSubmit = async (data) => {
-    const allParams = {...filters, ...data}
+    // console.debug('ExportDialog handleSubmit data:', data)
+    const { format } = data
+    const { value } = format
+    const allParams = {...filters, format: value}
     const result = await onExport(allParams)
     await wait(1500)
     close(result)
   }
 
   return (
-    <BaseDialog title={'Exportation des événements ou spécimens'} onClose={close} onSubmit={handleSubmit} submitBtnLabel={'Exporter'} schema={exportDataSchema} defaultValues={defaultValues}>
+    <BaseDialog title={'Exportation des événements ou spécimens'} onClose={close} onSubmit={handleSubmit} submitBtnLabel={'Exporter'} defaultValues={defaultValues}>
       {(contentRef) => (
         <Fieldset.Root>
           <Fieldset.Content gap={1}>
