@@ -9,12 +9,6 @@ import {
   AccordionRoot
 } from '@/app/lib/components/ui/accordion'
 
-import { Content, Trigger } from '../../components/accordion-parts'
-
-import useDialog from '@/utils/use-dialog'
-
-import Toolbar from '@/app/(in)/(with-layout)/donnees/(list)/evenements/lib/components/toolbar'
-
 import DeleteEventButtonOld from '../../components/delete-event-button'
 
 import GeneralInfosSection from './general-infos'
@@ -63,10 +57,8 @@ const Event = ({
   const showEditLaboratorySectionButton = canUserEditEventSection // activePanels.includes('laboratory') && canUserEditEventSection
 
   return (
-    <>
-      <Toolbar canDeleteEvent={canDeleteEvent} />
-      <Flex flex={1} top={0} as={Container} direction={['column', null, 'row']} maxWidth={['6xl']} fontSize={['md', null, 'sm']} zIndex={999}>
-        <Flex position={'sticky'} flex={2} h={'calc(100vh - 131px)'} overflowY={'auto'} top={130} p={3} px={6} alignItems={'stretch'} bg={'blue.100'} _dark={{ bg: 'blue.900' }} borderColor={'blue.300'} borderTopWidth={1} borderBottomWidth={1} hideBelow={'md'} />
+      // <Flex flex={1} top={0} as={Container} direction={['column', null, 'row']} maxWidth={['6xl']} fontSize={['md', null, 'sm']} zIndex={999}>
+      //   <Flex position={'sticky'} flex={2} h={'calc(100vh - 131px)'} overflowY={'auto'} top={130} p={3} px={6} alignItems={'stretch'} bg={'blue.100'} _dark={{ bg: 'blue.900' }} borderColor={'blue.300'} borderTopWidth={1} borderBottomWidth={1} hideBelow={'md'} />
 
         <VStack flex={5} ps={[0, null, 2]} justifyContent={'flex-start'} alignItems={'stretch'} gap={[0, null, 0]}>
 
@@ -102,8 +94,7 @@ const Event = ({
           </VStack>
 
         </VStack>
-      </Flex>
-    </>
+      // </Flex>
   )
 }
 

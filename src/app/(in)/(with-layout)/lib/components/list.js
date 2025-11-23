@@ -4,7 +4,7 @@ import { RxPlus } from 'react-icons/rx'
 
 const ListContainer = ({ children, isLoading }) => {
   return (
-    <VStack position={'relative'} alignItems={'stretch'} justifyContent={'stretch'} flex={1} gap={0} opacity={isLoading && 0.5} mb={[0, null, 2]}>
+    <VStack position={'relative'} alignItems={'stretch'} justifyContent={'stretch'} flex={1} gap={0} opacity={isLoading && 0.5}>
       { children }
     </VStack>
   )

@@ -13,7 +13,7 @@ import { Content, Trigger } from '../../components/accordion-parts'
 
 import useDialog from '@/utils/use-dialog'
 
-import Toolbar from '@/app/(in)/(with-layout)/donnees/(list)/evenements/lib/components/toolbar'
+import Toolbar from '@/app/(in)/(with-layout)/donnees/(item)/evenements/[id]/lib/components/toolbar'
 
 import DeleteEventButtonOld from '../../components/delete-event-button'
 

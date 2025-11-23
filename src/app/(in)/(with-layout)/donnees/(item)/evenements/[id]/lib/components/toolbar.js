@@ -19,12 +19,12 @@ import { deleteEvent } from '@/lib/data/events/service'
 
 import useDialog from '@/utils/use-dialog'
 
-import DeleteEventDialog from '../../../../(item)/evenements/[id]/lib/components/delete-event-dialog'
+import DeleteEventDialog from './delete-event-dialog'
 
 import ToolbarWrapper from '@/app/lib/components/toolbar-wrapper'
 import ResponsiveButton from '@/app/lib/components/responsive-button'
 
-import ReportButton from '../../../lib/containers/toolbar/report-button'
+import ReportButton from '../../../../../(list)/lib/containers/toolbar/report-button'
 
 // import DeleteEventButton from '../../../../(item)/evenements/[id]/lib/components/delete-event-button'
 
@@ -83,7 +83,7 @@ const Toolbar = ({ canDeleteEvent }) => {
   const eventId = parseInt(id, 10)
 
   return (
-    <ToolbarWrapper>
+    <ToolbarWrapper shadow={false}>
       <HStack justifyContent={'space-between'} gap={2}>
         <HStack justifyContent={'space-between'} gap={2}>
           <BackButton />

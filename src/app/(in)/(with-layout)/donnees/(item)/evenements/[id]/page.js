@@ -3,12 +3,15 @@ import { getEvent } from '@/lib/data/events/service'
 
 import NextLink from 'next/link'
 
-import { AbsoluteCenter, Button, Container } from '@chakra-ui/react'
+import { Flex, AbsoluteCenter, Button, Container } from '@chakra-ui/react'
 
 import { userCanViewEventSection, userCanEditEventSection, userCanAddAnalysis, userCanAddSpecimen, userCanDeleteAnalysis, userCanDeleteSpecimen, userCanEditSpecimenSection, userCanEditAnalysisSection, canUserDeleteEvent } from '@/lib/auth/acl'
 
+import Toolbar from './lib/components/toolbar.js'
+
 import Event from './lib/containers/event/index.js'
 import CenteredMessage from '@/app/lib/components/centered-message'
+import SidebarContainer from '@/app/(in)/(with-layout)/lib/components/sidebar-container.js'
 
 const UnauthorizedOrNotFound = () => {
   return (
@@ -68,17 +71,23 @@ const Evenement = async ({ params }) => {
   const canUserEditAnalyses  = userCanEditAnalysisSection(user, programId) 
 
   return (
-    <Event 
-      event={event}
-      canUserEditEventSection={canUserEditEventSection}
-      canDeleteEvent={canDeleteEvent}
-      canUserAddSpecimen={canUserAddSpecimen}
-      canUserDeleteSpecimens={canUserDeleteSpecimens}
-      canUserEditSpecimens={canUserEditSpecimens}
-      canUserAddAnalysis={canUserAddAnalysis}
-      canUserDeleteAnalyses={canUserDeleteAnalyses}
-      canUserEditAnalyses={canUserEditAnalyses}
-    />
+    <>
+      <Toolbar canDeleteEvent={canDeleteEvent} />
+      <Flex flex={1} top={0} as={Container} direction={['column', null, 'row']} maxWidth={['6xl']} fontSize={['md', null, 'sm']} zIndex={999}>
+        <SidebarContainer/>
+        <Event 
+          event={event}
+          canUserEditEventSection={canUserEditEventSection}
+          canDeleteEvent={canDeleteEvent}
+          canUserAddSpecimen={canUserAddSpecimen}
+          canUserDeleteSpecimens={canUserDeleteSpecimens}
+          canUserEditSpecimens={canUserEditSpecimens}
+          canUserAddAnalysis={canUserAddAnalysis}
+          canUserDeleteAnalyses={canUserDeleteAnalyses}
+          canUserEditAnalyses={canUserEditAnalyses}
+        />
+      </Flex>
+    </>
   )
 }
 

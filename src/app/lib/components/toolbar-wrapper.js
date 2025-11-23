@@ -5,9 +5,9 @@ import { useWindowScroll } from '@uidotdev/usehooks'
 import { Flex, Container, Button, IconButton, HStack } from '@chakra-ui/react'
 import { RxArrowLeft, RxFileText } from 'react-icons/rx'
 
-const ToolbarWrapper = ({ children }) => {
+const ToolbarWrapper = ({ shadow = true, children }) => {
   const [{ y = 0 }] = useWindowScroll()
-  const toolbarShadowSize = y > 70 ? 'md' : null
+  const toolbarShadowSize = y > 100 ? 'md' : null
 
   return (
     <Flex
@@ -17,7 +17,7 @@ const ToolbarWrapper = ({ children }) => {
       alignSelf={'flex-start'}
       width={'full'}
       zIndex={1001}
-      // shadow={[null, null, toolbarShadowSize]}
+      // shadow={shadow ? [null, null, toolbarShadowSize] : null}
     >
       <Flex flex={1} bg={'white'} py={1}>
         <Container maxWidth={'6xl'} py={2}>

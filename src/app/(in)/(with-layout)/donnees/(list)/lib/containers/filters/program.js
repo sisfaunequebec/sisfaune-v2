@@ -11,7 +11,7 @@ const Program = ({ programs = [] }) => {
   const [value, setValue] = useQueryState('p', parseAsArrayOf(parseAsInteger).withDefault([]))
 
   const choices = useMemo(() => {
-    const choices = programs.map(p => { return { value: p.value, label: p.label } })
+    const choices = programs.map(p => { return { value: p.id, label: p.name } })
     const sorted = orderBy(choices, ['label'], ['asc'])
     return sorted
   }, [programs])
