@@ -19,6 +19,7 @@ import { useQueryStates } from 'nuqs'
 import useDialog from '@/utils/use-dialog'
 import EditAnalysisDialog from './edit-analysis-dialog'
 
+import { ListContainer } from '@/app/(in)/(with-layout)/lib/components/list'
 import { LinkListWrapper } from '@/app/(in)/(with-layout)/lib/components/list'
 
 const AnalysisItem = ({ id, name, code, groupName, sectorName, resultType, onClick }) => {
@@ -103,7 +104,7 @@ const AnalysisList = () => {
   return (
     <>
       {editAnalysisDialog}
-      <VStack position='relative' alignItems='stretch' flex={1} gap={0} justifyContent='stretch' opacity={isLoadingMore && 0.5} mb={2}>
+      <ListContainer isLoading={isLoadingMore}>
         {analyses.map(analysis => {
           const { id } = analysis
           return (
@@ -112,7 +113,7 @@ const AnalysisList = () => {
         })}
         {/* <Flex flex={1} position={'absolute'} bottom={0} w={'full'} height={'300px'} maxH={'100vh'} border={'solid 1px red'} display={triggerIsVisible ? 'inherit' : 'none'} ref={inner} /> */}
         {/* { loadMoreButtonIsVisible && <Button mt={2} p={4} variant={'surface'} colorPalette={'blue'} onClick={isReachingEnd ? null : handleLoadMore} loading={isLoadingMore}>{loadMoreButtonLabel}</Button> } */}
-      </VStack>
+      </ListContainer>
     </>
   )
 }

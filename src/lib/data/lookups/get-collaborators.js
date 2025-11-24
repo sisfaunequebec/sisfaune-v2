@@ -2,7 +2,7 @@
 import orderBy from 'lodash.orderby'
 import prisma from '../database'
 
-const getCollaborators = async ({ activeOnly = false }) => {
+const getCollaborators = async ({ activeOnly = true }) => {
   const raw = await prisma.Collaborator.findMany({
     where: activeOnly ? { isActive: true } : undefined
   })

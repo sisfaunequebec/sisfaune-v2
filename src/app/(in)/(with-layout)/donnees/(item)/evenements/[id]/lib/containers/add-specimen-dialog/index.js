@@ -12,7 +12,7 @@ import BaseDialog from '@/app/lib/components/dialogs/base'
 import ControlledField from '@/app/lib/components/controlled-field'
 import Autocomplete from '../../../../../../../lib/components/autocomplete'
 
-import DiscoveryStateSelect from './discovery-state-select'
+import DiscoveryStateSelect from '../../components/discovery-state-select'
 
 import addSpecimenSchema from './add-specimen-schema'
 

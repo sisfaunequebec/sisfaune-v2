@@ -3,6 +3,7 @@
 import { Flex } from '@chakra-ui/react'
 
 import PageContainer from '../../../lib/components/page-container'
+import ContentContainer from '../../../lib/components/content-container'
 
 import EventsList from './lib/containers/events-list'
 import Filters from '../lib/containers/filters'
@@ -16,9 +17,9 @@ const Evenements = async () => {
     <>
       <PageContainer>
         <Filters />
-        <Flex flex={5} ps={[0, null, 2]} justifyContent={'center'} alignItems={'stretch'}>
+        <ContentContainer> 
           <EventsList />
-        </Flex>
+        </ContentContainer> 
       </PageContainer>
     </>
   )

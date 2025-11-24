@@ -9,7 +9,6 @@ import { PasswordInput } from '@/app/lib/components/ui/password-input'
 import BaseDialog from '@/app/lib/components/dialogs/base'
 
 import ControlledField from '@/app/lib/components/controlled-field'
-import TextField from '../../../donnees/(item)/evenements/[id]/lib/components/text-field'
 
 import schema from './schema'
 
@@ -26,7 +25,7 @@ const UserParametersDialog = ({ user, close }) => {
         <Fieldset.Root>
           <Fieldset.Content gap={1}>
             <ControlledField name='email' label='Adresse de courriel :' variant='horizontal'>
-              <TextField autoComplete='off' type='email' readOnly={true} />
+              {/* <TextField autoComplete='off' type='email' readOnly={true} /> */}
             </ControlledField>
             <Separator />
             <Fieldset.Legend mb={2}>Modification du mot de passe</Fieldset.Legend>

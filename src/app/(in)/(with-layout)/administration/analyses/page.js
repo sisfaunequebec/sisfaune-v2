@@ -1,6 +1,7 @@
 import { AbsoluteCenter, Container, Flex, VStack } from '@chakra-ui/react'
 
 import PageContainer from '../../lib/components/page-container'
+import ContentContainer from '../../lib/components/content-container'
 
 import Toolbar from '../lib/components/toolbar'
 import NewAnalysisButton from './lib/components/new-analysis-button'
@@ -21,9 +22,9 @@ const AnalysisAdminPage = async () => {
 
       <PageContainer>
         <Filters />
-        <Flex flex={5} ps={[0, null, 2]} justifyContent='center' alignItems='stretch'>
+        <ContentContainer>   
           <AnalysisList />
-        </Flex>
+        </ContentContainer>
       </PageContainer>
     </>
   )

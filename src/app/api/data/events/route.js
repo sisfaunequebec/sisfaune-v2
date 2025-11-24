@@ -4,7 +4,7 @@ import {
   createLoader
 } from 'nuqs/server'
 
-import getUser from '@/lib/auth/get-user'
+// import getUser from '@/lib/auth/get-user'
 import { getEvents } from '@/lib/data/events/service'
 
 const loader = createLoader(searchParams, { urlKeys })

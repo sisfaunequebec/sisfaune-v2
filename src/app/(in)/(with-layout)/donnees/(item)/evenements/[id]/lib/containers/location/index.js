@@ -21,7 +21,7 @@ import CenteredMessage from '@/app/lib/components/centered-message'
 
 import EditLocationButton from './edit-location-button'
 
-import TextField from '../../components/text-field'
+import TextInput from '@/app/lib/components/inputs/base/text'
 
 const StaticMap = ({ lat = 45, lng = -72, zoom }) => {
   const [ref, { width, height }] = useMeasure()
@@ -58,8 +58,8 @@ const CoordinatesLocation = ({ location }) => {
   const address = [name, province].join(', ')
   return (
     <>
-      <TextField label={'Latitude, longitude :'} value={coordinates} />
-      <TextField label={'(adresse dérivée) :'} value={address} />
+      <TextInput label={'Latitude, longitude :'} value={coordinates} />
+      <TextInput label={'(adresse dérivée) :'} value={address} />
     </>
   )
 }
@@ -69,8 +69,8 @@ const AddressLocation = ({ location }) => {
   const coordinates = [latitude.toFixed(6), longitude.toFixed(6)].join(', ')
   return (
     <>
-      <TextField label={'Adresse :'} value={null} />
-      <TextField label={'(coordonnées dérivées) :'} value={coordinates} />
+      <TextInput label={'Adresse :'} value={null} />
+      <TextInput label={'(coordonnées dérivées) :'} value={coordinates} />
     </>
   )
 }

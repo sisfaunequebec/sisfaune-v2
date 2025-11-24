@@ -21,7 +21,7 @@ import BaseDialog from '@/app/lib/components/dialogs/base'
 import { AdvancedMarker, APIProvider, Map, MapControl, Marker, useMap, useMapsLibrary, ControlPosition } from '@vis.gl/react-google-maps'
 
 import ControlledField from '@/app/lib/components/controlled-field'
-import TextField from '../../../components/text-field'
+import TextInput from '@/app/lib/components/inputs/base/text'
 
 import schema from './edit-location.schema'
 
@@ -112,7 +112,7 @@ const LatLongInput = ({ value, onChange, isEditing = false, contentRef }) => {
   } else {
       const displayValue = internalValue ? [internalValue.lat?.toFixed(6), internalValue.lng?.toFixed(6)].filter(Boolean).join(', ') : ''
       return (
-        <TextField value={displayValue} isEditing={false} size={'sm'} />
+        <TextInput value={displayValue} isEditing={false} size={'sm'} />
       )
   }
 }
@@ -339,7 +339,7 @@ const EditLocationDialog = ({ close, eventId, data }) => {
                 <LatLongInput contentRef={contentRef} isEditing={isCoordinateBased} />
               </ControlledField>
               <ControlledField label={'Adresse civique ou nom de lieu\u00A0:'} name={'address'} variant={'horizontal'}>
-                <TextField contentRef={contentRef} isEditing={!isCoordinateBased} size={'sm'} />
+                <TextInput contentRef={contentRef} isEditing={!isCoordinateBased} size={'sm'} />
               </ControlledField>
               <ControlledField name={'coordinates'} variant={'horizontal'} mt={4}>
                 <EditableMap locationType={locationTypeId} />

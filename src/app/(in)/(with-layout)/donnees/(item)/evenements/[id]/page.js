@@ -12,6 +12,7 @@ import Toolbar from './lib/components/toolbar.js'
 import Event from './lib/containers/event/index.js'
 import CenteredMessage from '@/app/lib/components/centered-message'
 import SidebarContainer from '@/app/(in)/(with-layout)/lib/components/sidebar-container.js'
+import ContentContainer from '@/app/(in)/(with-layout)/lib/components/content-container.js'
 
 const UnauthorizedOrNotFound = () => {
   return (
@@ -75,17 +76,19 @@ const Evenement = async ({ params }) => {
       <Toolbar canDeleteEvent={canDeleteEvent} />
       <Flex flex={1} top={0} as={Container} direction={['column', null, 'row']} maxWidth={['6xl']} fontSize={['md', null, 'sm']} zIndex={999}>
         <SidebarContainer/>
-        <Event 
-          event={event}
-          canUserEditEventSection={canUserEditEventSection}
-          canDeleteEvent={canDeleteEvent}
-          canUserAddSpecimen={canUserAddSpecimen}
-          canUserDeleteSpecimens={canUserDeleteSpecimens}
-          canUserEditSpecimens={canUserEditSpecimens}
-          canUserAddAnalysis={canUserAddAnalysis}
-          canUserDeleteAnalyses={canUserDeleteAnalyses}
-          canUserEditAnalyses={canUserEditAnalyses}
-        />
+        <ContentContainer direction={'column'}>
+          <Event 
+            event={event}
+            canUserEditEventSection={canUserEditEventSection}
+            canDeleteEvent={canDeleteEvent}
+            canUserAddSpecimen={canUserAddSpecimen}
+            canUserDeleteSpecimens={canUserDeleteSpecimens}
+            canUserEditSpecimens={canUserEditSpecimens}
+            canUserAddAnalysis={canUserAddAnalysis}
+            canUserDeleteAnalyses={canUserDeleteAnalyses}
+            canUserEditAnalyses={canUserEditAnalyses}
+          />
+        </ContentContainer>
       </Flex>
     </>
   )

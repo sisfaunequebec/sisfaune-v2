@@ -3,7 +3,7 @@ import { useState, useEffect, useCallback } from 'react'
 
 // import updateGeneralInfos from '../update-general-infos.action'
 
-import getActivePrograms from '@/lib/data/lookups/event-programs'
+// import getActivePrograms from '@/lib/data/lookups/event-programs'
 
 import BaseDialog, { Fields } from '@/app/lib/components/dialogs/base'
 
@@ -13,7 +13,7 @@ import CommentInput from '@/app/lib/components/inputs/base/comment'
 import DateInput from '@/app/lib/components/inputs/base/date'
 import NumberInput from '@/app/lib/components/inputs/base/number'
 
-import DiscoveryStateSelect from './discovery-state-select'
+import DiscoveryStateSelect from '../../../components/discovery-state-select'
 import DeathCauseSelect from './death-cause-select'
 import EuthanasiaOrganisationSelect from './euthanasia-organisation-select'
 import EuthanasiaMethodSelect from './euthanasia-method-select'

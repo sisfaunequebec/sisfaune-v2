@@ -4,7 +4,6 @@ import {
   createLoader
 } from 'nuqs/server'
 
-// import getUser from '@/lib/auth/get-user'
 import getAnimalSpecies from '@/lib/data/lookups/get-animal-species'
 
 const loader = createLoader(searchParams, { urlKeys })

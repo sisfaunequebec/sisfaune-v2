@@ -1,6 +1,7 @@
 import { AbsoluteCenter, Container, Flex, VStack } from '@chakra-ui/react'
 
 import PageContainer from '../../lib/components/page-container'
+import ContentContainer from '../../lib/components/content-container'
 import Toolbar from '../lib/components/toolbar'
 import NewUserButton from './lib/components/new-user-button'
 
@@ -19,9 +20,9 @@ const UsersAdminPage = async () => {
       </Toolbar>
       <PageContainer>
         <Filters />
-        <Flex flex={5} ps={[0, null, 2]} justifyContent='center' alignItems='stretch'>
+        <ContentContainer>    
           <UsersList />
-        </Flex>
+        </ContentContainer>
       </PageContainer>
     </>
   )

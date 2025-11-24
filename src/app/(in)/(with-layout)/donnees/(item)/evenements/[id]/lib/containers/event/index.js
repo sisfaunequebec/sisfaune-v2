@@ -60,8 +60,9 @@ const Event = ({
       // <Flex flex={1} top={0} as={Container} direction={['column', null, 'row']} maxWidth={['6xl']} fontSize={['md', null, 'sm']} zIndex={999}>
       //   <Flex position={'sticky'} flex={2} h={'calc(100vh - 131px)'} overflowY={'auto'} top={130} p={3} px={6} alignItems={'stretch'} bg={'blue.100'} _dark={{ bg: 'blue.900' }} borderColor={'blue.300'} borderTopWidth={1} borderBottomWidth={1} hideBelow={'md'} />
 
-        <VStack flex={5} ps={[0, null, 2]} justifyContent={'flex-start'} alignItems={'stretch'} gap={[0, null, 0]}>
-
+        // <VStack flex={5} ps={[0, null, 2]} justifyContent={'flex-start'} alignItems={'stretch'} gap={[0, null, 0]}>
+          // <ContentContainer>
+    <>
           <VStack alignItems={'stretch'} fontSize={['md', null, 'sm']} gap={0}>
             <SectionHeading label={`Événement no ${eventId}`} isSticky h={'50px'}>
               {/* <DeleteEventButtonOld eventId={eventId} visibility={'hidden'} /> */}
@@ -92,9 +93,9 @@ const Event = ({
               { canUserAddAnalysis && <ResponsiveButton colorPalette={'green'} variant={'solid'} size={'sm'} label={'Ajouter'} icon={<RxPlus />} me={[2, null, 1]} /> }
             </SectionHeading>
           </VStack>
+          </>
 
-        </VStack>
-      // </Flex>
+        // </ContentContainer>
   )
 }
 

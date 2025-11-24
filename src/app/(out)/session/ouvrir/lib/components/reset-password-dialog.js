@@ -12,7 +12,7 @@ import BaseDialog from '@/app/lib/components/dialogs/base'
 
 import ControlledField from '@/app/lib/components/controlled-field'
 
-import TextField from '@/app/(in)/(with-layout)/donnees/(item)/evenements/[id]/lib/components/text-field'
+import TextInput from '@/app/lib/components/inputs/base/text'
 
 import resetPasswordSchema from './reset-password-schema'
 

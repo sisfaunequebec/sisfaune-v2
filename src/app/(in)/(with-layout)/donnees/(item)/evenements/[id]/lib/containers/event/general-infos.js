@@ -115,7 +115,7 @@ const schema = [
       { label: 'Programme\u00A0:', name: 'program', component: SelectDisplay  },
       { label: 'Provenance du signalement\u00A0:', name: 'reportOrigin', component: SelectDisplay  },
       { label: 'Statut\u00A0:', name: 'status', component: SelectDisplay  },
-      { label: 'Date de fermeture du dossier\u00A0:', component: DateDisplay, name: 'closedAt', visible: (data) => { const { statusId, closedAt } = data; return (statusId === 3 && closedAt) } },
+      { label: 'Date de fermeture du dossier\u00A0:', component: DateDisplay, name: 'closedAt', visible: (data) => { const { status, closedAt } = data; const {id: statusId } = status; return (statusId === 3 && closedAt) } },
     ]
   },
   { 

@@ -4,14 +4,10 @@ import { useEffect, useCallback, useRef } from 'react'
 import { Flex, Box, Stack, VStack, Text, IconButton, LinkOverlay } from '@chakra-ui/react'
 
 import { useQueryStates } from 'nuqs'
-// import { useDebounce } from '@uidotdev/usehooks'
 
 import { getUsers, getUsersCount } from '@/lib/data/users/service'
 import { useQuery, useInfiniteQuery, keepPreviousData } from '@tanstack/react-query'
 
-// import useTest from './test'
-
-// import useUsers from '@/lib/data/users/use-users'
 import { searchParams, urlKeys } from '@/lib/data/users/users-params'
 
 import useDialog from '@/utils/use-dialog'
@@ -56,17 +52,6 @@ const getNextParams = (queryParams) => {
   return nextParams
 }
 
-// const useUsersTotal = (params) => {
-//   const result = useQuery({
-//     queryKey: ['users-total-2', {...params}],
-//     queryFn: () => getUsersCount(params),
-//     initialData: { total: 0 }
-//   })
-//   console.debug(result)
-//   const { data } = result
-//   return { data }
-// }
-
 const useUsers = (params) => {
   const result = useInfiniteQuery({
     queryKey: ['users', {...params}],
@@ -86,7 +71,6 @@ const useUsers = (params) => {
 
   const users = pages ? [].concat(...pages.map(p => p.payload)) : []
   const total = pages ? pages[0].meta.total : 0
-  // console.debug(total)
 
   return {
     users, total, hasNextPage, isLoading, isPending, isFetching, fetchNextPage
@@ -99,7 +83,6 @@ const UsersList = () => {
   const [ params ] = useQueryStates(searchParams, { urlKeys })
 
   const { users, total, hasNextPage, isLoading, isPending, isFetching, fetchNextPage } = useUsers(params)
-  // const result = useUsersTotal(params)
 
   const count = users.length
 
@@ -107,7 +90,6 @@ const UsersList = () => {
   const loadMoreButtonIsVisible = count > 0
 
   const handleEditUser = useCallback(async (userId) => {
-    // console.debug(userId)
     const result = await editUser({ userId })
     if (result) {
       console.debug('Edit result', result)
