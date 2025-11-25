@@ -10,6 +10,9 @@ import getUser from '@/lib/auth/get-user'
 import { userCanDeleteSpecimen } from '@/lib/auth/acl'
 
 import { filterViewablePrograms } from '@/lib/auth/acl'
+import { isoDateToDb } from '../transformers/utils'
+
+import toDbSpecimenTransformer from '../transformers/to-db/specimen'
 
 const getOrderByClause = (tri, direction) => {
   const sortDirection = direction ?? 'desc'
@@ -211,8 +214,28 @@ const deleteSpecimen = async (id) => {
   return null
 }
 
+const updateSpecimen = async (specimenId, data) => {
+  const user = await getUser()
+
+  if (!user) {
+    throw new Error()
+  }
+
+  const transformed = toDbSpecimenTransformer(data, { user })
+  
+  await orm.specimen.update({
+    where: {
+      id: specimenId,
+    },
+    data: transformed
+  })
+
+  return null
+}
+
 export {
   getSpecimens,
   getSpecimensCount,
-  deleteSpecimen
+  deleteSpecimen,
+  updateSpecimen
 }

@@ -1,7 +1,7 @@
 'use client'
 import { useEffect, useState } from 'react'
 
-import getDeathCauses from '@/lib/data/lookups/get-death-causes'
+// import getDeathCauses from '@/lib/data/lookups/get-death-causes'
 
 import SelectInput from '@/app/lib/components/inputs/base/select'
 
@@ -9,15 +9,16 @@ const DeathCauseSelect = (props) => {
   const [items, setItems] = useState([])
 
   useEffect(() => {
-    const load = async () => {
-      const result = await getDeathCauses()
+    const loadItems = async () => {
+      const res = await fetch('/api/lookup/death-causes', { cache: 'no-cache', next: { tags: ['event-types'] } })
+      const result = await res.json()
       setItems(result)
     }
-    load()
+    loadItems()
   }, [setItems])
 
   return (
-    <SelectInput items={items} {...props} />
+    <SelectInput valueKey={'id'} labelKey={'name'} items={items} {...props} clearable={false} />
   )
 }
 

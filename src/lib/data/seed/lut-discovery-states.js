@@ -6,6 +6,6 @@ const transformed = source.map(p => {
     id: parseInt(id, 10),
     name: etat.trim().replaceAll("''", "'")
   }
-}).filter(p => p.id !== 0) // remove id = 0
+})// .filter(p => p.id !== 0) // remove id = 0
 
 module.exports = transformed

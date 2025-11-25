@@ -3,7 +3,7 @@ import orderBy from 'lodash.orderby'
 import prisma from '../database'
 
 const getDeathCauses = async () => {
-  const raw = await prisma.LutAnimalDeathCause.findMany({
+  const items = await prisma.LutAnimalDeathCause.findMany({
     where: {
       isActive: true
     },
@@ -12,13 +12,13 @@ const getDeathCauses = async () => {
       { name: 'asc' }
     ]
   })
-  const items = raw.map(t => {
-    const { id: value, name: label } = t
-    return {
-      value,
-      label
-    }
-  })
+  // const items = raw.map(t => {
+  //   const { id: value, name: label } = t
+  //   return {
+  //     value,
+  //     label
+  //   }
+  // })
   return items
 }
 

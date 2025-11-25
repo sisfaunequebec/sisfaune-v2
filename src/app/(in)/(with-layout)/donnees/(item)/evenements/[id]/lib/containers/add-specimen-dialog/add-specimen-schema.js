@@ -2,7 +2,7 @@ import * as v from 'valibot'
 
 const addSpecimenSchema = v.object({
   specie: v.object({ id: v.integer() }, 'L\'espèce doit être précisée'),
-  discoveryStateId: v.nullish(v.pipe(v.number(), v.integer())),
+  discoveryState: v.object({ id: v.integer() }, 'L\'état doit être précisée'),
   silabIdentificationNumber: v.nullish(v.string()),
   terrainIdentificationNumber: v.nullish(v.string()),
   huntingPermitNumber: v.nullish(v.string())

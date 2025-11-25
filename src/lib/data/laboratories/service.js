@@ -5,7 +5,6 @@ import orm from '../database'
 
 import getUser from '@/lib/auth/get-user'
 
-// import eventTransformer from '../transformers/to-db/event'
 import laboratoryTransformer from '../transformers/to-db/laboratory'
 
 const updateLaboratory = async (eventId, data) => {
@@ -16,7 +15,6 @@ const updateLaboratory = async (eventId, data) => {
   }
 
   const transformed = laboratoryTransformer(data, { user })
-  console.debug('transformed', eventId, transformed)
 
   await orm.event.update({
     where: {
@@ -27,8 +25,6 @@ const updateLaboratory = async (eventId, data) => {
 
   return null
 }
-
-
 
 export {
   updateLaboratory

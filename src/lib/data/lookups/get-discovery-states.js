@@ -1,13 +1,11 @@
 'use server'
+import orderBy from 'lodash.orderby'
 import prisma from '../database'
 
 const getDiscoveryStates = async () => {
-  const raw = await prisma.LutDiscoveryState.findMany()
-  const items = raw.map(t => {
-    const { id: value, name: label } = t
-    return {
-      value,
-      label
+  const items = await prisma.LutDiscoveryState.findMany({
+    orderBy: {
+      id: 'asc'
     }
   })
   return items

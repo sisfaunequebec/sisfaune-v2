@@ -478,7 +478,6 @@ const updateGeneralInfos = async (eventId, data) => {
   const { id, ...rest } = data
 
   const transformed = toDbEventTransformer(rest, { user })
-  console.debug('updateGeneralInfos transformed data', transformed)
 
   const updated = await orm.event.update({
     where: {

@@ -17,12 +17,14 @@ import EditSpecimenDialog from './edit-specimen-dialog'
 
 const EditSpecimenButton = ({ specimen }) => {
   const { mutate, cache } = useSWRConfig()
+
+  const { id: specimenId } = specimen
   
   const { ask: startEditing, dialog } = useDialog(EditSpecimenDialog)
 
   const handleClick = useCallback(async () => {
     const { eventId } = specimen
-    await startEditing({ eventId, data: specimen })
+    await startEditing({ eventId, specimenId, data: specimen })
     mutate()
   }, [startEditing, specimen, mutate])
 

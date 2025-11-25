@@ -1,13 +1,10 @@
 'use client'
 import { useState, useEffect, useCallback } from 'react'
 
-// import updateGeneralInfos from '../update-general-infos.action'
-
-// import getActivePrograms from '@/lib/data/lookups/event-programs'
+import updateSpecimenAction from '../update-specimen.action'
 
 import BaseDialog, { Fields } from '@/app/lib/components/dialogs/base'
 
-// import DateInput from '@/app/lib/components/inputs/base/date'
 import SelectInput from '@/app/lib/components/inputs/base/select'
 import CommentInput from '@/app/lib/components/inputs/base/comment'
 import DateInput from '@/app/lib/components/inputs/base/date'
@@ -19,6 +16,10 @@ import EuthanasiaOrganisationSelect from './euthanasia-organisation-select'
 import EuthanasiaMethodSelect from './euthanasia-method-select'
 import PreservationMethodSelect from './preservation-method-select'
 
+import schema from './edit-specimen.schema'
+
+const watchedField = ['deathCause', 'euthanasiaMethod']
+
 const formSchema = [
   { 
     title: 'Identification du spécimen',
@@ -29,19 +30,19 @@ const formSchema = [
       { label: 'Numéro d\'enregistement SEFAQ\u00A0:', name: 'sefaqNumber' },
       { label: 'Numéro de permis de chasse\u00A0:', name: 'huntingPermitNumber' },
       { label: 'Marques d\'identification\u00A0:', name: 'identificationMarks', component: CommentInput },
-      { label: 'État lors de la découverte\u00A0:', name: 'discoveryStateId', component: DiscoveryStateSelect },
-      { label: 'Cause de la mort\u00A0:', name: 'deathCauseId', component: DeathCauseSelect, props: { clearable: false } }
+      { label: 'État lors de la découverte\u00A0:', name: 'discoveryState', component: DiscoveryStateSelect },
+      { label: 'Cause de la mort\u00A0:', name: 'deathCause', component: DeathCauseSelect }
     ]
   },
   { 
     title: 'Détails sur l\'euthanasie',
-    visible: (data, watched) => { const { deathCauseId } = watched; return [1, 101, 102].includes(deathCauseId) },
+    visible: (data, watched) => { const { deathCause } = watched; const { id: deathCauseId } = deathCause; return [1, 101, 102].includes(deathCauseId) },
     fields: [
-      { label: 'Organisme reponsable\u00A0:', name: 'euthanasiaOrganisationId', component: EuthanasiaOrganisationSelect },
+      { label: 'Organisme reponsable\u00A0:', name: 'euthanasiaOrganisation', component: EuthanasiaOrganisationSelect },
       { label: 'Date d\'euthanasie\u00A0:', name: 'euthanizedAt', component: DateInput },
-      { label: 'Méthode utilisée\u00A0:', name: 'euthanasiaMethodId', component: EuthanasiaMethodSelect },
-      { label: 'Quantité d\'immobilisant utilisée\u00A0:', name: 'productAmount', component: NumberInput, props: { precision: 2 }, visible: (data, watched) => { const { euthanasiaMethodId } = watched; return (euthanasiaMethodId === 1) } },
-      { label: 'Numéro de bouteille\u00A0:', name: 'bottleNumber', visible: (data, watched) => { const { euthanasiaMethodId } = watched; return (euthanasiaMethodId === 1) } }
+      { label: 'Méthode utilisée\u00A0:', name: 'euthanasiaMethod', component: EuthanasiaMethodSelect },
+      { label: 'Quantité d\'immobilisant utilisée\u00A0:', name: 'productAmount', component: NumberInput, props: { precision: 2 }, visible: (data, watched) => { const { euthanasiaMethod } = watched; const euthanasiaMethodId = euthanasiaMethod?.id; return (euthanasiaMethodId === 1) } },
+      { label: 'Numéro de bouteille\u00A0:', name: 'bottleNumber', visible: (data, watched) => { const { euthanasiaMethod } = watched; const euthanasiaMethodId = euthanasiaMethod?.id; return (euthanasiaMethodId === 1) } }
     ]
   },
   { 
@@ -55,19 +56,19 @@ const formSchema = [
   { 
     title: 'Autres informations',
     fields: [
-      { label: 'Méthode de conservation\u00A0:', name: 'preservationMethodId', component: PreservationMethodSelect, props: { clearable: false } },
+      { label: 'Méthode de conservation\u00A0:', name: 'preservationMethod', component: PreservationMethodSelect, props: { clearable: false } },
       { label: 'Remarques\u00A0:', name: 'notes', component: CommentInput },
       { label: 'Mots-clés\u00A0:', name: 'keywords', component: CommentInput }
     ]
   }
 ]
 
-const EditSpecimenDialog = ({ close, eventId, data }) => {
+const EditSpecimenDialog = ({ close, eventId, specimenId, data }) => {
   const handleSubmit = useCallback(async (data) => {
-    console.debug(data)
-    // await updateGeneralInfos(eventId, data)
-    // close()
-  }, [close, eventId])
+    // console.debug(data)
+    await updateSpecimenAction(eventId, specimenId, data)
+    close()
+  }, [close, eventId, specimenId])
 
   const fieldNames = formSchema.map(section => {
     const { fields } = section
@@ -84,7 +85,7 @@ const EditSpecimenDialog = ({ close, eventId, data }) => {
   const { name } = specie
 
   return (
-    <BaseDialog title={`Spécimen ${eventId}.${sequenceId} - ${name}`} size={'lg'} onClose={close} onSubmit={handleSubmit} submitBtnLabel={'Sauvegarder'} schema={null} schemaType={'valibot'} defaultValues={defaultValues} watches={['deathCauseId', 'euthanasiaMethodId']}>
+    <BaseDialog title={`Spécimen ${eventId}.${sequenceId} - ${name}`} size={'lg'} onClose={close} onSubmit={handleSubmit} submitBtnLabel={'Sauvegarder'} schema={schema} schemaType={'valibot'} defaultValues={defaultValues} watches={watchedField}>
       {(contentRef, watched) => {
         return (
           <Fields formSchema={formSchema} contentRef={contentRef} watched={watched} data={defaultValues} />

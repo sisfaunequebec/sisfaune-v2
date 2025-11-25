@@ -1,63 +1,22 @@
 'use client'
-import { useCallback, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 
-import getDiscoveryStates from '@/lib/data/lookups/get-discovery-states'
+import SelectInput from '@/app/lib/components/inputs/base/select'
 
-import {
-  Portal,
-  Select,
-  createListCollection
-} from '@chakra-ui/react'
-
-const DiscoveryStateSelect = ({ value, onChange, onBlur, contentRef }) => {
+const DiscoveryStateSelect = (props) => {
   const [items, setItems] = useState([])
 
   useEffect(() => {
     const loadItems = async () => {
-      const result = await getDiscoveryStates()
+      const res = await fetch('/api/lookup/discovery-states', { cache: 'force-cache', next: { tags: ['event-types'] } })
+      const result = await res.json()
       setItems(result)
     }
     loadItems()
   }, [setItems])
 
-  const handleValueChange = useCallback((e) => {
-    const { value } = e
-    onChange(value[0])
-  }, [onChange])
-
-  const collection = createListCollection({ items })
-
   return (
-    <Select.Root
-      collection={collection}
-      value={[value]}
-      onValueChange={handleValueChange}
-      onInteractOutside={onBlur}
-      size='sm'
-      positioning={{ sameWidth: true }}
-    >
-      <Select.HiddenSelect />
-      <Select.Control>
-        <Select.Trigger>
-          <Select.ValueText />
-        </Select.Trigger>
-        <Select.IndicatorGroup>
-          { value && <Select.ClearTrigger /> }
-          <Select.Indicator />
-        </Select.IndicatorGroup>
-      </Select.Control>
-      <Portal container={contentRef}>
-        <Select.Positioner>
-          <Select.Content>
-            {collection.items.map((item) => (
-              <Select.Item item={item} key={item.value}>
-                {item.label}
-              </Select.Item>
-            ))}
-          </Select.Content>
-        </Select.Positioner>
-      </Portal>
-    </Select.Root>
+    <SelectInput valueKey={'id'} labelKey={'name'} items={items} {...props} clearable={false} />
   )
 }
 

@@ -36,14 +36,22 @@ const SpeciesCombo = ({ value, onChange }) => {
 
 const defaultValues = {
   specie: null,
-  discoveryStateId: null,
+  discoveryState: { id: 0 },
   silabIdentificationNumber: null,
   terrainIdentificationNumber: null,
   huntingPermitNumber: null
 }
 const AddSpecimenDialog = ({ eventId, close }) => {
   const handleSubmit = useCallback(async (data) => {
-    const result = await addSpecimenAction(eventId, data)
+    const { specie, discoveryState,  ...rest } = data
+    console.debug(data)
+    // const specieId = specie?.id ?? null
+    const payload = {
+      specieId: specie?.id ?? undefined,
+      discoveryStateId: discoveryState?.id ?? undefined,
+      ...rest
+    }
+    const result = await addSpecimenAction(eventId, payload)
     return result
   }, [eventId])
 
@@ -55,7 +63,7 @@ const AddSpecimenDialog = ({ eventId, close }) => {
             <ControlledField name={'specie'} label={'Espèce :'} variant={'horizontal'}>
               <SpeciesCombo contentRef={contentRef} />
             </ControlledField>
-            <ControlledField name={'discoveryStateId'} label={'État lors de la découverte :'} variant={'horizontal'}>
+            <ControlledField name={'discoveryState'} label={'État lors de la découverte :'} variant={'horizontal'}>
               <DiscoveryStateSelect contentRef={contentRef} />
             </ControlledField>
             <ControlledField name={'silabIdentificationNumber'} label={'Numéro de spécimen SILAB :'} variant={'horizontal'}>

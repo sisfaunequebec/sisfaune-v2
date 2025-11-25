@@ -2,14 +2,14 @@
 import prisma from '../database'
 
 const getEuthanasiaOrganisations = async () => {
-  const raw = await prisma.LutEuthanasiaOrganisation.findMany()
-  const items = raw.map(t => {
-    const { id: value, name: label } = t
-    return {
-      value,
-      label
-    }
-  })
+  const items = await prisma.LutEuthanasiaOrganisation.findMany()
+  // const items = raw.map(t => {
+  //   const { id: value, name: label } = t
+  //   return {
+  //     value,
+  //     label
+  //   }
+  // })
   return items
 }
 

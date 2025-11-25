@@ -20,8 +20,6 @@ const Select = ({ items: rawItems, value, onChange }) => {
     return createListCollection({ items })
   }, [items])
 
-  // console.debug(collection)
-
   return (
     <SelectRoot
       collection={collection}

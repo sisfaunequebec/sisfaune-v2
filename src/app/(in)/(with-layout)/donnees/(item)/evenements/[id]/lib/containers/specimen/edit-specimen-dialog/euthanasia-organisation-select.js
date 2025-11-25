@@ -10,15 +10,16 @@ const EuthanasiaOrganisationSelect = (props) => {
   const [items, setItems] = useState([])
 
   useEffect(() => {
-    const load = async () => {
-      const result = await getEuthanasiaOrganisations()
+    const loadItems = async () => {
+      const res = await fetch('/api/lookup/euthanasia-organisations', { cache: 'no-cache', next: { tags: ['event-types'] } })
+      const result = await res.json()
       setItems(result)
     }
-    load()
+    loadItems()
   }, [setItems])
 
   return (
-    <SelectInput items={items} {...props} />
+    <SelectInput valueKey={'id'} labelKey={'name'} items={items} {...props} clearable={true}  />
   )
 }
 

@@ -2,7 +2,7 @@
 
 import { revalidatePath } from 'next/cache'
 
-import { updateLaboratory } from '@/lib/data/laboratory/service'
+import { updateLaboratory } from '@/lib/data/laboratories/service'
 
 const updateLaboratoryAction = async (eventId, data) => {
   await updateLaboratory(eventId, data)

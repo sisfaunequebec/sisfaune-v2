@@ -1,24 +1,22 @@
 'use client'
 import { useEffect, useState } from 'react'
 
-// import getDeathCauses from '@/lib/data/lookups/get-death-causes
-import getEuthanasiaMethods from '@/lib/data/lookups/get-euthanasia-methods'
-
 import SelectInput from '@/app/lib/components/inputs/base/select'
 
 const EuthanasiaMethodSelect = (props) => {
   const [items, setItems] = useState([])
 
   useEffect(() => {
-    const load = async () => {
-      const result = await getEuthanasiaMethods()
+    const loadItems = async () => {
+      const res = await fetch('/api/lookup/euthanasia-methods', { cache: 'no-cache', next: { tags: ['event-types'] } })
+      const result = await res.json()
       setItems(result)
     }
-    load()
+    loadItems()
   }, [setItems])
 
   return (
-    <SelectInput items={items} {...props} />
+    <SelectInput valueKey={'id'} labelKey={'name'} items={items} {...props} />
   )
 }
 

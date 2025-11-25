@@ -22,10 +22,9 @@ import { AdvancedMarker, APIProvider, Map, MapControl, Marker, useMap, useMapsLi
 
 import ControlledField from '@/app/lib/components/controlled-field'
 import TextInput from '@/app/lib/components/inputs/base/text'
+import SelectInput from '@/app/lib/components/inputs/base/select'
 
 import schema from './edit-location.schema'
-
-import SelectInput from '@/app/lib/components/inputs/base/select'
 
 const DEFAULT_CENTER = { lat: 46.5, lng: -73.5 }
 

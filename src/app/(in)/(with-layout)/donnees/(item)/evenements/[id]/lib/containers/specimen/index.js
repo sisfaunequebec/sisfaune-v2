@@ -35,13 +35,13 @@ const schema = [
   },
   { 
     title: 'Détails sur l\'euthanasie',
-    visible: (data) => { const { deathCauseId } = data; return [1, 101, 102].includes(deathCauseId) },
+    visible: (data) => { const { deathCause } = data; const { id: deathCauseId } = deathCause; return [1, 101, 102].includes(deathCauseId) },
     fields: [
       { label: 'Organisme reponsable\u00A0:', name: 'euthanasiaOrganisation', component: SelectDisplay },
       { label: 'Date d\'euthanasie\u00A0:', name: 'euthanizedAt', component: DateDisplay },
       { label: 'Méthode utilisée\u00A0:', name: 'euthanasiaMethod', component: SelectDisplay },
-      { label: 'Quantité d\'immobilisant utilisée\u00A0:', name: 'productAmount', component: NumberDisplay, props: { precision: 2 } , visible: (data) => { const { euthanasiaMethodId } = data; return (euthanasiaMethodId === 1) } },
-      { label: 'Numéro de bouteille\u00A0:', name: 'bottleNumber', visible: (data) => { const { euthanasiaMethodId } = data; return (euthanasiaMethodId === 1) } }
+      { label: 'Quantité d\'immobilisant utilisée\u00A0:', name: 'productAmount', component: NumberDisplay, props: { precision: 2 } , visible: (data) => { const { euthanasiaMethod } = data; const euthanasiaMethodId = euthanasiaMethod?.id;  return (euthanasiaMethodId === 1) } },
+      { label: 'Numéro de bouteille\u00A0:', name: 'bottleNumber', visible: (data) => { const { euthanasiaMethod } = data; const euthanasiaMethodId = euthanasiaMethod?.id; return (euthanasiaMethodId === 1) } }
     ]
   },
   { 
