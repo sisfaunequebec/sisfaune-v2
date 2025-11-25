@@ -2,6 +2,8 @@ import { Prisma } from '@prisma/client'
 
 const isNil = require('lodash.isnil')
 
+import { revalidatePath } from 'next/cache'
+
 import orm from '@/lib/data/database'
 
 import getToday from './get-today'
@@ -104,6 +106,8 @@ const insertData = async (data) => {
       // update location coordinates
       updateLocationQuery
     ])
+
+    console.debug('Done inserting data', results)
 
     // throw new Error('shit')
 

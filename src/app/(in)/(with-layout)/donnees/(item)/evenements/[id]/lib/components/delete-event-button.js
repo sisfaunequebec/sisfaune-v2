@@ -9,8 +9,6 @@ import { toaster } from '@/app/lib/components/ui/toaster'
 
 import { RxTrash } from 'react-icons/rx'
 
-import { deleteEvent } from '@/lib/data/events/service'
-
 import useDialog from '@/utils/use-dialog'
 
 import DeleteEventDialog from './delete-event-dialog'

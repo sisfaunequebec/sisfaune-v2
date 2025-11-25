@@ -340,6 +340,11 @@ const addEvent = async (data) => {
   const added = await orm.Event.create({
     data: {
       ...rest,
+      createdBy: {
+        connect: {
+          id: submitterId
+        }
+      },
       type: {
         connect: {
           id: typeId

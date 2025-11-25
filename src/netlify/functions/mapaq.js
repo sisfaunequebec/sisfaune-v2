@@ -1,3 +1,5 @@
+
+
 import getDataFromFtp from '@/app/api/scheduled/mapaq/get-data-from-ftp'
 import readCsv from '@/app/api/scheduled/mapaq/read-csv'
 import insertData from '@/app/api/scheduled/mapaq/insert-data'
