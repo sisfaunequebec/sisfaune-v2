@@ -1,7 +1,7 @@
-import getDataFromFtp from './get-data-from-ftp'
-import readCsv from './read-csv'
-import insertData from './insert-data'
-import sendEmailConfirmation from './send-confirmation'
+import getDataFromFtp from '@/app/api/scheduled/mapaq/get-data-from-ftp'
+import readCsv from '@/app/api/scheduled/mapaq/read-csv'
+import insertData from '@/app/api/scheduled/mapaq/insert-data'
+import sendEmailConfirmation from '@/app/api/scheduled/mapaq/send-confirmation'
 
 const handler = async (req) => {
     // const { next_run } = await req.json()
