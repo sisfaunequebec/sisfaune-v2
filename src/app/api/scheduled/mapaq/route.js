@@ -13,20 +13,21 @@ const GET = async (request) => {
   }
 
   const data = await readCsv(ftpResult.file)
+  console.debug(data)
 
-  const insertResult = await insertData(data)
+  // const insertResult = await insertData(data)
 
-  if (insertResult.error) {
-    sendEmailConfirmation(null, insertResult.error)
-    return Response.json({ status: 'error', error: insertResult.error})
-  }
+  // if (insertResult.error) {
+  //   sendEmailConfirmation(null, insertResult.error)
+  //   return Response.json({ status: 'error', error: insertResult.error})
+  // }
 
-  // console.debug('insertResult', insertResult)
-  const insertedRowCount = insertResult.data[5]
+  // // console.debug('insertResult', insertResult)
+  // const insertedRowCount = insertResult.data[5]
 
-  // send success email
-  sendEmailConfirmation(insertedRowCount, null)
-  return Response.json({ status: 'ok', insertedRowCount })
+  // // send success email
+  // sendEmailConfirmation(insertedRowCount, null)
+  // return Response.json({ status: 'ok', insertedRowCount })
 }
 
 export {
