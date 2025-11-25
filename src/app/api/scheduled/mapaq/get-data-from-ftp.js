@@ -52,8 +52,6 @@ const getDataFromFtp = async () => {
       error: null
     }
   } catch(err) {
-    console.error(err)
-
     const { message } = err
 
     const exception = new Error('GetDataFromFtpException')
