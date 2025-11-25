@@ -7,17 +7,29 @@ const handler = async (req) => {
     const ftpResult = await getDataFromFtp()
 
     if (ftpResult.error) {
-        console.debug(ftpResult.error.detail)
+        // console.debug(ftpResult.error.detail)
         sendEmailConfirmation(null, ftpResult.error.detail)
         return
     }
 
     const data = await readCsv(ftpResult.file)
-    console.debug(data)
+
+    const insertResult = await insertData(data)
+
+    if (insertResult.error) {
+      sendEmailConfirmation(null, insertResult.error)
+      return Response.json({ status: 'error', error: insertResult.error})
+    }
+
+    const insertedRowCount = insertResult.data[5]
+
+    // send success email
+    sendEmailConfirmation(insertedRowCount, null)
+    return Response.json({ status: 'ok', insertedRowCount })
 }
 
 export default handler
 
 export const config = {
-    schedule: "0 * * * *"
+    schedule: "0 6 * * *"
 }
