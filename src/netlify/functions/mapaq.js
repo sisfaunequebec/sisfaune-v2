@@ -9,7 +9,7 @@ const handler = async (req) => {
 
     const ftpResult = await getDataFromFtp()
     if (ftpResult.error) {
-        console.debug(ftpResult.error)
+        console.debug(ftpResult.error.detail)
         // sendEmailConfirmation(null, ftpResult.error.detail)
         return
         // return Response.json({ status: 'error', error: ftpResult.error.detail })
