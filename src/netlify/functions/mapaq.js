@@ -8,8 +8,14 @@ const handler = async (req) => {
     // console.log("Received event! Next invocation at:", next_run)
 
     const ftpResult = await getDataFromFtp()
-    const data = await readCsv(ftpResult.file)
+    if (ftpResult.error) {
+        console.debug(ftpResult.error)
+        // sendEmailConfirmation(null, ftpResult.error.detail)
+        return
+        // return Response.json({ status: 'error', error: ftpResult.error.detail })
+    }
 
+    const data = await readCsv(ftpResult.file)
     console.debug(data)
 }
 
