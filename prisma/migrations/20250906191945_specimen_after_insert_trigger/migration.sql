@@ -20,7 +20,7 @@ BEGIN
 END;
 $$;
 
-CREATE OR REPLACE TRIGGER specimen_after_insert_trigger
+CREATE OR REPLACE TRIGGER trg_ai_specimen_update_specimen_sequential_id
 AFTER INSERT ON data_specimen
 FOR EACH ROW
 EXECUTE PROCEDURE update_specimen_sequential_id();

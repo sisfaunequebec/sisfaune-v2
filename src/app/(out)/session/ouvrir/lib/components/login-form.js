@@ -1,10 +1,10 @@
 'use client'
 
 import { useForm, FormProvider } from 'react-hook-form'
-import { zodResolver } from '@hookform/resolvers/zod'
+// import { zodResolver } from '@hookform/resolvers/zod'
 import { valibotResolver } from '@hookform/resolvers/valibot'
 
-import { Flex, Image, Fieldset, Input, Link } from '@chakra-ui/react'
+import { Flex, Image, Fieldset, Input, Link, VStack, Alert } from '@chakra-ui/react'
 
 import { PasswordInput } from '@/app/lib/components/ui/password-input'
 
@@ -12,7 +12,6 @@ import useDialog from '@/utils/use-dialog'
 
 import Field from '@/app/lib/components/field'
 
-import signInSchema from './sign-in-schema'
 import signAction from './signin.action'
 import SignInButton from './sign-in-button'
 
@@ -23,7 +22,6 @@ const valibotSignInSchema = v.object({
     v.string(),
     v.trim(),
     v.nonEmpty('Le nom d\'utilisateur est requis')
-    // v.endsWith('cool', 'Needs to end with `cool`'),
   ),
   password: v.pipe(
     v.string(),
@@ -33,9 +31,11 @@ const valibotSignInSchema = v.object({
 })
 
 import ResetPasswordDialog from './reset-password-dialog'
+import FirstLoginDialog from './first-login-dialog'
 
 const LoginForm = () => {
   const { ask: resetPassword, dialog: resetPasswordDialog } = useDialog(ResetPasswordDialog)
+  const { ask: newPassword, dialog: firstLoginDialog } = useDialog(FirstLoginDialog)
 
   const form = useForm({
     resolver: valibotResolver(valibotSignInSchema, { reValidateMode: 'onSubmit' }),
@@ -56,17 +56,26 @@ const LoginForm = () => {
   return (
     <>
       { resetPasswordDialog }
-
+      { firstLoginDialog}
       <FormProvider {...form}>
         <Flex as='form' autoComplete='off' onSubmit={handleSubmit(onSubmit)} direction='column' alignItems='center' justifyContent='center' shadow='lg' bg='white' p={8} borderRadius='lg' w={['full', 'auto']} h={['100%', 'auto']}>
-          <Image src='/logo_sisfaune_big.png' alt='logo' mb={8} />
+          <Image src='/logo_sisfaune_big.png' alt='logo' mb={3} />
           <Fieldset.Root size='lg' maxW='280px' invalid={false}>
-            <Fieldset.Content>
+            <Alert.Root status={'warning'}>
+              <Alert.Indicator />
+              <Alert.Content>
+                <Alert.Title>ATTENTION</Alert.Title>
+                <Alert.Description>
+                  Si vous vous connectez pour la <strong>première fois à la nouvelle version</strong> de SIS Faune, <Link href={'#'} textDecoration={'underline'} fontWeight={'bold'} onClick={(e) => {e.preventDefault(); newPassword();}}>veuillez cliquer ici</Link>.
+                </Alert.Description>
+              </Alert.Content>
+            </Alert.Root>
+            <Fieldset.Content as={VStack} gap={1} mt={2}>
               <Field formState={formState} name={'username'} label={'Nom d\'utilisateur :'}>
-                <Input autoComplete='off' {...register('username')} />
+                <Input autoComplete='off' {...register('username')} size={'sm'} />
               </Field>
               <Field formState={formState} name={'password'} label={'Mot de passe :'}>
-                <PasswordInput autoComplete='off' {...register('password')} />
+                <PasswordInput autoComplete='off' {...register('password')} size={'sm'} />
               </Field>
             </Fieldset.Content>
             <SignInButton />

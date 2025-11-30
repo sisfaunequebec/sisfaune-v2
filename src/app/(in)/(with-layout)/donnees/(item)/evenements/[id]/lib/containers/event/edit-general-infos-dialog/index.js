@@ -1,9 +1,8 @@
 'use client'
 import { useState, useEffect, useCallback } from 'react'
 
-import { Checkbox } from '@/app/lib/components/ui/checkbox'
-
 import updateGeneralInfos from '../update-general-infos.action'
+import beforeUpdate from './before-update'
 
 import getActivePrograms from '@/lib/data/lookups/event-programs'
 
@@ -26,6 +25,7 @@ import LabSelect from './lab-select'
 import CollaboratorSelect from './collaborator-select'
 
 import UnimplementedDisplay from '@/app/lib/components/display/base/unimplemented'
+
 
 const DiscovererInput = ({ value, data }) => {
   const { status } = data
@@ -50,7 +50,6 @@ const ContactSelect = (props) => {
 
 const ProgramSelect = (props) => {
   const [items, setItems] = useState([])
-
   useEffect(() => {
     const loadItems = async () => {
       const result = await getActivePrograms()
@@ -115,10 +114,11 @@ const formSchema = [
 ]
 
 const EditGeneralInfosDialog = ({ close, eventId, data }) => {
-  const handleSubmit = useCallback(async (data) => {
-    await updateGeneralInfos(eventId, data)
+  const handleSubmit = useCallback(async (updating) => {
+    const updated = beforeUpdate(data, updating)
+    await updateGeneralInfos(eventId, updated)
     close()
-  }, [close, eventId])
+  }, [close, eventId, data])
 
   const fieldNames = formSchema.map(section => {
     const { fields } = section

@@ -18,7 +18,7 @@ model User {
   password String @unique @map(name: "mot_de_passe")
 
   email String @unique @map(name: "adresse_courriel")
-  emailVerified DateTime? @map(name: "meta_date_verification_courriel") @default(now())
+  emailVerified DateTime? @map(name: "meta_date_verification_courriel")
 
   isActive Boolean @default(true) @map(name: "est_actif")
 
@@ -545,7 +545,7 @@ model Specimen {
   keywords String? @map(name: "motcles")
 
   createdAt DateTime @default(now()) @map("meta_date_creation")
-  createdById String? @map("meta_creation_par") 
+  uerd String? @map("meta_creation_par") 
 
   // Relations
   event Event @relation(fields: [eventId], references: [id], onDelete: Cascade, onUpdate: Cascade)

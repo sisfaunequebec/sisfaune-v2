@@ -29,7 +29,7 @@ const credentialsProvider = Credentials({
 
     if (!user) {
       const error = new CredentialsSignin()
-      error.errors = { password: 'Ce nom d\'utilisateur ou ce mot de passe sont inconnus...' }
+      error.errors = { username: 'Ce nom d\'utilisateur est inconnu ou le mot de passe est erronné...' }
       throw error
     }
     
@@ -39,7 +39,7 @@ const credentialsProvider = Credentials({
 
     if (!match) {
       const error = new CredentialsSignin()
-      error.errors = {  password: 'Ce nom d\'utilisateur ou ce mot de passe sont inconnus...' }
+      error.errors = {  username: 'Ce nom d\'utilisateur est inconnu ou le mot de passe est erronné...' }
       throw error
     }
 

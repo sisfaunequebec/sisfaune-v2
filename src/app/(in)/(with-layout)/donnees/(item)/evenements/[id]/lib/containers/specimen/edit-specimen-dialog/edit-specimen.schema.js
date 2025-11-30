@@ -1,4 +1,3 @@
-import { m } from 'framer-motion'
 import * as v from 'valibot'
 
 const isEuthanasia = (specimen) => {
@@ -10,7 +9,7 @@ const isEuthanasia = (specimen) => {
 }
 
 const isLethalInjection = (specimen) => {
-  console.debug('isLethalInjection', specimen)
+  // console.debug('isLethalInjection', specimen)
   const { euthanasiaMethod } = specimen
   const euthanasiaMethodId = euthanasiaMethod?.id
   const isLethalInjection = euthanasiaMethodId === 1
@@ -18,7 +17,6 @@ const isLethalInjection = (specimen) => {
 }
 
 const schema = v.pipe(
-  // v.forward(v.partialCheck((specimen) => { console.debug(specimen); return false }, 'Shit'), ['bottleNumber']),
   v.object({
     discoveryState: v.object({ id: v.integer() }),
     deathCause: v.object({ id: v.integer() }),
@@ -38,7 +36,7 @@ const schema = v.pipe(
   }),
   v.forward(
     v.custom((specimen) => {
-      if (isLethalInjection(specimen)) {
+      if (isLethalInjection(specimen) && !!specimen.bottleNumber) {
         return specimen.productAmount !== null
       }
       return true
@@ -47,7 +45,7 @@ const schema = v.pipe(
   ),
   v.forward(
     v.custom((specimen) => {
-      if (isLethalInjection(specimen)) {
+      if (isLethalInjection(specimen) && !!specimen.productAmount) {
         return specimen.bottleNumber !== null
       }
       return true
@@ -57,20 +55,3 @@ const schema = v.pipe(
 )
 
 export default schema
-
-
-  // discoveryStateId: specimen => (specimen.discoveryState ? specimen.discoveryState.id : null),
-  // deathCauseId: specimen => (specimen.deathCause ? specimen.deathCause.id : null),
-  // euthanizedAt: specimen => (isEuthanasia(specimen) ? isoDateToDb(specimen.euthanizedAt) : null),
-  // euthanasiaOrganisationId: specimen => (isEuthanasia(specimen) ? (specimen.euthanasiaOrganisation?.id ?? null) : null),
-  // euthanasiaMethodId: specimen => (true ? (specimen.euthanasiaMethod?.id ?? null) : null),
-  // bottleNumber: specimen => (isLethalInjection(specimen) ? specimen.bottleNumber : null),
-  // productAmount: specimen => (isLethalInjection(specimen) ? specimen.productAmount : null),
-  // terrainIdentificationNumber: null,
-  // silabIdentificationNumber: null,
-  // cqsasNumber: null,
-  // sefaqNumber: null,
-  // huntingPermitNumber: null,
-  // identificationMarks: null,
-  // notes: null,
-  // keywords: null

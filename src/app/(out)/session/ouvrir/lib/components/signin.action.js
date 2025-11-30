@@ -5,9 +5,9 @@ import { redirect } from 'next/navigation'
 import { signIn } from '@/lib/auth'
 
 const signAction = async (formData) => {
-  
   try {
-    await signIn('credentials', { ...formData, redirect: false })
+    const result  = await signIn('credentials', { ...formData, redirect: false })
+    console.debug('signAction', result)
   } catch (error) {
     const { errors } = error
     return { errors }

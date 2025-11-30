@@ -230,12 +230,12 @@ const resetUserPassword = async ({ username }) => {
     }
 
     if (!isProduction()) {
-      console.debug('New password is : ', newPassword)
+      // console.debug('New password is : ', newPassword)
     } 
 
     const { email } = updatedUser
     const result = await sendResetPasswordEmail({ email, username, password: newPassword })
-    console.debug('Sending result is : ', result)
+    // console.debug('Sending result is : ', result)
 
     return newPassword
   } catch (e) {

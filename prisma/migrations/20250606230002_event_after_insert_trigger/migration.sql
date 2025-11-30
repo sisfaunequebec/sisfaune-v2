@@ -6,7 +6,7 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
-CREATE OR REPLACE TRIGGER trg_event_after_insert 
+CREATE OR REPLACE TRIGGER trg_ai_event_insert_location_from_event
 AFTER INSERT ON data_evenement
 FOR EACH ROW
 EXECUTE FUNCTION insert_location_from_event();

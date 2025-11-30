@@ -14,7 +14,7 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
-CREATE OR REPLACE TRIGGER trg_location_before_insert_or_update
+CREATE OR REPLACE TRIGGER trg_bi_location_update_muni_from_xy
 BEFORE INSERT OR UPDATE ON data_localisation
 FOR EACH ROW
 EXECUTE FUNCTION update_muni_from_xy();

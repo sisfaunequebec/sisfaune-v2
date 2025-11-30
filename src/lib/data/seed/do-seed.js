@@ -21,17 +21,17 @@ const lutReportOrigins = require('./lut-report-origins')
 const lutEuthanasiaMethods = require('./lut-euthanasia-methods')
 
 const dataCollaborators = require('./data-collaborators')
-const dataEvents = require('./data-events')
-const dataLocations = require('./data-locations')
 
 const adminUsers = require('./admin-users')
 const adminUserPrograms = require('./admin-user-programs')
 
 const lutWeightUnits = require('./lut-weight-units')
 
-const dataSpecimens = require('./data-specimens')
-
 const dataDiscoverers = require('./data-discoverers')
+
+// const dataEvents = require('./data-events')
+// const dataLocations = require('./data-locations')
+// const dataSpecimens = require('./data-specimens')
 
 async function doSeed (orm) {
   await orm.$transaction([
@@ -80,28 +80,27 @@ async function doSeed (orm) {
 
     orm.Discoverer.createMany({ data: dataDiscoverers }),
 
-    orm.Event.createMany({ data: dataEvents }),
-    orm.Location.createMany({ data: dataLocations }),
-
     orm.AdminUserProgram.createMany({ data: adminUserPrograms }),
 
     orm.LutWeighUnit.createMany({ data: lutWeightUnits }),
 
-    orm.Specimen.createMany({ data: dataSpecimens }),
+    // orm.Event.createMany({ data: dataEvents }),
+    // orm.Location.createMany({ data: dataLocations }),
+    // orm.Specimen.createMany({ data: dataSpecimens }),
 
     // Reset sequences
-    orm.$executeRaw`
-      do $$
-      DECLARE max_id int;
-      BEGIN
-          SELECT max(id) + 1 FROM data_evenement INTO max_id;
-          EXECUTE 'alter SEQUENCE data_evenement_id_seq RESTART with '|| max_id;   
+    // orm.$executeRaw`
+    //   do $$
+    //   DECLARE max_id int;
+    //   BEGIN
+    //       SELECT max(id) + 1 FROM data_evenement INTO max_id;
+    //       EXECUTE 'alter SEQUENCE data_evenement_id_seq RESTART with '|| max_id;   
 
-          SELECT max(id) + 1 FROM data_specimen INTO max_id;
-          EXECUTE 'alter SEQUENCE data_specimen_id_seq RESTART with '|| max_id;   
-      END;
-      $$ LANGUAGE plpgsql
-    `,
+    //       SELECT max(id) + 1 FROM data_specimen INTO max_id;
+    //       EXECUTE 'alter SEQUENCE data_specimen_id_seq RESTART with '|| max_id;   
+    //   END;
+    //   $$ LANGUAGE plpgsql
+    // `,
 
     // Enable triggers
     orm.$executeRaw`SET session_replication_role = DEFAULT;`

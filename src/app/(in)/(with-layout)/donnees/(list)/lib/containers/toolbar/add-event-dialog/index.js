@@ -37,6 +37,7 @@ const AddEventDialog = ({ close, programs, onAdd }) => {
       reportOriginId: reportOrigin?.id ?? null,
       statusId: status?.id ?? null,
       reportedAt: reportedAt ? isoDateToDb(reportedAt) : null,
+      closedAt: status?.id === 3 ? DateTime.utc().toISO() : null,
       ...rest
     }
     const added = await onAdd(payload)
