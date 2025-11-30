@@ -3,10 +3,10 @@ import { Field } from '../ui/field'
 
 import TextDisplay from '@/app/lib/components/display/base/text'
 
-const Fields = ({ schema, data }) => {
+const Fields = ({ schema, data, ...rest }) => {
   const sectionsCount = schema.length
   return (
-    <VStack gap={2} flex={1}>
+    <VStack gap={2} flex={1} {...rest}>
       {schema.map((section, i) => {
         const { title, visible, fields } = section
         const isVisible = visible !== undefined ? (typeof visible === 'function') ? visible(data) : visible : true

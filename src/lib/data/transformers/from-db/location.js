@@ -5,10 +5,26 @@ const fixCoordinates = (value) => {
   return value ? parseFloat(value.toString()) : 0
 }
 
+// const locationTypes = {
+//   coordinates: 'coordinates',
+//   adress: 'adress'
+// }
+
+const getLocationType = (location) => {
+  const { typeId } = location
+  return typeId ? { id: typeId, name: typeId } : null
+}
+
+const getCoordinates = (location) => {
+  const { latitude, longitude } = location
+  return (latitude && longitude) ? { latitude: fixCoordinates(latitude), longitude: fixCoordinates(longitude) } : null
+}
+
 const schema = {
-  typeId: null,
-  latitude: location => fixCoordinates(location.latitude),
-  longitude: location => fixCoordinates(location.longitude),
+  type: location => getLocationType(location),
+  coordinates: location => getCoordinates(location),
+  // latitude: location => fixCoordinates(location.latitude),
+  // longitude: location => fixCoordinates(location.longitude),
   locality: location => { const { locality} = location; return { name: locality?.name, province: locality?.province }}
 }
 
