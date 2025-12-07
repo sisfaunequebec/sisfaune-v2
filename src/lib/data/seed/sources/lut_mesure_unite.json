@@ -1,0 +1,50 @@
+[
+  {
+    "id": "1",
+    "type": "1",
+    "unite": "mg",
+    "facteur": 0.0010000000
+  },
+  {
+    "id": "2",
+    "type": "1",
+    "unite": "g",
+    "facteur": 1.0000000000
+  },
+  {
+    "id": "3",
+    "type": "1",
+    "unite": "kg",
+    "facteur": 1000.0000000000
+  },
+  {
+    "id": "4",
+    "type": "1",
+    "unite": "t (tonne métrique)",
+    "facteur": 1000000.0000000000
+  },
+  {
+    "id": "5",
+    "type": "2",
+    "unite": "mm",
+    "facteur": 0.1000000000
+  },
+  {
+    "id": "6",
+    "type": "2",
+    "unite": "cm",
+    "facteur": 1.0000000000
+  },
+  {
+    "id": "7",
+    "type": "2",
+    "unite": "m",
+    "facteur": 100.0000000000
+  },
+  {
+    "id": "100",
+    "type": "100",
+    "unite": " ",
+    "facteur": null
+  }
+]

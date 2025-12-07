@@ -222,13 +222,30 @@ const updateSpecimen = async (specimenId, data) => {
   }
 
   const transformed = toDbSpecimenTransformer(data, { user })
+  const { measures, ...rest } = transformed
   
-  await orm.specimen.update({
-    where: {
-      id: specimenId,
-    },
-    data: transformed
+  await orm.$transaction(async prisma => {
+    await prisma.specimen.update({
+      where: {
+        id: specimenId,
+      },
+      data: rest
+    })
+
+    for await (const m of measures) {
+      const { id: measureId, value, unit } = m
+      const { id: unitId } = unit
+      const data = { value, unitId }
+      console.debug(m, data)
+      await prisma.specimenMeasure.update({
+        where: {
+          id: measureId,
+        },
+        data
+      })
+    }
   })
+
 
   return null
 }

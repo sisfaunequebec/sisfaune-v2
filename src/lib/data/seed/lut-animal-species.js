@@ -14,6 +14,8 @@ const speciesGroupBySpecieId = speciesGroup.reduce((acc, g) => {
 
 const filterOutUndeterminedSpecie = (s) => { return s.id_espece !== '0' }
 
+// console.debug('lut_animal_espece')
+
 const transformed = source
   .filter(filterOutUndeterminedSpecie)
   .map(p => {

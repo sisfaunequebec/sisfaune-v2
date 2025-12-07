@@ -64,7 +64,7 @@ const EditLaboratoryDialog = ({ close, eventId, data }) => {
   }, [close, eventId])
 
   return (
-    <BaseDialog title={'Laboratoire'} size={'lg'} onClose={close} onSubmit={handleSubmit} submitBtnLabel={'Sauvegarder'} schema={editLaboratorySchema} schemaType={'valibot'} defaultValues={data}>
+    <BaseDialog title={`Événement no ${eventId} - Laboratoire`} size={'lg'} onClose={close} onSubmit={handleSubmit} submitBtnLabel={'Sauvegarder'} schema={editLaboratorySchema} schemaType={'valibot'} defaultValues={data}>
       {(contentRef, watched) => {
         return (
           <Fields formSchema={formSchema} contentRef={contentRef} watched={watched} data={data} />

@@ -13,7 +13,7 @@ const GET = async (request) => {
 
   const params = loader(searchParams)
   const { active } = params
-  console.debug('getCollaborators', searchParams, params, active)
+  // console.debug('getCollaborators', searchParams, params, active)
   const result = await getCollaborators({ activeOnly: active })
   return Response.json(result)
 }

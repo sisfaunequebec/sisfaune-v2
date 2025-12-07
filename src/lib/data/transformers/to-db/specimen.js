@@ -6,7 +6,7 @@ const isEuthanasia = (specimen) => {
   const { deathCause } = specimen
   const deathCauseId = deathCause?.id
   const isEuthanasia = [1, 101, 102].includes(deathCauseId)
-  console.debug('isEuthanasia', isEuthanasia, deathCause)
+  // console.debug('isEuthanasia', isEuthanasia, deathCause)
   return isEuthanasia
 }
 
@@ -14,7 +14,7 @@ const isLethalInjection = (specimen) => {
   const { euthanasiaMethod } = specimen
   const euthanasiaMethodId = euthanasiaMethod?.id
   const isLethalInjection = euthanasiaMethodId === 1
-  console.debug('isLethalInjection', isLethalInjection, euthanasiaMethod)
+  // console.debug('isLethalInjection', isLethalInjection, euthanasiaMethod)
   return isLethalInjection
 }
 
@@ -33,11 +33,12 @@ const schema = {
   huntingPermitNumber: null,
   identificationMarks: null,
   notes: null,
-  keywords: null
+  keywords: null,
 
-  //  sex,
-  //  age,
-  //  measures,
+  sexId: specimen => (specimen.sex ? specimen.sex.id : null),
+  ageId: specimen => (specimen.age ? specimen.age.id : null),
+
+  measures: null
 }
 
 const specimenTransformer = (specimen, context) =>   {

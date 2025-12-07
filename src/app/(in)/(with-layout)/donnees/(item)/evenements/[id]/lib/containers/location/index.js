@@ -164,11 +164,11 @@ const LocalisationSection = ({ event, canEdit = false }) => {
           { hasLocation ? 
             <>
               <Fields schema={schema} data={location} mb={2} />
+              <MapDisplay coordinates={coordinates} />
             </>
           : 
             <CenteredMessage title={'Localisation indéterminée'} size={'sm'} /> 
           }
-          <MapDisplay coordinates={coordinates} />
         </>
       </Content>
     </AccordionItem>

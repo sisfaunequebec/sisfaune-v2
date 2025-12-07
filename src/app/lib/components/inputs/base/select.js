@@ -3,7 +3,7 @@ import { useMemo, useCallback } from 'react'
 import { Flex, VStack, Select, createListCollection, Portal } from '@chakra-ui/react'
 // import { imei } from 'valibot'
 
-const SelectInput = ({ items = [], valueKey = 'value', labelKey = 'label', name, value, onChange, onBlur, disabled = false, clearable = true, contentRef }) => {
+const SelectInput = ({ items = [], valueKey = 'value', labelKey = 'label', name, value, onChange, onBlur, disabled = false, clearable = true, flex = 1, contentRef }) => {
   const collection = useMemo(() => {
     return createListCollection({
       items: items.map(item => ({
@@ -32,7 +32,7 @@ const SelectInput = ({ items = [], valueKey = 'value', labelKey = 'label', name,
       onInteractOutside={onBlur}
       size={'sm'}
       positioning={{ sameWidth: true }}
-      // deselectable
+      flex={flex}
     >
       <Select.HiddenSelect />
       <Select.Control >
@@ -40,7 +40,7 @@ const SelectInput = ({ items = [], valueKey = 'value', labelKey = 'label', name,
           <Select.ValueText />
         </Select.Trigger>
         <Select.IndicatorGroup>
-          { showClearButton && <Select.ClearTrigger /> }
+          { showClearButton && <Select.ClearTrigger cursor={'pointer'} /> }
           <Select.Indicator />
         </Select.IndicatorGroup>
       </Select.Control>

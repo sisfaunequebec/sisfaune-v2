@@ -322,7 +322,7 @@ const EditLocationDialog = ({ close, eventId, data }) => {
   const message = 'Sélectionner un type de localisation et préciser les valeurs dans les champs appropriés. Ou déplacer le marqueur sur la carte pour modifier.'
 
   return (
-    <BaseDialog title={'Localisation géographique'} message={message} size={'lg'} onClose={close} onSubmit={handleSubmit} submitBtnLabel={'Sauvegarder'} schema={null} schemaType={'valibot'} defaultValues={defaultValues} watches={['locationTypeId']}>
+    <BaseDialog title={`Événement no ${eventId} - Localisation géographique`} message={message} size={'lg'} onClose={close} onSubmit={handleSubmit} submitBtnLabel={'Sauvegarder'} schema={null} schemaType={'valibot'} defaultValues={defaultValues} watches={['locationTypeId']}>
       {(contentRef, watched) => {
 
         const { locationTypeId } = watched

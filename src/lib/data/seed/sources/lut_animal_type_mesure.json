@@ -1,0 +1,353 @@
+[
+  {
+    "id": "1",
+    "nom": "Hauteur",
+    "unite": "mm",
+    "id_groupe": "5",
+    "description": null,
+    "id_unite_defaut": "5",
+    "id_type_unite": "2"
+  },
+  {
+    "id": "2",
+    "nom": "Largeur",
+    "unite": "mm",
+    "id_groupe": "5",
+    "description": null,
+    "id_unite_defaut": "5",
+    "id_type_unite": "2"
+  },
+  {
+    "id": "3",
+    "nom": "Longueur",
+    "unite": "mm",
+    "id_groupe": "5",
+    "description": null,
+    "id_unite_defaut": "5",
+    "id_type_unite": "2"
+  },
+  {
+    "id": "4",
+    "nom": "Circonférence du cou",
+    "unite": "cm",
+    "id_groupe": "1",
+    "description": "Au point d''attache avec la tête, seulement si l''animal a toujours sa peau",
+    "id_unite_defaut": "6",
+    "id_type_unite": "2"
+  },
+  {
+    "id": "5",
+    "nom": "Circonférence du thorax",
+    "unite": "cm",
+    "id_groupe": "1",
+    "description": "Seulement si l''animal a toujours sa peau",
+    "id_unite_defaut": "6",
+    "id_type_unite": "2"
+  },
+  {
+    "id": "6",
+    "nom": "Hauteur au garrot",
+    "unite": "cm",
+    "id_groupe": "1",
+    "description": null,
+    "id_unite_defaut": "6",
+    "id_type_unite": "2"
+  },
+  {
+    "id": "7",
+    "nom": "Longueur totale (MB)",
+    "unite": "cm",
+    "id_groupe": "1",
+    "description": "Longueur du bout du museau jusqu''au point d''attache de la queue sur l''animal",
+    "id_unite_defaut": "6",
+    "id_type_unite": "2"
+  },
+  {
+    "id": "8",
+    "nom": "Longueur totale (MQ)",
+    "unite": "cm",
+    "id_groupe": "1",
+    "description": "Longueur du bout du museau jusqu''au bout de la queue incluant le poil ou la peau",
+    "id_unite_defaut": "6",
+    "id_type_unite": "2"
+  },
+  {
+    "id": "9",
+    "nom": "Longueur totale (MV)",
+    "unite": "cm",
+    "id_groupe": "1",
+    "description": "Longueur du bout du museau jusqu''au bout de la dernière vertèbre de la queue",
+    "id_unite_defaut": "6",
+    "id_type_unite": "2"
+  },
+  {
+    "id": "10",
+    "nom": "Mesure de la patte arrière",
+    "unite": "cm",
+    "id_groupe": "1",
+    "description": "Du bout des ongles ou des griffes jusqu''au bout de l''os du talon",
+    "id_unite_defaut": "6",
+    "id_type_unite": "2"
+  },
+  {
+    "id": "11",
+    "nom": "Circonférence axillaire",
+    "unite": "cm",
+    "id_groupe": "6",
+    "description": null,
+    "id_unite_defaut": "6",
+    "id_type_unite": "2"
+  },
+  {
+    "id": "12",
+    "nom": "Épaisseur de tissu adipeux dorsal",
+    "unite": "mm",
+    "id_groupe": "6",
+    "description": null,
+    "id_unite_defaut": "5",
+    "id_type_unite": "2"
+  },
+  {
+    "id": "13",
+    "nom": "Épaisseur de tissu adipeux latéral",
+    "unite": "mm",
+    "id_groupe": "6",
+    "description": null,
+    "id_unite_defaut": "5",
+    "id_type_unite": "2"
+  },
+  {
+    "id": "14",
+    "nom": "Épaisseur de tissu adipeux ventral",
+    "unite": "mm",
+    "id_groupe": "6",
+    "description": null,
+    "id_unite_defaut": "5",
+    "id_type_unite": "2"
+  },
+  {
+    "id": "15",
+    "nom": "Envergure totale",
+    "unite": "cm",
+    "id_groupe": "2",
+    "description": "Longueur maximale d''un bout à l''autre des ailes ouvertes",
+    "id_unite_defaut": "6",
+    "id_type_unite": "2"
+  },
+  {
+    "id": "16",
+    "nom": "Longueur totale",
+    "unite": "cm",
+    "id_groupe": "2",
+    "description": "Longueur du bout du bec au bout de la queue",
+    "id_unite_defaut": "6",
+    "id_type_unite": "2"
+  },
+  {
+    "id": "17",
+    "nom": "Mesure de la tête",
+    "unite": "mm",
+    "id_groupe": "2",
+    "description": "Longueur du bout du bec jusqu''à l''arrière du crâne",
+    "id_unite_defaut": "5",
+    "id_type_unite": "2"
+  },
+  {
+    "id": "18",
+    "nom": "Mesure de l''aile",
+    "unite": "mm",
+    "id_groupe": "2",
+    "description": "Longueur du bout des rémiges jusqu''au poignet, prise sur l''aile fermée de l''2",
+    "id_unite_defaut": "5",
+    "id_type_unite": "2"
+  },
+  {
+    "id": "19",
+    "nom": "Mesure du culmen",
+    "unite": "mm",
+    "id_groupe": "2",
+    "description": "Longueur de la ligne formée entre bout du bec et le début des plumes au centre de la face dorsale du",
+    "id_unite_defaut": "5",
+    "id_type_unite": "2"
+  },
+  {
+    "id": "20",
+    "nom": "Mesure du tarso-métatarse",
+    "unite": "mm",
+    "id_groupe": "2",
+    "description": null,
+    "id_unite_defaut": "5",
+    "id_type_unite": "2"
+  },
+  {
+    "id": "21",
+    "nom": "Longueur à la fourche",
+    "unite": "cm",
+    "id_groupe": "4",
+    "description": "Longueur du bout du museau jusqu''à l''intérieur du \"V\" de la queue",
+    "id_unite_defaut": "6",
+    "id_type_unite": "2"
+  },
+  {
+    "id": "22",
+    "nom": "Longueur totale",
+    "unite": "cm",
+    "id_groupe": "4",
+    "description": "Longueur maximale du bout du museau jusqu''au bout de la queue",
+    "id_unite_defaut": "6",
+    "id_type_unite": "2"
+  },
+  {
+    "id": "23",
+    "nom": "Longueur de la dossière",
+    "unite": "cm",
+    "id_groupe": "3",
+    "description": "Tortues uniquement",
+    "id_unite_defaut": "6",
+    "id_type_unite": "2"
+  },
+  {
+    "id": "24",
+    "nom": "Longueur du plastron",
+    "unite": "cm",
+    "id_groupe": "3",
+    "description": "Tortues uniquement",
+    "id_unite_defaut": "6",
+    "id_type_unite": "2"
+  },
+  {
+    "id": "25",
+    "nom": "Longueur totale",
+    "unite": "cm",
+    "id_groupe": "3",
+    "description": null,
+    "id_unite_defaut": "6",
+    "id_type_unite": "2"
+  },
+  {
+    "id": "27",
+    "nom": "Longueur museau-cloaque",
+    "unite": "cm",
+    "id_groupe": "3",
+    "description": null,
+    "id_unite_defaut": "6",
+    "id_type_unite": "2"
+  },
+  {
+    "id": "28",
+    "nom": "Longueur totale",
+    "unite": "cm",
+    "id_groupe": "6",
+    "description": null,
+    "id_unite_defaut": "6",
+    "id_type_unite": "2"
+  },
+  {
+    "id": "29",
+    "nom": "Poids",
+    "unite": "g",
+    "id_groupe": "3",
+    "description": null,
+    "id_unite_defaut": "2",
+    "id_type_unite": "1"
+  },
+  {
+    "id": "31",
+    "nom": "Poids",
+    "unite": "g",
+    "id_groupe": "5",
+    "description": null,
+    "id_unite_defaut": "2",
+    "id_type_unite": "1"
+  },
+  {
+    "id": "33",
+    "nom": "Poids",
+    "unite": "kg",
+    "id_groupe": "1",
+    "description": null,
+    "id_unite_defaut": "3",
+    "id_type_unite": "1"
+  },
+  {
+    "id": "34",
+    "nom": "Poids",
+    "unite": "t",
+    "id_groupe": "6",
+    "description": null,
+    "id_unite_defaut": "4",
+    "id_type_unite": "1"
+  },
+  {
+    "id": "35",
+    "nom": "Poids",
+    "unite": "g",
+    "id_groupe": "2",
+    "description": null,
+    "id_unite_defaut": "2",
+    "id_type_unite": "1"
+  },
+  {
+    "id": "36",
+    "nom": "Poids",
+    "unite": "g",
+    "id_groupe": "4",
+    "description": null,
+    "id_unite_defaut": "2",
+    "id_type_unite": "1"
+  },
+  {
+    "id": "37",
+    "nom": "Longueur du pied ",
+    "unite": "mm",
+    "id_groupe": "2",
+    "description": null,
+    "id_unite_defaut": "5",
+    "id_type_unite": "1"
+  },
+  {
+    "id": "38",
+    "nom": "Aile à plat",
+    "unite": "mm",
+    "id_groupe": "2",
+    "description": null,
+    "id_unite_defaut": "5",
+    "id_type_unite": "1"
+  },
+  {
+    "id": "39",
+    "nom": "Épaisseur du bec",
+    "unite": "mm",
+    "id_groupe": "2",
+    "description": null,
+    "id_unite_defaut": "5",
+    "id_type_unite": "1"
+  },
+  {
+    "id": "40",
+    "nom": "Longueur de l''halux ",
+    "unite": "mm",
+    "id_groupe": "2",
+    "description": null,
+    "id_unite_defaut": "5",
+    "id_type_unite": "1"
+  },
+  {
+    "id": "41",
+    "nom": "Longueur de la queue",
+    "unite": "mm",
+    "id_groupe": "2",
+    "description": null,
+    "id_unite_defaut": "5",
+    "id_type_unite": "1"
+  },
+  {
+    "id": "44",
+    "nom": "État de chair",
+    "unite": " ",
+    "id_groupe": "2",
+    "description": null,
+    "id_unite_defaut": "100",
+    "id_type_unite": "100"
+  }
+]

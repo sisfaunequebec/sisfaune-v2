@@ -32,7 +32,10 @@ const schema = v.pipe(
     huntingPermitNumber: v.nullish(v.string()),
     identificationMarks: v.nullish(v.string()),
     notes: v.nullish(v.string()),
-    keywords: v.nullish(v.string())
+    keywords: v.nullish(v.string()),
+    sex: v.nullish(v.object({ id: v.integer() })),
+    age: v.nullish(v.object({ id: v.integer() })),
+    measures: v.any()
   }),
   v.forward(
     v.custom((specimen) => {

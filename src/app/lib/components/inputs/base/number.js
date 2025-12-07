@@ -1,5 +1,7 @@
 import { useCallback } from 'react'
 
+import isNil from 'lodash.isnil'
+
 import { NumericFormat } from 'react-number-format'
 import { Input, InputGroup } from '@chakra-ui/react'
 
@@ -9,16 +11,18 @@ import { Input, InputGroup } from '@chakra-ui/react'
 // @param {number} [props.precision=0] - Nombre de décimales à afficher.
 // @param {...any} [props.rest] - Autres props passées au composant Chakra `Input`.
 
-const NumberInput = ({ value, onChange, prefix, suffix, precision = 0, ...rest }) => {
+const NumberInput = ({ value, onChange, prefix, suffix, precision = 0, flex = 1, ...rest }) => {
   const handleValueChange = useCallback(e => {
     const { floatValue } = e
-    // console.debug(e)
-    onChange(floatValue ?? null)
+    
+    const valueToReturn = isNil(floatValue) ? null : floatValue
+    // console.debug('NumberInput, handleValueChange', e, valueToReturn)
+    onChange(valueToReturn)
   }, [onChange])
 
   return (
     <InputGroup
-      flex={1}
+      flex={flex}
       startElement={prefix}
       endAddon={suffix}
     >

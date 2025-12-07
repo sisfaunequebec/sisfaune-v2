@@ -8,7 +8,7 @@ const EuthanasiaMethodSelect = (props) => {
 
   useEffect(() => {
     const loadItems = async () => {
-      const res = await fetch('/api/lookup/euthanasia-methods', { cache: 'no-cache', next: { tags: ['event-types'] } })
+      const res = await fetch('/api/lookup/euthanasia-methods', { cache: 'no-cache', next: { tags: ['euthanasia-methods'] } })
       const result = await res.json()
       setItems(result)
     }

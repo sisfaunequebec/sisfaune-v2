@@ -166,12 +166,14 @@ model LutAnimalAge {
 
   id Int @db.SmallInt @id
   name String? @map(name: "age")
-  group String @map(name: "groupe")
+  // group String @map(name: "groupe")
+  groupId Int @map(name: "id_groupe")
   cccsfName String? @map(name: "age_cccsf")
   description String? @map(name: "description")
   isActive Boolean @default(true) @map(name: "actif")
 
   specimens Specimen[]
+  group LutAnimalGroupV2? @relation(fields: [groupId], references: [id], onDelete: Restrict, onUpdate: Restrict)
 }
 
 model LutAnimalDeathCause {
@@ -201,6 +203,7 @@ model LutAnimalGroupV2 {
   parentGroupId Int? @db.SmallInt @map(name: "id_parent")
 
   species LutAnimalSpecie[]
+  ages LutAnimalAge[]
 }
 
 model LutAnimalSex {
@@ -217,27 +220,27 @@ model LutAnimalMeasureType {
 
   id Int @db.SmallInt @id
   name String @map(name: "nom")
-  unit String? @map(name: "unite")
-  group String @map(name: "groupe")
+  // unit String? @map(name: "unite")
+  animalGroupId Int @map(name: "id_animal_groupe")
   description String? @map(name: "description")
 
   defaultUnitId Int @db.SmallInt @map(name: "id_unite_defaut")
   unitTypeId Int @db.SmallInt @map(name: "id_type_unite")
 
-  defaultUnit LutMeasureUnit @relation(fields: [defaultUnitId], references: [id], onDelete: Restrict, onUpdate: Restrict)
-  unitType LutUnitType @relation(fields: [unitTypeId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+  // defaultUnit LutMeasureUnit @relation(fields: [defaultUnitId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+  // units LutMeasureUnit[] @relation(fields: [unitTypeId], references: [typeId], onDelete: Restrict, onUpdate: Restrict)
 
   specimenMeasures SpecimenMeasure[]
 }
 
-model LutUnitType {
-  @@map("lut_unite_type")
+// model LutUnitType {
+//   @@map("lut_unite_type")
 
-  id Int @id @db.SmallInt
-  name String @map(name: "nom")
+//   id Int @id @db.SmallInt
+//   name String @map(name: "nom")
 
-  animalMeasureTypes LutAnimalMeasureType[]
-}
+//   animalMeasureTypes LutAnimalMeasureType[]
+// }
 
 model LutDiscoveryState {
   @@map("lut_decouverte_etat")
@@ -382,7 +385,6 @@ model LutLaboratory {
   name String @map(name: "nom")
   isActive Boolean @default(true) @map(name: "actif")
 
-  // labEvents LabEvent[]
   events Event[]
 }
 
@@ -390,11 +392,12 @@ model LutMeasureUnit {
   @@map("lut_mesure_unite")
 
   id Int @id @db.SmallInt
-  type Int @db.SmallInt  @map(name: "type")
   name String? @map(name: "unite")
+  typeId Int @db.SmallInt @map(name: "id_type")
   multiplier Decimal? @db.Decimal(18, 10) @map(name: "facteur")
 
-  animalMeasureTypes LutAnimalMeasureType[]
+  // animalMeasureTypes LutAnimalMeasureType[]
+  // animalMeasureUnitTypes LutAnimalMeasureType[]
   specimenMeasures SpecimenMeasure[]
 }
 
@@ -420,8 +423,6 @@ model LutEuthanasiaMethod {
   specimens Specimen[]
 }
 
-
-
 model LutWeighUnit {
   @@map("lut_poids_unite")
 
@@ -435,7 +436,7 @@ model LutWeighUnit {
 model SpecimenMeasure {
   @@map("data_specimen_mesure")
 
-  id Int @id
+  id Int @id @default(autoincrement())
   specimenId Int @map(name: "id_specimen")
   measureTypeId Int @db.SmallInt @map(name: "id_type_mesure")
   value Decimal? @db.Decimal(8, 3) @map(name: "valeur")
@@ -445,7 +446,7 @@ model SpecimenMeasure {
   unit LutMeasureUnit @relation(fields: [unitId], references: [id], onDelete: Restrict, onUpdate: Restrict)
 
   // Relations
-  specimen Specimen @relation(fields: [specimenId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+  specimen Specimen @relation(fields: [specimenId], references: [id], onDelete: Cascade, onUpdate: Cascade)
 }
 
 model Collaborator {
@@ -545,7 +546,7 @@ model Specimen {
   keywords String? @map(name: "motcles")
 
   createdAt DateTime @default(now()) @map("meta_date_creation")
-  uerd String? @map("meta_creation_par") 
+  createdBy String? @map("meta_creation_par") 
 
   // Relations
   event Event @relation(fields: [eventId], references: [id], onDelete: Cascade, onUpdate: Cascade)

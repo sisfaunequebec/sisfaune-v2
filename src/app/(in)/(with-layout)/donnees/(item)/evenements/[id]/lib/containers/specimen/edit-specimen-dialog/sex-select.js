@@ -1,16 +1,14 @@
 'use client'
 import { useEffect, useState } from 'react'
 
-// import getPreservationMethods from '../../../actions/get-preservation-methods'
-
 import SelectInput from '@/app/lib/components/inputs/base/select'
 
-const PreservationMethodSelect = (props) => {
+const SexSelect = (props) => {
   const [items, setItems] = useState([])
 
   useEffect(() => {
     const loadItems = async () => {
-      const res = await fetch('/api/lookup/preservation-methods', { cache: 'no-cache', next: { tags: ['preservation-methods'] } })
+      const res = await fetch('/api/lookup/animal-sexes', { cache: 'no-cache', next: { tags: ['animal-sexes'] } })
       const result = await res.json()
       setItems(result)
     }
@@ -22,4 +20,4 @@ const PreservationMethodSelect = (props) => {
   )
 }
 
-export default PreservationMethodSelect
+export default SexSelect

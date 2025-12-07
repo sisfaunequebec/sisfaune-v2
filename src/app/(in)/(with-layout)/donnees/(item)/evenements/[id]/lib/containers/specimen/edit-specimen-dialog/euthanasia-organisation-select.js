@@ -11,7 +11,7 @@ const EuthanasiaOrganisationSelect = (props) => {
 
   useEffect(() => {
     const loadItems = async () => {
-      const res = await fetch('/api/lookup/euthanasia-organisations', { cache: 'no-cache', next: { tags: ['event-types'] } })
+      const res = await fetch('/api/lookup/euthanasia-organisations', { cache: 'no-cache', next: { tags: ['euthanasia-organisations'] } })
       const result = await res.json()
       setItems(result)
     }

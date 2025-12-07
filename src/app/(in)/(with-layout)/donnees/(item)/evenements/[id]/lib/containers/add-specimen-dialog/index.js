@@ -30,7 +30,7 @@ const SpeciesCombo = ({ value, onChange }) => {
   const labelKey = useCallback(item => item?.name, [])
 
   return (
-    <Autocomplete value={value} labelKey={labelKey} onLookup={handleLookup} onRenderItem={handleRenderItem} onChange={onChange} />
+    <Autocomplete value={value} labelKey={labelKey} onLookup={handleLookup} onRenderItem={handleRenderItem} onChange={onChange} placeholder={'Taper pour rechercher une espèce...'} />
   )
 }
 
@@ -56,12 +56,12 @@ const AddSpecimenDialog = ({ eventId, close }) => {
   }, [eventId])
 
   return (
-    <BaseDialog title={`Ajout d'un spécimen à l'événement ${eventId}`} size={'lg'} onClose={close} onSubmit={handleSubmit} submitBtnLabel={'Ajouter'} schema={addSpecimenSchema} schemaType={'valibot'} defaultValues={defaultValues}>
+    <BaseDialog title={`Ajout d'un spécimen à l'événement no ${eventId}`} size={'lg'} onClose={close} onSubmit={handleSubmit} submitBtnLabel={'Ajouter'} schema={addSpecimenSchema} schemaType={'valibot'} defaultValues={defaultValues}>
       {(contentRef) => (
         <Fieldset.Root>
           <Fieldset.Content gap={2}>
             <ControlledField name={'specie'} label={'Espèce :'} variant={'horizontal'}>
-              <SpeciesCombo contentRef={contentRef} />
+              <SpeciesCombo contentRef={contentRef}  />
             </ControlledField>
             <ControlledField name={'discoveryState'} label={'État lors de la découverte :'} variant={'horizontal'}>
               <DiscoveryStateSelect contentRef={contentRef} />

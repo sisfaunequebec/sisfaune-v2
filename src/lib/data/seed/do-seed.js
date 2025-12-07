@@ -1,3 +1,6 @@
+
+// LOOKUP 
+
 const lutEventPrograms = require('./lut-event-programs')
 const lutEventStatuses = require('./lut-event-statuses')
 // const lutAnimalFamilies = require('./lut-animal-families')
@@ -19,13 +22,15 @@ const lutEuthanasiaOrganisations = require('./lut-euthanasia-organisations')
 const lutLaboratories = require('./lut-laboratories')
 const lutReportOrigins = require('./lut-report-origins')
 const lutEuthanasiaMethods = require('./lut-euthanasia-methods')
+// const lutWeightUnits = require('./lut-weight-units')
+const lutMeasureUnits = require('./lut-measure-units')
+const lutAnimalMeasureTypes = require('./lut-animal-measure-types')
 
+// DATA 
 const dataCollaborators = require('./data-collaborators')
 
 const adminUsers = require('./admin-users')
 const adminUserPrograms = require('./admin-user-programs')
-
-const lutWeightUnits = require('./lut-weight-units')
 
 const dataDiscoverers = require('./data-discoverers')
 
@@ -46,6 +51,8 @@ async function doSeed (orm) {
 
     orm.$executeRaw`CREATE EXTENSION IF NOT EXISTS postgis;`,
 
+    // LOOKUP
+
     orm.LutEventProgram.createMany({ data: lutEventPrograms }),
     orm.LutEventStatus.createMany({ data: lutEventStatuses }),
     // orm.LutAnimalFamily.createMany({ data: lutAnimalFamilies }),
@@ -62,27 +69,26 @@ async function doSeed (orm) {
     orm.LutAnalysisSector.createMany({ data: lutAnalysisSectors }),
     // orm.LutSampleType.createMany({ data: lutSampleTypes }),
     orm.LutHabitatType.createMany({ data: lutHabitatTypes }),
-
     orm.LutLocality.createMany({ data: lutLocalities }),
-
+    
     orm.LutLocalityGeometry.createMany({ data: lutLocalityGeom }),
     orm.$executeRaw`UPDATE lut_muni_geom SET geom = ST_GeomFromText(geom_wkt);`,
 
     orm.LutEuthanasiaOrganisation.createMany({ data: lutEuthanasiaOrganisations }),
     orm.LutLaboratory.createMany({ data: lutLaboratories }),
     orm.LutReportOrigin.createMany({ data: lutReportOrigins }),
-
     orm.LutEuthanasiaMethod.createMany({ data: lutEuthanasiaMethods }),
+    // orm.LutWeighUnit.createMany({ data: lutWeightUnits }),
+    orm.LutMeasureUnit.createMany({ data: lutMeasureUnits }),
+    orm.LutAnimalMeasureType.createMany({ data: lutAnimalMeasureTypes }),
 
+    // DATA
     orm.Collaborator.createMany({ data: dataCollaborators }),
 
     orm.User.createMany({ data: adminUsers }),
-
-    orm.Discoverer.createMany({ data: dataDiscoverers }),
-
     orm.AdminUserProgram.createMany({ data: adminUserPrograms }),
 
-    orm.LutWeighUnit.createMany({ data: lutWeightUnits }),
+    orm.Discoverer.createMany({ data: dataDiscoverers }),
 
     // orm.Event.createMany({ data: dataEvents }),
     // orm.Location.createMany({ data: dataLocations }),

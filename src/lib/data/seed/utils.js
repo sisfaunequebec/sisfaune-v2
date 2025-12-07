@@ -1,25 +1,24 @@
 const { DateTime } = require('luxon')
 
-const trimmedString = (str) => {
-  if (!str) return null
-  const result = str.trim().replaceAll("''", "'")
-  return result
-}
+// const trimmedString = (str) => {
+//   if (!str) return null
+//   const result = str.trim().replaceAll("''", "'")
+//   return result
+// }
 
 const stringOrNull = (str) => {
   try {
-    const trimmed = trimmedString(str) // str.trim().replaceAll("''", "'")
+    const trimmed = str.trim().replaceAll("''", "'")
     const result = trimmed.length ? trimmed : null
     return result
   } catch (e) {
-    // console.debug('stringOrNull', str)
     return null
   }
 }
 
 const stringToBool = (str) => {
   if (!str) return false
-  const trimmed = trimmedString(str)
+  const trimmed = str.trim().replaceAll("''", "'")
   const result = trimmed === '1'
   return result
 }
@@ -47,7 +46,7 @@ const parseIntegerOrNull = (str) => {
 }
 
 module.exports = {
-  trimmedString,
+  // trimmedString,
   stringOrNull,
   stringToBool,
   dateOrNull,

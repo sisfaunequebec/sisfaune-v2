@@ -1,5 +1,7 @@
 const source = require('./sources/lut_evenement_statut.json')
 
+// console.debug('lut_evenement_statut')
+
 const transformed = source.map(p => {
   const { id, statut, code_mapaq } = p
   return {

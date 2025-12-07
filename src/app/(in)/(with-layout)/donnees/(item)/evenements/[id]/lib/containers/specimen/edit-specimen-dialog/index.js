@@ -1,5 +1,8 @@
 'use client'
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect, useCallback, useMemo } from 'react'
+
+import { VStack, HStack, Flex, Field as ChakraField } from '@chakra-ui/react'
+import { numericFormatter } from 'react-number-format'
 
 import updateSpecimenAction from '../update-specimen.action'
 
@@ -15,6 +18,10 @@ import DeathCauseSelect from './death-cause-select'
 import EuthanasiaOrganisationSelect from './euthanasia-organisation-select'
 import EuthanasiaMethodSelect from './euthanasia-method-select'
 import PreservationMethodSelect from './preservation-method-select'
+import AgeSelect from './age-select'
+import SexSelect from './sex-select'
+
+import MeasuresInput from './measures-input'
 
 import schema from './edit-specimen.schema'
 
@@ -24,6 +31,7 @@ const formSchema = [
   { 
     title: 'Identification du spécimen',
     fields: [
+      // { label: 'Espèce\u00A0:', name: 'specie' },
       { label: 'Numéro d\'identification sur le terrain\u00A0:', name: 'terrainIdentificationNumber' },
       { label: 'Numéro de spécimen SILAB\u00A0:', name: 'silabIdentificationNumber' },
       { label: 'Numéro de spécimen CQSAS\u00A0:', name: 'cqsasNumber' },
@@ -48,9 +56,9 @@ const formSchema = [
   { 
     title: 'Mesures',
     fields: [
-      { label: 'Âge\u00A0:', name: 'sex', component: SelectInput },
-      { label: 'Sexe\u00A0:', name: 'age', component: SelectInput },
-      { label: 'Mesures et poids\u00A0:', name: 'measures' }
+      { label: 'Âge\u00A0:', name: 'age', component: AgeSelect },
+      { label: 'Sexe\u00A0:', name: 'sex', component: SexSelect },
+      { label: null, name: 'measures', component: MeasuresInput }
     ]
   },
   { 
@@ -64,8 +72,11 @@ const formSchema = [
 ]
 
 const EditSpecimenDialog = ({ close, eventId, specimenId, data }) => {
+
+  console.debug('EditSpecimenDialog data', data)
+
   const handleSubmit = useCallback(async (data) => {
-    // console.debug(data)
+    console.debug('EditSpecimenDialog handleSubmit', data)
     await updateSpecimenAction(eventId, specimenId, data)
     close()
   }, [close, eventId, specimenId])
@@ -85,10 +96,10 @@ const EditSpecimenDialog = ({ close, eventId, specimenId, data }) => {
   const { name } = specie
 
   return (
-    <BaseDialog title={`Spécimen ${eventId}.${sequenceId} - ${name}`} size={'lg'} onClose={close} onSubmit={handleSubmit} submitBtnLabel={'Sauvegarder'} schema={schema} schemaType={'valibot'} defaultValues={defaultValues} watches={watchedField}>
+    <BaseDialog title={`Spécimen no ${eventId}.${sequenceId} - ${name}`} size={'lg'} onClose={close} onSubmit={handleSubmit} submitBtnLabel={'Sauvegarder'} schema={schema} schemaType={'valibot'} defaultValues={defaultValues} watches={watchedField}>
       {(contentRef, watched) => {
         return (
-          <Fields formSchema={formSchema} contentRef={contentRef} watched={watched} data={defaultValues} />
+          <Fields formSchema={formSchema} contentRef={contentRef} watched={watched} data={data} />
         )}
       }
     </BaseDialog>

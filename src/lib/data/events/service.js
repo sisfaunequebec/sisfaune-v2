@@ -284,7 +284,11 @@ const getEvent = async (id) => {
             sequenceId: 'asc',
           },
           include: {
-            specie: true,
+            specie: {
+              include: {
+                group: true
+              }
+            },
             age: true,
             sex: true,
             discoveryState: true,

@@ -91,7 +91,6 @@ const formSchema = [
     fields: [
       { label: 'Date de la découverte\u00A0:', name: 'discoveredAt', component: DateInput, props: { clearable: true } },
       { label: 'Date de la récolte\u00A0:', name: 'collectedAt', component: DateInput, props: { clearable: true }  },
-      { label: 'Date de la récolte\u00A0:', name: 'collectedAt', component: DateInput, props: { clearable: true }  },
       { label: 'Un humain a été en contact\u00A0?', name: 'hadHumanContact' , component: ContactSelect, props: { clearable: false } },
       { label: 'Un animal domestique a été en contact\u00A0?', name: 'hadAnimalContact' , component: ContactSelect, props: { clearable: false } },
       { label: 'Type d\'habitat\u00A0:', name: 'habitatType', component: HabitatTypeSelect, props: { clearable: true } },
@@ -132,7 +131,7 @@ const EditGeneralInfosDialog = ({ close, eventId, data }) => {
   }, {})
 
   return (
-    <BaseDialog title={'Informations générales'} size={'lg'} onClose={close} onSubmit={handleSubmit} submitBtnLabel={'Sauvegarder'} schema={null} schemaType={'valibot'} defaultValues={defaultValues} watches={['status']}>
+    <BaseDialog title={`Événement no ${eventId} - Informations générales`} size={'lg'} onClose={close} onSubmit={handleSubmit} submitBtnLabel={'Sauvegarder'} schema={null} schemaType={'valibot'} defaultValues={defaultValues} watches={['status']}>
       {(contentRef, watched) => {
         return (
           <Fields formSchema={formSchema} contentRef={contentRef} watched={watched} data={defaultValues} />
