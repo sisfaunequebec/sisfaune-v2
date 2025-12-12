@@ -37,8 +37,8 @@ const DeleteEventButton = ({ eventId }) => {
   const handleDeleteEvent = useCallback(async () => {
     const deleted = await confirmDelete({ eventId, onDelete: deleteEvent })
     if (deleted) {
-      router.back()
-      // await deleteEvent(eventId, { user: { permissions: [] } })
+      router.replace(`/donnees/evenements/`)
+
       for (const key of cache.keys()) {
         if (key.includes('/api/data/events')) {
           mutate(key)
@@ -47,8 +47,8 @@ const DeleteEventButton = ({ eventId }) => {
           mutate(key)
         }
       }
+      
       toaster.create({
-        // title: 'Événement effacé',
         title: `L'événement no ${eventId} a été effacé avec succès...`,
         type: 'success',
         duration: 3000,

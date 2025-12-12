@@ -19,7 +19,7 @@ const schema = {
   closedAt: event => dbDateToIso(event.closedAt),
 
   submitter: null,
-  discoveredBy: null,
+  discoverer: null,
   collaborator: null,
 
   discoveredAt: event => dbDateToIso(event.discoveredAt),

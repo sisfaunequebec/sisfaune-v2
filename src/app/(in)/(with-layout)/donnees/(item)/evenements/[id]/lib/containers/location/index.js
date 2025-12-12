@@ -20,8 +20,8 @@ import CenteredMessage from '@/app/lib/components/centered-message'
 
 import EditLocationButton from './edit-location-button'
 
-import TextInput from '@/app/lib/components/inputs/base/text'
 import TextDisplay from '@/app/lib/components/display/base/text'
+import CoordinatesDisplay from './coordinates-display'
 
 const StaticMap = ({ lat = 45, lng = -72, zoom }) => {
   const [ref, { width, height }] = useMeasure()
@@ -49,73 +49,18 @@ const MapDisplay = ({ coordinates }) => {
   )
 }
 
-const CoordinatesLocation = ({ location }) => {
-  const { latitude, longitude, locality } = location
-  const { name, province } = locality
-  const coordinates = [latitude.toFixed(6), longitude.toFixed(6)].join(', ')
-  const address = [name, province].join(', ')
+
+const LocalityDisplay = ({ value }) => {
+  const { name, province } = value
+  const address = [name, province].filter(Boolean).join(', ')
   return (
-    <>
-      <TextInput label={'Latitude, longitude :'} value={coordinates} />
-      <TextInput label={'(adresse dérivée) :'} value={address} />
-    </>
-  )
-}
-
-const AddressLocation = ({ marker }) => {
-  const { latitude, longitude } = location
-  const coordinates = [latitude.toFixed(6), longitude.toFixed(6)].join(', ')
-  return (
-    <>
-      <TextInput label={'Adresse :'} value={null} />
-      <TextInput label={'(coordonnées dérivées) :'} value={coordinates} />
-    </>
-  )
-}
-
-// const LocalisationSectionForm = ({ event }) => {
-//   const { location } = event
-//   const { latitude, longitude, type } = location
-
-//   const hasLocation = !!latitude && !!longitude
-//   const isCoordinateBased = type?.id === 'coordonnees'
-
-//   console.debug('LocalisationSectionForm', event, type)
-
-//   return (
-//     <Fieldset.Root as={'VStack'} alignItems={'stretch'} size={['lg', null, 'md']}>
-
-//     { hasLocation ? 
-//       <>
-//         <Fieldset.Content gap={0.5} mt={2}>
-//           { isCoordinateBased ? <CoordinatesLocation location={location}/> :  <AddressLocation location={location} /> }
-//         </Fieldset.Content>
-//         <Separator />
-//         <Fieldset.Content gap={0.5} mt={4}>
-//           <MapField location={location} />
-//         </Fieldset.Content>
-//       </>
-//     : 
-//       <CenteredMessage title={'Localisation indéterminée'} size={'sm'} />
-//     } 
-
-//     </Fieldset.Root>
-//   )
-// }
-
-const CoordinatesDisplay = ({ value }) => {
-  const { latitude, longitude } = value
-  const coordinates = [latitude.toFixed(6), longitude.toFixed(6)].join(', ')
-  return (
-    <TextDisplay value={coordinates} />
+    <TextDisplay value={address} />
   )
 }
 
 const AddressDisplay = ({ value }) => {
-  const { name, province } = value
-  const address = [name, province].join(', ')
   return (
-    <TextDisplay value={address} />
+    <TextDisplay value={value} />
   )
 }
 
@@ -124,9 +69,7 @@ const coordinatesSchema = [
     title: null,
     fields: [
       { label: 'Latitude, longitude\u00A0:', name: 'coordinates', component: CoordinatesDisplay },
-      { label: 'Adresse à proximité\u00A0:', name: 'locality', component: AddressDisplay },
-      // { label: 'Spécimen(s) reçu(s) le\u00A0:', name: 'labReceivedAt', component: DateDisplay },
-      // { label: null, name: 'position', component: MapField }
+      { label: 'Adresse (dérivée)\u00A0:', name: 'description', component: AddressDisplay }
     ]
   }
 ]
@@ -135,19 +78,18 @@ const addressSchema = [
   { 
     title: null,
     fields: [
-      // { label: 'Responsable du dossier\u00A0:', name: 'labResponsible', component: LabResponsibleDisplay },
-      // { label: 'Spécimen(s) reçu(s) le\u00A0:', name: 'labReceivedAt', component: DateDisplay },
-      // { label: null, name: 'position', component: MapField }
+
+      { label: 'Adresse\u00A0:', name: 'locality', component: LocalityDisplay },
+      { label: 'Latitude, longitude (dérivées)\u00A0:', name: 'coordinates', component: CoordinatesDisplay },
     ]
   }
 ]
 
 const LocalisationSection = ({ event, canEdit = false }) => {
-  console.debug(event)
-
+ 
   const { location } = event
-  const { coordinates, type } = location
-  
+  const { coordinates, type, locality, description  } = location
+
   const hasLocation = !!coordinates
   const schema = type?.id === 'coordonnees' ? coordinatesSchema : addressSchema
 

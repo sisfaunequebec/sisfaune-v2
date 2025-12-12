@@ -23,6 +23,7 @@ const getCoordinates = (location) => {
 const schema = {
   type: location => getLocationType(location),
   coordinates: location => getCoordinates(location),
+  description: null,
   // latitude: location => fixCoordinates(location.latitude),
   // longitude: location => fixCoordinates(location.longitude),
   locality: location => { const { locality} = location; return { name: locality?.name, province: locality?.province }}

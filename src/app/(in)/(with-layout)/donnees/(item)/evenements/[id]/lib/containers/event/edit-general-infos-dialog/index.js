@@ -26,15 +26,25 @@ import CollaboratorSelect from './collaborator-select'
 
 import UnimplementedDisplay from '@/app/lib/components/display/base/unimplemented'
 
+const AffectedSpeciesInput = ({ value, data }) => {
+  // console.debug('AffectedSpeciesInput', value)
+  return null
+}
 
 const DiscovererInput = ({ value, data }) => {
   const { status } = data
   const statusId = status?.id
   const isClosed = statusId === 3
-  const message = isClosed ? 'L\'événement est terminé : les informations sur le découvreur ne sont plus disponibles.' : value
-  return (
-    <CommentDisplay value={message} />
-  )
+
+  if (isClosed) {
+    return (
+     <CommentDisplay value={'L\'événement est terminé : les informations sur le découvreur ne sont plus disponibles.'} />
+    )
+  } else {
+    return (
+      <UnimplementedDisplay  />
+    )
+  }
 }
 
 const ContactSelect = (props) => {
@@ -95,10 +105,15 @@ const formSchema = [
       { label: 'Un animal domestique a été en contact\u00A0?', name: 'hadAnimalContact' , component: ContactSelect, props: { clearable: false } },
       { label: 'Type d\'habitat\u00A0:', name: 'habitatType', component: HabitatTypeSelect, props: { clearable: true } },
       { label: 'Température\u00A0:', name: 'temperature', component: NumberInput, props: { precision: 1, suffix: '(en celsius)' } },
-      { label: 'Individus affectés, par espèce\u00A0:', name: 'affectedSpecies', component: UnimplementedDisplay },
       { label: 'Observations sur le terrain\u00A0:', name: 'observations', component: CommentInput },
       { label: 'Commentaires généraux\u00A0:', name: 'comments', component: CommentInput  },
       { label: 'Mots-clés\u00A0:', name: 'keywords', component: CommentInput },
+    ]
+  },
+  { 
+    title: 'Individus affectés, par espèce',
+    fields: [
+      { label: 'Individus affectés, par espèce\u00A0:', name: 'affectedSpecies', component: AffectedSpeciesInput },
     ]
   },
   { 

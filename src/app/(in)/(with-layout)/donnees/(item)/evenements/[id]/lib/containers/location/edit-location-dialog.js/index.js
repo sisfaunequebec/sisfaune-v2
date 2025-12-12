@@ -1,46 +1,61 @@
 'use client'
 import { useCallback, useEffect, useState, useMemo, useRef } from 'react'
 
-// import { useIsFirstRender } from '@uidotdev/usehooks'
-import { useUpdateEffect } from 'react-use'
-
 import * as turf from '@turf/turf'
-import { booleanPointInPolygon } from '@turf/boolean-point-in-polygon'
 
-// import updateLaboratory from '../update-laboratory.action'
-
-import { Fieldset, HStack, Button, IconButton, VStack, Input } from '@chakra-ui/react'
-import { Radio, RadioGroup } from '@/app/lib/components/ui/radio'
+import { Box, Fieldset, HStack, Button, IconButton, VStack, Input, Text } from '@chakra-ui/react'
 
 import { FaMapMarkerAlt } from 'react-icons/fa'
 
 import { useFormContext } from 'react-hook-form'
 
-import BaseDialog from '@/app/lib/components/dialogs/base'
-
 import { AdvancedMarker, APIProvider, Map, MapControl, Marker, useMap, useMapsLibrary, ControlPosition } from '@vis.gl/react-google-maps'
 
-import ControlledField from '@/app/lib/components/controlled-field'
+import BaseDialog from '@/app/lib/components/dialogs/base'
+import { Fields } from '@/app/lib/components/dialogs/base'
+
 import TextInput from '@/app/lib/components/inputs/base/text'
 import SelectInput from '@/app/lib/components/inputs/base/select'
+import NumberInput from '@/app/lib/components/inputs/base/number'
 
-import schema from './edit-location.schema'
+import TextDisplay from '@/app/lib/components/display/base/text'
+
+import CoordinatesDisplay from '../coordinates-display'
+
+import updateLocationAction from '../update-location.action'
 
 const DEFAULT_CENTER = { lat: 46.5, lng: -73.5 }
 
 const LocationTypeSelect = ({ value, onChange, onBlur, contentRef }) => {
   const items = [
-    { value: 'coordonnees', label: 'Coordonnées géographiques' },
-    { value: 'adresse', label: 'Adresse' }
+    { id: 'coordonnees', name: 'Coordonnées géographiques' },
+    { id: 'adresse', name: 'Adresse' }
   ]
   return (
-    <SelectInput items={items} value={value} onChange={onChange} onBlur={onBlur} contentRef={contentRef}  />
+    <SelectInput valueKey={'id'} labelKey={'name'} items={items} value={value} onChange={onChange} onBlur={onBlur} contentRef={contentRef} clearable={false}  />
   )
 }
 
-const decimalRegex = /^-?\d+(\.\d+)?$/ // /^[+-]?(\d+(\.\d*)?|\.\d+)$/   // /^[-+]?([0-9]*\.[0-9]+|[0-9]+)$/
+const CoordinatesInput = ({ value = {}, onChange, size }) => {
+  const { latitude, longitude } = value
 
-const NumberInput = ({ value, onChange, size }) => {
+  const handleLatitudeChange = useCallback(v => {
+    console.debug('handleLatitudeChange', v)
+  }, [onChange, longitude])
+
+  const handleLongitudeChange = useCallback(v => {
+    console.debug('handleLongitudeChange', v)
+  }, [onChange, latitude])
+
+  return (
+    <HStack flex={1}>
+      <NumberInput value={latitude} placeholder={'Latitude'} precision={6} size={size} onChange={handleLatitudeChange} />
+      <NumberInput value={longitude} placeholder={'Longitude'} precision={6} size={size} onChange={handleLongitudeChange} />
+    </HStack>
+  )
+}
+
+{/* const NumberInput = ({ value, onChange, size }) => {
   const [inputValue, setInputValue] = useState(value)
   
   const handleChange = e => {
@@ -69,7 +84,7 @@ const NumberInput = ({ value, onChange, size }) => {
   return (
     <Input inputMode={'numeric'} value={inputValue} onChange={handleChange} size={size} />
   )
-}
+} */}
 
 const LatLongInput = ({ value, onChange, isEditing = false, contentRef }) => {
   const [internalValue, setInternalValue] = useState(value || { lat: null, lng: null })
@@ -187,8 +202,6 @@ const LocationMarker = ({ position, isDraggable, onChange }) => {
   const { setValue } = useFormContext()
 
   const [geocoder, setGeocoder] = useState(null)
-  // const initialized = useRef(false)
-  
   const geocodeLib = useMapsLibrary('geocoding')
 
   useEffect(() => {
@@ -209,13 +222,14 @@ const LocationMarker = ({ position, isDraggable, onChange }) => {
     })
 
     if (result) { return result.formatted_address }
+    console.debug(result)
 
   }, [geocoder])
 
   useEffect(() => {
     const updateAdress = async (position) => {
       const address = await geocode(position)
-      setValue('address', address)
+      setValue('description', address)
     }
     updateAdress(position)
   }, [position, geocode, setValue])
@@ -227,17 +241,18 @@ const LocationMarker = ({ position, isDraggable, onChange }) => {
     onChange(center)
 
     const address = await geocode(center)
-    setValue('address', address)
+    setValue('description', address)
 
   }, [geocode, onChange, setValue])
   
   return (
-    <AdvancedMarker position={position} draggable={isDraggable} onDragEnd={isDraggable ? handleChange : null} />
+    <AdvancedMarker position={position} draggable={isDraggable} onDragEnd={isDraggable ? onChange : null} />
   )
 }
 
 const EditableMap = ({ value, locationType, onChange }) => {
   const { setValue } = useFormContext()
+  // console.debug('EditableMap', locationType, value)
 
   const [bounds, setBounds] = useState(null)
 
@@ -246,105 +261,132 @@ const EditableMap = ({ value, locationType, onChange }) => {
   }, [setBounds])
   
   const handleChange = useCallback(position => {
-    // const { latLng } = e
-    // const center = { lat: Number(latLng.lat().toFixed(6)), lng: Number(latLng.lng().toFixed(6)) }
-    onChange(position)
-    // setValue('locationTypeId', 'coordonnees')
-  }, [onChange])
+    const { latLng } = position
+    const { lat, lng } = latLng
+    const coordinates = { latitude: lat(), longitude: lng() }
+    setValue('marker', coordinates)
+    setValue('coordinates', coordinates)
+  }, [setValue])
 
-  const showMarker = (value) => {
+  const hasMarker = useMemo(() => {
     if (value) {
-      const { lat, lng } = value
-      if (!!lat && !!lng) {
+      const { latitude, longitude } = value
+      if (!!latitude && !!longitude) {
         return true
       }
     }
     return false
-  }
+  }, [value])
 
-  const isMarkerDraggable = locationType === 'coordonnees'
+  const position = useMemo(() => { return value ? { lat: value.latitude, lng: value.longitude } : { lat: 46.5, lng: -73.5 } }, [value])
+
+  const handleClick = useCallback(e => {
+    if (!hasMarker) {
+      const { detail } = e
+      const { latLng } = detail
+      const { lat, lng } = latLng
+      setValue('type', { id: 'coordonnees' })
+      setValue('marker', { latitude: lat, longitude: lng })
+      setValue('coordinates', { latitude: lat, longitude: lng })
+    }   
+  }, [hasMarker, setValue])
+
+  const isMarkerDraggable = locationType?.id === 'coordonnees'
 
   return (
     <APIProvider apiKey={process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}>
       <Map
         language={'fr-CA'}
         mapId={'dark'}
-        style={{ width: '100%', height: '250px', cursor: 'default' }}
-        defaultCenter={isMarkerDraggable ? (value ?? { lat: 46.5, lng: -73.5 }) : undefined}
-        center={isMarkerDraggable ? undefined : (value ?? { lat: 46.5, lng: -73.5 })}
+        style={{ width: '100%', height: '250px', cursor: 'default', marginTop: '12px' }}
+        defaultCenter={isMarkerDraggable ? position: undefined}
+        center={isMarkerDraggable ? undefined : position}
         defaultZoom={isMarkerDraggable ? (value ? 10 : 6) : undefined}
         zoom={isMarkerDraggable ? undefined : (value ? 10 : 6)}
         gestureHandling={'greedy'}
         disableDefaultUI={true}
         onBoundsChanged={handleBoundsChanged}
+        onClick={handleClick}
         controlled={!isMarkerDraggable}
       >
-        {/* <Geocoder currentPosition={value} /> */}
         <MapControl position={ControlPosition.TOP_LEFT}>
-          <CenterButton currentPosition={value} bounds={bounds} />
+          <CenterButton currentPosition={position} bounds={bounds} />
         </MapControl>
-        { showMarker(value) && <LocationMarker position={value} onChange={handleChange} isDraggable={isMarkerDraggable} /> }
+        { hasMarker && <LocationMarker position={position} onChange={handleChange} isDraggable={isMarkerDraggable} /> }
       </Map>
     </APIProvider>
   )
 }
 
-// const LocationTypeRadio = ({ value, onChange }) => {
-//     const handleChange = useCallback(e => {
-//       const { value } = e
-//       onChange(value)
-//     }, [onChange])
-  
-//     return (
-//       <RadioGroup size={'sm'} colorPalette={'blue'} variant={'subtle'} value={value} onValueChange={handleChange}>
-//         <VStack alignItems='flex-start' gap={1}>
-//           <Radio value={'coordonnees'}>Coordonnées géographiques</Radio>
-//           <Radio value={'adresse'}> Adresse civique ou nom de lieu</Radio>
-//         </VStack>
-//       </RadioGroup>
-//     )
-// }
+const getMapProps = (data, watched) => {
+  return {
+     locationType: watched.type
+  }
+}
+
+const coordinatesSchema = [
+  { 
+    title: null,
+    fields: [
+      { label: 'Type de localisation\u00A0:', name: 'type', component: LocationTypeSelect },
+      { label: 'Latitude, longitude\u00A0:', name: 'coordinates', component: CoordinatesInput },
+      { label: 'Adresse (dérivée)\u00A0:', name: 'description', component: TextDisplay },
+      { label: null, name: 'marker', component: EditableMap, props: getMapProps }
+    ]
+  }
+]
+
+const addressSchema = [
+  { 
+    title: null,
+    fields: [
+      { label: 'Type de localisation\u00A0:', name: 'type', component: LocationTypeSelect },
+      { label: 'Adresse\u00A0:', name: 'description', component: TextInput },
+      { label: 'Latitude, longitude (dérivées)\u00A0:', name: 'coordinates', component: CoordinatesDisplay },
+      { label: null, name: 'marker', component: EditableMap, props: getMapProps } 
+    ]
+  }
+]
+
+const hasMarker = position => {
+  if (position) {
+    const { latitude, longitude } = position
+    if (!!latitude && !!longitude) {
+      return true
+    }
+  }
+  return false
+}
 
 const EditLocationDialog = ({ close, eventId, data }) => {
-  // const { id: eventId, location } = event
-  // console.debug(location)
- 
   const handleSubmit = useCallback(async (data) => {
-    // await updateLaboratory(eventId, data)
+    // console.debug('handleSubmit', data)
+    await updateLocationAction(eventId, data)
     close()
   }, [close, eventId])
 
-  // Calculate initial values for dialog
-  const { typeId: locationTypeId, latitude, longitude, description } = data
-  const coordinates = (latitude && longitude) ? { lat: latitude, lng: longitude } : null
-  const defaultValues = { locationTypeId, coordinates: coordinates, address: description }
-
-  const message = 'Sélectionner un type de localisation et préciser les valeurs dans les champs appropriés. Ou déplacer le marqueur sur la carte pour modifier.'
-
+  const { type, coordinates, locality, description } = data
+  const defaultValues = { type, coordinates, locality, description, marker: coordinates }
+  
   return (
-    <BaseDialog title={`Événement no ${eventId} - Localisation géographique`} message={message} size={'lg'} onClose={close} onSubmit={handleSubmit} submitBtnLabel={'Sauvegarder'} schema={null} schemaType={'valibot'} defaultValues={defaultValues} watches={['locationTypeId']}>
+    <BaseDialog title={`Événement no ${eventId} - Localisation géographique`} size={'lg'} onClose={close} onSubmit={handleSubmit} submitBtnLabel={'Sauvegarder'} schema={null} schemaType={'valibot'} defaultValues={defaultValues} watches={['type', 'marker']}>
       {(contentRef, watched) => {
+        const { type, marker } = watched
+        const isCoordinateBased = type?.id === 'coordonnees'
 
-        const { locationTypeId } = watched
-        const isCoordinateBased = locationTypeId === 'coordonnees'
+        const schema = isCoordinateBased ? coordinatesSchema : addressSchema
+
+        const newPositionMessage = 'Sélectionner un type de localisation et préciser les valeurs dans les champs appropriés, ou cliquer sur la carte pour placer un marqueur.'
+        const updateCoordinatesMessage = 'Préciser la latitude et la longitude dans les champs appropriés, ou déplacer le marqueur sur la carte pour modifier.'
+        const updateAddressMessage = 'Préciser l"adresse dans le champ approprié.'
+
+        const hasPosition = hasMarker(marker)
 
         return (
-          <Fieldset.Root>
-            <Fieldset.Content gap={2}>
-              <ControlledField label={'Type de localisation\u00A0:'} name={'locationTypeId'} variant={'horizontal'}>
-                <LocationTypeSelect contentRef={contentRef} />
-              </ControlledField>
-              <ControlledField label={'Latitude, longitude\u00A0:'} name={'coordinates'} variant={'horizontal'}>
-                <LatLongInput contentRef={contentRef} isEditing={isCoordinateBased} />
-              </ControlledField>
-              <ControlledField label={'Adresse civique ou nom de lieu\u00A0:'} name={'address'} variant={'horizontal'}>
-                <TextInput contentRef={contentRef} isEditing={!isCoordinateBased} size={'sm'} />
-              </ControlledField>
-              <ControlledField name={'coordinates'} variant={'horizontal'} mt={4}>
-                <EditableMap locationType={locationTypeId} />
-              </ControlledField>  
-            </Fieldset.Content>
-          </Fieldset.Root>
+          <>
+            <Text>{hasPosition ? ( isCoordinateBased ? updateCoordinatesMessage : updateAddressMessage ) : newPositionMessage}</Text>
+            <Fields formSchema={schema} data={data} watched={watched} />
+          </>
         )
       }}
     </BaseDialog>

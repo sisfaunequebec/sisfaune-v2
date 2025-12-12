@@ -22,7 +22,6 @@ import NumberDisplay from '@/app/lib/components/display/base/number'
 import DateDisplay from '@/app/lib/components/display/base/date'
 import CommentDisplay from '@/app/lib/components/display/base/comment'
 
-
 // import UnimplementedDisplay from '@/app/lib/components/display/base/unimplemented'
 
 const MeasuresDisplay = ({ value = [] }) => {
@@ -99,8 +98,6 @@ const schema = [
 const SpecimenSection = ({ specimen, canEdit = false }) => {
   const { id: specimenId, eventId, sequenceId, specie } = specimen
   const { name: specieName } = specie
-
-  console.debug('SpecimenSection', specimen)
 
   return (
       <AccordionItem key={specimenId} value={specimenId}>

@@ -278,6 +278,11 @@ const getEvent = async (id) => {
         affectedSpecie5: true,
         labResponsible: true,
         submitter: true,
+        discoverer: {
+          include: {
+            locality: true
+          }
+        },
         collaborator: true,
         specimens: {
           orderBy: {
@@ -316,7 +321,7 @@ const getEvent = async (id) => {
     if (!canUserViewProgram(user, programId)) {
       return null
     }
-  
+
     const transformed = fromDbEventTransformer(event, { user })
     return JSON.parse(JSON.stringify(transformed))
   } catch (e) {

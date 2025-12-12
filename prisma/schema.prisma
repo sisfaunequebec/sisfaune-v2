@@ -319,6 +319,7 @@ model LutLocality {
 
   geometry LutLocalityGeometry[]
   locations Location[]
+  discoverers Discoverer[]
 }
 
 model LutLocalityGeometry {
@@ -485,7 +486,8 @@ model Discoverer {
   legacyAddressId Int? @map(name: "id_adresse_egacy")
 
   // Relations
-  // event Event @relation(fields: [eventId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  event Event @relation(fields: [eventId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  locality LutLocality? @relation(fields: [localityId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   // events Event[]
 }
 
@@ -673,7 +675,7 @@ model Event {
   specimens Specimen[]
   location Location?
   lab LutLaboratory? @relation(fields: [labId], references: [id], onDelete: Restrict, onUpdate: Restrict)
-  // discoverer Discoverer? TODO - re-enable
+  discoverer Discoverer? 
 
   labResponsible User? @relation("EventLabResponsible", fields: [labResponsibleId], references: [id], onDelete: Restrict, onUpdate: Restrict)
 }

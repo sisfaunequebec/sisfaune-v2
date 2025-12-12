@@ -1,4 +1,6 @@
-import { Box, Flex, AbsoluteCenter, VStack, HStack, Separator, Fieldset } from '@chakra-ui/react'
+import { Box, Flex, AbsoluteCenter, VStack, HStack, Separator, Fieldset, Field as ChakraField } from '@chakra-ui/react'
+
+import { numericFormatter } from 'react-number-format'
 
 import {
   AccordionItem
@@ -17,6 +19,54 @@ import CommentDisplay from '@/app/lib/components/display/base/comment'
 import UnimplementedDisplay from '@/app/lib/components/display/base/unimplemented'
 
 import EditGeneralInfosButton from './edit-general-infos-button'
+
+const Cell = ({ bg, text, ...rest }) => {
+  return (
+    <Flex flex={1} bg={bg} borderRadius={'md'} px={3} py={3} lineHeight={'1.1rem'} {...rest}>
+      { !!text ? text : '\u00A0' }
+    </Flex>
+  )
+}
+
+const TitleCell = (props) => {
+  return (
+    <Cell fontWeight={'medium'} py={0} fontSize={'0.8rem'} {...props} />
+  )
+}
+
+const AffectedSpeciesDisplay2 = ({ value: affectedSpecies = [] }) => {
+  return (
+    <VStack spacing={1} flex={1}>
+      <Flex direction={'row'} alignItems={'flex-start'} w={'full'}>
+        <Flex direction={'row'} flex={[1, null, 1]} justifyContent={'flex-start'} pt={2} pe={2} ></Flex>
+          <HStack flex={2} w={'full'} direction={'column'}>
+            <TitleCell text={'Vivants'} />
+            <TitleCell text={'Malades'} />
+            <TitleCell text={'Morts'} />
+            <TitleCell text={'N/A'} />
+          </HStack>
+        </Flex>
+        { affectedSpecies.map(specie => {
+          const { index, specieName, aliveCount, unhealthyCount, deadCount, notSpecifiedCount } = specie
+          return (
+            <ChakraField.Root key={index} justifyContent={'stretch'}>
+              <Flex direction={'row'} alignItems={'flex-start'} w={'full'}>
+                <ChakraField.Label fontSize={['md', null, 'sm']} color={'gray.600'} fontWeight={400} flex={[1, null, 1]} justifyContent={'flex-start'} pt={2} pe={2} mb={2} lineHeight={'shorter'}>
+                  {specieName} :
+                </ChakraField.Label>
+                <HStack flex={2} w={'full'} direction={'column'}>
+                  <Cell bg={'gray.100'} text={aliveCount}/>
+                  <Cell bg={'gray.100'} text={unhealthyCount}/>
+                  <Cell bg={'gray.100'} text={deadCount}/>
+                  <Cell bg={'gray.100'} text={notSpecifiedCount}/>
+                </HStack>
+              </Flex>
+            </ChakraField.Root>
+          )
+        })}
+    </VStack>
+  )
+}
 
 const AffectedSpeciesDisplay = ({ value = [] }) => {
   if (value.length === 0) {
@@ -55,10 +105,44 @@ const DiscovererDisplay = ({ value, data }) => {
   const { status } = data
   const statusId = status?.id
   const isClosed = statusId === 3
-  const message = isClosed ? 'L\'événement est terminé : les informations sur le découvreur ne sont plus disponibles.' : value
-  return (
-    <CommentDisplay value={message} />
-  )
+
+  if (isClosed) {
+    return (
+     <CommentDisplay value={'L\'événement est terminé : les informations sur le découvreur ne sont plus disponibles.'} />
+    )
+  } else {
+
+    let text = null
+      
+    if (value) {
+      const {
+        firstName, lastName,
+        title,
+        organisation,
+        division,
+        service,
+        streetNumber, street,
+        locality = {},
+        postalCode,
+        telephone, extension,
+        email: emailRaw
+      } = value
+
+      const { name: localityName, province } = locality
+
+      const fullName = [firstName, lastName].join(' ')
+      const address = (streetNumber || localityName) ? ['\u00A0', [streetNumber, street].filter(Boolean).join(', ')].join('\r') : null
+      const city =  [localityName, province].filter(Boolean).join(', ')
+      const phone = telephone ? `Téléphone : ${[telephone, extension].filter(Boolean).join(' #')}` : null
+      const email = emailRaw ? `Courriel : ${[emailRaw].join(' ')}` : null
+
+      text = [fullName, title, organisation, division, service, address, city, postalCode, '\u00A0', phone, email].filter(Boolean).join('\r')
+    }
+
+    return (
+      <CommentDisplay value={text} />
+    )
+  }
 }
 
 const ContactDisplay = ({ value }) => {
@@ -99,8 +183,6 @@ const CollaboratorDisplay = ({ value }) => {
   )
 }
 
-// import MeasureField from '../components/measure-field'
-
 const schema = [
   { 
     title: 'Identification',
@@ -122,7 +204,7 @@ const schema = [
     title: 'Personnes impliquées',
     fields: [
       { label: 'Soumis par\u00A0:', name: 'submitter', component: CollaboratorDisplay },
-      { label: 'Découvert par\u00A0:', name: 'discoveredBy', component: DiscovererDisplay },
+      { label: 'Découvert par\u00A0:', name: 'discoverer', component: DiscovererDisplay },
       { label: 'Récolté par (contractuel)\u00A0:', name: 'collaborator' , component: SelectDisplay }
     ]
   },
@@ -135,10 +217,15 @@ const schema = [
       { label: 'Un animal domestique a été en contact\u00A0?', name: 'hadAnimalContact' , component: ContactDisplay },
       { label: 'Type d\'habitat\u00A0:', name: 'habitatType', component: SelectDisplay },
       { label: 'Température\u00A0:', name: 'temperature', component: NumberDisplay, props: { precision: 1, suffix: '(en celsius)' } },
-      { label: 'Individus affectés, par espèce\u00A0:', name: 'affectedSpecies', component: AffectedSpeciesDisplay },
       { label: 'Observations sur le terrain\u00A0:', name: 'observations', component: CommentDisplay },
       { label: 'Commentaires généraux\u00A0:', name: 'comments', component: CommentDisplay },
       { label: 'Mots-clés\u00A0:', name: 'keywords', component: CommentDisplay },
+    ]
+  },
+  {
+    title: 'Individus affectés, par espèce',
+    fields: [
+      { label: null, name: 'affectedSpecies', component: AffectedSpeciesDisplay2 },
     ]
   },
   { 

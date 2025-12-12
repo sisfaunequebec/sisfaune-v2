@@ -64,7 +64,7 @@ const BaseDialog = ({ title, message, size, isAlert = false, schema, schemaType 
   const closeOnInteractOutside = !!isAlert
 
   const hasErrors = Object.keys(errors)?.length > 0
-  console.debug('BaseDialog.render', { title, isSubmitting, hasErrors, errors, watched })
+  // console.debug('BaseDialog.render', { title, isSubmitting, hasErrors, errors, watched })
 
   return (
     <Dialog.Root lazyMount open size={rootSize} placement={placement} motionPreset={motion} onOpenChange={e => onClose(false)} closeOnInteractOutside={closeOnInteractOutside} role={role}>
@@ -102,10 +102,10 @@ const BaseDialog = ({ title, message, size, isAlert = false, schema, schemaType 
   )
 }
 
-const Fields = ({ formSchema, contentRef, watched, data }) => {
+const Fields = ({ formSchema, contentRef, watched, data, ...rest }) => {
   const sectionsCount = formSchema.length
   return (
-     <VStack gap={2} flex={1}>
+     <VStack gap={2} flex={1} {...rest}>
       {formSchema.map((section, i) => {
         const { title, visible, fields } = section
         const isVisible = visible !== undefined ? (typeof visible === 'function') ? visible(data, watched) : visible : true
@@ -116,13 +116,16 @@ const Fields = ({ formSchema, contentRef, watched, data }) => {
             <Fieldset.Content gap={2}>
               {fields.map(f => {
                 const { label, name, disabled = false, visible = true, component, props = {} } = f
+                
                 const isDisabled = (typeof disabled === 'function') ? disabled(data, watched) : disabled
                 const isVisible = (typeof visible === 'function') ? visible(data, watched) : visible
+                const properties = (typeof props === 'function') ? props(data, watched) : props
+                
                 const Component = component || TextInput
                 if (!isVisible) { return null }
                 return (
                   <ControlledField key={name} label={label} name={name} variant={'horizontal'}>
-                    <Component contentRef={contentRef} disabled={isDisabled} data={data} {...props} />
+                    <Component contentRef={contentRef} disabled={isDisabled} data={data} {...properties} />
                   </ControlledField>
                 )
               })}
