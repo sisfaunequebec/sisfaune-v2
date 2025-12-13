@@ -20,9 +20,10 @@ const schema = {
 
   submitter: null,
   discoverer: null,
+  isDiscovererSameAsSubmitter: null,
+  discoveredAt: event => dbDateToIso(event.discoveredAt),
   collaborator: null,
 
-  discoveredAt: event => dbDateToIso(event.discoveredAt),
   collectedAt: event => dbDateToIso(event.collectedAt),
   hadHumanContact: null,
   hadAnimalContact: null,

@@ -2,6 +2,7 @@ CREATE OR REPLACE FUNCTION insert_location_from_event()
 RETURNS TRIGGER AS $$
 BEGIN
   INSERT INTO data_localisation(id_evenement) VALUES (NEW.id);
+  INSERT INTO data_decouvreur(id_evenement) VALUES (NEW.id);
   RETURN NEW;
 END;
 $$ LANGUAGE plpgsql;

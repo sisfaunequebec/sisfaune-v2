@@ -453,7 +453,7 @@ model SpecimenMeasure {
 model Collaborator {
   @@map("data_intervenant")
 
-  id Int @id @db.SmallInt
+  id Int @id @db.SmallInt @default(autoincrement())
   name String @map(name: "nom")
   isActive Boolean @default(true) @map(name: "actif")
 

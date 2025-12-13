@@ -18,11 +18,11 @@ const schema = {
   statusId: event => (event.status ? event.status.id : null),
   closedAt: event => isoDateToDb(event.closedAt),
 
-  // submitterId: event => (event.submitter ? event.submitter.id : null),
-  // discoveredById: event => (event.discoveredBy ? event.discoveredBy.id : null),
+  submitterId: event => (event.submitter ? event.submitter.id : null),
+  isDiscovererSameAsSubmitter: null,
+  discoveredAt: event => isoDateToDb(event.discoveredAt),
   collaboratorId: event => (event.collaborator ? event.collaborator.id : null),
 
-  discoveredAt: event => isoDateToDb(event.discoveredAt),
   collectedAt: event => isoDateToDb(event.collectedAt),
   hadHumanContact: null,
   hadAnimalContact: null,

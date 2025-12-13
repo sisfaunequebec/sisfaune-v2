@@ -11,14 +11,14 @@ import {
   Highlight,
   useCombobox
 } from "@chakra-ui/react"
+
 import { useState } from "react"
-import { useAsync } from "react-use"
+import { useAsync, useDebounce } from "react-use"
 
 const HILIGHTSTYLE = { bg: 'orange.200', px: 0.25 }
 
-const Autocomplete = ({ value, minChars = 2, valueKey = 'id', labelKey = 'name', allowCustomValue = false, hilite = true, placeholder, onLookup, onChange, onRenderItem }) => {
+const Autocomplete = ({ value, minChars = 2, valueKey = 'id', labelKey = 'name', allowCustomValue = false, clearable = true, placeholder, onLookup, onChange, onRenderItem }) => {
   const [inputValue, setInputValue] = useState()
-
 
   const { collection, set } = useListCollection({
     initialItems: value ? [value] : [],
@@ -37,12 +37,18 @@ const Autocomplete = ({ value, minChars = 2, valueKey = 'id', labelKey = 'name',
     }
   }, [collectionItems, valueKey, onChange])
 
+  const [, cancel] = useDebounce(async () => {
+      const data = await onLookup(inputValue)
+      set(data)
+    }, 200,
+    [inputValue, set]
+  )
+
   const handleOnInputValueChange = useCallback((e) => {
     const { inputValue } = e
     setInputValue(inputValue)
     const selectedItem = collectionItems.find(item => item[valueKey] === inputValue)
     if (!selectedItem && allowCustomValue) {
-      console.debug('handleOnValueChange', inputValue)
       onChange({ id: inputValue, value: inputValue })
     }
   }, [collectionItems, setInputValue, valueKey, onChange, allowCustomValue])
@@ -62,19 +68,12 @@ const Autocomplete = ({ value, minChars = 2, valueKey = 'id', labelKey = 'name',
     hydrated.current = true
   }
 
-  useAsync(async () => {
-    if (inputValue) {
-      const data = await onLookup(inputValue)
-      set(data)
-    }
-  }, [inputValue, set])
-
   return (
     <Combobox.RootProvider value={combobox} size={'sm'}>
       <Combobox.Control>
         <Combobox.Input placeholder={placeholder} />
         <Combobox.IndicatorGroup>
-          <Combobox.ClearTrigger />
+          { clearable && <Combobox.ClearTrigger /> }
           <Combobox.Trigger />
         </Combobox.IndicatorGroup>
       </Combobox.Control>

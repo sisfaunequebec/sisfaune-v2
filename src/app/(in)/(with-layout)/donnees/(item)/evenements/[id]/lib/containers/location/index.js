@@ -79,7 +79,7 @@ const addressSchema = [
     title: null,
     fields: [
 
-      { label: 'Adresse\u00A0:', name: 'locality', component: LocalityDisplay },
+      { label: 'Adresse\u00A0:', name: 'description', component: AddressDisplay },
       { label: 'Latitude, longitude (dérivées)\u00A0:', name: 'coordinates', component: CoordinatesDisplay },
     ]
   }

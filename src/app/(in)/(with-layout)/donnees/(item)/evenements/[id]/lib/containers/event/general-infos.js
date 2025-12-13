@@ -102,13 +102,18 @@ const AffectedSpeciesDisplay = ({ value = [] }) => {
 }
 
 const DiscovererDisplay = ({ value, data }) => {
-  const { status } = data
-  const statusId = status?.id
-  const isClosed = statusId === 3
+  const { status: eventStatus, isDiscovererSameAsSubmitter } = data || {}
+  const { id: statusId } = eventStatus || {}
 
-  if (isClosed) {
+  const isEventClosed = statusId === 3
+
+  if (isEventClosed) {
     return (
-     <CommentDisplay value={'L\'événement est terminé : les informations sur le découvreur ne sont plus disponibles.'} />
+     <TextDisplay value={'L\'événement est terminé : les informations sur le découvreur ne sont plus disponibles.'} />
+    )
+  } else if (isDiscovererSameAsSubmitter) {
+    return (
+     <TextDisplay value={'Le soumissionnaire'} />
     )
   } else {
 
@@ -128,15 +133,19 @@ const DiscovererDisplay = ({ value, data }) => {
         email: emailRaw
       } = value
 
-      const { name: localityName, province } = locality
+      // const localityName = locality?.name
+      const { name: localityName, province } = locality || {}
 
       const fullName = [firstName, lastName].join(' ')
-      const address = (streetNumber || localityName) ? ['\u00A0', [streetNumber, street].filter(Boolean).join(', ')].join('\r') : null
+      const address = (streetNumber || localityName) ? [streetNumber, street].filter(Boolean).join(', ') : null
       const city =  [localityName, province].filter(Boolean).join(', ')
       const phone = telephone ? `Téléphone : ${[telephone, extension].filter(Boolean).join(' #')}` : null
       const email = emailRaw ? `Courriel : ${[emailRaw].join(' ')}` : null
+      
+      // const phoneOrEmail = !!phone || !!email
+      // console.debug(phoneOrEmail)
 
-      text = [fullName, title, organisation, division, service, address, city, postalCode, '\u00A0', phone, email].filter(Boolean).join('\r')
+      text = [fullName, title, organisation, division, service, address, city, postalCode, phone, email].filter(Boolean).join('\r')
     }
 
     return (
@@ -170,12 +179,12 @@ const CollaboratorDisplay = ({ value }) => {
     } = value
 
     const fullName = [firstName, lastName].join(' ')
-    const address = (streetNumber || localityName) ? ['\u00A0', [streetNumber, street].filter(Boolean).join(', ')].join('\r') : null
+    const address = (streetNumber || localityName) ? [streetNumber, street].filter(Boolean).join(', ') : null
     const city =  [localityName, province].filter(Boolean).join(', ')
     const phone = telephone ? `Téléphone : ${[telephone, extension].filter(Boolean).join(' #')}` : null
     const email = emailRaw ? `Courriel : ${[emailRaw].join(' ')}` : null
 
-    text = [fullName, title, organisation, division, service, address, city, postalCode, '\u00A0', phone, email].filter(Boolean).join('\r')
+    text = [fullName, title, organisation, division, service, address, city, postalCode, phone, email].filter(Boolean).join('\r')
   }
 
   return (
@@ -224,6 +233,7 @@ const schema = [
   },
   {
     title: 'Individus affectés, par espèce',
+    visible: (data) => { const { affectedSpecies } = data; return affectedSpecies.length > 0 },
     fields: [
       { label: null, name: 'affectedSpecies', component: AffectedSpeciesDisplay2 },
     ]

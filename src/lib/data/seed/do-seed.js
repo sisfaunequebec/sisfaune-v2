@@ -83,30 +83,34 @@ async function doSeed (orm) {
     orm.LutAnimalMeasureType.createMany({ data: lutAnimalMeasureTypes }),
 
     // DATA
-    orm.Collaborator.createMany({ data: dataCollaborators }),
-
     orm.User.createMany({ data: adminUsers }),
     orm.AdminUserProgram.createMany({ data: adminUserPrograms }),
 
-    orm.Discoverer.createMany({ data: dataDiscoverers }),
+    orm.Collaborator.createMany({ data: dataCollaborators }),
+
+    // orm.Discoverer.createMany({ data: dataDiscoverers }),
 
     // orm.Event.createMany({ data: dataEvents }),
     // orm.Location.createMany({ data: dataLocations }),
+
     // orm.Specimen.createMany({ data: dataSpecimens }),
 
     // Reset sequences
-    // orm.$executeRaw`
-    //   do $$
-    //   DECLARE max_id int;
-    //   BEGIN
-    //       SELECT max(id) + 1 FROM data_evenement INTO max_id;
-    //       EXECUTE 'alter SEQUENCE data_evenement_id_seq RESTART with '|| max_id;   
+    orm.$executeRaw`
+      do $$
+      DECLARE max_id int;
+      BEGIN
+        SELECT coalesce(max(id), 0) + 1 FROM data_evenement INTO max_id;
+        EXECUTE 'alter SEQUENCE data_evenement_id_seq RESTART with '|| max_id;   
 
-    //       SELECT max(id) + 1 FROM data_specimen INTO max_id;
-    //       EXECUTE 'alter SEQUENCE data_specimen_id_seq RESTART with '|| max_id;   
-    //   END;
-    //   $$ LANGUAGE plpgsql
-    // `,
+        SELECT coalesce(max(id), 0) + 1 FROM data_specimen INTO max_id;
+        EXECUTE 'alter SEQUENCE data_specimen_id_seq RESTART with '|| max_id;  
+  
+        SELECT coalesce(max(id), 0) + 1 FROM data_intervenant INTO max_id;
+        EXECUTE 'alter SEQUENCE data_intervenant_id_seq RESTART with '|| max_id; 
+      END;
+      $$ LANGUAGE plpgsql
+    `,
 
     // Enable triggers
     orm.$executeRaw`SET session_replication_role = DEFAULT;`

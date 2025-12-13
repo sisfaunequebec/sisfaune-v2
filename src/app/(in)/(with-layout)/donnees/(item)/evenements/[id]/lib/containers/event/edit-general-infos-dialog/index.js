@@ -1,14 +1,19 @@
 'use client'
 import { useState, useEffect, useCallback } from 'react'
 
+import { useFormContext } from 'react-hook-form'
+
 import updateGeneralInfos from '../update-general-infos.action'
 import beforeUpdate from './before-update'
 
 import getActivePrograms from '@/lib/data/lookups/event-programs'
 
+import { VStack } from '@chakra-ui/react'
+
 import BaseDialog, { Fields } from '@/app/lib/components/dialogs/base'
 
-import CommentDisplay from '@/app/lib/components/display/base/comment'
+// import CommentDisplay from '@/app/lib/components/display/base/comment'
+import TextDisplay from '@/app/lib/components/display/base/text'
 
 import DateInput from '@/app/lib/components/inputs/base/date'
 import SelectInput from '@/app/lib/components/inputs/base/select'
@@ -24,6 +29,7 @@ import ShippingMethodSelect from './shipping-method-select'
 import LabSelect from './lab-select'
 import CollaboratorSelect from './collaborator-select'
 
+import Autocomplete from '@/app/(in)/(with-layout)/lib/components/autocomplete'
 import UnimplementedDisplay from '@/app/lib/components/display/base/unimplemented'
 
 const AffectedSpeciesInput = ({ value, data }) => {
@@ -31,18 +37,50 @@ const AffectedSpeciesInput = ({ value, data }) => {
   return null
 }
 
-const DiscovererInput = ({ value, data }) => {
-  const { status } = data
-  const statusId = status?.id
-  const isClosed = statusId === 3
+const SubmitterCombo = ({ value, onChange, ...rest }) => {
+  const handleLookup = useCallback(async (inputValue) => {
+    const response = await fetch(`/api/lookup/submitter?t=${inputValue}`)
+    const data = await response.json()
+    return data
+  } , [])
 
-  if (isClosed) {
+  const handleRenderItem = useCallback(item => {
+    return [[item?.firstName, item?.lastName].join(' '), [item?.organisation].join(' ')]
+  }, [])
+
+  const labelKey = useCallback(item => [item?.firstName, item?.lastName].join(' '), [])
+
+  return (
+    <Autocomplete value={value} labelKey={labelKey} onLookup={handleLookup} onRenderItem={handleRenderItem} onChange={onChange} {...rest} />
+  )
+}
+
+const DiscovererSameAsSubmitterSelect = (props) => {
+  const items = [
+    { id: 1, name: 'Le soumissionnaire' },
+    { id: 0, name: 'Une autre personne' }
+  ]
+  const handleChange = (selected) => {
+    // console.debug('handleChange', props, selected)
+    props.onChange(selected.id === 1)
+  }
+  return (<SelectInput valueKey={'id'} labelKey={'name'} items={items} {...props} clearable={false} onChange={handleChange} value={{ id: (props.value === true ? 1 : 0) }} />)
+}
+
+const DiscovererInput = ({ value, data, onChange, contentRef }) => {
+  const { setValue } = useFormContext()
+  const { status: eventStatus, isDiscovererSameAsSubmitter } = data || {}
+  const { id: statusId } = eventStatus || {}
+
+  const isEventClosed = statusId === 3
+
+  if (isEventClosed) {
     return (
-     <CommentDisplay value={'L\'événement est terminé : les informations sur le découvreur ne sont plus disponibles.'} />
+     <TextDisplay value={'L\'événement est terminé : les informations sur le découvreur ne sont plus disponibles.'} />
     )
   } else {
     return (
-      <UnimplementedDisplay  />
+      <TextDisplay value={value} onChange={onChange} />
     )
   }
 }
@@ -55,7 +93,7 @@ const ContactSelect = (props) => {
   const handleChange = (selected) => {
     props.onChange(selected.id === 1)
   }
-  return (<SelectInput valueKey={'id'} labelKey={'name'} items={items} {...props} onChange={handleChange} value={{ id: (props.value === true ? 1 : 0) }} />)
+  return (<SelectInput valueKey={'id'} labelKey={'name'} items={items} {...props} clearable={false} onChange={handleChange} value={{ id: (props.value === true ? 1 : 0) }} />)
 }
 
 const ProgramSelect = (props) => {
@@ -92,7 +130,8 @@ const formSchema = [
     title: 'Personnes impliquées',
     fields: [
       { label: 'Soumis par\u00A0:', name: 'submitter', component: UnimplementedDisplay },
-      { label: 'Découvert par\u00A0:', name: 'discoveredBy', component: DiscovererInput },
+      { label: 'Découvert par\u00A0:', name: 'isDiscovererSameAsSubmitter', component: DiscovererSameAsSubmitterSelect },
+      { label: 'Découveur\u00A0:', name: 'discoverer', component: CommentInput, visible: (data, watched) => { const { isDiscovererSameAsSubmitter } = watched; return !isDiscovererSameAsSubmitter;  } },
       { label: 'Récolté par (contractuel)\u00A0:', name: 'collaborator', component: CollaboratorSelect }
     ]
   },
@@ -101,8 +140,8 @@ const formSchema = [
     fields: [
       { label: 'Date de la découverte\u00A0:', name: 'discoveredAt', component: DateInput, props: { clearable: true } },
       { label: 'Date de la récolte\u00A0:', name: 'collectedAt', component: DateInput, props: { clearable: true }  },
-      { label: 'Un humain a été en contact\u00A0?', name: 'hadHumanContact' , component: ContactSelect, props: { clearable: false } },
-      { label: 'Un animal domestique a été en contact\u00A0?', name: 'hadAnimalContact' , component: ContactSelect, props: { clearable: false } },
+      { label: 'Un humain a été en contact\u00A0?', name: 'hadHumanContact' , component: ContactSelect },
+      { label: 'Un animal domestique a été en contact\u00A0?', name: 'hadAnimalContact' , component: ContactSelect },
       { label: 'Type d\'habitat\u00A0:', name: 'habitatType', component: HabitatTypeSelect, props: { clearable: true } },
       { label: 'Température\u00A0:', name: 'temperature', component: NumberInput, props: { precision: 1, suffix: '(en celsius)' } },
       { label: 'Observations sur le terrain\u00A0:', name: 'observations', component: CommentInput },
@@ -146,7 +185,7 @@ const EditGeneralInfosDialog = ({ close, eventId, data }) => {
   }, {})
 
   return (
-    <BaseDialog title={`Événement no ${eventId} - Informations générales`} size={'lg'} onClose={close} onSubmit={handleSubmit} submitBtnLabel={'Sauvegarder'} schema={null} schemaType={'valibot'} defaultValues={defaultValues} watches={['status']}>
+    <BaseDialog title={`Événement no ${eventId} - Informations générales`} size={'lg'} onClose={close} onSubmit={handleSubmit} submitBtnLabel={'Sauvegarder'} schema={null} schemaType={'valibot'} defaultValues={defaultValues} watches={['status', 'isDiscovererSameAsSubmitter']}>
       {(contentRef, watched) => {
         return (
           <Fields formSchema={formSchema} contentRef={contentRef} watched={watched} data={defaultValues} />
