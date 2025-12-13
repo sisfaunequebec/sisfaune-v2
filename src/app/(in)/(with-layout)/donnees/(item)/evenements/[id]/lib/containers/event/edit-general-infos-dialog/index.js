@@ -8,8 +8,6 @@ import beforeUpdate from './before-update'
 
 import getActivePrograms from '@/lib/data/lookups/event-programs'
 
-import { VStack } from '@chakra-ui/react'
-
 import BaseDialog, { Fields } from '@/app/lib/components/dialogs/base'
 
 // import CommentDisplay from '@/app/lib/components/display/base/comment'
@@ -29,6 +27,8 @@ import ShippingMethodSelect from './shipping-method-select'
 import LabSelect from './lab-select'
 import CollaboratorSelect from './collaborator-select'
 
+import AddressInput from '@/app/lib/components/inputs/address'
+
 import Autocomplete from '@/app/(in)/(with-layout)/lib/components/autocomplete'
 import UnimplementedDisplay from '@/app/lib/components/display/base/unimplemented'
 
@@ -39,7 +39,7 @@ const AffectedSpeciesInput = ({ value, data }) => {
 
 const SubmitterCombo = ({ value, onChange, ...rest }) => {
   const handleLookup = useCallback(async (inputValue) => {
-    const response = await fetch(`/api/lookup/submitter?t=${inputValue}`)
+    const response = await fetch(`/api/lookup/submitters?t=${inputValue}`)
     const data = await response.json()
     return data
   } , [])
@@ -61,29 +61,28 @@ const DiscovererSameAsSubmitterSelect = (props) => {
     { id: 0, name: 'Une autre personne' }
   ]
   const handleChange = (selected) => {
-    // console.debug('handleChange', props, selected)
     props.onChange(selected.id === 1)
   }
   return (<SelectInput valueKey={'id'} labelKey={'name'} items={items} {...props} clearable={false} onChange={handleChange} value={{ id: (props.value === true ? 1 : 0) }} />)
 }
 
-const DiscovererInput = ({ value, data, onChange, contentRef }) => {
-  const { setValue } = useFormContext()
-  const { status: eventStatus, isDiscovererSameAsSubmitter } = data || {}
-  const { id: statusId } = eventStatus || {}
+// const DiscovererInput = ({ value, data, onChange, contentRef }) => {
+//   const { setValue } = useFormContext()
+//   const { status: eventStatus, isDiscovererSameAsSubmitter } = data || {}
+//   const { id: statusId } = eventStatus || {}
 
-  const isEventClosed = statusId === 3
+//   const isEventClosed = statusId === 3
 
-  if (isEventClosed) {
-    return (
-     <TextDisplay value={'L\'événement est terminé : les informations sur le découvreur ne sont plus disponibles.'} />
-    )
-  } else {
-    return (
-      <TextDisplay value={value} onChange={onChange} />
-    )
-  }
-}
+//   if (isEventClosed) {
+//     return (
+//      <TextDisplay value={'L\'événement est terminé : les informations sur le découvreur ne sont plus disponibles.'} />
+//     )
+//   } else {
+//     return (
+//       <TextDisplay value={value} onChange={onChange} />
+//     )
+//   }
+// }
 
 const ContactSelect = (props) => {
   const items = [
@@ -129,9 +128,9 @@ const formSchema = [
   { 
     title: 'Personnes impliquées',
     fields: [
-      { label: 'Soumis par\u00A0:', name: 'submitter', component: UnimplementedDisplay },
+      { label: 'Soumis par\u00A0:', name: 'submitter', component: SubmitterCombo },
       { label: 'Découvert par\u00A0:', name: 'isDiscovererSameAsSubmitter', component: DiscovererSameAsSubmitterSelect },
-      { label: 'Découveur\u00A0:', name: 'discoverer', component: CommentInput, visible: (data, watched) => { const { isDiscovererSameAsSubmitter } = watched; return !isDiscovererSameAsSubmitter;  } },
+      { label: 'Découveur\u00A0:', name: 'discoverer', component: AddressInput, visible: (data, watched) => { const { isDiscovererSameAsSubmitter } = watched; return !isDiscovererSameAsSubmitter;  } },
       { label: 'Récolté par (contractuel)\u00A0:', name: 'collaborator', component: CollaboratorSelect }
     ]
   },
@@ -152,7 +151,7 @@ const formSchema = [
   { 
     title: 'Individus affectés, par espèce',
     fields: [
-      { label: 'Individus affectés, par espèce\u00A0:', name: 'affectedSpecies', component: AffectedSpeciesInput },
+      { label: null, name: 'affectedSpecies', component: AffectedSpeciesInput },
     ]
   },
   { 

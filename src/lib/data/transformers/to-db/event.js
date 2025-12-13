@@ -20,6 +20,7 @@ const schema = {
 
   submitterId: event => (event.submitter ? event.submitter.id : null),
   isDiscovererSameAsSubmitter: null,
+  discoverer: null,
   discoveredAt: event => isoDateToDb(event.discoveredAt),
   collaboratorId: event => (event.collaborator ? event.collaborator.id : null),
 

@@ -1,12 +1,7 @@
-import {
-  parseAsBoolean  
-} from 'nuqs/server'
-
-import { createParser, parseAsInteger } from 'nuqs/server'
+import { createParser } from 'nuqs/server'
 
 const parseStringIntegerAsBoolean = createParser({
   parse(queryValue) {
-    // console.debug('parseStringIntegerAsBoolean', queryValue, typeof queryValue)
     return queryValue === '1' ? true : false
   },
   serialize(value) {

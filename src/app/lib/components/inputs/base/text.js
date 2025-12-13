@@ -4,7 +4,7 @@ import { Input, InputGroup, IconButton } from '@chakra-ui/react'
 
 import { RxCross2 } from 'react-icons/rx'
 
-const TextInput = ({ value, onChange, clearable = false, prefix, suffix, ...rest }) => {
+const TextInput = ({ value, onChange, clearable = false, prefix, suffix, flex, ...rest }) => {
   const handleChange = useCallback(e => {
     const { target } = e
     const { value } = target
@@ -19,7 +19,7 @@ const TextInput = ({ value, onChange, clearable = false, prefix, suffix, ...rest
 
   return (
     <InputGroup
-      flex={1}
+      flex={flex}
       startElement={prefix}
       endElement={showClearButton ? <IconButton variant='ghost' size='xs' rounded='full' me={-1} onClick={handleClearValue}><RxCross2 /></IconButton> : suffix}
     >

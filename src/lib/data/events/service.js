@@ -493,11 +493,23 @@ const updateGeneralInfos = async (eventId, data) => {
 
   const transformed = toDbEventTransformer(rest, { user })
 
-  const updated = await orm.event.update({
-    where: {
-      id: eventId,
-    },
-    data: transformed
+  const { discoverer, ...eventData } = transformed
+  const { locality, ...discovererData  } = discoverer || {}
+
+  await orm.$transaction(async prisma => {
+    await prisma.event.update({
+      where: {
+        id: eventId,
+      },
+      data: eventData
+    })
+
+    await prisma.discoverer.update({
+      where: {
+        eventId,
+      },
+      data: discovererData
+    })
   })
 
   return null
