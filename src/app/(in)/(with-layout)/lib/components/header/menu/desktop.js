@@ -67,7 +67,7 @@ const DesktopMenu = ({ user }) => {
               <RxGear />
               <Box flex={1} ms={0.5}>Vos paramètres...</Box>
             </Menu.Item> */}
-            <Menu.Separator />
+            {/* <Menu.Separator /> */}
             <Menu.Item onClick={() => { signOut() }} value='signout'>
               <RxExit />
               <Box flex={1} ms={0.5}>Quitter...</Box>
