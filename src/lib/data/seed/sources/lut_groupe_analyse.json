@@ -1,0 +1,3075 @@
+[
+  {
+    "id": "1",
+    "nom": "Antibiogramme salmonelle-yers",
+    "code": "ABSALM",
+    "actif": "0",
+    "id_secteur_analyse": "1"
+  },
+  {
+    "id": "2",
+    "nom": "Rech.Aerom.salmonicida (cult.)",
+    "code": "AEROM",
+    "actif": "0",
+    "id_secteur_analyse": "1"
+  },
+  {
+    "id": "3",
+    "nom": "Culture anaérobie",
+    "code": "ANA",
+    "actif": "1",
+    "id_secteur_analyse": "1"
+  },
+  {
+    "id": "4",
+    "nom": "APP amygdales (billes magnét.)",
+    "code": "APPAMYGB",
+    "actif": "0",
+    "id_secteur_analyse": "1"
+  },
+  {
+    "id": "5",
+    "nom": "APP amygdales (tech standard)",
+    "code": "APPAMYGS",
+    "actif": "0",
+    "id_secteur_analyse": "1"
+  },
+  {
+    "id": "6",
+    "nom": "Profil cytotoxines Act.pleuro.",
+    "code": "APPTOX",
+    "actif": "0",
+    "id_secteur_analyse": "1"
+  },
+  {
+    "id": "7",
+    "nom": "Strep agal, Staph aureus (pcr)",
+    "code": "BLSAPCR",
+    "actif": "0",
+    "id_secteur_analyse": "1"
+  },
+  {
+    "id": "8",
+    "nom": "Recherche Brachyspira (cult.)",
+    "code": "BRAC",
+    "actif": "0",
+    "id_secteur_analyse": "1"
+  },
+  {
+    "id": "9",
+    "nom": "Identif. Brachyspira (pcr)",
+    "code": "BRACIPCR",
+    "actif": "0",
+    "id_secteur_analyse": "1"
+  },
+  {
+    "id": "10",
+    "nom": "Brachyspira (pcr)",
+    "code": "BRACPCR",
+    "actif": "0",
+    "id_secteur_analyse": "1"
+  },
+  {
+    "id": "11",
+    "nom": "Bactério de l''urine UFC / ML",
+    "code": "BURINE",
+    "actif": "0",
+    "id_secteur_analyse": "1"
+  },
+  {
+    "id": "12",
+    "nom": "Rech. Campylobacter (culture)",
+    "code": "CAMPY",
+    "actif": "0",
+    "id_secteur_analyse": "1"
+  },
+  {
+    "id": "13",
+    "nom": "Culture bactérienne lapin 0346",
+    "code": "CBACL",
+    "actif": "0",
+    "id_secteur_analyse": "1"
+  },
+  {
+    "id": "14",
+    "nom": "Culture bactérienne",
+    "code": "CBACT",
+    "actif": "0",
+    "id_secteur_analyse": "1"
+  },
+  {
+    "id": "15",
+    "nom": "Culture bactérienne descriptif",
+    "code": "CBACTD",
+    "actif": "0",
+    "id_secteur_analyse": "1"
+  },
+  {
+    "id": "16",
+    "nom": "Confirm. culture M.paratub pcr",
+    "code": "CCPARPCR",
+    "actif": "0",
+    "id_secteur_analyse": "1"
+  },
+  {
+    "id": "17",
+    "nom": "Rech tox Clost difficile(el)",
+    "code": "CDIFE",
+    "actif": "0",
+    "id_secteur_analyse": "1"
+  },
+  {
+    "id": "18",
+    "nom": "Culture fungus",
+    "code": "CFUNG",
+    "actif": "1",
+    "id_secteur_analyse": "1"
+  },
+  {
+    "id": "19",
+    "nom": "Toxine Clostr perfringens pcr",
+    "code": "CLOST",
+    "actif": "0",
+    "id_secteur_analyse": "1"
+  },
+  {
+    "id": "20",
+    "nom": "Conservation de souche",
+    "code": "CONSO",
+    "actif": "0",
+    "id_secteur_analyse": "1"
+  },
+  {
+    "id": "21",
+    "nom": "Chlamydophila psittaci (pcr)",
+    "code": "CPSIPCR",
+    "actif": "0",
+    "id_secteur_analyse": "1"
+  },
+  {
+    "id": "22",
+    "nom": "Détection génotype E.coli(pcr)",
+    "code": "ECDPCR",
+    "actif": "0",
+    "id_secteur_analyse": "1"
+  },
+  {
+    "id": "23",
+    "nom": "Électrophorèse en champ pulsé",
+    "code": "ECP",
+    "actif": "0",
+    "id_secteur_analyse": "1"
+  },
+  {
+    "id": "24",
+    "nom": "Frottis abeille",
+    "code": "FAB",
+    "actif": "0",
+    "id_secteur_analyse": "1"
+  },
+  {
+    "id": "25",
+    "nom": "Frottis giemsa (bactério)",
+    "code": "FGIEM",
+    "actif": "0",
+    "id_secteur_analyse": "1"
+  },
+  {
+    "id": "26",
+    "nom": "Frottis gimenez (bactério)",
+    "code": "FGIM",
+    "actif": "0",
+    "id_secteur_analyse": "1"
+  },
+  {
+    "id": "27",
+    "nom": "Frottis Gram (bactério)",
+    "code": "FGRAM",
+    "actif": "0",
+    "id_secteur_analyse": "1"
+  },
+  {
+    "id": "28",
+    "nom": "Recherche Francisella (cult.)",
+    "code": "FRANC",
+    "actif": "0",
+    "id_secteur_analyse": "1"
+  },
+  {
+    "id": "29",
+    "nom": "Francisella Tularensis (pcr)",
+    "code": "FRANCPCR",
+    "actif": "1",
+    "id_secteur_analyse": "1"
+  },
+  {
+    "id": "30",
+    "nom": "Frottis direct",
+    "code": "FROT",
+    "actif": "0",
+    "id_secteur_analyse": "1"
+  },
+  {
+    "id": "31",
+    "nom": "Frottis ziehl (bactério)",
+    "code": "FZIEHL",
+    "actif": "0",
+    "id_secteur_analyse": "1"
+  },
+  {
+    "id": "32",
+    "nom": "Haemophilus parasuis (pcr)",
+    "code": "HPARPCR",
+    "actif": "0",
+    "id_secteur_analyse": "1"
+  },
+  {
+    "id": "33",
+    "nom": "Identification bactériologique",
+    "code": "IDENB",
+    "actif": "0",
+    "id_secteur_analyse": "1"
+  },
+  {
+    "id": "34",
+    "nom": "Identification mycologique",
+    "code": "IDENM",
+    "actif": "0",
+    "id_secteur_analyse": "1"
+  },
+  {
+    "id": "35",
+    "nom": "Identification microbio. (pcr)",
+    "code": "IDENPCR",
+    "actif": "0",
+    "id_secteur_analyse": "1"
+  },
+  {
+    "id": "36",
+    "nom": "Immunofluorescence clostridium",
+    "code": "IFCLOS",
+    "actif": "0",
+    "id_secteur_analyse": "1"
+  },
+  {
+    "id": "37",
+    "nom": "Interprétation bactériologie",
+    "code": "INTB",
+    "actif": "0",
+    "id_secteur_analyse": "1"
+  },
+  {
+    "id": "38",
+    "nom": "KOH fungus",
+    "code": "KOH",
+    "actif": "0",
+    "id_secteur_analyse": "1"
+  },
+  {
+    "id": "39",
+    "nom": "Rech. Listeria (culture)",
+    "code": "LIST",
+    "actif": "0",
+    "id_secteur_analyse": "1"
+  },
+  {
+    "id": "40",
+    "nom": "List. monocytogenes (pcr)",
+    "code": "LISTPCR",
+    "actif": "0",
+    "id_secteur_analyse": "1"
+  },
+  {
+    "id": "41",
+    "nom": "Lysotypie salmonelle",
+    "code": "LYSAL",
+    "actif": "0",
+    "id_secteur_analyse": "1"
+  },
+  {
+    "id": "42",
+    "nom": "M. hyorhinis (pcr)",
+    "code": "MHYOR",
+    "actif": "0",
+    "id_secteur_analyse": "1"
+  },
+  {
+    "id": "43",
+    "nom": "Rech. M. plutonius (culture)",
+    "code": "MPLUTO",
+    "actif": "0",
+    "id_secteur_analyse": "1"
+  },
+  {
+    "id": "44",
+    "nom": "Recherche Mycoplasmes(culture)",
+    "code": "MY",
+    "actif": "0",
+    "id_secteur_analyse": "1"
+  },
+  {
+    "id": "45",
+    "nom": "Recherche Mycobactérie (cult.)",
+    "code": "MYB",
+    "actif": "0",
+    "id_secteur_analyse": "1"
+  },
+  {
+    "id": "46",
+    "nom": "Mycobacterium (pcr)",
+    "code": "MYBPCR",
+    "actif": "0",
+    "id_secteur_analyse": "1"
+  },
+  {
+    "id": "47",
+    "nom": "Mycoplasma identification (if)",
+    "code": "MYCID",
+    "actif": "0",
+    "id_secteur_analyse": "1"
+  },
+  {
+    "id": "48",
+    "nom": "Identif.  mycopl.- Projet PSIA",
+    "code": "MYCIDP",
+    "actif": "0",
+    "id_secteur_analyse": "1"
+  },
+  {
+    "id": "49",
+    "nom": "Rech. mycopl. EN - Projet PSIA",
+    "code": "MYENP",
+    "actif": "0",
+    "id_secteur_analyse": "1"
+  },
+  {
+    "id": "50",
+    "nom": "Rech. mycopl. Lait Projet PSIA",
+    "code": "MYLRP",
+    "actif": "0",
+    "id_secteur_analyse": "1"
+  },
+  {
+    "id": "51",
+    "nom": "Note explicative bactério",
+    "code": "NOTE",
+    "actif": "0",
+    "id_secteur_analyse": "1"
+  },
+  {
+    "id": "52",
+    "nom": "Numération bactérienne ufc/plq",
+    "code": "NUMBACT",
+    "actif": "0",
+    "id_secteur_analyse": "1"
+  },
+  {
+    "id": "53",
+    "nom": "Cult. M. a. paratub. Programme",
+    "code": "PARACULP",
+    "actif": "0",
+    "id_secteur_analyse": "1"
+  },
+  {
+    "id": "54",
+    "nom": "Culture M. a. paratuberculosis",
+    "code": "PARACULT",
+    "actif": "0",
+    "id_secteur_analyse": "1"
+  },
+  {
+    "id": "55",
+    "nom": "M. paratuberc. paraffine(pcr)",
+    "code": "PARAFPCR",
+    "actif": "0",
+    "id_secteur_analyse": "1"
+  },
+  {
+    "id": "56",
+    "nom": "Past. multocida toxinogène(el)",
+    "code": "PMTELI",
+    "actif": "0",
+    "id_secteur_analyse": "1"
+  },
+  {
+    "id": "57",
+    "nom": "Past.multocida toxinogène(pcr)",
+    "code": "PMTPCR",
+    "actif": "0",
+    "id_secteur_analyse": "1"
+  },
+  {
+    "id": "58",
+    "nom": "Rech.Reni.salmoninarum (cult.)",
+    "code": "RENIB",
+    "actif": "0",
+    "id_secteur_analyse": "1"
+  },
+  {
+    "id": "59",
+    "nom": "Recherche Staph. aureus ufc/ml",
+    "code": "RSA",
+    "actif": "0",
+    "id_secteur_analyse": "1"
+  },
+  {
+    "id": "60",
+    "nom": "Reni. salm. (pcr)",
+    "code": "RSPCR",
+    "actif": "0",
+    "id_secteur_analyse": "1"
+  },
+  {
+    "id": "61",
+    "nom": "Recherche Salmonelles (cult.)",
+    "code": "SALM",
+    "actif": "0",
+    "id_secteur_analyse": "1"
+  },
+  {
+    "id": "62",
+    "nom": "RechSalmonelle aliment (cult.)",
+    "code": "SALMALIM",
+    "actif": "0",
+    "id_secteur_analyse": "1"
+  },
+  {
+    "id": "63",
+    "nom": "Salmonelle environnement",
+    "code": "SALMENV",
+    "actif": "0",
+    "id_secteur_analyse": "1"
+  },
+  {
+    "id": "64",
+    "nom": "Rech. Salm. fpocq",
+    "code": "SALMFPO",
+    "actif": "0",
+    "id_secteur_analyse": "1"
+  },
+  {
+    "id": "65",
+    "nom": "Salmonelle FPPQ",
+    "code": "SALMFPP",
+    "actif": "0",
+    "id_secteur_analyse": "1"
+  },
+  {
+    "id": "66",
+    "nom": "Salmonella (pcr)",
+    "code": "SALMPCR",
+    "actif": "0",
+    "id_secteur_analyse": "1"
+  },
+  {
+    "id": "67",
+    "nom": "Sous-culture salmonelle",
+    "code": "SALMSC",
+    "actif": "0",
+    "id_secteur_analyse": "1"
+  },
+  {
+    "id": "68",
+    "nom": "Strep. equi",
+    "code": "SEEPCR",
+    "actif": "0",
+    "id_secteur_analyse": "1"
+  },
+  {
+    "id": "69",
+    "nom": "Salm. enteritidis (pcr)",
+    "code": "SEPCR",
+    "actif": "0",
+    "id_secteur_analyse": "1"
+  },
+  {
+    "id": "70",
+    "nom": "Sérogroupage Salmonella",
+    "code": "SGSAL",
+    "actif": "0",
+    "id_secteur_analyse": "1"
+  },
+  {
+    "id": "71",
+    "nom": "Recherche de Shigella (cult.)",
+    "code": "SHIG",
+    "actif": "0",
+    "id_secteur_analyse": "1"
+  },
+  {
+    "id": "72",
+    "nom": "Strep. suis génotypie pcr",
+    "code": "SSGPCR",
+    "actif": "0",
+    "id_secteur_analyse": "1"
+  },
+  {
+    "id": "73",
+    "nom": "Strep suis et H parasuis (pcr)",
+    "code": "SSHPPCR",
+    "actif": "0",
+    "id_secteur_analyse": "1"
+  },
+  {
+    "id": "74",
+    "nom": "Strep. suis (pcr)",
+    "code": "SSUISPCR",
+    "actif": "0",
+    "id_secteur_analyse": "1"
+  },
+  {
+    "id": "75",
+    "nom": "Sérotypie actino pleuropneum",
+    "code": "STAPP",
+    "actif": "0",
+    "id_secteur_analyse": "1"
+  },
+  {
+    "id": "76",
+    "nom": "Sérotypie E coli",
+    "code": "STEC",
+    "actif": "0",
+    "id_secteur_analyse": "1"
+  },
+  {
+    "id": "77",
+    "nom": "Sérotype Haem.parasuis",
+    "code": "STHP",
+    "actif": "0",
+    "id_secteur_analyse": "1"
+  },
+  {
+    "id": "78",
+    "nom": "Sérotypie salmonella",
+    "code": "STSAL",
+    "actif": "0",
+    "id_secteur_analyse": "1"
+  },
+  {
+    "id": "79",
+    "nom": "Sérotype salmonelle Chaire",
+    "code": "STSALCH",
+    "actif": "0",
+    "id_secteur_analyse": "1"
+  },
+  {
+    "id": "80",
+    "nom": "Sérotypie salmonelle",
+    "code": "STSALX",
+    "actif": "0",
+    "id_secteur_analyse": "1"
+  },
+  {
+    "id": "81",
+    "nom": "Sérotypie Strep suis",
+    "code": "STSS",
+    "actif": "0",
+    "id_secteur_analyse": "1"
+  },
+  {
+    "id": "82",
+    "nom": "Ureaplasma isolement",
+    "code": "URE",
+    "actif": "0",
+    "id_secteur_analyse": "1"
+  },
+  {
+    "id": "83",
+    "nom": "XCMI-PICRA",
+    "code": "XCMIPICR",
+    "actif": "0",
+    "id_secteur_analyse": "1"
+  },
+  {
+    "id": "84",
+    "nom": "Recherche de Yersinia (cult.)",
+    "code": "YERS",
+    "actif": "0",
+    "id_secteur_analyse": "1"
+  },
+  {
+    "id": "85",
+    "nom": "Rech. Yersinia ruckeri (cult.)",
+    "code": "YERSR",
+    "actif": "0",
+    "id_secteur_analyse": "1"
+  },
+  {
+    "id": "86",
+    "nom": "Biochimie clinique",
+    "code": "BIO",
+    "actif": "0",
+    "id_secteur_analyse": "2"
+  },
+  {
+    "id": "87",
+    "nom": "Bloc électrolytes",
+    "code": "BLAB",
+    "actif": "0",
+    "id_secteur_analyse": "2"
+  },
+  {
+    "id": "88",
+    "nom": "Bloc oculaire",
+    "code": "BLOC",
+    "actif": "0",
+    "id_secteur_analyse": "2"
+  },
+  {
+    "id": "89",
+    "nom": "Calcium     (mmol/l)",
+    "code": "CA",
+    "actif": "0",
+    "id_secteur_analyse": "2"
+  },
+  {
+    "id": "90",
+    "nom": "Cholinestérase  (U/L)",
+    "code": "CHOL",
+    "actif": "0",
+    "id_secteur_analyse": "2"
+  },
+  {
+    "id": "91",
+    "nom": "CK (u/l)",
+    "code": "CPK",
+    "actif": "0",
+    "id_secteur_analyse": "2"
+  },
+  {
+    "id": "92",
+    "nom": "Examen cytologique",
+    "code": "CYT",
+    "actif": "0",
+    "id_secteur_analyse": "2"
+  },
+  {
+    "id": "93",
+    "nom": "IGG    (mg/dl)",
+    "code": "GG",
+    "actif": "0",
+    "id_secteur_analyse": "2"
+  },
+  {
+    "id": "94",
+    "nom": "Glucose    ( mmol/l)",
+    "code": "GLUC",
+    "actif": "0",
+    "id_secteur_analyse": "2"
+  },
+  {
+    "id": "95",
+    "nom": "Hémogramme complet",
+    "code": "HMC",
+    "actif": "0",
+    "id_secteur_analyse": "2"
+  },
+  {
+    "id": "96",
+    "nom": "Hématocrite litre/litre",
+    "code": "HT",
+    "actif": "0",
+    "id_secteur_analyse": "2"
+  },
+  {
+    "id": "97",
+    "nom": "Interprétation chimie clinique",
+    "code": "INTC",
+    "actif": "0",
+    "id_secteur_analyse": "2"
+  },
+  {
+    "id": "98",
+    "nom": "Interprétation hématologie",
+    "code": "INTH",
+    "actif": "0",
+    "id_secteur_analyse": "2"
+  },
+  {
+    "id": "99",
+    "nom": "Interprétation urologie",
+    "code": "INTU",
+    "actif": "0",
+    "id_secteur_analyse": "2"
+  },
+  {
+    "id": "100",
+    "nom": "Potassium (mmol/l)",
+    "code": "K",
+    "actif": "0",
+    "id_secteur_analyse": "2"
+  },
+  {
+    "id": "101",
+    "nom": "Magnésium   (mmol/l)",
+    "code": "MG",
+    "actif": "0",
+    "id_secteur_analyse": "2"
+  },
+  {
+    "id": "102",
+    "nom": "Sodium  (mmol/l)",
+    "code": "NA",
+    "actif": "0",
+    "id_secteur_analyse": "2"
+  },
+  {
+    "id": "103",
+    "nom": "Phosphore   (mmol/l)",
+    "code": "P",
+    "actif": "0",
+    "id_secteur_analyse": "2"
+  },
+  {
+    "id": "104",
+    "nom": "Profil général",
+    "code": "PGEN",
+    "actif": "0",
+    "id_secteur_analyse": "2"
+  },
+  {
+    "id": "105",
+    "nom": "Prot.tot.sériques (G/L)",
+    "code": "PRTO",
+    "actif": "0",
+    "id_secteur_analyse": "2"
+  },
+  {
+    "id": "106",
+    "nom": "Sélénium sérum",
+    "code": "SESM",
+    "actif": "0",
+    "id_secteur_analyse": "2"
+  },
+  {
+    "id": "107",
+    "nom": "Urée (mmol/l)",
+    "code": "UREE",
+    "actif": "0",
+    "id_secteur_analyse": "2"
+  },
+  {
+    "id": "108",
+    "nom": "Analyse d''urine",
+    "code": "URO",
+    "actif": "0",
+    "id_secteur_analyse": "2"
+  },
+  {
+    "id": "109",
+    "nom": "Vitamines",
+    "code": "VIT",
+    "actif": "0",
+    "id_secteur_analyse": "2"
+  },
+  {
+    "id": "110",
+    "nom": "X Biochimie",
+    "code": "XBIO",
+    "actif": "0",
+    "id_secteur_analyse": "2"
+  },
+  {
+    "id": "111",
+    "nom": "X Cytologie",
+    "code": "XCYTO",
+    "actif": "0",
+    "id_secteur_analyse": "2"
+  },
+  {
+    "id": "112",
+    "nom": "X Hématologie",
+    "code": "XHEMA",
+    "actif": "0",
+    "id_secteur_analyse": "2"
+  },
+  {
+    "id": "113",
+    "nom": "Acarapis woodi (positives/50)",
+    "code": "ACWO",
+    "actif": "0",
+    "id_secteur_analyse": "3"
+  },
+  {
+    "id": "114",
+    "nom": "Anoplocephala",
+    "code": "ANO",
+    "actif": "0",
+    "id_secteur_analyse": "3"
+  },
+  {
+    "id": "115",
+    "nom": "BAERMAN",
+    "code": "BAER",
+    "actif": "0",
+    "id_secteur_analyse": "3"
+  },
+  {
+    "id": "116",
+    "nom": "Crypto examen direct",
+    "code": "CRYED",
+    "actif": "0",
+    "id_secteur_analyse": "3"
+  },
+  {
+    "id": "117",
+    "nom": "Différentiel aviaire",
+    "code": "DIFAV",
+    "actif": "0",
+    "id_secteur_analyse": "3"
+  },
+  {
+    "id": "118",
+    "nom": "Douves",
+    "code": "DOUV",
+    "actif": "0",
+    "id_secteur_analyse": "3"
+  },
+  {
+    "id": "119",
+    "nom": "Examen direct",
+    "code": "EXDI",
+    "actif": "0",
+    "id_secteur_analyse": "3"
+  },
+  {
+    "id": "120",
+    "nom": "Giardies",
+    "code": "GIAR",
+    "actif": "0",
+    "id_secteur_analyse": "3"
+  },
+  {
+    "id": "121",
+    "nom": "Identification parasitaire",
+    "code": "IDENP",
+    "actif": "0",
+    "id_secteur_analyse": "3"
+  },
+  {
+    "id": "122",
+    "nom": "Interprétation parasitologie",
+    "code": "INTP",
+    "actif": "0",
+    "id_secteur_analyse": "3"
+  },
+  {
+    "id": "123",
+    "nom": "koh parasito étio",
+    "code": "KOHPA",
+    "actif": "0",
+    "id_secteur_analyse": "3"
+  },
+  {
+    "id": "124",
+    "nom": "Macmaster",
+    "code": "MC",
+    "actif": "0",
+    "id_secteur_analyse": "3"
+  },
+  {
+    "id": "125",
+    "nom": "Nosema apis (pcr)",
+    "code": "NAPIPCR",
+    "actif": "0",
+    "id_secteur_analyse": "3"
+  },
+  {
+    "id": "126",
+    "nom": "Nosema ceranae (pcr)",
+    "code": "NCERPCR",
+    "actif": "0",
+    "id_secteur_analyse": "3"
+  },
+  {
+    "id": "127",
+    "nom": "Nosema sp (Spores/abeille)",
+    "code": "NOSE",
+    "actif": "0",
+    "id_secteur_analyse": "3"
+  },
+  {
+    "id": "128",
+    "nom": "Nosema PCR",
+    "code": "NOSEPCR",
+    "actif": "0",
+    "id_secteur_analyse": "3"
+  },
+  {
+    "id": "129",
+    "nom": "TRICHINE",
+    "code": "TRICH",
+    "actif": "0",
+    "id_secteur_analyse": "3"
+  },
+  {
+    "id": "130",
+    "nom": "Varroa destructor",
+    "code": "VARO",
+    "actif": "0",
+    "id_secteur_analyse": "3"
+  },
+  {
+    "id": "131",
+    "nom": "Wisconsin",
+    "code": "WISC",
+    "actif": "0",
+    "id_secteur_analyse": "3"
+  },
+  {
+    "id": "132",
+    "nom": "Adenovirus aviaire (pcr)",
+    "code": "AAVPCR",
+    "actif": "0",
+    "id_secteur_analyse": "4"
+  },
+  {
+    "id": "133",
+    "nom": "Adénovirus aviaire-génotype",
+    "code": "AAVSE",
+    "actif": "0",
+    "id_secteur_analyse": "4"
+  },
+  {
+    "id": "134",
+    "nom": "Calicivirus porcin RT-PCR",
+    "code": "CALPOPCR",
+    "actif": "0",
+    "id_secteur_analyse": "4"
+  },
+  {
+    "id": "135",
+    "nom": "Campylobacter (pcr)",
+    "code": "CAMPCR",
+    "actif": "0",
+    "id_secteur_analyse": "4"
+  },
+  {
+    "id": "136",
+    "nom": "Chlamydophila (pcr)",
+    "code": "CHLAPCR",
+    "actif": "0",
+    "id_secteur_analyse": "4"
+  },
+  {
+    "id": "137",
+    "nom": "Circo type 2 temps réel (pcr)",
+    "code": "CIRC2PCR",
+    "actif": "0",
+    "id_secteur_analyse": "4"
+  },
+  {
+    "id": "138",
+    "nom": "Circovirus aviaire (pcr)",
+    "code": "CIRCAPCR",
+    "actif": "0",
+    "id_secteur_analyse": "4"
+  },
+  {
+    "id": "139",
+    "nom": "Circo quantification virale",
+    "code": "CIRCOQV",
+    "actif": "0",
+    "id_secteur_analyse": "4"
+  },
+  {
+    "id": "140",
+    "nom": "Influenza Av confirmation Ag",
+    "code": "CONFAGIA",
+    "actif": "0",
+    "id_secteur_analyse": "4"
+  },
+  {
+    "id": "141",
+    "nom": "ESB Confirmation",
+    "code": "CONFESB",
+    "actif": "0",
+    "id_secteur_analyse": "4"
+  },
+  {
+    "id": "142",
+    "nom": "MDC Confirmation",
+    "code": "CONFMDC",
+    "actif": "0",
+    "id_secteur_analyse": "4"
+  },
+  {
+    "id": "143",
+    "nom": "PMV Confirmation",
+    "code": "CONFPMV",
+    "actif": "0",
+    "id_secteur_analyse": "4"
+  },
+  {
+    "id": "144",
+    "nom": "Tremblante confirmation",
+    "code": "CONFTREM",
+    "actif": "0",
+    "id_secteur_analyse": "4"
+  },
+  {
+    "id": "145",
+    "nom": "Corota bovin (el)",
+    "code": "CORBO",
+    "actif": "0",
+    "id_secteur_analyse": "4"
+  },
+  {
+    "id": "146",
+    "nom": "Culture virale",
+    "code": "CVIRALE",
+    "actif": "0",
+    "id_secteur_analyse": "4"
+  },
+  {
+    "id": "147",
+    "nom": "CVRP (pcr)",
+    "code": "CVRPPCR",
+    "actif": "0",
+    "id_secteur_analyse": "4"
+  },
+  {
+    "id": "148",
+    "nom": "DVB (ELISA-Antigène (viro))",
+    "code": "DVBEL",
+    "actif": "0",
+    "id_secteur_analyse": "4"
+  },
+  {
+    "id": "149",
+    "nom": "DVB (Cult. cellulaire)",
+    "code": "DVBIF",
+    "actif": "0",
+    "id_secteur_analyse": "4"
+  },
+  {
+    "id": "150",
+    "nom": "Diarrhée virale bovine (pcr)",
+    "code": "DVBPCR",
+    "actif": "0",
+    "id_secteur_analyse": "4"
+  },
+  {
+    "id": "151",
+    "nom": "Encéphalite éq. de l''Est (pcr)",
+    "code": "EEEPCR",
+    "actif": "0",
+    "id_secteur_analyse": "4"
+  },
+  {
+    "id": "152",
+    "nom": "Entérite hémorragique av",
+    "code": "EH",
+    "actif": "0",
+    "id_secteur_analyse": "4"
+  },
+  {
+    "id": "153",
+    "nom": "Fièvre Q (pcr)",
+    "code": "FQPCR",
+    "actif": "0",
+    "id_secteur_analyse": "4"
+  },
+  {
+    "id": "154",
+    "nom": "GET immunofluorescence FMV",
+    "code": "GETFMVIF",
+    "actif": "0",
+    "id_secteur_analyse": "4"
+  },
+  {
+    "id": "155",
+    "nom": "GET (pcr)",
+    "code": "GETPCR",
+    "actif": "0",
+    "id_secteur_analyse": "4"
+  },
+  {
+    "id": "156",
+    "nom": "Influenza porc H1N1 séquençage",
+    "code": "H1N1SEQ",
+    "actif": "0",
+    "id_secteur_analyse": "4"
+  },
+  {
+    "id": "157",
+    "nom": "Influenza crct autre qu''AV pcr",
+    "code": "HNPCR",
+    "actif": "0",
+    "id_secteur_analyse": "4"
+  },
+  {
+    "id": "158",
+    "nom": "Herpesvirus équin (pcr)",
+    "code": "HVEPCR",
+    "actif": "0",
+    "id_secteur_analyse": "4"
+  },
+  {
+    "id": "159",
+    "nom": "Herpesvirus général (pcr)",
+    "code": "HVGPCR",
+    "actif": "0",
+    "id_secteur_analyse": "4"
+  },
+  {
+    "id": "160",
+    "nom": "Influenza aviaire H5-H7 (pcr)",
+    "code": "IAH5H7",
+    "actif": "0",
+    "id_secteur_analyse": "4"
+  },
+  {
+    "id": "161",
+    "nom": "Influenza aviaire matrice pcr",
+    "code": "IAMPCR",
+    "actif": "0",
+    "id_secteur_analyse": "4"
+  },
+  {
+    "id": "162",
+    "nom": "Infl aviaire pouvoir pathogène",
+    "code": "IAPP",
+    "actif": "0",
+    "id_secteur_analyse": "4"
+  },
+  {
+    "id": "163",
+    "nom": "Virus abeille IAPV-pcr",
+    "code": "IAPVPCR",
+    "actif": "0",
+    "id_secteur_analyse": "4"
+  },
+  {
+    "id": "164",
+    "nom": "Maladie de Gumboro (pcr)",
+    "code": "IBDPCR",
+    "actif": "0",
+    "id_secteur_analyse": "4"
+  },
+  {
+    "id": "165",
+    "nom": "IBD séquencage",
+    "code": "IBDSEQ",
+    "actif": "0",
+    "id_secteur_analyse": "4"
+  },
+  {
+    "id": "166",
+    "nom": "Bronchite infectieuse (pcr)",
+    "code": "IBVPCR",
+    "actif": "0",
+    "id_secteur_analyse": "4"
+  },
+  {
+    "id": "167",
+    "nom": "IBV séquencage",
+    "code": "IBVSEQ",
+    "actif": "0",
+    "id_secteur_analyse": "4"
+  },
+  {
+    "id": "168",
+    "nom": "Influenza N1 (pcr)",
+    "code": "INFN1PCR",
+    "actif": "0",
+    "id_secteur_analyse": "4"
+  },
+  {
+    "id": "169",
+    "nom": "Influenza type A (pcr)",
+    "code": "INFPCR",
+    "actif": "0",
+    "id_secteur_analyse": "4"
+  },
+  {
+    "id": "170",
+    "nom": "Interprétation virologie",
+    "code": "INTV",
+    "actif": "0",
+    "id_secteur_analyse": "4"
+  },
+  {
+    "id": "171",
+    "nom": "Lawsonia (pcr)",
+    "code": "LAWPCR",
+    "actif": "0",
+    "id_secteur_analyse": "4"
+  },
+  {
+    "id": "172",
+    "nom": "Leptospirose (pcr)",
+    "code": "LEPTOPCR",
+    "actif": "0",
+    "id_secteur_analyse": "4"
+  },
+  {
+    "id": "173",
+    "nom": "Microscopie électronique",
+    "code": "ME",
+    "actif": "0",
+    "id_secteur_analyse": "4"
+  },
+  {
+    "id": "174",
+    "nom": "Microscopie électronique texte",
+    "code": "MET",
+    "actif": "0",
+    "id_secteur_analyse": "4"
+  },
+  {
+    "id": "175",
+    "nom": "M. hyopneumoniae (pcr)",
+    "code": "MHYOPCR",
+    "actif": "0",
+    "id_secteur_analyse": "4"
+  },
+  {
+    "id": "176",
+    "nom": "Mycoplasme aviaire (pcr)",
+    "code": "MYAVPCR",
+    "actif": "0",
+    "id_secteur_analyse": "4"
+  },
+  {
+    "id": "177",
+    "nom": "Mycoplasma bovis (pcr)",
+    "code": "MYBOPCR",
+    "actif": "0",
+    "id_secteur_analyse": "4"
+  },
+  {
+    "id": "178",
+    "nom": "Mycoplasme (pcr)",
+    "code": "MYPCR",
+    "actif": "0",
+    "id_secteur_analyse": "4"
+  },
+  {
+    "id": "179",
+    "nom": "Virus de la NPI",
+    "code": "NPIPCR",
+    "actif": "0",
+    "id_secteur_analyse": "4"
+  },
+  {
+    "id": "180",
+    "nom": "M. paratuberculosis (pcr)",
+    "code": "PARAPCR",
+    "actif": "0",
+    "id_secteur_analyse": "4"
+  },
+  {
+    "id": "181",
+    "nom": "Analyse pcr",
+    "code": "PCR",
+    "actif": "0",
+    "id_secteur_analyse": "4"
+  },
+  {
+    "id": "182",
+    "nom": "Parainfluenza III (pcr)",
+    "code": "PI3PCR",
+    "actif": "0",
+    "id_secteur_analyse": "4"
+  },
+  {
+    "id": "183",
+    "nom": "Maladie de Newcastle (pcr)",
+    "code": "PMV1PCR",
+    "actif": "0",
+    "id_secteur_analyse": "4"
+  },
+  {
+    "id": "184",
+    "nom": "Rage (FAT)",
+    "code": "RAGE",
+    "actif": "1",
+    "id_secteur_analyse": "4"
+  },
+  {
+    "id": "185",
+    "nom": "Rhinotrachéite inf bov (pcr)",
+    "code": "RIBPCR",
+    "actif": "0",
+    "id_secteur_analyse": "4"
+  },
+  {
+    "id": "186",
+    "nom": "Rota A-immunofluorescence FMV",
+    "code": "ROAFMVIF",
+    "actif": "0",
+    "id_secteur_analyse": "4"
+  },
+  {
+    "id": "187",
+    "nom": "Rota C-Immunofluorescence FMV",
+    "code": "ROCFMVIF",
+    "actif": "0",
+    "id_secteur_analyse": "4"
+  },
+  {
+    "id": "188",
+    "nom": "SRRP (pcr)",
+    "code": "SRRPCR",
+    "actif": "0",
+    "id_secteur_analyse": "4"
+  },
+  {
+    "id": "189",
+    "nom": "SRRP détection-séquencage",
+    "code": "SRRPSEQ",
+    "actif": "0",
+    "id_secteur_analyse": "4"
+  },
+  {
+    "id": "190",
+    "nom": "Rech. Toxoplasma gondii (pcr)",
+    "code": "TOXOPCR",
+    "actif": "0",
+    "id_secteur_analyse": "4"
+  },
+  {
+    "id": "191",
+    "nom": "Viro-systèmes-plsr,divers",
+    "code": "VDI",
+    "actif": "0",
+    "id_secteur_analyse": "4"
+  },
+  {
+    "id": "192",
+    "nom": "Virus du Nil Occ. (pcr)",
+    "code": "VNOPCR",
+    "actif": "1",
+    "id_secteur_analyse": "4"
+  },
+  {
+    "id": "193",
+    "nom": "PCR Virus resp. syncitial",
+    "code": "VRSPCR",
+    "actif": "0",
+    "id_secteur_analyse": "4"
+  },
+  {
+    "id": "194",
+    "nom": "Viro-système digestif",
+    "code": "VSD",
+    "actif": "0",
+    "id_secteur_analyse": "4"
+  },
+  {
+    "id": "195",
+    "nom": "Viro-système génito-urinaire",
+    "code": "VSG",
+    "actif": "0",
+    "id_secteur_analyse": "4"
+  },
+  {
+    "id": "196",
+    "nom": "Viro-système locomoteur",
+    "code": "VSL",
+    "actif": "0",
+    "id_secteur_analyse": "4"
+  },
+  {
+    "id": "197",
+    "nom": "Viro-système nerveux",
+    "code": "VSN",
+    "actif": "0",
+    "id_secteur_analyse": "4"
+  },
+  {
+    "id": "198",
+    "nom": "Viro-système respiratoire",
+    "code": "VSR",
+    "actif": "0",
+    "id_secteur_analyse": "4"
+  },
+  {
+    "id": "199",
+    "nom": "Viro-système tégumentaire",
+    "code": "VST",
+    "actif": "0",
+    "id_secteur_analyse": "4"
+  },
+  {
+    "id": "200",
+    "nom": "PCR externe",
+    "code": "XPCR",
+    "actif": "0",
+    "id_secteur_analyse": "4"
+  },
+  {
+    "id": "201",
+    "nom": "Vit. liposolubles sériques",
+    "code": "AEBC",
+    "actif": "0",
+    "id_secteur_analyse": "5"
+  },
+  {
+    "id": "202",
+    "nom": "Aflatoxines(b1,b2,g1,g2)",
+    "code": "AFLA",
+    "actif": "0",
+    "id_secteur_analyse": "5"
+  },
+  {
+    "id": "203",
+    "nom": "Arsenic (ppm)",
+    "code": "AS",
+    "actif": "0",
+    "id_secteur_analyse": "5"
+  },
+  {
+    "id": "204",
+    "nom": "Cadnium",
+    "code": "CAD",
+    "actif": "0",
+    "id_secteur_analyse": "5"
+  },
+  {
+    "id": "205",
+    "nom": "Toxines Cl. perfringens (el)",
+    "code": "CPERTOX",
+    "actif": "0",
+    "id_secteur_analyse": "5"
+  },
+  {
+    "id": "206",
+    "nom": "Cuivre (ppm)",
+    "code": "CU",
+    "actif": "0",
+    "id_secteur_analyse": "5"
+  },
+  {
+    "id": "207",
+    "nom": "Fer (ppm)",
+    "code": "FE",
+    "actif": "0",
+    "id_secteur_analyse": "5"
+  },
+  {
+    "id": "208",
+    "nom": "ht2",
+    "code": "HT2",
+    "actif": "0",
+    "id_secteur_analyse": "5"
+  },
+  {
+    "id": "209",
+    "nom": "Interprétation toxicologie",
+    "code": "INTT",
+    "actif": "0",
+    "id_secteur_analyse": "5"
+  },
+  {
+    "id": "210",
+    "nom": "Molybdène",
+    "code": "MOL",
+    "actif": "0",
+    "id_secteur_analyse": "5"
+  },
+  {
+    "id": "211",
+    "nom": "Ochratoxine",
+    "code": "OCHRA",
+    "actif": "0",
+    "id_secteur_analyse": "5"
+  },
+  {
+    "id": "212",
+    "nom": "Plomb (ppm)",
+    "code": "PB",
+    "actif": "0",
+    "id_secteur_analyse": "5"
+  },
+  {
+    "id": "213",
+    "nom": "Sélénium (ppm)",
+    "code": "SE",
+    "actif": "0",
+    "id_secteur_analyse": "5"
+  },
+  {
+    "id": "214",
+    "nom": "T2",
+    "code": "T2",
+    "actif": "0",
+    "id_secteur_analyse": "5"
+  },
+  {
+    "id": "215",
+    "nom": "Toxine botulinique",
+    "code": "TBOT",
+    "actif": "0",
+    "id_secteur_analyse": "5"
+  },
+  {
+    "id": "216",
+    "nom": "Toxicologie",
+    "code": "TOX",
+    "actif": "0",
+    "id_secteur_analyse": "5"
+  },
+  {
+    "id": "217",
+    "nom": "Vomitoxine",
+    "code": "VOMI",
+    "actif": "0",
+    "id_secteur_analyse": "5"
+  },
+  {
+    "id": "218",
+    "nom": "Zéaralénone",
+    "code": "ZEA",
+    "actif": "0",
+    "id_secteur_analyse": "5"
+  },
+  {
+    "id": "219",
+    "nom": "Zinc (ppm)",
+    "code": "ZN",
+    "actif": "0",
+    "id_secteur_analyse": "5"
+  },
+  {
+    "id": "220",
+    "nom": "Adenovirus aviaire (Tr.en pt)",
+    "code": "AATP",
+    "actif": "0",
+    "id_secteur_analyse": "9"
+  },
+  {
+    "id": "221",
+    "nom": "Adénovirus bovin",
+    "code": "ADEB",
+    "actif": "0",
+    "id_secteur_analyse": "9"
+  },
+  {
+    "id": "222",
+    "nom": "Arthrite encéphalite capr (el)",
+    "code": "AEC",
+    "actif": "0",
+    "id_secteur_analyse": "9"
+  },
+  {
+    "id": "223",
+    "nom": "Arthrite Encéph caprine prog.",
+    "code": "AECP",
+    "actif": "0",
+    "id_secteur_analyse": "9"
+  },
+  {
+    "id": "224",
+    "nom": "Anémie infect. aviaire(el)",
+    "code": "AIA",
+    "actif": "0",
+    "id_secteur_analyse": "9"
+  },
+  {
+    "id": "225",
+    "nom": "Anémie infect. éq. (el)",
+    "code": "AIEE",
+    "actif": "0",
+    "id_secteur_analyse": "9"
+  },
+  {
+    "id": "226",
+    "nom": "Artérite virale équine (sn)",
+    "code": "AVE",
+    "actif": "0",
+    "id_secteur_analyse": "9"
+  },
+  {
+    "id": "227",
+    "nom": "Herpès virus bovin (ifi)",
+    "code": "BHV4",
+    "actif": "0",
+    "id_secteur_analyse": "9"
+  },
+  {
+    "id": "228",
+    "nom": "Bronchite infect aviaire (el)",
+    "code": "BIA",
+    "actif": "0",
+    "id_secteur_analyse": "9"
+  },
+  {
+    "id": "229",
+    "nom": "Chlamydophila spp (fc)",
+    "code": "CHS",
+    "actif": "0",
+    "id_secteur_analyse": "9"
+  },
+  {
+    "id": "230",
+    "nom": "Conservation sérum",
+    "code": "CONSE",
+    "actif": "0",
+    "id_secteur_analyse": "9"
+  },
+  {
+    "id": "231",
+    "nom": "Diarrhée virale bovine T1 (sn)",
+    "code": "DVB1",
+    "actif": "0",
+    "id_secteur_analyse": "9"
+  },
+  {
+    "id": "232",
+    "nom": "Diarrhée virale bovine T2 (sn)",
+    "code": "DVB2",
+    "actif": "0",
+    "id_secteur_analyse": "9"
+  },
+  {
+    "id": "233",
+    "nom": "Encéphalite éq. de l''Est (el)",
+    "code": "EEE",
+    "actif": "0",
+    "id_secteur_analyse": "9"
+  },
+  {
+    "id": "234",
+    "nom": "Encéphalite éq. de l''Est (ih)",
+    "code": "EEEIH",
+    "actif": "0",
+    "id_secteur_analyse": "9"
+  },
+  {
+    "id": "235",
+    "nom": "Encephalomyélite av (e)",
+    "code": "ENCEP",
+    "actif": "0",
+    "id_secteur_analyse": "9"
+  },
+  {
+    "id": "236",
+    "nom": "Encéphalite à protozoaire",
+    "code": "EPM",
+    "actif": "0",
+    "id_secteur_analyse": "9"
+  },
+  {
+    "id": "237",
+    "nom": "Enceph. spongiforme bovine(el)",
+    "code": "ESBEL",
+    "actif": "0",
+    "id_secteur_analyse": "9"
+  },
+  {
+    "id": "238",
+    "nom": "Fièvre catarrhale maligne (el)",
+    "code": "FCME",
+    "actif": "0",
+    "id_secteur_analyse": "9"
+  },
+  {
+    "id": "239",
+    "nom": "Fièvre Q (fc)",
+    "code": "FQ",
+    "actif": "0",
+    "id_secteur_analyse": "9"
+  },
+  {
+    "id": "240",
+    "nom": "Fièvre Q (el)",
+    "code": "FQE",
+    "actif": "0",
+    "id_secteur_analyse": "9"
+  },
+  {
+    "id": "241",
+    "nom": "get(el);cvrp(el)",
+    "code": "GET;CR",
+    "actif": "0",
+    "id_secteur_analyse": "9"
+  },
+  {
+    "id": "242",
+    "nom": "Gumboro (el)",
+    "code": "GUM",
+    "actif": "0",
+    "id_secteur_analyse": "9"
+  },
+  {
+    "id": "243",
+    "nom": "Haemophilus parasuis (el)",
+    "code": "HPARA",
+    "actif": "0",
+    "id_secteur_analyse": "9"
+  },
+  {
+    "id": "244",
+    "nom": "Histophilus somni (el)",
+    "code": "HSOMP",
+    "actif": "0",
+    "id_secteur_analyse": "9"
+  },
+  {
+    "id": "245",
+    "nom": "Influenza équin-1 (h7n7) (ih)",
+    "code": "IE1",
+    "actif": "0",
+    "id_secteur_analyse": "9"
+  },
+  {
+    "id": "246",
+    "nom": "Influenza équin-2 (h3n8)(ih)",
+    "code": "IE2",
+    "actif": "0",
+    "id_secteur_analyse": "9"
+  },
+  {
+    "id": "247",
+    "nom": "Interprétation prion",
+    "code": "INTPR",
+    "actif": "0",
+    "id_secteur_analyse": "9"
+  },
+  {
+    "id": "248",
+    "nom": "Interprétation sérologie",
+    "code": "INTS",
+    "actif": "0",
+    "id_secteur_analyse": "9"
+  },
+  {
+    "id": "249",
+    "nom": "Infl.po.H1/148/106+H3/FMV-4001",
+    "code": "IP3S",
+    "actif": "0",
+    "id_secteur_analyse": "9"
+  },
+  {
+    "id": "250",
+    "nom": "Infl. po. H1N1 atyp.106 (IHA)",
+    "code": "IPH1AT",
+    "actif": "0",
+    "id_secteur_analyse": "9"
+  },
+  {
+    "id": "251",
+    "nom": "Infl. po. H1N1 clas. 148 (IHA)",
+    "code": "IPH1C",
+    "actif": "0",
+    "id_secteur_analyse": "9"
+  },
+  {
+    "id": "252",
+    "nom": "Infl. po. H3N2 FMV-4001 (IHA)",
+    "code": "IPH3",
+    "actif": "0",
+    "id_secteur_analyse": "9"
+  },
+  {
+    "id": "253",
+    "nom": "Infl. po. H3N2 atyp. 150 (IHA)",
+    "code": "IPH3AT",
+    "actif": "0",
+    "id_secteur_analyse": "9"
+  },
+  {
+    "id": "254",
+    "nom": "Laryngotrachéite infect.(el)",
+    "code": "LARYN",
+    "actif": "0",
+    "id_secteur_analyse": "9"
+  },
+  {
+    "id": "255",
+    "nom": "Lepto autumnalis (mat)",
+    "code": "LAU",
+    "actif": "0",
+    "id_secteur_analyse": "9"
+  },
+  {
+    "id": "256",
+    "nom": "Lawsonia (ifa)",
+    "code": "LAWFAT",
+    "actif": "0",
+    "id_secteur_analyse": "9"
+  },
+  {
+    "id": "257",
+    "nom": "Lepto Ballum (mat)",
+    "code": "LBA",
+    "actif": "0",
+    "id_secteur_analyse": "9"
+  },
+  {
+    "id": "258",
+    "nom": "Leucose bov. enz. (ELISA)",
+    "code": "LBE",
+    "actif": "0",
+    "id_secteur_analyse": "9"
+  },
+  {
+    "id": "259",
+    "nom": "Leuc. bov. enz./ PCCST (ELISA)",
+    "code": "LBEC",
+    "actif": "0",
+    "id_secteur_analyse": "9"
+  },
+  {
+    "id": "260",
+    "nom": "Lepto bratislava (mat)",
+    "code": "LBR",
+    "actif": "0",
+    "id_secteur_analyse": "9"
+  },
+  {
+    "id": "261",
+    "nom": "Lepto canicola (mat)",
+    "code": "LCA",
+    "actif": "0",
+    "id_secteur_analyse": "9"
+  },
+  {
+    "id": "262",
+    "nom": "Lepto grippo (mat)",
+    "code": "LGR",
+    "actif": "0",
+    "id_secteur_analyse": "9"
+  },
+  {
+    "id": "263",
+    "nom": "Lepto hardjo (mat)",
+    "code": "LHA",
+    "actif": "0",
+    "id_secteur_analyse": "9"
+  },
+  {
+    "id": "264",
+    "nom": "Lepto ictero (mat)",
+    "code": "LIC",
+    "actif": "0",
+    "id_secteur_analyse": "9"
+  },
+  {
+    "id": "265",
+    "nom": "Lepto pomona (mat)",
+    "code": "LPO",
+    "actif": "0",
+    "id_secteur_analyse": "9"
+  },
+  {
+    "id": "266",
+    "nom": "Lepto sejroe (mat)",
+    "code": "LSJ",
+    "actif": "0",
+    "id_secteur_analyse": "9"
+  },
+  {
+    "id": "267",
+    "nom": "Lepto tarasovi  (mat)",
+    "code": "LTA",
+    "actif": "0",
+    "id_secteur_analyse": "9"
+  },
+  {
+    "id": "268",
+    "nom": "Mal.débil.chron.cervidés (el)",
+    "code": "MDCEL",
+    "actif": "1",
+    "id_secteur_analyse": "9"
+  },
+  {
+    "id": "269",
+    "nom": "Mycoplasma gallisepticum (al)",
+    "code": "MGA",
+    "actif": "0",
+    "id_secteur_analyse": "9"
+  },
+  {
+    "id": "270",
+    "nom": "Mammilite herpétique bov (sn)",
+    "code": "MHB",
+    "actif": "0",
+    "id_secteur_analyse": "9"
+  },
+  {
+    "id": "271",
+    "nom": "Mycoplasma meleagridis (al)",
+    "code": "MME",
+    "actif": "0",
+    "id_secteur_analyse": "9"
+  },
+  {
+    "id": "272",
+    "nom": "Mycoplasma synoviae (al)",
+    "code": "MSY",
+    "actif": "0",
+    "id_secteur_analyse": "9"
+  },
+  {
+    "id": "273",
+    "nom": "Maedi-visna (el)",
+    "code": "MV",
+    "actif": "0",
+    "id_secteur_analyse": "9"
+  },
+  {
+    "id": "274",
+    "nom": "Maedi-Visna programme",
+    "code": "MVP",
+    "actif": "0",
+    "id_secteur_analyse": "9"
+  },
+  {
+    "id": "275",
+    "nom": "Mycoplasma bovis (el)",
+    "code": "MYBE",
+    "actif": "0",
+    "id_secteur_analyse": "9"
+  },
+  {
+    "id": "276",
+    "nom": "M. bovis (ELISA) / Projet PSIA",
+    "code": "MYBEP",
+    "actif": "0",
+    "id_secteur_analyse": "9"
+  },
+  {
+    "id": "277",
+    "nom": "M.gallisepticum(ih)",
+    "code": "MYG",
+    "actif": "0",
+    "id_secteur_analyse": "9"
+  },
+  {
+    "id": "278",
+    "nom": "M. hyopneumoniae elisa",
+    "code": "MYHY",
+    "actif": "0",
+    "id_secteur_analyse": "9"
+  },
+  {
+    "id": "279",
+    "nom": "M. meleagridis (ih)",
+    "code": "MYM",
+    "actif": "0",
+    "id_secteur_analyse": "9"
+  },
+  {
+    "id": "280",
+    "nom": "M. synoviae (ih)",
+    "code": "MYS",
+    "actif": "0",
+    "id_secteur_analyse": "9"
+  },
+  {
+    "id": "281",
+    "nom": "Néospora (el) / Projet DF",
+    "code": "NEOSBIO",
+    "actif": "0",
+    "id_secteur_analyse": "9"
+  },
+  {
+    "id": "282",
+    "nom": "Neospora (el)",
+    "code": "NEOSP",
+    "actif": "0",
+    "id_secteur_analyse": "9"
+  },
+  {
+    "id": "283",
+    "nom": "Note",
+    "code": "NOTES",
+    "actif": "0",
+    "id_secteur_analyse": "9"
+  },
+  {
+    "id": "284",
+    "nom": "Ornitho. rhinotracheale (el)",
+    "code": "ORT",
+    "actif": "0",
+    "id_secteur_analyse": "9"
+  },
+  {
+    "id": "285",
+    "nom": "Paratuberculose (gélose)(id)",
+    "code": "PARA",
+    "actif": "0",
+    "id_secteur_analyse": "9"
+  },
+  {
+    "id": "286",
+    "nom": "Paramyxovirus bovin (ih)",
+    "code": "PI3",
+    "actif": "0",
+    "id_secteur_analyse": "9"
+  },
+  {
+    "id": "287",
+    "nom": "Maladie de Newcastle (ih)",
+    "code": "PMV1",
+    "actif": "0",
+    "id_secteur_analyse": "9"
+  },
+  {
+    "id": "288",
+    "nom": "Maladie de Newcastle (ELISA)",
+    "code": "PMV1E",
+    "actif": "0",
+    "id_secteur_analyse": "9"
+  },
+  {
+    "id": "289",
+    "nom": "Chicken/calif./yucaipa/56 (ih)",
+    "code": "PMV2",
+    "actif": "0",
+    "id_secteur_analyse": "9"
+  },
+  {
+    "id": "290",
+    "nom": "Paramyxo-3,turkey/wis/68(ih)",
+    "code": "PMV3",
+    "actif": "0",
+    "id_secteur_analyse": "9"
+  },
+  {
+    "id": "291",
+    "nom": "Parvovirus porcin (el)",
+    "code": "PPE",
+    "actif": "0",
+    "id_secteur_analyse": "9"
+  },
+  {
+    "id": "292",
+    "nom": "Paratub.Pourquier (el) / BIO",
+    "code": "PTBPQBIO",
+    "actif": "0",
+    "id_secteur_analyse": "9"
+  },
+  {
+    "id": "293",
+    "nom": "Paratub. Pourquier lait (el)",
+    "code": "PTBPQLT",
+    "actif": "0",
+    "id_secteur_analyse": "9"
+  },
+  {
+    "id": "294",
+    "nom": "Paratub.Pourquier lait(el)Prog",
+    "code": "PTBPQLTP",
+    "actif": "0",
+    "id_secteur_analyse": "9"
+  },
+  {
+    "id": "295",
+    "nom": "Paratub. Pourquier sérum (el)",
+    "code": "PTBPQSM",
+    "actif": "0",
+    "id_secteur_analyse": "9"
+  },
+  {
+    "id": "296",
+    "nom": "ParatubPourquier sérum(el)Prog",
+    "code": "PTBPQSMP",
+    "actif": "0",
+    "id_secteur_analyse": "9"
+  },
+  {
+    "id": "297",
+    "nom": "Rhinopneumonie équine (sn)",
+    "code": "RE",
+    "actif": "0",
+    "id_secteur_analyse": "9"
+  },
+  {
+    "id": "298",
+    "nom": "Rhinopneumonie équine (ifa)",
+    "code": "REI",
+    "actif": "0",
+    "id_secteur_analyse": "9"
+  },
+  {
+    "id": "299",
+    "nom": "Reovirus aviaire (el)",
+    "code": "REOE",
+    "actif": "0",
+    "id_secteur_analyse": "9"
+  },
+  {
+    "id": "300",
+    "nom": "Rhinotr. inf.bov. (el)",
+    "code": "RIBEL",
+    "actif": "0",
+    "id_secteur_analyse": "9"
+  },
+  {
+    "id": "301",
+    "nom": "Rhinotr infect bovine (sn)",
+    "code": "RIBSN",
+    "actif": "0",
+    "id_secteur_analyse": "9"
+  },
+  {
+    "id": "302",
+    "nom": "Salmonella (el)",
+    "code": "SALMEL",
+    "actif": "0",
+    "id_secteur_analyse": "9"
+  },
+  {
+    "id": "303",
+    "nom": "Salmonella enteritidis (el)",
+    "code": "SALMENTE",
+    "actif": "0",
+    "id_secteur_analyse": "9"
+  },
+  {
+    "id": "304",
+    "nom": "SRRP porc (el)",
+    "code": "SRRP",
+    "actif": "0",
+    "id_secteur_analyse": "9"
+  },
+  {
+    "id": "305",
+    "nom": "Toxoplasma IgG(MAT)",
+    "code": "TOXOP",
+    "actif": "0",
+    "id_secteur_analyse": "9"
+  },
+  {
+    "id": "306",
+    "nom": "Tremblante ovine,caprine (el)",
+    "code": "TREMBEL",
+    "actif": "0",
+    "id_secteur_analyse": "9"
+  },
+  {
+    "id": "307",
+    "nom": "Virus du Nil Occ. (el-IGM)",
+    "code": "VNOELI",
+    "actif": "0",
+    "id_secteur_analyse": "9"
+  },
+  {
+    "id": "308",
+    "nom": "Virus du Nil Occ. (ih)",
+    "code": "VNOIH",
+    "actif": "0",
+    "id_secteur_analyse": "9"
+  },
+  {
+    "id": "309",
+    "nom": "Virus du Nil Occ. (sn)",
+    "code": "VNOSN",
+    "actif": "0",
+    "id_secteur_analyse": "9"
+  },
+  {
+    "id": "310",
+    "nom": "Virus resp. syncitial (ifa)",
+    "code": "VRSI",
+    "actif": "0",
+    "id_secteur_analyse": "9"
+  },
+  {
+    "id": "311",
+    "nom": "Encephal. équine ouest (el)",
+    "code": "WEE",
+    "actif": "0",
+    "id_secteur_analyse": "9"
+  },
+  {
+    "id": "312",
+    "nom": "X Anémie infect.av (el)",
+    "code": "XAIA",
+    "actif": "0",
+    "id_secteur_analyse": "9"
+  },
+  {
+    "id": "313",
+    "nom": "X Analyses diverses",
+    "code": "XDIVER",
+    "actif": "0",
+    "id_secteur_analyse": "9"
+  },
+  {
+    "id": "314",
+    "nom": "X Haemophilus parasuis (el)",
+    "code": "XHPARA",
+    "actif": "0",
+    "id_secteur_analyse": "9"
+  },
+  {
+    "id": "315",
+    "nom": "Histophilus somni (el)",
+    "code": "XHSOM",
+    "actif": "0",
+    "id_secteur_analyse": "9"
+  },
+  {
+    "id": "316",
+    "nom": "X Lawsonia (ifa)",
+    "code": "XLAWFAT",
+    "actif": "0",
+    "id_secteur_analyse": "9"
+  },
+  {
+    "id": "317",
+    "nom": "X Maedi-visna (el)",
+    "code": "XMV",
+    "actif": "0",
+    "id_secteur_analyse": "9"
+  },
+  {
+    "id": "318",
+    "nom": "X Mycoplasma bovis (el)",
+    "code": "XMYCOB",
+    "actif": "0",
+    "id_secteur_analyse": "9"
+  },
+  {
+    "id": "319",
+    "nom": "X Neospora (el)",
+    "code": "XNEOS",
+    "actif": "0",
+    "id_secteur_analyse": "9"
+  },
+  {
+    "id": "320",
+    "nom": "X Ornythobacterium (idot)",
+    "code": "XORT",
+    "actif": "0",
+    "id_secteur_analyse": "9"
+  },
+  {
+    "id": "321",
+    "nom": "X Paratuberculose (id)",
+    "code": "XPARA",
+    "actif": "0",
+    "id_secteur_analyse": "9"
+  },
+  {
+    "id": "322",
+    "nom": "X Paratuberculose (el)",
+    "code": "XPARAE",
+    "actif": "0",
+    "id_secteur_analyse": "9"
+  },
+  {
+    "id": "323",
+    "nom": "X Toxoplasmose",
+    "code": "XTOXO",
+    "actif": "0",
+    "id_secteur_analyse": "9"
+  },
+  {
+    "id": "324",
+    "nom": "Remarque importante",
+    "code": "COMN",
+    "actif": "0",
+    "id_secteur_analyse": "10"
+  },
+  {
+    "id": "325",
+    "nom": "Interprétation pathologique",
+    "code": "INTPTH",
+    "actif": "0",
+    "id_secteur_analyse": "10"
+  },
+  {
+    "id": "326",
+    "nom": "Nécropsie",
+    "code": "NEC",
+    "actif": "1",
+    "id_secteur_analyse": "10"
+  },
+  {
+    "id": "327",
+    "nom": "Nécropsie tissu",
+    "code": "NTIS",
+    "actif": "0",
+    "id_secteur_analyse": "10"
+  },
+  {
+    "id": "328",
+    "nom": "Rhinite atrophiante",
+    "code": "RHINITE",
+    "actif": "0",
+    "id_secteur_analyse": "10"
+  },
+  {
+    "id": "329",
+    "nom": "Biopsie",
+    "code": "BIOP",
+    "actif": "0",
+    "id_secteur_analyse": "11"
+  },
+  {
+    "id": "330",
+    "nom": "Bloc paraffiné",
+    "code": "BLOCPARA",
+    "actif": "0",
+    "id_secteur_analyse": "11"
+  },
+  {
+    "id": "331",
+    "nom": "Diarrhée virale bovine (ihc)",
+    "code": "BVDIHC",
+    "actif": "0",
+    "id_secteur_analyse": "11"
+  },
+  {
+    "id": "332",
+    "nom": "Circovirus (ihc)",
+    "code": "CIRCOIHC",
+    "actif": "0",
+    "id_secteur_analyse": "11"
+  },
+  {
+    "id": "333",
+    "nom": "Conservation tissus",
+    "code": "CONTI",
+    "actif": "0",
+    "id_secteur_analyse": "11"
+  },
+  {
+    "id": "334",
+    "nom": "Corona bovin (if)",
+    "code": "COROBOIF",
+    "actif": "0",
+    "id_secteur_analyse": "11"
+  },
+  {
+    "id": "335",
+    "nom": "Corona porcin (if)",
+    "code": "COROPOIF",
+    "actif": "0",
+    "id_secteur_analyse": "11"
+  },
+  {
+    "id": "336",
+    "nom": "EST (ihc)",
+    "code": "ESTIHC",
+    "actif": "0",
+    "id_secteur_analyse": "11"
+  },
+  {
+    "id": "337",
+    "nom": "FCM (ihc)",
+    "code": "FCMIHC",
+    "actif": "0",
+    "id_secteur_analyse": "11"
+  },
+  {
+    "id": "338",
+    "nom": "Histopathologie tissu",
+    "code": "HISTO",
+    "actif": "0",
+    "id_secteur_analyse": "11"
+  },
+  {
+    "id": "339",
+    "nom": "Immunofluorescence IBR",
+    "code": "IBRIF",
+    "actif": "0",
+    "id_secteur_analyse": "11"
+  },
+  {
+    "id": "340",
+    "nom": "Immunofluorescence",
+    "code": "IF",
+    "actif": "0",
+    "id_secteur_analyse": "11"
+  },
+  {
+    "id": "341",
+    "nom": "Immunohistochimie",
+    "code": "IHC",
+    "actif": "0",
+    "id_secteur_analyse": "11"
+  },
+  {
+    "id": "342",
+    "nom": "Influenza A-immunofl(if)",
+    "code": "INFLIF",
+    "actif": "0",
+    "id_secteur_analyse": "11"
+  },
+  {
+    "id": "343",
+    "nom": "Rapport d''histopathologie",
+    "code": "INTHI",
+    "actif": "1",
+    "id_secteur_analyse": "11"
+  },
+  {
+    "id": "344",
+    "nom": "GroupeIF  InfluenzaA-SRRP-PCV2",
+    "code": "ISCIF",
+    "actif": "0",
+    "id_secteur_analyse": "11"
+  },
+  {
+    "id": "345",
+    "nom": "MDC (ihc)",
+    "code": "MDCIHC",
+    "actif": "0",
+    "id_secteur_analyse": "11"
+  },
+  {
+    "id": "346",
+    "nom": "M. hyopneumoniae immunofl (if)",
+    "code": "MYCOIF",
+    "actif": "0",
+    "id_secteur_analyse": "11"
+  },
+  {
+    "id": "347",
+    "nom": "Parvovirus-immunofl(if)",
+    "code": "PARVIF",
+    "actif": "0",
+    "id_secteur_analyse": "11"
+  },
+  {
+    "id": "348",
+    "nom": "Immunofluorescence PCV2",
+    "code": "PCV2IF",
+    "actif": "0",
+    "id_secteur_analyse": "11"
+  },
+  {
+    "id": "349",
+    "nom": "Immunofluorescence PI3",
+    "code": "PI3IF",
+    "actif": "0",
+    "id_secteur_analyse": "11"
+  },
+  {
+    "id": "350",
+    "nom": "Rhinotrach. inf. bovine (if)",
+    "code": "RIBIF",
+    "actif": "0",
+    "id_secteur_analyse": "11"
+  },
+  {
+    "id": "351",
+    "nom": "Rota type C-Immunofluorescence",
+    "code": "ROCIF",
+    "actif": "0",
+    "id_secteur_analyse": "11"
+  },
+  {
+    "id": "352",
+    "nom": "Rota-Corona Immunofluorescence",
+    "code": "ROCOIF",
+    "actif": "0",
+    "id_secteur_analyse": "11"
+  },
+  {
+    "id": "353",
+    "nom": "Rotavirus (if)",
+    "code": "ROTAIF",
+    "actif": "0",
+    "id_secteur_analyse": "11"
+  },
+  {
+    "id": "354",
+    "nom": "RSV-immunofluorescence",
+    "code": "RSVIF",
+    "actif": "0",
+    "id_secteur_analyse": "11"
+  },
+  {
+    "id": "355",
+    "nom": "RSV (ihc)",
+    "code": "RSVIHC",
+    "actif": "0",
+    "id_secteur_analyse": "11"
+  },
+  {
+    "id": "356",
+    "nom": "SRRP - immunofl(if)",
+    "code": "SRRPIF",
+    "actif": "0",
+    "id_secteur_analyse": "11"
+  },
+  {
+    "id": "357",
+    "nom": "SRRP (ihc)",
+    "code": "SRRPIHC",
+    "actif": "0",
+    "id_secteur_analyse": "11"
+  },
+  {
+    "id": "358",
+    "nom": "Interprétation générale",
+    "code": "INTG",
+    "actif": "0",
+    "id_secteur_analyse": "14"
+  },
+  {
+    "id": "359",
+    "nom": "Identification animale",
+    "code": "ANIMID",
+    "actif": "0",
+    "id_secteur_analyse": "17"
+  },
+  {
+    "id": "360",
+    "nom": "Anamnèse",
+    "code": "ANAM",
+    "actif": "0",
+    "id_secteur_analyse": "18"
+  },
+  {
+    "id": "361",
+    "nom": "Échantillons",
+    "code": "ECHANT",
+    "actif": "0",
+    "id_secteur_analyse": "19"
+  },
+  {
+    "id": "362",
+    "nom": "Complément info échantillon",
+    "code": "ECHID",
+    "actif": "0",
+    "id_secteur_analyse": "19"
+  },
+  {
+    "id": "496",
+    "nom": "Rage (DRIT)",
+    "code": null,
+    "actif": "1",
+    "id_secteur_analyse": "4"
+  },
+  {
+    "id": "497",
+    "nom": "Plomb sanguin (INSPQ)",
+    "code": null,
+    "actif": "1",
+    "id_secteur_analyse": "5"
+  },
+  {
+    "id": "498",
+    "nom": "Sérologie rage (cELISA)",
+    "code": null,
+    "actif": "1",
+    "id_secteur_analyse": "9"
+  },
+  {
+    "id": "499",
+    "nom": "Sérologie Rage (RSNA)",
+    "code": null,
+    "actif": "1",
+    "id_secteur_analyse": "9"
+  },
+  {
+    "id": "500",
+    "nom": "Plomb (Leadcare)",
+    "code": null,
+    "actif": "1",
+    "id_secteur_analyse": "5"
+  },
+  {
+    "id": "501",
+    "nom": "Plomb tissu (INSPQ)",
+    "code": null,
+    "actif": "1",
+    "id_secteur_analyse": "5"
+  },
+  {
+    "id": "502",
+    "nom": "Geomyces destructans (RT-PCR)",
+    "code": null,
+    "actif": "1",
+    "id_secteur_analyse": "4"
+  },
+  {
+    "id": "503",
+    "nom": "Décompte de tiques (Orignal)",
+    "code": null,
+    "actif": "1",
+    "id_secteur_analyse": "3"
+  },
+  {
+    "id": "504",
+    "nom": "Dermacentor albipictus",
+    "code": null,
+    "actif": "1",
+    "id_secteur_analyse": "3"
+  },
+  {
+    "id": "505",
+    "nom": "Distemper (IF)",
+    "code": null,
+    "actif": "1",
+    "id_secteur_analyse": "4"
+  },
+  {
+    "id": "506",
+    "nom": "Distemper canin (PCR)",
+    "code": null,
+    "actif": "1",
+    "id_secteur_analyse": "4"
+  },
+  {
+    "id": "507",
+    "nom": "Fièvre catarrhale maligne (PCR)",
+    "code": null,
+    "actif": "1",
+    "id_secteur_analyse": "4"
+  },
+  {
+    "id": "508",
+    "nom": "Adénovirus mammifère (PCR)",
+    "code": null,
+    "actif": "1",
+    "id_secteur_analyse": "4"
+  },
+  {
+    "id": "509",
+    "nom": "Distemper canin (IHC)",
+    "code": null,
+    "actif": "1",
+    "id_secteur_analyse": "4"
+  },
+  {
+    "id": "510",
+    "nom": "Néos. caninum (PCR)",
+    "code": null,
+    "actif": "1",
+    "id_secteur_analyse": "3"
+  },
+  {
+    "id": "511",
+    "nom": "Recherche Listéria (cult.)",
+    "code": null,
+    "actif": "1",
+    "id_secteur_analyse": "1"
+  },
+  {
+    "id": "512",
+    "nom": "Parvovirus canin (IHC)",
+    "code": null,
+    "actif": "1",
+    "id_secteur_analyse": "11"
+  },
+  {
+    "id": "513",
+    "nom": "Diagnostic",
+    "code": null,
+    "actif": "1",
+    "id_secteur_analyse": "10"
+  },
+  {
+    "id": "514",
+    "nom": "Syndrome du museau blanc",
+    "code": null,
+    "actif": "1",
+    "id_secteur_analyse": "10"
+  },
+  {
+    "id": "515",
+    "nom": "Note au dossier",
+    "code": null,
+    "actif": "1",
+    "id_secteur_analyse": "18"
+  },
+  {
+    "id": "516",
+    "nom": "Parvovirus (PCR)",
+    "code": null,
+    "actif": "1",
+    "id_secteur_analyse": "4"
+  },
+  {
+    "id": "517",
+    "nom": "Imagerie médicale",
+    "code": null,
+    "actif": "1",
+    "id_secteur_analyse": "18"
+  },
+  {
+    "id": "518",
+    "nom": "Diagnostic global",
+    "code": null,
+    "actif": "1",
+    "id_secteur_analyse": "10"
+  },
+  {
+    "id": "519",
+    "nom": "Histologie",
+    "code": null,
+    "actif": "1",
+    "id_secteur_analyse": "11"
+  },
+  {
+    "id": "520",
+    "nom": "Bluetongue virus (PCR)",
+    "code": null,
+    "actif": "1",
+    "id_secteur_analyse": "4"
+  },
+  {
+    "id": "521",
+    "nom": "Maladie hémorragique épizootique (EHD) PCR",
+    "code": null,
+    "actif": "1",
+    "id_secteur_analyse": "4"
+  },
+  {
+    "id": "522",
+    "nom": "Bluetongue virus (PCR)",
+    "code": null,
+    "actif": "1",
+    "id_secteur_analyse": "4"
+  },
+  {
+    "id": "523",
+    "nom": "Bluetongue virus (PCR)",
+    "code": null,
+    "actif": "1",
+    "id_secteur_analyse": "4"
+  },
+  {
+    "id": "524",
+    "nom": "Borrelia (PCR)",
+    "code": null,
+    "actif": "1",
+    "id_secteur_analyse": "1"
+  },
+  {
+    "id": "525",
+    "nom": "Anaplasma (PCR)",
+    "code": null,
+    "actif": "1",
+    "id_secteur_analyse": "1"
+  },
+  {
+    "id": "526",
+    "nom": "Anomalie",
+    "code": null,
+    "actif": "1",
+    "id_secteur_analyse": "19"
+  },
+  {
+    "id": "527",
+    "nom": "Parasitologie (PCR)",
+    "code": null,
+    "actif": "1",
+    "id_secteur_analyse": "3"
+  },
+  {
+    "id": "528",
+    "nom": "Cadmium",
+    "code": null,
+    "actif": "1",
+    "id_secteur_analyse": "5"
+  },
+  {
+    "id": "529",
+    "nom": "Thallium (ppm)",
+    "code": null,
+    "actif": "1",
+    "id_secteur_analyse": "5"
+  },
+  {
+    "id": "530",
+    "nom": "Mercure (ppm)",
+    "code": null,
+    "actif": "1",
+    "id_secteur_analyse": "5"
+  },
+  {
+    "id": "531",
+    "nom": "Fièvre catarrhale maligne MCF (PCR)",
+    "code": null,
+    "actif": "1",
+    "id_secteur_analyse": "4"
+  },
+  {
+    "id": "532",
+    "nom": "Antimoine",
+    "code": null,
+    "actif": "1",
+    "id_secteur_analyse": "5"
+  },
+  {
+    "id": "533",
+    "nom": "Béryllium",
+    "code": null,
+    "actif": "1",
+    "id_secteur_analyse": "5"
+  },
+  {
+    "id": "534",
+    "nom": "Bore",
+    "code": null,
+    "actif": "1",
+    "id_secteur_analyse": "5"
+  },
+  {
+    "id": "535",
+    "nom": "Chrome",
+    "code": null,
+    "actif": "1",
+    "id_secteur_analyse": "5"
+  },
+  {
+    "id": "536",
+    "nom": "Cobalt",
+    "code": null,
+    "actif": "1",
+    "id_secteur_analyse": "5"
+  },
+  {
+    "id": "537",
+    "nom": "Magnésium",
+    "code": null,
+    "actif": "1",
+    "id_secteur_analyse": "5"
+  },
+  {
+    "id": "538",
+    "nom": "Manganèse-foie (ppm)",
+    "code": null,
+    "actif": "1",
+    "id_secteur_analyse": "5"
+  },
+  {
+    "id": "539",
+    "nom": "Nickel",
+    "code": null,
+    "actif": "1",
+    "id_secteur_analyse": "5"
+  },
+  {
+    "id": "540",
+    "nom": "Étain (ppm)",
+    "code": null,
+    "actif": "1",
+    "id_secteur_analyse": "5"
+  },
+  {
+    "id": "541",
+    "nom": "Brucellose",
+    "code": null,
+    "actif": "1",
+    "id_secteur_analyse": "1"
+  },
+  {
+    "id": "542",
+    "nom": "Valeurs de références",
+    "code": null,
+    "actif": "1",
+    "id_secteur_analyse": "5"
+  },
+  {
+    "id": "543",
+    "nom": "Babesia",
+    "code": null,
+    "actif": "1",
+    "id_secteur_analyse": "3"
+  },
+  {
+    "id": "544",
+    "nom": "Sulfate de Zinc",
+    "code": null,
+    "actif": "1",
+    "id_secteur_analyse": "3"
+  },
+  {
+    "id": "545",
+    "nom": "Histophilus  Somni (culture)",
+    "code": null,
+    "actif": "1",
+    "id_secteur_analyse": "1"
+  },
+  {
+    "id": "546",
+    "nom": "Variant rage",
+    "code": null,
+    "actif": "1",
+    "id_secteur_analyse": "4"
+  },
+  {
+    "id": "547",
+    "nom": "Grattage cutané",
+    "code": null,
+    "actif": "1",
+    "id_secteur_analyse": "3"
+  },
+  {
+    "id": "548",
+    "nom": "ADV - Aleutian disease virus (Maladie Aléoutienne) -PCR",
+    "code": null,
+    "actif": "1",
+    "id_secteur_analyse": "4"
+  },
+  {
+    "id": "549",
+    "nom": "Détection nitrocellulose",
+    "code": null,
+    "actif": "1",
+    "id_secteur_analyse": "5"
+  },
+  {
+    "id": "550",
+    "nom": "Sars-Cov-2",
+    "code": null,
+    "actif": "1",
+    "id_secteur_analyse": "4"
+  },
+  {
+    "id": "551",
+    "nom": "Cuivre (ug/g)",
+    "code": null,
+    "actif": "1",
+    "id_secteur_analyse": "5"
+  },
+  {
+    "id": "552",
+    "nom": "Fer (ug/g)",
+    "code": null,
+    "actif": "1",
+    "id_secteur_analyse": "5"
+  },
+  {
+    "id": "553",
+    "nom": "Rotavirus ruminant gr. AB et coronavirus bovin (PCR)",
+    "code": null,
+    "actif": "1",
+    "id_secteur_analyse": "4"
+  },
+  {
+    "id": "554",
+    "nom": "Rotavirus gr. A (PCR)",
+    "code": null,
+    "actif": "1",
+    "id_secteur_analyse": "4"
+  },
+  {
+    "id": "555",
+    "nom": "Rotavirus gr. B",
+    "code": null,
+    "actif": "1",
+    "id_secteur_analyse": "4"
+  },
+  {
+    "id": "556",
+    "nom": "Coronavirus bovin (PCR)",
+    "code": null,
+    "actif": "1",
+    "id_secteur_analyse": "4"
+  },
+  {
+    "id": "557",
+    "nom": "Neospora caninum (PCR)",
+    "code": null,
+    "actif": "1",
+    "id_secteur_analyse": "3"
+  },
+  {
+    "id": "558",
+    "nom": "Ureaplasma diversum (PCR)",
+    "code": null,
+    "actif": "1",
+    "id_secteur_analyse": "1"
+  },
+  {
+    "id": "559",
+    "nom": "Radiologie",
+    "code": null,
+    "actif": "1",
+    "id_secteur_analyse": "10"
+  },
+  {
+    "id": "560",
+    "nom": "Mycologie",
+    "code": null,
+    "actif": "1",
+    "id_secteur_analyse": "1"
+  },
+  {
+    "id": "561",
+    "nom": "Mycologie",
+    "code": null,
+    "actif": "1",
+    "id_secteur_analyse": "1"
+  },
+  {
+    "id": "562",
+    "nom": "Coronavirus",
+    "code": null,
+    "actif": "1",
+    "id_secteur_analyse": "4"
+  },
+  {
+    "id": "563",
+    "nom": "Détection anticoagulants",
+    "code": null,
+    "actif": "1",
+    "id_secteur_analyse": "5"
+  },
+  {
+    "id": "564",
+    "nom": "Parasitologie",
+    "code": null,
+    "actif": "1",
+    "id_secteur_analyse": "3"
+  },
+  {
+    "id": "565",
+    "nom": "Recherche éthylène glycol",
+    "code": null,
+    "actif": "1",
+    "id_secteur_analyse": "5"
+  },
+  {
+    "id": "566",
+    "nom": "Recherche parasitaire",
+    "code": null,
+    "actif": "1",
+    "id_secteur_analyse": "3"
+  },
+  {
+    "id": "567",
+    "nom": "PCR Poxvirus aviaire",
+    "code": null,
+    "actif": "1",
+    "id_secteur_analyse": "4"
+  },
+  {
+    "id": "568",
+    "nom": "Recherche toxine",
+    "code": null,
+    "actif": "1",
+    "id_secteur_analyse": "5"
+  },
+  {
+    "id": "569",
+    "nom": "Antibiogramme",
+    "code": null,
+    "actif": "1",
+    "id_secteur_analyse": "1"
+  },
+  {
+    "id": "570",
+    "nom": "Sarcocystis neurona PCR",
+    "code": null,
+    "actif": "1",
+    "id_secteur_analyse": "3"
+  },
+  {
+    "id": "571",
+    "nom": "Parelaphostrongylus",
+    "code": null,
+    "actif": "1",
+    "id_secteur_analyse": "3"
+  },
+  {
+    "id": "572",
+    "nom": "Manganèse",
+    "code": null,
+    "actif": "1",
+    "id_secteur_analyse": "5"
+  }
+]

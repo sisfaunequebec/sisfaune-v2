@@ -1,0 +1,2342 @@
+[
+  {
+    "id_type_resultat_plage": "1",
+    "id_type_resultat": "2",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "2",
+    "id_type_resultat": "4",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "3",
+    "id_type_resultat": "8",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "4",
+    "id_type_resultat": "10",
+    "type_nombre": null,
+    "precision": "5",
+    "unite": "",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "5",
+    "id_type_resultat": "13",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "6",
+    "id_type_resultat": "22",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": ""
+  },
+  {
+    "id_type_resultat_plage": "7",
+    "id_type_resultat": "28",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "UFC / ML",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "8",
+    "id_type_resultat": "29",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "UFC / ML",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "9",
+    "id_type_resultat": "30",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "UFC / ML",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "10",
+    "id_type_resultat": "31",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "UFC / ML",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "11",
+    "id_type_resultat": "32",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "UFC / ML",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "12",
+    "id_type_resultat": "33",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": ""
+  },
+  {
+    "id_type_resultat_plage": "13",
+    "id_type_resultat": "34",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": ""
+  },
+  {
+    "id_type_resultat_plage": "14",
+    "id_type_resultat": "35",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": ""
+  },
+  {
+    "id_type_resultat_plage": "15",
+    "id_type_resultat": "40",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": ""
+  },
+  {
+    "id_type_resultat_plage": "16",
+    "id_type_resultat": "44",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "Conservé 2 mois"
+  },
+  {
+    "id_type_resultat_plage": "17",
+    "id_type_resultat": "57",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "18",
+    "id_type_resultat": "58",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "19",
+    "id_type_resultat": "59",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "20",
+    "id_type_resultat": "66",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": ""
+  },
+  {
+    "id_type_resultat_plage": "21",
+    "id_type_resultat": "69",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": ""
+  },
+  {
+    "id_type_resultat_plage": "22",
+    "id_type_resultat": "71",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "23",
+    "id_type_resultat": "78",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "UFC/plq",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "24",
+    "id_type_resultat": "79",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "UFC/plq",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "25",
+    "id_type_resultat": "80",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "UFC/plq",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "26",
+    "id_type_resultat": "81",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "UFC/plq",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "27",
+    "id_type_resultat": "82",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "UFC/plq",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "28",
+    "id_type_resultat": "85",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "29",
+    "id_type_resultat": "87",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "30",
+    "id_type_resultat": "89",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": ""
+  },
+  {
+    "id_type_resultat_plage": "31",
+    "id_type_resultat": "90",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": ""
+  },
+  {
+    "id_type_resultat_plage": "32",
+    "id_type_resultat": "98",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": ""
+  },
+  {
+    "id_type_resultat_plage": "33",
+    "id_type_resultat": "103",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "34",
+    "id_type_resultat": "104",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "35",
+    "id_type_resultat": "105",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "36",
+    "id_type_resultat": "114",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": ""
+  },
+  {
+    "id_type_resultat_plage": "37",
+    "id_type_resultat": "117",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "38",
+    "id_type_resultat": "118",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "MMOL/L",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "39",
+    "id_type_resultat": "119",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "MMOL/L",
+    "borne_inf": 80.00000,
+    "borne_sup": 150.00000,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "40",
+    "id_type_resultat": "120",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "MMOL/L",
+    "borne_inf": 0.00000,
+    "borne_sup": 100.00000,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "41",
+    "id_type_resultat": "121",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "UMOL/L",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "42",
+    "id_type_resultat": "122",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "",
+    "borne_inf": 0.00000,
+    "borne_sup": 100.00000,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "43",
+    "id_type_resultat": "123",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "MMOL/L",
+    "borne_inf": 0.00000,
+    "borne_sup": 7.00000,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "44",
+    "id_type_resultat": "124",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "MMOL/L",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "45",
+    "id_type_resultat": "125",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "MMOL/L",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "46",
+    "id_type_resultat": "126",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "MMOL/L",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "47",
+    "id_type_resultat": "127",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "MMOL/L",
+    "borne_inf": 0.00000,
+    "borne_sup": 9.00000,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "48",
+    "id_type_resultat": "128",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "UMOL/L",
+    "borne_inf": 0.01000,
+    "borne_sup": 2000.00000,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "49",
+    "id_type_resultat": "129",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "MMOL/L",
+    "borne_inf": 0.00000,
+    "borne_sup": 30.00000,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "50",
+    "id_type_resultat": "130",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "MMOL/L",
+    "borne_inf": 0.06000,
+    "borne_sup": 5.00000,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "51",
+    "id_type_resultat": "131",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "MMOL/L",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "52",
+    "id_type_resultat": "132",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "MMOL/L",
+    "borne_inf": 0.00000,
+    "borne_sup": 100.00000,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "53",
+    "id_type_resultat": "133",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "MMOL/L",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "54",
+    "id_type_resultat": "134",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "µmol / g / min",
+    "borne_inf": 0.00000,
+    "borne_sup": 9999.00000,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "55",
+    "id_type_resultat": "135",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "U/L",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "56",
+    "id_type_resultat": "138",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "MMOL/L",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "57",
+    "id_type_resultat": "139",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "10E9/L",
+    "borne_inf": 0.00000,
+    "borne_sup": 100.00000,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "58",
+    "id_type_resultat": "140",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "G/L",
+    "borne_inf": 0.00000,
+    "borne_sup": 500.00000,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "59",
+    "id_type_resultat": "141",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "10E9/L",
+    "borne_inf": 0.00000,
+    "borne_sup": 100.00000,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "60",
+    "id_type_resultat": "142",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "G/L",
+    "borne_inf": 0.00000,
+    "borne_sup": 20.00000,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "61",
+    "id_type_resultat": "143",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "10E9/L",
+    "borne_inf": 0.00000,
+    "borne_sup": 50.00000,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "62",
+    "id_type_resultat": "144",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "10E12/L",
+    "borne_inf": 0.00000,
+    "borne_sup": 25.00000,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "63",
+    "id_type_resultat": "145",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "G/L",
+    "borne_inf": 0.00000,
+    "borne_sup": 200.00000,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "64",
+    "id_type_resultat": "146",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "L/L",
+    "borne_inf": 0.00000,
+    "borne_sup": 1.00000,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "65",
+    "id_type_resultat": "147",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "10E9/L",
+    "borne_inf": 0.00000,
+    "borne_sup": 50.00000,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "66",
+    "id_type_resultat": "148",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "10E9/L",
+    "borne_inf": 0.00000,
+    "borne_sup": 100.00000,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "67",
+    "id_type_resultat": "149",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "10E9/L",
+    "borne_inf": 0.00000,
+    "borne_sup": 100.00000,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "68",
+    "id_type_resultat": "150",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "10E9/L",
+    "borne_inf": 0.00000,
+    "borne_sup": 100.00000,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "69",
+    "id_type_resultat": "151",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "10E9/L",
+    "borne_inf": 0.00000,
+    "borne_sup": 100.00000,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "70",
+    "id_type_resultat": "152",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "10E9/L",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "71",
+    "id_type_resultat": "153",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "G/L",
+    "borne_inf": 0.00000,
+    "borne_sup": 100.00000,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "72",
+    "id_type_resultat": "154",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "10E9/L",
+    "borne_inf": 0.00000,
+    "borne_sup": 100.00000,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "73",
+    "id_type_resultat": "155",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "FL",
+    "borne_inf": 0.00000,
+    "borne_sup": 90.00000,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "74",
+    "id_type_resultat": "156",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "L/L",
+    "borne_inf": 0.00000,
+    "borne_sup": 1.00000,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "75",
+    "id_type_resultat": "160",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "MMOl/L",
+    "borne_inf": 0.00000,
+    "borne_sup": 7.00000,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "76",
+    "id_type_resultat": "161",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "MMOL/L",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "77",
+    "id_type_resultat": "162",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "MMOL/L",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "78",
+    "id_type_resultat": "163",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "MMOL/L",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "79",
+    "id_type_resultat": "164",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "MMOL / L",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "80",
+    "id_type_resultat": "165",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "G / L",
+    "borne_inf": 0.00000,
+    "borne_sup": 50.00000,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "81",
+    "id_type_resultat": "166",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "U / L",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "82",
+    "id_type_resultat": "167",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "U / L",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "83",
+    "id_type_resultat": "168",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "U / L",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "84",
+    "id_type_resultat": "169",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "UMOL / L",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "85",
+    "id_type_resultat": "170",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "UMOL / L",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "86",
+    "id_type_resultat": "171",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "UMOL / L",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "87",
+    "id_type_resultat": "172",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "MMOL/L",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "88",
+    "id_type_resultat": "173",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "MMOL/L",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "89",
+    "id_type_resultat": "174",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "MMOL/L",
+    "borne_inf": 80.00000,
+    "borne_sup": 150.00000,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "90",
+    "id_type_resultat": "175",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "MMOL/L",
+    "borne_inf": 0.00000,
+    "borne_sup": 100.00000,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "91",
+    "id_type_resultat": "176",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "U / L",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "92",
+    "id_type_resultat": "177",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "UMOL/L",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "93",
+    "id_type_resultat": "178",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "",
+    "borne_inf": 0.00000,
+    "borne_sup": 100.00000,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "94",
+    "id_type_resultat": "179",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "U / L",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "95",
+    "id_type_resultat": "180",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "U / L",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "96",
+    "id_type_resultat": "181",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "G / L",
+    "borne_inf": 0.00000,
+    "borne_sup": 100.00000,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "97",
+    "id_type_resultat": "182",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "MMOL/L",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "98",
+    "id_type_resultat": "183",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "MMOL/L",
+    "borne_inf": 0.00000,
+    "borne_sup": 7.00000,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "99",
+    "id_type_resultat": "184",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "U / L",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "100",
+    "id_type_resultat": "185",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "U / L",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "101",
+    "id_type_resultat": "186",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "MMOL / L",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "102",
+    "id_type_resultat": "187",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "MMOL/L",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "103",
+    "id_type_resultat": "188",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "MMOL/L",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "104",
+    "id_type_resultat": "189",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "U / L",
+    "borne_inf": 0.00000,
+    "borne_sup": 200.00000,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "105",
+    "id_type_resultat": "190",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "G / L",
+    "borne_inf": 0.00000,
+    "borne_sup": 150.00000,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "106",
+    "id_type_resultat": "191",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "",
+    "borne_inf": 0.00000,
+    "borne_sup": 2.00000,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "107",
+    "id_type_resultat": "192",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "MMOL/L",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "108",
+    "id_type_resultat": "193",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "G/L",
+    "borne_inf": 0.00000,
+    "borne_sup": 150.00000,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "109",
+    "id_type_resultat": "194",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "umol / L",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": ""
+  },
+  {
+    "id_type_resultat_plage": "110",
+    "id_type_resultat": "195",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "MMOL/L",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "111",
+    "id_type_resultat": "196",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "112",
+    "id_type_resultat": "197",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "Négatif        "
+  },
+  {
+    "id_type_resultat_plage": "113",
+    "id_type_resultat": "198",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "114",
+    "id_type_resultat": "199",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "115",
+    "id_type_resultat": "200",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "116",
+    "id_type_resultat": "201",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "117",
+    "id_type_resultat": "202",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "118",
+    "id_type_resultat": "203",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "119",
+    "id_type_resultat": "204",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "120",
+    "id_type_resultat": "205",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "Négatif        "
+  },
+  {
+    "id_type_resultat_plage": "121",
+    "id_type_resultat": "206",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "122",
+    "id_type_resultat": "207",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "Négatif        "
+  },
+  {
+    "id_type_resultat_plage": "123",
+    "id_type_resultat": "208",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "Négatif        "
+  },
+  {
+    "id_type_resultat_plage": "124",
+    "id_type_resultat": "209",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "125",
+    "id_type_resultat": "210",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "Négatif        "
+  },
+  {
+    "id_type_resultat_plage": "126",
+    "id_type_resultat": "211",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "127",
+    "id_type_resultat": "212",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "128",
+    "id_type_resultat": "213",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "Négatif        "
+  },
+  {
+    "id_type_resultat_plage": "129",
+    "id_type_resultat": "214",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "130",
+    "id_type_resultat": "215",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "131",
+    "id_type_resultat": "216",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "Normal         "
+  },
+  {
+    "id_type_resultat_plage": "132",
+    "id_type_resultat": "217",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "Négatif        "
+  },
+  {
+    "id_type_resultat_plage": "133",
+    "id_type_resultat": "218",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "ppm",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "134",
+    "id_type_resultat": "219",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "Externe        "
+  },
+  {
+    "id_type_resultat_plage": "135",
+    "id_type_resultat": "220",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "Externe        "
+  },
+  {
+    "id_type_resultat_plage": "136",
+    "id_type_resultat": "221",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "Externe        "
+  },
+  {
+    "id_type_resultat_plage": "137",
+    "id_type_resultat": "224",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "138",
+    "id_type_resultat": "225",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "139",
+    "id_type_resultat": "226",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "%",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": ""
+  },
+  {
+    "id_type_resultat_plage": "140",
+    "id_type_resultat": "227",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "%",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": ""
+  },
+  {
+    "id_type_resultat_plage": "141",
+    "id_type_resultat": "228",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "%",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": ""
+  },
+  {
+    "id_type_resultat_plage": "142",
+    "id_type_resultat": "229",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "%",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": ""
+  },
+  {
+    "id_type_resultat_plage": "143",
+    "id_type_resultat": "230",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "%",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": ""
+  },
+  {
+    "id_type_resultat_plage": "144",
+    "id_type_resultat": "231",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "145",
+    "id_type_resultat": "232",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "146",
+    "id_type_resultat": "234",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "147",
+    "id_type_resultat": "236",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "148",
+    "id_type_resultat": "237",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "149",
+    "id_type_resultat": "240",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "Non détecté    "
+  },
+  {
+    "id_type_resultat_plage": "150",
+    "id_type_resultat": "243",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "151",
+    "id_type_resultat": "244",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "152",
+    "id_type_resultat": "245",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "153",
+    "id_type_resultat": "247",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": ""
+  },
+  {
+    "id_type_resultat_plage": "154",
+    "id_type_resultat": "251",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "CG",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "155",
+    "id_type_resultat": "252",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "CG",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "156",
+    "id_type_resultat": "254",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "157",
+    "id_type_resultat": "258",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "158",
+    "id_type_resultat": "262",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": ""
+  },
+  {
+    "id_type_resultat_plage": "159",
+    "id_type_resultat": "264",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "Négatif        "
+  },
+  {
+    "id_type_resultat_plage": "160",
+    "id_type_resultat": "268",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "Voir en annexe "
+  },
+  {
+    "id_type_resultat_plage": "161",
+    "id_type_resultat": "299",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": ""
+  },
+  {
+    "id_type_resultat_plage": "162",
+    "id_type_resultat": "308",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "dict50",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "163",
+    "id_type_resultat": "309",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "164",
+    "id_type_resultat": "320",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "EXTERNE        "
+  },
+  {
+    "id_type_resultat_plage": "165",
+    "id_type_resultat": "321",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "UG/ML",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": " 0,0"
+  },
+  {
+    "id_type_resultat_plage": "166",
+    "id_type_resultat": "322",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "UG/ML",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": " 0,0"
+  },
+  {
+    "id_type_resultat_plage": "167",
+    "id_type_resultat": "323",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "UG/ML",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": " 0,0"
+  },
+  {
+    "id_type_resultat_plage": "168",
+    "id_type_resultat": "324",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "169",
+    "id_type_resultat": "325",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "ppm",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "170",
+    "id_type_resultat": "326",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "ppm",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": ""
+  },
+  {
+    "id_type_resultat_plage": "171",
+    "id_type_resultat": "327",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": ""
+  },
+  {
+    "id_type_resultat_plage": "172",
+    "id_type_resultat": "328",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "ppm",
+    "borne_inf": 0.00000,
+    "borne_sup": 50.00000,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "173",
+    "id_type_resultat": "329",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "ppm",
+    "borne_inf": 0.00000,
+    "borne_sup": 50.00000,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "174",
+    "id_type_resultat": "330",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "175",
+    "id_type_resultat": "332",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "ppm",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": ""
+  },
+  {
+    "id_type_resultat_plage": "176",
+    "id_type_resultat": "333",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "177",
+    "id_type_resultat": "334",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "PPM",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "178",
+    "id_type_resultat": "335",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "ppm",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "179",
+    "id_type_resultat": "336",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "180",
+    "id_type_resultat": "338",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "181",
+    "id_type_resultat": "339",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "182",
+    "id_type_resultat": "340",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "183",
+    "id_type_resultat": "341",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "ppm",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "184",
+    "id_type_resultat": "344",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "Négatif        "
+  },
+  {
+    "id_type_resultat_plage": "185",
+    "id_type_resultat": "347",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "Voir annexe    "
+  },
+  {
+    "id_type_resultat_plage": "186",
+    "id_type_resultat": "350",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "Négatif        "
+  },
+  {
+    "id_type_resultat_plage": "187",
+    "id_type_resultat": "351",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "",
+    "borne_inf": 0.00000,
+    "borne_sup": 9999.00000,
+    "valeur_defaut": ""
+  },
+  {
+    "id_type_resultat_plage": "188",
+    "id_type_resultat": "353",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "Conservé 2 mois"
+  },
+  {
+    "id_type_resultat_plage": "189",
+    "id_type_resultat": "357",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": ""
+  },
+  {
+    "id_type_resultat_plage": "190",
+    "id_type_resultat": "358",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "191",
+    "id_type_resultat": "361",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "%",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "192",
+    "id_type_resultat": "365",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "",
+    "borne_inf": 0.00000,
+    "borne_sup": 9999.00000,
+    "valeur_defaut": ""
+  },
+  {
+    "id_type_resultat_plage": "193",
+    "id_type_resultat": "366",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "194",
+    "id_type_resultat": "367",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "195",
+    "id_type_resultat": "379",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "196",
+    "id_type_resultat": "400",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "197",
+    "id_type_resultat": "403",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "",
+    "borne_inf": 0.00000,
+    "borne_sup": 100.00000,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "198",
+    "id_type_resultat": "404",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "<20            "
+  },
+  {
+    "id_type_resultat_plage": "199",
+    "id_type_resultat": "406",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": ""
+  },
+  {
+    "id_type_resultat_plage": "200",
+    "id_type_resultat": "407",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "201",
+    "id_type_resultat": "409",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "202",
+    "id_type_resultat": "413",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "<10            "
+  },
+  {
+    "id_type_resultat_plage": "203",
+    "id_type_resultat": "416",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "204",
+    "id_type_resultat": "417",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": ""
+  },
+  {
+    "id_type_resultat_plage": "205",
+    "id_type_resultat": "418",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "É/P %",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": ""
+  },
+  {
+    "id_type_resultat_plage": "206",
+    "id_type_resultat": "419",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "É/P %",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": ""
+  },
+  {
+    "id_type_resultat_plage": "207",
+    "id_type_resultat": "420",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "É/P %",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": ""
+  },
+  {
+    "id_type_resultat_plage": "208",
+    "id_type_resultat": "421",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "É/P %",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": ""
+  },
+  {
+    "id_type_resultat_plage": "209",
+    "id_type_resultat": "424",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "",
+    "borne_inf": 0.00000,
+    "borne_sup": 9999.00000,
+    "valeur_defaut": "Voir annexe    "
+  },
+  {
+    "id_type_resultat_plage": "210",
+    "id_type_resultat": "425",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "Voir annexe    "
+  },
+  {
+    "id_type_resultat_plage": "211",
+    "id_type_resultat": "427",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "voir résul FPPQ"
+  },
+  {
+    "id_type_resultat_plage": "212",
+    "id_type_resultat": "428",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "Ratio S/N",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": ""
+  },
+  {
+    "id_type_resultat_plage": "213",
+    "id_type_resultat": "429",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "214",
+    "id_type_resultat": "433",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": ""
+  },
+  {
+    "id_type_resultat_plage": "215",
+    "id_type_resultat": "437",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "Fait à f.m.v.  "
+  },
+  {
+    "id_type_resultat_plage": "216",
+    "id_type_resultat": "439",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "Externe        "
+  },
+  {
+    "id_type_resultat_plage": "217",
+    "id_type_resultat": "440",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "externe        "
+  },
+  {
+    "id_type_resultat_plage": "218",
+    "id_type_resultat": "441",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "Fait à f.m.v.  "
+  },
+  {
+    "id_type_resultat_plage": "219",
+    "id_type_resultat": "442",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "Externe        "
+  },
+  {
+    "id_type_resultat_plage": "220",
+    "id_type_resultat": "443",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "Externe        "
+  },
+  {
+    "id_type_resultat_plage": "221",
+    "id_type_resultat": "444",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "Externe        "
+  },
+  {
+    "id_type_resultat_plage": "222",
+    "id_type_resultat": "445",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "Fait à f.m.v.  "
+  },
+  {
+    "id_type_resultat_plage": "223",
+    "id_type_resultat": "446",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "Externe        "
+  },
+  {
+    "id_type_resultat_plage": "224",
+    "id_type_resultat": "447",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "Externe        "
+  },
+  {
+    "id_type_resultat_plage": "225",
+    "id_type_resultat": "448",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "226",
+    "id_type_resultat": "449",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "227",
+    "id_type_resultat": "456",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "Effectuée      "
+  },
+  {
+    "id_type_resultat_plage": "228",
+    "id_type_resultat": "459",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "Conservé 2 mois"
+  },
+  {
+    "id_type_resultat_plage": "229",
+    "id_type_resultat": "464",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "230",
+    "id_type_resultat": "489",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "231",
+    "id_type_resultat": "491",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "232",
+    "id_type_resultat": "492",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "233",
+    "id_type_resultat": "493",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "               "
+  },
+  {
+    "id_type_resultat_plage": "234",
+    "id_type_resultat": "494",
+    "type_nombre": null,
+    "precision": "0",
+    "unite": "",
+    "borne_inf": null,
+    "borne_sup": null,
+    "valeur_defaut": "               "
+  }
+]

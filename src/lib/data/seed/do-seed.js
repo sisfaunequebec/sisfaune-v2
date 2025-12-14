@@ -26,7 +26,10 @@ const lutEuthanasiaMethods = require('./lut-euthanasia-methods')
 const lutMeasureUnits = require('./lut-measure-units')
 const lutAnimalMeasureTypes = require('./lut-animal-measure-types')
 
+
+
 // DATA 
+const lutAnalysisGroups = require('./lut-analysis-groups')
 const dataCollaborators = require('./data-collaborators')
 
 const adminUsers = require('./admin-users')
@@ -83,6 +86,9 @@ async function doSeed (orm) {
     orm.LutAnimalMeasureType.createMany({ data: lutAnimalMeasureTypes }),
 
     // DATA
+
+    orm.LutAnalysisGroup.createMany({ data: lutAnalysisGroups }),
+
     orm.User.createMany({ data: adminUsers }),
     orm.AdminUserProgram.createMany({ data: adminUserPrograms }),
 

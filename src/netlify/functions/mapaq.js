@@ -9,7 +9,7 @@ const handler = async (req) => {
     const ftpResult = await getDataFromFtp()
 
     if (ftpResult.error) {
-        // console.debug(ftpResult.error.detail)
+        console.debug(ftpResult.error.detail)
         sendEmailConfirmation(null, ftpResult.error.detail)
         return
     }
@@ -26,6 +26,7 @@ const handler = async (req) => {
     const insertedRowCount = insertResult.data[5]
 
     // send success email
+    console.debug(insertedRowCount)
     sendEmailConfirmation(insertedRowCount, null)
     return Response.json({ status: 'ok', insertedRowCount })
 }

@@ -1,0 +1,14 @@
+[
+  {
+    "id": "1",
+    "description": "Plage de valeurs"
+  },
+  {
+    "id": "2",
+    "description": "Liste de valeurs"
+  },
+  {
+    "id": "3",
+    "description": "Texte libre"
+  }
+]
