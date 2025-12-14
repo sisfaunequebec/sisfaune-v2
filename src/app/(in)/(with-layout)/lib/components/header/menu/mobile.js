@@ -93,11 +93,11 @@ const MobileMenu = ({ user }) => {
                     {(segment === 'administration') && <svg stroke='currentColor' fill='none' stroke-width='2' viewBox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' height='1em' width='1em' xmlns='http://www.w3.org/2000/svg'><polyline points='20 6 9 17 4 12' /></svg>}
                   </Flex>
                 </VStack>
-                <Separator />
-                <Flex as={Link} py={2} alignItems='center' justifyContent='space-between' onClick={handleModifyParameters}>
+                {/* <Separator /> */}
+                {/* <Flex as={Link} py={2} alignItems='center' justifyContent='space-between' onClick={handleModifyParameters}>
                   <Box>Vos paramètres...</Box>
                   <RxGear />
-                </Flex>
+                </Flex> */}
                 <Separator />
                 <Flex as={Link} onClick={() => { signOut() }} py={2}>
                   <Box flex={1}>Quitter...</Box>

@@ -63,10 +63,10 @@ const DesktopMenu = ({ user }) => {
               <MenuRadioItem value='administration' disabled={!isAdmin}>Administration</MenuRadioItem>
             </MenuRadioItemGroup>
             <Menu.Separator />
-            <Menu.Item onClick={handleModifyParameters} value='params'>
+            {/* <Menu.Item onClick={handleModifyParameters} value='params'>
               <RxGear />
               <Box flex={1} ms={0.5}>Vos paramètres...</Box>
-            </Menu.Item>
+            </Menu.Item> */}
             <Menu.Separator />
             <Menu.Item onClick={() => { signOut() }} value='signout'>
               <RxExit />
