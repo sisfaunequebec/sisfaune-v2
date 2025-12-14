@@ -24,8 +24,9 @@ const getResolver = (type, schema) => {
 }
 
 const BaseDialog = ({ title, message, size, isAlert = false, schema, schemaType = 'zod', watches = [], defaultValues, onClose, onSubmit, submitBtnLabel = 'OK', children }) => {
-  const rootSize = useBreakpointValue({ base: 'cover', md: size || (isAlert ? 'sm' : 'lg') })
-  const placement = useBreakpointValue({ base: 'bottom', md: 'center' }) 
+  const rootSize = useBreakpointValue({ base: 'full', md: size || (isAlert ? 'sm' : 'lg') })
+  const placement = useBreakpointValue({ base: null, md: 'center' }) 
+  const scrollBehavior = useBreakpointValue({ base: 'inside', md: 'outside' }) 
   const motion = useBreakpointValue({ base: 'scale', md: 'slide-in-bottom' })
 
   const resolver = getResolver(schemaType, schema)
@@ -67,18 +68,19 @@ const BaseDialog = ({ title, message, size, isAlert = false, schema, schemaType 
   // console.debug('BaseDialog.render', { title, isSubmitting, hasErrors, errors, watched })
 
   return (
-    <Dialog.Root lazyMount open size={rootSize} placement={placement} motionPreset={motion} onOpenChange={e => onClose(false)} closeOnInteractOutside={closeOnInteractOutside} role={role}>
+    <Dialog.Root scrollBehavior={'inside'} lazyMount open size={rootSize} placement={placement} motionPreset={motion} onOpenChange={e => onClose(false)} closeOnInteractOutside={closeOnInteractOutside} role={role}>
       <Portal>
         <Dialog.Backdrop />
         <Dialog.Positioner>
-          <Dialog.Content ref={contentRef}>
+          <FormProvider {...form}>
+          <Dialog.Content ref={contentRef} as={'form'} onSubmit={handleSubmit(handleSubmitAction)} direction={'column'} justifyContent={'stretch'} alignItems={'stretch'} >
 
             <Dialog.Header>
               <Dialog.Title textStyle={['xl', null, 'lg']} >{title}</Dialog.Title>
             </Dialog.Header>
 
-            <FormProvider {...form}>
-              <Flex as={'form'} onSubmit={handleSubmit(handleSubmitAction)} direction={'column'} justifyContent={'stretch'} h={'100%'}>
+            
+              {/* <Flex as={'form'} onSubmit={handleSubmit(handleSubmitAction)} direction={'column'} justifyContent={'stretch'} alignItems={'stretch'} h={'100%'}> */}
 
                 <Dialog.Body textStyle={['md', null, 'sm']} >
                   { message && <Text mb={4} lineHeight={'shorter'}>{message}</Text> }
@@ -92,10 +94,11 @@ const BaseDialog = ({ title, message, size, isAlert = false, schema, schemaType 
                   <Button type={'submit'} size={['lg', null, 'sm']} colorPalette={isSubmitting ? 'blue' : ((isAlert || hasErrors) ? 'red' : 'blue')} minW={24} loading={isSubmitting} onClick={() => clearErrors()}>{submitBtnLabel}</Button>
                 </DialogFooter>
 
-              </Flex>
-            </FormProvider>
+              {/* </Flex> */}
+            
 
           </Dialog.Content>
+          </FormProvider>
         </Dialog.Positioner>
       </Portal>
     </Dialog.Root>

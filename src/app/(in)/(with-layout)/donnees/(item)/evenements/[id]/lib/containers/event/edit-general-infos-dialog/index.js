@@ -27,7 +27,8 @@ import ShippingMethodSelect from './shipping-method-select'
 import LabSelect from './lab-select'
 import CollaboratorSelect from './collaborator-select'
 
-import AddressInput from '@/app/lib/components/inputs/address'
+import DiscovererAddressInput from './address'
+// import AddressInput from '@/app/lib/components/inputs/address'
 
 import Autocomplete from '@/app/(in)/(with-layout)/lib/components/autocomplete'
 import UnimplementedDisplay from '@/app/lib/components/display/base/unimplemented'
@@ -51,7 +52,7 @@ const SubmitterCombo = ({ value, onChange, ...rest }) => {
   const labelKey = useCallback(item => [item?.firstName, item?.lastName].join(' '), [])
 
   return (
-    <Autocomplete value={value} labelKey={labelKey} onLookup={handleLookup} onRenderItem={handleRenderItem} onChange={onChange} {...rest} />
+    <Autocomplete value={value} labelKey={labelKey} onLookup={handleLookup} onRenderItem={handleRenderItem} onChange={onChange} {...rest} placeholder={'Taper pour rechercher une personne...'} />
   )
 }
 
@@ -130,7 +131,7 @@ const formSchema = [
     fields: [
       { label: 'Soumis par\u00A0:', name: 'submitter', component: SubmitterCombo },
       { label: 'Découvert par\u00A0:', name: 'isDiscovererSameAsSubmitter', component: DiscovererSameAsSubmitterSelect },
-      { label: 'Découveur\u00A0:', name: 'discoverer', component: AddressInput, visible: (data, watched) => { const { isDiscovererSameAsSubmitter } = watched; return !isDiscovererSameAsSubmitter;  } },
+      { label: 'Découveur\u00A0:', name: 'discoverer', component: DiscovererAddressInput, visible: (data, watched) => { const { isDiscovererSameAsSubmitter } = watched; return !isDiscovererSameAsSubmitter;  } },
       { label: 'Récolté par (contractuel)\u00A0:', name: 'collaborator', component: CollaboratorSelect }
     ]
   },

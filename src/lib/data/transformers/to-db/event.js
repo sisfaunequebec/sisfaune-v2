@@ -4,6 +4,14 @@ import { isoDateToDb } from '../utils'
 
 import transform from '../transform'
 
+const transformDiscoverer = (discoverer) => {
+  const { locality, ...rest } = discoverer
+  return {
+    ...rest,
+    localityId: locality?.id || null
+  }
+}
+
 const schema = {
 
   // id: null,
@@ -20,7 +28,7 @@ const schema = {
 
   submitterId: event => (event.submitter ? event.submitter.id : null),
   isDiscovererSameAsSubmitter: null,
-  discoverer: null,
+  discoverer: event => transformDiscoverer(event.discoverer),
   discoveredAt: event => isoDateToDb(event.discoveredAt),
   collaboratorId: event => (event.collaborator ? event.collaborator.id : null),
 
@@ -47,6 +55,7 @@ const schema = {
 }
 
 const eventTransformer = (event, context) =>   {
+  console.debug('eventTransformer', event, context)
   return transform(schema, event, context)
 }
 

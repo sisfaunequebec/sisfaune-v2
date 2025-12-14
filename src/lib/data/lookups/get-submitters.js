@@ -1,7 +1,6 @@
 'use server'
 import orderBy from 'lodash.orderby'
 import prisma from '../database'
-import { RiTreasureMapFill } from 'react-icons/ri'
 
 const getSubmitters = async (filter) => {
   const raw = await prisma.User.findMany({
