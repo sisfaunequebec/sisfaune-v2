@@ -18,6 +18,9 @@ import {
 
 } from '@react-email/components'
 
+import Header from './lib/header'
+import Footer from './lib/footer'
+
 const baseUrl = process.env.URL 
 
 export const MapaqErrorEmail = ({ error }) => (
@@ -27,11 +30,12 @@ export const MapaqErrorEmail = ({ error }) => (
       <Body className={'my-auto mx-auto font-sans px-2 pb-[20px]'} >
         <Preview>SIS-Faune | ERREUR d&apos;importation des données de signalement du MAPAQ</Preview>
         <Container className={'mx-auto my-[40px] max-w-[465px] px-[20px] items-center'}>
-          <Section className={'font-bold text-center'}>
+          <Header title={'ERREUR d\'importation des données de signalement du MAPAQ'} />
+          {/* <Section className={'font-bold text-center'}>
             <Img src={`${baseUrl}/logo_sisfaune_big.png`} alt={'Logo SIS'} width={240} className={'mx-auto'} />
             <Heading className={'mx-0 my-[30px] p-0 text-[18px]'}>ERREUR d&apos;importation des données de signalement du MAPAQ</Heading>
             <Hr />
-          </Section>
+          </Section> */}
           <Section>
             {/* <Text className={'text-[16px]'}>Bienvenue { firstName } !</Text> */}
             <Text className={'text-[16px]'}>Une erreur s&apos;est produite lors de importation quotidienne des données de signalement du MAPAQ :</Text>
@@ -40,10 +44,7 @@ export const MapaqErrorEmail = ({ error }) => (
             <Text className={'m-0 p-0'}>{ error }</Text>
           </Section>
           <Section>
-            <Text className={'text-[16px]'}>
-              <strong>SIS-Faune</strong><br />
-              <Link href={'https://sisfaunequebec.ca'}>sisfaunequebec.ca</Link>
-            </Text>
+            <Footer />
           </Section>
         </Container>
       </Body>

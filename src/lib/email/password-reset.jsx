@@ -17,6 +17,9 @@ import {
 
 } from '@react-email/components'
 
+import Header from './lib/header'
+import Footer from './lib/footer'
+
 const baseUrl = process.env.URL
 
 export const ResetPasswordEmail = ({ username, password }) => (
@@ -26,11 +29,12 @@ export const ResetPasswordEmail = ({ username, password }) => (
       <Body className={'my-auto mx-auto font-sans px-2 pb-[20px]'} >
         <Preview>SIS-Faune | Nouveau mot de passe</Preview>
         <Container className={'mx-auto my-[40px] max-w-[465px] px-[20px] items-center'}>
-          <Section className={'font-bold text-center'}>
+          <Header title={'Votre Votre nouveau mot de passe'} />
+          {/* <Section className={'font-bold text-center'}>
             <Img src={`${baseUrl}/logo_sisfaune_big.png`} alt={'Logo SIS'} width={240} className={'mx-auto'} />
             <Heading className={'mx-0 my-[30px] p-0 text-[18px]'}>Votre nouveau mot de passe</Heading>
             <Hr />
-          </Section>
+          </Section> */}
           <Section>
             <Text className={'text-[16px]'}>Bonjour <strong>{ username }</strong></Text>
             <Text className={'text-[16px]'}>Le mot de passe suivant vous a été assigné :</Text>
@@ -42,10 +46,7 @@ export const ResetPasswordEmail = ({ username, password }) => (
             <Text className={'text-[16px]'}>Nous vous recommandons fortement de le changer lors de votre prochaine session.</Text>
             <Text className={'text-[16px]'}>Merci de votre collaboration,</Text>
             <Hr />
-            <Text className={'text-[16px]'}>
-              <strong>SIS-Faune</strong><br />
-              <Link href={'https://sisfaunequebec.ca'}>sisfaunequebec.ca</Link>
-            </Text>
+            <Footer />
           </Section>
         </Container>
       </Body>

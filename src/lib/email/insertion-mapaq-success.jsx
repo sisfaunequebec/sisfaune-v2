@@ -18,6 +18,9 @@ import {
 
 } from '@react-email/components'
 
+import Header from './lib/header'
+import Footer from './lib/footer'
+
 const baseUrl = process.env.URL 
 
 export const MapaqSuccessEmail = ({ insertedRowCount }) => (
@@ -27,11 +30,12 @@ export const MapaqSuccessEmail = ({ insertedRowCount }) => (
       <Body className={'my-auto mx-auto font-sans px-2 pb-[20px]'} >
         <Preview>SIS-Faune | Importation des données de signalement du MAPAQ</Preview>
         <Container className={'mx-auto my-[40px] max-w-[465px] px-[20px] items-center'}>
-          <Section className={'font-bold text-center'}>
+          <Header title={'CECI EST UN MESSAGE AUTOMATIQUE...'} />
+          {/* <Section className={'font-bold text-center'}>
             <Img src={`${baseUrl}/logo_sisfaune_big.png`} alt={'Logo SIS'} width={240} className={'mx-auto'} />
             <Heading className={'mx-0 my-[30px] p-0 text-[18px]'}>CECI EST UN MESSAGE AUTOMATIQUE...</Heading>
             <Hr />
-          </Section>
+          </Section> */}
           <Section>
             <Text className={'text-[16px]'}>L&apos;importation quotidienne des données de signalement du MAPAQ a réussi.</Text>
           </Section>
@@ -39,10 +43,7 @@ export const MapaqSuccessEmail = ({ insertedRowCount }) => (
             <Text className={'text-[16px]'}>{insertedRowCount} nouveaux événements ont été insérés.</Text>
           </Section>
           <Section>
-            <Text className={'text-[16px]'}>
-              <strong>SIS-Faune</strong><br />
-              <Link href={'https://sisfaunequebec.ca'}>sisfaunequebec.ca</Link>
-            </Text>
+            <Footer />
           </Section>
         </Container>
       </Body>
