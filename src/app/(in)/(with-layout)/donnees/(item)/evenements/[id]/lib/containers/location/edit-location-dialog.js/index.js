@@ -378,13 +378,14 @@ const EditableMap = ({ value, locationType, onChange }) => {
   }, [hasMarker, setValue])
 
   const isMarkerDraggable = locationType?.id === 'coordonnees'
+  const cursor = hasMarker ? 'default' : 'crosshair'
 
   return (
     <APIProvider apiKey={process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}>
       <Map
         language={'fr-CA'}
         mapId={'dark'}
-        style={{ width: '100%', height: '300px', cursor: 'default', marginTop: '12px' }}
+        style={{ width: '100%', height: '300px', cursor, marginTop: '12px' }}
         defaultCenter={isMarkerDraggable ? position: undefined}
         center={isMarkerDraggable ? undefined : position}
         defaultZoom={isMarkerDraggable ? (value ? 17 : 6) : undefined}

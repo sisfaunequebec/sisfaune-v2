@@ -26,10 +26,15 @@ const lutEuthanasiaMethods = require('./lut-euthanasia-methods')
 const lutMeasureUnits = require('./lut-measure-units')
 const lutAnimalMeasureTypes = require('./lut-animal-measure-types')
 
-
+const lutResultTypes = require('./lut-result-types')
+const lutResultCodeTypes = require('./lut-result-code-types')
+const lutResultTextTypes = require('./lut-result-code-types')
+const lutResultRangeTypes = require('./lut-result-range-types')
+const lutResultCodeValues = require('./lut-result-code-values')
 
 // DATA 
 const lutAnalysisGroups = require('./lut-analysis-groups')
+const lutAnalyses = require('./lut-analysis')
 const dataCollaborators = require('./data-collaborators')
 
 const adminUsers = require('./admin-users')
@@ -54,7 +59,7 @@ async function doSeed (orm) {
 
     orm.$executeRaw`CREATE EXTENSION IF NOT EXISTS postgis;`,
 
-    // LOOKUP
+    // LOOKUP - Stable over time
 
     orm.LutEventProgram.createMany({ data: lutEventPrograms }),
     orm.LutEventStatus.createMany({ data: lutEventStatuses }),
@@ -85,9 +90,17 @@ async function doSeed (orm) {
     orm.LutMeasureUnit.createMany({ data: lutMeasureUnits }),
     orm.LutAnimalMeasureType.createMany({ data: lutAnimalMeasureTypes }),
 
-    // DATA
+    orm.LutResultType.createMany({ data: lutResultTypes }),
+    orm.LutResultCodeType.createMany({ data: lutResultCodeTypes }),
+    orm.LutResultTextType.createMany({ data: lutResultTextTypes }),
+    orm.LutResultRangeType.createMany({ data: lutResultRangeTypes }),
 
+
+    // DATA - Change over time
+    
     orm.LutAnalysisGroup.createMany({ data: lutAnalysisGroups }),
+    orm.LutResultCodeValue.createMany({ data: lutResultCodeValues }),
+    orm.LutAnalysis.createMany({ data: lutAnalyses }),
 
     orm.User.createMany({ data: adminUsers }),
     orm.AdminUserProgram.createMany({ data: adminUserPrograms }),
@@ -114,6 +127,24 @@ async function doSeed (orm) {
   
         SELECT coalesce(max(id), 0) + 1 FROM data_intervenant INTO max_id;
         EXECUTE 'alter SEQUENCE data_intervenant_id_seq RESTART with '|| max_id; 
+
+        SELECT coalesce(max(id), 0) + 1 FROM data_intervenant INTO max_id;
+        EXECUTE 'alter SEQUENCE data_intervenant_id_seq RESTART with '|| max_id; 
+
+        SELECT coalesce(max(id), 0) + 1 FROM data_resultat INTO max_id;
+        EXECUTE 'alter SEQUENCE data_resultat_id_seq RESTART with '|| max_id; 
+
+        SELECT coalesce(max(id), 0) + 1 FROM data_specimen_mesure INTO max_id;
+        EXECUTE 'alter SEQUENCE data_specimen_mesure_id_seq RESTART with '|| max_id; 
+
+        SELECT coalesce(max(id), 0) + 1 FROM lut_analyse_groupe INTO max_id;
+        EXECUTE 'alter SEQUENCE lut_analyse_groupe_id_seq RESTART with '|| max_id; 
+
+        SELECT coalesce(max(id), 0) + 1 FROM lut_analyse INTO max_id;
+        EXECUTE 'alter SEQUENCE lut_analyse_id_seq RESTART with '|| max_id; 
+
+        SELECT coalesce(max(id), 0) + 1 FROM lut_result_code_valeur INTO max_id;
+        EXECUTE 'alter SEQUENCE lut_result_code_valeur_id_seq RESTART with '|| max_id; 
       END;
       $$ LANGUAGE plpgsql
     `,

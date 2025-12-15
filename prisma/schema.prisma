@@ -118,7 +118,7 @@ model LutAnalysisSector {
 model LutAnalysisGroup {
   @@map("lut_analyse_groupe")
 
-  id Int @db.SmallInt @id
+  id Int @db.SmallInt @id @default(autoincrement())
   name String @map(name: "nom")
   code String? @map(name: "code")
   isActive Boolean @default(true) @map(name: "actif")
@@ -126,7 +126,9 @@ model LutAnalysisGroup {
   analysisSectorId Int @db.SmallInt @map(name: "id_analyse_secteur")
 
   analysisSector LutAnalysisSector @relation(fields: [analysisSectorId], references: [id], onDelete: Restrict, onUpdate: Restrict)
-  Analyses LutAnalysis[]
+  analyses LutAnalysis[]
+
+  eventAnalyses EventAnalysisGroup[]
 }
 
 model LutResultType {
@@ -136,19 +138,68 @@ model LutResultType {
   name String @map(name: "nom")
 
   analyses LutAnalysis[]
+  codeTypes LutResultCodeType[]
+  rangeTypes LutResultRangeType[]
+  textTypes LutResultTextType[]
+}
+
+model LutResultCodeType {
+  @@map("lut_type_resultat_code")
+
+  id Int @db.SmallInt @id 
+  resultTypeId Int @db.SmallInt @map(name: "id_type_resultat")
+
+  resultType LutResultType  @relation(fields: [resultTypeId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+}
+
+model LutResultRangeType {
+  @@map("lut_type_resultat_plage")
+
+  id Int @db.SmallInt @id 
+  resultTypeId Int @db.SmallInt @map(name: "id_type_resultat")
+  // type_nombre
+  precision Int @db.SmallInt @default(0) @map(name: "precision")
+  unit String? @map(name: "unite")
+  lowerLimit Decimal? @db.Decimal(18, 5) @map(name: "borne_inf")
+  upperLimit Decimal? @db.Decimal(18, 5) @map(name: "borne_sup")
+  defaultvalue String? @map(name: "valeur_defaut")
+
+  resultType LutResultType  @relation(fields: [resultTypeId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+}
+
+model LutResultTextType {
+  @@map("lut_type_resultat_texte")
+
+  id Int @db.SmallInt @id 
+  resultTypeId Int @db.SmallInt @map(name: "id_type_resultat")
+
+  resultType LutResultType  @relation(fields: [resultTypeId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+}
+
+model LutResultCodeValue {
+  @@map("lut_result_code_valeur")
+
+  id Int @db.SmallInt @id @default(autoincrement())
+  analysisId Int @db.SmallInt @map(name: "id_analyse")
+  code String @map(name: "code")
+  description String @map(name: "description")
+  isActive Boolean @default(true) @map(name: "actif")
+  displayOrder Int @db.SmallInt @default(1) @map(name: "ordre_affichage")
+
+  analysis LutAnalysis @relation(fields: [analysisId], references: [id], onDelete: Restrict, onUpdate: Restrict)
 }
 
 model LutAnalysis {
   @@map("lut_analyse")
 
-  id Int @id
+  id Int @id @default(autoincrement())
   name String @map(name: "nom")
   code String? @map(name: "code")
   isActive Boolean @default(true) @map(name: "actif")
   precision Int? @db.SmallInt @map(name: "precision")
-  unite String? @map(name: "unite")
-  min Decimal? @db.Decimal(18, 5) @map(name: "borne_inf")
-  max Decimal? @db.Decimal(18, 5) @map(name: "borne_sup")
+  unit String? @map(name: "unite")
+  lowerLimit Decimal? @db.Decimal(18, 5) @map(name: "borne_inf")
+  upperLimit Decimal? @db.Decimal(18, 5) @map(name: "borne_sup")
   defaultValue String? @map(name: "valeur_defaut")
   isShared Boolean @default(false) @map(name: "partage")
 
@@ -159,6 +210,8 @@ model LutAnalysis {
   resultType LutResultType @relation(fields: [resultTypeId], references: [id], onDelete: Restrict, onUpdate: Restrict)
 
   results Result[]
+
+  codeValues LutResultCodeValue[]
 }
 
 model LutAnimalAge {
@@ -464,7 +517,6 @@ model Collaborator {
 model Discoverer {
   @@map("data_decouvreur")
 
-  // id Int @id @default(autoincrement())
   eventId Int @id @map(name: "id_evenement")
 
   greeting String? @map(name: "salutation")
@@ -494,13 +546,15 @@ model Discoverer {
 model Result {
   @@map("data_resultat")
 
-  id Int @id
+  id Int @id @default(autoincrement())
   specimenId Int @map(name: "id_specimen")
   analysisId Int @map(name: "id_analyse")
-  value String @map(name: "valeur")
+  value String? @map(name: "valeur")
 
-  specimen Specimen @relation(fields: [specimenId], references: [id], onDelete: Restrict, onUpdate: Restrict)
-  analysis LutAnalysis @relation(fields: [analysisId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+  specimen Specimen @relation(fields: [specimenId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  analysis LutAnalysis @relation(fields: [analysisId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+
+  @@unique([specimenId, analysisId])
 }
 model Specimen {
   @@map("data_specimen")
@@ -678,6 +732,7 @@ model Event {
   discoverer Discoverer? 
 
   labResponsible User? @relation("EventLabResponsible", fields: [labResponsibleId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+  eventAnalyses EventAnalysisGroup[]
 }
 
 enum LocationType {
@@ -730,9 +785,16 @@ model AdminUserProgram {
   user User @relation(fields: [userId], references: [id], onDelete: Restrict, onUpdate: Restrict)
 }
 
-// MODELS TODO :
-// lut_resultat_code_valeur
-// lut_type_resultat
-// lut_type_resultat_code
-// lut_type_resultat_plage
-// lut_type_resultat_texte
+model EventAnalysisGroup {
+  @@map("x_evenement_groupeanalyse")
+
+  @@id([eventId, analysisGroupId])
+  eventId Int @map(name: "id_evenement")
+  analysisGroupId Int @map(name: "id_analyse_groupe")
+
+  // Relations
+  event Event @relation(fields: [eventId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  analysisGroup LutAnalysisGroup @relation(fields: [analysisGroupId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+}
+
+

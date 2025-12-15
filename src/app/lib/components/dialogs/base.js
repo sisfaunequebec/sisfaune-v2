@@ -68,7 +68,7 @@ const BaseDialog = ({ title, message, size, isAlert = false, schema, schemaType 
   // console.debug('BaseDialog.render', { title, isSubmitting, hasErrors, errors, watched })
 
   return (
-    <Dialog.Root scrollBehavior={'inside'} lazyMount open size={rootSize} placement={placement} motionPreset={motion} onOpenChange={e => onClose(false)} closeOnInteractOutside={closeOnInteractOutside} role={role}>
+    <Dialog.Root scrollBehavior={scrollBehavior} lazyMount open size={rootSize} placement={placement} motionPreset={motion} onOpenChange={e => onClose(false)} closeOnInteractOutside={closeOnInteractOutside} role={role}>
       <Portal>
         <Dialog.Backdrop />
         <Dialog.Positioner>
