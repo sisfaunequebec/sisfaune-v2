@@ -17,37 +17,32 @@ import useDialog from '@/utils/use-dialog'
 
 import ResponsiveButton from '@/app/lib/components/responsive-button'
 
-import AddSpecimenDialog from '.'
+import AddAnalysisDialog from '.'
 
-const AddSpecimenButton = ({ eventId }) => {
+const AddAnalysisButton = ({ eventId }) => {
   const router = useRouter()
   const { mutate, cache } = useSWRConfig()
 
-  const { ask: confirmAdd, dialog: addSpecimenDialog } = useDialog(AddSpecimenDialog)
+  const { ask: confirmAdd, dialog: addSpecimenDialog } = useDialog(AddAnalysisDialog)
 
-  const handleAddSpecimen = useCallback(async () => {
+  const handleAddAnalysis = useCallback(async () => {
     const result = await confirmAdd({ eventId })
-    console.debug('handleAddSpecimen', result)
 
     if (result) {
-      const { id: addedSpecimentId } = result
       router.replace(`/donnees/evenements/${eventId}`, { scroll: false })
       await wait(1000)
-
-      // mutate(`/donnees/evenements/${eventId}`)
 
       for (const key of cache.keys()) {
         if (key.includes('/api/data/events')) {
           mutate(key)
         }
-        if (key.includes('/api/data/specimens')) {
+        if (key.includes('/api/data/analysis')) {
           mutate(key)
         }
       }
 
       toaster.create({
-        // title: 'Spécimen ajouté',
-        title: `Le spécimen no ${addedSpecimentId} a été ajouté avec succès...`,
+        title: `Le groupe d'analyse a été ajouté avec succès...`,
         type: 'success',
         duration: 3000
       })
@@ -57,9 +52,9 @@ const AddSpecimenButton = ({ eventId }) => {
   return (
     <>
       {addSpecimenDialog}
-      <ResponsiveButton label={'Ajouter'}  colorPalette={'green'} variant={'solid'} size={'sm'} icon={<RxPlus />} me={[2, null, 1]} onClick={handleAddSpecimen} />
+      <ResponsiveButton label={'Ajouter'}  colorPalette={'green'} variant={'solid'} size={'sm'} icon={<RxPlus />} me={[2, null, 1]} onClick={handleAddAnalysis} />
     </>
   )
 }
 
-export default AddSpecimenButton
+export default AddAnalysisButton

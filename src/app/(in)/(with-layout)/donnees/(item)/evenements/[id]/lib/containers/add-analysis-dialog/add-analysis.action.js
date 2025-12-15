@@ -1,7 +1,13 @@
 'use server'
 
-const addAnalysis = async (data) => {
-  console.debug('addAnalysis', data)
+import { revalidatePath } from 'next/cache'
+
+import { addAnalysis } from '@/lib/data/analyses/service'
+
+const addAnalysisAction = async (eventId, data) => {
+  const result = await addAnalysis(eventId, data)
+  revalidatePath(`donnees/evenements/${eventId}`)
+  return result
 }
 
-export default addAnalysis
+export default addAnalysisAction

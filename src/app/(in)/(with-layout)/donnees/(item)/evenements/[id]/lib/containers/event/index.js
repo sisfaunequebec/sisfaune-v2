@@ -14,10 +14,12 @@ import LaboratoireSection from '../laboratory'
 import LocalisationSection from '../location'
 
 import SpecimenSection from '../specimen'
+import AnalysisSection from '../analyses'
 
-import ResponsiveButton from '@/app/lib/components/responsive-button'
+// import ResponsiveButton from '@/app/lib/components/responsive-button'
 
 import AddSpecimenButton from '../add-specimen-dialog/add-specimen-button'
+import AddAnalysisButton from '../add-analysis-dialog/add-analysis-button'
 
 const SectionHeading = ({ label, isSticky = false, children }) => {
   return (
@@ -49,6 +51,7 @@ const Event = ({
 
   const { id: eventId } = event
   const { specimens = [] } = event
+  const { analyses = [] } = event
 
   const showEditEventSectionButton = canUserEditEventSection // activePanels.includes('general') && canUserEditEventSection
   const showEditLocationSectionButton = canUserEditEventSection // activePanels.includes('location') && canUserEditEventSection
@@ -78,16 +81,24 @@ const Event = ({
               {specimens.map(s => {
                 const { id } = s
                 return (
-                  <SpecimenSection key={id} specimen={s} onDelete={canUserDeleteSpecimens} canEdit={canUserEditSpecimens} canDelete={canUserDeleteSpecimens}  />
+                  <SpecimenSection key={id} specimen={s} canEdit={canUserEditSpecimens} />
                 )
               })}
             </AccordionRoot>
           </VStack>
           
           <VStack alignItems={'stretch'} fontSize={['md', null, 'sm']} gap={0}>
-            <SectionHeading label={'Analyses'} isSticky>
-              { canUserAddAnalysis && <ResponsiveButton colorPalette={'green'} variant={'solid'} size={'sm'} label={'Ajouter'} icon={<RxPlus />} me={[2, null, 1]} /> }
+            <SectionHeading label={'Groupes d\'analyses'} isSticky>
+              { canUserAddAnalysis && <AddAnalysisButton eventId={eventId}  /> }
             </SectionHeading>
+            <AccordionRoot multiple size={['md', null, 'sm']} defaultValue={[]} lazyMount>
+              {analyses.map(a => {
+                const { id } = a
+                return (
+                  <AnalysisSection key={id} analysis={a} canEdit={canUserEditAnalyses} />
+                )
+              })}
+            </AccordionRoot>
           </VStack>
           </>
 

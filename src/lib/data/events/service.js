@@ -308,6 +308,16 @@ const getEvent = async (id) => {
               }
             }
           }
+        },
+        eventAnalyses: {
+          include: {
+            analysisGroup: true
+          },
+          orderBy: {
+            analysisGroup: {
+              name: 'asc',
+            } 
+          }
         }
       }
     })

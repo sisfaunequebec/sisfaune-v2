@@ -46,7 +46,7 @@ const schema = {
   labResponsible: null,
   labReceivedBy: null,
 
-  // analyses: { fromDB: null },
+  analyses: event => { return event.eventAnalyses.map(e => { const { eventId, analysisGroupId: id, analysisGroup } = e; const { name } = analysisGroup; return { eventId, id, name } })},
   specimens: null
 }
 

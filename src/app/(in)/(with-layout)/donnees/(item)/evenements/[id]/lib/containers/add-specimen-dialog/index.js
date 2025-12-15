@@ -10,7 +10,7 @@ import { Fieldset, Input } from '@chakra-ui/react'
 import BaseDialog from '@/app/lib/components/dialogs/base'
 
 import ControlledField from '@/app/lib/components/controlled-field'
-import Autocomplete from '../../../../../../../lib/components/autocomplete'
+import Autocomplete from '@/app/lib/components/inputs/autocomplete'
 
 import DiscoveryStateSelect from '../../components/discovery-state-select'
 
@@ -20,6 +20,7 @@ const SpeciesCombo = ({ value, onChange }) => {
   const handleLookup = useCallback(async (inputValue) => {
     const response = await fetch(`/api/lookup/animal-species?t=${inputValue}`)
     const data = await response.json()
+    // console.debug(data)
     return data
   } , [])
 

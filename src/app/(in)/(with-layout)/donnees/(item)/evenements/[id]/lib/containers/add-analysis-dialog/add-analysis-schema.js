@@ -1,7 +1,8 @@
-import { z } from 'zod'
+import * as v from 'valibot'
 
-const schema = z.object({
-  // analysisId: z.coerce.number().min(1, { message: 'Le type d\'analyse doit être précisée' })
+const schema = v.object({
+  analysisGroup: v.object({ id: v.integer() }, 'Le type d\'analyse doit être précisé' )
 })
 
 export default schema
+

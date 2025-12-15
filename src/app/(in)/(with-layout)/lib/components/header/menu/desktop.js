@@ -60,7 +60,7 @@ const DesktopMenu = ({ user }) => {
             <Menu.Separator />
             <MenuRadioItemGroup value={segment} onValueChange={handleMenuRadioItemGroupChange}>
               <MenuRadioItem value='donnees'>Base de données</MenuRadioItem>
-              <MenuRadioItem value='administration' disabled={!isAdmin}>Administration</MenuRadioItem>
+              <MenuRadioItem value='administration' disabled={true /*!isAdmin*/}>Administration</MenuRadioItem>
             </MenuRadioItemGroup>
             <Menu.Separator />
             {/* <Menu.Item onClick={handleModifyParameters} value='params'>

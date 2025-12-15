@@ -49,7 +49,7 @@ const BaseDialog = ({ title, message, size, isAlert = false, schema, schemaType 
   const handleSubmitAction = useCallback(async data => {
     try {
       if (onSubmit) {
-        const { data: payload, errors } = await onSubmit(data) || {}
+        const { data: payload = true, errors } = await onSubmit(data) || {}
 
         if (!errors) {
           onClose(payload)
