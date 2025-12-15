@@ -1,7 +1,6 @@
 'use client'
 
 import { useForm, FormProvider } from 'react-hook-form'
-// import { zodResolver } from '@hookform/resolvers/zod'
 import { valibotResolver } from '@hookform/resolvers/valibot'
 
 import { Flex, Image, Fieldset, Input, Link, VStack, Alert } from '@chakra-ui/react'
@@ -17,7 +16,7 @@ import SignInButton from './sign-in-button'
 
 import * as v from 'valibot'
 
-const valibotSignInSchema = v.object({
+const schema = v.object({
   username: v.pipe(
     v.string(),
     v.trim(),
@@ -38,7 +37,7 @@ const LoginForm = () => {
   const { ask: newPassword, dialog: firstLoginDialog } = useDialog(FirstLoginDialog)
 
   const form = useForm({
-    resolver: valibotResolver(valibotSignInSchema, { reValidateMode: 'onSubmit' }),
+    resolver: valibotResolver(schema, { reValidateMode: 'onSubmit' }),
     defaultValues: { username: undefined, password: undefined }
   })
 
@@ -48,9 +47,14 @@ const LoginForm = () => {
     const result = await signAction(data)
 
     const { errors } = result
-    Object.entries(errors).forEach(([name, message]) => {
-      setError(name, { type: 'server', message })
-    })
+
+    if (errors) {
+      Object.entries(errors).forEach(([name, message]) => {
+        setError(name, { type: 'server', message })
+      }) 
+    }
+
+    return result
   }
 
   return (

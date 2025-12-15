@@ -49,8 +49,15 @@ const BaseDialog = ({ title, message, size, isAlert = false, schema, schemaType 
   const handleSubmitAction = useCallback(async data => {
     try {
       if (onSubmit) {
-        const result = await onSubmit(data)
-        onClose(result)
+        const { data: payload, errors } = await onSubmit(data) || {}
+
+        if (!errors) {
+          onClose(payload)
+        }
+        
+        Object.entries(errors || {}).forEach(([name, message]) => {
+          setError(name, { type: 'server', message })
+        })     
       } else {
         onClose(false)
       }

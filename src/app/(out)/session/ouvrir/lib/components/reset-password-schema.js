@@ -1,7 +1,11 @@
-import { z } from 'zod'
+import * as v from 'valibot'
 
-const resetPasswordSchema = z.object({
-  username: z.string({ message: 'Le nom d\'utilisateur est requis' }).trim().min(1, { message: 'Le nom d\'utilisateur est requis' }),
+const schema = v.object({
+  username: v.nonNullish(v.pipe(
+    v.string(),
+    v.trim(),
+    v.nonEmpty('Le nom d\'utilisateur est requis')
+  ), 'Le nom d\'utilisateur est requis')
 })
 
-export default resetPasswordSchema
+export default schema

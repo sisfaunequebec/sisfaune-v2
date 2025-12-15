@@ -5,7 +5,6 @@ import { Text } from '@chakra-ui/react'
 import BaseDialog from '@/app/lib/components/dialogs/base'
 
 const DeleteEventDialog = ({ close, eventId, onDelete }) => {
-  // console.debug('here', eventId, onAdd)
 
   const handleSubmit = async () => {
     await onDelete(eventId)

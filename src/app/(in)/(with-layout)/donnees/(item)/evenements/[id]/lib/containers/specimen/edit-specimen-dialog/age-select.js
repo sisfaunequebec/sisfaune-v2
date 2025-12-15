@@ -1,11 +1,10 @@
 'use client'
-import { useEffect, useState } from 'react'
+import { useMemo } from 'react'
 
+import useLookup from '@/lib/data/lookups/use-lookup'
 import SelectInput from '@/app/lib/components/inputs/base/select'
 
 const AgeSelect = (props) => {
-  const [items, setItems] = useState([])
-
   const { data } = props
   const { specie } = data
   const { group } = specie
@@ -13,18 +12,11 @@ const AgeSelect = (props) => {
 
   const groupId = parentGroupId ?? id
 
-  useEffect(() => {
-    const loadItems = async () => {
-      const res = await fetch('/api/lookup/animal-ages', { cache: 'no-cache', next: { tags: ['animal-ages'] } })
-      const result = await res.json()
-      const filteredByGroup = result.filter(item => item.groupId === groupId)
-      setItems(filteredByGroup)
-    }
-    loadItems()
-  }, [setItems, groupId])
+  const items = useLookup('/api/lookup/animal-ages', null, ['animal-ages'])
+  const filteredItems = useMemo(() => items?.filter(item => item.groupId === groupId), [items, groupId])
 
   return (
-    <SelectInput valueKey={'id'} labelKey={'name'} items={items} {...props} />
+    <SelectInput valueKey={'id'} labelKey={'name'} items={filteredItems} {...props} />
   )
 }
 

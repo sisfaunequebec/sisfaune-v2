@@ -29,7 +29,7 @@ export const Field = forwardRef(function Field(props, ref) {
           {helperText && (
             <ChakraField.HelperText>{helperText}</ChakraField.HelperText>
           )}
-          {errorText && <ChakraField.ErrorText>{errorText}</ChakraField.ErrorText>}      
+          {errorText && <ChakraField.ErrorText mt={1}>{errorText}</ChakraField.ErrorText>}      
         </Flex>
       </Flex>
     </ChakraField.Root>

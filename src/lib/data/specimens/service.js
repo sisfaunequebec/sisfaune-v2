@@ -10,7 +10,6 @@ import getUser from '@/lib/auth/get-user'
 import { userCanDeleteSpecimen } from '@/lib/auth/acl'
 
 import { filterViewablePrograms } from '@/lib/auth/acl'
-import { isoDateToDb } from '../transformers/utils'
 
 import toDbSpecimenTransformer from '../transformers/to-db/specimen'
 
@@ -175,6 +174,23 @@ const getSpecimens = async (params) => {
   return payload
 }
 
+const addSpecimen = async (eventId, data) => {
+  const user = await getUser()
+
+  if (!user) {
+    throw new Error()
+  }
+
+  const newSpecimen = await orm.Specimen.create({
+    data: {
+      eventId,
+      ...data
+    }
+  })
+
+  return { data: newSpecimen }
+}
+
 const deleteSpecimen = async (id) => {
   const user = await getUser()
 
@@ -211,7 +227,7 @@ const deleteSpecimen = async (id) => {
     }
   })
 
-  return null
+  return true
 }
 
 const updateSpecimen = async (specimenId, data) => {
@@ -253,6 +269,7 @@ const updateSpecimen = async (specimenId, data) => {
 export {
   getSpecimens,
   getSpecimensCount,
+  addSpecimen,
   deleteSpecimen,
   updateSpecimen
 }

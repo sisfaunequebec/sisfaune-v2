@@ -211,35 +211,35 @@ const sendResetPasswordEmail = async ({ email, username, password }) => {
   return { data, error }
 }
 
-const resetUserPassword = async ({ username }) => {
+const resetUserPassword = async (data) => {
+  // console.debug(username, email)
   const newPassword = generatePassword()
+
   const hash = bcrypt.hashSync(newPassword, 10)
   try {
     const updatedUser = await orm.User.update({
-      where: {
-        username
-      },
+      where: data,
       data: {
         password: hash
       }
     })
 
-    if (!updatedUser) {
-      const error = new Error()
-      throw error
+    const { username, email} = updatedUser
+
+    if (isProduction()) {
+      await sendResetPasswordEmail({ email, username, password: newPassword })
     }
 
-    if (!isProduction()) {
-      // console.debug('New password is : ', newPassword)
-    } 
-
-    const { email } = updatedUser
-    const result = await sendResetPasswordEmail({ email, username, password: newPassword })
-    // console.debug('Sending result is : ', result)
-
-    return newPassword
+    return { data: { newPassword, email }, errors: null }
   } catch (e) {
-    throw e
+    const { code } = e
+    if (code === 'P2025') {
+      const { username } = data
+      const isUsernameReset = !!username
+      const key = isUsernameReset ? 'username' : 'email'
+      return { data: null, errors: { [key]: 'Cet utilisateur n\'existe pas dans notre base de données. Veuillez vérifier ou contacter l\'administrateur à admin@sisfaunequebec.ca' }}
+    }
+    return { data: null, errors: { server: e.message } }
   }
 }
 

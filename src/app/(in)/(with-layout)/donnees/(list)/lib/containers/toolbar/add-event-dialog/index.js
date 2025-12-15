@@ -17,7 +17,7 @@ import EventTypeSelect from '@/app/lib/components/inputs/event-type-select'
 import ReportOriginSelect from '@/app/lib/components/inputs/report-origin-select'
 import { isoDateToDb } from '@/lib/data/transformers/utils'
 
-import addEventSchema from './add-event-schema'
+import schema from './add-event-schema'
 
 const defaultValues = {
   type: { id: 0 },
@@ -31,6 +31,7 @@ const defaultValues = {
 const AddEventDialog = ({ close, programs, onAdd }) => {
   const handleSubmit = async (data) => {
     const { type, status, reportOrigin, program, reportedAt, ...rest } = data
+
     const payload = {
       typeId: type?.id ?? undefined,
       programId: program?.id ?? null,
@@ -40,13 +41,16 @@ const AddEventDialog = ({ close, programs, onAdd }) => {
       closedAt: status?.id === 3 ? DateTime.utc().toISO() : null,
       ...rest
     }
-    const added = await onAdd(payload)
+
+    const result = await onAdd(payload)
+
     await wait(300)
-    close(added)
+
+    return result 
   }
 
   return (
-    <BaseDialog title={'Nouvel événement'} onClose={close} onSubmit={handleSubmit} submitBtnLabel={'Ajouter'} schema={addEventSchema} schemaType={'valibot'} defaultValues={defaultValues}>
+    <BaseDialog title={'Nouvel événement'} onClose={close} onSubmit={handleSubmit} submitBtnLabel={'Ajouter'} schema={schema} schemaType={'valibot'} defaultValues={defaultValues}>
       {(contentRef) => (
         <Fieldset.Root>
           <Fieldset.Content gap={2}>

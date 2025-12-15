@@ -3,21 +3,10 @@ import { useEffect, useState } from 'react'
 
 import SelectInput from '@/app/lib/components/inputs/base/select'
 
-const CollaboratorSelect = (props) => {
-  const [items, setItems] = useState([])
+import useLookup from '@/lib/data/lookups/use-lookup'
 
-  useEffect(() => {
-    const load = async () => {
-      const queryParams = {
-        active: 1
-      }
-      const queryString = new URLSearchParams(queryParams).toString();
-      const res = await fetch(`/api/lookup/collaborators?${queryString}`, { cache: 'no-cache', next: { tags: ['collaborators'] } })
-      const result = await res.json() 
-      setItems(result)
-    }
-    load()
-  }, [setItems])
+const CollaboratorSelect = (props) => {
+  const items = useLookup('/api/lookup/collaborators', { active: 1 }, ['collaborators'])
 
   return (
     <SelectInput valueKey={'id'} labelKey={'name'} items={items} {...props} />

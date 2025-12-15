@@ -26,8 +26,6 @@ import ResponsiveButton from '@/app/lib/components/responsive-button'
 
 import ReportButton from '../../../../../(list)/lib/containers/toolbar/report-button'
 
-// import DeleteEventButton from '../../../../(item)/evenements/[id]/lib/components/delete-event-button'
-
 const DeleteEventButton = ({ eventId }) => {
   const router = useRouter()
   const { mutate, cache } = useSWRConfig()
@@ -35,8 +33,9 @@ const DeleteEventButton = ({ eventId }) => {
   const { ask: confirmDelete, dialog: deleteEventDialog } = useDialog(DeleteEventDialog)
 
   const handleDeleteEvent = useCallback(async () => {
-    const deleted = await confirmDelete({ eventId, onDelete: deleteEvent })
-    if (deleted) {
+    const result = await confirmDelete({ eventId, onDelete: deleteEvent })
+    
+    if (result) {
       router.replace(`/donnees/evenements/`)
 
       for (const key of cache.keys()) {
@@ -53,13 +52,15 @@ const DeleteEventButton = ({ eventId }) => {
         type: 'success',
         duration: 3000,
       })
+
+      return result
     }
   }, [confirmDelete, eventId, router])
 
   return (
     <>
       {deleteEventDialog}
-      <ResponsiveButton label={'Effacer l\'événement'} variant={'surface'} colorPalette={'red'} icon={<RxTrash />}  onClick={handleDeleteEvent} />
+      <ResponsiveButton label={'Effacer l\'événement'} variant={'surface'} colorPalette={'red'} icon={<RxTrash />} onClick={handleDeleteEvent} />
     </>
   )
 }

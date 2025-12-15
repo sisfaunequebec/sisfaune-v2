@@ -7,10 +7,10 @@ import { signIn } from '@/lib/auth'
 const signAction = async (formData) => {
   try {
     const result  = await signIn('credentials', { ...formData, redirect: false })
-    console.debug('signAction', result)
+    return { data: null, errors: null }
   } catch (error) {
     const { errors } = error
-    return { errors }
+    return { data: null, errors }
   }
 
   redirect('/donnees/evenements')

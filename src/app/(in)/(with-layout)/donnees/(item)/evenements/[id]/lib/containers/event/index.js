@@ -9,8 +9,6 @@ import {
   AccordionRoot
 } from '@/app/lib/components/ui/accordion'
 
-import DeleteEventButtonOld from '../../components/delete-event-button'
-
 import GeneralInfosSection from './general-infos'
 import LaboratoireSection from '../laboratory'
 import LocalisationSection from '../location'
@@ -64,9 +62,7 @@ const Event = ({
           // <ContentContainer>
     <>
           <VStack alignItems={'stretch'} fontSize={['md', null, 'sm']} gap={0}>
-            <SectionHeading label={`Événement no ${eventId}`} isSticky h={'50px'}>
-              {/* <DeleteEventButtonOld eventId={eventId} visibility={'hidden'} /> */}
-            </SectionHeading>
+            <SectionHeading label={`Événement no ${eventId}`} isSticky h={'50px'} />
             <AccordionRoot size={['md', null, 'sm']} multiple value={activePanels} onValueChange={handleToggleActiveSection}>
               <GeneralInfosSection event={event} canEdit={showEditEventSectionButton} />
               <LocalisationSection event={event} canEdit={showEditLocationSectionButton} />

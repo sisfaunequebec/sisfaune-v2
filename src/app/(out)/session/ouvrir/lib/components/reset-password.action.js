@@ -3,8 +3,8 @@
 import { resetUserPassword } from '@/lib/data/users/service'
 
 const resetPassword = async (data) => {
-  const newPassword = resetUserPassword(data)
-  return newPassword
+  const result = resetUserPassword(data)
+  return result
 }
 
 export default resetPassword

@@ -8,7 +8,7 @@ import updateSpecimenAction from '../update-specimen.action'
 
 import BaseDialog, { Fields } from '@/app/lib/components/dialogs/base'
 
-import SelectInput from '@/app/lib/components/inputs/base/select'
+// import SelectInput from '@/app/lib/components/inputs/base/select'
 import CommentInput from '@/app/lib/components/inputs/base/comment'
 import DateInput from '@/app/lib/components/inputs/base/date'
 import NumberInput from '@/app/lib/components/inputs/base/number'

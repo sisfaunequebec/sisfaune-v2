@@ -1,22 +1,9 @@
 'use client'
-import { useEffect, useState } from 'react'
-
-import getHabitatTypes from '@/lib/data/lookups/get-habitat-types'
-
+import useLookup from '@/lib/data/lookups/use-lookup'
 import SelectInput from '@/app/lib/components/inputs/base/select'
 
 const HabitatTypeSelect = (props) => {
-  const [items, setItems] = useState([])
-
-  useEffect(() => {
-    const loadTypes = async () => {
-      // const result = await getHabitatTypes()
-      const res = await fetch('/api/lookup/habitat-types', { cache: 'force-cache', next: { tags: ['habitat-types'] } })
-      const result = await res.json()
-      setItems(result)
-    }
-    loadTypes()
-  }, [setItems])
+  const items = useLookup('/api/lookup/habitat-types', null, ['habitat-types'])
 
   return (
     <SelectInput valueKey={'id'} labelKey={'name'} items={items} {...props} />

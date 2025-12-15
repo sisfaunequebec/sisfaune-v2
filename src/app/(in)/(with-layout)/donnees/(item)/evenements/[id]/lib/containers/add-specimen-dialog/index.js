@@ -44,8 +44,6 @@ const defaultValues = {
 const AddSpecimenDialog = ({ eventId, close }) => {
   const handleSubmit = useCallback(async (data) => {
     const { specie, discoveryState,  ...rest } = data
-    console.debug(data)
-    // const specieId = specie?.id ?? null
     const payload = {
       specieId: specie?.id ?? undefined,
       discoveryStateId: discoveryState?.id ?? undefined,

@@ -15,8 +15,6 @@ import useDialog from '@/utils/use-dialog'
 
 import Toolbar from '@/app/(in)/(with-layout)/donnees/(item)/evenements/[id]/lib/components/toolbar'
 
-import DeleteEventButtonOld from '../../components/delete-event-button'
-
 import GeneralInfosSection from '../event/general-infos'
 import LaboratoireSection from '../laboratory'
 import LocalisationSection from '../location'
@@ -74,9 +72,7 @@ const Event = ({
         <VStack flex={5} ps={[0, null, 2]} justifyContent={'flex-start'} alignItems={'stretch'} gap={[0, null, 0]}>
 
           <VStack alignItems={'stretch'} fontSize={['md', null, 'sm']} gap={0}>
-            <SectionHeading label={`Événement no ${eventId}`} isSticky>
-              <DeleteEventButtonOld eventId={eventId} visibility={'hidden'} />
-            </SectionHeading>
+            <SectionHeading label={`Événement no ${eventId}`} isSticky />
             <AccordionRoot size={['md', null, 'sm']} multiple value={activePanels} onValueChange={handleToggleActiveSection}>
               <GeneralInfosSection event={event} canEdit={showEditEventSectionButton} />
               <LocalisationSection event={event} canEdit={showEditLocationSectionButton} />

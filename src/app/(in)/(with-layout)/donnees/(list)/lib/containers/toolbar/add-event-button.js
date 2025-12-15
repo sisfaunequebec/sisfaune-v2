@@ -26,10 +26,10 @@ const AddEventButton = ({ programs }) => {
   const { ask: confirmAdd, dialog: addEventDialog } = useDialog(AddEventDialog)
 
   const handleCreateEvent = useCallback(async () => {
-    const added = await confirmAdd({ programs, onAdd: addEvent })
+    const result = await confirmAdd({ programs, onAdd: addEvent })
 
-    if (added) {
-      const { id: addedEventId } = added
+    if (result) {
+      const { id: addedEventId } = result
       router.replace(`/donnees/evenements/${addedEventId}`)
       await wait(1000)
       for (const key of cache.keys()) {
@@ -44,7 +44,6 @@ const AddEventButton = ({ programs }) => {
       const { id: addEventId } = added
 
       toaster.create({
-        // title: 'Événement ajouté',
         title: `L'événement no ${addEventId} a été ajouté avec succès...`,
         type: 'success',
         duration: 3000

@@ -1,21 +1,9 @@
 'use client'
-import { useEffect, useState } from 'react'
-
-// import getPreservationMethods from '../../../actions/get-preservation-methods'
-
+import useLookup from '@/lib/data/lookups/use-lookup'
 import SelectInput from '@/app/lib/components/inputs/base/select'
 
 const PreservationMethodSelect = (props) => {
-  const [items, setItems] = useState([])
-
-  useEffect(() => {
-    const loadItems = async () => {
-      const res = await fetch('/api/lookup/preservation-methods', { cache: 'no-cache', next: { tags: ['preservation-methods'] } })
-      const result = await res.json()
-      setItems(result)
-    }
-    loadItems()
-  }, [setItems])
+  const items = useLookup('/api/lookup/preservation-methods', null, ['preservation-methods'])
 
   return (
     <SelectInput valueKey={'id'} labelKey={'name'} items={items} {...props} />

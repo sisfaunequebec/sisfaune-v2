@@ -346,7 +346,7 @@ const addEvent = async (data) => {
 
   const { id: submitterId } = user
 
-  const added = await orm.Event.create({
+  const newEvent = await orm.Event.create({
     data: {
       ...rest,
       createdBy: {
@@ -382,7 +382,7 @@ const addEvent = async (data) => {
     }
   })
 
-  return added
+  return { data: newEvent }
 }
 
 const deleteEvent = async (id) => {
@@ -404,24 +404,7 @@ const deleteEvent = async (id) => {
     }
   })
 
-  return null
-}
-
-const addSpecimenToEvent = async (eventId, data) => {
-  const user = await getUser()
-
-  if (!user) {
-    throw new Error()
-  }
-
-  const added = await orm.Specimen.create({
-    data: {
-      eventId,
-      ...data
-    }
-  })
-
-  return added
+  return true
 }
 
 const toArrayBuffer = (buffer) => {
@@ -522,7 +505,6 @@ export {
   addEvent,
   deleteEvent,
   exportEvents,
-  addSpecimenToEvent,
   updateGeneralInfos
 }
 

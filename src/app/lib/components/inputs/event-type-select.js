@@ -1,22 +1,12 @@
 'use client'
-import { useEffect, useState } from 'react'
-
+import useLookup from '@/lib/data/lookups/use-lookup'
 import SelectInput from '@/app/lib/components/inputs/base/select'
 
 const EventTypeSelect = (props) => {
-  const [types, setTypes] = useState([])
-
-  useEffect(() => {
-    const loadTypes = async () => {
-      const res = await fetch('/api/lookup/event-types', { cache: 'force-cache', next: { tags: ['event-types'] } })
-      const types = await res.json()
-      setTypes(types)
-    }
-    loadTypes()
-  }, [setTypes])
+  const items = useLookup('/api/lookup/event-types', null, ['event-types'])
   
   return (
-    <SelectInput valueKey={'id'} labelKey={'name'} items={types} {...props} clearable={false} />
+    <SelectInput valueKey={'id'} labelKey={'name'} items={items} {...props} clearable={false} />
   )
 }
 

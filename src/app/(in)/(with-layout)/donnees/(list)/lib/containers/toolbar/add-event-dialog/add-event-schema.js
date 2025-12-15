@@ -1,6 +1,6 @@
 import * as v from 'valibot'
 
-const addEventSchema = v.object({
+const schema = v.object({
   type: v.nonNullish(v.any(), 'Le type doit être précisé'),
   status: v.nonNullish(v.any(), 'Le statut doit être précisé'),
   program: v.nonNullish(v.any(), 'Le programme doit être précisé'),
@@ -10,4 +10,4 @@ const addEventSchema = v.object({
 })
 
 
-export default addEventSchema
+export default schema

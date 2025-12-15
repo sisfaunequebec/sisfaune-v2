@@ -1,22 +1,9 @@
 'use client'
-import { useEffect, useState } from 'react'
-
-// import getShippingMethods from '@/lib/data/lookups/get-shipping-methods'
-
+import useLookup from '@/lib/data/lookups/use-lookup'
 import SelectInput from '@/app/lib/components/inputs/base/select'
 
 const ShippingMethodSelect = (props) => {
-  const [items, setItems] = useState([])
-
-  useEffect(() => {
-    const loadTypes = async () => {
-    // const result = await getShippingMethods()
-      const res = await fetch('/api/lookup/shipping-methods', { cache: 'force-cache', next: { tags: ['shipping-methods'] } })
-      const result = await res.json()
-      setItems(result)
-    }
-    loadTypes()
-  }, [setItems])
+  const items = useLookup('/api/lookup/shipping-methods', null, ['shipping-methods'])
 
   return (
     <SelectInput valueKey={'id'} labelKey={'name'} items={items} {...props} />

@@ -21,24 +21,29 @@ const defaultValues = {
 }
 
 const ResetPasswordDialog = ({ close }) => {
-
   const handleSubmit = async (data) => {
-    const newPassword = await resetPassword(data)
+    const result = await resetPassword(data)
+    const { data: payload, errors } = result
 
-    console.debug(newPassword)
+    if (payload) {
+      const { email, newPassword } = payload
+      console.debug(newPassword)
+      
+      await wait(1000)
 
-    await wait(1000)
+      toaster.create({
+        title: 'Nouveau mot de passe',
+        description: `Un nouveau mot de passe vous a été envoyé à ${email}\u00A0: veuillez consulter votre boîte réception...`,
+        type: 'success',
+        duration: 3000
+      })
+    }
 
-    toaster.create({
-      title: 'Nouveau mot de passe',
-      description: `Un nouveau mot de passe vous a été envoyé\u00A0: veuillez consulter votre boîte réception...`,
-      type: 'success',
-      duration: 3000
-    })
+    return result
   }
 
   return (
-    <BaseDialog size={'sm'} title={'Mot de passe oublié ?'} message={'Veuillez inscrire votre nom d\'utilisateur et cliquer sur "Envoyer" afin de recevoir un nouveau mot de passe par courriel :'} onClose={close} onSubmit={handleSubmit} submitBtnLabel={'Envoyer'} schema={resetPasswordSchema} defaultValues={defaultValues}>
+    <BaseDialog size={'sm'} title={'Mot de passe oublié ?'} message={'Veuillez inscrire votre nom d\'utilisateur et cliquer sur "Envoyer" afin de recevoir un nouveau mot de passe par courriel :'} onClose={close} onSubmit={handleSubmit} submitBtnLabel={'Envoyer'} schema={resetPasswordSchema} schemaType={'valibot'} defaultValues={defaultValues}>
       {(contentRef, watched) => (
         <Fieldset.Root>
           <Fieldset.Content gap={1}>
