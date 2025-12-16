@@ -311,7 +311,20 @@ const getEvent = async (id) => {
         },
         eventAnalyses: {
           include: {
-            analysisGroup: true
+            analysisGroup: {
+              include: {
+                analyses: {
+                  include: {
+                    results: {
+                      include: {
+specimen: true
+                      }
+                      
+                    }
+                  }
+                }
+              }
+            },
           },
           orderBy: {
             analysisGroup: {
@@ -331,6 +344,8 @@ const getEvent = async (id) => {
     if (!canUserViewProgram(user, programId)) {
       return null
     }
+
+    // console.debug(JSON.stringify(event.eventAnalyses))
 
     const transformed = fromDbEventTransformer(event, { user })
     return JSON.parse(JSON.stringify(transformed))

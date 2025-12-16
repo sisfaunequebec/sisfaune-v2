@@ -107,10 +107,85 @@ const AnalysisSection = ({ analysis, canEdit = false }) => {
         <Trigger label={`${name}`} h={'46px'} />
       </Box>
       <Content id={`#analysis_id_${analysisId}`}>
+        <Analysis data={analysis} />
         {/* <Fields schema={schema} data={analysis} /> */}
       </Content>
     </AccordionItem>
   )
+}
+
+const Header = ({ analyses }) => {
+  const firstAnalysis = analyses[0] || {}
+  const { results = [] } = firstAnalysis
+
+  return (
+    <ChakraField.Root justifyContent={'stretch'}>
+      <Flex direction={'row'} alignItems={'center'}w={'full'} fontWeight={'medium'}>
+       <ChakraField.Label fontWeight={'medium'} fontSize={['md', null, 'sm']} color={'gray.600'} flex={[1, null, 1]} justifyContent={'flex-start'} pt={2} pe={2} mb={2} lineHeight={'shorter'}>
+          Spécimen(s){'\u00A0'}:
+        </ChakraField.Label>
+        <HStack w={'full'} flex={2} >
+          { results.map(r => {
+            const { eventId, specimenSequenceId } = r
+            return (
+              <Flex flex={1} borderRadius={'md'} px={3} py={3} lineHeight={'1.1rem'}>
+                {`${eventId}.${specimenSequenceId}`}
+              </Flex>
+            )
+          }) }
+        </HStack>
+      </Flex>
+    </ChakraField.Root>
+  )
+}
+
+const Analysis = ({ data }) => {
+  console.debug('Analysis', data)
+  const { analyses = [] } = data
+  
+  return (
+    <VStack flex={1} alignItems={'stretch'} w={'full'}>
+      <Header analyses={analyses} />
+      <>
+        { analyses.map(a => {
+          // console.debug(a)
+          const { name, results = [] } = a
+          return (
+            <ChakraField.Root justifyContent={'stretch'}>
+              <Flex direction={'row'} w={'full'} alignItems={'center'}>
+                <ChakraField.Label fontSize={['md', null, 'sm']} color={'gray.600'} fontWeight={400} flex={[1, null, 1]} justifyContent={'flex-start'} pt={2} pe={2} mb={0} lineHeight={'shorter'}>
+                  {name}{'\u00A0'}:
+                </ChakraField.Label>
+                <HStack w={'full'} flex={2} gap={2}>
+                  { results.map(r => {
+                    const { value } =  r
+                    return (
+                      <Flex flex={1} bg={'gray.100'} borderRadius={'md'} px={3} py={3} lineHeight={'1.1rem'}>
+                        { value || '\u00A0' }
+                      </Flex>
+                    )
+                  }) }
+                </HStack>
+              </Flex>
+            </ChakraField.Root>
+          )})
+        }
+      </>
+    </VStack>
+  )
+
+  // // const firstResult = results[0]
+  // const { results = [] } = data
+  // // const firstResult = results[0]
+  // // const specimens = firstResult.map()
+  // return (
+  //   <VStack>
+  //     { results.map(r => {
+  //         return JSON.stringify(r)
+  //       })
+  //     }
+  //   </VStack>
+  // )
 }
 
 // const AnalysisInformationSection = ({ analysis, onToggleEditing, onDelete }) => {
