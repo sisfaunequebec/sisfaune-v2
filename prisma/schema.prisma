@@ -732,7 +732,7 @@ model Event {
   discoverer Discoverer? 
 
   labResponsible User? @relation("EventLabResponsible", fields: [labResponsibleId], references: [id], onDelete: Restrict, onUpdate: Restrict)
-  eventAnalyses EventAnalysisGroup[]
+  eventAnalysisGroups EventAnalysisGroup[]
 }
 
 enum LocationType {

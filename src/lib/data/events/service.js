@@ -309,7 +309,7 @@ const getEvent = async (id) => {
             }
           }
         },
-        eventAnalyses: {
+        eventAnalysisGroups: {
           include: {
             analysisGroup: {
               include: {
@@ -317,7 +317,11 @@ const getEvent = async (id) => {
                   include: {
                     results: {
                       include: {
-specimen: true
+                        specimen: {
+                          include: {
+                            specie: true
+                          }
+                        }
                       }
                       
                     }

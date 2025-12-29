@@ -40,9 +40,10 @@ const MeasuresDisplay = ({ value = [] }) => {
             </ChakraField.Label>
           </Tooltip>
           <Flex flex={2} w={'full'} direction={'column'}>
-            <Flex flex={1} bg={'gray.100'} borderRadius={'md'} px={3} py={3} lineHeight={'1.1rem'}>
+            <NumberDisplay value={value} suffix={unitName} />
+            {/* <Flex flex={1} bg={'gray.100'} borderRadius={'md'} px={3} py={3} lineHeight={'1.1rem'}>
               { !!value ? [numericFormatter(value, { decimalSeparator:',' }), unitName].join(' ') : '\u00A0' }
-            </Flex>
+            </Flex> */}
           </Flex>
           </Flex>
         </ChakraField.Root>

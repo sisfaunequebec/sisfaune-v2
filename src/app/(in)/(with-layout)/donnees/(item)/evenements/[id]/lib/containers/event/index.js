@@ -14,12 +14,12 @@ import LaboratoireSection from '../laboratory'
 import LocalisationSection from '../location'
 
 import SpecimenSection from '../specimen'
-import AnalysisSection from '../analyses'
+import AnalysisGroupSection from '../analysis-group'
 
 // import ResponsiveButton from '@/app/lib/components/responsive-button'
 
 import AddSpecimenButton from '../add-specimen-dialog/add-specimen-button'
-import AddAnalysisButton from '../add-analysis-dialog/add-analysis-button'
+import AddAnalysisButton from '../add-analysis-group-dialog/add-analysis-button'
 
 const SectionHeading = ({ label, isSticky = false, children }) => {
   return (
@@ -51,58 +51,51 @@ const Event = ({
 
   const { id: eventId } = event
   const { specimens = [] } = event
-  const { analyses = [] } = event
+  const { analysisGroups = [] } = event
 
   const showEditEventSectionButton = canUserEditEventSection // activePanels.includes('general') && canUserEditEventSection
   const showEditLocationSectionButton = canUserEditEventSection // activePanels.includes('location') && canUserEditEventSection
   const showEditLaboratorySectionButton = canUserEditEventSection // activePanels.includes('laboratory') && canUserEditEventSection
 
   return (
-      // <Flex flex={1} top={0} as={Container} direction={['column', null, 'row']} maxWidth={['6xl']} fontSize={['md', null, 'sm']} zIndex={999}>
-      //   <Flex position={'sticky'} flex={2} h={'calc(100vh - 131px)'} overflowY={'auto'} top={130} p={3} px={6} alignItems={'stretch'} bg={'blue.100'} _dark={{ bg: 'blue.900' }} borderColor={'blue.300'} borderTopWidth={1} borderBottomWidth={1} hideBelow={'md'} />
-
-        // <VStack flex={5} ps={[0, null, 2]} justifyContent={'flex-start'} alignItems={'stretch'} gap={[0, null, 0]}>
-          // <ContentContainer>
     <>
-          <VStack alignItems={'stretch'} fontSize={['md', null, 'sm']} gap={0}>
-            <SectionHeading label={`Événement no ${eventId}`} isSticky h={'50px'} />
-            <AccordionRoot size={['md', null, 'sm']} multiple value={activePanels} onValueChange={handleToggleActiveSection}>
-              <GeneralInfosSection event={event} canEdit={showEditEventSectionButton} />
-              <LocalisationSection event={event} canEdit={showEditLocationSectionButton} />
-              <LaboratoireSection event={event} canEdit={showEditLaboratorySectionButton} />
-            </AccordionRoot>
-          </VStack>
+      <VStack alignItems={'stretch'} fontSize={['md', null, 'sm']} gap={0}>
+        <SectionHeading label={`Événement no ${eventId}`} isSticky h={'50px'} />
+        <AccordionRoot size={['md', null, 'sm']} multiple value={activePanels} onValueChange={handleToggleActiveSection}>
+          <GeneralInfosSection event={event} canEdit={showEditEventSectionButton} />
+          <LocalisationSection event={event} canEdit={showEditLocationSectionButton} />
+          <LaboratoireSection event={event} canEdit={showEditLaboratorySectionButton} />
+        </AccordionRoot>
+      </VStack>
 
-          <VStack alignItems={'stretch'} fontSize={['md', null, 'sm']} gap={0}>
-            <SectionHeading label={'Spécimens associés à l\'événement'} isSticky>
-              { canUserAddSpecimen && <AddSpecimenButton eventId={eventId}  /> }
-            </SectionHeading>
-            <AccordionRoot multiple size={['md', null, 'sm']} defaultValue={[]} lazyMount>
-              {specimens.map(s => {
-                const { id } = s
-                return (
-                  <SpecimenSection key={id} specimen={s} canEdit={canUserEditSpecimens} />
-                )
-              })}
-            </AccordionRoot>
-          </VStack>
-          
-          <VStack alignItems={'stretch'} fontSize={['md', null, 'sm']} gap={0}>
-            <SectionHeading label={'Groupes d\'analyses'} isSticky>
-              { canUserAddAnalysis && <AddAnalysisButton eventId={eventId}  /> }
-            </SectionHeading>
-            <AccordionRoot multiple size={['md', null, 'sm']} defaultValue={[]} lazyMount>
-              {analyses.map(a => {
-                const { id } = a
-                return (
-                  <AnalysisSection key={id} analysis={a} canEdit={canUserEditAnalyses} />
-                )
-              })}
-            </AccordionRoot>
-          </VStack>
-          </>
-
-        // </ContentContainer>
+      <VStack alignItems={'stretch'} fontSize={['md', null, 'sm']} gap={0}>
+        <SectionHeading label={'Spécimens associés à l\'événement'} isSticky>
+          { canUserAddSpecimen && <AddSpecimenButton eventId={eventId}  /> }
+        </SectionHeading>
+        <AccordionRoot multiple size={['md', null, 'sm']} defaultValue={[]} lazyMount>
+          {specimens.map(s => {
+            const { id } = s
+            return (
+              <SpecimenSection key={id} specimen={s} canEdit={canUserEditSpecimens} />
+            )
+          })}
+        </AccordionRoot>
+      </VStack>
+      
+      <VStack alignItems={'stretch'} fontSize={['md', null, 'sm']} gap={0}>
+        <SectionHeading label={'Analyses'} isSticky>
+          { canUserAddAnalysis && <AddAnalysisButton eventId={eventId}  /> }
+        </SectionHeading>
+        <AccordionRoot multiple size={['md', null, 'sm']} defaultValue={[]} lazyMount>
+          {analysisGroups.map(ag => {
+            const { id } = ag
+            return (
+              <AnalysisGroupSection key={id} analysisGroup={ag} canEdit={canUserEditAnalyses} />
+            )
+          })}
+        </AccordionRoot>
+      </VStack>
+    </>
   )
 }
 

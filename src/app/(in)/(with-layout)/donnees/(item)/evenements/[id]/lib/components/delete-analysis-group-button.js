@@ -14,16 +14,16 @@ import { deleteAnalysis } from '@/lib/data/analyses/service'
 import useDialog from '@/utils/use-dialog'
 
 import ResponsiveButton from '@/app/lib/components/responsive-button'
-import DeleteAnalysisDialog from './delete-analysis-dialog'
+import DeleteAnalysisDialog from './delete-analysis-group-dialog'
 
-const DeleteAnalysisButton = ({ analysis }) => {
+const DeleteAnalysisButton = ({ analysisGroup }) => {
   const router = useRouter()
   const { mutate, cache } = useSWRConfig()
 
   const { ask: confirmDelete, dialog: deleteAnalysisDialog } = useDialog(DeleteAnalysisDialog)
 
   const handleDeleteAnalysis = useCallback(async () => {
-    const result = await confirmDelete({ analysis, onDelete: deleteAnalysis })
+    const result = await confirmDelete({ analysisGroup, onDelete: deleteAnalysis })
 
     if (result) {
       router.refresh()
@@ -43,7 +43,7 @@ const DeleteAnalysisButton = ({ analysis }) => {
         duration: 3000
     })
     }
-  }, [confirmDelete, analysis, router, mutate, cache])
+  }, [confirmDelete, analysisGroup, router, mutate, cache])
 
   return (
     <>

@@ -15,6 +15,7 @@ BEGIN
         lut_analyse la ON la.id_analyse_groupe = lag.id
     WHERE 
         xeag.id_evenement = NEW.id_evenement
+    AND la.actif IS TRUE
     ON CONFLICT (id_specimen, id_analyse) DO NOTHING;
     
     
@@ -42,6 +43,7 @@ BEGIN
         lut_analyse la ON la.id_analyse_groupe = NEW.id_analyse_groupe
     WHERE 
         s.id_evenement = NEW.id_evenement
+    AND la.actif IS TRUE    
     ON CONFLICT (id_specimen, id_analyse) DO NOTHING;
     
     RETURN NEW;

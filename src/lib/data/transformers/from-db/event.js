@@ -46,19 +46,20 @@ const schema = {
   labResponsible: null,
   labReceivedBy: null,
 
-  analyses: event => transformEventAnalyses(event.eventAnalyses),
+  analysisGroups: event => transformAnalysisGroups(event.eventAnalysisGroups),
   specimens: null
 }
 
 
-const transformEventAnalyses = (eventAnalyses) => {
-  return eventAnalyses.map(ea => {
-    const { eventId, analysisGroupId: id, analysisGroup } = ea
+const transformAnalysisGroups = (eventAnalysisGroups) => {
+  return eventAnalysisGroups.map(eag => {
+    // console.debug('transformAnalysisGroups - eag', eag)
+    const { analysisGroupId: id, eventId, analysisGroup } = eag
     const { name, analyses } = analysisGroup
     const transformed = transformAnalyses(analyses)
     return {
       id,
-      eventId, 
+      eventId,
       name,
       analyses: transformed
     }
@@ -67,23 +68,27 @@ const transformEventAnalyses = (eventAnalyses) => {
 
 const transformAnalyses = (analyses) => {
   return analyses.map(a => {
-    const { name, resultTypeId, results } = a
-    const transformed = transformResults(results)
+    const { name, unit, resultTypeId, results } = a
+    const transformed = transformResults(results).map(r => ({ ...r, unit }))
+
     return {
       name, 
       resultTypeId,
       results: transformed
     }
-  })
+  }).filter(a => a.results.length > 0)
 }
 
 const transformResults = (results) => {
   return results.map(r => {
-    const { specimenId, value, specimen } = r
-    const { eventId, sequenceId } = specimen
+    const { id, value, specimen } = r
+    const { eventId, sequenceId, specie } = specimen
+    const { name } = specie
     return {
+      id,
       eventId,
       specimenSequenceId: sequenceId,
+      specimenSpecieName: name,
       value
     }
   })
