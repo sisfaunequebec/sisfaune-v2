@@ -53,7 +53,6 @@ const schema = {
 
 const transformAnalysisGroups = (eventAnalysisGroups) => {
   return eventAnalysisGroups.map(eag => {
-    // console.debug('transformAnalysisGroups - eag', eag)
     const { analysisGroupId: id, eventId, analysisGroup } = eag
     const { name, analyses } = analysisGroup
     const transformed = transformAnalyses(analyses)

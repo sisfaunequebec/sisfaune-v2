@@ -34,7 +34,7 @@ const TitleCell = (props) => {
   )
 }
 
-const AffectedSpeciesDisplay2 = ({ value: affectedSpecies = [] }) => {
+const AffectedSpeciesDisplay = ({ value: affectedSpecies = [] }) => {
   return (
     <VStack spacing={1} flex={1}>
       <Flex direction={'row'} alignItems={'flex-start'} w={'full'}>
@@ -68,38 +68,38 @@ const AffectedSpeciesDisplay2 = ({ value: affectedSpecies = [] }) => {
   )
 }
 
-const AffectedSpeciesDisplay = ({ value = [] }) => {
-  if (value.length === 0) {
-    return (
-      <TextDisplay value={'Aucune espèce affectée'} />
-    )
-  }
+// const AffectedSpeciesDisplay = ({ value = [] }) => {
+//   if (value.length === 0) {
+//     return (
+//       <TextDisplay value={'Aucune espèce affectée'} />
+//     )
+//   }
 
-  return (
-    <VStack spacing={1} flex={1} bg={'gray.100'} borderRadius={'md'} px={3} py={2} lineHeight={'1.1rem'}>
-      <HStack justifyContent={'stretch'} w={'100%'} fontWeight={'medium'}>
-        <Flex flex={4}>Espèce</Flex>
-        <Flex flex={1} justifyContent={'center'}>Sains</Flex>
-        <Flex flex={1} justifyContent={'center'}>Malades</Flex>
-        <Flex flex={1} justifyContent={'center'}>Morts</Flex>
-        <Flex flex={1} justifyContent={'center'}>N/S</Flex>
-      </HStack>
-      {value.map((item, index) => {
-        const { specieName, specieBinome, aliveCount, unhealthyCount, deadCount, notSpecifiedCount } = item
-        return (
-          <HStack key={index} justifyContent={'stretch'} w={'100%'}>
-            <Flex flex={4}>{specieName}</Flex>
-            <Flex flex={1} justifyContent={'center'}>{aliveCount || 0}</Flex>
-            <Flex flex={1} justifyContent={'center'}>{unhealthyCount || 0}</Flex>
-            <Flex flex={1} justifyContent={'center'}>{deadCount || 0}</Flex>
-            <Flex flex={1} justifyContent={'center'}>{notSpecifiedCount || 0}</Flex>
-          </HStack>
-        )
-      })}
-    </VStack>
-  )
+//   return (
+//     <VStack spacing={1} flex={1} bg={'gray.100'} borderRadius={'md'} px={3} py={2} lineHeight={'1.1rem'}>
+//       <HStack justifyContent={'stretch'} w={'100%'} fontWeight={'medium'}>
+//         <Flex flex={4}>Espèce</Flex>
+//         <Flex flex={1} justifyContent={'center'}>Sains</Flex>
+//         <Flex flex={1} justifyContent={'center'}>Malades</Flex>
+//         <Flex flex={1} justifyContent={'center'}>Morts</Flex>
+//         <Flex flex={1} justifyContent={'center'}>N/S</Flex>
+//       </HStack>
+//       {value.map((item, index) => {
+//         const { specieName, specieBinome, aliveCount, unhealthyCount, deadCount, notSpecifiedCount } = item
+//         return (
+//           <HStack key={index} justifyContent={'stretch'} w={'100%'}>
+//             <Flex flex={4}>{specieName}</Flex>
+//             <Flex flex={1} justifyContent={'center'}>{aliveCount || 0}</Flex>
+//             <Flex flex={1} justifyContent={'center'}>{unhealthyCount || 0}</Flex>
+//             <Flex flex={1} justifyContent={'center'}>{deadCount || 0}</Flex>
+//             <Flex flex={1} justifyContent={'center'}>{notSpecifiedCount || 0}</Flex>
+//           </HStack>
+//         )
+//       })}
+//     </VStack>
+//   )
 
-}
+// }
 
 const DiscovererDisplay = ({ value, data }) => {
   const { status: eventStatus, isDiscovererSameAsSubmitter } = data || {}
@@ -109,7 +109,7 @@ const DiscovererDisplay = ({ value, data }) => {
 
   if (isEventClosed) {
     return (
-     <TextDisplay value={'L\'événement est terminé : les informations sur le découvreur ne sont plus disponibles.'} />
+     <CommentDisplay value={'L\'événement est terminé : les informations sur le découvreur ne sont plus disponibles.'} />
     )
   } else if (isDiscovererSameAsSubmitter) {
     return (
@@ -235,7 +235,7 @@ const schema = [
     title: 'Individus affectés, par espèce',
     visible: (data) => { const { affectedSpecies } = data; return affectedSpecies.length > 0 },
     fields: [
-      { label: null, name: 'affectedSpecies', component: AffectedSpeciesDisplay2 },
+      { label: null, name: 'affectedSpecies', component: AffectedSpeciesDisplay },
     ]
   },
   { 

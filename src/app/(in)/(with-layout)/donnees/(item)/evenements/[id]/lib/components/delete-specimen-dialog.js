@@ -19,8 +19,7 @@ const DeleteSpecimenDialog = ({ close, specimen, onDelete }) => {
       {(contentRef, watched) => (
         <>
           <Text fontWeight={'bold'}>Vous vous apprêtez à effacer le spécimen {eventId}.{sequenceId} :</Text>
-          <Text>Les analyses associées à ce spécimen seront aussi effacés.</Text>
-          <Text>Cette action est irréversible !</Text>
+          <Text>Les analyses associées à ce spécimen seront aussi effacés. <br/>Cette action est irréversible !</Text>
         </>
       )}
     </BaseDialog>

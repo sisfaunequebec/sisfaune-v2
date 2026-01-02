@@ -16,16 +16,17 @@ import ResponsiveButton from '@/app/lib/components/responsive-button'
 import EditAnalysisGroupDialog from './edit-analysis-group-dialog'
 
 const EditAnalysisGroupButton = ({ analysisGroup }) => {
-  console.debug('EditAnalysisGroupButton', analysisGroup)
   const { mutate, cache } = useSWRConfig()
+
+  const { eventId } = analysisGroup
   
   const { ask: startEditing, dialog } = useDialog(EditAnalysisGroupDialog)
 
   const handleClick = useCallback(async () => {
-    const { id: eventId } = analysisGroup
+    // const { id: eventId } = analysisGroup
     await startEditing({ eventId, data: analysisGroup })
     mutate()
-  }, [startEditing, analysisGroup, mutate])
+  }, [startEditing, eventId, analysisGroup, mutate])
 
   return (
     <>

@@ -17,8 +17,7 @@ const DeleteEventDialog = ({ close, eventId, onDelete }) => {
       {(contentRef, watched) => (
         <>
           <Text fontWeight={'bold'}>Vous vous apprêtez à effacer l&apos;événement no {eventId} :</Text>
-          <Text>Les spécimens associés et les analyses associées à ces spécimens seront aussi effacés.</Text>
-          <Text>Cette action est irréversible !</Text>
+          <Text>Les spécimens associés et les analyses associées à ces spécimens seront aussi effacés. <br/>Cette action est irréversible !</Text>
         </>
       )}
     </BaseDialog>

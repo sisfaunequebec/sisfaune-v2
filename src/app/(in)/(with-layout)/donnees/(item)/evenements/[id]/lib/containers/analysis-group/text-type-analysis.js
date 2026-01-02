@@ -18,7 +18,7 @@ const TextTypeAnalyses = ({ analyses }) => {
 
           return (
             <Row label={label} key={id}>
-              <CommentDisplay w={'full'} flex={2} minRows={1} value={value} />
+              <CommentDisplay w={'full'} flex={2} minRows={2} value={value} />
             </Row>
           )}) 
         }

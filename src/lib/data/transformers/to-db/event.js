@@ -14,7 +14,6 @@ const transformDiscoverer = (discoverer) => {
 
 const schema = {
 
-  // id: null,
   typeId: event => (event.type ? event.type.id : null),
   silabId: null,
   cqsasIncidentNumber: null,
@@ -55,7 +54,6 @@ const schema = {
 }
 
 const eventTransformer = (event, context) =>   {
-  console.debug('eventTransformer', event, context)
   return transform(schema, event, context)
 }
 

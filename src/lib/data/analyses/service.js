@@ -87,7 +87,39 @@ const deleteAnalysis = async (eventId, analysisGroupId) => {
   return true
 }
 
+const updateAnalysisGroupResults = async (data) => {
+  
+  const user = await getUser()
+
+  if (!user) {
+    throw new Error()
+  }
+  const { analyses = [] } = data
+
+  await orm.$transaction(async prisma => {
+    for (const analysis of analyses) {
+    const { id: analysisGroupId, results = [] } = analysis  
+    for (const result of results) {
+      
+      const { id: resultId, value } = result
+      console.debug('updateAnalysisGroupResults - updating result', resultId, value)
+      await prisma.Result.update({
+        where: {
+          id: resultId
+        },
+        data: {
+          value
+        }
+      })
+    }
+  }
+  })
+    
+
+}
+
 export {
   addAnalysis,
-  deleteAnalysis
+  deleteAnalysis,
+  updateAnalysisGroupResults
 }

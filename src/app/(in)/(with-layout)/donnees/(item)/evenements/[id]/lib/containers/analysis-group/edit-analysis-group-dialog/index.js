@@ -3,15 +3,12 @@ import { useState, useEffect, useCallback } from 'react'
 
 // import { useFormContext } from 'react-hook-form'
 
-// import updateGeneralInfos from '../update-general-infos.action'
+import updateAnalysisGroupAction from './update-analysis-group.action'
 // import beforeUpdate from './before-update'
 
 // import getActivePrograms from '@/lib/data/lookups/event-programs'
 
 import BaseDialog, { Fields } from '@/app/lib/components/dialogs/base'
-
-import DateInput from '@/app/lib/components/inputs/base/date'
-import SelectInput from '@/app/lib/components/inputs/base/select'
 
 // import EventStatusSelect from '@/app/lib/components/inputs/event-status-select'
 // import EventTypeSelect from '@/app/lib/components/inputs/event-type-select'
@@ -27,7 +24,9 @@ import SelectInput from '@/app/lib/components/inputs/base/select'
 // import DiscovererAddressInput from './address'
 
 // import Autocomplete from '@/app/(in)/(with-layout)/lib/components/autocomplete'
-import UnimplementedDisplay from '@/app/lib/components/display/base/unimplemented'
+// import UnimplementedDisplay from '@/app/lib/components/display/base/unimplemented'
+ 
+import AnalysisGroupInput from './analysis-group-input'
 
 // const AffectedSpeciesInput = ({ value, data }) => {
 //   // console.debug('AffectedSpeciesInput', value)
@@ -90,28 +89,16 @@ const formSchema = [
   { 
     title: null,
     fields: [
-      // { label: 'Numéro d\'événement\u00A0:', name: 'id', disabled: true },
-      // { label: 'Type d\'événement\u00A0:', name: 'type', component: EventTypeSelect, disabled: true, props: { clearable: false } },
-      // { label: 'Numéro d\'identification SILAB\u00A0:', name: 'silabId' },
-      // { label: 'Numéro d\'incident CQSAS\u00A0:', name: 'cqsasIncidentNumber' },
-      // { label: 'Numéro de pathologie\u00A0:', name: 'pathologyNumber' },
-      // { label: 'Date du signalement\u00A0:', name: 'reportedAt', component: DateInput },
-      // { label: 'Numéro centrale MAPAQ\u00A0:', name: 'mapaqId' },
-      // { label: 'Programme\u00A0:', name: 'program', component: ProgramSelect, props: { clearable: false } },
-      // { label: 'Provenance du signalement\u00A0:', name: 'reportOrigin', component: ReportOriginSelect, props: { clearable: false } },
-      // { label: 'Statut\u00A0:', name: 'status', component: EventStatusSelect, disabled: (data) => { const { status } = data; const {id: statusId } = status; return statusId === 3 }, props: { clearable: false } },
-      // { label: 'Date de fermeture du dossier\u00A0:', name: 'closedAt', component: DateInput, props: { clearable: false }, disabled: (data, watched) => { const { status } = watched; const { id: statusId } = status; return statusId === 3 }, visible: (data, watched) => { const { closedAt } = data; const { status } = watched; const { id: statusId } = status; return (statusId === 3 && closedAt) } },
+      { label: null, name: 'analyses', component: AnalysisGroupInput }
     ]
   }
 ]
 
 const EditAnalysisGroupDialog = ({ close, eventId, data }) => {
   const handleSubmit = useCallback(async (updating) => {
-    console.debug('EditGeneralInfosDialog - handleSubmit', updating)
-    // const updated = beforeUpdate(data, updating)
-    // await updateGeneralInfos(eventId, updated)
+    await updateAnalysisGroupAction(eventId, updating)
     close()
-  }, [close, eventId, data])
+  }, [close, eventId])
 
   const fieldNames = formSchema.map(section => {
     const { fields } = section
@@ -124,11 +111,13 @@ const EditAnalysisGroupDialog = ({ close, eventId, data }) => {
     return acc
   }, {})
 
-  const { name } = data
+  const { name: analysisGroupName } = data
+
+  console.debug('EditAnalysisGroupDialog', data)
   
 
   return (
-    <BaseDialog title={`Événement no ${eventId} - ${name}`} size={'lg'} onClose={close} onSubmit={handleSubmit} submitBtnLabel={'Sauvegarder'} schema={null} schemaType={'valibot'} defaultValues={defaultValues} watches={['status', 'isDiscovererSameAsSubmitter']}>
+    <BaseDialog title={`Événement no ${eventId} - ${analysisGroupName}`} size={'lg'} onClose={close} onSubmit={handleSubmit} submitBtnLabel={'Sauvegarder'} schema={null} schemaType={'valibot'} defaultValues={defaultValues} watches={['status', 'isDiscovererSameAsSubmitter']}>
       {(contentRef, watched) => {
         return (
           <Fields formSchema={formSchema} contentRef={contentRef} watched={watched} data={defaultValues} />

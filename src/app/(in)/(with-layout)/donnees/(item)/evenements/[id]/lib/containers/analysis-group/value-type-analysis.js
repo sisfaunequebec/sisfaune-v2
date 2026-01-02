@@ -43,10 +43,11 @@ const ValueTypeAnalyses = ({ analyses }) => {
   return (
     <VStack flex={1} alignItems={'stretch'} w={'full'} mb={4}>
       {analyses.map((analysis, i) => {
+        const { id } = analysis
         return (
           <>
             { i === 0 &&<ValueTypeAnalysisHeader analysis={analysis} /> }
-            <ValueTypeAnalysis analysis={analysis} />
+            <ValueTypeAnalysis analysis={analysis} key={id}/>
           </>
         )
       }) }

@@ -31,7 +31,8 @@ import DiscovererAddressInput from './address'
 // import AddressInput from '@/app/lib/components/inputs/address'
 
 import Autocomplete from '@/app/(in)/(with-layout)/lib/components/autocomplete'
-import UnimplementedDisplay from '@/app/lib/components/display/base/unimplemented'
+// import UnimplementedDisplay from '@/app/lib/components/display/base/unimplemented'
+import CommentDisplay from '@/app/lib/components/display/base/comment'
 
 const AffectedSpeciesInput = ({ value, data }) => {
   // console.debug('AffectedSpeciesInput', value)
@@ -56,7 +57,19 @@ const SubmitterCombo = ({ value, onChange, ...rest }) => {
   )
 }
 
-const DiscovererSameAsSubmitterSelect = (props) => {
+const DiscovererSelect = (props) => {
+  const { data } = props
+  const { status: eventStatus } = data || {}
+  const { id: statusId } = eventStatus || {}
+
+  const isEventClosed = statusId === 3
+
+  if (isEventClosed) {
+    return (
+     <CommentDisplay value={'L\'événement est terminé : les informations sur le découvreur ne sont plus disponibles.'} />
+    )
+  }
+
   const items = [
     { id: 1, name: 'Le soumissionnaire' },
     { id: 0, name: 'Une autre personne' }
@@ -130,8 +143,9 @@ const formSchema = [
     title: 'Personnes impliquées',
     fields: [
       { label: 'Soumis par\u00A0:', name: 'submitter', component: SubmitterCombo },
-      { label: 'Découvert par\u00A0:', name: 'isDiscovererSameAsSubmitter', component: DiscovererSameAsSubmitterSelect },
-      { label: 'Découveur\u00A0:', name: 'discoverer', component: DiscovererAddressInput, visible: (data, watched) => { const { isDiscovererSameAsSubmitter } = watched; return !isDiscovererSameAsSubmitter;  } },
+      // { label: 'Découvert par\u00A0:', name: 'isDiscovererSameAsSubmitter', component: DiscovererSameAsSubmitterSelect },
+      { label: 'Découvert par\u00A0:', name: 'isDiscovererSameAsSubmitter', component: DiscovererSelect },
+      { label: 'Découveur\u00A0:', name: 'discoverer', component: DiscovererAddressInput, visible: (data, watched) => { const { isDiscovererSameAsSubmitter } = watched; const { status: eventStatus } = data; const { id: statusId } = eventStatus || {}; const isEventClosed = statusId === 3; return !isEventClosed && !isDiscovererSameAsSubmitter;  } },
       { label: 'Récolté par (contractuel)\u00A0:', name: 'collaborator', component: CollaboratorSelect }
     ]
   },
