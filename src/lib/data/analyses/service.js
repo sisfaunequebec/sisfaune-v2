@@ -102,13 +102,12 @@ const updateAnalysisGroupResults = async (data) => {
     for (const result of results) {
       
       const { id: resultId, value } = result
-      console.debug('updateAnalysisGroupResults - updating result', resultId, value)
       await prisma.Result.update({
         where: {
           id: resultId
         },
         data: {
-          value
+          value: value?.toString() || null
         }
       })
     }

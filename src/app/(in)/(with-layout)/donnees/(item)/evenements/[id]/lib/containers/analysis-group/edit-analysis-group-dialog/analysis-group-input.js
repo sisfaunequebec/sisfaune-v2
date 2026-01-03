@@ -5,6 +5,58 @@ import { Box, Flex, Container, VStack, AbsoluteCenter, Icon, IconButton, Text,  
 import { Header, Row } from '../wrappers'
 
 import CommentInput from '@/app/lib/components/inputs/base/comment'
+import NumberInput from '@/app/lib/components/inputs/base/number'
+
+const ValueTypeAnalysisHeader = ({ analysis }) => {
+  const { results = [] } = analysis
+
+  return (
+    <Header name={'\u00A0'}>
+      <HStack w={'full'} flex={2} gap={2} justifyContent={'flex-between'}>
+        { results.map((r, i) => {
+          const { eventId, specimenSequenceId, specimenSpecieName } = r
+          return (
+            <Flex flex={1} borderRadius={'md'} px={3} ps={1} py={3} lineHeight={'1.1rem'} key={i} color={'gray.600'} >
+              {[eventId, specimenSequenceId].join('.')}<br/>{specimenSpecieName}         
+            </Flex>
+          )
+        }) }
+      </HStack>
+    </Header>
+  )
+}
+
+const ValueTypeAnalysisInput = ({ value, onChange }) => {
+  const { name, results = [] } = value
+  return (
+    <Row label={`${name}\u00A0:`}>
+      <HStack w={'full'} flex={2} gap={2} justifyContent={'space-between'}>
+        { results.map((r, i) => {
+          const { id: resultId, value, unit } =  r
+          return (
+            <NumberInput value={value} key={resultId} suffix={unit} onChange={(value) => onChange(resultId, value)} />
+          )
+        })}
+      </HStack>
+    </Row>
+  )
+}
+
+const ValueTypeAnalysesInput = ({ value, onChange }) => {
+  return (
+    <VStack flex={1} alignItems={'stretch'} w={'full'} mb={4}>
+      {value.map((analysis, i) => {
+        const { id } = analysis
+        return (
+          <>
+            { i === 0 &&<ValueTypeAnalysisHeader analysis={analysis} /> }
+            <ValueTypeAnalysisInput value={analysis} onChange={onChange}/>
+          </>
+        )
+      }) }  
+    </VStack>
+  )
+}
 
 const TextTypeAnalysesInput = ({ value, onChange }) => {
   return value.map((analysis, i) => {
@@ -46,12 +98,12 @@ const AnalysisGroupInput = ({ value = [], onChange }) => {
     onChange(newAnalyses)
   }, [value, onChange])
 
-  // const valueTypeAnalyses = analyses.filter(an => an.resultTypeId !== 3)
+  const valueTypeAnalyses = value.filter(an => an.resultTypeId !== 3)
   const textTypeAnalyses = value.filter(an => an.resultTypeId === 3)
 
   return (
     <Flex direction={'column'} w={'full'} gap={4} justifyContent={'flex-start'}>
-      {/* <ValueTypeAnalyses analyses={valueTypeAnalyses} /> */}
+      <ValueTypeAnalysesInput value={valueTypeAnalyses} onChange={handleChange} />  
       <TextTypeAnalysesInput value={textTypeAnalyses} onChange={handleChange} />
     </Flex>
   )
