@@ -39,7 +39,7 @@ const CodeTypeDisplay = ({ value, codes }) => {
 }
 
 const ValueOrCodeTypeAnalysis = ({ analysis }) => {
-  console.debug('ValueOrCodeTypeAnalysis', { analysis })
+  // console.debug('ValueOrCodeTypeAnalysis', { analysis })
   const { name, unit, precision, results = [], resultTypeId, codeValues } = analysis
   const unitLabel  = unit ? ` (${unit})` : ''
   const label = [name, unitLabel].join('')
@@ -48,7 +48,7 @@ const ValueOrCodeTypeAnalysis = ({ analysis }) => {
       <HStack w={'full'} flex={2} gap={2} justifyContent={'space-between'}>
         { results.map((r, i) => {
           const { id, value } =  r
-          
+
           if (resultTypeId === 1) {
             return (
               <ValueTypeDisplay key={id} value={value} precision={precision} />

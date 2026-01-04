@@ -505,6 +505,7 @@ const updateGeneralInfos = async (eventId, data) => {
   const { id, ...rest } = data
 
   const transformed = toDbEventTransformer(rest, { user })
+  console.debug('transformed event for update', data, transformed)
 
   const { discoverer, ...eventData } = transformed
   const { locality, ...discovererData  } = discoverer || {}

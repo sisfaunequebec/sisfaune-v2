@@ -16,7 +16,7 @@ import DiscoveryStateSelect from '../../components/discovery-state-select'
 
 import addSpecimenSchema from './add-specimen-schema'
 
-const SpeciesCombo = ({ value, onChange }) => {
+const SpeciesCombo = ({ value, onChange, ...rest }) => {
   const handleLookup = useCallback(async (inputValue) => {
     const response = await fetch(`/api/lookup/animal-species?t=${inputValue}`)
     const data = await response.json()
@@ -31,7 +31,7 @@ const SpeciesCombo = ({ value, onChange }) => {
   const labelKey = useCallback(item => item?.name, [])
 
   return (
-    <Autocomplete value={value} labelKey={labelKey} onLookup={handleLookup} onRenderItem={handleRenderItem} onChange={onChange} placeholder={'Taper pour rechercher une espèce...'} />
+    <Autocomplete value={value} labelKey={labelKey} onLookup={handleLookup} onRenderItem={handleRenderItem} onChange={onChange} {...rest} />
   )
 }
 
@@ -82,3 +82,5 @@ const AddSpecimenDialog = ({ eventId, close }) => {
 }
 
 export default AddSpecimenDialog
+
+export  { SpeciesCombo }

@@ -1,8 +1,6 @@
 'use client'
 import { useState, useEffect, useCallback } from 'react'
 
-import { useFormContext } from 'react-hook-form'
-
 import updateGeneralInfos from '../update-general-infos.action'
 import beforeUpdate from './before-update'
 
@@ -28,16 +26,11 @@ import LabSelect from './lab-select'
 import CollaboratorSelect from './collaborator-select'
 
 import DiscovererAddressInput from './address'
-// import AddressInput from '@/app/lib/components/inputs/address'
 
 import Autocomplete from '@/app/(in)/(with-layout)/lib/components/autocomplete'
-// import UnimplementedDisplay from '@/app/lib/components/display/base/unimplemented'
 import CommentDisplay from '@/app/lib/components/display/base/comment'
 
-const AffectedSpeciesInput = ({ value, data }) => {
-  // console.debug('AffectedSpeciesInput', value)
-  return null
-}
+import AffectedSpeciesInput from './affected-species-input'
 
 const SubmitterCombo = ({ value, onChange, ...rest }) => {
   const handleLookup = useCallback(async (inputValue) => {
@@ -79,24 +72,6 @@ const DiscovererSelect = (props) => {
   }
   return (<SelectInput valueKey={'id'} labelKey={'name'} items={items} {...props} clearable={false} onChange={handleChange} value={{ id: (props.value === true ? 1 : 0) }} />)
 }
-
-// const DiscovererInput = ({ value, data, onChange, contentRef }) => {
-//   const { setValue } = useFormContext()
-//   const { status: eventStatus, isDiscovererSameAsSubmitter } = data || {}
-//   const { id: statusId } = eventStatus || {}
-
-//   const isEventClosed = statusId === 3
-
-//   if (isEventClosed) {
-//     return (
-//      <TextDisplay value={'L\'événement est terminé : les informations sur le découvreur ne sont plus disponibles.'} />
-//     )
-//   } else {
-//     return (
-//       <TextDisplay value={value} onChange={onChange} />
-//     )
-//   }
-// }
 
 const ContactSelect = (props) => {
   const items = [
@@ -199,7 +174,7 @@ const EditGeneralInfosDialog = ({ close, eventId, data }) => {
   }, {})
 
   return (
-    <BaseDialog title={`Événement no ${eventId} - Informations générales`} size={'lg'} onClose={close} onSubmit={handleSubmit} submitBtnLabel={'Sauvegarder'} schema={null} schemaType={'valibot'} defaultValues={defaultValues} watches={['status', 'isDiscovererSameAsSubmitter']}>
+    <BaseDialog title={`Événement no ${eventId} - Informations générales`} size={'lg'} onClose={close} onSubmit={handleSubmit} submitBtnLabel={'Sauvegarder'} defaultValues={defaultValues} watches={['status', 'isDiscovererSameAsSubmitter']}>
       {(contentRef, watched) => {
         return (
           <Fields formSchema={formSchema} contentRef={contentRef} watched={watched} data={defaultValues} />

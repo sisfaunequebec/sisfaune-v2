@@ -238,6 +238,8 @@ const updateSpecimen = async (specimenId, data) => {
   }
 
   const transformed = toDbSpecimenTransformer(data, { user })
+  console.debug('transformed specimen for update', data, transformed)
+ 
   const { measures, ...rest } = transformed
   
   await orm.$transaction(async prisma => {

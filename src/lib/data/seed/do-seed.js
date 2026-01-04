@@ -27,9 +27,9 @@ const lutMeasureUnits = require('./lut-measure-units')
 const lutAnimalMeasureTypes = require('./lut-animal-measure-types')
 
 const lutResultTypes = require('./lut-result-types')
-const lutResultCodeTypes = require('./lut-result-code-types')
-const lutResultTextTypes = require('./lut-result-code-types')
-const lutResultRangeTypes = require('./lut-result-range-types')
+// const lutResultCodeTypes = require('./lut-result-code-types')
+// const lutResultTextTypes = require('./lut-result-code-types')
+// const lutResultRangeTypes = require('./lut-result-range-types')
 const lutResultCodeValues = require('./lut-result-code-values')
 
 // DATA 
@@ -91,10 +91,9 @@ async function doSeed (orm) {
     orm.LutAnimalMeasureType.createMany({ data: lutAnimalMeasureTypes }),
 
     orm.LutResultType.createMany({ data: lutResultTypes }),
-    orm.LutResultCodeType.createMany({ data: lutResultCodeTypes }),
-    orm.LutResultTextType.createMany({ data: lutResultTextTypes }),
-    orm.LutResultRangeType.createMany({ data: lutResultRangeTypes }),
-
+    // orm.LutResultCodeType.createMany({ data: lutResultCodeTypes }),
+    // orm.LutResultTextType.createMany({ data: lutResultTextTypes }),
+    // orm.LutResultRangeType.createMany({ data: lutResultRangeTypes }),
 
     // DATA - Change over time
     
@@ -143,8 +142,8 @@ async function doSeed (orm) {
         SELECT coalesce(max(id), 0) + 1 FROM lut_analyse INTO max_id;
         EXECUTE 'alter SEQUENCE lut_analyse_id_seq RESTART with '|| max_id; 
 
-        SELECT coalesce(max(id), 0) + 1 FROM lut_result_code_valeur INTO max_id;
-        EXECUTE 'alter SEQUENCE lut_result_code_valeur_id_seq RESTART with '|| max_id; 
+        SELECT coalesce(max(id), 0) + 1 FROM lut_resultat_code_valeur INTO max_id;
+        EXECUTE 'alter SEQUENCE lut_resultat_code_valeur_id_seq RESTART with '|| max_id; 
       END;
       $$ LANGUAGE plpgsql
     `,

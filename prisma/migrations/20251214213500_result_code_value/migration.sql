@@ -1,5 +1,5 @@
 -- CreateTable
-CREATE TABLE "lut_result_code_valeur" (
+CREATE TABLE "lut_resultat_code_valeur" (
     "id" SMALLSERIAL NOT NULL,
     "id_analyse" SMALLINT NOT NULL,
     "code" TEXT NOT NULL,
@@ -7,8 +7,8 @@ CREATE TABLE "lut_result_code_valeur" (
     "actif" BOOLEAN NOT NULL DEFAULT true,
     "ordre_affichage" SMALLINT NOT NULL DEFAULT 1,
 
-    CONSTRAINT "lut_result_code_valeur_pkey" PRIMARY KEY ("id")
+    CONSTRAINT "lut_resultat_code_valeur_pkey" PRIMARY KEY ("id")
 );
 
 -- AddForeignKey
-ALTER TABLE "lut_result_code_valeur" ADD CONSTRAINT "lut_result_code_valeur_id_analyse_fkey" FOREIGN KEY ("id_analyse") REFERENCES "lut_analyse"("id") ON DELETE RESTRICT ON UPDATE RESTRICT;
+ALTER TABLE "lut_resultat_code_valeur" ADD CONSTRAINT "lut_resultat_code_valeur_id_analyse_fkey" FOREIGN KEY ("id_analyse") REFERENCES "lut_analyse"("id") ON DELETE RESTRICT ON UPDATE RESTRICT;

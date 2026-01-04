@@ -35,7 +35,8 @@ const schema = v.pipe(
     keywords: v.nullish(v.string()),
     sex: v.nullish(v.object({ id: v.integer() })),
     age: v.nullish(v.object({ id: v.integer() })),
-    measures: v.any()
+    measures: v.any(),
+    preservationMethod: v.nullish(v.object({ id: v.integer() })), 
   }),
   v.forward(
     v.custom((specimen) => {

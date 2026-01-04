@@ -16,8 +16,6 @@ import NumberDisplay from '@/app/lib/components/display/base/number'
 import DateDisplay from '@/app/lib/components/display/base/date'
 import CommentDisplay from '@/app/lib/components/display/base/comment'
 
-import UnimplementedDisplay from '@/app/lib/components/display/base/unimplemented'
-
 import EditGeneralInfosButton from './edit-general-infos-button'
 
 const Cell = ({ bg, text, ...rest }) => {
@@ -34,7 +32,29 @@ const TitleCell = (props) => {
   )
 }
 
-const AffectedSpeciesDisplay = ({ value: affectedSpecies = [] }) => {
+const NoAffectedSpeciesDisplay = () => {
+  return (
+    <ChakraField.Root justifyContent={'stretch'}>
+      <Flex direction={'row'} alignItems={'flex-start'} w={'full'}>
+        <ChakraField.Label fontSize={['md', null, 'sm']} color={'gray.600'} fontWeight={400} flex={[1, null, 1]} justifyContent={'flex-start'} pt={2} pe={2} mb={2} lineHeight={'shorter'}>
+        </ChakraField.Label>
+        <Flex flex={2} w={'full'} direction={'column'}>
+          <TextDisplay value={'Aucune espèce affectée'} />
+        </Flex>
+      </Flex>
+    </ChakraField.Root>
+  )
+}
+
+const AffectedSpeciesDisplay = ({ value = [] }) => {
+  const affectedSpecies = value.filter(item => item.specieId !== null && item.specieId !== undefined)
+
+  if (affectedSpecies.length === 0) {
+    return (
+     <NoAffectedSpeciesDisplay />
+    )
+  }
+
   return (
     <VStack spacing={1} flex={1}>
       <Flex direction={'row'} alignItems={'flex-start'} w={'full'}>

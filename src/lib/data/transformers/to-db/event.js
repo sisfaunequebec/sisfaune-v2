@@ -11,9 +11,22 @@ const transformDiscoverer = (discoverer) => {
     localityId: locality?.id || null
   }
 }
+  
+const unBuildAffectedSpecies = () => {
+  const keys = {}
+  const arrayIndexes = [0, 1, 2, 3, 4]
+  arrayIndexes.forEach(i => {
+    const index = i + 1
+    keys[`affectedSpecie${index}Id`] = (event) => (event.affectedSpecies[i] ? event.affectedSpecies[i].specieId : null)
+    keys[`affectedSpecie${index}AliveCount`] = (event) => (event.affectedSpecies[i] ? event.affectedSpecies[i].aliveCount : null)
+    keys[`affectedSpecie${index}UnhealtyCount`] = (event) => (event.affectedSpecies[i] ? event.affectedSpecies[i].unhealthyCount : null)
+    keys[`affectedSpecie${index}DeadCount`] = (event) => (event.affectedSpecies[i] ? event.affectedSpecies[i].deadCount : null)
+    keys[`affectedSpecie${index}NotSpecifiedCount`] = (event) => (event.affectedSpecies[i] ? event.affectedSpecies[i].notSpecifiedCount : null)
+  })
+  return keys
+}
 
 const schema = {
-
   typeId: event => (event.type ? event.type.id : null),
   silabId: null,
   cqsasIncidentNumber: null,
@@ -37,7 +50,6 @@ const schema = {
   habitatTypeId: event => (event.habitatType ? event.habitatType.id : null),
   temperature: null,
   
-  // // affectedSpecies: affectedSpeciesTransformer,
   observations: null,
   comments: null,
   keywords: null,
@@ -45,12 +57,9 @@ const schema = {
   labShippedAt: event => isoDateToDb(event.labShippedAt),
   labShippingMethodId: event => (event.labShippingMethod ? event.labShippingMethod.id : null),
   labShippingTrackingNumber: null,
-  labId: event => (event.lab ? event.lab.id : null),
+  labId: event => (event.lab ? event.lab.id : null),  
 
-  // location: (event, context) => locationTransformer(event.location, context),
-
-  // analyses: { fromDB: null },
-  // specimens: null
+  ...unBuildAffectedSpecies()
 }
 
 const eventTransformer = (event, context) =>   {

@@ -13,7 +13,7 @@ const buildAffectedSpecies = (data) => {
       deadCount: data[`affectedSpecie${i}DeadCount`],
       notSpecifiedCount: data[`affectedSpecie${i}NotSpecifiedCount`]
     }
-  }).filter(item => item.specieId !== null && item.specieId !== undefined)
+  })
 }
 
 const affectedSpeciesTransformer = (data) => {
