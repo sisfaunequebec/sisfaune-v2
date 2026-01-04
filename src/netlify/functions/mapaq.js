@@ -25,8 +25,6 @@ const handler = async (req) => {
 
     const insertedRowCount = insertResult.data[5]
 
-    // send success email
-    console.debug(insertedRowCount)
     sendEmailConfirmation(insertedRowCount, null)
     return Response.json({ status: 'ok', insertedRowCount })
 }

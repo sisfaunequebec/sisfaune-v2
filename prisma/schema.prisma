@@ -138,46 +138,46 @@ model LutResultType {
   name String @map(name: "nom")
 
   analyses LutAnalysis[]
-  codeTypes LutResultCodeType[]
-  rangeTypes LutResultRangeType[]
-  textTypes LutResultTextType[]
+  // codeTypes LutResultCodeType[]
+  // rangeTypes LutResultRangeType[]
+  // textTypes LutResultTextType[]
 }
 
-model LutResultCodeType {
-  @@map("lut_type_resultat_code")
+// model LutResultCodeType {
+//   @@map("lut_type_resultat_code")
 
-  id Int @db.SmallInt @id 
-  resultTypeId Int @db.SmallInt @map(name: "id_type_resultat")
+//   id Int @db.SmallInt @id 
+//   resultTypeId Int @db.SmallInt @map(name: "id_type_resultat")
 
-  resultType LutResultType  @relation(fields: [resultTypeId], references: [id], onDelete: Restrict, onUpdate: Restrict)
-}
+//   resultType LutResultType  @relation(fields: [resultTypeId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+// }
 
-model LutResultRangeType {
-  @@map("lut_type_resultat_plage")
+// model LutResultRangeType {
+//   @@map("lut_type_resultat_plage")
 
-  id Int @db.SmallInt @id 
-  resultTypeId Int @db.SmallInt @map(name: "id_type_resultat")
-  // type_nombre
-  precision Int @db.SmallInt @default(0) @map(name: "precision")
-  unit String? @map(name: "unite")
-  lowerLimit Decimal? @db.Decimal(18, 5) @map(name: "borne_inf")
-  upperLimit Decimal? @db.Decimal(18, 5) @map(name: "borne_sup")
-  defaultvalue String? @map(name: "valeur_defaut")
+//   id Int @db.SmallInt @id 
+//   resultTypeId Int @db.SmallInt @map(name: "id_type_resultat")
+//   // type_nombre
+//   precision Int @db.SmallInt @default(0) @map(name: "precision")
+//   unit String? @map(name: "unite")
+//   lowerLimit Decimal? @db.Decimal(18, 5) @map(name: "borne_inf")
+//   upperLimit Decimal? @db.Decimal(18, 5) @map(name: "borne_sup")
+//   defaultvalue String? @map(name: "valeur_defaut")
 
-  resultType LutResultType  @relation(fields: [resultTypeId], references: [id], onDelete: Restrict, onUpdate: Restrict)
-}
+//   resultType LutResultType  @relation(fields: [resultTypeId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+// }
 
-model LutResultTextType {
-  @@map("lut_type_resultat_texte")
+// model LutResultTextType {
+//   @@map("lut_type_resultat_texte")
 
-  id Int @db.SmallInt @id 
-  resultTypeId Int @db.SmallInt @map(name: "id_type_resultat")
+//   id Int @db.SmallInt @id 
+//   resultTypeId Int @db.SmallInt @map(name: "id_type_resultat")
 
-  resultType LutResultType  @relation(fields: [resultTypeId], references: [id], onDelete: Restrict, onUpdate: Restrict)
-}
+//   resultType LutResultType  @relation(fields: [resultTypeId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+// }
 
 model LutResultCodeValue {
-  @@map("lut_result_code_valeur")
+  @@map("lut_resultat_code_valeur")
 
   id Int @db.SmallInt @id @default(autoincrement())
   analysisId Int @db.SmallInt @map(name: "id_analyse")

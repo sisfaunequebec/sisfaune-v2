@@ -1,3 +1,5 @@
+import orderBy from 'lodash.orderby'
+
 import { dbDateToIso } from '../utils'
 import locationTransformer from './location.js'
 import affectedSpeciesTransformer from './affected-species.js'
@@ -50,7 +52,6 @@ const schema = {
   specimens: null
 }
 
-
 const transformAnalysisGroups = (eventAnalysisGroups) => {
   return eventAnalysisGroups.map(eag => {
     const { analysisGroupId: id, eventId, analysisGroup } = eag
@@ -60,20 +61,24 @@ const transformAnalysisGroups = (eventAnalysisGroups) => {
       id,
       eventId,
       name,
-      analyses: transformed
+      analyses: orderBy(transformed, 'id')
     }
   })
 }
 
 const transformAnalyses = (analyses) => {
   return analyses.map(a => {
-    const { name, unit, resultTypeId, results } = a
-    const transformed = transformResults(results).map(r => ({ ...r, unit }))
+    const { id, name, unit, precision, resultTypeId, results, codeValues } = a
+    const transformed = transformResults(results).map(r => ({ ...r }))
 
     return {
+      id,
       name, 
+      unit,
+      precision,
       resultTypeId,
-      results: transformed
+      results: orderBy(transformed, 'specimenSequenceId'),
+      codeValues: codeValues || []
     }
   }).filter(a => a.results.length > 0)
 }

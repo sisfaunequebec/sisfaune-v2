@@ -1,5 +1,4 @@
 import { Box, Flex, Container, VStack, AbsoluteCenter, Icon, IconButton, Text,  HStack, Separator, Fieldset, Input, Field as ChakraField } from '@chakra-ui/react'
-import { Children } from 'react'
 
 const Header = ({ name, children, ...rest }) => { 
   return (  

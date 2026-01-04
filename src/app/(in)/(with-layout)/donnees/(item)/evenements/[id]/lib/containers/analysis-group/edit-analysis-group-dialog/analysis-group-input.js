@@ -6,17 +6,18 @@ import { Header, Row } from '../wrappers'
 
 import CommentInput from '@/app/lib/components/inputs/base/comment'
 import NumberInput from '@/app/lib/components/inputs/base/number'
+import SelectInput from '@/app/lib/components/inputs/base/select'
 
 const ValueTypeAnalysisHeader = ({ analysis }) => {
   const { results = [] } = analysis
 
   return (
     <Header name={'\u00A0'}>
-      <HStack w={'full'} flex={2} gap={2} justifyContent={'flex-between'}>
+      <HStack w={'full'} flex={2} gap={2} justifyContent={'flex-between'} alignItems={'flex-start'}>
         { results.map((r, i) => {
-          const { eventId, specimenSequenceId, specimenSpecieName } = r
+          const { id, eventId, specimenSequenceId, specimenSpecieName } = r
           return (
-            <Flex flex={1} borderRadius={'md'} px={3} ps={1} py={3} lineHeight={'1.1rem'} key={i} color={'gray.600'} >
+            <Flex flex={1} px={3} ps={1} py={3} lineHeight={'1.1rem'} key={id} color={'gray.600'} >
               {[eventId, specimenSequenceId].join('.')}<br/>{specimenSpecieName}         
             </Flex>
           )
@@ -26,23 +27,45 @@ const ValueTypeAnalysisHeader = ({ analysis }) => {
   )
 }
 
-const ValueTypeAnalysisInput = ({ value, onChange }) => {
-  const { name, results = [] } = value
+const CodeTypeInput = ({ value, codes, onChange, contentRef }) => {
+  // console.debug('CodeTypeInput', { value, codes, onChange })
   return (
-    <Row label={`${name}\u00A0:`}>
+    <SelectInput value={{ value, label: value }} items={codes.map(c => ({ value: c.code, label: c.description }))} onChange={(selected) => onChange(selected ? selected.value : null)} contentRef={contentRef} clearable={false} />
+  )
+}
+
+const ValueTypeInput = ({ value, onChange, precision }) => {
+  return (
+    <NumberInput value={value} precision={precision} onChange={onChange} />
+  )
+}
+
+const ValueOrCodeTypeAnalysisInput = ({ value, onChange, contentRef }) => {
+  const { name, unit, precision, resultTypeId, codeValues, results = [] } = value
+  const unitLabel  = unit ? ` (${unit})` : ''
+  const label = [name, unitLabel].join('')
+  return (
+    <Row label={`${label}\u00A0:`}>
       <HStack w={'full'} flex={2} gap={2} justifyContent={'space-between'}>
         { results.map((r, i) => {
-          const { id: resultId, value, unit } =  r
-          return (
-            <NumberInput value={value} key={resultId} suffix={unit} onChange={(value) => onChange(resultId, value)} />
-          )
+          const { id, value } =  r
+
+          if (resultTypeId === 1) {
+            return (
+              <ValueTypeInput key={id} value={value} precision={precision} onChange={(value) => onChange(id, value)} />
+            )
+          } else if (resultTypeId === 2) {
+            return (
+              <CodeTypeInput key={id} value={value} codes={codeValues} onChange={(value) => onChange(id, value)} contentRef={contentRef} />
+            )
+          }
         })}
       </HStack>
     </Row>
   )
 }
 
-const ValueTypeAnalysesInput = ({ value, onChange }) => {
+const ValueTypeAnalysesInput = ({ value, onChange, contentRef }) => {
   return (
     <VStack flex={1} alignItems={'stretch'} w={'full'} mb={4}>
       {value.map((analysis, i) => {
@@ -50,7 +73,7 @@ const ValueTypeAnalysesInput = ({ value, onChange }) => {
         return (
           <>
             { i === 0 &&<ValueTypeAnalysisHeader analysis={analysis} /> }
-            <ValueTypeAnalysisInput value={analysis} onChange={onChange}/>
+            <ValueOrCodeTypeAnalysisInput value={analysis} onChange={onChange} key={id} contentRef={contentRef} />
           </>
         )
       }) }  
@@ -63,25 +86,26 @@ const TextTypeAnalysesInput = ({ value, onChange }) => {
     const { id, name, results = [] } = analysis
 
     return (
-      <>
+      <Box key={i}>
         <Header name={name} mb={2} />
         <VStack w={'full'} flex={2} gap={2} justifyContent={'flex-start'} mb={2}>
         { results.map((r, i) => {
-          const { id: resultId, value, eventId, specimenSequenceId, specimenSpecieName } =  r
+          const { id, value, eventId, specimenSequenceId, specimenSpecieName } =  r
           const label = <>{[eventId, specimenSequenceId].join('.')}<br/>{specimenSpecieName}{'\u00A0'}:</>
 
           return (
             <Row label={label} key={id}>
-              <CommentInput w={'full'} flex={2} minRows={2} value={value} onChange={(value) => onChange(resultId, value)} />
+              <CommentInput w={'full'} flex={2} minRows={2} value={value} onChange={(value) => onChange(id, value)} />
             </Row>
           )}) 
         }
       </VStack>
-      </>
+      </Box>
     )})
 }
 
-const AnalysisGroupInput = ({ value = [], onChange }) => {
+const AnalysisGroupInput = ({ value = [], onChange, contentRef }) => {
+  console.debug('AnalysisGroupInput', { contentRef })
   const handleChange = useCallback((resultId, newValue) => {
     // console.debug('AnalysisGroupInput - handleChange', resultId, newValue)
 
@@ -103,8 +127,8 @@ const AnalysisGroupInput = ({ value = [], onChange }) => {
 
   return (
     <Flex direction={'column'} w={'full'} gap={4} justifyContent={'flex-start'}>
-      <ValueTypeAnalysesInput value={valueTypeAnalyses} onChange={handleChange} />  
-      <TextTypeAnalysesInput value={textTypeAnalyses} onChange={handleChange} />
+      <ValueTypeAnalysesInput value={valueTypeAnalyses} onChange={handleChange} contentRef={contentRef} />  
+      <TextTypeAnalysesInput value={textTypeAnalyses} onChange={handleChange} contentRef={contentRef} />
     </Flex>
   )
 }
