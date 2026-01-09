@@ -107,7 +107,7 @@ const insertData = async (data) => {
       updateLocationQuery
     ])
 
-    console.debug('Done inserting data', results)
+    // console.debug('Done inserting data', results)
 
     // throw new Error('shit')
 
