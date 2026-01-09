@@ -19,13 +19,13 @@ const handler = async (req) => {
     const insertResult = await insertData(data)
 
     if (insertResult.error) {
-        console.debug(insertResult.error)
+        // console.debug(insertResult.error)
         await sendEmailConfirmation(null, insertResult.error)
         return Response.json({ status: 'error', error: insertResult.error})
     }
 
     const insertedRowCount = insertResult.data[5]
-    console.debug('Inserted row count:', insertedRowCount)
+    // console.debug('Inserted row count:', insertedRowCount)
 
     await sendEmailConfirmation(insertedRowCount, null)
     return Response.json({ status: 'ok', insertedRowCount })

@@ -9,16 +9,16 @@ const { RESEND_API_KEY, SENDING_NAME } = process.env
 
 const sendEmailConfirmation = async ( insertedRowCount, error ) => {
 
-  console.debug('Sending email confirmation:', insertedRowCount, error)
+  // console.debug('Sending email confirmation:', insertedRowCount, error)
 
   const adminUser = await orm.User.findFirst({ where: { username: 'admin' }})
-  console.debug('Admin user:', adminUser)
+  // console.debug('Admin user:', adminUser)
   const { email } = adminUser
 
   const resend = new Resend(RESEND_API_KEY)
 
   if (error) {
-    console.debug('Sending error email:', error)
+    // console.debug('Sending error email:', error)
     await resend.emails.send({
       from: SENDING_NAME,
       to: [email],
@@ -26,7 +26,7 @@ const sendEmailConfirmation = async ( insertedRowCount, error ) => {
       react: MapaqErrorEmail({ error })
     })
   } else {
-    console.debug('Sending success email:', insertedRowCount)
+    // console.debug('Sending success email:', insertedRowCount)
     await resend.emails.send({
       from: SENDING_NAME,
       to: [email],
