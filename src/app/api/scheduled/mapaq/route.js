@@ -18,15 +18,15 @@ const GET = async (request) => {
   const insertResult = await insertData(data)
 
   if (insertResult.error) {
-    sendEmailConfirmation(null, insertResult.error)
+    await sendEmailConfirmation(null, insertResult.error)
     return Response.json({ status: 'error', error: insertResult.error})
   }
 
-  // console.debug('insertResult', insertResult)
   const insertedRowCount = insertResult.data[5]
+  console.debug('Inserted row count:', insertedRowCount)
 
   // send success email
-  sendEmailConfirmation(insertedRowCount, null)
+  await sendEmailConfirmation(insertedRowCount, null)
   return Response.json({ status: 'ok', insertedRowCount })
 }
 

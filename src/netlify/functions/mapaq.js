@@ -20,14 +20,14 @@ const handler = async (req) => {
 
     if (insertResult.error) {
         console.debug(insertResult.error)
-        sendEmailConfirmation(null, insertResult.error)
+        await sendEmailConfirmation(null, insertResult.error)
         return Response.json({ status: 'error', error: insertResult.error})
     }
 
     const insertedRowCount = insertResult.data[5]
     console.debug('Inserted row count:', insertedRowCount)
 
-    sendEmailConfirmation(insertedRowCount, null)
+    await sendEmailConfirmation(insertedRowCount, null)
     return Response.json({ status: 'ok', insertedRowCount })
 }
 
