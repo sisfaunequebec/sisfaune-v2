@@ -9,7 +9,10 @@ const { RESEND_API_KEY, SENDING_NAME } = process.env
 
 const sendEmailConfirmation = async ( insertedRowCount, error ) => {
 
+  console.debug('Sending email confirmation:', insertedRowCount, error)
+
   const adminUser = await orm.User.findFirst({ where: { username: 'admin' }})
+  console.debug('Admin user:', adminUser)
   const { email } = adminUser
 
   const resend = new Resend(RESEND_API_KEY)
