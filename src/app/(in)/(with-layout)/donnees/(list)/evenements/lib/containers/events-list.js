@@ -2,9 +2,8 @@
 import { useIntersectionObserver } from '@react-hooks-library/core'
 import { useCallback, useEffect, useRef } from 'react'
 
-// import { DateTime } from 'luxon'
-
 import NextLink from 'next/link'
+import { usePathname, useSearchParams  } from 'next/navigation'
 
 import { Flex, IconButton, LinkOverlay, Stack, Text, VStack } from '@chakra-ui/react'
 import { RxArrowRight } from 'react-icons/rx'
@@ -22,6 +21,8 @@ import { LinkListWrapper, ListContainer, LoadMoreButton } from '@/app/(in)/(with
 
 import CenteredMessage from '@/app/lib/components/centered-message'
 
+
+
 const PAGE_SIZE = 25
 
 const NoEvents = () => {
@@ -31,7 +32,12 @@ const NoEvents = () => {
 }
 
 const ItemEvenement = ({ id, silabId, mapaqId, typeName, programName, localityName, submitterName, reportedAt }) => {
-  const href = `/donnees/evenements/${id}`
+  const searchParams = useSearchParams()
+
+  const currentFilters = searchParams.toString()
+  const returnUrl = `/donnees/evenements?${currentFilters}`
+  
+  const href = `/donnees/evenements/${id}?return=${encodeURIComponent(returnUrl)}`
 
   const reportingDate = isoUTCStringToFormat(reportedAt)
 

@@ -1,13 +1,10 @@
 'use client'
-
 import { useEffect, useCallback, useRef } from 'react'
 
-import { DateTime } from 'luxon'
-
 import NextLink from 'next/link'
+import { usePathname, useSearchParams  } from 'next/navigation'
 
 import { Flex, Stack, VStack, Text, IconButton, LinkOverlay, AbsoluteCenter, EmptyState, Container } from '@chakra-ui/react'
-import { Button } from '@/app/lib/components/ui/button'
 import { RxArrowRight, RxPlus, RxPlusCircled } from 'react-icons/rx'
 
 import { useQueryStates } from 'nuqs'
@@ -32,13 +29,14 @@ const NoSpecimens = () => {
 }
 
 const SpecimenItem = ({ id, eventId, sequenceId, specieName, specieBinome, cqsasNumber, localityName, submitterName, reportedAt }) => {
-  const href = `/donnees/evenements/${eventId}`
+  const searchParams = useSearchParams()
+
+  const currentFilters = searchParams.toString()
+  const returnUrl = `/donnees/specimens?${currentFilters}`
+  
+  const href = `/donnees/evenements/${eventId}?return=${encodeURIComponent(returnUrl)}`
 
   const reportingDate = isoUTCStringToFormat(reportedAt) // reportedAt ? DateTime.fromISO(reportedAt).toFormat('yyyy-LL-dd') : null
-
-  // const handleDelete = useCallback(() => {
-  //   window.alert(`Effacer specimen id = ${id}`)
-  // }, [id])
 
   return (
     <LinkListWrapper>

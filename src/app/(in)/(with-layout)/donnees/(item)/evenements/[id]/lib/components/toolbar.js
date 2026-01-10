@@ -2,7 +2,7 @@
 'use client'
 import { useCallback } from 'react'
 
-import { useRouter, useParams } from 'next/navigation'
+import { useRouter, useParams, useSearchParams } from 'next/navigation'
 
 import { useSWRConfig } from 'swr'
 
@@ -67,11 +67,12 @@ const DeleteEventButton = ({ eventId }) => {
 
 const BackButton = () => {
   const router = useRouter()
+  const searchParams = useSearchParams()
+  const returnTo = searchParams.get('return') || '/donnees/evenements'
 
   const handleGoBack = useCallback(() => {
-    // console.debug('click')
-    router.push('/donnees', { scroll: false })
-  }, [router])
+    router.push(returnTo, { scroll: false })
+  }, [router, returnTo])
 
   return (
     <ResponsiveButton label={'Retour à la liste'} variant={'subtle'} colorPalette={'green'} icon={<RxArrowLeft />} onClick={handleGoBack} />
