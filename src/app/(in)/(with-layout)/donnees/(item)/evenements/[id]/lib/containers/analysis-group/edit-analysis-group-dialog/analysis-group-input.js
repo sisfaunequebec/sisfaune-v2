@@ -1,4 +1,6 @@
-import { useCallback } from 'react'
+import { useCallback, useMemo } from 'react'
+
+import orderBy from 'lodash.orderby'
 
 import { Box, Flex, Container, VStack, AbsoluteCenter, Icon, IconButton, Text,  HStack, Separator, Fieldset, Input, Field as ChakraField } from '@chakra-ui/react'
 
@@ -28,9 +30,17 @@ const ValueTypeAnalysisHeader = ({ analysis }) => {
 }
 
 const CodeTypeInput = ({ value, codes, onChange, contentRef }) => {
-  // console.debug('CodeTypeInput', { value, codes, onChange })
+  console.debug('CodeTypeInput', { value, codes, onChange })
+
+  const items = useMemo(() => {
+    const activeItems = codes.filter(c => c.isActive)
+    const sortedItems = orderBy(activeItems, 'displayOrder')
+    const items = sortedItems.map(c => ({ value: c.code, label: c.description }))
+    return items
+  }, [codes])
+
   return (
-    <SelectInput value={{ value, label: value }} items={codes.map(c => ({ value: c.code, label: c.description }))} onChange={(selected) => onChange(selected ? selected.value : null)} contentRef={contentRef} clearable={false} />
+    <SelectInput value={{ value, label: value }} items={items} onChange={(selected) => onChange(selected ? selected.value : null)} contentRef={contentRef} clearable={false} />
   )
 }
 
