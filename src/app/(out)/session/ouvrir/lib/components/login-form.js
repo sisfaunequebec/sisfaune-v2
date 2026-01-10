@@ -1,5 +1,8 @@
 'use client'
 
+import { useSession } from 'next-auth/react'
+import { useRouter } from 'next/navigation'
+
 import { useForm, FormProvider } from 'react-hook-form'
 import { valibotResolver } from '@hookform/resolvers/valibot'
 
@@ -33,6 +36,9 @@ import ResetPasswordDialog from './reset-password-dialog'
 import FirstLoginDialog from './first-login-dialog'
 
 const LoginForm = () => {
+  const { update } = useSession()
+  const router = useRouter()
+  
   const { ask: resetPassword, dialog: resetPasswordDialog } = useDialog(ResetPasswordDialog)
   const { ask: newPassword, dialog: firstLoginDialog } = useDialog(FirstLoginDialog)
 
@@ -52,6 +58,8 @@ const LoginForm = () => {
       Object.entries(errors).forEach(([name, message]) => {
         setError(name, { type: 'server', message })
       }) 
+    } else {
+      router.replace('/donnees/evenements')
     }
 
     return result

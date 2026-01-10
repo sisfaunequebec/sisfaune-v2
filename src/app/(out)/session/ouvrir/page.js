@@ -1,15 +1,27 @@
-import { redirect } from 'next/navigation'
-import { auth } from '@/lib/auth'
+'use client'
+import { useEffect } from 'react'
+
+import { useRouter } from 'next/navigation'
+import { useSession } from 'next-auth/react'
 
 import { Flex } from '@chakra-ui/react'
 
 import LoginForm from './lib/components/login-form'
 
-const OuvrirSession = async () => {
-  const session = await auth()
+const Login = () => {
+  const router = useRouter()
+  const { data: session, status } = useSession()
 
-  if (session) {
-    return redirect('/donnees/evenements')
+  console.debug(session, status)
+
+  useEffect(() => {
+    if (status === 'authenticated') {
+      router.replace('/donnees/evenements')
+    }
+  }, [status, session, router])
+
+  if (status === 'loading' || status === 'authenticated') {
+    return null
   }
 
   return (
@@ -19,4 +31,4 @@ const OuvrirSession = async () => {
   )
 }
 
-export default OuvrirSession
+export default Login

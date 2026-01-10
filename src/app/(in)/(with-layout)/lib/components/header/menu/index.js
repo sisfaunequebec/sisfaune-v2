@@ -1,4 +1,3 @@
-'use server'
 import getUser from '@/lib/auth/get-user'
 
 import DesktopMenu from './desktop'
