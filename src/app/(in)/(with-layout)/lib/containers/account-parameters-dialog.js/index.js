@@ -24,31 +24,17 @@ const formSchema = [
     title: null,
     fields: [
       { label: 'Votre adresse de courriel\u00A0:', name: 'email' },
-      // { label: 'Numéro de spécimen SILAB\u00A0:', name: 'silabIdentificationNumber' },
-      // { label: 'Numéro de spécimen CQSAS\u00A0:', name: 'cqsasNumber' },
-      // { label: 'Numéro d\'enregistement SEFAQ\u00A0:', name: 'sefaqNumber' },
-      // { label: 'Numéro de permis de chasse\u00A0:', name: 'huntingPermitNumber' },
-      // { label: 'Marques d\'identification\u00A0:', name: 'identificationMarks', component: CommentInput },
-      // { label: 'État lors de la découverte\u00A0:', name: 'discoveryState', component: DiscoveryStateSelect },
-      // { label: 'Cause de la mort\u00A0:', name: 'deathCause', component: DeathCauseSelect }
+      { label: 'Votre nouveau mot de passe\u00A0:', name: 'password', component: PasswordInput }
     ]
   }
 ]
 
 const AccountParametersDialog = ({ close, account }) => {
   const router = useRouter()
-  // const { update, data } = useSession()
-  // // console.debug(data)
-  // const { user: account } = data
   const { id: userId } = account
 
   const handleSubmit = useCallback(async (data) => {
     const result = await updateAccountParametersAction(userId, data)
-    // const { email } = data
-    // console.debug(data)
-    // // await update({
-    // //   user: { email }
-    // // })
     router.refresh()
     return result
   }, [userId, router])
