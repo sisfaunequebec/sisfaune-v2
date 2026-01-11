@@ -18,20 +18,20 @@ const StyledTrigger = ({ children, ...rest }) => {
 
 const NavTabs = () => {
   const pathname = usePathname()
-  const params = useSearchParams()
+  // const params = useSearchParams()
 
   const splitedPathname = pathname.split('/')
   const lastPathSegment = splitedPathname.at(-1)
 
   return (
-    <Tabs.Root defaultValue='utilisateurs' value={lastPathSegment} variant='subtle' size={['lg', null, 'sm']} colorPalette='green'>
+    <Tabs.Root defaultValue={'utilisateurs'} value={lastPathSegment} variant={'subtle'} size={['lg', null, 'sm']} colorPalette={'green'}>
       <Tabs.List>
         <StyledTrigger value={'utilisateurs'}>
           <Link asChild unstyled>
             <NextLink href={'/administration/utilisateurs'}>Utilisateurs</NextLink>
           </Link>
         </StyledTrigger>
-        <StyledTrigger value={'analyses'}>
+        {/* <StyledTrigger value={'analyses'}>
           <Link asChild unstyled>
             <NextLink href={'/administration/analyses'}>Analyses</NextLink>
           </Link>
@@ -39,11 +39,6 @@ const NavTabs = () => {
         <StyledTrigger value={'valeurs'}>
           <Link asChild unstyled>
             <NextLink href={'/administration/valeurs'}>Tables de valeurs</NextLink>
-          </Link>
-        </StyledTrigger>
-        {/* <StyledTrigger value={'systeme'}>
-          <Link asChild unstyled>
-            <NextLink href={`/administration/systeme`}>Système</NextLink>
           </Link>
         </StyledTrigger> */}
       </Tabs.List>

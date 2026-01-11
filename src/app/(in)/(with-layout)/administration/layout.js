@@ -1,7 +1,6 @@
 import getUser from '@/lib/auth/get-user'
 
-import { VStack, EmptyState, AbsoluteCenter, Container} from '@chakra-ui/react'
-import { RxExclamationTriangle } from 'react-icons/rx'
+import { AbsoluteCenter } from '@chakra-ui/react'
 
 import UnauthorizedMessage from '@/app/lib/components/unauthorized-message'
 

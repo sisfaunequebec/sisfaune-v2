@@ -1,20 +1,20 @@
 'use client'
-import { useState } from 'react'
+import { useState, useCallback } from 'react'
 
-// import { DateTime } from 'luxon'
 import generatePassword from '@/lib/data/users/generate-password'
 
-import addUser from './action'
+import addUserAction from './add-user.action'
 
-import { Fieldset, Input, Button, Separator, IconButton, useClipboard } from '@chakra-ui/react'
-import { RxCopy, RxCheckCircled, RxCheck } from 'react-icons/rx'
-
-import BaseDialog from '@/app/lib/components/dialogs/base'
-
-import ControlledField from '@/app/lib/components/controlled-field'
-
-import addUserSchema from './schema'
+import { Text, Button, useClipboard, VStack } from '@chakra-ui/react'
 import { InputGroup } from '@/app/lib/components/ui/input-group'
+
+import { RxCopy } from 'react-icons/rx'
+
+import BaseDialog, { Fields } from '@/app/lib/components/dialogs/base'
+
+import TextInput from '@/app/lib/components/inputs/base/text'
+
+import schema from './schema'
 
 const CopyPasswordButton = ({ password }) => {
   const clipboard = useClipboard({ value: password })
@@ -28,38 +28,54 @@ const CopyPasswordButton = ({ password }) => {
 
 const PasswordDisplay = ({ value }) => {
   return (
-    <InputGroup endElement={<CopyPasswordButton password={value} />} w='100%'>
-      <Input autoComplete='off' value={value} readOnly />
-    </InputGroup>
+    <VStack>
+      <InputGroup endElement={<CopyPasswordButton password={value} />} w='100%'>
+        <TextInput autoComplete={'off'} value={value} readOnly />
+      </InputGroup>
+      <Text color={'gray.600'} lineHeight={'shorter'}>IMPORTANT : ce mot de passe a été généré automatiquement et sera envoyé par courriel à l&apos;utilisateur: il ne sera plus visible par la suite. Il est recommandé de le copier si nécessaire avant de continuer...</Text>
+    </VStack>
   )
 }
 
+const formSchema = [
+  { 
+    title: null,
+    fields: [
+      { label: 'Prénom\u00A0:', name: 'firstName' },
+      { label: 'Nom de famille\u00A0:', name: 'lastName' },
+      { label: 'Adresse de courriel\u00A0:', name: 'email' }
+    ]
+  },
+    { 
+    title: null,
+    fields: [
+      { label: 'Nouveau mot de passe\u00A0:', name: 'password', component: PasswordDisplay }
+    ]
+  }
+]
+
 const AddUserDialog = ({ close }) => {
-  const [password, setPassword] = useState(generatePassword())
+  // const [password, setPassword] = useState()
+
   const defaultValues = {
-    fullName: null,
+    firstName: null,
+    lastName: null,
     email: null,
-    password
+    password: generatePassword()
   }
 
+  const handleSubmit = useCallback(async (data) => {
+    const result = await addUserAction(data)
+    return result
+  }, [])
+
   return (
-    <BaseDialog title='Nouvel utilisateur' onClose={close} onSubmit={addUser} submitBtnLabel='Inscrire' schema={addUserSchema} defaultValues={defaultValues}>
-      {(contentRef) => (
-        <Fieldset.Root>
-          <Fieldset.Content gap={1}>
-            <ControlledField name='fullName' label='Nom complet :' variant='horizontal'>
-              <Input autoComplete='off' />
-            </ControlledField>
-            <ControlledField name='email' label='Adresse de courriel :' variant='horizontal'>
-              <Input autoComplete='off' type='email' />
-            </ControlledField>
-            <Separator />
-            <ControlledField name='password' label='Mot de passe :' variant='horizontal' helperText={'IMPORTANT : ce mot de passe a été généré automatiquement et sera envoyé par courriel à l\'utilisateur: il ne sera plus visible par la suite. Il est recommandé de le copier si nécessaire avant de continuer...'}>
-              <PasswordDisplay />
-            </ControlledField>
-          </Fieldset.Content>
-        </Fieldset.Root>
-      )}
+    <BaseDialog title={'Nouvel utilisateur'} onClose={close} onSubmit={handleSubmit} submitBtnLabel={'Ajouter'} schema={schema} defaultValues={defaultValues}>
+      {(contentRef, watched) => {
+        return (
+          <Fields formSchema={formSchema} contentRef={contentRef} data={null} />
+        )}
+      }
     </BaseDialog>
   )
 }

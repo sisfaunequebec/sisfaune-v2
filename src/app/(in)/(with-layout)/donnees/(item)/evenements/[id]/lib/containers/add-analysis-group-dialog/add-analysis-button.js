@@ -8,7 +8,6 @@ import { useSWRConfig } from 'swr'
 import wait from '@/utils/wait'
 
 import { toaster } from '@/app/lib/components/ui/toaster'
-
 import { RxPlus } from 'react-icons/rx'
 
 // import { addEvent } from '@/lib/data/events/service'
@@ -23,10 +22,10 @@ const AddAnalysisButton = ({ eventId }) => {
   const router = useRouter()
   const { mutate, cache } = useSWRConfig()
 
-  const { ask: confirmAdd, dialog: addSpecimenDialog } = useDialog(AddAnalysisDialog)
+  const { ask: add, dialog: addSpecimenDialog } = useDialog(AddAnalysisDialog)
 
   const handleAddAnalysis = useCallback(async () => {
-    const result = await confirmAdd({ eventId })
+    const result = await add({ eventId })
 
     if (result) {
       router.replace(`/donnees/evenements/${eventId}`, { scroll: false })
@@ -47,7 +46,7 @@ const AddAnalysisButton = ({ eventId }) => {
         duration: 3000
       })
     }
-  }, [eventId, cache, mutate, confirmAdd])
+  }, [eventId, cache, mutate, add])
 
   return (
     <>

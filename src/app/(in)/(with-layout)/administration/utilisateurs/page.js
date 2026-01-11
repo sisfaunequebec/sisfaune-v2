@@ -1,9 +1,7 @@
-import { AbsoluteCenter, Container, Flex, VStack } from '@chakra-ui/react'
-
 import PageContainer from '../../lib/components/page-container'
 import ContentContainer from '../../lib/components/content-container'
 import Toolbar from '../lib/components/toolbar'
-import NewUserButton from './lib/components/new-user-button'
+import AddUserButton from './lib/components/add-user-button'
 
 import Filters from './lib/components/filters'
 import UsersList from './lib/containers/users-list'
@@ -16,7 +14,7 @@ const UsersAdminPage = async () => {
   return (
     <>
       <Toolbar>
-        <NewUserButton />
+        <AddUserButton />
       </Toolbar>
       <PageContainer>
         <Filters />

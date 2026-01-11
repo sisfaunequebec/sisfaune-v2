@@ -150,13 +150,44 @@ const getUser = async (id) => {
   return { payload: user }
 }
 
-const buildCreateUserPayload = async(userToCreate) => {
-  const { firstName, lastName, email, password } = userToCreate
+const sendWelcomeEmail = async ({ email, firstName, username, password }) => {
+  // if (isProduction()) {
+    const resend = new Resend(RESEND_API_KEY)
+    const { data, error } = await resend.emails.send({
+      from: process.env.SENDING_NAME,
+      to: [email],
+      subject: 'SIS Faune - Votre inscription',
+      react: WelcomeEmail({ firstName, username, password })
+    })
+  // }
+}
+
+// const addUser = async (payload) => {
+//   const { hash, password, ...rest } = payload
+//   try {
+//     const inserted = await orm.user.create({
+//       data: {
+//         ...rest,
+//         password: hash
+//       }
+//     })
+//     return { data, errors: null }
+//   } catch (e) {
+//     const { code } = e
+//     if (code === 'P2002') {
+//       return { data: null, errors: { email: 'Cette adresse de courriel est déjà utilisée par un autre utilisateur. Veuillez vérifier ou contacter l\'administrateur à admin@sisfaunequebec.ca' }}
+//     }
+//     return { data: null, errors: { server: e.message } }
+//   }
+// }
+
+const buildCreateUserPayload = async (data) => {
+  const { firstName, lastName, email, password } = data
 
   const username = slugify([firstName, lastName].join('-'), { lower: true })
   const hash = bcrypt.hashSync(password, 10)
 
-  const data = {
+  const payload = {
     username,
     firstName,
     lastName,
@@ -165,39 +196,32 @@ const buildCreateUserPayload = async(userToCreate) => {
     hash
   }
 
-  return data
+  return payload
 }
 
-const sendWelcomeEmail = async ({ email, firstName, username, password }) => {
-  if (isProduction()) {
-    const resend = new Resend(RESEND_API_KEY)
-    const { data, error } = await resend.emails.send({
-      from: process.env.SENDING_NAME,
-      to: [email],
-      subject: 'SIS Faune - Votre inscription',
-      react: WelcomeEmail({ firstName, username, password })
+const createUser = async (data) => {
+  const payload = await buildCreateUserPayload(data)
+  const { hash, ...rest } = payload
+
+  try {
+    await orm.user.create({
+      data: {
+        ...rest,
+        password: hash
+      }
     })
-  }
-}
 
-const insertUser = async (payload) => {
-  const { hash, password, ...rest } = payload
-  const inserted = await orm.user.create({
-    data: {
-      ...rest,
-      password: hash
+    const {  email, firstName, username, password } = rest
+    await sendWelcomeEmail({ email, firstName, username, password })
+
+    return { data: payload, errors: null }
+  } catch (e) {
+    const { code } = e
+    if (code === 'P2002') {
+      return { data: null, errors: { email: 'Cette adresse de courriel est déjà utilisée par un autre utilisateur.' }}
     }
-  })
-  return inserted
-}
-
-const createUser = async (userToCreate) => {
-  const payload = await buildCreateUserPayload(userToCreate)
-  const insertedUser = await insertUser(payload)
-  const { email, firstName, username, password } = payload
- 
-  await sendWelcomeEmail({ email, firstName, username, password })
-  return insertedUser
+    return { data: null, errors: { server: e.message } }
+  }
 }
 
 const sendResetPasswordEmail = async ({ email, username, password }) => {
@@ -266,7 +290,6 @@ const updateUser = async (user) => {
 
 export {
   getUsers,
-  // getUsersCount,
   getUser,
   buildCreateUserPayload,
   updateUser,

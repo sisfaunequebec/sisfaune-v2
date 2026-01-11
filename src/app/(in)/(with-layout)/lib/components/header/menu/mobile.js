@@ -85,7 +85,7 @@ const MobileMenu = ({ account }) => {
                     <Box>Base de données</Box>
                     {(segment === 'donnees') && <svg stroke='currentColor' fill='none' stroke-width='2' viewBox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' height='1em' width='1em' xmlns='http://www.w3.org/2000/svg'><polyline points='20 6 9 17 4 12' /></svg>}
                   </Flex>
-                  <Flex py={2} alignItems='center' justifyContent='space-between' onClick={() => isAdmin && handleLinkClick('administration')} opacity={true /*!isAdmin*/ && 0.5}>
+                  <Flex py={2} alignItems='center' justifyContent='space-between' onClick={() => isAdmin && handleLinkClick('administration')} opacity={!isAdmin && 0.5}>
                     <Box>Administration</Box>
                     {(segment === 'administration') && <svg stroke='currentColor' fill='none' stroke-width='2' viewBox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' height='1em' width='1em' xmlns='http://www.w3.org/2000/svg'><polyline points='20 6 9 17 4 12' /></svg>}
                   </Flex>
