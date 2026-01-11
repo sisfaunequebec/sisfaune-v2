@@ -17,21 +17,18 @@ import { RxExit, RxGear, RxHamburgerMenu } from 'react-icons/rx'
 
 import useDialog from '@/utils/use-dialog.js'
 
-import UserParametersDialog from '../../../containers/user-parameters-dialog.js/index.js'
+import AccountParametersDialog from '../../../containers/account-parameters-dialog.js/index.js'
 
-const DesktopMenu = ({ user }) => {
+const DesktopMenu = ({ account }) => {
   const segment = useSelectedLayoutSegment()
 
-  const { fullName, email, isAdmin } = user
+  const { fullName, email, isAdmin } = account
 
-  const { ask: openParameters, dialog: parametersDialog } = useDialog(UserParametersDialog)
+  const { ask: openParameters, dialog: parametersDialog } = useDialog(AccountParametersDialog)
 
   const handleModifyParameters = useCallback(async () => {
-    const result = await openParameters({ user })
-    if (result) {
-      console.debug('Modify !!!')
-    }
-  }, [openParameters, user])
+    await openParameters({ account })
+  }, [openParameters])
 
   const router = useRouter()
 
@@ -63,11 +60,11 @@ const DesktopMenu = ({ user }) => {
               <MenuRadioItem value='administration' disabled={true /*!isAdmin*/}>Administration</MenuRadioItem>
             </MenuRadioItemGroup>
             <Menu.Separator />
-            {/* <Menu.Item onClick={handleModifyParameters} value='params'>
+            <Menu.Item onClick={handleModifyParameters} value='params'>
               <RxGear />
               <Box flex={1} ms={0.5}>Vos paramètres...</Box>
-            </Menu.Item> */}
-            {/* <Menu.Separator /> */}
+            </Menu.Item>
+            <Menu.Separator />
             <Menu.Item onClick={() => { signOut() }} value='signout'>
               <RxExit />
               <Box flex={1} ms={0.5}>Quitter...</Box>

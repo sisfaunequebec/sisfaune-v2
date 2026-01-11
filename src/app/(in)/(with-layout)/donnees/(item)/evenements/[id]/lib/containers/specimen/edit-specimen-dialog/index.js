@@ -25,7 +25,7 @@ import MeasuresInput from './measures-input'
 
 import schema from './edit-specimen.schema'
 
-const watchedField = ['deathCause', 'euthanasiaMethod']
+const watchedFields = ['deathCause', 'euthanasiaMethod']
 
 const formSchema = [
   { 
@@ -96,7 +96,7 @@ const EditSpecimenDialog = ({ close, eventId, specimenId, data }) => {
   const { name } = specie
 
   return (
-    <BaseDialog title={`Spécimen no ${eventId}.${sequenceId} - ${name}`} size={'lg'} onClose={close} onSubmit={handleSubmit} submitBtnLabel={'Sauvegarder'} schema={schema} schemaType={'valibot'} defaultValues={defaultValues} watches={watchedField}>
+    <BaseDialog title={`Spécimen no ${eventId}.${sequenceId} - ${name}`} size={'lg'} onClose={close} onSubmit={handleSubmit} submitBtnLabel={'Sauvegarder'} schema={schema} schemaType={'valibot'} defaultValues={defaultValues} watches={watchedFields}>
       {(contentRef, watched) => {
         return (
           <Fields formSchema={formSchema} contentRef={contentRef} watched={watched} data={data} />

@@ -14,7 +14,7 @@ const DeleteAnalysisDialog = ({ close, analysisGroup, onDelete }) => {
     close(true)
   }
 
-  console.debug('DeleteAnalysisDialog', { analysisGroup })
+  // console.debug('DeleteAnalysisDialog', { analysisGroup })
   const { name: analysisGroupName } = analysisGroup
 
   return (

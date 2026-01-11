@@ -1,7 +1,6 @@
 'use client'
 
 import wait from '@/utils/wait'
-import noop from '@/utils/noop'
 
 import resetPassword from './reset-password.action'
 

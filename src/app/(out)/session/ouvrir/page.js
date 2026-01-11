@@ -12,8 +12,6 @@ const Login = () => {
   const router = useRouter()
   const { data: session, status } = useSession()
 
-  console.debug(session, status)
-
   useEffect(() => {
     if (status === 'authenticated') {
       router.replace('/donnees/evenements')

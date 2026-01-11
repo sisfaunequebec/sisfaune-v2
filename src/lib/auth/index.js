@@ -72,9 +72,10 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     credentialsProvider
   ],
   callbacks: {
-    jwt({ token, user }) {
-      if (user) { // user is available during sign-in
+    jwt({ token, user, trigger, session }) {
+      if (user) {
         token.id = user.id
+        token.email = user.email
         token.fullName = user.fullName
         token.isAdmin = user.isAdmin
         token.permissions = user.permissions
@@ -83,6 +84,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     },
     session({ session, token }) {
       session.user.id = token.id
+      session.user.email = token.email
       session.user.fullName = token.fullName
       session.user.isAdmin = token.isAdmin
       session.user.permissions = token.permissions

@@ -3,7 +3,7 @@
 import { resetUserPassword } from '@/lib/data/users/service'
 
 const resetPassword = async (data) => {
-  const result = resetUserPassword(data)
+  const result = await resetUserPassword(data)
   return result
 }
 
