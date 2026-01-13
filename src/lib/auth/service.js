@@ -2,24 +2,43 @@
 import 'server-only'
 
 import bcrypt from 'bcrypt'
-import slugify from 'slugify'
+
+import { Resend } from 'resend'
 
 import orm from '../data/database'
 
-// import isProduction from '@/utils/is-production'
+import ChangePasswordEmail  from '@/lib/email/password-change'
+
+const { RESEND_API_KEY } = process.env
+
+const sendChangePasswordEmail = async ({ email, username, password }) => {
+  const resend = new Resend(RESEND_API_KEY)
+  const { data, error } = await resend.emails.send({
+    from: process.env.SENDING_NAME,
+    to: [email],
+    subject: 'SIS Faune - Votre nouveau mot de passe',
+    react: ChangePasswordEmail({ username, password })
+  })
+}
 
 const updateAccount = async (userId, data) => {
   const { email, password } = data
   const hash = password ? bcrypt.hashSync(password, 10) : undefined
+
   try {
-    const updated = await orm.User.update({
+    const updatedUser = await orm.User.update({
       where: {
         id: userId
       },
       data: { email, password: hash }
     })
+
+    const { username } = updatedUser
+    await sendChangePasswordEmail({ email, username, password })
+    
     return { data, errors: null }
   } catch (e) {
+    console.debug(e)
     const { code } = e
     if (code === 'P2002') {
       return { data: null, errors: { email: 'Cette adresse de courriel est déjà utilisée par un autre utilisateur. Veuillez vérifier ou contacter l\'administrateur à admin@sisfaunequebec.ca' }}

@@ -70,7 +70,7 @@ const AddUserDialog = ({ close }) => {
   }, [])
 
   return (
-    <BaseDialog title={'Nouvel utilisateur'} onClose={close} onSubmit={handleSubmit} submitBtnLabel={'Ajouter'} schema={schema} defaultValues={defaultValues}>
+    <BaseDialog title={'Nouvel utilisateur'} onClose={close} onSubmit={handleSubmit} submitBtnLabel={'Ajouter'} schema={schema} schemaType={'valibot'} defaultValues={defaultValues}>
       {(contentRef, watched) => {
         return (
           <Fields formSchema={formSchema} contentRef={contentRef} data={null} />

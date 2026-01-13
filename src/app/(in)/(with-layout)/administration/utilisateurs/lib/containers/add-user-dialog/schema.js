@@ -1,10 +1,12 @@
-import { z } from 'zod'
+import * as v from 'valibot'
 
-const schema = z.object({
-  firstName: z.string({ message: 'Le prénom doit être précisé' }),
-  lastName: z.string({ message: 'Le nom de famille doit être précisé' }),
-  email: z.string({ message: 'Une adresse de courriel valide doit être précisée' }).email({ message: 'Une adresse de courriel valide doit être précisée' }),
-  password: z.string({})
-})
+const schema = v.pipe(
+  v.object({
+    firstName: v.pipe(v.string('Le prénom doit être précisé'), v.trim()),
+    lastName: v.pipe(v.string('Le nom de famille doit être précisé'), v.trim()),
+    email: v.pipe(v.string('L\'adresse de courriel est requise'), v.trim(), v.email('Une adresse de courriel valide est requise')),
+    password: v.nullish(v.string())
+  })
+)
 
 export default schema

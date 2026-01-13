@@ -14,7 +14,7 @@ import isProduction from '@/utils/is-production'
 import getAuthUser from '@/lib/auth/get-user'
 
 import WelcomeEmail from '@/lib/email/welcome'
-import ResetPasswordEmail  from '@/lib/email/password-reset'
+import ChangePasswordEmail  from '@/lib/email/password-change'
 
 const { RESEND_API_KEY } = process.env
 
@@ -151,15 +151,13 @@ const getUser = async (id) => {
 }
 
 const sendWelcomeEmail = async ({ email, firstName, username, password }) => {
-  // if (isProduction()) {
-    const resend = new Resend(RESEND_API_KEY)
-    const { data, error } = await resend.emails.send({
-      from: process.env.SENDING_NAME,
-      to: [email],
-      subject: 'SIS Faune - Votre inscription',
-      react: WelcomeEmail({ firstName, username, password })
-    })
-  // }
+  const resend = new Resend(RESEND_API_KEY)
+  const { data, error } = await resend.emails.send({
+    from: process.env.SENDING_NAME,
+    to: [email],
+    subject: 'SIS Faune - Votre inscription',
+    react: WelcomeEmail({ firstName, username, password })
+  })
 }
 
 // const addUser = async (payload) => {
@@ -230,7 +228,7 @@ const sendResetPasswordEmail = async ({ email, username, password }) => {
     from: process.env.SENDING_NAME,
     to: [email],
     subject: 'SIS Faune - Votre nouveau mot de passe',
-    react: ResetPasswordEmail({ username, password })
+    react: ChangePasswordEmail({ username, password })
   })
   return { data, error }
 }
@@ -249,10 +247,7 @@ const resetUserPassword = async (data) => {
     })
 
     const { username, email} = updatedUser
-
-    if (isProduction()) {
-      await sendResetPasswordEmail({ email, username, password: newPassword })
-    }
+    await sendResetPasswordEmail({ email, username, password: newPassword })
 
     return { data: { newPassword, email }, errors: null }
   } catch (e) {

@@ -22,7 +22,7 @@ import Footer from './lib/footer'
 
 const baseUrl = process.env.URL
 
-export const ResetPasswordEmail = ({ username, password }) => (
+export const ChangePasswordEmail = ({ username, password }) => (
   <Html>
     <Head />
     <Tailwind>
@@ -37,13 +37,13 @@ export const ResetPasswordEmail = ({ username, password }) => (
           </Section> */}
           <Section>
             <Text className={'text-[16px]'}>Bonjour <strong>{ username }</strong></Text>
-            <Text className={'text-[16px]'}>Le mot de passe suivant vous a été assigné :</Text>
+            <Text className={'text-[16px]'}>Vous trouverez ci-dessous votre nouveau mot de passe :</Text>
           </Section>
           <Section className={'bg-gray-100 text-[14px] rounded px-6 py-4'}>
             <Text className={'m-0 p-0'}><strong>{ password }</strong></Text>
           </Section>
           <Section>
-            <Text className={'text-[16px]'}>Nous vous recommandons fortement de le changer lors de votre prochaine session.</Text>
+            {/* <Text className={'text-[16px]'}>Nous vous recommandons fortement de le changer lors de votre prochaine session.</Text> */}
             <Text className={'text-[16px]'}>Merci de votre collaboration,</Text>
             <Hr />
             <Footer />
@@ -54,9 +54,9 @@ export const ResetPasswordEmail = ({ username, password }) => (
   </Html>
 )
 
-ResetPasswordEmail.PreviewProps = {
+ChangePasswordEmail.PreviewProps = {
   username: 'bruno_gendron',
   password: 'password'
 }
 
-export default ResetPasswordEmail
+export default ChangePasswordEmail
