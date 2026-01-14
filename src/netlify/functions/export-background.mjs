@@ -1,7 +1,9 @@
 import fs from 'fs'
 import path from 'path'
 
-import { Readable } from 'stream'
+import { readFile } from 'node:fs/promises'
+
+// import { Readable } from 'stream'
 
 import tmp from 'tmp'
 import ExcelJS from 'exceljs'
