@@ -1,10 +1,12 @@
 import fs from 'fs'
 import path from 'path'
 
+import { Readable } from 'stream'
+
 import tmp from 'tmp'
 import ExcelJS from 'exceljs'
 
-import { DateTime } from 'luxon'
+// import { DateTime } from 'luxon'
 
 import { getStore } from '@netlify/blobs'
 
@@ -45,7 +47,7 @@ async function streamExcelFile() {
       id: i,
       name: `User_${i}`,
       timestamp: new Date().toISOString()
-    };
+    }
 
     // Add row and commit it to the stream immediately
     worksheet.addRow(rowData).commit();
@@ -72,11 +74,14 @@ const handler = async (req, context) => {
   // const { modified } = await store.setJSON('excel.xlsx', params)
 
   const filePath = await streamExcelFile()
+  console.debug(filePath)
+
   const fileName = path.basename(filePath)
   const fileStream = fs.createReadStream(filePath)
+  const webStream = Readable.toWeb(fileStream)
 
   const store = getStore('data-export', { siteID: '58d1d99c-beda-4a8f-b979-02f061f72ec4' })
-  await store.set(fileName, fileStream)
+  await store.set(fileName, webStream)
 
   return Response.json({ status: 'ok' })
 }
