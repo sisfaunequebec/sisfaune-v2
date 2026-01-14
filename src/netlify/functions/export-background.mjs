@@ -1,3 +1,5 @@
+import { getStore } from '@netlify/blobs'
+
 import { searchParams, urlKeys } from '@/lib/data/events/get-events.params'
 
 import {
@@ -14,6 +16,11 @@ const handler = async (req, context) => {
 
   const params = loader(searchParams)
   console.debug('Export', params)
+
+  const store = getStore('data-export', { siteID: '58d1d99c-beda-4a8f-b979-02f061f72ec4' })
+  const { modified } = await store.setJSON('test', params)
+
+  console.debug('Export', modified)
 
   return Response.json({ status: 'ok' })
 }
