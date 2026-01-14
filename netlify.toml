@@ -1,0 +1,10 @@
+[dev]
+  # The port your Next.js application runs on (default is 3000 for Next.js)
+  targetPort = 4501 
+  # The port for the Netlify Dev server that you access in the browser (default is 8888)
+  port = 8888
+  # The command to start your Next.js dev server
+  command = "next dev --turbopack -p 4501"
+
+[functions]
+  directory = "src/netlify/functions" # Ensure this matches your folder structure

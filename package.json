@@ -23,7 +23,8 @@
     "test": "dotenv -e .env.test.local -- vitest",
     "email-dev": "email dev --dir src/lib/email --port 4502",
     "postinstall": "prisma generate",
-    "postbuild": "npx prisma migrate deploy"
+    "postbuild": "npx prisma migrate deploy",
+    "netlify-dev": "netlify dev"
   },
   "dependencies": {
     "@chakra-ui/react": "^3.26.0",
@@ -86,6 +87,7 @@
     "@vitejs/plugin-react": "^4.5.0",
     "eslint": "^8",
     "eslint-config-next": "15.0.2",
+    "netlify-cli": "^23.13.3",
     "prisma": "^5.18.0",
     "react-email": "4.0.11",
     "standard": "^17.1.2",

@@ -4,13 +4,12 @@ import {
   createLoader
 } from 'nuqs/server'
 
-// import getUser from '@/lib/auth/get-user'
-// import { getEvents } from '@/lib/data/events/service'
-
 const loader = createLoader(searchParams, { urlKeys })
 
 const handler = async (req, context) => {
-  const { url } = req
+  const { url: raw } = req
+  
+  const url = new URL(raw)
   const { searchParams } = url
 
   const params = loader(searchParams)
@@ -21,9 +20,9 @@ const handler = async (req, context) => {
 
 export default handler
 
-export const config = {
-  path: '/api/data/export'
-}
+// export const config = {
+//   path: '/data/export'
+// }
 
 
 // // Check that the request is a POST method
