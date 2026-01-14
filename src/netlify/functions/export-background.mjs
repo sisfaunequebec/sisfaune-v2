@@ -61,28 +61,45 @@ async function streamExcelFile() {
 }
 
 const uploadToNetlify = async (filePath) => {
-  return new Promise((resolve, reject) => {
-    const fileStream = fs.createReadStream(filePath)
-    const webStream = Readable.toWeb(fileStream)
+  try {
+    const fileName = path.basename(filePath)
+    const store = getStore('data-export', { 
+      siteID: '58d1d99c-beda-4a8f-b979-02f061f72ec4' 
+    })
 
-    fileStream.on('open', async () => {
-      try {
+    // Read the entire file into memory as a Buffer
+    // This avoids the "disturbed or locked" stream error entirely
+    const fileBuffer = await readFile(filePath)
 
-        const fileName = path.basename(filePath)
+    await store.set(fileName, fileBuffer)
 
-        const store = getStore('data-export', { siteID: '58d1d99c-beda-4a8f-b979-02f061f72ec4' })
-        await store.set(fileName, webStream)
+    console.log('File successfully uploaded to store')
+  } catch (err) {
+    console.error('Upload failed:', err)
+    throw err
+  }
+  // return new Promise((resolve, reject) => {
+  //   const fileStream = fs.createReadStream(filePath)
+  //   const webStream = Readable.toWeb(fileStream)
 
-        console.log('File successfully uploaded to store')
+  //   fileStream.on('open', async () => {
+  //     try {
 
-        resolve()
-      } catch (err) {
-        reject(err)
-      }
-    });
+  //       const fileName = path.basename(filePath)
 
-    fileStream.on('error', reject)
-  })
+  //       const store = getStore('data-export', { siteID: '58d1d99c-beda-4a8f-b979-02f061f72ec4' })
+  //       await store.set(fileName, webStream)
+
+  //       console.log('File successfully uploaded to store')
+
+  //       resolve()
+  //     } catch (err) {
+  //       reject(err)
+  //     }
+  //   });
+
+  //   fileStream.on('error', reject)
+  // })
 }
 
 const handler = async (req, context) => {
