@@ -24,7 +24,7 @@ async function streamExcelFile() {
 
   // 1. Initialize the workbook writer with a file path
   const options = {
-    filename: './large_data_report.xlsx',
+    filename: filePath,
     useStyles: true,
     useSharedStrings: true
   }
