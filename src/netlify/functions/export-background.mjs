@@ -63,12 +63,12 @@ async function streamExcelFile() {
 const uploadToNetlify = async (filePath) => {
   return new Promise((resolve, reject) => {
     const fileStream = fs.createReadStream(filePath)
+    const webStream = Readable.toWeb(fileStream)
 
     fileStream.on('open', async () => {
       try {
 
         const fileName = path.basename(filePath)
-        const webStream = Readable.toWeb(fileStream)
 
         const store = getStore('data-export', { siteID: '58d1d99c-beda-4a8f-b979-02f061f72ec4' })
         await store.set(fileName, webStream)
