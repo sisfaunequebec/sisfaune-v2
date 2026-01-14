@@ -1,5 +1,8 @@
-'use server'
-import 'server-only'
+// 'use server'
+// import 'server-only'
+
+import ExcelJS from 'exceljs'
+import tmp from 'tmp'
 
 import { DateTime } from 'luxon'
 
@@ -505,7 +508,7 @@ const updateGeneralInfos = async (eventId, data) => {
   const { id, ...rest } = data
 
   const transformed = toDbEventTransformer(rest, { user })
-  console.debug('transformed event for update', data, transformed)
+  // console.debug('transformed event for update', data, transformed)
 
   const { discoverer, ...eventData } = transformed
   const { locality, ...discovererData  } = discoverer || {}
@@ -529,6 +532,41 @@ const updateGeneralInfos = async (eventId, data) => {
   return null
 }
 
+// const exportData = async () => {
+//   // 1. Initialize the workbook writer with a file path
+//   const options = {
+//     filename: './large_data_report.xlsx',
+//     useStyles: true,
+//     useSharedStrings: true
+//   }
+
+//   const workbook = new ExcelJS.stream.xlsx.WorkbookWriter(options)
+//   const worksheet = workbook.addWorksheet('Main Report')
+
+//   // 2. Define Columns
+//   worksheet.columns = [
+//     { header: 'ID', key: 'id', width: 10 },
+//     { header: 'Name', key: 'name', width: 32 },
+//     { header: 'Timestamp', key: 'timestamp', width: 20 },
+//   ]
+
+//   // 3. Simulate a massive data source (e.g., a Database Cursor or ReadStream)
+//   for (let i = 1; i <= 100000; i++) {
+//     const rowData = {
+//       id: i,
+//       name: `User_${i}`,
+//       timestamp: new Date().toISOString()
+//     }
+
+//     // Add row and commit it to the stream immediately
+//     worksheet.addRow(rowData).commit()
+//   }
+
+//   // 4. Finalize the workbook
+//   await workbook.commit()
+//   console.log('Excel file successfully streamed to disk.')
+// }
+
 export {
   getEvents,
   getEventsCount,
@@ -536,6 +574,14 @@ export {
   addEvent,
   deleteEvent,
   exportEvents,
-  updateGeneralInfos
+  updateGeneralInfos,
+
+  // exportData
 }
 
+
+
+
+
+
+streamExcelFile().catch(err => console.error(err));
