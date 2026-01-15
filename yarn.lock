@@ -12942,6 +12942,11 @@ prettyjson@1.2.5:
     colors "1.4.0"
     minimist "^1.2.0"
 
+prisma-cursorstream@^0.4.2:
+  version "0.4.2"
+  resolved "https://registry.yarnpkg.com/prisma-cursorstream/-/prisma-cursorstream-0.4.2.tgz#9624e943e88db106d0188d1c6439fb968ca28008"
+  integrity sha512-Xgpd9LvU+P2f2vp+GOC/R+bPLOG8fnIdrVcbQFFtqdrfVjt9cKBzvl3Dc+xVnG0787ON6xdXDywqezYSVHKxEw==
+
 prisma@^5.18.0:
   version "5.18.0"
   resolved "https://registry.yarnpkg.com/prisma/-/prisma-5.18.0.tgz#5ef69c802a075b7596231ea57003496873610b9e"

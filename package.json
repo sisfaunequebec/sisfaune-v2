@@ -67,6 +67,7 @@
     "next-safe-action": "^7.10.7",
     "next-themes": "^0.3.0",
     "nuqs": "^2.3.0",
+    "prisma-cursorstream": "^0.4.2",
     "react": "19.1.0",
     "react-dom": "19.1.0",
     "react-geocode": "^2.0.1",

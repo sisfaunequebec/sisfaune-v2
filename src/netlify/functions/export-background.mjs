@@ -1,16 +1,17 @@
-import fs from 'fs'
 import path from 'path'
 
 import { readFile } from 'node:fs/promises'
 
-// import { Readable } from 'stream'
-
 import tmp from 'tmp'
 import ExcelJS from 'exceljs'
 
-// import { DateTime } from 'luxon'
+import { PrismaClient } from '@prisma/client'
 
 import { getStore } from '@netlify/blobs'
+
+import cursorStreamExtension from '@/lib/data/stream-extension'
+
+// import orm from '../../lib/data/database'
 
 import { searchParams, urlKeys } from '@/lib/data/events/get-events.params'
 
@@ -19,8 +20,19 @@ import {
 } from 'nuqs/server'
 
 const loader = createLoader(searchParams, { urlKeys })
+const prisma = new PrismaClient()
+const orm = prisma.$extends(cursorStreamExtension)
 
 async function streamExcelFile() {
+
+  const dataStream = orm.event.cursorStream({
+    select: {
+      id: true,
+      typeId: true,
+      programId: true
+    }
+  })
+
   const tempFile = tmp.fileSync({ template: 'export-XXXXXX.xlsx' })
   const filePath = tempFile.name
 
@@ -38,22 +50,28 @@ async function streamExcelFile() {
 
   // 2. Define Columns
   worksheet.columns = [
-    { header: 'ID', key: 'id', width: 10 },
-    { header: 'Name', key: 'name', width: 32 },
-    { header: 'Timestamp', key: 'timestamp', width: 20 },
-  ];
+    { header: 'ID', key: 'id'},
+    { header: 'Type', key: 'typeId' },
+    { header: 'Program', key: 'programId' }
+  ]
 
-  // 3. Simulate a massive data source (e.g., a Database Cursor or ReadStream)
-  for (let i = 1; i <= 100000; i++) {
-    const rowData = {
-      id: i,
-      name: `User_${i}`,
-      timestamp: new Date().toISOString()
-    }
-
-    // Add row and commit it to the stream immediately
-    worksheet.addRow(rowData).commit();
+  for await (const event of dataStream) {
+    // console.log('Adding event row...')
+    // const { id, typeId, programId } = event 
+    worksheet.addRow(event).commit()
   }
+
+  // // 3. Simulate a massive data source (e.g., a Database Cursor or ReadStream)
+  // for (let i = 1; i <= 100000; i++) {
+  //   const rowData = {
+  //     id: i,
+  //     name: `User_${i}`,
+  //     timestamp: new Date().toISOString()
+  //   }
+
+  //   // Add row and commit it to the stream immediately
+  //   worksheet.addRow(rowData).commit();
+  // }
 
   // 4. Finalize the workbook
   await workbook.commit()

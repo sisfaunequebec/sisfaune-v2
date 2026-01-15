@@ -15,23 +15,16 @@ const DEFAULT_TRANSACTION_OPTIONS = {
 let orm = null
 
 const config = {
-  transactionOptions: DEFAULT_TRANSACTION_OPTIONS,
-  // log: ['query']
+  transactionOptions: DEFAULT_TRANSACTION_OPTIONS
 }
 
-const prismaClient = new PrismaClient(config)
-
-// prismaClient.$on('query', (e) => {
-//   console.log('Query: ' + e.query)
-//   console.log('Params: ' + e.params)
-//   console.log('Duration: ' + e.duration + 'ms')
-// })
+const prisma = new PrismaClient(config)
 
 if (NODE_ENV === 'production') {
-  orm = prismaClient
+  orm = prisma
 } else {
   if (!global.orm) {
-    global.orm = prismaClient
+    global.orm = prisma
   }
   orm = global.orm
 }
