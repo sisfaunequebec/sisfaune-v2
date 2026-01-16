@@ -180,9 +180,9 @@ const sendWelcomeEmail = async ({ email, firstName, username, password }) => {
 // }
 
 const buildCreateUserPayload = async (data) => {
-  const { firstName, lastName, email, password } = data
+  const { firstName, lastName, email, username, password } = data
 
-  const username = slugify([firstName, lastName].join('-'), { lower: true })
+  // const username = slugify([firstName, lastName].join('-'), { lower: true })
   const hash = bcrypt.hashSync(password, 10)
 
   const payload = {
@@ -214,9 +214,14 @@ const createUser = async (data) => {
 
     return { data: payload, errors: null }
   } catch (e) {
-    const { code } = e
+    const { code, meta } = e
     if (code === 'P2002') {
-      return { data: null, errors: { email: 'Cette adresse de courriel est déjà utilisée par un autre utilisateur.' }}
+      const { target } = meta
+      if (target.includes('nom_utilisateur')) {
+        return { data: null, errors: { username: 'Ce nom d\'utilisateur est déjà utilisé.' }}
+      } else {
+        return { data: null, errors: { email: 'Cette adresse de courriel est déjà utilisée par un autre utilisateur.' }}
+      }
     }
     return { data: null, errors: { server: e.message } }
   }

@@ -15,13 +15,13 @@ const LinkListWrapper = ({ href, children }) => {
     <LinkBox
       as={HStack}
       gap={2}
-      direction='row'
-      alignItems='center'
-      justifyContent='space-between'
+      direction={'row'}
+      alignItems={'center'}
+      justifyContent={'space-between'}
       ps={4}
       pe={3}
       py={3}
-      borderBottomColor='green.300'
+      borderBottomColor={'green.300'}
       borderBottomWidth={1}
       _first={{
         borderTopColor: 'green.300',
@@ -33,7 +33,7 @@ const LinkListWrapper = ({ href, children }) => {
         bg: 'green.100',
         _dark: { bg: 'green.700' }
       }}
-      cursor='pointer'
+      cursor={'pointer'}
     >
       {children}
     </LinkBox>

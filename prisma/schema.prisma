@@ -779,8 +779,8 @@ model AdminUserProgram {
   canSubmit Boolean @map(name: "peut_soumettre") @default(false)
 
   // Relations
-  program LutEventProgram @relation(fields: [programId], references: [id], onDelete: Restrict, onUpdate: Restrict)
-  user User @relation(fields: [userId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+  program LutEventProgram @relation(fields: [programId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
 }
 
 model EventAnalysisGroup {

@@ -2,6 +2,7 @@
 import { useEffect, useCallback, useRef } from 'react'
 
 import { Flex, Box, Stack, VStack, Text, IconButton, LinkOverlay } from '@chakra-ui/react'
+import { RxPencil2 } from 'react-icons/rx'
 
 import { useQueryStates } from 'nuqs'
 
@@ -26,10 +27,10 @@ const NoUsers = () => {
 const UserItem = ({ id, username, fullName, email, organisation, isActive, onClick }) => {
   return (
     <LinkListWrapper>
-      <Stack flex={1} direction={['column', null, null, 'row']} gap={[0.4, null, null, 1]} onClick={onClick}>
-        <VStack alignItems='flex-start' gap={0.4} flex={1}>
+      <Stack flex={1} direction={['column', null, null, 'row']} gap={[0.4, null, null, 1]} onClick={onClick} alignItems={'center'}>
+        <VStack alignItems={'flex-start'} gap={0.4} flex={1}>
           <LinkOverlay asChild>
-            <Flex flex={1} color='green.600' _dark={{ color: 'green.200' }}>
+            <Flex flex={1} color={'green.600'} _dark={{ color: 'green.200' }}>
               <Text fontWeight={500}>{fullName ?? username}</Text>&nbsp;
               { fullName && <Text>({username})</Text> }
             </Flex>
@@ -37,6 +38,7 @@ const UserItem = ({ id, username, fullName, email, organisation, isActive, onCli
           <Flex fontWeight={500} color='fg.muted'>{organisation ?? '\u00A0'}</Flex>
           <Flex display={['none', null, null, 'inherit']}>{email}</Flex>
         </VStack>
+        <IconButton colorPalette={'green'} variant={'ghost'} rounded={'full'} size={['xs']}><RxPencil2 /></IconButton>
       </Stack>
     </LinkListWrapper>
   )

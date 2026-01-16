@@ -21,8 +21,6 @@ import { LinkListWrapper, ListContainer, LoadMoreButton } from '@/app/(in)/(with
 
 import CenteredMessage from '@/app/lib/components/centered-message'
 
-
-
 const PAGE_SIZE = 25
 
 const NoEvents = () => {
@@ -60,7 +58,7 @@ const ItemEvenement = ({ id, silabId, mapaqId, typeName, programName, localityNa
           <Flex color={'blue.600'}>Date du signalement : {reportingDate}</Flex>
         </VStack>
       </Stack>
-      <IconButton as={NextLink} href={href} scroll colorPalette='green' variant='ghost' rounded='full' size={['xs']}><RxArrowRight /></IconButton>
+      <IconButton as={NextLink} href={href} colorPalette={'green'} variant={'ghost'} rounded={'full'}size={['xs']}><RxArrowRight /></IconButton>
     </LinkListWrapper>
   )
 }

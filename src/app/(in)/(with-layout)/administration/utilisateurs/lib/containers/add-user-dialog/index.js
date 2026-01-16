@@ -1,7 +1,10 @@
 'use client'
-import { useState, useCallback } from 'react'
+import { useCallback } from 'react'
+
+import { useWatch, useFormContext } from 'react-hook-form'
 
 import generatePassword from '@/lib/data/users/generate-password'
+import slugify from 'slugify'
 
 import addUserAction from './add-user.action'
 
@@ -37,13 +40,42 @@ const PasswordDisplay = ({ value }) => {
   )
 }
 
+const FirstNameInput = ({ value, onChange, ...rest }) => {
+  const lastName = useWatch({ name: 'lastName' })
+  const { setValue } = useFormContext()
+
+  const handleChange = useCallback(v => {
+    const username = slugify([v, lastName].join('-'), { lower: true })
+    setValue('username', username)
+    onChange(v)
+  }, [lastName, setValue, onChange])
+  return (
+    <TextInput value={value} onChange={handleChange} {...rest} />
+  )
+}
+
+const LastNameInput = ({ value, onChange, ...rest }) => {
+  const firstName = useWatch({ name: 'firstName' })
+  const { setValue } = useFormContext()
+
+  const handleChange = useCallback(v => {
+    const username = slugify([firstName, v].join('-'), { lower: true })
+    setValue('username', username)
+    onChange(v)
+  }, [firstName, setValue, onChange])
+  return (
+    <TextInput value={value} onChange={handleChange} {...rest} />
+  )
+}
+
 const formSchema = [
   { 
     title: null,
     fields: [
-      { label: 'Prénom\u00A0:', name: 'firstName' },
-      { label: 'Nom de famille\u00A0:', name: 'lastName' },
-      { label: 'Adresse de courriel\u00A0:', name: 'email' }
+      { label: 'Prénom\u00A0:', name: 'firstName', component: FirstNameInput },
+      { label: 'Nom de famille\u00A0:', name: 'lastName', component: LastNameInput },
+      { label: 'Adresse de courriel\u00A0:', name: 'email' },
+      { label: 'Non d\'utilisateur\u00A0:', name: 'username' }
     ]
   },
     { 
@@ -55,9 +87,8 @@ const formSchema = [
 ]
 
 const AddUserDialog = ({ close }) => {
-  // const [password, setPassword] = useState()
-
   const defaultValues = {
+    username: null,
     firstName: null,
     lastName: null,
     email: null,

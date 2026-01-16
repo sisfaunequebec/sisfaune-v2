@@ -38,10 +38,9 @@ const updateAccount = async (userId, data) => {
     
     return { data, errors: null }
   } catch (e) {
-    console.debug(e)
     const { code } = e
     if (code === 'P2002') {
-      return { data: null, errors: { email: 'Cette adresse de courriel est déjà utilisée par un autre utilisateur. Veuillez vérifier ou contacter l\'administrateur à admin@sisfaunequebec.ca' }}
+      return { data: null, e, errors: { email: 'Cette adresse de courriel est déjà utilisée par un autre utilisateur. Veuillez vérifier ou contacter l\'administrateur à admin@sisfaunequebec.ca' }}
     }
     return { data: null, errors: { server: e.message } }
   }

@@ -41,7 +41,7 @@ const EditUserDialog = ({ userId, close }) => {
   }
 
   return (
-    <BaseDialog title={'Modification d\'un utilisateur'} onClose={close} onSubmit={handleSubmit} submitBtnLabel='Modifier' schema={null} defaultValues={null}>
+    <BaseDialog title={'Modification d\'un utilisateur'} onClose={close} onSubmit={handleSubmit} submitBtnLabel={'Sauvegarder'} schema={null} defaultValues={null}>
       {(contentRef) => (
         <Fieldset.Root>
           { JSON.stringify(user) }
