@@ -643,9 +643,8 @@ model Event {
   submitter User @relation("EventSubmitter", fields: [submitterId], references: [id], onDelete: Restrict, onUpdate: Restrict)
 
   // Discovery
-  // discovererId Int? @map(name: "id_decouvreur")
+  discoverer Discoverer? 
   isDiscovererSameAsSubmitter Boolean @default(false) @map(name: "decouvreur_idem_soumissionnaire")
-  // discoverer Discoverer? @relation(fields: [id], references: [eventId], onDelete: Restrict, onUpdate: Restrict)
   discoveredAt DateTime? @db.Date @map(name: "date_decouverte")
 
   reportedAt DateTime? @db.Date @map(name: "date_signalement")
@@ -664,6 +663,9 @@ model Event {
 
   // Lab
   labId Int? @map(name: "id_laboratoire")
+  lab LutLaboratory? @relation(fields: [labId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+
+  labResponsible User? @relation("EventLabResponsible", fields: [labResponsibleId], references: [id], onDelete: Restrict, onUpdate: Restrict)
 
   labShippedAt DateTime? @db.Date @map(name: "date_expedition_labo")
   labShippingMethodId Int? @db.SmallInt @map(name: "id_methode_expedition")
@@ -728,10 +730,6 @@ model Event {
   // Relations
   specimens Specimen[]
   location Location?
-  lab LutLaboratory? @relation(fields: [labId], references: [id], onDelete: Restrict, onUpdate: Restrict)
-  discoverer Discoverer? 
-
-  labResponsible User? @relation("EventLabResponsible", fields: [labResponsibleId], references: [id], onDelete: Restrict, onUpdate: Restrict)
   eventAnalysisGroups EventAnalysisGroup[]
 }
 
