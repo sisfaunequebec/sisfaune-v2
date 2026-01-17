@@ -11,13 +11,12 @@ import { toaster } from '@/app/lib/components/ui/toaster'
 
 import { RxPlus } from 'react-icons/rx'
 
-import { addEvent } from '@/lib/data/events/service'
-
 import useDialog from '@/utils/use-dialog'
 
 import ResponsiveButton from '@/app/lib/components/responsive-button'
 
 import AddEventDialog from './add-event-dialog'
+import addEventAction from './add-event-dialog/add-event.action'
 
 const AddEventButton = ({ programs }) => {
   const router = useRouter()
@@ -25,13 +24,16 @@ const AddEventButton = ({ programs }) => {
 
   const { ask: confirmAdd, dialog: addEventDialog } = useDialog(AddEventDialog)
 
-  const handleCreateEvent = useCallback(async () => {
-    const result = await confirmAdd({ programs, onAdd: addEvent })
+  const handleClick = useCallback(async () => {
+    const result = await confirmAdd({ programs, onAdd: addEventAction })
 
     if (result) {
       const { id: addedEventId } = result
+      
       router.replace(`/donnees/evenements/${addedEventId}`)
+      
       await wait(1000)
+      
       for (const key of cache.keys()) {
         if (key.includes('/api/data/events')) {
           mutate(key)
@@ -54,7 +56,7 @@ const AddEventButton = ({ programs }) => {
   return (
     <>
       {addEventDialog}
-      <ResponsiveButton label={'Nouvel événement'} colorPalette={'blue'} icon={<RxPlus />} onClick={handleCreateEvent} />
+      <ResponsiveButton label={'Nouvel événement'} colorPalette={'blue'} icon={<RxPlus />} onClick={handleClick} />
     </>
   )
 }

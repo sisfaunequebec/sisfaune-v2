@@ -1,13 +1,14 @@
 'use client'
 import { useEffect, useCallback, useRef } from 'react'
+import { useIntersectionObserver } from '@react-hooks-library/core'
 
 import { Flex, Box, Stack, VStack, Text, IconButton, LinkOverlay } from '@chakra-ui/react'
 import { RxPencil2 } from 'react-icons/rx'
 
 import { useQueryStates } from 'nuqs'
 
-import { getUsers, getUsersCount } from '@/lib/data/users/service'
-import { useQuery, useInfiniteQuery, keepPreviousData } from '@tanstack/react-query'
+import useUsers from '@/lib/data/users/use-users'
+import useUsersCount from '@/lib/data/users/use-users-count'
 
 import { searchParams, urlKeys } from '@/lib/data/users/users-params'
 
@@ -18,6 +19,8 @@ import { ListContainer, LinkListWrapper, LoadMoreButton } from '@/app/(in)/(with
 
 import CenteredMessage from '@/app/lib/components/centered-message'
 
+const PAGE_SIZE = 25
+
 const NoUsers = () => {
   return (
     <CenteredMessage level={'info'} description={'Aucun utilisateur correspondant aux critères'} />
@@ -27,7 +30,7 @@ const NoUsers = () => {
 const UserItem = ({ id, username, fullName, email, organisation, isActive, onClick }) => {
   return (
     <LinkListWrapper>
-      <Stack flex={1} direction={['column', null, null, 'row']} gap={[0.4, null, null, 1]} onClick={onClick} alignItems={'center'}>
+      <Stack flex={1} direction={['column', null, null, 'row']} gap={[0.4, null, null, 1]} onClick={onClick}>
         <VStack alignItems={'flex-start'} gap={0.4} flex={1}>
           <LinkOverlay asChild>
             <Flex flex={1} color={'green.600'} _dark={{ color: 'green.200' }}>
@@ -36,66 +39,55 @@ const UserItem = ({ id, username, fullName, email, organisation, isActive, onCli
             </Flex>
           </LinkOverlay>
           <Flex fontWeight={500} color='fg.muted'>{organisation ?? '\u00A0'}</Flex>
-          <Flex display={['none', null, null, 'inherit']}>{email}</Flex>
+          <Flex>{email}</Flex>
         </VStack>
-        <IconButton colorPalette={'green'} variant={'ghost'} rounded={'full'} size={['xs']}><RxPencil2 /></IconButton>
       </Stack>
+      <IconButton colorPalette={'green'} variant={'ghost'} rounded={'full'} size={['xs']}><RxPencil2 /></IconButton>
     </LinkListWrapper>
   )
 }
 
-const getNextParams = (queryParams) => {
-  const { queryKey, pageParam } = queryParams
-  const [ _, params ] = queryKey
-  const nextParams = {
-    ...params,
-    offset: pageParam
-  }
-  return nextParams
-}
-
-const useUsers = (params) => {
-  const result = useInfiniteQuery({
-    queryKey: ['users', {...params}],
-    queryFn: (pageParams) => getUsers(getNextParams(pageParams)),
-    placeholderData: keepPreviousData,
-    initialPageParam: 0,
-    getNextPageParam: (lastPage, _, lastPageParam) => {
-      if (lastPage?.payload?.length < 25) {
-        return undefined
-      }
-      return lastPageParam + 1
-    }
-  })
-
-  const { data, hasNextPage, isLoading, isPending, isFetching, fetchNextPage } = result
-  const pages = data?.pages
-
-  const users = pages ? [].concat(...pages.map(p => p.payload)) : []
-  const total = pages ? pages[0].meta.total : 0
-
-  return {
-    users, total, hasNextPage, isLoading, isPending, isFetching, fetchNextPage
-  }
-}
-
 const UsersList = () => {
+  const inner = useRef(null)
+  const { inView } = useIntersectionObserver(inner)
+
   const { ask: editUser, dialog: editUserDialog } = useDialog(EditUserDialog)
 
   const [ params ] = useQueryStates(searchParams, { urlKeys })
 
-  const { users, total, hasNextPage, isLoading, isPending, isFetching, fetchNextPage } = useUsers(params)
+  const { data: total } = useUsersCount(params)
 
+  const result = useUsers(params, PAGE_SIZE)
+  const { data = [], isLoading, size, setSize } = result
+
+  const handleLoadMore = useCallback(() => {
+    if (isLoading) {
+      return
+    }
+    setSize(size + 1)
+  }, [setSize, size, isLoading])
+
+  const users = data ? [].concat(...data) : []
   const count = users.length
 
-  const isEmpty = !isPending && count === 0
+  const isLoadingMore = isLoading || (size > 0 && data && typeof data[size - 1] === 'undefined')
+  const isEmpty = data?.[0]?.length === 0
+  const isReachingEnd = isEmpty || (data && data[data.length - 1]?.length < PAGE_SIZE)
+
+  useEffect(() => {
+    // console.debug('useEffect', inView, isLoadingMore, size)
+    setTimeout(() => {
+      if (inView && !isLoadingMore) {
+        handleLoadMore()
+      }
+    }, 500)
+  }, [inView, size, isLoadingMore, handleLoadMore])
+
   const loadMoreButtonIsVisible = count > 0
 
   const handleEditUser = useCallback(async (userId) => {
     const result = await editUser({ userId })
-    if (result) {
-      console.debug('Edit result', result)
-    }
+    return result
   }, [editUser])
 
   if (isEmpty) {
@@ -107,14 +99,14 @@ const UsersList = () => {
   return (
     <>
       {editUserDialog}
-      <ListContainer isLoading={isFetching}>
+      <ListContainer isLoading={isLoadingMore}>
         {users.map(user => {
           const { id } = user
           return (
             <UserItem key={id} {...user} onClick={e => { handleEditUser(id) }} />
           )
         })}
-        {loadMoreButtonIsVisible && <LoadMoreButton label={'Utilisateurs'} count={count} total={total} isReachingEnd={!hasNextPage} isLoading={isFetching} onClick={fetchNextPage} />}
+        {loadMoreButtonIsVisible && <LoadMoreButton label={'Utilisateurs'} count={count} total={total} isReachingEnd={isReachingEnd} isLoading={isLoadingMore} onClick={handleLoadMore} />}
       </ListContainer>
     </>
   )

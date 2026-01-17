@@ -1,5 +1,5 @@
 'use client'
-import { useCallback, useMemo, useRef } from 'react'
+import { useCallback, useState, useEffect, useRef } from 'react'
 
 import { useForm, FormProvider, useController } from 'react-hook-form'
 
@@ -18,6 +18,8 @@ import ControlledField from '@/app/lib/components/controlled-field'
 
 import TextInput from '@/app/lib/components/inputs/base/text'
 
+import useCurrentUser from '@/lib/auth/use-user'
+
 const getResolver = (type, schema) => {
   if (!schema) return null
   return type === 'zod' ? zodResolver(schema) : valibotResolver(schema, { reValidateMode: 'onSubmit' })
@@ -28,7 +30,7 @@ const BaseDialog = ({ title, message, size, isAlert = false, schema, schemaType 
   const placement = useBreakpointValue({ base: null, md: 'center' }) 
   const scrollBehavior = useBreakpointValue({ base: 'inside', md: 'outside' }) 
   const motion = useBreakpointValue({ base: 'scale', md: 'slide-in-bottom' })
-
+  
   const resolver = getResolver(schemaType, schema)
 
   const form = useForm({
@@ -72,10 +74,12 @@ const BaseDialog = ({ title, message, size, isAlert = false, schema, schemaType 
   const closeOnInteractOutside = !!isAlert
 
   const hasErrors = Object.keys(errors)?.length > 0
-  // console.debug('BaseDialog.render', { title, isSubmitting, hasErrors, errors, watched })
+
+  const { user: currentUser, isLoading: isLoadingCurrentUser } = useCurrentUser() 
+  // if (isLoadingUser) { return null }
 
   return (
-    <Dialog.Root scrollBehavior={scrollBehavior} lazyMount open size={rootSize} placement={placement} motionPreset={motion} onOpenChange={e => onClose(false)} closeOnInteractOutside={closeOnInteractOutside} role={role}>
+    <Dialog.Root scrollBehavior={scrollBehavior} lazyMount open={!isLoadingCurrentUser} size={rootSize} placement={placement} motionPreset={motion} onOpenChange={e => onClose(false)} closeOnInteractOutside={closeOnInteractOutside} role={role}>
       <Portal>
         <Dialog.Backdrop />
         <Dialog.Positioner>
@@ -86,7 +90,6 @@ const BaseDialog = ({ title, message, size, isAlert = false, schema, schemaType 
               <Dialog.Title textStyle={['xl', null, 'lg']} >{title}</Dialog.Title>
             </Dialog.Header>
 
-            
               {/* <Flex as={'form'} onSubmit={handleSubmit(handleSubmitAction)} direction={'column'} justifyContent={'stretch'} alignItems={'stretch'} h={'100%'}> */}
 
                 <Dialog.Body textStyle={['md', null, 'sm']} >
@@ -113,7 +116,10 @@ const BaseDialog = ({ title, message, size, isAlert = false, schema, schemaType 
 }
 
 const Fields = ({ formSchema, contentRef, watched, data, ...rest }) => {
+  const { user: currentUser, isLoading: isLoadingCurrentUser } = useCurrentUser() 
+
   const sectionsCount = formSchema.length
+
   return (
      <VStack gap={2} flex={1} {...rest}>
       {formSchema.map((section, i) => {
@@ -127,9 +133,9 @@ const Fields = ({ formSchema, contentRef, watched, data, ...rest }) => {
               {fields.map(f => {
                 const { label, name, disabled = false, visible = true, component, props = {} } = f
                 
-                const isDisabled = (typeof disabled === 'function') ? disabled(data, watched) : disabled
-                const isVisible = (typeof visible === 'function') ? visible(data, watched) : visible
-                const properties = (typeof props === 'function') ? props(data, watched) : props
+                const isDisabled = (typeof disabled === 'function') ? disabled(data, watched, { user: currentUser }) : disabled
+                const isVisible = (typeof visible === 'function') ? visible(data, watched, { user: currentUser }) : visible
+                const properties = (typeof props === 'function') ? props(data, watched, { user: currentUser }) : props
                 
                 const Component = component || TextInput
                 if (!isVisible) { return null }

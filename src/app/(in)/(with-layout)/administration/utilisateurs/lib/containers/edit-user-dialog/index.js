@@ -1,64 +1,137 @@
 'use client'
-// import { useState } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 
-// import { DateTime } from 'luxon'
+import { useSWRConfig } from 'swr'
 
-// import editUSer from './action'
-import { useMutation, useQueryClient } from '@tanstack/react-query'
-import { updateUser } from '@/lib/data/users/service'
-import useUser from '@/lib/data/users/use-user'
+import wait from '@/utils/wait'
 
-import { Fieldset, Input, Separator } from '@chakra-ui/react'
-// import { RxCopy, RxCheckCircled } from 'react-icons/rx'
+import getUserAction from './get-user.action'
+import updateUserAction from './update-user.action'
 
-import BaseDialog from '@/app/lib/components/dialogs/base'
+import { Checkbox as ChakraCheckbox } from "@chakra-ui/react"
 
-// import ControlledField from '@/app/lib/components/controlled-field'
+import BaseDialog, { Fields } from '@/app/lib/components/dialogs/base'
 
-// import addUserSchema from './schema'
-// import { InputGroup } from '@/components/ui/input-group'
+import TextDisplay from '@/app/lib/components/display/base/text'
+
+const Checkbox = ({ label, value, onChange, ...rest }) => {
+  const handleSubmit = useCallback(() => {
+    onChange(!value)
+  }, [onChange, value])
+  return (
+    <ChakraCheckbox.Root
+        checked={value}
+        onCheckedChange={(e) => handleSubmit(value)}
+        {...rest}>
+      <ChakraCheckbox.HiddenInput />
+      <ChakraCheckbox.Control />
+      <ChakraCheckbox.Label>{label}</ChakraCheckbox.Label>
+    </ChakraCheckbox.Root>
+  )
+}
+
+const formSchema = [
+  { 
+    title: 'Identification',
+    fields: [
+      // { label: 'Id\u00A0:', name: 'id', component: TextDisplay },
+      { label: 'Nom d\'utilisateur\u00A0:', name: 'username', component: TextDisplay },
+      { label: 'Prénom\u00A0:', name: 'firstName' },
+      { label: 'Nom\u00A0:', name: 'lastName' },
+      { label: 'Titre professionnel\u00A0:', name: 'title' },
+      { label: 'Organisation\u00A0:', name: 'organisation' },
+      { label: 'Division, direction, faculté\u00A0:', name: 'division' },
+      { label: 'Service\u00A0:', name: 'service' },
+    ]
+  },
+  { 
+    title: 'Coordonnées',
+    fields: [
+      { label: 'Numéro civique\u00A0:', name: 'streetNumber' },
+      { label: 'Rue, route\u00A0:', name: 'street' },
+      { label: 'Appartement ou étage\u00A0:', name: 'apt' },
+      { label: 'Municipalité\u00A0:', name: 'localityName' },
+      { label: 'Province\u00A0:', name: 'province' },
+      { label: 'Code postal, direction, faculté\u00A0:', name: 'postalCode' },
+      { label: 'Téléphone\u00A0:', name: 'telephone' },
+      { label: 'Extension\u00A0:', name: 'extension' },
+      { label: 'Adresse de courriel\u00A0:', name: 'email' },
+    ]
+  },
+  { 
+    title: 'Statuts, rôles, droits d\'accès',
+    fields: [
+      { label: '\u00A0',  name: 'isActive', component: Checkbox, disabled: (data, watched, { user }) => { const { id } = user; return id === data.id }, props: { label: 'Actif' } },
+      { label: '\u00A0',  name: 'isAdmin', component: Checkbox, disabled: (data, watched, { user }) => { const { id } = user; return id === data.id }, props: { label: 'Administrateur du système' } },
+      { label: '\u00A0',  name: 'isPathologist', component: Checkbox, props: { label: 'Pathologiste responsable de dossier' } }
+    ]
+  },
+  { 
+    title: 'Permissions par programme',
+    fields: [
+    ]
+  }
+]
 
 const EditUserDialog = ({ userId, close }) => {
-  const result = useUser(userId)
-  const { user } = result
+  const { mutate, cache } = useSWRConfig()
 
-  const queryClient = useQueryClient()
+  const [data, setData] = useState({})
+  const [isLoading, setIsLoading] = useState(true)
 
-  const mutation = useMutation({
-    mutationFn: (user) => {
-      console.debug('mutationFn', user)
-      return updateUser(user)
-    },
-    onSuccess: (data) => {
-      console.debug('onSuccess', data)
-      queryClient.invalidateQueries({ queryKey: ['users'] })
-      // queryClient.setQueriesData({ queryKey: ['users'] }, (old) => { console.debug('old', old); return old })
+  const handleSubmit = useCallback(async (data) => {
+    const result = await updateUserAction(userId, data)
+
+    if (result) {
+      await wait(1000)
+      for (const key of cache.keys()) {
+        if (key.includes('/api/admin/users')) {
+          mutate(key)
+        }
+      }
     }
-  })
+    
+    return result
+  }, [userId, mutate, cache])
 
-  const handleSubmit = () => {
-    return mutation.mutateAsync({ id: userId, firstName: 'Bruno' })
-  }
+  useEffect(() => {
+    async function loadUser() {
+      try {
+        setIsLoading(true)
+        const fetchedData = await getUserAction(userId)
+        setData(fetchedData)
+      } catch (err) {
+        setError(err)
+      } finally {
+        setIsLoading(false)
+      }
+    }
+
+    loadUser()
+  }, [userId])
+  
+  if (isLoading) { return null }
+
+  const fieldNames = formSchema.map(section => {
+    const { fields } = section
+    return fields
+  }).flat().map(field => field.name)
+  
+  const defaultValues = fieldNames.reduce((acc, name) => {
+    const value = data[name]
+    acc[name] = value
+    return acc
+  }, {})
+
+  defaultValues.id = userId
 
   return (
-    <BaseDialog title={'Modification d\'un utilisateur'} onClose={close} onSubmit={handleSubmit} submitBtnLabel={'Sauvegarder'} schema={null} defaultValues={null}>
-      {(contentRef) => (
-        <Fieldset.Root>
-          { JSON.stringify(user) }
-          {/* <Fieldset.Content gap={1}>
-            <ControlledField name={'fullName'} label={'Nom complet :'} variant={'horizontal'}>
-              <Input autoComplete={'off'} />
-            </ControlledField>
-            <ControlledField name={'email'} label={'Adresse de courriel :'} variant={'horizontal'}>
-              <Input autoComplete={'off'} type={'email'} />
-            </ControlledField>
-            <Separator />
-            <ControlledField name={'password'} label={'Mot de passe :'} variant={'horizontal'} helperText={'IMPORTANT : ce mot de passe a été généré automatiquement et sera envoyé par courriel à l\'utilisateur: il ne sera plus visible par la suite. Il est recommandé de le copier si nécessaire avant de continuer...'}>
-              <PasswordDisplay />
-            </ControlledField>
-          </Fieldset.Content> */}
-        </Fieldset.Root>
-      )}
+    <BaseDialog title={'Modification d\'un utilisateur'} onClose={close} onSubmit={handleSubmit} submitBtnLabel={'Sauvegarder'} schema={null} defaultValues={defaultValues}>
+      {(contentRef, watched) => {
+        return (
+          <Fields formSchema={formSchema} contentRef={contentRef} watched={watched} data={defaultValues} />
+        )}
+      }
     </BaseDialog>
   )
 }

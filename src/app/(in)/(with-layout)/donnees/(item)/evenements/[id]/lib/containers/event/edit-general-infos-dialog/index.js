@@ -12,6 +12,7 @@ import BaseDialog, { Fields } from '@/app/lib/components/dialogs/base'
 import TextDisplay from '@/app/lib/components/display/base/text'
 
 import DateInput from '@/app/lib/components/inputs/base/date'
+import DateDisplay from '@/app/lib/components/display/base/date'
 import SelectInput from '@/app/lib/components/inputs/base/select'
 
 import EventStatusSelect from '@/app/lib/components/inputs/event-status-select'
@@ -31,6 +32,18 @@ import Autocomplete from '@/app/(in)/(with-layout)/lib/components/autocomplete'
 import CommentDisplay from '@/app/lib/components/display/base/comment'
 
 import AffectedSpeciesInput from './affected-species-input'
+
+const DateClosedInput = (props) => {
+  if (props.disabled) {
+    return (
+      <DateDisplay value={props.value} />
+    )
+  } else {
+    return (
+      <DateDisplay {...props} />
+    )
+  }
+}
 
 const SubmitterCombo = ({ value, onChange, ...rest }) => {
   const handleLookup = useCallback(async (inputValue) => {
@@ -101,7 +114,7 @@ const formSchema = [
   { 
     title: 'Identification',
     fields: [
-      { label: 'Numéro d\'événement\u00A0:', name: 'id', disabled: true },
+      { label: 'Numéro d\'événement\u00A0:', name: 'id', component: TextDisplay },
       { label: 'Type d\'événement\u00A0:', name: 'type', component: EventTypeSelect, disabled: true, props: { clearable: false } },
       { label: 'Numéro d\'identification SILAB\u00A0:', name: 'silabId' },
       { label: 'Numéro d\'incident CQSAS\u00A0:', name: 'cqsasIncidentNumber' },
@@ -111,7 +124,7 @@ const formSchema = [
       { label: 'Programme\u00A0:', name: 'program', component: ProgramSelect, props: { clearable: false } },
       { label: 'Provenance du signalement\u00A0:', name: 'reportOrigin', component: ReportOriginSelect, props: { clearable: false } },
       { label: 'Statut\u00A0:', name: 'status', component: EventStatusSelect, disabled: (data) => { const { status } = data; const {id: statusId } = status; return statusId === 3 }, props: { clearable: false } },
-      { label: 'Date de fermeture du dossier\u00A0:', name: 'closedAt', component: DateInput, props: { clearable: false }, disabled: (data, watched) => { const { status } = watched; const { id: statusId } = status; return statusId === 3 }, visible: (data, watched) => { const { closedAt } = data; const { status } = watched; const { id: statusId } = status; return (statusId === 3 && closedAt) } },
+      { label: 'Date de fermeture du dossier\u00A0:', name: 'closedAt', component: DateClosedInput, props: { clearable: false }, disabled: (data, watched) => { const { status } = watched; const { id: statusId } = status; return statusId === 3 }, visible: (data, watched) => { const { closedAt } = data; const { status } = watched; const { id: statusId } = status; return (statusId === 3 && closedAt) } },
     ]
   },
   { 

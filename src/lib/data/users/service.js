@@ -2,7 +2,7 @@
 import 'server-only'
 
 import bcrypt from 'bcrypt'
-import slugify from 'slugify'
+// import slugify from 'slugify'
 
 import { Resend } from 'resend'
 
@@ -66,27 +66,26 @@ const getActiveValue = (statut) => {
   return statut?.length === 2 ? undefined : ( statut?.includes(0) ? false : true )
 }
 
-// const getUsersCount = async (params) => {
-//   console.debug('getUsersCount', params)
-//   const user = await getAuthUser()
+const getUsersCount = async (params) => {
+  const user = await getAuthUser()
 
-//   if (!user) {
-//     return []
-//   } else {
-//     const { isAdmin } = user
-//     if (!isAdmin) {
-//       return []
-//     }
-//   }
+  if (!user) {
+    return []
+  } else {
+    const { isAdmin } = user
+    if (!isAdmin) {
+      return []
+    }
+  }
 
-//   const whereClause = getWhereClauseFromParams(params)
+  const whereClause = getWhereClauseFromParams(params)
 
-//   const total = await orm.User.count({
-//     where: whereClause
-//   })
+  const count = await orm.User.count({
+    where: whereClause
+  })
 
-//   return { data: { total } }
-// }
+  return count
+}
 
 const getUsers = async (params) => {
   const { tri, direction, offset = 0, take = 25 } = params
@@ -130,12 +129,7 @@ const getUsers = async (params) => {
     }
   })
 
-  return {
-    payload,
-    meta: {
-      total: count
-    }
-  }
+  return payload
 }
 
 const getUser = async (id) => {
@@ -147,7 +141,8 @@ const getUser = async (id) => {
       permissions: true
     }
   })
-  return { payload: user }
+  
+  return user
 }
 
 const sendWelcomeEmail = async ({ email, firstName, username, password }) => {
@@ -239,7 +234,6 @@ const sendResetPasswordEmail = async ({ email, username, password }) => {
 }
 
 const resetUserPassword = async (data) => {
-  // console.debug(username, email)
   const newPassword = generatePassword()
 
   const hash = bcrypt.hashSync(newPassword, 10)
@@ -257,39 +251,51 @@ const resetUserPassword = async (data) => {
     return { data: { newPassword, email }, errors: null }
   } catch (e) {
     const { code } = e
-    if (code === 'P2025') {
-      const { username } = data
-      const isUsernameReset = !!username
-      const key = isUsernameReset ? 'username' : 'email'
-      return { data: null, errors: { [key]: 'Cet utilisateur n\'existe pas dans notre base de données. Veuillez vérifier ou contacter l\'administrateur à admin@sisfaunequebec.ca' }}
+    if (code === 'P2002') {
+      const { target } = meta
+      if (target.includes('nom_utilisateur')) {
+        return { data: null, errors: { username: 'Ce nom d\'utilisateur est déjà utilisé.' }}
+      } else {
+        return { data: null, errors: { email: 'Cette adresse de courriel est déjà utilisée par un autre utilisateur.' }}
+      }
     }
     return { data: null, errors: { server: e.message } }
   }
 }
 
-const updateUser = async (user) => {
-  const test = Math.random()
+const updateUser = async (userId, data) => {
+  let currentEmail = null
+  try {
+    const currentUser = await orm.User.findUnique({
+      where: {
+        id: userId
+      }
+    })
 
-  if (test <= 0.4) {
-    const { id: userId, firstName } = user
+    currentEmail = currentUser.email
+
     const updatedUser = await orm.User.update({
       where: {
         id: userId
       },
-      data: {
-        firstName
-      }
+      data
     })
 
-    return { payload: updatedUser }
-  } else {
-    const error = new Error()
-    throw error
+    return { data: { ...updatedUser }, errors: null }
+  } catch (e) {
+    const { code, meta } = e
+    if (code === 'P2002') {
+      const { target } = meta
+      if (target.includes('adresse_courriel') && (data.email !== currentEmail)) {
+        return { data: null, errors: { email: 'Cette adresse de courriel est déjà utilisée par un autre utilisateur.' }}
+      }
+    }
   }
 }
 
 export {
   getUsers,
+  getUsersCount,
   getUser,
   buildCreateUserPayload,
   updateUser,

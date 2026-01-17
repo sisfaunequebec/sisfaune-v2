@@ -86,7 +86,7 @@ const formSchema = [
   }
 ]
 
-const AddUserDialog = ({ close }) => {
+const AddUserDialog = ({ close, onAdd }) => {
   const defaultValues = {
     username: null,
     firstName: null,
@@ -95,10 +95,10 @@ const AddUserDialog = ({ close }) => {
     password: generatePassword()
   }
 
-  const handleSubmit = useCallback(async (data) => {
-    const result = await addUserAction(data)
+  const handleSubmit = async (data) => {
+    const result = await onAdd(payload)
     return result
-  }, [])
+  }
 
   return (
     <BaseDialog title={'Nouvel utilisateur'} onClose={close} onSubmit={handleSubmit} submitBtnLabel={'Ajouter'} schema={schema} schemaType={'valibot'} defaultValues={defaultValues}>

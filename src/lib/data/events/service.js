@@ -164,46 +164,6 @@ const toEventsDTO = (events) => {
   return transformed
 }
 
-// const toLocationDTO = (location) => {
-//   const { latitude, longitude, locality, ...rest } = location
-//   const name = locality?.name
-//   const province = locality?.province
-//   // const { name, province } = locality
-//   const transformed = {
-//     ...rest,
-//     latitude: latitude ? parseFloat(latitude.toString()) : 0,
-//     longitude: longitude ? parseFloat(longitude.toString()) : 0,
-//     locality: { name, province }
-//   }
-//   return transformed
-// }
-
-// const toEventDTO = (user) => (event) => {
-//  const { programId } = event
-  
-//   if (!canUserViewProgram(user, programId)) {
-//     return null
-//   }
-
-//   const canUserViewSpecimensSection = userCanViewSpecimenSection(user, programId)
-//   const canUserViewAnalysisSection = userCanViewAnalysisSection(user, programId)
-
-//   const { specimens, location: locationRaw, reportedAt, ...rest } = event
-
-//   // const test1 = DateTime.fromJSDate(reportedAt, { zone: 'UTC', setZone: true }).toISODate()
-//   // console.debug('toEventDTO', reportedAt, test1)
-
-//   const transformed = {
-//     ...rest,
-//     reportedAt: dbDateToIso(reportedAt),
-//     location: toLocationDTO(locationRaw),
-//     specimens: canUserViewSpecimensSection ? specimens : null,
-//     analyses: canUserViewAnalysisSection ? [] : null
-//   }
-
-//   return JSON.parse(JSON.stringify(transformed))
-// }
-
 const getEventsData = async (params, include) => {
   const { tri, direction, offset = 0, take = 25 } = params
 

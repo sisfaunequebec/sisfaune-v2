@@ -1,10 +1,19 @@
+'use client'
+import { useCallback, useState, useEffect, useRef } from 'react'
+
 import { VStack, Fieldset, Separator } from '@chakra-ui/react'
 import { Field } from '../ui/field'
 
 import TextDisplay from '@/app/lib/components/display/base/text'
 
-const Fields = ({ schema, data, ...rest }) => {
+import useCurrentUser from '@/lib/auth/use-user'
+
+const Fields = ({ schema, data, watched, ...rest }) => {
+  const { user: currentUser, isLoading: isLoadingCurrentUser } = useCurrentUser() 
+  if (isLoadingCurrentUser) { return null }
+
   const sectionsCount = schema.length
+
   return (
     <VStack gap={2} flex={1} {...rest}>
       {schema.map((section, i) => {
@@ -17,7 +26,7 @@ const Fields = ({ schema, data, ...rest }) => {
             <Fieldset.Content gap={2}>
               {fields.map(f => {
                 const { label, name, visible = true, component, props = {} } = f
-                const isVisible = (typeof visible === 'function') ? visible(data) : visible
+                const isVisible = (typeof visible === 'function') ? visible(data, watched, { user }) : visible
                 const Component = component || TextDisplay
                 const value = data[name] 
                 // console.debug(name, Component.displayName)

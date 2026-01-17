@@ -1,6 +1,6 @@
 'use client'
-import { useIntersectionObserver } from '@react-hooks-library/core'
 import { useCallback, useEffect, useRef } from 'react'
+import { useIntersectionObserver } from '@react-hooks-library/core'
 
 import NextLink from 'next/link'
 import { usePathname, useSearchParams  } from 'next/navigation'
@@ -17,7 +17,7 @@ import useEventsCount from '@/lib/data/events/use-events-count'
 
 import { searchParams, urlKeys } from '@/lib/data/events/get-events.params'
 
-import { LinkListWrapper, ListContainer, LoadMoreButton } from '@/app/(in)/(with-layout)/lib/components/list'
+import { ListContainer, LinkListWrapper, LoadMoreButton } from '@/app/(in)/(with-layout)/lib/components/list'
 
 import CenteredMessage from '@/app/lib/components/centered-message'
 
@@ -29,7 +29,7 @@ const NoEvents = () => {
   )
 }
 
-const ItemEvenement = ({ id, silabId, mapaqId, typeName, programName, localityName, submitterName, reportedAt }) => {
+const EventItem = ({ id, silabId, mapaqId, typeName, programName, localityName, submitterName, reportedAt }) => {
   const searchParams = useSearchParams()
 
   const currentFilters = searchParams.toString()
@@ -42,7 +42,7 @@ const ItemEvenement = ({ id, silabId, mapaqId, typeName, programName, localityNa
   return (
     <LinkListWrapper>
       <Stack flex={1} direction={['column', null, null, 'row']} gap={[0.4, null, null, 1]}>
-        <VStack alignItems='flex-start' gap={0.4} flex={1}>
+        <VStack alignItems={'flex-start'} gap={0.4} flex={1}>
           <LinkOverlay asChild>
             <Flex as={NextLink} href={href} scroll={true} flex={1} color={'green.600'} _dark={{ color: 'green.200' }}>
               <Text fontWeight={500}>Événement&nbsp;{id}</Text>&nbsp;
@@ -63,17 +63,8 @@ const ItemEvenement = ({ id, silabId, mapaqId, typeName, programName, localityNa
   )
 }
 
-// const LoadMoreButton = ({ count, total, isReachingEnd, isLoading, onClick }) => {
-//   const loadMoreButtonLabel = [`Événements 1 à ${count} de ${total}`, (isReachingEnd ? null : '')].filter(Boolean).join(' - ')
-
-//   return (
-//     <Button size={['lg', null, 'sm']} py={[6, null, 6]} borderRadius={0} variant={'surface'} colorPalette={'blue'} onClick={isReachingEnd ? null : onClick} loading={isLoading} disabled={isReachingEnd} alignItems={'center'}>{loadMoreButtonLabel} <RxPlus /></Button>
-//   )
-// }
-
-const ListeEvenements = () => {
+const EventsList = () => {
   const inner = useRef(null)
-
   const { inView } = useIntersectionObserver(inner)
 
   const [params] = useQueryStates(searchParams, { urlKeys })
@@ -121,7 +112,7 @@ const ListeEvenements = () => {
       {events.map((event, i) => {
         const { id } = event
         return (
-          <ItemEvenement key={[id, i].join('-')} {...event} />
+          <EventItem key={[id, i].join('-')} {...event} />
         )
       })}
       {/* <Flex flex={1} position={'absolute'} bottom={0} w={'full'} height={'300px'} maxH={'100vh'} border={'solid 1px red'} display={triggerIsVisible ? 'inherit' : 'none'} ref={inner} /> */}
@@ -130,4 +121,4 @@ const ListeEvenements = () => {
   )
 }
 
-export default ListeEvenements
+export default EventsList

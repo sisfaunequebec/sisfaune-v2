@@ -43,7 +43,6 @@ const AddEventDialog = ({ close, programs, onAdd }) => {
     }
 
     const result = await onAdd(payload)
-
     await wait(300)
 
     return result 
