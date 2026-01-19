@@ -19,7 +19,7 @@ const LocalityCombo = ({ value, onChange, contentRef, ...rest }) => {
   const labelKey = useCallback(item => [item?.name].join(' '), [])
 
   return (
-    <Autocomplete value={value} labelKey={labelKey} onLookup={handleLookup} onRenderItem={handleRenderItem} onChange={onChange} placeholder={'Taper pour rechercher une personne...'} />
+    <Autocomplete value={value} labelKey={labelKey} onLookup={handleLookup} onRenderItem={handleRenderItem} onChange={onChange} placeholder={'Taper pour rechercher une municipalité...'} />
   )
 }
 
