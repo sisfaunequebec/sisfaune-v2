@@ -26,7 +26,7 @@ const Fields = ({ schema, data, watched, ...rest }) => {
             <Fieldset.Content gap={2}>
               {fields.map(f => {
                 const { label, name, visible = true, component, props = {} } = f
-                const isVisible = (typeof visible === 'function') ? visible(data, watched, { user }) : visible
+                const isVisible = (typeof visible === 'function') ? visible(data, watched, { user: currentUser }) : visible
                 const Component = component || TextDisplay
                 const value = data[name] 
                 // console.debug(name, Component.displayName)
