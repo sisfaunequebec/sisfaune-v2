@@ -10,8 +10,8 @@ import orm from '@/lib/data/database'
 const getUser = cache(async () => {
   const session = await auth()
 
-  const { user } = session
-  const { id } = user
+  const { user } = session ?? {}
+  const { id } = user ?? {}
 
   const userWithPermissions = await orm.User.findFirst({
     where: {
