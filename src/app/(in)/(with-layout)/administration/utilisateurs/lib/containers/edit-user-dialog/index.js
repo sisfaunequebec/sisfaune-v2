@@ -30,6 +30,12 @@ const Checkbox = ({ label, value, onChange, ...rest }) => {
   )
 }
 
+const PermissionsInput = ({ value = [], onChange }) => {
+  console.debug('PermissionsInput', { value })
+  return null
+}
+  
+
 const formSchema = [
   { 
     title: 'Identification',
@@ -69,6 +75,7 @@ const formSchema = [
   { 
     title: 'Permissions par programme',
     fields: [
+      { label: null, name: 'permissions', component: PermissionsInput },
     ]
   }
 ]
@@ -124,6 +131,8 @@ const EditUserDialog = ({ userId, close }) => {
   }, {})
 
   defaultValues.id = userId
+
+  console.debug('EditUserDialog', { data })
 
   return (
     <BaseDialog title={'Modification d\'un utilisateur'} onClose={close} onSubmit={handleSubmit} submitBtnLabel={'Sauvegarder'} schema={null} defaultValues={defaultValues}>
