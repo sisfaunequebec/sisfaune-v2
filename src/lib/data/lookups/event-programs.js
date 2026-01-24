@@ -28,6 +28,7 @@ const getActivePrograms = async () => {
 
 const getViewableProgramsForUser = async (user) => {
   const programs = await getAllPrograms()
+  console.debug('getViewableProgramsForUser:', programs, user)
   const viewableProgramsForUser = programs
     .filter(p => p.isActive)
     .filter(p => canUserViewProgram(user, p.id))

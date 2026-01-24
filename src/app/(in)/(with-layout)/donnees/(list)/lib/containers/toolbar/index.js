@@ -7,7 +7,8 @@ import ToolbarWrapper from '@/app/lib/components/toolbar-wrapper'
 
 import EvenementsSpecimens from '../../components/evenements-specimens-tabs'
 
-import AddEvent from './add-event'
+// import AddEvent from './add-event'
+import AddEventButton from './add-event-button'
 import ExportButton from './export-button'
 
 const Toolbar = async () => {
@@ -24,7 +25,7 @@ const Toolbar = async () => {
         </HStack>
         <HStack justifyContent={'space-between'} gap={2}>
           {/* { canExport && <ExportButton /> } */}
-          { canSubmitEvent && <AddEvent /> }
+          { canSubmitEvent && <AddEventButton /> }
         </HStack>
       </HStack>
     </ToolbarWrapper>
