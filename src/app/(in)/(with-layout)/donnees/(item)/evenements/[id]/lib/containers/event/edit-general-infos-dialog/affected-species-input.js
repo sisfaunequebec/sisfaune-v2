@@ -15,7 +15,7 @@ const Cell = ({ bg, text, ...rest }) => {
 
 const TitleCell = (props) => {
   return (
-    <Cell fontWeight={'medium'} py={0} fontSize={'0.8rem'} {...props} />
+    <Cell fontWeight={'medium'} py={0} fontSize={'0.8rem'} justifyContent={'center'} {...props} />
   )
 }
 

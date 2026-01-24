@@ -3,7 +3,7 @@ import { useMemo, useCallback } from 'react'
 import { Flex, VStack, Select, createListCollection, Portal } from '@chakra-ui/react'
 // import { imei } from 'valibot'
 
-const SelectInput = ({ items = [], valueKey = 'value', labelKey = 'label', name, value, onChange, onBlur, disabled = false, clearable = true, flex = 1, contentRef }) => {
+const SelectInput = ({ items = [], valueKey = 'value', labelKey = 'label', value, onChange, onBlur, disabled = false, clearable = true, flex = 1, contentRef }) => {
   const collection = useMemo(() => {
     return createListCollection({
       items: items.map(item => ({

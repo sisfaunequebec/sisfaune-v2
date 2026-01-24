@@ -74,8 +74,8 @@ const formSchema = [
     fields: [
       { label: 'Prénom\u00A0:', name: 'firstName', component: FirstNameInput },
       { label: 'Nom de famille\u00A0:', name: 'lastName', component: LastNameInput },
-      { label: 'Adresse de courriel\u00A0:', name: 'email' },
-      { label: 'Non d\'utilisateur\u00A0:', name: 'username' }
+      { label: 'Non d\'utilisateur\u00A0:', name: 'username' },
+      { label: 'Adresse de courriel\u00A0:', name: 'email' }
     ]
   },
     { 
@@ -87,6 +87,7 @@ const formSchema = [
 ]
 
 const AddUserDialog = ({ close, onAdd }) => {
+
   const defaultValues = {
     username: null,
     firstName: null,
@@ -96,7 +97,8 @@ const AddUserDialog = ({ close, onAdd }) => {
   }
 
   const handleSubmit = async (data) => {
-    const result = await onAdd(payload)
+    const result = await onAdd(data)
+    // console.debug('AddUserDialog - handleSubmit', { data, result })
     return result
   }
 

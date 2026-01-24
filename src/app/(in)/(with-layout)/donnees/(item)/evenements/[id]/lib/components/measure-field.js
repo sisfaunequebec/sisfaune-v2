@@ -22,17 +22,6 @@ const items = [
 ]
 
 const UnitSelect = ({ onChange, disabled }) => {
-  // console.debug('UnitSelect', value, onChange)
-  // const [value, setValue] = useState(6)
-
-  // const defaultUnit = useMemo(() => {
-  //   return units.find(u => u.isDefault)
-  // }, [units])
-
-  // const collection = useMemo(() => {
-  //   return createListCollection({ items: units })
-  // }, [units])
-
   const handleValueChange = useCallback((e) => {
     const { value } = e
     // setValue(value[0])

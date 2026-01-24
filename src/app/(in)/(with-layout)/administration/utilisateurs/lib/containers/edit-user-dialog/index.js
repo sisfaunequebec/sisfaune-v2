@@ -5,34 +5,100 @@ import { useSWRConfig } from 'swr'
 
 import wait from '@/utils/wait'
 
+import updateUserSchema from './update-user.schema'
 import getUserAction from './get-user.action'
 import updateUserAction from './update-user.action'
 
-import { Checkbox as ChakraCheckbox } from "@chakra-ui/react"
+import { Flex, Checkbox as ChakraCheckbox, VStack, HStack } from "@chakra-ui/react"
 
 import BaseDialog, { Fields } from '@/app/lib/components/dialogs/base'
+import { Row } from '@/app/lib/components/dialogs/wrappers'
 
-import TextDisplay from '@/app/lib/components/display/base/text'
+import SelectInput from '@/app/lib/components/inputs/base/select'
 
-const Checkbox = ({ label, value, onChange, ...rest }) => {
-  const handleSubmit = useCallback(() => {
-    onChange(!value)
-  }, [onChange, value])
+// import TextDisplay from '@/app/lib/components/display/base/text'
+
+// const Checkbox = ({ label, value, onChange, ...rest }) => {
+//   const handleSubmit = useCallback(() => {
+//     onChange(!value)
+//   }, [onChange, value])
+//   return (
+//     <ChakraCheckbox.Root
+//         checked={value}
+//         onCheckedChange={(e) => handleSubmit(value)}
+//         justifyContent={'center'}
+//         variant={'subtle'}
+//         {...rest}
+//     >
+//       <ChakraCheckbox.HiddenInput />
+//       <ChakraCheckbox.Control />
+//       { label && <ChakraCheckbox.Label>{label}</ChakraCheckbox.Label> }
+//     </ChakraCheckbox.Root>
+//   )
+// }
+
+const YesNoSelect = (props) => {
+  const items = [
+    { id: 1, name: 'Oui' },
+    { id: 0, name: 'Non' }
+  ]
+  const handleChange = (selected) => {
+    props.onChange(selected.id === 1)
+  }
+  return (<SelectInput valueKey={'id'} labelKey={'name'} items={items} {...props} clearable={false} onChange={handleChange} value={{ id: (props.value === true ? 1 : 0) }} />)
+}
+
+
+const RoleSelect = (props) => {
+  const items = [
+    { id: 'soumissionnaire', name: 'Soumissionnaire' },
+    { id: 'gestion', name: 'Gestion' },
+    { id: 'laboratoire', name: 'Laboratoire' },
+    { id: 'consultation', name: 'Consultation' },
+  ]
   return (
-    <ChakraCheckbox.Root
-        checked={value}
-        onCheckedChange={(e) => handleSubmit(value)}
-        {...rest}>
-      <ChakraCheckbox.HiddenInput />
-      <ChakraCheckbox.Control />
-      <ChakraCheckbox.Label>{label}</ChakraCheckbox.Label>
-    </ChakraCheckbox.Root>
+    <SelectInput valueKey={'id'} labelKey={'name'} items={items} {...props} />
   )
 }
 
-const PermissionsInput = ({ value = [], onChange }) => {
-  console.debug('PermissionsInput', { value })
-  return null
+const PermissionsInput = ({ value: permissions = [], onChange, contentRef }) => {
+  const handleCanSubmitChange = useCallback((programId, canSubmit) => { 
+    onChange(permissions.map(p => p.programId === programId ? { ...p, canSubmit } : p))
+  },[onChange, permissions])  
+
+  const handleRoleChange = useCallback((programId, role) => { 
+    const { id: roleId = null } = role || {}
+    onChange(permissions.map(p => p.programId === programId ? { ...p, roleId } : p))
+  },[onChange, permissions])
+
+  return (
+    <Flex direction={'column'} w={'full'} gap={4} justifyContent={'flex-start'}>
+      <Row fontWeight={'medium'}>
+        <Flex flex={4}>Rôle</Flex>
+        <Flex flex={2} lineHeight={'1.1'}>Peut<br/>soumettre</Flex>
+      </Row>
+      <VStack w={'full'} flex={2} gap={2} justifyContent={'flex-start'} mb={2}>
+        {permissions.map((permission, index) => {
+          const { programId, roleId, canSubmit, program } = permission
+          const { name } = program
+        
+          return (
+            <Row key={programId} label={`${name}\u00A0:`} w={'full'} gap={4} alignItems={'center'} >
+              <RoleSelect
+                w={'full'}
+                flex={4}
+                value={roleId && { id: roleId }}
+                onChange={(role) => handleRoleChange(programId, role)}
+                contentRef={contentRef}
+                clearable={true}
+              />
+              <YesNoSelect contentRef={contentRef} flex={2} value={canSubmit} onChange={(canSubmit) => handleCanSubmitChange(programId, canSubmit)} />
+            </Row>
+          )
+        })}
+      </VStack>
+    </Flex>
+  )
 }
   
 
@@ -40,8 +106,7 @@ const formSchema = [
   { 
     title: 'Identification',
     fields: [
-      // { label: 'Id\u00A0:', name: 'id', component: TextDisplay },
-      { label: 'Nom d\'utilisateur\u00A0:', name: 'username', component: TextDisplay },
+      // { label: 'Nom d\'utilisateur\u00A0:', name: 'username', component: TextDisplay },
       { label: 'Prénom\u00A0:', name: 'firstName' },
       { label: 'Nom\u00A0:', name: 'lastName' },
       { label: 'Titre professionnel\u00A0:', name: 'title' },
@@ -67,10 +132,11 @@ const formSchema = [
   { 
     title: 'Statuts, rôles, droits d\'accès',
     fields: [
-      { label: '\u00A0',  name: 'isActive', component: Checkbox, disabled: (data, watched, { user }) => { const { id } = user; return id === data.id }, props: { label: 'Actif' } },
-      { label: '\u00A0',  name: 'isAdmin', component: Checkbox, disabled: (data, watched, { user }) => { const { id } = user; return id === data.id }, props: { label: 'Administrateur du système' } },
-      { label: '\u00A0',  name: 'isPathologist', component: Checkbox, props: { label: 'Pathologiste responsable de dossier' } }
-    ]
+      { label: 'Actif\u00A0:',  name: 'isActive', component: YesNoSelect, disabled: (data, watched, { user }) => { const { id } = user; return id === data.id } },
+      { label: 'Administrateur du système\u00A0:',  name: 'isAdmin', component: YesNoSelect, disabled: (data, watched, { user }) => { const { id } = user; return id === data.id } },
+      { label: 'Pathologiste responsable de dossier\u00A0:',  name: 'isPathologist', component: YesNoSelect },
+      { label: 'Peut rouvrir un événement\u00A0:',  name: 'canReopenEvent', component: YesNoSelect }
+]
   },
   { 
     title: 'Permissions par programme',
@@ -135,7 +201,7 @@ const EditUserDialog = ({ userId, close }) => {
   console.debug('EditUserDialog', { data })
 
   return (
-    <BaseDialog title={'Modification d\'un utilisateur'} onClose={close} onSubmit={handleSubmit} submitBtnLabel={'Sauvegarder'} schema={null} defaultValues={defaultValues}>
+    <BaseDialog title={'Modification d\'un utilisateur'} onClose={close} onSubmit={handleSubmit} submitBtnLabel={'Sauvegarder'} schema={updateUserSchema} schemaType={'valibot'} defaultValues={defaultValues}>
       {(contentRef, watched) => {
         return (
           <Fields formSchema={formSchema} contentRef={contentRef} watched={watched} data={defaultValues} />

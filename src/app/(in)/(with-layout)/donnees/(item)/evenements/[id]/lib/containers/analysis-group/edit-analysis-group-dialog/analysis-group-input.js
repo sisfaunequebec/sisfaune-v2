@@ -4,7 +4,7 @@ import orderBy from 'lodash.orderby'
 
 import { Box, Flex, Container, VStack, AbsoluteCenter, Icon, IconButton, Text,  HStack, Separator, Fieldset, Input, Field as ChakraField } from '@chakra-ui/react'
 
-import { Header, Row } from '../wrappers'
+import { Header, Row } from '../../../../../../../../../../lib/components/dialogs/wrappers'
 
 import CommentInput from '@/app/lib/components/inputs/base/comment'
 import NumberInput from '@/app/lib/components/inputs/base/number'
@@ -30,7 +30,7 @@ const ValueTypeAnalysisHeader = ({ analysis }) => {
 }
 
 const CodeTypeInput = ({ value, codes, onChange, contentRef }) => {
-  console.debug('CodeTypeInput', { value, codes, onChange })
+  // console.debug('CodeTypeInput', { value, codes, onChange })
 
   const items = useMemo(() => {
     const activeItems = codes.filter(c => c.isActive)

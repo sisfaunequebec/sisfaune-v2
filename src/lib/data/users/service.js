@@ -111,10 +111,6 @@ const getUsers = async (params) => {
     take
   })
 
-  const count = await orm.User.count({
-    where: whereClause
-  })
-
   const payload = users.map(u => {
     const { id, username, firstName, lastName, email, organisation, isActive } = u
     const fullName = [firstName, lastName].filter(Boolean).join(' ')
@@ -138,10 +134,14 @@ const getUser = async (id) => {
       id
     },
     include: {
-      permissions: true
+      permissions: {
+        include: {
+          program: true
+        }
+      }
     }
   })
-  
+
   return user
 }
 
@@ -212,10 +212,14 @@ const createUser = async (data) => {
     const { code, meta } = e
     if (code === 'P2002') {
       const { target } = meta
-      if (target.includes('nom_utilisateur')) {
-        return { data: null, errors: { username: 'Ce nom d\'utilisateur est déjà utilisé.' }}
-      } else {
-        return { data: null, errors: { email: 'Cette adresse de courriel est déjà utilisée par un autre utilisateur.' }}
+      // console.debug('createUser - P2002 error', { target })
+      switch (true) {
+        case target.includes('adresse_courriel'):
+            return { data: null, errors: { email: 'Cette adresse de courriel est déjà utilisée par un autre utilisateur.' }}
+        case target.includes('nom_utilisateur'):
+            return { data: null, errors: { username: 'Ce nom d\'utilisateur est déjà utilisé.' }}
+        default:
+          console.log("No match found.");
       }
     }
     return { data: null, errors: { server: e.message } }
@@ -265,24 +269,58 @@ const resetUserPassword = async (data) => {
 
 const updateUser = async (userId, data) => {
   let currentEmail = null
-  try {
-    const currentUser = await orm.User.findUnique({
-      where: {
-        id: userId
-      }
+
+  try { 
+    await orm.$transaction(async (prisma) => {
+
+      const currentUser = await prisma.User.findUnique({
+        where: {
+          id: userId
+        }
+      })
+
+      currentEmail = currentUser.email
+
+      // update user first
+      const { permissions, ...userData } = data
+
+      const updatedUser = await prisma.User.update({
+        where: {
+          id: userId
+        },
+        data: userData
+      })
+
+      // then update permissions
+      for await (const perm of permissions) {
+        const { programId, roleId, canSubmit } = perm
+
+        await prisma.AdminUserProgram.upsert({
+          where: {
+            userId_programId: {
+              userId,
+              programId
+            }
+          },
+          create: {
+            userId,
+            programId,
+            roleId,
+            canSubmit
+          },
+          update: {
+            canSubmit,
+            roleId
+          }
+        })
+
+      }    
+
+      return { data: { ...updatedUser }, errors: null }
     })
 
-    currentEmail = currentUser.email
-
-    const updatedUser = await orm.User.update({
-      where: {
-        id: userId
-      },
-      data
-    })
-
-    return { data: { ...updatedUser }, errors: null }
   } catch (e) {
+    console.debug('updateUser - error', e)
     const { code, meta } = e
     if (code === 'P2002') {
       const { target } = meta

@@ -24,7 +24,6 @@ import { Fields } from '@/app/lib/components/dialogs/base'
 
 import schema from './edit-location.schema'
 
-import TextInput from '@/app/lib/components/inputs/base/text'
 import SelectInput from '@/app/lib/components/inputs/base/select'
 import NumberInput from '@/app/lib/components/inputs/base/number'
 

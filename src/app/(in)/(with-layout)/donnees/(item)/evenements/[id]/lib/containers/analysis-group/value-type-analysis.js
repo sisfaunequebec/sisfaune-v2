@@ -1,6 +1,6 @@
 import { Box, Flex, Container, VStack, AbsoluteCenter, Icon, IconButton, Text,  HStack, Separator, Fieldset, Input, Field as ChakraField } from '@chakra-ui/react'
 
-import { Header, Row } from './wrappers'
+import { Header, Row } from '../../../../../../../../../lib/components/dialogs/wrappers'
 
 import NumberDisplay from '@/app/lib/components/display/base/number'
 import TextDisplay from '@/app/lib/components/display/base/text'

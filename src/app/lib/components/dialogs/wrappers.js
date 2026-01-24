@@ -13,14 +13,14 @@ const Header = ({ name, children, ...rest }) => {
   )
 }
 
-const Row = ({ label, children }) => {
+const Row = ({ label, gap = 2, children, ...rest }) => {
   return (
-    <ChakraField.Root justifyContent={'stretch'}>
-      <Flex direction={'row'} w={'full'} alignItems={'flex-start'}>
-        <ChakraField.Label fontSize={['md', null, 'sm']} color={'gray.600'} fontWeight={400} flex={[1, null, 1]} justifyContent={'flex-start'} pt={2} pe={2} mb={0} lineHeight={'shorter'}>
+    <ChakraField.Root alignItems={'center'} justifyContent={'stretch'} {...rest}>
+      <Flex direction={'row'} w={'full'} alignItems={'center'}>
+        <ChakraField.Label fontSize={['md', null, 'sm']} color={'gray.600'} fontWeight={400} flex={[1, null, 1]} justifyContent={'flex-start'} pe={2} mb={0} lineHeight={'shorter'}>
           {label}
         </ChakraField.Label>
-        <HStack w={'full'} flex={2} gap={2} justifyContent={'space-between'}>
+        <HStack w={'full'} flex={2} gap={gap} justifyContent={'space-between'} alignItems={'center'} >
           { children }
         </HStack>
       </Flex>
