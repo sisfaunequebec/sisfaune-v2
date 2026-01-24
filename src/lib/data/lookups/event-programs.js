@@ -5,11 +5,10 @@ import prisma from '@/lib/data/database'
 
 import { canUserSubmitInProgram, canUserViewProgram } from '@/lib/auth/acl'
 
-const getAllPrograms = cache(async () => {
-  // console.debug('getAllPrograms')
+const getAllPrograms = async () => {
   const programs = await prisma.LutEventProgram.findMany()
   return programs
-})
+}
 
 const toChoicesViewModel = (program) => {
   const { id, name } = program
@@ -19,14 +18,13 @@ const toChoicesViewModel = (program) => {
   }
 }
 
-const getActivePrograms = cache(async () => {
-  // console.debug('getActivePrograms')
+const getActivePrograms = async () => {
   const programs = await getAllPrograms()
   const activePrograms = programs
     .filter(p => p.isActive)
     .map(p => toChoicesViewModel(p))
   return activePrograms
-})
+}
 
 const getViewableProgramsForUser = async (user) => {
   const programs = await getAllPrograms()

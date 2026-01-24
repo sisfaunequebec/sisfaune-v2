@@ -7,7 +7,7 @@ import { auth } from '@/lib/auth'
 
 import orm from '@/lib/data/database'
 
-const getUser = cache(async () => {
+const getUser = async () => {
   const session = await auth()
 
   const { user } = session ?? {}
@@ -48,6 +48,6 @@ const getUser = cache(async () => {
     isAdmin,
     permissions
   }
-})
+}
 
 export default getUser

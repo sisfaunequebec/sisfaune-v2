@@ -1,11 +1,11 @@
 'use server'
-import { cache } from 'react'
+// import { cache } from 'react'
 
 import { auth } from '@/lib/auth'
 
 import orm from '@/lib/data/database'
 
-const getPermissions = cache(async () => {
+const getPermissions = async () => {
   const session = await auth()
   const { user } = session
   const { id } = user
@@ -40,6 +40,6 @@ const getPermissions = cache(async () => {
     isAdmin,
     permissions
   }
-})
+}
 
 export default getPermissions
