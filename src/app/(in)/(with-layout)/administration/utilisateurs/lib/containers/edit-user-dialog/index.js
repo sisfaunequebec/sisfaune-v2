@@ -16,27 +16,6 @@ import { Row } from '@/app/lib/components/dialogs/wrappers'
 
 import SelectInput from '@/app/lib/components/inputs/base/select'
 
-// import TextDisplay from '@/app/lib/components/display/base/text'
-
-// const Checkbox = ({ label, value, onChange, ...rest }) => {
-//   const handleSubmit = useCallback(() => {
-//     onChange(!value)
-//   }, [onChange, value])
-//   return (
-//     <ChakraCheckbox.Root
-//         checked={value}
-//         onCheckedChange={(e) => handleSubmit(value)}
-//         justifyContent={'center'}
-//         variant={'subtle'}
-//         {...rest}
-//     >
-//       <ChakraCheckbox.HiddenInput />
-//       <ChakraCheckbox.Control />
-//       { label && <ChakraCheckbox.Label>{label}</ChakraCheckbox.Label> }
-//     </ChakraCheckbox.Root>
-//   )
-// }
-
 const YesNoSelect = (props) => {
   const items = [
     { id: 1, name: 'Oui' },

@@ -18,7 +18,7 @@ const formSchema = [
     title: null,
     fields: [
       { label: 'Adresse de courriel\u00A0:', name: 'email' },
-      { label: 'Nouveau mot de passe\u00A0:', name: 'password', component: PasswordInput }
+      { label: 'Nouveau mot de passe\u00A0:', name: 'password', component: PasswordInput, props: { autoComplete: 'new-password' } },
     ]
   }
 ]

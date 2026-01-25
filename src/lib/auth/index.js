@@ -43,7 +43,7 @@ const credentialsProvider = Credentials({
       throw error
     }
 
-    const { id, name, email, firstName, lastName, isAdmin, permissions: permissionsAsArray } = user
+    const { id, name, email, firstName, lastName, isAdmin, canReopenEvent, permissions: permissionsAsArray } = user
     const fullName = [firstName, lastName].filter(Boolean).join(' ')
 
     const permissions = permissionsAsArray.map(p => {
@@ -62,6 +62,7 @@ const credentialsProvider = Credentials({
       fullName,
       email,
       isAdmin,
+      canReopenEvent,
       permissions
     }
   }
@@ -78,6 +79,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         token.email = user.email
         token.fullName = user.fullName
         token.isAdmin = user.isAdmin
+        token.canReopenEvent = user.canReopenEvent
         token.permissions = user.permissions
       }
       return token
@@ -87,6 +89,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       session.user.email = token.email
       session.user.fullName = token.fullName
       session.user.isAdmin = token.isAdmin
+      session.user.canReopenEvent = token.canReopenEvent
       session.user.permissions = token.permissions
       return session
     }
