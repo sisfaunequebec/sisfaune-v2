@@ -212,7 +212,6 @@ const createUser = async (data) => {
     const { code, meta } = e
     if (code === 'P2002') {
       const { target } = meta
-      // console.debug('createUser - P2002 error', { target })
       switch (true) {
         case target.includes('adresse_courriel'):
             return { data: null, errors: { email: 'Cette adresse de courriel est déjà utilisée par un autre utilisateur.' }}
@@ -320,7 +319,6 @@ const updateUser = async (userId, data) => {
     })
 
   } catch (e) {
-    console.debug('updateUser - error', e)
     const { code, meta } = e
     if (code === 'P2002') {
       const { target } = meta

@@ -162,9 +162,6 @@ const DiscovererDisplay = ({ value, data }) => {
       const phone = telephone ? `Téléphone : ${[telephone, extension].filter(Boolean).join(' #')}` : null
       const email = emailRaw ? `Courriel : ${[emailRaw].join(' ')}` : null
       
-      // const phoneOrEmail = !!phone || !!email
-      // console.debug(phoneOrEmail)
-
       text = [fullName, title, organisation, division, service, address, city, postalCode, phone, email].filter(Boolean).join('\r')
     }
 

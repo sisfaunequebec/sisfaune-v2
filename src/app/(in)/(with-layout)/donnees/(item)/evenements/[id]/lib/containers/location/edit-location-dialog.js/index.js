@@ -90,43 +90,6 @@ const AddressInput = ({ value: raw, onChange }) => {
   )
 }
 
-// const Tempo = ({ value, onChange, size }) => {
-//   setDefaults({
-//     key: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY,
-//     language: 'fr',
-//     region: 'ca'
-//   })
-
-//   const geocode = useCallback(async (address) => {
-//     // if (!geocoder) return
-
-//     const response = await fromAddress(address)
-//     console.debug('geocode', response)
-
-//     return null
-
-//     const { results } = response
-//     const result = results.find(r => {
-//       const { types } = r
-//       return ['street_address'].some(value => types.includes(value))
-//     })
-
-//     if (result) { return result.formatted_address } else { return null }
-//   }, [])
-
-//   const handleChange = useCallback(async v => {
-//     console.debug(v)
-//     onChange(v)
-//     const result = await geocode(v)
-//     console.debug(v, result)
-    
-//   }, [onChange])
-
-//   return (
-//     <TextInput value={value} onChange={handleChange} size={size} />
-//   )
-// }
-
 const CoordinatesInput = ({ value, onChange, size }) => {
   const { setValue } = useFormContext()
 
@@ -446,7 +409,6 @@ const hasMarker = position => {
 
 const EditLocationDialog = ({ close, eventId, data }) => {
   const handleSubmit = useCallback(async (data) => {
-    // console.debug('handleSubmit', data)
     await updateLocationAction(eventId, data)
     close()
   }, [close, eventId])

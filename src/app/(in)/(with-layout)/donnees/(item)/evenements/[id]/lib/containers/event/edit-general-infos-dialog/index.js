@@ -110,6 +110,18 @@ const ProgramSelect = (props) => {
   return (<SelectInput valueKey={'id'} labelKey={'name'} items={items} {...props} />)
 }
 
+// Status is locked if 1) user is not admin and cannot reopen event or 2) event is closed
+const isStatusInputDisabled = (data, watched, { user }) => {
+  const { isAdmin, canReopenEvent } = user
+  if (isAdmin || canReopenEvent) {
+    return false
+  } else {
+    const { status } = data
+    const { id: statusId } = status
+    return statusId === 3
+  }
+}
+
 const formSchema = [
   { 
     title: 'Identification',
@@ -123,7 +135,7 @@ const formSchema = [
       { label: 'Numéro centrale MAPAQ\u00A0:', name: 'mapaqId' },
       { label: 'Programme\u00A0:', name: 'program', component: ProgramSelect, props: { clearable: false } },
       { label: 'Provenance du signalement\u00A0:', name: 'reportOrigin', component: ReportOriginSelect, props: { clearable: false } },
-      { label: 'Statut\u00A0:', name: 'status', component: EventStatusSelect, disabled: (data) => { const { status } = data; const {id: statusId } = status; return statusId === 3 }, props: { clearable: false } },
+      { label: 'Statut\u00A0:', name: 'status', component: EventStatusSelect, disabled: isStatusInputDisabled, props: { clearable: false } },
       { label: 'Date de fermeture du dossier\u00A0:', name: 'closedAt', component: DateClosedInput, props: { clearable: false }, disabled: (data, watched) => { const { status } = watched; const { id: statusId } = status; return statusId === 3 }, visible: (data, watched) => { const { closedAt } = data; const { status } = watched; const { id: statusId } = status; return (statusId === 3 && closedAt) } },
     ]
   },
@@ -169,6 +181,7 @@ const formSchema = [
 ]
 
 const EditGeneralInfosDialog = ({ close, eventId, data }) => {
+
   const handleSubmit = useCallback(async (updating) => {
     const updated = beforeUpdate(data, updating)
     await updateGeneralInfos(eventId, updated)

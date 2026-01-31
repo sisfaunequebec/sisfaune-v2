@@ -5,7 +5,7 @@ import NextLink from 'next/link'
 
 import { Flex, AbsoluteCenter, Button, Container } from '@chakra-ui/react'
 
-import { userCanViewEventSection, userCanEditEventSection, userCanAddAnalysis, userCanAddSpecimen, userCanDeleteAnalysis, userCanDeleteSpecimen, userCanEditSpecimenSection, userCanEditAnalysisSection, canUserDeleteEvent } from '@/lib/auth/acl'
+import { userCanViewEventSection, userCanEditEventSection, userCanAddAnalysis, userCanAddSpecimen, userCanDeleteAnalysis, userCanDeleteSpecimen, userCanEditSpecimenSection, userCanEditAnalysisSection, userCanDeleteEvent, userCanReopenEvent } from '@/lib/auth/acl'
 
 import Toolbar from './lib/components/toolbar.js'
 
@@ -61,31 +61,33 @@ const Evenement = async ({ params }) => {
 
   const canUserEditEventSection = userCanEditEventSection(user, programId) 
 
-  const canDeleteEvent = canUserDeleteEvent(user) 
+  const canUserDeleteEvent = userCanDeleteEvent(user) 
+  // const canUserReopenEvent = userCanReopenEvent(user)
 
   const canUserAddSpecimen = userCanAddSpecimen(user, programId) 
-  const canUserDeleteSpecimens = userCanDeleteSpecimen(user, programId) 
+  // const canUserDeleteSpecimens = userCanDeleteSpecimen(user, programId) 
   const canUserEditSpecimens = userCanEditSpecimenSection(user, programId) 
 
   const canUserAddAnalysis = userCanAddAnalysis(user, programId) 
-  const canUserDeleteAnalyses = userCanDeleteAnalysis(user, programId) 
+  // const canUserDeleteAnalyses = userCanDeleteAnalysis(user, programId) 
   const canUserEditAnalyses  = userCanEditAnalysisSection(user, programId) 
 
   return (
     <>
-      <Toolbar canDeleteEvent={canDeleteEvent} />
+      <Toolbar canUserDeleteEvent={canUserDeleteEvent} />
       <Flex flex={1} top={0} as={Container} direction={['column', null, 'row']} maxWidth={['6xl']} fontSize={['md', null, 'sm']} zIndex={999}>
         <SidebarContainer/>
         <ContentContainer direction={'column'}>
           <Event 
             event={event}
             canUserEditEventSection={canUserEditEventSection}
-            canDeleteEvent={canDeleteEvent}
+            // canUserDeleteEvent={canUserDeleteEvent}
+            // canUserReopenEvent={canUserReopenEvent}
             canUserAddSpecimen={canUserAddSpecimen}
-            canUserDeleteSpecimens={canUserDeleteSpecimens}
+            // canUserDeleteSpecimens={canUserDeleteSpecimens}
             canUserEditSpecimens={canUserEditSpecimens}
             canUserAddAnalysis={canUserAddAnalysis}
-            canUserDeleteAnalyses={canUserDeleteAnalyses}
+            // canUserDeleteAnalyses={canUserDeleteAnalyses}
             canUserEditAnalyses={canUserEditAnalyses}
           />
         </ContentContainer>

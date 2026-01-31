@@ -21,8 +21,13 @@ const canUserSubmitEvent = (user) => {
   return can
 }
 
-const canUserDeleteEvent = (user) => {
+const userCanDeleteEvent = (user) => {
   return isUserAdmin(user)
+}
+
+const userCanReopenEvent = (user) => {
+  const { canReopenEvent } = user || {}
+  return isUserAdmin(user) || canReopenEvent
 }
 
 const filterViewablePrograms = (p) => {
@@ -170,7 +175,8 @@ export {
   canUserExport,
   canUserSubmitEvent,
 
-  canUserDeleteEvent,
+  userCanDeleteEvent,
+  userCanReopenEvent,
 
   canUserSubmitInProgram,
   canUserViewProgram,

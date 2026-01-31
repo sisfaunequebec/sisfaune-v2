@@ -116,24 +116,4 @@ const SpecimenSection = ({ specimen, canEdit = false }) => {
   )
 }
 
-// const AnalysisInformationSection = ({ analysis, onToggleEditing, onDelete }) => {
-//   // console.debug(specimen)
-//   const { id, specimenNumber, specie } = specimen
-//   const { name: specieName, binome } = specie
-//   return (
-//     <AccordionItem key={id} value={id}>
-//       <Box position='relative'>
-//         <AbsoluteCenter as={HStack} axis='vertical' insetEnd={5}>
-//           { onToggleEditing && <IconButton colorPalette='green' variant='subtle' rounded='full' size={['xs']}><RxPencil1 /></IconButton> }
-//           { onDelete && <IconButton colorPalette='red' variant='subtle' rounded='full' size={['xs']} onClick={onDelete}><RxTrash /></IconButton> }
-//         </AbsoluteCenter>
-//         <Trigger label={`${specimenNumber} - ${specieName} (${binome})`} />
-//       </Box>
-//       <Content>
-//         <SpecimenForm specimen={specimen} />
-//       </Content>
-//     </AccordionItem>
-//   )
-// }
-
 export default SpecimenSection

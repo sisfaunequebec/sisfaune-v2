@@ -44,8 +44,6 @@ const Filters = async () => {
 
   const programs = await getViewableProgramsForUser(user)
 
-  // console.debug('Filters - programs', programs)
-
   const statuts = await orm.LutEventStatus.findMany()
   const regions = await orm.LutLocality.groupBy({
     by: ['regionId', 'regionName'],

@@ -33,17 +33,16 @@ const SectionHeading = ({ label, isSticky = false, children }) => {
 const Event = ({ 
   event,
   canUserEditEventSection,
-  canDeleteEvent,
+  // canUserDeleteEvent,
+  // canUserReopenEvent,
   canUserAddSpecimen,
-  canUserDeleteSpecimens,
+  // canUserDeleteSpecimens,
   canUserEditSpecimens,
   canUserAddAnalysis,
-  canUserDeleteAnalyses,
+  // canUserDeleteAnalyses,
   canUserEditAnalyses
 }) => {
   const [activePanels, setActivePanels] = useState(['general'])
-
-  console.debug('Event', event)
 
   const handleToggleActiveSection = useCallback(e => {
     setActivePanels(e.value)

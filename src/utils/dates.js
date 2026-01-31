@@ -16,9 +16,7 @@ const isoUTCStringToFormat = (str) => {
 
 const isoStringToJsDate = (str) => {
   if (!str) return null
-  // const result = DateTime.fromISO(str, { zone: LOCAL_TZ, setZone: false }).toJSDate()
   const result = DateTime.fromISO(str, { setZone: true }).toJSDate()
-  // console.debug(str, result)
   return result
 }
 

@@ -4,12 +4,10 @@ const isEuthanasia = (specimen) => {
   const { deathCause } = specimen
   const deathCauseId = deathCause?.id
   const isEuthanasia = [1, 101, 102].includes(deathCauseId)
-  // console.debug('isEuthanasia', isEuthanasia, deathCause)
   return isEuthanasia
 }
 
 const isLethalInjection = (specimen) => {
-  // console.debug('isLethalInjection', specimen)
   const { euthanasiaMethod } = specimen
   const euthanasiaMethodId = euthanasiaMethod?.id
   const isLethalInjection = euthanasiaMethodId === 1

@@ -20,7 +20,6 @@ const SpeciesCombo = ({ value, onChange, ...rest }) => {
   const handleLookup = useCallback(async (inputValue) => {
     const response = await fetch(`/api/lookup/animal-species?t=${inputValue}`)
     const data = await response.json()
-    // console.debug(data)
     return data
   } , [])
 

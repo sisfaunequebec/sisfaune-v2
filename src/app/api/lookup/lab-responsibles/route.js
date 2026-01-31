@@ -14,7 +14,7 @@ const GET = async (request) => {
 
   const params = loader(searchParams)
   const { texte } = params
-  // console.debug(params)
+  
   const result = await getLabResponsibles(texte)
 
   return Response.json(result)

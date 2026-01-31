@@ -2,7 +2,6 @@
 import prisma from '../database'
 
 const getEventTypes = async () => {
-  console.debug('getEventTypes')
   const raw = await prisma.LutEventType.findMany()
   const types = raw.map(t => {
     const { id, name } = t

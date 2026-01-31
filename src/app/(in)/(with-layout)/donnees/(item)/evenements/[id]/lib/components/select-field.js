@@ -42,7 +42,6 @@ const Select = ({ items: rawItems, value, onChange }) => {
 }
 
 const SelectField = ({ label, value, items, isEditing = false }) => {
-  // console.debug(items, typeof value)
   const valueLabel = items?.find(i => i.value === value)?.label
 
   return (

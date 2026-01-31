@@ -19,7 +19,6 @@ const useLookup = (url, queryParams, tags, cache) => {
     load()
   }, [setItems])
 
-  // console.debug('useLookup, items', items)
   return items
 }
 

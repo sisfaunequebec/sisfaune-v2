@@ -385,7 +385,7 @@ const deleteEvent = async (id) => {
     throw new Error()
   }
 
-  const canDeleteEvent = canUserDeleteEvent(user)
+  const canUserDeleteEvent = userCanDeleteEvent(user)
 
   if (!canDeleteEvent) {
     throw new Error()
@@ -468,7 +468,6 @@ const updateGeneralInfos = async (eventId, data) => {
   const { id, ...rest } = data
 
   const transformed = toDbEventTransformer(rest, { user })
-  // console.debug('transformed event for update', data, transformed)
 
   const { discoverer, ...eventData } = transformed
   const { locality, ...discovererData  } = discoverer || {}

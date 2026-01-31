@@ -21,7 +21,6 @@ const EditLaboratoryButton = ({ event }) => {
   const { ask: startEditing, dialog: editLaboratoryDialog } = useDialog(EditLaboratoryDialog)
 
   const handleClick = useCallback(async () => {
-    // console.debug(event)
     const { id: eventId, labReceivedAt, labResponsible, labReceivedBy: labReceivedById } = event
     const data = {
       labResponsible,

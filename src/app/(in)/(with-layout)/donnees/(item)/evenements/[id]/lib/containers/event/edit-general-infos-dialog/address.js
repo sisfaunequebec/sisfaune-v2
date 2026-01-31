@@ -35,7 +35,6 @@ const DiscovererAddressInput = ({ value, onChange, contentRef, size }) => {
   }, [onChange, value])
 
   const handleComboChange = useCallback(v => {
-    // console.debug('handleComboChange', v)
     const newValue = {
       ...value,
       locality: v

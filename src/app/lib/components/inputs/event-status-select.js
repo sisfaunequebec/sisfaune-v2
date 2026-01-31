@@ -17,17 +17,3 @@ const EventStatusSelect = (props) => {
 }
 
 export default EventStatusSelect
-
-
-const EventTypeSelect = (props) => {
-  const items = useLookup('/api/lookup/event-types', null, ['event-types'])
-  if (props.disabled) {
-    return (
-      <SelectDisplay valueKey={'id'} labelKey={'name'} items={items} value={props.value} />
-    )
-  } else {
-    return (
-      <SelectInput valueKey={'id'} labelKey={'name'} items={items} {...props} clearable={false} />
-    )
-  }
-}

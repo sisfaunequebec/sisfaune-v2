@@ -14,19 +14,6 @@ const laboratoriesByEventId = laboratories.reduce((acc, e) => {
   return acc
 }, {})
 
-// const idsOnly = source.map(p => parseInt(p.id_evenement))
-// const idsOnlyById = idsOnly.reduce((acc, p) => {
-//   let current = acc[p] || 0
-//   current++
-//   if (current > 1) {
-//     console.debug(p, current)
-//   }
-//   acc[p] = current
-//   return acc
-// }, {})
-
-// console.debug()
-
 const transformed = source.map(p => {
   const { 
     id_evenement,

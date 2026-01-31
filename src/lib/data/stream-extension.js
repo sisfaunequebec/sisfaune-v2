@@ -7,7 +7,6 @@ const cursorStreamExtension = Prisma.defineExtension(client => {
       model: {
         $allModels: {
           cursorStream(findManyArgs, { batchSize, prefill, transformer } = {}) {
-            // console.debug(model)
             findManyArgs = findManyArgs ?? {}
             const context = Prisma.getExtensionContext(this)
 

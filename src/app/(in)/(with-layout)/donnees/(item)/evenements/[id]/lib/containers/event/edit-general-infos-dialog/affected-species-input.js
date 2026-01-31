@@ -51,11 +51,13 @@ const AffectedSpeciesInput = ({ value: affectedSpecies = [], onChange, data }) =
           </HStack>
         </Flex>
         { affectedSpecies.map(specie => {
+          // console.debug('AffectedSpeciesInput specie', specie)
           const { index, specieId, specieName, aliveCount, unhealthyCount, deadCount, notSpecifiedCount } = specie
+          const value = specieId ? { id: specieId, label: specieName } : null
           return (
             <ChakraField.Root key={index} justifyContent={'stretch'}>
               <Flex direction={'row'} alignItems={'flex-start'} w={'full'}>
-                <SpeciesCombo flex={1} me={2} value={{ id: specieId, label: specieName }} onChange={v => handleSpecieChange(index, v)} />
+                <SpeciesCombo flex={1} me={2} value={value} onChange={v => handleSpecieChange(index, v)} />
                 <HStack flex={2} w={'full'} direction={'column'}>
                   <NumberInput value={aliveCount} size={'sm'} onChange={v => handleValueChange(index, 'aliveCount', v)} />
                   <NumberInput value={unhealthyCount} size={'sm'} onChange={v => handleValueChange(index, 'unhealthyCount', v)} />

@@ -89,7 +89,6 @@ const EventsList = () => {
   const isReachingEnd = isEmpty || (data && data[data.length - 1]?.length < PAGE_SIZE)
 
   useEffect(() => {
-    // console.debug('useEffect', inView, isLoadingMore, size)
     setTimeout(() => {
       if (inView && !isLoadingMore) {
         handleLoadMore()
@@ -98,8 +97,6 @@ const EventsList = () => {
   }, [inView, size, isLoadingMore, handleLoadMore])
 
   const loadMoreButtonIsVisible = count > 0
-  // const triggerIsVisible = (!isLoadingMore && !isReachingEnd)
-  // console.debug(isReachingEnd, isLoadingMore, triggerIsVisible)
 
   if (!isLoadingMore && count === 0) {
     return (

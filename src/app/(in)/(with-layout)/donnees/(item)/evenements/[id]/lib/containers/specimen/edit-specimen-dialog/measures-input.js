@@ -16,7 +16,6 @@ const MeasureInput = ({ id, value, unit, size, contentRef, onChange }) => {
   }, [value, id, onChange])
 
   const handleValueChange = useCallback(value => {
-    console.debug('handleValueChange', value)
     onChange(id, value, unit)
   }, [unit, id, onChange])
 

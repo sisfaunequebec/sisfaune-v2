@@ -12,7 +12,6 @@ const schema = {
 }
 
 const locationTransformer = (location, context) =>   {
-  // console.debug('locationTransformer', location)
   return transform(schema, location, context)
 }
 

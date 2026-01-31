@@ -13,7 +13,6 @@ const GET = async (request) => {
   }
 
   const data = await readCsv(ftpResult.file)
-  // console.debug(data)
 
   const insertResult = await insertData(data)
 
@@ -23,7 +22,6 @@ const GET = async (request) => {
   }
 
   const insertedRowCount = insertResult.data[5]
-  console.debug('Inserted row count:', insertedRowCount)
 
   // send success email
   await sendEmailConfirmation(insertedRowCount, null)

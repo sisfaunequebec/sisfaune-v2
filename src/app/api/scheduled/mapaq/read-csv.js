@@ -73,8 +73,6 @@ const PARSE_OPTIONS = {
 }
 
 const readCsv = (file) => {
-  console.debug(`Parsing ${file}...`)
-
   return new Promise((resolve, reject) => {
     const data = []
 
@@ -85,7 +83,6 @@ const readCsv = (file) => {
         if (obj) data.push(obj)
       })
       .on('end', () => {
-        console.debug(`Done parsing...`)
         resolve(data)
       })
   })

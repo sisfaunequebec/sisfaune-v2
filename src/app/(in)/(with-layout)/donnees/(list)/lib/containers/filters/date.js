@@ -70,8 +70,6 @@ const Date = () => {
   const startDate = start && DateTime.fromISO(start).toISODate()
   const endDate = end && DateTime.fromISO(end).toISODate()
 
-  // console.debug(startDate, endDate)
-
   return (
     // <VStack>
     <VStack gap={2} alignItems='flex-start'>

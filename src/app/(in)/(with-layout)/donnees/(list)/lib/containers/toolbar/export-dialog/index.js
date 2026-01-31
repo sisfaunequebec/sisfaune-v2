@@ -17,7 +17,6 @@ const defaultValues = {
 const ExportDialog = ({ close, filters, onExport }) => {
 
   const handleSubmit = async (data) => {
-    // console.debug('ExportDialog handleSubmit data:', data)
     const { format } = data
     const { value } = format
     const allParams = {...filters, format: value}

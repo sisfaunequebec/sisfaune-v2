@@ -238,7 +238,6 @@ const updateSpecimen = async (specimenId, data) => {
   }
 
   const transformed = toDbSpecimenTransformer(data, { user })
-  console.debug('transformed specimen for update', data, transformed)
  
   const { measures, ...rest } = transformed
   
@@ -254,7 +253,6 @@ const updateSpecimen = async (specimenId, data) => {
       const { id: measureId, value, unit } = m
       const { id: unitId } = unit
       const data = { value, unitId }
-      console.debug(m, data)
       await prisma.specimenMeasure.update({
         where: {
           id: measureId,
