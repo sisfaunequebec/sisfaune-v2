@@ -41,8 +41,6 @@ const AnalysisItem = ({ id, name, code, groupName, sectorName, resultType, onCli
           <Flex fontWeight={500} color='fg.muted'>Groupe : {groupName}</Flex>
           <Flex display={['none', null, null, 'inherit']}>Secteur : {sectorName}</Flex>
         </VStack>
-        <VStack alignItems={['flex-start', null, null, 'flex-end']} gap={0.4} flex={1}>
-        </VStack>
       </Stack>
       <IconButton colorPalette={'green'} variant={'ghost'} rounded={'full'} size={['xs']} onClick={onClick}><RxPencil2 /></IconButton>
     </LinkListWrapper>
@@ -87,14 +85,14 @@ const AnalysisList = () => {
 
   const loadMoreButtonIsVisible = count > 0
 
-  const handleEditAnalysis = useCallback(async (id) => {
-    const result = await editAnalysis(id)
+  const handleEditAnalysis = useCallback(async (analysisId) => {
+    const result = await editAnalysis({ analysisId })
     if (result) {
       console.debug('Edit !!!')
     }
   }, [editAnalysis])
 
-    if (isEmpty) {
+  if (isEmpty) {
     return (
       <NoAnalyses />
     )

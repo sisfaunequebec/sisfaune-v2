@@ -12,7 +12,6 @@ const GET = async (request) => {
   const { nextUrl: { searchParams } } = request
 
   const params = loader(searchParams)
-  console.debug(params)
   const analyses = await getAnalyses(params)
 
   return Response.json(analyses)

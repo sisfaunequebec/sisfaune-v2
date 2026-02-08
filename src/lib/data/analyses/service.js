@@ -84,10 +84,9 @@ const getAnalyses = async (params) => {
   const whereClause = getWhereClauseFromParams(params)
   const orderByClause = getOrderByClause(tri, direction)
 
-  console.debug('orderByClause', orderByClause)
-
   const analyses = await orm.LutAnalysis.findMany({
     include: {
+      resultType: true,
       analysisGroup: {
         include: {
           analysisSector: true
@@ -116,6 +115,35 @@ const getAnalyses = async (params) => {
   })
 
   return payload
+}
+
+const getAnalysis = async (id) => {
+  const user = await getAuthUser()
+
+  if (!user) {
+    return []
+  } else {
+    const { isAdmin } = user
+    if (!isAdmin) {
+      return null
+    }
+  }
+
+  const analysis = await orm.LutAnalysis.findUnique({
+    where: {
+      id
+    },
+    include: {
+      resultType: true,
+      analysisGroup: {
+        include: {
+          analysisSector: true
+        }
+      }
+    }
+  })
+
+  return analysis
 }
 
 const addAnalysis = async (eventId, data) => {
@@ -227,6 +255,7 @@ const updateAnalysisGroupResults = async (data) => {
 export {
   getAnalyses,
   getAnalysesCount,
+  getAnalysis,
   addAnalysis,
   deleteAnalysis,
   updateAnalysisGroupResults

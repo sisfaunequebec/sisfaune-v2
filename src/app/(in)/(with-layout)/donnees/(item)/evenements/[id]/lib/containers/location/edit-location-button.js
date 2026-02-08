@@ -13,7 +13,6 @@ import useDialog from '@/utils/use-dialog'
 
 import ResponsiveButton from '@/app/lib/components/responsive-button'
 
-// import EditLaboratoryDialog from './edit-laboratory-dialog.js'
 import EditLocationDialog from './edit-location-dialog.js'
 
 const EditLocationButton = ({ event }) => {
