@@ -2,7 +2,7 @@
 import { useEffect, useCallback, useRef } from 'react'
 import { useIntersectionObserver } from '@react-hooks-library/core'
 
-import { Flex, Box, Stack, VStack, Text, IconButton, LinkOverlay } from '@chakra-ui/react'
+import { Flex, Box, Stack, VStack, Text, IconButton, Link, LinkOverlay } from '@chakra-ui/react'
 import { RxPencil2 } from 'react-icons/rx'
 
 import { useQueryStates } from 'nuqs'
@@ -30,7 +30,7 @@ const NoUsers = () => {
 const UserItem = ({ id, username, fullName, email, organisation, isActive, onClick }) => {
   return (
     <LinkListWrapper>
-      <Stack flex={1} direction={['column', null, null, 'row']} gap={[0.4, null, null, 1]} onClick={onClick}>
+      <Stack flex={1} direction={['column', null, null, 'row']} gap={[0.4, null, null, 1]} onClick={onClick} >
         <VStack alignItems={'flex-start'} gap={0.4} flex={1}>
           <LinkOverlay asChild>
             <Flex flex={1} color={'green.600'} _dark={{ color: 'green.200' }}>
@@ -42,7 +42,7 @@ const UserItem = ({ id, username, fullName, email, organisation, isActive, onCli
           <Flex>{email}</Flex>
         </VStack>
       </Stack>
-      <IconButton colorPalette={'green'} variant={'ghost'} rounded={'full'} size={['xs']}><RxPencil2 /></IconButton>
+      <IconButton as={Link} onClick={onClick} colorPalette={'green'} variant={'ghost'} rounded={'full'} size={['xs']}><RxPencil2 /></IconButton>
     </LinkListWrapper>
   )
 }

@@ -15,6 +15,8 @@ import useDialog from '@/utils/use-dialog'
 import ResponsiveButton from '@/app/lib/components/responsive-button'
 import ExportDialog from './export-dialog'
 
+// import ExportManager from './export-manager'
+
 const ExportButton = () => {
   const [filters] = useQueryStates(searchParams, { urlKeys })
 
@@ -37,6 +39,7 @@ const ExportButton = () => {
     <>
       {downloadEventsDialog}
       <ResponsiveButton label={'Exporter'} colorPalette={'blue'} icon={<RxDownload />} onClick={handleDownload} />
+      {/* <ExportManager /> */}
     </>
   )
 }

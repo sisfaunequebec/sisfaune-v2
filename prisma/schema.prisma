@@ -796,4 +796,21 @@ model EventAnalysisGroup {
   analysisGroup LutAnalysisGroup @relation(fields: [analysisGroupId], references: [id], onDelete: Cascade, onUpdate: Cascade)
 }
 
+enum TaskStatus {
+  en_cours
+  termine
+  erreur
+}
+
+model Tasks {
+  @@map("admin_tache")
+
+  id Int @id @map(name: "id_tache") @default(autoincrement())
+  userId String @map(name: "id_utilisateur")
+  sessionId String @map(name: "id_session")
+  status TaskStatus @default(en_cours) @map(name: "etat") 
+
+  createdAt DateTime @default(now()) @map(name: "meta_date_creation")
+  updatedAt DateTime? @updatedAt @map(name: "meta_date_maj")
+}
 

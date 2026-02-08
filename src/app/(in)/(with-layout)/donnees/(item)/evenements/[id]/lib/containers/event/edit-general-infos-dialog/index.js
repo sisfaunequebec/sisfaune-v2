@@ -2,7 +2,7 @@
 import { useState, useEffect, useCallback } from 'react'
 
 import updateGeneralInfos from '../update-general-infos.action'
-import beforeUpdate from './before-update'
+// import beforeUpdate from './before-update'
 
 import getActivePrograms from '@/lib/data/lookups/event-programs'
 
@@ -183,8 +183,7 @@ const formSchema = [
 const EditGeneralInfosDialog = ({ close, eventId, data }) => {
 
   const handleSubmit = useCallback(async (updating) => {
-    const updated = beforeUpdate(data, updating)
-    await updateGeneralInfos(eventId, updated)
+    await updateGeneralInfos(eventId, updating)
     close()
   }, [close, eventId, data])
 

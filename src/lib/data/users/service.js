@@ -9,7 +9,7 @@ import { Resend } from 'resend'
 import orm from '../database'
 
 import generatePassword from './generate-password'
-import isProduction from '@/utils/is-production'
+// import isProduction from '@/utils/is-production'
 
 import getAuthUser from '@/lib/auth/get-user'
 

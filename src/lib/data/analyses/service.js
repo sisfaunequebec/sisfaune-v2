@@ -1,15 +1,118 @@
 'use server'
 import 'server-only'
 
-import { DateTime } from 'luxon'
-
 import orm from '../database'
 
-import getUser from '@/lib/auth/get-user'
+import getAuthUser from '@/lib/auth/get-user'
 
 import { userCanAddAnalysis, userCanDeleteAnalysis } from '@/lib/auth/acl'
 
-// import toDbSpecimenTransformer from '../transformers/to-db/specimen'
+// const SORT_MAP = {
+//   'nom_groupe': 'username',
+//   courriel: 'email',
+//   organisation: 'organisation'
+// }
+
+// const getSortField = (value) => {
+//   if (!value) {
+//     return 'username'
+//   } else {
+//     return SORT_MAP[value]
+//   }
+// }
+
+const getWhereClauseFromParams = (params) => {
+  const { secteur, tri, direction, texte: texteRaw } = params
+
+  const texte = texteRaw?.trim().length ? texteRaw?.trim() : undefined
+
+  const whereClause = {
+    analysisGroup: {
+      analysisSector: {
+        id: secteur ? { in: secteur } : undefined
+      }
+    },
+    OR: texte ? [
+      { name: { contains: texte, mode: 'insensitive' } },
+      { analysisGroup: {
+          name: texte ? { contains: texte, mode: 'insensitive' } : undefined
+        }
+      }
+    ] : undefined
+  }
+
+  return whereClause
+}
+
+const getAnalysesCount = async (params) => {
+  const user = await getAuthUser()
+
+  if (!user) {
+    return []
+  } else {
+    const { isAdmin } = user
+    if (!isAdmin) {
+      return []
+    }
+  }
+
+  const whereClause = getWhereClauseFromParams(params)
+
+  const count = await orm.LutAnalysis.count({
+    where: whereClause
+  })
+
+  return count
+}
+
+const getAnalyses = async (params) => {
+  const { tri, direction, offset = 0, take = 25 } = params
+
+  const user = await getAuthUser()
+
+  if (!user) {
+    return []
+  } else {
+    const { isAdmin } = user
+    if (!isAdmin) {
+      return []
+    }
+  }
+
+  const whereClause = getWhereClauseFromParams(params)
+  // const orderByClause = getOrderByClause(tri, direction)
+
+  const analyses = await orm.LutAnalysis.findMany({
+    include: {
+      analysisGroup: {
+        include: {
+          analysisSector: true
+        }
+      }
+    },
+    where: whereClause,
+    // orderBy: orderByClause,
+    skip: (offset * take),
+    take
+  })
+
+  // id, name, code, groupName, sectorName, resultType
+
+  const payload = analyses.map(a => {
+    const { id, name, code, analysisGroup } = a
+    const { name: groupName, analysisSector } = analysisGroup
+    const { name: sectorName } = analysisSector
+    return {
+      id,
+      name,
+      code,
+      groupName,
+      sectorName
+    }
+  })
+
+  return payload
+}
 
 const addAnalysis = async (eventId, data) => {
   const user = await getUser()
@@ -118,6 +221,8 @@ const updateAnalysisGroupResults = async (data) => {
 }
 
 export {
+  getAnalyses,
+  getAnalysesCount,
   addAnalysis,
   deleteAnalysis,
   updateAnalysisGroupResults

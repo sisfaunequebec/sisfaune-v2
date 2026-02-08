@@ -31,12 +31,12 @@ const NavTabs = () => {
             <NextLink href={'/administration/utilisateurs'}>Utilisateurs</NextLink>
           </Link>
         </StyledTrigger>
-        {/* <StyledTrigger value={'analyses'}>
+        <StyledTrigger value={'analyses'}>
           <Link asChild unstyled>
             <NextLink href={'/administration/analyses'}>Analyses</NextLink>
           </Link>
         </StyledTrigger>
-        <StyledTrigger value={'valeurs'}>
+        {/* <StyledTrigger value={'valeurs'}>
           <Link asChild unstyled>
             <NextLink href={'/administration/valeurs'}>Tables de valeurs</NextLink>
           </Link>

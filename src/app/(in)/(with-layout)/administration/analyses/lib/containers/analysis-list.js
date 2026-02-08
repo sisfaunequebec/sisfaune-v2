@@ -1,26 +1,31 @@
 'use client'
-
 import { useEffect, useCallback, useRef } from 'react'
-// import { useIntersectionObserver } from '@react-hooks-library/core'
-
-import { DateTime } from 'luxon'
-
-import NextLink from 'next/link'
+import { useIntersectionObserver } from '@react-hooks-library/core'
 
 import { Flex, Box, Stack, VStack, Text, IconButton, LinkOverlay } from '@chakra-ui/react'
-// import { Button } from '@/components/ui/button'
-import { RxArrowRight, RxPencil1 } from 'react-icons/rx'
+import { RxArrowRight, RxPencil2 } from 'react-icons/rx'
 
 import { useQueryStates } from 'nuqs'
 
-// import useEvents from '@/logic/data/events/use-events'
-// import { searchParams, urlKeys } from '@/logic/data/events/events-params'
+import useAnalyses from '@/lib/data/analyses/use-analyses'
+import useAnalysesCount from '@/lib/data/analyses/use-analyses-count'
+
+import { searchParams, urlKeys } from '@/lib/data/analyses/analyses-params'
 
 import useDialog from '@/utils/use-dialog'
 import EditAnalysisDialog from './edit-analysis-dialog'
 
-import { ListContainer } from '@/app/(in)/(with-layout)/lib/components/list'
-import { LinkListWrapper } from '@/app/(in)/(with-layout)/lib/components/list'
+import { ListContainer, LinkListWrapper, LoadMoreButton } from '@/app/(in)/(with-layout)/lib/components/list'
+
+import CenteredMessage from '@/app/lib/components/centered-message'
+
+const PAGE_SIZE = 25
+
+const NoAnalyses = () => {
+  return (
+    <CenteredMessage level={'info'} description={'Aucune analyse correspondant aux critères'} />
+  )
+}
 
 const AnalysisItem = ({ id, name, code, groupName, sectorName, resultType, onClick }) => {
   return (
@@ -37,62 +42,50 @@ const AnalysisItem = ({ id, name, code, groupName, sectorName, resultType, onCli
           <Flex display={['none', null, null, 'inherit']}>Secteur : {sectorName}</Flex>
         </VStack>
         <VStack alignItems={['flex-start', null, null, 'flex-end']} gap={0.4} flex={1}>
-          {/* <Flex display={['none', null, null, 'inherit']}>Type : {resultType}</Flex> */}
-          {/* <Flex color={'blue.600'}>Date du signalement : {reportingDate}</Flex>
-          <Flex display={['none', null, null, 'inherit']}>Municipalité : {localityName ?? 'indéterminée'}</Flex> */}
         </VStack>
       </Stack>
-      {/* <IconButton colorPalette={'green'} variant={'ghost'} rounded={'full'} size={['xs']} onClick={onClick}><RxPencil1 /></IconButton> */}
+      <IconButton colorPalette={'green'} variant={'ghost'} rounded={'full'} size={['xs']} onClick={onClick}><RxPencil2 /></IconButton>
     </LinkListWrapper>
   )
 }
 
-const PAGE_SIZE = 25
-
 const AnalysisList = () => {
   const inner = useRef(null)
+  const { inView } = useIntersectionObserver(inner)
 
   const { ask: editAnalysis, dialog: editAnalysisDialog } = useDialog(EditAnalysisDialog)
 
-  // const { inView } = useIntersectionObserver(inner)
+  const [ params ] = useQueryStates(searchParams, { urlKeys })
 
-  // const [ params ] = useQueryStates(searchParams, { urlKeys })
+  const { data: total } = useAnalysesCount(params)
 
-  // const result = useEvents(params, PAGE_SIZE)
-  // const { data = [], isLoading, size, setSize } = result
+  const result = useAnalyses(params, PAGE_SIZE)
+  const { data = [], isLoading, size, setSize } = result
 
-  // const handleLoadMore = useCallback(() => {
-  //   if (isLoading) {
-  //     return
-  //   }
-  //   setSize(size + 1)
-  // }, [setSize, size, isLoading])
-
-  const data = [
-    { id: 1, name: 'Adénovirus aviaire type 8', code: 'AAVTYPE8', groupName: 'Adenovirus aviaire (Tr.en pt)', sectorName: 'Sérologie', resultType: 'Type' }
-  ]
+  const handleLoadMore = useCallback(() => {
+    if (isLoading) {
+      return
+    }
+    setSize(size + 1)
+  }, [setSize, size, isLoading])
 
   const analyses = data ? [].concat(...data) : []
-  const total = analyses.length
+  const count = analyses.length
 
-  const isLoadingMore = false // isLoading || (size > 0 && data && typeof data[size - 1] === 'undefined')
-  // const isEmpty = data?.[0]?.length === 0
-  // const isReachingEnd = isEmpty || (data && data[data.length - 1]?.length < PAGE_SIZE)
+  const isLoadingMore = isLoading || (size > 0 && data && typeof data[size - 1] === 'undefined')
+  const isEmpty = data?.[0]?.length === 0
+  const isReachingEnd = isEmpty || (data && data[data.length - 1]?.length < PAGE_SIZE)
 
-  // useEffect(() => {
-  //   // console.debug('useEffect', inView, isLoadingMore, size)
-  //   setTimeout(() => {
-  //     if (inView && !isLoadingMore) {
-  //       handleLoadMore()
-  //     }
-  //   }, 500)
-  // }, [inView, size, isLoadingMore, handleLoadMore])
+  useEffect(() => {
+    // console.debug('useEffect', inView, isLoadingMore, size)
+    setTimeout(() => {
+      if (inView && !isLoadingMore) {
+        handleLoadMore()
+      }
+    }, 500)
+  }, [inView, size, isLoadingMore, handleLoadMore])
 
-  // const loadMoreButtonLabel = [`Événements 1 à ${total} `, (isReachingEnd ? null : 'Cliquer pour charger la suite')].filter(Boolean).join(' - ')
-
-  // const loadMoreButtonIsVisible = events.length > 0
-  // const triggerIsVisible = (!isLoadingMore && !isReachingEnd)
-  // console.debug(isReachingEnd, isLoadingMore, triggerIsVisible)
+  const loadMoreButtonIsVisible = count > 0
 
   const handleEditAnalysis = useCallback(async (id) => {
     const result = await editAnalysis(id)
@@ -100,6 +93,12 @@ const AnalysisList = () => {
       console.debug('Edit !!!')
     }
   }, [editAnalysis])
+
+    if (isEmpty) {
+    return (
+      <NoAnalyses />
+    )
+  }
 
   return (
     <>
@@ -111,8 +110,7 @@ const AnalysisList = () => {
             <AnalysisItem key={id} {...analysis} onClick={e => { handleEditAnalysis(id) }} />
           )
         })}
-        {/* <Flex flex={1} position={'absolute'} bottom={0} w={'full'} height={'300px'} maxH={'100vh'} border={'solid 1px red'} display={triggerIsVisible ? 'inherit' : 'none'} ref={inner} /> */}
-        {/* { loadMoreButtonIsVisible && <Button mt={2} p={4} variant={'surface'} colorPalette={'blue'} onClick={isReachingEnd ? null : handleLoadMore} loading={isLoadingMore}>{loadMoreButtonLabel}</Button> } */}
+        {loadMoreButtonIsVisible && <LoadMoreButton label={'Analyses'} count={count} total={total} isReachingEnd={isReachingEnd} isLoading={isLoadingMore} onClick={handleLoadMore} />}
       </ListContainer>
     </>
   )
