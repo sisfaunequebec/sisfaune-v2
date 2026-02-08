@@ -7,19 +7,21 @@ import getAuthUser from '@/lib/auth/get-user'
 
 import { userCanAddAnalysis, userCanDeleteAnalysis } from '@/lib/auth/acl'
 
-// const SORT_MAP = {
-//   'nom_groupe': 'username',
-//   courriel: 'email',
-//   organisation: 'organisation'
-// }
+const getOrderByClause = (tri, direction) => {
+  const sortDirection = direction ?? 'asc'
 
-// const getSortField = (value) => {
-//   if (!value) {
-//     return 'username'
-//   } else {
-//     return SORT_MAP[value]
-//   }
-// }
+  if (tri === 'nom_groupe') {
+    return {
+      analysisGroup: {
+        name: sortDirection
+      }
+    }
+  } else {
+    return {
+      name: sortDirection
+    }
+  }
+}
 
 const getWhereClauseFromParams = (params) => {
   const { secteur, tri, direction, texte: texteRaw } = params
@@ -80,7 +82,9 @@ const getAnalyses = async (params) => {
   }
 
   const whereClause = getWhereClauseFromParams(params)
-  // const orderByClause = getOrderByClause(tri, direction)
+  const orderByClause = getOrderByClause(tri, direction)
+
+  console.debug('orderByClause', orderByClause)
 
   const analyses = await orm.LutAnalysis.findMany({
     include: {
@@ -91,7 +95,7 @@ const getAnalyses = async (params) => {
       }
     },
     where: whereClause,
-    // orderBy: orderByClause,
+    orderBy: orderByClause,
     skip: (offset * take),
     take
   })

@@ -7,7 +7,7 @@ import fetcher from '../fetcher'
 const baseUrl = '/api/admin/tasks'
 
 const useTasks = () => {
-  const { data = {}, error, isLoading } = useSWR(`${baseUrl}`, fetcher, { refreshInterval: 1000 })
+  const { data = {}, error, isLoading } = useSWR(`${baseUrl}`, fetcher, { refreshInterval: 5000 })
  
   return {
     data,

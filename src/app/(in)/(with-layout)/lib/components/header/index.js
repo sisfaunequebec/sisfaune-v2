@@ -23,7 +23,7 @@ const Header = async () => {
             <Menu />
           </HStack>
         </Container>
-        <ExportManager />
+        {/* <ExportManager /> */}
       </VStack>
     </Flex>
   )

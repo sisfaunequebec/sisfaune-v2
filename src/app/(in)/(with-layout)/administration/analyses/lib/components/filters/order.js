@@ -10,7 +10,7 @@ import { useCallback } from 'react'
 const Order = () => {
   const [values, setValues] = useQueryStates({
     tri: parseAsString.withDefault('nom_analyse'),
-    direction: parseAsString.withDefault('desc')
+    direction: parseAsString.withDefault('asc')
   }, {
     urlKeys: {
       tri: 'o',
@@ -29,7 +29,7 @@ const Order = () => {
 
   const handleCheckedChange = useCallback(e => {
     const { checked } = e
-    const direction = checked ? 'asc' : 'desc'
+    const direction = checked ? 'desc' : 'asc'
     const { tri } = values
     setValues({
       tri,
@@ -38,7 +38,7 @@ const Order = () => {
   }, [values, setValues])
 
   const { tri, direction } = values
-  const directionIsReversed = direction.toLowerCase() === 'asc'
+  const directionIsReversed = direction.toLowerCase() === 'desc'
 
   return (
     <RadioGroup defaultValue='date_creation' size='sm' colorPalette='blue' variant='subtle' name='ordre' value={tri} onValueChange={handleChange}>
