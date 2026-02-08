@@ -86,10 +86,7 @@ const AnalysisList = () => {
   const loadMoreButtonIsVisible = count > 0
 
   const handleEditAnalysis = useCallback(async (analysisId) => {
-    const result = await editAnalysis({ analysisId })
-    if (result) {
-      console.debug('Edit !!!')
-    }
+    await editAnalysis({ analysisId })
   }, [editAnalysis])
 
   if (isEmpty) {

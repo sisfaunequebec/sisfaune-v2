@@ -3,9 +3,10 @@ import { useState, useEffect, useCallback } from 'react'
 
 import { useSWRConfig } from 'swr'
 
-// import { DateTime } from 'luxon'
+import wait from '@/utils/wait'
 
 import getAnalysisAction from './get-analysis.action'
+import updateAnalysisAction from './update-analysis.action'
 import editAnalysiSchema from './edit-analysis.schema'
 
 import BaseDialog, { Fields } from '@/app/lib/components/dialogs/base'
@@ -20,8 +21,8 @@ const formSchema = [
     fields: [
       { label: 'Nom de l\'analyse\u00A0:', name: 'name' },
       { label: 'Nom de l\'analyse (MAPAQ)\u00A0:', name: 'code' },
-      { label: 'Groupe d\'analyse (MAPAQ)\u00A0:', name: 'groupName', component: TextDisplay },
-      { label: 'Secteur d\'analyse (MAPAQ)\u00A0:', name: 'sectorName', component: TextDisplay },
+      { label: 'Groupe d\'analyse\u00A0:', name: 'groupName', component: TextDisplay },
+      { label: 'Secteur d\'analyse\u00A0:', name: 'sectorName', component: TextDisplay },
       { label: 'Type de résultats\u00A0:', name: 'resultType', component: ResultTypeSelect, disabled: true },
       { label: 'Active\u00A0:', name: 'isActive', component: YesNoSelect }
 
@@ -31,9 +32,6 @@ const formSchema = [
     { 
     title: 'Gestion des résultats',
     fields: [
-      // { label: 'Nom de l\'analyse\u00A0:', name: 'name' },
-      // { label: 'Nom de l\'analyse (MAPAQ)\u00A0:', name: 'code' },
-      // { label: 'Active\u00A0:', name: 'isActive', component: YesNoSelect }
     ]
   }
 ]
@@ -45,19 +43,18 @@ const EditAnalysisDialog = ({ analysisId, close }) => {
   const [isLoading, setIsLoading] = useState(true)
 
   const handleSubmit = useCallback(async (data) => {
-    console.debug('handleSubmit', data)
-    // const result = await updateUserAction(userId, data)
+    const result = await updateAnalysisAction(analysisId, data)
 
-    // if (result) {
-    //   await wait(1000)
-    //   for (const key of cache.keys()) {
-    //     if (key.includes('/api/admin/users')) {
-    //       mutate(key)
-    //     }
-    //   }
-    // }
+    if (result) {
+      await wait(1000)
+      for (const key of cache.keys()) {
+        if (key.includes('/api/admin/analyses')) {
+          mutate(key)
+        }
+      }
+    }
     
-    // return result
+    return result
   }, [analysisId, mutate, cache])
 
   useEffect(() => {
@@ -67,7 +64,6 @@ const EditAnalysisDialog = ({ analysisId, close }) => {
         const fetchedData = await getAnalysisAction(analysisId)
         setData(fetchedData)
       } catch (err) {
-        // setError(err)
       } finally {
         setIsLoading(false)
       }
@@ -88,8 +84,6 @@ const EditAnalysisDialog = ({ analysisId, close }) => {
     acc[name] = value
     return acc
   }, {})
-
-  console.debug('EditAnalysisDialog', { data })
 
   return (
     <BaseDialog title={'Modification d\'une analyse'} onClose={close} onSubmit={handleSubmit} submitBtnLabel={'Sauvegarder'} schema={editAnalysiSchema} schemaType={'valibot'} defaultValues={defaultValues}>

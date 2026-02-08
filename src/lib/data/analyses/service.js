@@ -7,6 +7,9 @@ import getAuthUser from '@/lib/auth/get-user'
 
 import { userCanAddAnalysis, userCanDeleteAnalysis } from '@/lib/auth/acl'
 
+import tranformFromDb from '../transformers/from-db/analysis'
+import tranformToDb from '../transformers/to-db/analysis'
+
 const getOrderByClause = (tri, direction) => {
   const sortDirection = direction ?? 'asc'
 
@@ -143,7 +146,7 @@ const getAnalysis = async (id) => {
     }
   })
 
-  return analysis
+  return tranformFromDb(analysis, { user })
 }
 
 const addAnalysis = async (eventId, data) => {
@@ -180,7 +183,7 @@ const addAnalysis = async (eventId, data) => {
 }
 
 const deleteAnalysis = async (eventId, analysisGroupId) => {
-  const user = await getUser()
+  const user = await getAuthUser()
 
   if (!user) {
     throw new Error()
@@ -222,6 +225,32 @@ const deleteAnalysis = async (eventId, analysisGroupId) => {
   return true
 }
 
+const updateAnalysis = async (analysisId, data) => {
+  const user = await getAuthUser()
+
+  if (!user) {
+    throw new Error()
+  }
+
+  const { isAdmin } = user
+
+  if (!isAdmin) {
+    throw new Error()
+  }
+
+  const payload = tranformToDb(data, { user })
+  
+  const updatedAnalysis = await orm.LutAnalysis.update({
+    where: {
+      id: analysisId
+    },
+    data: payload
+  })
+
+  return { data: { ...updatedAnalysis }, errors: null }
+
+}
+
 const updateAnalysisGroupResults = async (data) => {
   
   const user = await getUser()
@@ -257,6 +286,7 @@ export {
   getAnalysesCount,
   getAnalysis,
   addAnalysis,
+  updateAnalysis,
   deleteAnalysis,
   updateAnalysisGroupResults
 }

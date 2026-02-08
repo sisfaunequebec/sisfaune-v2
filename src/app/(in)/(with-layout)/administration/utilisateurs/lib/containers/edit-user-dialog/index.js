@@ -153,7 +153,6 @@ const EditUserDialog = ({ userId, close }) => {
         const fetchedData = await getUserAction(userId)
         setData(fetchedData)
       } catch (err) {
-        // setError(err)
       } finally {
         setIsLoading(false)
       }
@@ -177,8 +176,6 @@ const EditUserDialog = ({ userId, close }) => {
 
   // Required to conditionaly disable other fields 
   defaultValues.id = userId
-
-  console.debug('EditUserDialog', { data })
 
   return (
     <BaseDialog title={'Modification d\'un utilisateur'} onClose={close} onSubmit={handleSubmit} submitBtnLabel={'Sauvegarder'} schema={updateUserSchema} schemaType={'valibot'} defaultValues={defaultValues}>
