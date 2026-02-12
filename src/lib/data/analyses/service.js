@@ -150,7 +150,7 @@ const getAnalysis = async (id) => {
 }
 
 const addAnalysis = async (eventId, data) => {
-  const user = await getUser()
+  const user = await getAuthUser()
 
   if (!user) {
     throw new Error()
@@ -252,8 +252,7 @@ const updateAnalysis = async (analysisId, data) => {
 }
 
 const updateAnalysisGroupResults = async (data) => {
-  
-  const user = await getUser()
+  const user = await getAuthUser()
 
   if (!user) {
     throw new Error()
