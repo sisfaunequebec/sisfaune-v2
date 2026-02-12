@@ -36,10 +36,10 @@ const Event = ({
   // canUserDeleteEvent,
   // canUserReopenEvent,
   canUserAddSpecimen,
-  // canUserDeleteSpecimens,
+  canUserDeleteSpecimens,
   canUserEditSpecimens,
   canUserAddAnalysis,
-  // canUserDeleteAnalyses,
+  canUserDeleteAnalyses,
   canUserEditAnalyses
 }) => {
   const [activePanels, setActivePanels] = useState(['general'])
@@ -75,7 +75,7 @@ const Event = ({
           {specimens.map(s => {
             const { id } = s
             return (
-              <SpecimenSection key={id} specimen={s} canEdit={canUserEditSpecimens} />
+              <SpecimenSection key={id} specimen={s} canEdit={canUserEditSpecimens} canDelete={canUserDeleteSpecimens} />
             )
           })}
         </AccordionRoot>
@@ -89,7 +89,7 @@ const Event = ({
           {analysisGroups.map(ag => {
             const { id } = ag
             return (
-              <AnalysisGroupSection key={id} analysisGroup={ag} canEdit={canUserEditAnalyses} />
+              <AnalysisGroupSection key={id} analysisGroup={ag} canEdit={canUserEditAnalyses} canDelete={canUserDeleteAnalyses} />
             )
           })}
         </AccordionRoot>

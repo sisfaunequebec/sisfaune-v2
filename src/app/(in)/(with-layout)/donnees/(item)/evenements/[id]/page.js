@@ -65,11 +65,11 @@ const Evenement = async ({ params }) => {
   // const canUserReopenEvent = userCanReopenEvent(user)
 
   const canUserAddSpecimen = userCanAddSpecimen(user, programId) 
-  // const canUserDeleteSpecimens = userCanDeleteSpecimen(user, programId) 
+  const canUserDeleteSpecimens = userCanDeleteSpecimen(user, programId) 
   const canUserEditSpecimens = userCanEditSpecimenSection(user, programId) 
 
   const canUserAddAnalysis = userCanAddAnalysis(user, programId) 
-  // const canUserDeleteAnalyses = userCanDeleteAnalysis(user, programId) 
+  const canUserDeleteAnalyses = userCanDeleteAnalysis(user, programId) 
   const canUserEditAnalyses  = userCanEditAnalysisSection(user, programId) 
 
   return (
@@ -84,10 +84,10 @@ const Evenement = async ({ params }) => {
             // canUserDeleteEvent={canUserDeleteEvent}
             // canUserReopenEvent={canUserReopenEvent}
             canUserAddSpecimen={canUserAddSpecimen}
-            // canUserDeleteSpecimens={canUserDeleteSpecimens}
+            canUserDeleteSpecimens={canUserDeleteSpecimens}
             canUserEditSpecimens={canUserEditSpecimens}
             canUserAddAnalysis={canUserAddAnalysis}
-            // canUserDeleteAnalyses={canUserDeleteAnalyses}
+            canUserDeleteAnalyses={canUserDeleteAnalyses}
             canUserEditAnalyses={canUserEditAnalyses}
           />
         </ContentContainer>

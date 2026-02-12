@@ -96,7 +96,7 @@ const schema = [
   }
 ]
 
-const SpecimenSection = ({ specimen, canEdit = false }) => {
+const SpecimenSection = ({ specimen, canEdit = false, canDelete = false }) => {
   const { id: specimenId, eventId, sequenceId, specie } = specimen
   const { name: specieName } = specie
 
@@ -104,7 +104,7 @@ const SpecimenSection = ({ specimen, canEdit = false }) => {
       <AccordionItem key={specimenId} value={specimenId}>
         <Box position={'sticky'} top={[181, null, 176]} zIndex={999} h={'46px'}>
           <AbsoluteCenter as={HStack} axis={'vertical'} insetEnd={2} gap={0.5}>
-            { canEdit && <DeleteSpecimenButton specimen={specimen} /> }
+            { canDelete && <DeleteSpecimenButton specimen={specimen} /> }
             { canEdit && <EditSpecimenButton specimen={specimen} /> }
           </AbsoluteCenter>
           <Trigger label={`${eventId}.${sequenceId} - ${specieName}`} h={'46px'} />

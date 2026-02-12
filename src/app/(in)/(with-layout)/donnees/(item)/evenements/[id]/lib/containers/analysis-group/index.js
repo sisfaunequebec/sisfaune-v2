@@ -28,14 +28,14 @@ import TextTypeAnalyses from './text-type-analysis'
 // import DateDisplay from '@/app/lib/components/display/base/date'
 // import CommentDisplay from '@/app/lib/components/display/base/comment'
 
-const AnalysisGroupSection = ({ analysisGroup, canEdit = false }) => {
+const AnalysisGroupSection = ({ analysisGroup, canEdit = false, canDelete = false }) => {
   const { id: analysisGroupId, name } = analysisGroup
 
   return (
     <AccordionItem key={analysisGroupId} value={analysisGroupId}>
       <Box position={'sticky'} top={[181, null, 176]} zIndex={999} h={'46px'}>
         <AbsoluteCenter as={HStack} axis={'vertical'} insetEnd={2} gap={0.5}>
-          { canEdit && <DeleteAnalysisGroupButton analysisGroup={analysisGroup} /> }
+          { canDelete && <DeleteAnalysisGroupButton analysisGroup={analysisGroup} /> }
           { canEdit && <EditAnalysisGroupButton analysisGroup={analysisGroup} /> }
         </AbsoluteCenter>
         <Trigger label={`${name}`} h={'46px'} />
