@@ -73,6 +73,7 @@ const LoginForm = () => {
         <Flex as='form' autoComplete='off' onSubmit={handleSubmit(onSubmit)} direction='column' alignItems='center' justifyContent='center' shadow='lg' bg='white' p={8} borderRadius='lg' w={['full', 'auto']} h={['100%', 'auto']}>
           <Image src='/logo_sisfaune_big.png' alt='logo' mb={3} />
           <Fieldset.Root size='lg' maxW='280px' invalid={false}>
+            {/*
             <Alert.Root status={'warning'}>
               <Alert.Indicator />
               <Alert.Content>
@@ -82,6 +83,7 @@ const LoginForm = () => {
                 </Alert.Description>
               </Alert.Content>
             </Alert.Root>
+            */}
             <Fieldset.Content as={VStack} gap={1} mt={2}>
               <Field formState={formState} name={'username'} label={'Nom d\'utilisateur :'}>
                 <Input autoComplete='off' {...register('username')} size={'sm'} />
