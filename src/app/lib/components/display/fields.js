@@ -6,7 +6,7 @@ import { Field } from '../ui/field'
 
 import TextDisplay from '@/app/lib/components/display/base/text'
 
-import useCurrentUser from '@/lib/auth/use-user'
+import useCurrentUser from '@/lib/auth/use-user-v2'
 
 const Fields = ({ schema, data, watched, ...rest }) => {
   const { user: currentUser, isLoading: isLoadingCurrentUser } = useCurrentUser() 
