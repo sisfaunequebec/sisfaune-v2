@@ -9,7 +9,7 @@ import Hello from './hello'
 
 const Header = async () => {
   const user = await getUser()
-  const { fullName } = user
+  const { fullName } = user ?? {}
 
   return (
     <Flex css={{ '--toolbar-height': '70px', '--toolbar-border-width': '2px', '--tabs-height': '0px' }} height='calc(var(--toolbar-height) + var(--tabs-height))' bg='white' _dark={{ bg: 'black' }} borderBottomColor='blue.600' borderBottomWidth='var(--toolbar-border-width)' position='sticky' zIndex={1002} alignItems='center' justifyContent='center' top={0} w='100%'>

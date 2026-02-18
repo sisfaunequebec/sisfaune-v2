@@ -18,7 +18,7 @@ import ControlledField from '@/app/lib/components/controlled-field'
 
 import TextInput from '@/app/lib/components/inputs/base/text'
 
-import useCurrentUser from '@/lib/auth/use-user'
+import useCurrentUser from '@/lib/auth/use-user-v2'
 
 const getResolver = (type, schema) => {
   if (!schema) return null
@@ -76,7 +76,6 @@ const BaseDialog = ({ title, message, size, isAlert = false, schema, schemaType 
   const hasErrors = Object.keys(errors)?.length > 0
 
   const { user: currentUser, isLoading: isLoadingCurrentUser } = useCurrentUser() 
-  // if (isLoadingUser) { return null }
 
   return (
     <Dialog.Root scrollBehavior={scrollBehavior} lazyMount open={!isLoadingCurrentUser} size={rootSize} placement={placement} motionPreset={motion} onOpenChange={e => onClose(false)} closeOnInteractOutside={closeOnInteractOutside} role={role}>

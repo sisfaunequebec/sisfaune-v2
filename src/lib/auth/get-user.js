@@ -10,6 +10,10 @@ import orm from '@/lib/data/database'
 const getUser = async () => {
   const session = await auth()
 
+  if (!session) {
+    return null
+  }
+
   const { user } = session ?? {}
   const { id } = user ?? {}
 
