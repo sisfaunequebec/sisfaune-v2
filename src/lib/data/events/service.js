@@ -103,6 +103,7 @@ const getWhereClauseFromParams = (params, user) => {
     OR: texte ? [
       { id: isTextNumber ? parseInt(texte, 10) : undefined },
       { silabId: texte ? { contains: texte, mode: 'insensitive' } : undefined },
+      { cqsasIncidentNumber: texte ? { contains: texte, mode: 'insensitive' } : undefined },
       { mapaqId: texte ? { contains: texte, mode: 'insensitive' } : undefined },
       { pathologyNumber: texte ? { contains: texte, mode: 'insensitive' } : undefined },
       { submitter: { lastName: texte ? { contains: texte, mode: 'insensitive' } : undefined } },
