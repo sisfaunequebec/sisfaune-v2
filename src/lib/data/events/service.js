@@ -270,7 +270,8 @@ const getEvent = async (id) => {
                 type: true,
                 unit: true
               }
-            }
+            },
+            results: true
           }
         },
         eventAnalysisGroups: {
@@ -280,16 +281,15 @@ const getEvent = async (id) => {
                 analyses: {
                   include: {
                     codeValues: true,
-                    results: {
-                      include: {
-                        specimen: {
-                          include: {
-                            specie: true
-                          }
-                        }
-                      }
-                      
-                    }
+                    // results: {
+                    //   include: {
+                    //     specimen: {
+                    //       include: {
+                    //         specie: true
+                    //       }
+                    //     }
+                    //   }    
+                    // }
                   }
                 }
               }

@@ -270,7 +270,7 @@ const updateUser = async (userId, data) => {
   let currentEmail = null
 
   try { 
-    await orm.$transaction(async (prisma) => {
+    return await orm.$transaction(async (prisma) => {
 
       const currentUser = await prisma.User.findUnique({
         where: {

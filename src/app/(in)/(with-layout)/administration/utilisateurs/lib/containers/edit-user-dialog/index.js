@@ -133,10 +133,15 @@ const EditUserDialog = ({ userId, close }) => {
 
   const handleSubmit = useCallback(async (data) => {
     const result = await updateUserAction(userId, data)
-
+    
     if (result) {
       await wait(1000)
+
+      // Mutate auth user in case the current user updated their own account, to update permissions in the UI if needed
+      mutate('/api/auth/user')
+
       for (const key of cache.keys()) {
+        // This is a bit of a hack, but SWR doesn't provide a way to only invalidate queries with certain parameters, so we need to do it manually
         if (key.includes('/api/admin/users')) {
           mutate(key)
         }
