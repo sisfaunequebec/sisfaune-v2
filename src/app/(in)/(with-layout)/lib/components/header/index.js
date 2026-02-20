@@ -1,4 +1,6 @@
-import getUser from '@/lib/auth/get-user'
+'use client'
+// import getUser from '@/lib/auth/get-user'
+import useCurrentUser from '@/lib/auth/use-user-v2'
 
 import { Flex, HStack, Image, VStack, Container } from '@chakra-ui/react'
 
@@ -7,8 +9,8 @@ import ExportManager from '../../../donnees/(list)/lib/containers/toolbar/export
 import Menu from './menu'
 import Hello from './hello'
 
-const Header = async () => {
-  const user = await getUser()
+const Header = () => {
+  const { user } = useCurrentUser()
   const { fullName } = user ?? {}
 
   return (
@@ -20,7 +22,7 @@ const Header = async () => {
           </Flex>
           <HStack gap={[3, null, 4]}>
             <Flex hideBelow='md'><Hello name={fullName} /></Flex>
-            <Menu />
+            <Menu user={user} />
           </HStack>
         </Container>
         {/* <ExportManager /> */}

@@ -22,7 +22,7 @@ import AccountParametersDialog from '../../../containers/account-parameters-dial
 const DesktopMenu = ({ account }) => {
   const segment = useSelectedLayoutSegment()
 
-  const { fullName, email, isAdmin } = account
+  const { fullName, email, isAdmin } = account ?? {}
 
   const { ask: openParameters, dialog: parametersDialog } = useDialog(AccountParametersDialog)
 

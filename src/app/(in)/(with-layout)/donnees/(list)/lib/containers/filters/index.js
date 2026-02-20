@@ -63,7 +63,7 @@ const Filters = async () => {
 
         <Separator />
 
-        <SectionTitle label={<HStack><Text>Rechercher dans le texte :</Text><Tooltip size='xl' content={'Rechercher par numéro d\'événement, numéro MAPAQ, numéro SILAB, numéro de pathologie, nom du soumissionnaire et/ou municipalité'}><Icon fontSize='xl' cursor='pointer'><LuInfo /></Icon></Tooltip></HStack>} />
+        <SectionTitle label={<HStack><Text>Rechercher dans le texte :</Text><Tooltip size='xl' content={'Rechercher par numéro d\'événement, numéro MAPAQ, numéro SILAB, numéro CQSAS, numéro de pathologie, nom du soumissionnaire et/ou municipalité'}><Icon fontSize='xl' cursor='pointer'><LuInfo /></Icon></Tooltip></HStack>} />
         <Section><FullText /></Section>
 
         <Separator />
