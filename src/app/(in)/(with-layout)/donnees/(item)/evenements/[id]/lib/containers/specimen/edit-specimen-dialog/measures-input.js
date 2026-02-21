@@ -5,8 +5,6 @@ import { useState, useEffect, useCallback, useMemo } from 'react'
 import { VStack, HStack, Flex, Field as ChakraField } from '@chakra-ui/react'
 import { InfoTip } from "@/app/lib/components/ui/toggle-tip"
 
-import { numericFormatter } from 'react-number-format'
-
 import NumberInput from '@/app/lib/components/inputs/base/number'
 import UnitSelect from './unit-select'
 
@@ -74,7 +72,7 @@ const MeasuresInput = ({ value = [], size, contentRef, onChange }) => {
         <ChakraField.Root key={id} justifyContent={'stretch'}>
           <Flex direction={'row'} alignItems={'flex-start'} w={'full'}>
             <ChakraField.Label fontSize={['md', null, 'sm']} color={'gray.600'} fontWeight={400} flex={[1, null, 1]} justifyContent={'flex-start'} pt={2} pe={2} mb={2} lineHeight={'shorter'}>
-              <HStack flex={1}justifyContent={'space-between'}>{measureName} <InfoTip content={description} /></HStack>{'\u00A0'}:
+              <HStack flex={1}justifyContent={'space-between'}>{measureName}{'\u00A0'}:<InfoTip content={description} /></HStack>
             </ChakraField.Label>
             <MeasureInput key={id} id={id} value={value} unit={unit} size={size} contentRef={contentRef} onChange={handleChange} />
           </Flex>

@@ -2,13 +2,11 @@ import { Box, Flex, Container, VStack, AbsoluteCenter, IconButton, Text,  HStack
 import { RxPencil1, RxPlus, RxTrash } from 'react-icons/rx'
 
 import { Tooltip } from '@/app/lib/components/ui/tooltip'
+import { InfoTip } from "@/app/lib/components/ui/toggle-tip"
 
 import {
   AccordionItem
 } from '@/app/lib/components/ui/accordion'
-
-import { numericFormatter } from 'react-number-format'
-
 
 import { Trigger, Content } from '../../components/accordion-parts'
 
@@ -22,28 +20,21 @@ import NumberDisplay from '@/app/lib/components/display/base/number'
 import DateDisplay from '@/app/lib/components/display/base/date'
 import CommentDisplay from '@/app/lib/components/display/base/comment'
 
-// import UnimplementedDisplay from '@/app/lib/components/display/base/unimplemented'
-
 const MeasuresDisplay = ({ value = [] }) => {
   return (
     <VStack spacing={1} flex={1} >
     { value.map(measure => {
       const { id, value, type, unit } = measure
-      const { name: measureName, toto: descriptionText } = type 
+      const { name: measureName, description } = type 
       const { name: unitName } = unit
       return (
         <ChakraField.Root key={id} justifyContent={'stretch'}>
           <Flex direction={'row'} alignItems={'flex-start'} w={'full'}>
-          <Tooltip content={descriptionText} disabled={!descriptionText}>
-            <ChakraField.Label fontSize={['md', null, 'sm']} color={'gray.600'} fontWeight={400} flex={[1, null, 1]} justifyContent={'flex-start'} pt={2} pe={2} mb={2} textDecoration={descriptionText && 'underline'} cursor={descriptionText && 'help'} lineHeight={'shorter'}>
-              {measureName} :
+            <ChakraField.Label fontSize={['md', null, 'sm']} color={'gray.600'} fontWeight={400} flex={[1, null, 1]} justifyContent={'flex-start'} pt={2} pe={2} mb={2} lineHeight={'shorter'}>
+              <HStack flex={1}justifyContent={'space-between'}>{measureName}{'\u00A0'}:<InfoTip content={description} /></HStack>
             </ChakraField.Label>
-          </Tooltip>
           <Flex flex={2} w={'full'} direction={'column'}>
             <NumberDisplay value={value} suffix={unitName} />
-            {/* <Flex flex={1} bg={'gray.100'} borderRadius={'md'} px={3} py={3} lineHeight={'1.1rem'}>
-              { !!value ? [numericFormatter(value, { decimalSeparator:',' }), unitName].join(' ') : '\u00A0' }
-            </Flex> */}
           </Flex>
           </Flex>
         </ChakraField.Root>
