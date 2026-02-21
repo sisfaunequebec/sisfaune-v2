@@ -59,9 +59,9 @@ const formSchema = [
 
 const EditLaboratoryDialog = ({ close, eventId, data }) => {
   const handleSubmit = useCallback(async (data) => {
-    await updateLaboratoryAction(eventId, data)
-    close()
-  }, [close, eventId])
+    const result = await updateLaboratoryAction(eventId, data)
+    return result
+  }, [eventId])
 
   return (
     <BaseDialog title={`Événement no ${eventId} - Laboratoire`} size={'lg'} onClose={close} onSubmit={handleSubmit} submitBtnLabel={'Sauvegarder'} schema={editLaboratorySchema} schemaType={'valibot'} defaultValues={data}>

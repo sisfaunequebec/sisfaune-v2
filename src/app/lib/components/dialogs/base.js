@@ -97,6 +97,7 @@ const BaseDialog = ({ title, message, size, isAlert = false, schema, schemaType 
                 </Dialog.Body>
 
                 <DialogFooter gap={2}>
+                  { hasErrors &&<Text color={'red'} fontWeight={'medium'}>Des erreurs ont été détectées</Text> }
                   <DialogActionTrigger asChild>
                     <Button size={['lg', null, 'sm']} variant={'outline'} onClick={() => onClose(false)} minW={24}>Annuler</Button>
                   </DialogActionTrigger>

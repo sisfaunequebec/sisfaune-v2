@@ -2,13 +2,11 @@
 import { useState, useEffect, useCallback } from 'react'
 
 import updateGeneralInfos from '../update-general-infos.action'
-// import beforeUpdate from './before-update'
 
 import getActivePrograms from '@/lib/data/lookups/event-programs'
 
 import BaseDialog, { Fields } from '@/app/lib/components/dialogs/base'
 
-// import CommentDisplay from '@/app/lib/components/display/base/comment'
 import TextDisplay from '@/app/lib/components/display/base/text'
 
 import DateInput from '@/app/lib/components/inputs/base/date'
@@ -143,7 +141,6 @@ const formSchema = [
     title: 'Personnes impliquées',
     fields: [
       { label: 'Soumis par\u00A0:', name: 'submitter', component: SubmitterCombo },
-      // { label: 'Découvert par\u00A0:', name: 'isDiscovererSameAsSubmitter', component: DiscovererSameAsSubmitterSelect },
       { label: 'Découvert par\u00A0:', name: 'isDiscovererSameAsSubmitter', component: DiscovererSelect },
       { label: 'Découveur\u00A0:', name: 'discoverer', component: DiscovererAddressInput, visible: (data, watched) => { const { isDiscovererSameAsSubmitter } = watched; const { status: eventStatus } = data; const { id: statusId } = eventStatus || {}; const isEventClosed = statusId === 3; return !isEventClosed && !isDiscovererSameAsSubmitter;  } },
       { label: 'Récolté par (contractuel)\u00A0:', name: 'collaborator', component: CollaboratorSelect }
@@ -183,9 +180,9 @@ const formSchema = [
 const EditGeneralInfosDialog = ({ close, eventId, data }) => {
 
   const handleSubmit = useCallback(async (updating) => {
-    await updateGeneralInfos(eventId, updating)
-    close()
-  }, [close, eventId, data])
+    const result = await updateGeneralInfos(eventId, updating)
+    return result
+  }, [eventId])
 
   const fieldNames = formSchema.map(section => {
     const { fields } = section

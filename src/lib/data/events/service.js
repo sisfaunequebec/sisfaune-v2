@@ -1,9 +1,6 @@
 'use server'
 import 'server-only'
 
-// import ExcelJS from 'exceljs'
-// import tmp from 'tmp'
-
 import { DateTime } from 'luxon'
 
 import * as XLSX from 'xlsx'
@@ -17,6 +14,8 @@ import { canUserViewProgram, canUserDeleteEvent, canUserSubmitInProgram, filterV
 
 import fromDbEventTransformer from '../transformers/from-db/event'
 import toDbEventTransformer from '../transformers/to-db/event'
+
+import { dbDateToIso } from '../transformers/utils'
 
 const SORT_MAP = {
   date_signalement: 'reportedAt',
@@ -450,11 +449,55 @@ const exportEvents = async (params) => {
   }
 }
 
+const validate = (updated, current) => {
+  const { discoveredAt, collectedAt, reportedAt, labShippedAt } = updated
+
+  if (discoveredAt && reportedAt && DateTime.fromISO(discoveredAt) > DateTime.fromISO(reportedAt)) {
+    return { discoveredAt: `La date de découverte doit être antérieure ou égale à la date de signalement (${reportedAt})` }
+  }
+
+  if (collectedAt) {
+    if (reportedAt && DateTime.fromISO(collectedAt) < DateTime.fromISO(reportedAt)) {
+      return { collectedAt: `La date de récolte doit être égale ou postérieure à la date de signalement (${reportedAt})` }
+    }
+    if (discoveredAt && DateTime.fromISO(collectedAt) < DateTime.fromISO(discoveredAt)) {
+      return { collectedAt: `La date de récolte doit être égale ou postérieure à la date de découverte (${discoveredAt})` }
+    }
+  }
+
+  if (labShippedAt) {
+    if (reportedAt && DateTime.fromISO(labShippedAt) < DateTime.fromISO(reportedAt)) {
+      return { labShippedAt: `La date d'expédition au laboratoire doit être égale ou postérieure à la date de signalement (${reportedAt})` }
+    }
+
+    if (discoveredAt && DateTime.fromISO(labShippedAt) < DateTime.fromISO(discoveredAt)) {
+      return { labShippedAt: `La date d'expédition au laboratoire doit être égale ou postérieure à la date de découverte (${discoveredAt})` }
+    }
+
+    if (collectedAt && DateTime.fromISO(labShippedAt) < DateTime.fromISO(collectedAt)) {
+      return { labShippedAt: `La date d'expédition au laboratoire doit être égale ou postérieure à la date de récolte (${collectedAt})` }
+    }
+  }
+
+  return null
+}
+
 const updateGeneralInfos = async (eventId, data) => {
   const user = await getUser()
 
   if (!user) {
     throw new Error()
+  }
+
+  const current = await orm.event.findUnique({
+    where: {
+      id: eventId
+    }
+  })
+
+  const validationError = validate(data, current)
+  if (validationError) {
+    return { data: null, errors: validationError }
   }
 
   const { id, ...rest } = data
@@ -480,7 +523,7 @@ const updateGeneralInfos = async (eventId, data) => {
     })
   })
 
-  return null
+  return { data, errors: null }
 }
 
 export {
