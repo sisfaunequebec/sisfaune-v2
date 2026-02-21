@@ -1,6 +1,6 @@
 import { Popover as ChakraPopover, IconButton, Portal } from '@chakra-ui/react'
 import { forwardRef } from 'react'
-import { HiOutlineInformationCircle } from 'react-icons/hi'
+import { LuInfo } from 'react-icons/lu'
 
 export const ToggleTip = forwardRef(function ToggleTip(props, ref) {
   const {
@@ -11,6 +11,10 @@ export const ToggleTip = forwardRef(function ToggleTip(props, ref) {
     portalRef,
     ...rest
   } = props
+
+  if (!content) {
+    return null
+  }
 
   return (
     <ChakraPopover.Root
@@ -26,6 +30,8 @@ export const ToggleTip = forwardRef(function ToggleTip(props, ref) {
             py='1'
             textStyle='xs'
             rounded='sm'
+            bg={'black'}
+            color={'white'}
             ref={ref}
           >
             {showArrow && (
@@ -46,7 +52,7 @@ export const InfoTip = (props) => {
   return (
     <ToggleTip content={children} {...rest}>
       <IconButton variant='ghost' aria-label='info' size='2xs'>
-        <HiOutlineInformationCircle />
+        <LuInfo />
       </IconButton>
     </ToggleTip>
   )

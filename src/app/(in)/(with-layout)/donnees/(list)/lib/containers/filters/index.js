@@ -5,11 +5,10 @@ import getUser from '@/lib/auth/get-user'
 import { getViewableProgramsForUser } from '@/lib/data/lookups/event-programs'
 
 import { Flex, Fieldset, Separator as ChakraSeparator, Text, Icon, HStack } from '@chakra-ui/react'
+import { Tooltip } from '@/app/lib/components/ui/tooltip'
+import { LuInfo } from 'react-icons/lu'
 
 import SidebarContainer from '@/app/(in)/(with-layout)/lib/components/sidebar-container'
-import { Tooltip } from '@/app/lib/components/ui/tooltip'
-// import { ToggleTip } from '@/components/ui/toggle-tip'
-import { LuInfo } from 'react-icons/lu'
 
 import Order from './order'
 import FullText from './full-text'
@@ -18,14 +17,6 @@ import Program from './program'
 import Region from './region'
 import Date from './date'
 import Group from './group'
-
-// const FiltersContainer = ({ children }) => {
-//   return (
-//     <Flex position='sticky' flex={2} h='calc(100vh - 130px)' overflowY='auto' top={130} p={3} px={6} alignItems='stretch' bg='blue.100' _dark={{ bg: 'blue.900' }} borderColor='blue.300' borderTopWidth={1} borderBottomWidth={1} hideBelow='md'>
-//       {children}
-//     </Flex>
-//   )
-// }
 
 const SectionTitle = ({ label }) => {
   return <Fieldset.Legend color='blue.800'>{label}</Fieldset.Legend>
@@ -56,39 +47,39 @@ const Filters = async () => {
 
   return (
     <SidebarContainer>
-      <Fieldset.Root flex alignItems='flex-start'>
+      <Fieldset.Root flex alignItems={'flex-start'}>
 
-        <SectionTitle label='Ordonner la liste par :' />
+        <SectionTitle label={'Ordonner la liste par :' } />
         <Section><Order /></Section>
 
         <Separator />
 
-        <SectionTitle label={<HStack><Text>Rechercher dans le texte :</Text><Tooltip size='xl' content={'Rechercher par numéro d\'événement, numéro MAPAQ, numéro SILAB, numéro CQSAS, numéro de pathologie, nom du soumissionnaire et/ou municipalité'}><Icon fontSize='xl' cursor='pointer'><LuInfo /></Icon></Tooltip></HStack>} />
+        <SectionTitle label={<HStack><Text>Rechercher dans le texte :</Text><Tooltip size={'xl'} content={'Rechercher par numéro d\'événement, numéro MAPAQ, numéro SILAB, numéro CQSAS, numéro de pathologie, nom du soumissionnaire et/ou municipalité'}><Icon fontSize='xl' cursor='pointer'><LuInfo /></Icon></Tooltip></HStack>} />
         <Section><FullText /></Section>
 
         <Separator />
 
-        <SectionTitle label='Filtrer par statut :' />
+        <SectionTitle label={'Filtrer par statut d\'événement :' } />
         <Section><Status statuts={statuts} /></Section>
 
         <Separator />
 
-        <SectionTitle label='Filtrer par programme :' />
+        <SectionTitle label={'Filtrer par programme :' } />
         <Section><Program programs={programs} /></Section>
 
         <Separator />
 
-        <SectionTitle label='Filtrer par région administrative :' />
+        <SectionTitle label={'Filtrer par région administrative :' } />
         <Section><Region regions={regions} /></Section>
 
         <Separator />
 
-        <SectionTitle label='Filtrer par groupe de spécimens :' />
+        <SectionTitle label={'Filtrer par groupe de spécimens :' } />
         <Section><Group groups={groups} /></Section>
 
         <Separator />
 
-        <SectionTitle label='Filtrer par date :' />
+        <SectionTitle label={'Filtrer par date :' } />
         <Section><Date /></Section>
 
       </Fieldset.Root>

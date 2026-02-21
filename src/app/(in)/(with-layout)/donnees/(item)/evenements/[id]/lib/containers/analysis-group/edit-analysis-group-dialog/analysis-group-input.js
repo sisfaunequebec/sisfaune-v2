@@ -115,9 +115,7 @@ const TextTypeAnalysesInput = ({ value, onChange }) => {
 }
 
 const AnalysisGroupInput = ({ value = [], onChange, contentRef }) => {
-  console.debug('AnalysisGroupInput', { contentRef })
   const handleChange = useCallback((resultId, newValue) => {
-    // console.debug('AnalysisGroupInput - handleChange', resultId, newValue)
 
     const newAnalyses = value.map(analysis => {
       const newResults = analysis.results.map(r => {

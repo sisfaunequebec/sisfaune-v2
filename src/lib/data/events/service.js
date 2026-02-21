@@ -280,16 +280,7 @@ const getEvent = async (id) => {
               include: {
                 analyses: {
                   include: {
-                    codeValues: true,
-                    // results: {
-                    //   include: {
-                    //     specimen: {
-                    //       include: {
-                    //         specie: true
-                    //       }
-                    //     }
-                    //   }    
-                    // }
+                    codeValues: true
                   }
                 }
               }

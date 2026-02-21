@@ -5,9 +5,7 @@ import orderBy from 'lodash.orderby'
 
 import { useQueryState, parseAsInteger, parseAsArrayOf } from 'nuqs'
 
-import Checkboxes from '../../../../../../../lib/components/checkboxes'
-
-// import { STATUSES } from '@/logic/data/events/service'
+import Checkboxes from '@/app/lib/components/checkboxes'
 
 const Status = ({ statuts }) => {
   const [value, setValue] = useQueryState('s', parseAsArrayOf(parseAsInteger).withDefault([]))
@@ -19,7 +17,7 @@ const Status = ({ statuts }) => {
   }, [statuts])
 
   return (
-    <Checkboxes name='statut' choices={choices} value={value} onChange={setValue} allChoicesLabel='Tous les statuts' />
+    <Checkboxes name={'statut'} choices={choices} value={value} onChange={setValue} allChoicesLabel='Tous les statuts' />
   )
 }
 
