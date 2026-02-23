@@ -30,7 +30,7 @@ const SpeciesCombo = ({ value, onChange, ...rest }) => {
   const labelKey = useCallback(item => item?.name, [])
 
   return (
-    <Autocomplete value={value} labelKey={labelKey} onLookup={handleLookup} onRenderItem={handleRenderItem} onChange={onChange} {...rest} />
+    <Autocomplete value={value} labelKey={labelKey} placeholder={'Taper pour rechercher une espèce...'} onLookup={handleLookup} onRenderItem={handleRenderItem} onChange={onChange} {...rest} />
   )
 }
 

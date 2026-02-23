@@ -74,7 +74,7 @@ const Autocomplete = ({ value, minChars = 2, valueKey = 'id', labelKey = 'name',
         <Combobox.Input placeholder={placeholder} />
         <Combobox.IndicatorGroup>
           { clearable && <Combobox.ClearTrigger /> }
-          <Combobox.Trigger />
+          {/* { combobox.value.length > 0 && <Combobox.Trigger />} */}
         </Combobox.IndicatorGroup>
       </Combobox.Control>
       <Combobox.Positioner>
