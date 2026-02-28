@@ -1,14 +1,10 @@
 'use client'
-import { useState, useEffect, useCallback, useMemo } from 'react'
-
-import { VStack, HStack, Flex, Field as ChakraField } from '@chakra-ui/react'
-import { numericFormatter } from 'react-number-format'
+import { useCallback } from 'react'
 
 import updateSpecimenAction from '../update-specimen.action'
 
 import BaseDialog, { Fields } from '@/app/lib/components/dialogs/base'
 
-// import SelectInput from '@/app/lib/components/inputs/base/select'
 import CommentInput from '@/app/lib/components/inputs/base/comment'
 import DateInput from '@/app/lib/components/inputs/base/date'
 import NumberInput from '@/app/lib/components/inputs/base/number'
@@ -31,7 +27,6 @@ const formSchema = [
   { 
     title: 'Identification du spécimen',
     fields: [
-      // { label: 'Espèce\u00A0:', name: 'specie' },
       { label: 'Numéro d\'identification sur le terrain\u00A0:', name: 'terrainIdentificationNumber' },
       { label: 'Numéro de spécimen SILAB\u00A0:', name: 'silabIdentificationNumber' },
       { label: 'Numéro de spécimen CQSAS\u00A0:', name: 'cqsasNumber' },
@@ -72,14 +67,10 @@ const formSchema = [
 ]
 
 const EditSpecimenDialog = ({ close, eventId, specimenId, data }) => {
-
-  console.debug('EditSpecimenDialog data', data)
-
   const handleSubmit = useCallback(async (data) => {
-    console.debug('EditSpecimenDialog handleSubmit', data)
-    await updateSpecimenAction(eventId, specimenId, data)
-    close()
-  }, [close, eventId, specimenId])
+    const result = await updateSpecimenAction(eventId, specimenId, data)
+    return result
+  }, [eventId, specimenId])
 
   const fieldNames = formSchema.map(section => {
     const { fields } = section

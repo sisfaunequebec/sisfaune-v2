@@ -230,11 +230,34 @@ const deleteSpecimen = async (id) => {
   return true
 }
 
+const validateBeforeUpdate = (updated, current) => {
+  const { discoveryState, deathCause } = updated
+  const { id : discoveryStateId } = discoveryState || {}
+  const { id: deathCauseId } = deathCause || {}
+
+  if (discoveryStateId === 2 && deathCauseId === 101) {
+    return { deathCause: `La cause de la mort ne peut pas être "Euthanasie" si l'état lors de découverte est "Mort"` }
+  }
+
+  return null
+}
+
 const updateSpecimen = async (specimenId, data) => {
   const user = await getUser()
 
   if (!user) {
     throw new Error()
+  }
+
+  const current = await orm.Specimen.findUnique({
+    where: {
+      id: specimenId
+    }
+  })
+
+  const validationError = validateBeforeUpdate(data, current)
+  if (validationError) {
+    return { data: null, errors: validationError }
   }
 
   const transformed = toDbSpecimenTransformer(data, { user })
@@ -262,8 +285,7 @@ const updateSpecimen = async (specimenId, data) => {
     }
   })
 
-
-  return null
+  return { data, errors: null }
 }
 
 export {
