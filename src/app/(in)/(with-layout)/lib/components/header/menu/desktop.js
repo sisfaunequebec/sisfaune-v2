@@ -4,6 +4,7 @@ import { useCallback } from 'react'
 import { useRouter, usePathname, useSelectedLayoutSegment } from 'next/navigation'
 
 import { signOut } from 'next-auth/react'
+import useTasks from '@/lib/data/tasks/use-tasks.js'
 
 import { Box, Flex, VStack, Button, Menu, IconButton, Status } from '@chakra-ui/react'
 import { keyframes } from '@emotion/react'
@@ -32,18 +33,35 @@ import useDialog from '@/utils/use-dialog.js'
 
 import AccountParametersDialog from '../../../containers/account-parameters-dialog.js/index.js'
 
+const TasksIndicator = ({ tasks, size = 'md', ...rest}) => {
+  const hasUnseenTasks = tasks?.filter(t => t.wasSeen === false).length > 0
+  const hasPendingTasks = tasks?.filter(t => t.status === 'en_cours').length > 0
+
+  const color = hasPendingTasks ? 'orange' : 'green'
+
+  if (!hasUnseenTasks) {
+    return null
+  }
+
+  return (
+    <Status.Root colorPalette={color} size={size} {...rest} >
+      <Status.Indicator /* animation={`${pulse} 2s infinite`} */ />
+    </Status.Root>
+  )
+}
+
 const DesktopMenu = ({ account, onOpenExportManager }) => {
+  const router = useRouter()
   const segment = useSelectedLayoutSegment()
 
-  const { fullName, email, isAdmin } = account ?? {}
+  const { data: tasks, isLoading: isLoadingTasks } = useTasks()
+  const hasTasks = tasks?.length > 0
 
   const { ask: openParameters, dialog: parametersDialog } = useDialog(AccountParametersDialog)
 
   const handleModifyParameters = useCallback(async () => {
     await openParameters({ account })
-  }, [openParameters])
-
-  const router = useRouter()
+  }, [openParameters, account])
 
   const handleMenuRadioItemGroupChange = useCallback(e => {
     const { value } = e
@@ -51,15 +69,15 @@ const DesktopMenu = ({ account, onOpenExportManager }) => {
     router.push(targetUrl)
   }, [router])
 
+  const { fullName, email, isAdmin } = account ?? {}
+
   return (
     <>
       {parametersDialog}
       <Flex hideBelow='md'>
         <Menu.Root positioning={{ placement: 'bottom-end' }} size={'md'} lazyMount >
           <Menu.Trigger as={IconButton} colorPalette='green' variant='subtle' rounded='full' size={['md', null, 'sm']}>
-            <Status.Root colorPalette={'orange'} size={'lg'} position={'absolute'} bottom={-0.5} right={-0.5}>
-              <Status.Indicator  />
-            </Status.Root>
+            <TasksIndicator tasks={tasks} size={'lg'} position={'absolute'} bottom={-0.5} right={-0.5} />
             <RxHamburgerMenu />
           </Menu.Trigger>
           <MenuContent minW={60} hideBelow='md' mt={4} isolation='isolate' isolate='isolate' zIndex={1001} _hover={{ bg: 'white' }}>
@@ -79,12 +97,10 @@ const DesktopMenu = ({ account, onOpenExportManager }) => {
               <RxGear />
               <Box flex={1} ms={0.5}>Vos paramètres...</Box>
             </Menu.Item>
-            <Menu.Item value='extractions' onClick={onOpenExportManager}>
+            <Menu.Item value='extractions' onClick={onOpenExportManager} disabled={!hasTasks}>
               <RxDownload />
               <Box flex={1} ms={0.5}>Vos extractions de données...</Box>
-              <Status.Root colorPalette={'orange'} size={'sm'} ms={2}>
-                <Status.Indicator />
-              </Status.Root>
+              <TasksIndicator tasks={tasks} ms={2} />
             </Menu.Item>
             <Menu.Separator />
             <Menu.Item onClick={() => { signOut() }} value='signout'>
