@@ -37,7 +37,7 @@ const TasksIndicator = ({ tasks, size = 'md', ...rest}) => {
   const hasUnseenTasks = tasks?.filter(t => t.wasSeen === false).length > 0
   const hasPendingTasks = tasks?.filter(t => t.status === 'en_cours').length > 0
 
-  const color = hasPendingTasks ? 'orange' : 'green'
+  const color = hasPendingTasks ? 'orange' : 'blue'
 
   if (!hasUnseenTasks) {
     return null

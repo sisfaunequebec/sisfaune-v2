@@ -81,15 +81,6 @@ const ResultsCodesInput = ({ value: codeValues = [], onChange, size, contentRef 
             const { id, code, description, isActive } = codeValue
             return (
               <SortableRow id={id.toString()} key={id} label={null} w={'full'} gap={2} alignItems={'center'} >
-                {/* <RoleSelect
-                  w={'full'}
-                  flex={4}
-                  value={roleId && { id: roleId }}
-                  onChange={(role) => handleRoleChange(programId, role)}
-                  contentRef={contentRef}
-                  clearable={true}
-                /> */}
-                {/* <Flex flex={1}></Flex> */}
                 <TextInput flex={2} value={code} size={size} />
                 <TextInput flex={3} value={description} size={size} />
                 <ActiveInactiveSelect contentRef={contentRef} flex={2} value={isActive} />
@@ -134,7 +125,7 @@ const EditAnalysisDialog = ({ analysisId, close }) => {
   const [isLoading, setIsLoading] = useState(true)
 
   const handleSubmit = useCallback(async (data) => {
-    console.debug('Submitting data', data)
+    // console.debug('Submitting data', data)
     const result = await updateAnalysisAction(analysisId, data)
 
     if (result) {

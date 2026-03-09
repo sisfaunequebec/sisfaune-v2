@@ -39,7 +39,7 @@ const AddAnalysisDialog = ({ eventId, close }) => {
       analysisGroupId: analysisGroup?.id ?? undefined
     }
     const result = await addAnalysisAction(eventId, payload)
-    console.debug('handleSubmit', result)
+    // console.debug('handleSubmit', result)
     return result
   }, [eventId])
 

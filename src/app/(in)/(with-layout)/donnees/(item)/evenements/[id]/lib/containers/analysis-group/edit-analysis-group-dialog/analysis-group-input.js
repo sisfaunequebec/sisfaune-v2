@@ -78,7 +78,7 @@ const ValueOrCodeTypeAnalysisInput = ({ value, onChange, contentRef }) => {
 const ValueTypeAnalysesInput = ({ value, onChange, contentRef }) => {
   return (
     <VStack flex={1} alignItems={'stretch'} w={'full'} mb={4}>
-      {value.map((analysis, i) => {
+      {orderBy(value, ['name']).map((analysis, i) => {
         const { id } = analysis
         return (
           <>

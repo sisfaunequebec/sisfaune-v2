@@ -9,24 +9,13 @@ import {
   AccordionItem
 } from '@/app/lib/components/ui/accordion'
 
-// import { numericFormatter } from 'react-number-format'
-
 import { Trigger, Content } from '../../components/accordion-parts'
 
-// import EditSpecimenButton from './edit-specimen-button'
 import EditAnalysisGroupButton from './edit-analysis-group-button';
 import DeleteAnalysisGroupButton from '../../components/delete-analysis-group-button'
 
-// import Fields from '@/app/lib/components/display/fields'
-
 import ValueTypeAnalyses from './value-type-analysis'
 import TextTypeAnalyses from './text-type-analysis'
-
-
-// import SelectDisplay from '@/app/lib/components/display/base/select'
-// import NumberDisplay from '@/app/lib/components/display/base/number'
-// import DateDisplay from '@/app/lib/components/display/base/date'
-// import CommentDisplay from '@/app/lib/components/display/base/comment'
 
 const AnalysisGroupSection = ({ analysisGroup, canEdit = false, canDelete = false }) => {
   const { id: analysisGroupId, name } = analysisGroup

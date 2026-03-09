@@ -1,3 +1,5 @@
+import orderBy from 'lodash.orderby'
+
 import { Box, Flex, Container, VStack, AbsoluteCenter, Icon, IconButton, Text,  HStack, Separator, Fieldset, Input, Field as ChakraField } from '@chakra-ui/react'
 
 import { Header, Row } from '../../../../../../../../../lib/components/dialogs/wrappers'
@@ -67,7 +69,7 @@ const ValueOrCodeTypeAnalysis = ({ analysis }) => {
 const ValueTypeAnalyses = ({ analyses }) => {
   return (
     <VStack flex={1} alignItems={'stretch'} w={'full'} mb={4}>
-      {analyses.map((analysis, i) => {
+      {orderBy(analyses, ['name']).map((analysis, i) => {
         const { id } = analysis
         return (
           <Box key={i}>
