@@ -8,20 +8,25 @@ import TextDisplay from '@/app/lib/components/display/base/text'
 
 import useCurrentUser from '@/lib/auth/use-user-v2'
 
+const isSectionVisibleFilter = (data, watched) => (section) => {
+  const { visible } = section
+  const isVisible = visible !== undefined ? (typeof visible === 'function') ? visible(data, watched) : visible : true
+  return isVisible
+}
+
 const Fields = ({ schema, data, watched, ...rest }) => {
   const { user: currentUser, isLoading: isLoadingCurrentUser } = useCurrentUser() 
   if (isLoadingCurrentUser) { return null }
 
-  const sectionsCount = schema.length
+  const visibleSections = schema.filter(isSectionVisibleFilter(data, watched))
+  const sectionsCount = visibleSections.length
 
   return (
     <VStack gap={2} flex={1} {...rest}>
-      {schema.map((section, i) => {
+      {visibleSections.map((section, i) => {
         const { title, visible, fields } = section
-        const isVisible = visible !== undefined ? (typeof visible === 'function') ? visible(data) : visible : true
-        if (!isVisible) { return null }
         return (
-          <Fieldset.Root key={title} gap={2} mt={4} _first={{ mt: 0 }}>
+          <Fieldset.Root key={title ?? i} gap={2} mt={3} _first={{ mt: 0 }}>
             {title && <Fieldset.Legend>{title}</Fieldset.Legend> }
             <Fieldset.Content gap={2}>
               {fields.map(f => {
@@ -29,7 +34,6 @@ const Fields = ({ schema, data, watched, ...rest }) => {
                 const isVisible = (typeof visible === 'function') ? visible(data, watched, { user: currentUser }) : visible
                 const Component = component || TextDisplay
                 const value = data[name] 
-                // console.debug(name, Component.displayName)
                 if (!isVisible) { return null }
                 return (
                   <Field key={name} label={label} name={name} variant={'horizontal'}>

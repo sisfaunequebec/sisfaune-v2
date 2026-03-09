@@ -1,5 +1,6 @@
 'use client'
 import { useEffect, useCallback, useRef } from 'react'
+
 import { useIntersectionObserver } from '@react-hooks-library/core'
 
 import { Flex, Box, Stack, VStack, Text, IconButton, LinkOverlay } from '@chakra-ui/react'
@@ -18,6 +19,7 @@ import EditAnalysisDialog from './edit-analysis-dialog'
 import { ListContainer, LinkListWrapper, LoadMoreButton } from '@/app/(in)/(with-layout)/lib/components/list'
 
 import CenteredMessage from '@/app/lib/components/centered-message'
+import { parse } from 'path'
 
 const PAGE_SIZE = 25
 
@@ -75,7 +77,6 @@ const AnalysisList = () => {
   const isReachingEnd = isEmpty || (data && data[data.length - 1]?.length < PAGE_SIZE)
 
   useEffect(() => {
-    // console.debug('useEffect', inView, isLoadingMore, size)
     setTimeout(() => {
       if (inView && !isLoadingMore) {
         handleLoadMore()

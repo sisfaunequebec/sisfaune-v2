@@ -10,6 +10,7 @@ const NumberInput = ({ value, onChange, prefix, suffix, precision = 0, flex = 1,
     const { floatValue } = e
     
     const valueToReturn = isNil(floatValue) ? null : floatValue
+    // console.debug('Value changed', valueToReturn, typeof  valueToReturn)
     onChange(valueToReturn)
   }, [onChange])
 

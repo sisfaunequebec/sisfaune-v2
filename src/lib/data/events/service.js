@@ -449,7 +449,7 @@ const exportEvents = async (params) => {
   }
 }
 
-const validate = (updated, current) => {
+const validateBeforeUpdate = (updated, current) => {
   const { discoveredAt, collectedAt, reportedAt, labShippedAt } = updated
 
   if (discoveredAt && reportedAt && DateTime.fromISO(discoveredAt) > DateTime.fromISO(reportedAt)) {
@@ -495,7 +495,7 @@ const updateGeneralInfos = async (eventId, data) => {
     }
   })
 
-  const validationError = validate(data, current)
+  const validationError = validateBeforeUpdate(data, current)
   if (validationError) {
     return { data: null, errors: validationError }
   }

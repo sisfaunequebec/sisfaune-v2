@@ -36,7 +36,7 @@ const ExportButton = () => {
   return (
     <>
       {downloadEventsDialog}
-      <ResponsiveButton label={'Exporter'} colorPalette={'blue'} icon={<RxDownload />} onClick={handleDownload} />
+      <ResponsiveButton label={'Extraction'} colorPalette={'blue'} icon={<RxDownload />} onClick={handleDownload} />
     </>
   )
 }

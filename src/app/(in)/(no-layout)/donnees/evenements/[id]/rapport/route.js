@@ -1,6 +1,9 @@
 import ReactPDF, { StyleSheet, Document, Page, View, Text, Image } from '@react-pdf/renderer'
 import { DateTime } from 'luxon'
 
+import { getEvent } from '@/lib/data/events/service'
+import { Flex } from '@chakra-ui/react'
+
 const PAGESIZE = 'LETTER'
 
 const INCH_IN_POINTS = 72
@@ -14,10 +17,13 @@ const COLORS = {
 }
 
 const SPACING = {
+  none: 0,
+  base: INCH_IN_POINTS * 0.125,
   xs: INCH_IN_POINTS * 0.0625,
   sm: INCH_IN_POINTS * 0.125,
-  md: INCH_IN_POINTS * 0.5,
-  lg: INCH_IN_POINTS * 0.75
+  md: INCH_IN_POINTS * 0.25,
+  lg: INCH_IN_POINTS * 0.5,
+  xl: INCH_IN_POINTS * 0.75
 }
 
 const FONT_SIZES = {
@@ -45,11 +51,17 @@ const styles = StyleSheet.create({
     left: -4
   },
   section: {
+    display: 'flex',
+    gap: SPACING.sm,
     marginBottom: SPACING.sm
   },
   h1: {
     fontSize: '30pt',
     fontWeight: 900,
+  },
+  h2: {
+    fontSize: '14pt',
+    fontWeight: 500,
   },
   primaryBlock: {
     marginBottom: SPACING.sm,
@@ -63,6 +75,15 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 5,
     borderBottomLeftRadius: 5,
     borderBottomRightRadius: 5
+  },
+  regular: {
+    fontWeight: 400
+  },
+  bold: {
+    fontWeight: 900
+  },  
+  red: { 
+    color: 'red'
   }
 })
 
@@ -72,16 +93,22 @@ const H1 = ({ text }) => {
   )
 }
 
+const Footer = ({ date }) => {
+  return (
+    <Text fixed style={{ fontSize: FONT_SIZES.xs, position: 'absolute', bottom: SPACING.md, right: SPACING.lg }}>Rapport produit le {date}</Text>
+  )
+}
+
 const Logo = () => {
   return (
     <Image src={'http://localhost:4501/logo_sisfaune_big.png'} style={styles.logo} />
   )
 }
 
-const Section = ({ fixed, children, style }) => {
+const Section = ({ fixed = false, children, style, debug = false }) => {
   const baseStyle = styles.section
   return (
-    <View fixed={fixed} style={{...style, ...baseStyle}}>
+    <View fixed={fixed} style={{...baseStyle, ...style}} debug={debug}>
       {children}
     </View>
   )
@@ -115,9 +142,23 @@ const SecondaryBlock = ({ title, children, style }) => {
   )
 }
 
-
+const DataRow = ({ label, value }) => {
+  return (
+    // <View style={{ display: 'flex', flex: 1, flexDirection: 'row', marginBottom: SPACING.md }} debug={true}>
+    <>
+    <View style={{ display: 'flex', flex: 1, flexDirection: 'row', marginBottom: SPACING.md }}><Text style={{ ...styles.bold, fontSize: FONT_SIZES.xs}}>{label}</Text></View>
+    <View style={{ display: 'flex', flex: 1, flexDirection: 'row', marginBottom: SPACING.md }}><Text style={{ ...styles.bold, fontSize: FONT_SIZES.xs}}>{value}</Text></View>
+    </>
+    // </View>
+    // <View style={{ flex: 1, display: 'flex', flexDirection: 'row', marginBottom: SPACING.md }}>
+      
+    //   {/* <View style={{ flex: 2, display: 'flex', alignItems: 'flex-end'}}><Text>{value}</Text></View> */}
+    // </View>
+  )
+}
 
 const PdfDocument = ({ data }) => {
+  console.debug(data)
   const { id: eventId } = data
 
   const NOW = DateTime.now().toISODate()
@@ -134,18 +175,38 @@ const PdfDocument = ({ data }) => {
   return (
     <Document language={'fr'} pageMode={'fullScreen'} title={`${BASE_TITLE} ${eventId}`}>
       <Page size={'LETTER'} style={styles.page}>
-        <Section fixed>
+
+        <Section fixed style={{ paddingBottom: SPACING.none }}>
           <Logo />
         </Section>
-        <Section style={{ textAlign: 'right', paddingBottom: SPACING.xs, borderBottomWidth: 5, borderBottomColor: COLORS['green.400'], fontSize: FONT_SIZES.larger }}>
-          <Text>Rapport d&apos;événement </Text>
-          <H1 text={eventId} />
-          <Text style={{ marginTop: SPACING.sm, fontSize: FONT_SIZES.sm }}>Produit le : {NOW}</Text>
+
+        <Section style={{ textAlign: 'right', paddingTop: SPACING.none, paddingBottom: SPACING.xs, borderBottomWidth: 5, borderBottomColor: COLORS['green.400'], fontSize: FONT_SIZES.larger }}>
+          <Text style={styles.h2}>{ true && <Text style={styles.red}>(Préliminaire) </Text> }Rapport d&apos;événement <Text style={styles.h1}>{eventId}</Text></Text>
         </Section>
-        <Section style={{ backgroundColor: COLORS['gray.100'], padding: SPACING.sm, textAlign: 'right' }}>
-          <Text>Section</Text>
+
+        <Section style={{ display: 'flex', flexDirection: 'column', backgroundColor: COLORS['gray.100'], padding: SPACING.md }} debug={true}>
+
+          <Section style={{ display: 'flex', flex: 1, flexDirection: 'row', justifyContent: 'space-between', gap: SPACING.md }}>
+
+            <Section style={{ display: 'flex', flex: '1 auto', flexDirection: 'column', fontSize: FONT_SIZES.sm }}>
+              <DataRow label={'Date de soumission :'} value={data.reportedAt} />
+              <DataRow label={'No. d\'incident CQSAS :'} value={data.cqsasNumber} />
+              <DataRow label={'No. centrale MAPAQ :'} value={data.mapaqNumber} />
+              <DataRow label={'No. de pathologie :'} value={data.pathologyNumber} />
+            </Section> 
+
+
+            <Section style={{ display: 'flex', flex: 1, fontSize: FONT_SIZES.sm }}><Text style={{}}>Soumissionaire</Text></Section>
+
+          </Section>
+
+          <Section style={{ flex: 1, alignItems: 'flex-end' }}>
+            <Text style={{ fontWeight: 900, fontSize: FONT_SIZES.md }}>{ data.reportOrigin.name }</Text>
+          </Section> 
+
         </Section>
-        <PrimaryBlock title={'Informations sur l\'événement'}>
+
+        {/* <PrimaryBlock title={'Informations sur l\'événement'}>
           <SecondaryBlock title={'Localisation géographique'}>
             <Text>Section</Text>
           </SecondaryBlock>
@@ -171,7 +232,10 @@ const PdfDocument = ({ data }) => {
               </SecondaryBlock>
             )
           })}
-        </PrimaryBlock>
+        </PrimaryBlock> */}
+
+        <Footer date={NOW} />
+        
       </Page>
     </Document>
   )
@@ -180,9 +244,13 @@ const PdfDocument = ({ data }) => {
 const GET = async (request, { params }) => {
   const { id } = await params
 
-  const data = { id }
+  const event = await getEvent(parseInt(id, 10))
 
-  const stream = await ReactPDF.renderToStream(<PdfDocument data={data} />)
+  if (!event) {
+    return new Response('Event not found', { status: 404 })
+  }
+
+  const stream = await ReactPDF.renderToStream(<PdfDocument data={event} />)
 
   return new Response(stream)
 }

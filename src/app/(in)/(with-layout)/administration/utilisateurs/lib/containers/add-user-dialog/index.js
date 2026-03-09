@@ -6,7 +6,7 @@ import { useWatch, useFormContext } from 'react-hook-form'
 import generatePassword from '@/lib/data/users/generate-password'
 import slugify from 'slugify'
 
-import addUserAction from './add-user.action'
+// import addUserAction from './add-user.action'
 
 import { Text, Button, useClipboard, VStack } from '@chakra-ui/react'
 import { InputGroup } from '@/app/lib/components/ui/input-group'
@@ -17,7 +17,7 @@ import BaseDialog, { Fields } from '@/app/lib/components/dialogs/base'
 
 import TextInput from '@/app/lib/components/inputs/base/text'
 
-import schema from './schema'
+import schema from './add-user.schema'
 
 const CopyPasswordButton = ({ password }) => {
   const clipboard = useClipboard({ value: password })
@@ -87,7 +87,6 @@ const formSchema = [
 ]
 
 const AddUserDialog = ({ close, onAdd }) => {
-
   const defaultValues = {
     username: null,
     firstName: null,
@@ -98,7 +97,6 @@ const AddUserDialog = ({ close, onAdd }) => {
 
   const handleSubmit = async (data) => {
     const result = await onAdd(data)
-    // console.debug('AddUserDialog - handleSubmit', { data, result })
     return result
   }
 

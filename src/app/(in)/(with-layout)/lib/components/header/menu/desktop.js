@@ -5,7 +5,20 @@ import { useRouter, usePathname, useSelectedLayoutSegment } from 'next/navigatio
 
 import { signOut } from 'next-auth/react'
 
-import { Box, Flex, VStack, Button, Menu, IconButton } from '@chakra-ui/react'
+import { Box, Flex, VStack, Button, Menu, IconButton, Status } from '@chakra-ui/react'
+import { keyframes } from '@emotion/react'
+
+const pulse = keyframes`
+  0% {
+    box-shadow: 0 0 0 0px rgba(49, 130, 206, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 5px 10px rgba(49, 130, 206, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0px rgba(49, 130, 206, 0);
+  }
+`;
 
 import {
   MenuContent,
@@ -13,13 +26,13 @@ import {
   MenuRadioItemGroup
 } from '@/app/lib/components/ui/menu.jsx'
 
-import { RxExit, RxGear, RxHamburgerMenu } from 'react-icons/rx'
+import { RxExit, RxGear, RxHamburgerMenu, RxDownload  } from 'react-icons/rx'
 
 import useDialog from '@/utils/use-dialog.js'
 
 import AccountParametersDialog from '../../../containers/account-parameters-dialog.js/index.js'
 
-const DesktopMenu = ({ account }) => {
+const DesktopMenu = ({ account, onOpenExportManager }) => {
   const segment = useSelectedLayoutSegment()
 
   const { fullName, email, isAdmin } = account ?? {}
@@ -41,10 +54,12 @@ const DesktopMenu = ({ account }) => {
   return (
     <>
       {parametersDialog}
-
       <Flex hideBelow='md'>
         <Menu.Root positioning={{ placement: 'bottom-end' }} size={'md'} lazyMount >
-          <Menu.Trigger as={IconButton} colorPalette='green' variant='solid' rounded='full' size={['md', null, 'sm']}>
+          <Menu.Trigger as={IconButton} colorPalette='green' variant='subtle' rounded='full' size={['md', null, 'sm']}>
+            <Status.Root colorPalette={'orange'} size={'lg'} position={'absolute'} bottom={-0.5} right={-0.5}>
+              <Status.Indicator  />
+            </Status.Root>
             <RxHamburgerMenu />
           </Menu.Trigger>
           <MenuContent minW={60} hideBelow='md' mt={4} isolation='isolate' isolate='isolate' zIndex={1001} _hover={{ bg: 'white' }}>
@@ -63,6 +78,13 @@ const DesktopMenu = ({ account }) => {
             <Menu.Item onClick={handleModifyParameters} value='params'>
               <RxGear />
               <Box flex={1} ms={0.5}>Vos paramètres...</Box>
+            </Menu.Item>
+            <Menu.Item value='extractions' onClick={onOpenExportManager}>
+              <RxDownload />
+              <Box flex={1} ms={0.5}>Vos extractions de données...</Box>
+              <Status.Root colorPalette={'orange'} size={'sm'} ms={2}>
+                <Status.Indicator />
+              </Status.Root>
             </Menu.Item>
             <Menu.Separator />
             <Menu.Item onClick={() => { signOut() }} value='signout'>

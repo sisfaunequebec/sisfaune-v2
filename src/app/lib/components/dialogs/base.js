@@ -56,7 +56,7 @@ const BaseDialog = ({ title, message, size, isAlert = false, schema, schemaType 
         if (!errors) {
           onClose(payload)
         }
-        
+
         Object.entries(errors || {}).forEach(([name, message]) => {
           setError(name, { type: 'server', message })
         })     
@@ -78,7 +78,7 @@ const BaseDialog = ({ title, message, size, isAlert = false, schema, schemaType 
   const { user: currentUser, isLoading: isLoadingCurrentUser } = useCurrentUser() 
 
   return (
-    <Dialog.Root scrollBehavior={scrollBehavior} lazyMount open={!isLoadingCurrentUser} size={rootSize} placement={placement} motionPreset={motion} onOpenChange={e => onClose(false)} closeOnInteractOutside={closeOnInteractOutside} role={role}>
+    <Dialog.Root preventScroll scrollBehavior={scrollBehavior} lazyMount open={!isLoadingCurrentUser} size={rootSize} placement={placement} motionPreset={motion} onOpenChange={e => onClose(false)} closeOnInteractOutside={closeOnInteractOutside} role={role}>
       <Portal>
         <Dialog.Backdrop />
         <Dialog.Positioner>
@@ -89,23 +89,18 @@ const BaseDialog = ({ title, message, size, isAlert = false, schema, schemaType 
               <Dialog.Title textStyle={['xl', null, 'lg']} >{title}</Dialog.Title>
             </Dialog.Header>
 
-              {/* <Flex as={'form'} onSubmit={handleSubmit(handleSubmitAction)} direction={'column'} justifyContent={'stretch'} alignItems={'stretch'} h={'100%'}> */}
+              <Dialog.Body textStyle={['md', null, 'sm']} >
+                { message && <Text mb={4} lineHeight={'shorter'}>{message}</Text> }
+                <VStack flex={1} alignItems={'stretch'} gap={1}>{ children(contentRef, watched, isSubmitting) }</VStack>
+              </Dialog.Body>
 
-                <Dialog.Body textStyle={['md', null, 'sm']} >
-                  { message && <Text mb={4} lineHeight={'shorter'}>{message}</Text> }
-                  <VStack flex={1} alignItems={'stretch'} gap={1}>{ children(contentRef, watched, isSubmitting) }</VStack>
-                </Dialog.Body>
-
-                <DialogFooter gap={2}>
-                  { hasErrors &&<Text color={'red'} fontWeight={'medium'}>Des erreurs ont été détectées</Text> }
-                  <DialogActionTrigger asChild>
-                    <Button size={['lg', null, 'sm']} variant={'outline'} onClick={() => onClose(false)} minW={24}>Annuler</Button>
-                  </DialogActionTrigger>
-                  <Button type={'submit'} size={['lg', null, 'sm']} colorPalette={isSubmitting ? 'blue' : ((isAlert || hasErrors) ? 'red' : 'blue')} minW={24} loading={isSubmitting} onClick={() => clearErrors()}>{submitBtnLabel}</Button>
-                </DialogFooter>
-
-              {/* </Flex> */}
-            
+              <DialogFooter gap={2}>
+                { hasErrors &&<Text color={'red'} fontWeight={'medium'}>Des erreurs ont été détectées</Text> }
+                <DialogActionTrigger asChild>
+                  <Button size={['lg', null, 'sm']} variant={'outline'} onClick={() => onClose(false)} minW={24}>Annuler</Button>
+                </DialogActionTrigger>
+                <Button type={'submit'} size={['lg', null, 'sm']} colorPalette={isSubmitting ? 'blue' : ((isAlert || hasErrors) ? 'red' : 'blue')} minW={24} loading={isSubmitting} onClick={() => clearErrors()}>{submitBtnLabel}</Button>
+              </DialogFooter>
 
           </Dialog.Content>
           </FormProvider>
@@ -115,19 +110,24 @@ const BaseDialog = ({ title, message, size, isAlert = false, schema, schemaType 
   )
 }
 
+const isSectionVisibleFilter = (data, watched) => (section) => {
+  const { visible } = section
+  const isVisible = visible !== undefined ? (typeof visible === 'function') ? visible(data, watched) : visible : true
+  return isVisible
+}
+
 const Fields = ({ formSchema, contentRef, watched, data, ...rest }) => {
   const { user: currentUser, isLoading: isLoadingCurrentUser } = useCurrentUser() 
 
-  const sectionsCount = formSchema.length
+  const visibleSections = formSchema.filter(isSectionVisibleFilter(data, watched))
+  const sectionsCount = visibleSections.length
 
   return (
      <VStack gap={2} flex={1} {...rest}>
-      {formSchema.map((section, i) => {
-        const { title, visible, fields } = section
-        const isVisible = visible !== undefined ? (typeof visible === 'function') ? visible(data, watched) : visible : true
-        if (!isVisible) { return null }
+      {visibleSections.map((section, i) => {
+        const { title, fields } = section
         return (
-          <Fieldset.Root key={title} gap={2} pt={4}>
+          <Fieldset.Root key={title ?? i} gap={2} mt={3} _first={{ mt: 0 }}>
             { title && <Fieldset.Legend>{title}</Fieldset.Legend> }
             <Fieldset.Content gap={2}>
               {fields.map(f => {

@@ -138,6 +138,7 @@ const getAnalysis = async (id) => {
     },
     include: {
       resultType: true,
+      codeValues: true,
       analysisGroup: {
         include: {
           analysisSector: true
@@ -225,6 +226,35 @@ const deleteAnalysis = async (eventId, analysisGroupId) => {
   return true
 }
 
+const newAnalysis = async (data) => {
+  const { isNewGroup, name, resultType, analysisGroup, analysisSector, newGroupName } = data
+
+  return await orm.$transaction(async (prisma) => {
+    let newAnalysisGroup = null 
+
+    if (isNewGroup) {
+      newAnalysisGroup = await prisma.LutAnalysisGroup.create({
+        data: {
+          name: newGroupName ?? name,
+          analysisSectorId: analysisSector.id
+        }
+      })
+    } else {
+      newAnalysisGroup = analysisGroup
+    }
+
+    const newAnalysis = await prisma.LutAnalysis.create({
+      data: {
+        name,
+        analysisGroupId: newAnalysisGroup.id,
+        resultTypeId: resultType.id
+      }
+    })
+
+    return { data: { ...newAnalysis }, errors: null }
+  })
+}
+
 const updateAnalysis = async (analysisId, data) => {
   const user = await getAuthUser()
 
@@ -244,10 +274,19 @@ const updateAnalysis = async (analysisId, data) => {
     where: {
       id: analysisId
     },
-    data: payload
+    data: payload,
+    include: {
+      resultType: true,
+      codeValues: true,
+      analysisGroup: {
+        include: {
+          analysisSector: true
+        }
+      }
+    }
   })
 
-  return { data: { ...updatedAnalysis }, errors: null }
+  return { data: { ...tranformFromDb(updatedAnalysis, { user }) }, errors: null }
 
 }
 
@@ -285,6 +324,7 @@ export {
   getAnalysesCount,
   getAnalysis,
   addAnalysis,
+  newAnalysis,
   updateAnalysis,
   deleteAnalysis,
   updateAnalysisGroupResults

@@ -1,7 +1,5 @@
 import { Box, Flex, Container, VStack, AbsoluteCenter, IconButton, Text,  HStack, Separator, Fieldset, Input, Field as ChakraField } from '@chakra-ui/react'
-import { RxPencil1, RxPlus, RxTrash } from 'react-icons/rx'
 
-import { Tooltip } from '@/app/lib/components/ui/tooltip'
 import { InfoTip } from "@/app/lib/components/ui/toggle-tip"
 
 import {

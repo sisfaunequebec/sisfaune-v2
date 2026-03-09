@@ -5,11 +5,11 @@
 import DesktopMenu from './desktop'
 import MobileMenu from './mobile'
 
-const Menu = ({ user }) => {
+const Menu = ({ user, onOpenExportManager }) => {
   return (
     <>
-      <DesktopMenu account={user} />
-      <MobileMenu account={user} />
+      <DesktopMenu account={user} onOpenExportManager={onOpenExportManager} />
+      <MobileMenu account={user} onOpenExportManager={onOpenExportManager} />
     </>
   )
 }

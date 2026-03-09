@@ -4,6 +4,9 @@ const schema = {
   name: null,
   code: null,
   isActive: null,
+  unit: null,
+  lowerLimit: null,
+  upperLimit: null
 }
 
 const analysisTransformer = (analysis, context) => {

@@ -19,7 +19,6 @@ const AnalysisAdminPage = async () => {
       <Toolbar>
         <NewAnalysisButton />
       </Toolbar>
-
       <PageContainer>
         <Filters />
         <ContentContainer>   

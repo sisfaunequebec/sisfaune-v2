@@ -1,9 +1,9 @@
 import { Input, InputGroup } from '@chakra-ui/react'
 
-const TextDisplay = ({ value, prefix, suffix, ...rest }) => {
+const TextDisplay = ({ value, prefix, suffix, flex = 1, ...rest }) => {
   return (
     <InputGroup
-      flex={1}
+      flex={flex}
       startElement={prefix}
       endElement={suffix}
     >

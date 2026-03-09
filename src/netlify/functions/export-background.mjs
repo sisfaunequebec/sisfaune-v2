@@ -5,6 +5,8 @@ import { readFile } from 'node:fs/promises'
 import tmp from 'tmp'
 import ExcelJS from 'exceljs'
 
+import wait from '@/utils/wait'
+
 import { PrismaClient } from '@prisma/client'
 
 import { getStore } from '@netlify/blobs'
@@ -16,13 +18,12 @@ import { searchParams, urlKeys } from '@/lib/data/events/get-events.params'
 import {
   createLoader
 } from 'nuqs/server'
-import { RiTreasureMapFill } from 'react-icons/ri'
 
 const loader = createLoader(searchParams, { urlKeys })
 const prisma = new PrismaClient()
 const orm = prisma.$extends(cursorStreamExtension)
 
-async function streamExcelFile() {
+async function extractToExcel(params) {
 
   const dataStream = orm.event.cursorStream({
     include: {
@@ -88,6 +89,7 @@ async function streamExcelFile() {
 }
 
 const uploadToNetlify = async (filePath) => {
+  console.debug('Uploading file to Netlify store...', filePath) 
   try {
     const fileName = path.basename(filePath)
     const store = getStore('data-export', { 
@@ -113,8 +115,28 @@ const handler = async (req, context) => {
 
   const params = loader(searchParams)
 
-  const filePath = await streamExcelFile()
+  const sessionId = context.cookies.get('etl_session_id')
+  const userId = 'd74796c5-2328-44be-be9e-eae0ac8043c4'
+
+  const task = await orm.tasks.create({
+    data: {
+      userId,
+      sessionId
+    }
+  })
+
+  const filePath = await extractToExcel(params, userId, sessionId)
+
+  await wait(Math.random() * 20000)
+
   await uploadToNetlify(filePath)
+
+  const updatedTask = await orm.tasks.update({
+    where: { id: task.id },
+    data: {
+      status: 'termine'
+    }
+  })
 
   return Response.json({ status: 'ok' })
 }

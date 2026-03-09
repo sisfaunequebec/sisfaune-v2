@@ -25,7 +25,7 @@ const getAnalysisGroups = async (filter) => {
         }
       }
     },
-    take: 10
+    take: filter ? 10 : undefined
   })
   return groups
 }
