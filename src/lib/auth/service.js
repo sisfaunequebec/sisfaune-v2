@@ -6,6 +6,7 @@ import bcrypt from 'bcrypt'
 import { Resend } from 'resend'
 
 import orm from '../data/database'
+import generatePassword from '../data/users/generate-password'
 
 import ChangePasswordEmail  from '@/lib/email/password-change'
 
@@ -46,6 +47,34 @@ const updateAccount = async (userId, data) => {
   }
 }
 
+const validateEmail = async (userId, data) => {
+  const { email } = data
+
+  const password = generatePassword()
+  const hash = bcrypt.hashSync(password, 10)
+
+  try {
+    const updatedUser = await orm.User.update({
+      where: {
+        id: userId
+      },
+      data: { email, password: hash }
+    })
+
+    const { username } = updatedUser
+    await sendChangePasswordEmail({ email, username, password })
+    
+    return { data, errors: null }
+  } catch (e) {
+    const { code } = e
+    if (code === 'P2002') {
+      return { data: null, e, errors: { email: 'Cette adresse de courriel est déjà utilisée par un autre utilisateur. Veuillez vérifier ou contacter l\'administrateur à admin@sisfaunequebec.ca' }}
+    }
+    return { data: null, errors: { server: e.message } }
+  }
+}
+
 export {
-  updateAccount
+  updateAccount,
+  validateEmail
 }

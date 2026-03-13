@@ -96,9 +96,9 @@ const BaseDialog = ({ title, message, size, isAlert = false, schema, schemaType 
 
               <DialogFooter gap={2}>
                 { hasErrors &&<Text color={'red'} fontWeight={'medium'}>Des erreurs ont été détectées</Text> }
-                <DialogActionTrigger asChild>
+                { onClose && <DialogActionTrigger asChild>
                   <Button size={['lg', null, 'sm']} variant={'outline'} onClick={() => onClose(false)} minW={24}>Annuler</Button>
-                </DialogActionTrigger>
+                </DialogActionTrigger> }
                 <Button type={'submit'} size={['lg', null, 'sm']} colorPalette={isSubmitting ? 'blue' : ((isAlert || hasErrors) ? 'red' : 'blue')} minW={24} loading={isSubmitting} onClick={() => clearErrors()}>{submitBtnLabel}</Button>
               </DialogFooter>
 

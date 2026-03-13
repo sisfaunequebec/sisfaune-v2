@@ -4,7 +4,7 @@ import wait from '@/utils/wait'
 
 import resetPassword from './reset-password.action'
 
-import { Fieldset, Input } from '@chakra-ui/react'
+import { Fieldset, Input, Alert } from '@chakra-ui/react'
 import { toaster } from '@/app/lib/components/ui/toaster'
 
 import BaseDialog from '@/app/lib/components/dialogs/base'
@@ -44,7 +44,16 @@ const ResetPasswordDialog = ({ close }) => {
   return (
     <BaseDialog size={'sm'} title={'Mot de passe oublié ?'} message={'Veuillez inscrire votre nom d\'utilisateur et cliquer sur "Envoyer" afin de recevoir un nouveau mot de passe par courriel :'} onClose={close} onSubmit={handleSubmit} submitBtnLabel={'Envoyer'} schema={resetPasswordSchema} schemaType={'valibot'} defaultValues={defaultValues}>
       {(contentRef, watched) => (
-        <Fieldset.Root>
+        <Fieldset.Root>      
+          <Alert.Root status={'warning'}>
+            <Alert.Indicator />
+            <Alert.Content>
+              <Alert.Title><strong>IMPORTANT</strong></Alert.Title>
+              <Alert.Description>
+                <strong>Si votre adresse de courriel a changé </strong>depuis votre dernière connexion, ou si vous rencontrez des difficultés, veuillez contacter&nbsp;: santedelafaune@environnement.gouv.qc.ca.
+              </Alert.Description>
+            </Alert.Content>
+          </Alert.Root>
           <Fieldset.Content gap={1}>
             <ControlledField label={'Nom d\'utilisateur :'} name={'username'} variant={'vertical'}>
               <Input autoComplete={'off'} />

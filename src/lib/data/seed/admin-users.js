@@ -8,10 +8,11 @@ const users = require('./sources/utilisateur.json')
 const { stringOrNull, stringToBool, dateOrNull } = require('./utils')
 
 aspnetMembershipById = aspnetMembership.reduce((acc, m) => {
-  const { UserId: id, LoweredEmail: email, IsLockedOut } = m
+  const { UserId: id, LoweredEmail: email, IsLockedOut, Password, PasswordSalt } = m
   acc[id] = {
     email,
-    IsLockedOut
+    IsLockedOut,
+    Password, PasswordSalt
   }
   return acc
 }, {})
@@ -56,19 +57,22 @@ const transformed = users.map(p => {
   const { username: rawUsername } = aspnetUser
 
   const aspnetMembership = aspnetMembershipById[id]
-  const { email, IsLockedOut } = aspnetMembership
+  const { email, IsLockedOut, Password, PasswordSalt } = aspnetMembership
 
   const admin = aspnetUsersInRolesById[id]
   const isAdmin = !!admin
   
   const username = stringOrNull(rawUsername)
 
-  const hashedPassword = bcrypt.hashSync(username, 10)
+  const hashedPassword = null // bcrypt.hashSync(username, 10)
 
   return {
     id,
     username: username,
     password: hashedPassword,
+
+    hash: Password,
+    salt: PasswordSalt,
 
     isActive: !stringToBool(IsLockedOut),
 

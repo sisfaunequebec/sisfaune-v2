@@ -1,12 +1,12 @@
 'use server'
 
 import createEtlSessionCookie from '../create-etl-session-cookie'
+import getUser from '@/lib/auth/get-user'
 
 import { signIn } from '@/lib/auth'
 
 const signAction = async (formData) => {
   try {
-
     await signIn('credentials', { ...formData, redirect: false })
 
     await createEtlSessionCookie()

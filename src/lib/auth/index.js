@@ -1,9 +1,49 @@
 import bcrypt from 'bcrypt'
+import crypto from 'crypto'
 
 import NextAuth, { CredentialsSignin } from 'next-auth'
 import Credentials from 'next-auth/providers/credentials'
 
 import orm from '../data/database'
+
+const hashDotnetMembershipPassword = (password, salt) => {
+  var bytes = new Buffer(password || '', 'utf16le')
+  var src = new Buffer(salt || '', 'base64')
+  var dst = new Buffer(src.length + bytes.length)
+  src.copy(dst, 0, 0, src.length)
+  bytes.copy(dst, src.length, 0, bytes.length)
+
+  return crypto.createHash('sha1').update(dst).digest('base64')
+}
+
+const validateDotnetMembershipPassword = (password, hash, salt) => {
+  const test = hashDotnetMembershipPassword(password, salt)
+  const isValid = test === hash
+  return isValid
+}
+
+const checkCredentials = async (user, password) => {
+  const { password: hashedPassword, hash, salt, email } = user
+
+  if (hashedPassword) {
+    const match = await bcrypt.compare(password, hashedPassword)
+
+    if (!match) {
+      const error = new CredentialsSignin()
+      error.errors = {  username: 'Ce nom d\'utilisateur est inconnu ou le mot de passe est erronné...' }
+      throw error
+    }
+  } else {
+    const match = validateDotnetMembershipPassword(password, hash, salt)
+
+    if (!match) {
+      const error = new CredentialsSignin()
+      error.errors = {  username: 'Ce nom d\'utilisateur est inconnu ou le mot de passe est erronné...' }
+      throw error
+    }
+  }
+  
+}
 
 const credentialsProvider = Credentials({
   credentials: {
@@ -32,18 +72,10 @@ const credentialsProvider = Credentials({
       error.errors = { username: 'Ce nom d\'utilisateur est inconnu ou le mot de passe est erronné...' }
       throw error
     }
-    
-    const { password: hashedPassword } = user
 
-    const match = await bcrypt.compare(password, hashedPassword)
+    await checkCredentials(user, password)
 
-    if (!match) {
-      const error = new CredentialsSignin()
-      error.errors = {  username: 'Ce nom d\'utilisateur est inconnu ou le mot de passe est erronné...' }
-      throw error
-    }
-
-    const { id, name, email, firstName, lastName, isAdmin, canReopenEvent, permissions: permissionsAsArray } = user
+    const { id, email, firstName, lastName, isAdmin, canReopenEvent, permissions: permissionsAsArray } = user
     const fullName = [firstName, lastName].filter(Boolean).join(' ')
 
     const permissions = permissionsAsArray.map(p => {
@@ -73,6 +105,8 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     credentialsProvider
   ],
   callbacks: {
+    // async signIn({ user, account, profile, email, credentials }) {
+    // },
     jwt({ token, user, trigger, session }) {
       if (user) {
         token.id = user.id
@@ -82,6 +116,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         token.canReopenEvent = user.canReopenEvent
         token.permissions = user.permissions
       }
+
       return token
     },
     session({ session, token }) {
@@ -91,6 +126,8 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       session.user.isAdmin = token.isAdmin
       session.user.canReopenEvent = token.canReopenEvent
       session.user.permissions = token.permissions
+      session.isFirstLogin = true
+
       return session
     }
   }

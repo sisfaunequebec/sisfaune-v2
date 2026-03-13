@@ -30,7 +30,7 @@ const getUser = async () => {
     }
   })
 
-  const { email, lastName, firstName, isAdmin, canReopenEvent, permissions: permissionsAsArray } =  userWithPermissions
+  const { email, lastName, firstName, isAdmin, password, canReopenEvent, permissions: permissionsAsArray } =  userWithPermissions
 
   const permissions = permissionsAsArray.map(p => {
     const { program, programId, roleId: role, canSubmit } = p
@@ -45,13 +45,16 @@ const getUser = async () => {
 
   const fullName = [firstName, lastName].filter(Boolean).join(' ')
 
+  const isFirstLogin = !password
+
   return {
     id,
     fullName,
     email,
     isAdmin,
     canReopenEvent,
-    permissions
+    permissions,
+    isFirstLogin
   }
 }
 

@@ -92,7 +92,7 @@ const Toolbar = ({ canUserDeleteEvent }) => {
           <BackButton />
         </HStack>
         <HStack justifyContent={'space-between'} gap={2}>
-          <ReportButton eventId={eventId} />
+          {/* <ReportButton eventId={eventId} /> */}
           { canUserDeleteEvent && <DeleteEventButton eventId={eventId} /> }
         </HStack>
       </HStack>

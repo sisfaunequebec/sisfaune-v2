@@ -97,11 +97,11 @@ const DesktopMenu = ({ account, onOpenExportManager }) => {
               <RxGear />
               <Box flex={1} ms={0.5}>Vos paramètres...</Box>
             </Menu.Item>
-            <Menu.Item value='extractions' onClick={onOpenExportManager} disabled={!hasTasks}>
+            {/* <Menu.Item value='extractions' onClick={onOpenExportManager} disabled={!hasTasks}>
               <RxDownload />
               <Box flex={1} ms={0.5}>Vos extractions de données...</Box>
               <TasksIndicator tasks={tasks} ms={2} />
-            </Menu.Item>
+            </Menu.Item> */}
             <Menu.Separator />
             <Menu.Item onClick={() => { signOut() }} value='signout'>
               <RxExit />
