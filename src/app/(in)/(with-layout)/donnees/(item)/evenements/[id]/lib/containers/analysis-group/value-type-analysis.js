@@ -41,8 +41,7 @@ const CodeTypeDisplay = ({ value, codes }) => {
 }
 
 const ValueOrCodeTypeAnalysis = ({ analysis }) => {
-  // console.debug('ValueOrCodeTypeAnalysis', { analysis })
-  const { name, unit, precision, results = [], resultTypeId, codeValues } = analysis
+  const { name, unit, precision = 10, results = [], resultTypeId, codeValues } = analysis
   const unitLabel  = unit ? ` (${unit})` : ''
   const label = [name, unitLabel].join('')
   return (
@@ -53,7 +52,7 @@ const ValueOrCodeTypeAnalysis = ({ analysis }) => {
 
           if (resultTypeId === 1) {
             return (
-              <ValueTypeDisplay key={id} value={value} precision={precision} />
+              <ValueTypeDisplay key={id} value={value} precision={precision ?? 10} />
             )
           } else if (resultTypeId === 2) {
             return (

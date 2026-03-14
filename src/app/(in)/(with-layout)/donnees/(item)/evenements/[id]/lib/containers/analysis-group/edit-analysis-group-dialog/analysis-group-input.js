@@ -51,7 +51,7 @@ const ValueTypeInput = ({ value, onChange, precision }) => {
 }
 
 const ValueOrCodeTypeAnalysisInput = ({ value, onChange, contentRef }) => {
-  const { name, unit, precision, resultTypeId, codeValues, results = [] } = value
+  const { name, unit, precision = 10, resultTypeId, codeValues, results = [] } = value
   const unitLabel  = unit ? ` (${unit})` : ''
   const label = [name, unitLabel].join('')
   return (
@@ -62,7 +62,7 @@ const ValueOrCodeTypeAnalysisInput = ({ value, onChange, contentRef }) => {
 
           if (resultTypeId === 1) {
             return (
-              <ValueTypeInput key={id} value={value} precision={precision} onChange={(value) => onChange(id, value)} />
+              <ValueTypeInput key={id} value={value} precision={precision ?? 10} onChange={(value) => onChange(id, value)} />
             )
           } else if (resultTypeId === 2) {
             return (
