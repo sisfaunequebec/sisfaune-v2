@@ -1,13 +1,9 @@
 'use server'
 import 'server-only'
 
-// import { DateTime } from 'luxon'
-
 import orm from '../database'
 
 import getUser from '@/lib/auth/get-user'
-
-// import { isoDateToDb } from '../transformers/utils'
 
 import toDbLocationTransformer from '../transformers/to-db/location'
 
@@ -20,7 +16,7 @@ const updateLocation = async (eventId, data) => {
 
   const transformed = toDbLocationTransformer(data, { user })
   
-  await orm.location.update({
+  await orm.Location.update({
     where: {
       eventId
     },

@@ -117,82 +117,6 @@ const CoordinatesInput = ({ value, onChange, size }) => {
   )
 }
 
-{/* const NumberInput = ({ value, onChange, size }) => {
-  const [inputValue, setInputValue] = useState(value)
-  
-  const handleChange = e => {
-    const { value } = e.target
-    
-    if (value === '') {
-      setInputValue(value)
-      onChange(null)
-    }
-
-    if (value === '-') {
-      setInputValue(value)
-      onChange(null)
-    }
-
-    if (decimalRegex.test(value)) {
-      setInputValue(value)
-      onChange(Number(value))
-    }
-  }
-
-  useEffect(() => {
-    setInputValue(value)
-  }, [value])
-
-  return (
-    <Input inputMode={'numeric'} value={inputValue} onChange={handleChange} size={size} />
-  )
-} */}
-
-// const LatLongInput = ({ value, onChange, isEditing = false, contentRef }) => {
-//   const [internalValue, setInternalValue] = useState(value || { lat: null, lng: null })
-
-//   useEffect(() => {
-//     if (value) {
-//       const { lat, lng } = value
-//       setInternalValue({ lat, lng })
-//     }
-//   }, [value])
-
-//   const handleLatChange = useCallback((lat) => {
-//     if (!!lat) {
-//       setInternalValue({ lat, lng: internalValue.lng })
-//       onChange({ lat, lng: internalValue.lng })
-//     } else {
-//       onChange(null)
-//     }
-//   }, [onChange, internalValue])
-
-//   const handleLngChange = useCallback((lng) => {
-//     setInternalValue({ lat: internalValue.lat, lng })
-//     if (!!lng) {      
-//       onChange({ lat: internalValue.lat, lng })
-//     } else {
-//       onChange(null)
-//     }
-//   }, [onChange, internalValue])
-
-//   if (isEditing) {
-//     const { lat, lng } = internalValue
-
-//     return (
-//       <HStack gap={2} flex={1} ref={contentRef}>
-//         <NumberInput value={lat} onChange={handleLatChange} size={'sm'} />
-//         <NumberInput value={lng} onChange={handleLngChange} size={'sm'} />
-//       </HStack>
-//     )
-//   } else {
-//       const displayValue = internalValue ? [internalValue.lat?.toFixed(6), internalValue.lng?.toFixed(6)].filter(Boolean).join(', ') : ''
-//       return (
-//         <TextInput value={displayValue} isEditing={false} size={'sm'} />
-//       )
-//   }
-// }
-
 const CenterButton = ({ currentPosition, bounds }) => {
   const map = useMap()
  
@@ -409,12 +333,15 @@ const hasMarker = position => {
 
 const EditLocationDialog = ({ close, eventId, data }) => {
   const handleSubmit = useCallback(async (data) => {
+    // console.debug('handleSubmit', data)
     await updateLocationAction(eventId, data)
     close()
   }, [close, eventId])
 
   const { type, coordinates, locality, description } = data
   const defaultValues = { type, coordinates, locality, description, marker: coordinates }
+
+  console.debug('here', description)
 
   return (
     <BaseDialog title={`Événement no ${eventId} - Localisation géographique`} size={'lg'} onClose={close} onSubmit={handleSubmit} submitBtnLabel={'Sauvegarder'} schema={schema} schemaType={'valibot'} defaultValues={defaultValues} watches={['type', 'marker']}>
