@@ -1305,7 +1305,7 @@
     "id_utilisateur": "ce53ef47-d68c-4483-9c08-1ed94863f0bb",
     "id_programme": 1,
     "id_role": "101",
-    "peut_soumettre": "1"
+    "peut_soumettre": "0"
   },
   {
     "id_utilisateur": "ce53ef47-d68c-4483-9c08-1ed94863f0bb",
@@ -1340,7 +1340,7 @@
   {
     "id_utilisateur": "ce53ef47-d68c-4483-9c08-1ed94863f0bb",
     "id_programme": 8,
-    "id_role": "101",
+    "id_role": "100",
     "peut_soumettre": "1"
   },
   {
@@ -1352,20 +1352,20 @@
   {
     "id_utilisateur": "ce53ef47-d68c-4483-9c08-1ed94863f0bb",
     "id_programme": 10,
-    "id_role": "1",
-    "peut_soumettre": "1"
-  },
-  {
-    "id_utilisateur": "ce53ef47-d68c-4483-9c08-1ed94863f0bb",
-    "id_programme": 11,
     "id_role": "0",
     "peut_soumettre": "0"
   },
   {
     "id_utilisateur": "ce53ef47-d68c-4483-9c08-1ed94863f0bb",
-    "id_programme": 12,
-    "id_role": "1",
+    "id_programme": 11,
+    "id_role": "101",
     "peut_soumettre": "1"
+  },
+  {
+    "id_utilisateur": "ce53ef47-d68c-4483-9c08-1ed94863f0bb",
+    "id_programme": 12,
+    "id_role": "0",
+    "peut_soumettre": "0"
   },
   {
     "id_utilisateur": "7b68d07d-5a4d-4762-8fdb-2181fa3553e2",
@@ -3104,7 +3104,7 @@
   {
     "id_utilisateur": "334d1731-e793-4c64-be46-464316ed03cf",
     "id_programme": 11,
-    "id_role": "0",
+    "id_role": "100",
     "peut_soumettre": "0"
   },
   {
@@ -6558,6 +6558,72 @@
     "peut_soumettre": "1"
   },
   {
+    "id_utilisateur": "c5f108e2-d2ab-41ae-b017-b6fa1592fc40",
+    "id_programme": 1,
+    "id_role": "0",
+    "peut_soumettre": "0"
+  },
+  {
+    "id_utilisateur": "c5f108e2-d2ab-41ae-b017-b6fa1592fc40",
+    "id_programme": 3,
+    "id_role": "0",
+    "peut_soumettre": "0"
+  },
+  {
+    "id_utilisateur": "c5f108e2-d2ab-41ae-b017-b6fa1592fc40",
+    "id_programme": 4,
+    "id_role": "0",
+    "peut_soumettre": "0"
+  },
+  {
+    "id_utilisateur": "c5f108e2-d2ab-41ae-b017-b6fa1592fc40",
+    "id_programme": 5,
+    "id_role": "0",
+    "peut_soumettre": "0"
+  },
+  {
+    "id_utilisateur": "c5f108e2-d2ab-41ae-b017-b6fa1592fc40",
+    "id_programme": 6,
+    "id_role": "0",
+    "peut_soumettre": "0"
+  },
+  {
+    "id_utilisateur": "c5f108e2-d2ab-41ae-b017-b6fa1592fc40",
+    "id_programme": 7,
+    "id_role": "0",
+    "peut_soumettre": "0"
+  },
+  {
+    "id_utilisateur": "c5f108e2-d2ab-41ae-b017-b6fa1592fc40",
+    "id_programme": 8,
+    "id_role": "0",
+    "peut_soumettre": "0"
+  },
+  {
+    "id_utilisateur": "c5f108e2-d2ab-41ae-b017-b6fa1592fc40",
+    "id_programme": 9,
+    "id_role": "0",
+    "peut_soumettre": "0"
+  },
+  {
+    "id_utilisateur": "c5f108e2-d2ab-41ae-b017-b6fa1592fc40",
+    "id_programme": 10,
+    "id_role": "0",
+    "peut_soumettre": "0"
+  },
+  {
+    "id_utilisateur": "c5f108e2-d2ab-41ae-b017-b6fa1592fc40",
+    "id_programme": 11,
+    "id_role": "0",
+    "peut_soumettre": "0"
+  },
+  {
+    "id_utilisateur": "c5f108e2-d2ab-41ae-b017-b6fa1592fc40",
+    "id_programme": 12,
+    "id_role": "0",
+    "peut_soumettre": "0"
+  },
+  {
     "id_utilisateur": "07f5203f-5949-4b2b-aae5-b7f58fa971ba",
     "id_programme": 1,
     "id_role": "102",
@@ -7802,7 +7868,7 @@
   {
     "id_utilisateur": "a398066b-158b-43e7-b0c7-e2f05a6d0c04",
     "id_programme": 4,
-    "id_role": "101",
+    "id_role": "100",
     "peut_soumettre": "1"
   },
   {
@@ -9482,6 +9548,12 @@
   {
     "id_utilisateur": "2cbaa5f5-f842-430f-924c-ff007a88ca9b",
     "id_programme": 11,
+    "id_role": "0",
+    "peut_soumettre": "0"
+  },
+  {
+    "id_utilisateur": "2cbaa5f5-f842-430f-924c-ff007a88ca9b",
+    "id_programme": 12,
     "id_role": "0",
     "peut_soumettre": "0"
   }

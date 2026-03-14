@@ -95,5 +95,5 @@ const transformed = source.map(p => {
     createdById: stringOrNull(meta_creation_par)
   }
 })
- 
+
 module.exports = transformed

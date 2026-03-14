@@ -15046,5 +15046,45 @@
     "actif": "0",
     "ordre_affichage": "100",
     "id_analyse": 1761
+  },
+  {
+    "id": 2882,
+    "code": "++++",
+    "description": "++++",
+    "actif": "1",
+    "ordre_affichage": "100",
+    "id_analyse": 65
+  },
+  {
+    "id": 2883,
+    "code": "Pas",
+    "description": "Pas d''amplification",
+    "actif": "1",
+    "ordre_affichage": "100",
+    "id_analyse": 1735
+  },
+  {
+    "id": 2884,
+    "code": "Non détecté",
+    "description": "Non détecté",
+    "actif": "1",
+    "ordre_affichage": "100",
+    "id_analyse": 1775
+  },
+  {
+    "id": 2885,
+    "code": "",
+    "description": "",
+    "actif": "0",
+    "ordre_affichage": "100",
+    "id_analyse": 1761
+  },
+  {
+    "id": 2886,
+    "code": "",
+    "description": "",
+    "actif": "0",
+    "ordre_affichage": "100",
+    "id_analyse": 1761
   }
 ]

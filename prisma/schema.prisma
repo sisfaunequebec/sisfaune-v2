@@ -61,6 +61,8 @@ model User {
   eventsCreated Event[] @relation("EventCreator")
   eventsSubmitted Event[] @relation("EventSubmitter")
 
+  specimensCreated Specimen[] @relation("SpecimenCreator")
+
   eventsResponsible Event[] @relation("EventLabResponsible")
 }
  
@@ -606,7 +608,10 @@ model Specimen {
   keywords String? @map(name: "motcles")
 
   createdAt DateTime @default(now()) @map("meta_date_creation")
-  createdBy String? @map("meta_creation_par") 
+  // createdBy String? @map("meta_creation_par") 
+  createdById String? @map("meta_creation_par")
+  createdBy User? @relation("SpecimenCreator", fields: [createdById], references: [id], onDelete: Restrict, onUpdate: Restrict)
+
 
   // Relations
   event Event @relation(fields: [eventId], references: [id], onDelete: Cascade, onUpdate: Cascade)

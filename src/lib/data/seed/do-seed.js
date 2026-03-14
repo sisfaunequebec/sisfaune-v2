@@ -42,9 +42,31 @@ const adminUserPrograms = require('./admin-user-programs')
 
 const dataDiscoverers = require('./data-discoverers')
 
-// const dataEvents = require('./data-events')
-// const dataLocations = require('./data-locations')
-// const dataSpecimens = require('./data-specimens')
+const dataEvents = require('./data-events')
+const dataLocations = require('./data-locations')
+const dataSpecimens = require('./data-specimens')
+
+const xEventAnalysisGroups = require('./x-event-analysis-group')
+// const specimenMeasures = require('./data-specimen-measures')
+const dataResults = require('./data-results')
+
+// async function createManyBatched(dataArray, batchSize = 30000) {
+//   const ops = []
+  
+//   // 1. Chunk the data
+//   for (let i = 0; i < dataArray.length; i += batchSize) {
+//     const chunk = dataArray.slice(i, i + batchSize)
+
+//     ops.push(
+//       orm.specimenMeasure.createMany({
+//         data: chunk
+//       })
+//     )
+//   }
+
+//   console.debug(ops)
+//   return ops
+// }
 
 async function doSeed (orm) {
   await orm.$transaction([
@@ -106,13 +128,19 @@ async function doSeed (orm) {
 
     orm.Collaborator.createMany({ data: dataCollaborators }),
 
-    // orm.Discoverer.createMany({ data: dataDiscoverers }),
+    orm.Discoverer.createMany({ data: dataDiscoverers }),
 
-    // orm.Event.createMany({ data: dataEvents }),
-    // orm.Location.createMany({ data: dataLocations }),
+    orm.Event.createMany({ data: dataEvents }),
+    orm.Location.createMany({ data: dataLocations }),
 
-    // orm.Specimen.createMany({ data: dataSpecimens }),
+    orm.Specimen.createMany({ data: dataSpecimens }),
 
+    // THESE are too large to be seeded
+    // orm.specimenMeasure.createMany({ data: specimenMeasures }),
+    // orm.Result.createMany({ data: dataResults }),
+
+    orm.EventAnalysisGroup.createMany({ data: xEventAnalysisGroups }),
+    
     // Reset sequences
     orm.$executeRaw`
       do $$
@@ -124,9 +152,6 @@ async function doSeed (orm) {
         SELECT coalesce(max(id), 0) + 1 FROM data_specimen INTO max_id;
         EXECUTE 'alter SEQUENCE data_specimen_id_seq RESTART with '|| max_id;  
   
-        SELECT coalesce(max(id), 0) + 1 FROM data_intervenant INTO max_id;
-        EXECUTE 'alter SEQUENCE data_intervenant_id_seq RESTART with '|| max_id; 
-
         SELECT coalesce(max(id), 0) + 1 FROM data_intervenant INTO max_id;
         EXECUTE 'alter SEQUENCE data_intervenant_id_seq RESTART with '|| max_id; 
 
@@ -144,6 +169,9 @@ async function doSeed (orm) {
 
         SELECT coalesce(max(id), 0) + 1 FROM lut_resultat_code_valeur INTO max_id;
         EXECUTE 'alter SEQUENCE lut_resultat_code_valeur_id_seq RESTART with '|| max_id; 
+
+        -- SELECT coalesce(max(id), 0) + 1 FROM data_specimen_mesure INTO max_id;
+        -- EXECUTE 'alter SEQUENCE lut_resultat_code_valeur_id_seq RESTART with '|| max_id; 
       END;
       $$ LANGUAGE plpgsql
     `,

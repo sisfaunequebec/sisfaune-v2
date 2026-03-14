@@ -1,0 +1,1402 @@
+[
+  {
+    "id_mesure": 310333,
+    "id_specimen": 1001,
+    "id_type_mesure": "4",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310334,
+    "id_specimen": 1001,
+    "id_type_mesure": "5",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310335,
+    "id_specimen": 1001,
+    "id_type_mesure": "6",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310336,
+    "id_specimen": 1001,
+    "id_type_mesure": "7",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310337,
+    "id_specimen": 1001,
+    "id_type_mesure": "8",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310338,
+    "id_specimen": 1001,
+    "id_type_mesure": "9",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310339,
+    "id_specimen": 1001,
+    "id_type_mesure": "10",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310340,
+    "id_specimen": 1001,
+    "id_type_mesure": "33",
+    "valeur": null,
+    "id_unite": "3"
+  },
+  {
+    "id_mesure": 310341,
+    "id_specimen": 1002,
+    "id_type_mesure": "4",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310342,
+    "id_specimen": 1002,
+    "id_type_mesure": "5",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310343,
+    "id_specimen": 1002,
+    "id_type_mesure": "6",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310344,
+    "id_specimen": 1002,
+    "id_type_mesure": "7",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310345,
+    "id_specimen": 1002,
+    "id_type_mesure": "8",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310346,
+    "id_specimen": 1002,
+    "id_type_mesure": "9",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310347,
+    "id_specimen": 1002,
+    "id_type_mesure": "10",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310348,
+    "id_specimen": 1002,
+    "id_type_mesure": "33",
+    "valeur": null,
+    "id_unite": "3"
+  },
+  {
+    "id_mesure": 310349,
+    "id_specimen": 1003,
+    "id_type_mesure": "4",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310350,
+    "id_specimen": 1003,
+    "id_type_mesure": "5",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310351,
+    "id_specimen": 1003,
+    "id_type_mesure": "6",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310352,
+    "id_specimen": 1003,
+    "id_type_mesure": "7",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310353,
+    "id_specimen": 1003,
+    "id_type_mesure": "8",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310354,
+    "id_specimen": 1003,
+    "id_type_mesure": "9",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310355,
+    "id_specimen": 1003,
+    "id_type_mesure": "10",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310356,
+    "id_specimen": 1003,
+    "id_type_mesure": "33",
+    "valeur": null,
+    "id_unite": "3"
+  },
+  {
+    "id_mesure": 310357,
+    "id_specimen": 1004,
+    "id_type_mesure": "4",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310358,
+    "id_specimen": 1004,
+    "id_type_mesure": "5",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310359,
+    "id_specimen": 1004,
+    "id_type_mesure": "6",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310360,
+    "id_specimen": 1004,
+    "id_type_mesure": "7",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310361,
+    "id_specimen": 1004,
+    "id_type_mesure": "8",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310362,
+    "id_specimen": 1004,
+    "id_type_mesure": "9",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310363,
+    "id_specimen": 1004,
+    "id_type_mesure": "10",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310364,
+    "id_specimen": 1004,
+    "id_type_mesure": "33",
+    "valeur": null,
+    "id_unite": "3"
+  },
+  {
+    "id_mesure": 310365,
+    "id_specimen": 1005,
+    "id_type_mesure": "4",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310366,
+    "id_specimen": 1005,
+    "id_type_mesure": "5",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310367,
+    "id_specimen": 1005,
+    "id_type_mesure": "6",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310368,
+    "id_specimen": 1005,
+    "id_type_mesure": "7",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310369,
+    "id_specimen": 1005,
+    "id_type_mesure": "8",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310370,
+    "id_specimen": 1005,
+    "id_type_mesure": "9",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310371,
+    "id_specimen": 1005,
+    "id_type_mesure": "10",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310372,
+    "id_specimen": 1005,
+    "id_type_mesure": "33",
+    "valeur": null,
+    "id_unite": "3"
+  },
+  {
+    "id_mesure": 310373,
+    "id_specimen": 1006,
+    "id_type_mesure": "4",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310374,
+    "id_specimen": 1006,
+    "id_type_mesure": "5",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310375,
+    "id_specimen": 1006,
+    "id_type_mesure": "6",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310376,
+    "id_specimen": 1006,
+    "id_type_mesure": "7",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310377,
+    "id_specimen": 1006,
+    "id_type_mesure": "8",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310378,
+    "id_specimen": 1006,
+    "id_type_mesure": "9",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310379,
+    "id_specimen": 1006,
+    "id_type_mesure": "10",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310380,
+    "id_specimen": 1006,
+    "id_type_mesure": "33",
+    "valeur": null,
+    "id_unite": "3"
+  },
+  {
+    "id_mesure": 310381,
+    "id_specimen": 1007,
+    "id_type_mesure": "4",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310382,
+    "id_specimen": 1007,
+    "id_type_mesure": "5",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310383,
+    "id_specimen": 1007,
+    "id_type_mesure": "6",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310384,
+    "id_specimen": 1007,
+    "id_type_mesure": "7",
+    "valeur": 8.398,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310385,
+    "id_specimen": 1007,
+    "id_type_mesure": "8",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310386,
+    "id_specimen": 1007,
+    "id_type_mesure": "9",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310387,
+    "id_specimen": 1007,
+    "id_type_mesure": "10",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310388,
+    "id_specimen": 1007,
+    "id_type_mesure": "33",
+    "valeur": null,
+    "id_unite": "3"
+  },
+  {
+    "id_mesure": 310389,
+    "id_specimen": 1008,
+    "id_type_mesure": "4",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310390,
+    "id_specimen": 1008,
+    "id_type_mesure": "5",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310391,
+    "id_specimen": 1008,
+    "id_type_mesure": "6",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310392,
+    "id_specimen": 1008,
+    "id_type_mesure": "7",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310393,
+    "id_specimen": 1008,
+    "id_type_mesure": "8",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310394,
+    "id_specimen": 1008,
+    "id_type_mesure": "9",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310395,
+    "id_specimen": 1008,
+    "id_type_mesure": "10",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310396,
+    "id_specimen": 1008,
+    "id_type_mesure": "33",
+    "valeur": null,
+    "id_unite": "3"
+  },
+  {
+    "id_mesure": 310397,
+    "id_specimen": 1009,
+    "id_type_mesure": "4",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310398,
+    "id_specimen": 1009,
+    "id_type_mesure": "5",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310399,
+    "id_specimen": 1009,
+    "id_type_mesure": "6",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310400,
+    "id_specimen": 1009,
+    "id_type_mesure": "7",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310401,
+    "id_specimen": 1009,
+    "id_type_mesure": "8",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310402,
+    "id_specimen": 1009,
+    "id_type_mesure": "9",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310403,
+    "id_specimen": 1009,
+    "id_type_mesure": "10",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310404,
+    "id_specimen": 1009,
+    "id_type_mesure": "33",
+    "valeur": null,
+    "id_unite": "3"
+  },
+  {
+    "id_mesure": 310405,
+    "id_specimen": 1010,
+    "id_type_mesure": "4",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310406,
+    "id_specimen": 1010,
+    "id_type_mesure": "5",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310407,
+    "id_specimen": 1010,
+    "id_type_mesure": "6",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310408,
+    "id_specimen": 1010,
+    "id_type_mesure": "7",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310409,
+    "id_specimen": 1010,
+    "id_type_mesure": "8",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310410,
+    "id_specimen": 1010,
+    "id_type_mesure": "9",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310411,
+    "id_specimen": 1010,
+    "id_type_mesure": "10",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310412,
+    "id_specimen": 1010,
+    "id_type_mesure": "33",
+    "valeur": null,
+    "id_unite": "3"
+  },
+  {
+    "id_mesure": 310413,
+    "id_specimen": 1011,
+    "id_type_mesure": "4",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310414,
+    "id_specimen": 1011,
+    "id_type_mesure": "5",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310415,
+    "id_specimen": 1011,
+    "id_type_mesure": "6",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310416,
+    "id_specimen": 1011,
+    "id_type_mesure": "7",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310417,
+    "id_specimen": 1011,
+    "id_type_mesure": "8",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310418,
+    "id_specimen": 1011,
+    "id_type_mesure": "9",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310419,
+    "id_specimen": 1011,
+    "id_type_mesure": "10",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310420,
+    "id_specimen": 1011,
+    "id_type_mesure": "33",
+    "valeur": null,
+    "id_unite": "3"
+  },
+  {
+    "id_mesure": 310421,
+    "id_specimen": 1012,
+    "id_type_mesure": "4",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310422,
+    "id_specimen": 1012,
+    "id_type_mesure": "5",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310423,
+    "id_specimen": 1012,
+    "id_type_mesure": "6",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310424,
+    "id_specimen": 1012,
+    "id_type_mesure": "7",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310425,
+    "id_specimen": 1012,
+    "id_type_mesure": "8",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310426,
+    "id_specimen": 1012,
+    "id_type_mesure": "9",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310427,
+    "id_specimen": 1012,
+    "id_type_mesure": "10",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310428,
+    "id_specimen": 1012,
+    "id_type_mesure": "33",
+    "valeur": null,
+    "id_unite": "3"
+  },
+  {
+    "id_mesure": 310429,
+    "id_specimen": 1013,
+    "id_type_mesure": "4",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310430,
+    "id_specimen": 1013,
+    "id_type_mesure": "5",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310431,
+    "id_specimen": 1013,
+    "id_type_mesure": "6",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310432,
+    "id_specimen": 1013,
+    "id_type_mesure": "7",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310433,
+    "id_specimen": 1013,
+    "id_type_mesure": "8",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310434,
+    "id_specimen": 1013,
+    "id_type_mesure": "9",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310435,
+    "id_specimen": 1013,
+    "id_type_mesure": "10",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310436,
+    "id_specimen": 1013,
+    "id_type_mesure": "33",
+    "valeur": null,
+    "id_unite": "3"
+  },
+  {
+    "id_mesure": 310437,
+    "id_specimen": 1014,
+    "id_type_mesure": "4",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310438,
+    "id_specimen": 1014,
+    "id_type_mesure": "5",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310439,
+    "id_specimen": 1014,
+    "id_type_mesure": "6",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310440,
+    "id_specimen": 1014,
+    "id_type_mesure": "7",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310441,
+    "id_specimen": 1014,
+    "id_type_mesure": "8",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310442,
+    "id_specimen": 1014,
+    "id_type_mesure": "9",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310443,
+    "id_specimen": 1014,
+    "id_type_mesure": "10",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310444,
+    "id_specimen": 1014,
+    "id_type_mesure": "33",
+    "valeur": null,
+    "id_unite": "3"
+  },
+  {
+    "id_mesure": 310445,
+    "id_specimen": 1015,
+    "id_type_mesure": "4",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310446,
+    "id_specimen": 1015,
+    "id_type_mesure": "5",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310447,
+    "id_specimen": 1015,
+    "id_type_mesure": "6",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310448,
+    "id_specimen": 1015,
+    "id_type_mesure": "7",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310449,
+    "id_specimen": 1015,
+    "id_type_mesure": "8",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310450,
+    "id_specimen": 1015,
+    "id_type_mesure": "9",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310451,
+    "id_specimen": 1015,
+    "id_type_mesure": "10",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310452,
+    "id_specimen": 1015,
+    "id_type_mesure": "33",
+    "valeur": null,
+    "id_unite": "3"
+  },
+  {
+    "id_mesure": 310453,
+    "id_specimen": 1016,
+    "id_type_mesure": "4",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310454,
+    "id_specimen": 1016,
+    "id_type_mesure": "5",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310455,
+    "id_specimen": 1016,
+    "id_type_mesure": "6",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310456,
+    "id_specimen": 1016,
+    "id_type_mesure": "7",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310457,
+    "id_specimen": 1016,
+    "id_type_mesure": "8",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310458,
+    "id_specimen": 1016,
+    "id_type_mesure": "9",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310459,
+    "id_specimen": 1016,
+    "id_type_mesure": "10",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310460,
+    "id_specimen": 1016,
+    "id_type_mesure": "33",
+    "valeur": null,
+    "id_unite": "3"
+  },
+  {
+    "id_mesure": 310461,
+    "id_specimen": 1017,
+    "id_type_mesure": "4",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310462,
+    "id_specimen": 1017,
+    "id_type_mesure": "5",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310463,
+    "id_specimen": 1017,
+    "id_type_mesure": "6",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310464,
+    "id_specimen": 1017,
+    "id_type_mesure": "7",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310465,
+    "id_specimen": 1017,
+    "id_type_mesure": "8",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310466,
+    "id_specimen": 1017,
+    "id_type_mesure": "9",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310467,
+    "id_specimen": 1017,
+    "id_type_mesure": "10",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310468,
+    "id_specimen": 1017,
+    "id_type_mesure": "33",
+    "valeur": null,
+    "id_unite": "3"
+  },
+  {
+    "id_mesure": 310469,
+    "id_specimen": 1018,
+    "id_type_mesure": "4",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310470,
+    "id_specimen": 1018,
+    "id_type_mesure": "5",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310471,
+    "id_specimen": 1018,
+    "id_type_mesure": "6",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310472,
+    "id_specimen": 1018,
+    "id_type_mesure": "7",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310473,
+    "id_specimen": 1018,
+    "id_type_mesure": "8",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310474,
+    "id_specimen": 1018,
+    "id_type_mesure": "9",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310475,
+    "id_specimen": 1018,
+    "id_type_mesure": "10",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310476,
+    "id_specimen": 1018,
+    "id_type_mesure": "33",
+    "valeur": null,
+    "id_unite": "3"
+  },
+  {
+    "id_mesure": 310477,
+    "id_specimen": 1019,
+    "id_type_mesure": "4",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310478,
+    "id_specimen": 1019,
+    "id_type_mesure": "5",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310479,
+    "id_specimen": 1019,
+    "id_type_mesure": "6",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310480,
+    "id_specimen": 1019,
+    "id_type_mesure": "7",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310481,
+    "id_specimen": 1019,
+    "id_type_mesure": "8",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310482,
+    "id_specimen": 1019,
+    "id_type_mesure": "9",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310483,
+    "id_specimen": 1019,
+    "id_type_mesure": "10",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310484,
+    "id_specimen": 1019,
+    "id_type_mesure": "33",
+    "valeur": null,
+    "id_unite": "3"
+  },
+  {
+    "id_mesure": 310485,
+    "id_specimen": 1020,
+    "id_type_mesure": "4",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310486,
+    "id_specimen": 1020,
+    "id_type_mesure": "5",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310487,
+    "id_specimen": 1020,
+    "id_type_mesure": "6",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310488,
+    "id_specimen": 1020,
+    "id_type_mesure": "7",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310489,
+    "id_specimen": 1020,
+    "id_type_mesure": "8",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310490,
+    "id_specimen": 1020,
+    "id_type_mesure": "9",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310491,
+    "id_specimen": 1020,
+    "id_type_mesure": "10",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310492,
+    "id_specimen": 1020,
+    "id_type_mesure": "33",
+    "valeur": null,
+    "id_unite": "3"
+  },
+  {
+    "id_mesure": 310493,
+    "id_specimen": 1021,
+    "id_type_mesure": "4",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310494,
+    "id_specimen": 1021,
+    "id_type_mesure": "5",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310495,
+    "id_specimen": 1021,
+    "id_type_mesure": "6",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310496,
+    "id_specimen": 1021,
+    "id_type_mesure": "7",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310497,
+    "id_specimen": 1021,
+    "id_type_mesure": "8",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310498,
+    "id_specimen": 1021,
+    "id_type_mesure": "9",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310499,
+    "id_specimen": 1021,
+    "id_type_mesure": "10",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310500,
+    "id_specimen": 1021,
+    "id_type_mesure": "33",
+    "valeur": null,
+    "id_unite": "3"
+  },
+  {
+    "id_mesure": 310501,
+    "id_specimen": 1022,
+    "id_type_mesure": "4",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310502,
+    "id_specimen": 1022,
+    "id_type_mesure": "5",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310503,
+    "id_specimen": 1022,
+    "id_type_mesure": "6",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310504,
+    "id_specimen": 1022,
+    "id_type_mesure": "7",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310505,
+    "id_specimen": 1022,
+    "id_type_mesure": "8",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310506,
+    "id_specimen": 1022,
+    "id_type_mesure": "9",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310507,
+    "id_specimen": 1022,
+    "id_type_mesure": "10",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310508,
+    "id_specimen": 1022,
+    "id_type_mesure": "33",
+    "valeur": null,
+    "id_unite": "3"
+  },
+  {
+    "id_mesure": 310509,
+    "id_specimen": 1023,
+    "id_type_mesure": "4",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310510,
+    "id_specimen": 1023,
+    "id_type_mesure": "5",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310511,
+    "id_specimen": 1023,
+    "id_type_mesure": "6",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310512,
+    "id_specimen": 1023,
+    "id_type_mesure": "7",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310513,
+    "id_specimen": 1023,
+    "id_type_mesure": "8",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310514,
+    "id_specimen": 1023,
+    "id_type_mesure": "9",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310515,
+    "id_specimen": 1023,
+    "id_type_mesure": "10",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310516,
+    "id_specimen": 1023,
+    "id_type_mesure": "33",
+    "valeur": null,
+    "id_unite": "3"
+  },
+  {
+    "id_mesure": 310517,
+    "id_specimen": 1024,
+    "id_type_mesure": "4",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310518,
+    "id_specimen": 1024,
+    "id_type_mesure": "5",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310519,
+    "id_specimen": 1024,
+    "id_type_mesure": "6",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310520,
+    "id_specimen": 1024,
+    "id_type_mesure": "7",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310521,
+    "id_specimen": 1024,
+    "id_type_mesure": "8",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310522,
+    "id_specimen": 1024,
+    "id_type_mesure": "9",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310523,
+    "id_specimen": 1024,
+    "id_type_mesure": "10",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310524,
+    "id_specimen": 1024,
+    "id_type_mesure": "33",
+    "valeur": null,
+    "id_unite": "3"
+  },
+  {
+    "id_mesure": 310525,
+    "id_specimen": 1025,
+    "id_type_mesure": "4",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310526,
+    "id_specimen": 1025,
+    "id_type_mesure": "5",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310527,
+    "id_specimen": 1025,
+    "id_type_mesure": "6",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310528,
+    "id_specimen": 1025,
+    "id_type_mesure": "7",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310529,
+    "id_specimen": 1025,
+    "id_type_mesure": "8",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310530,
+    "id_specimen": 1025,
+    "id_type_mesure": "9",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310531,
+    "id_specimen": 1025,
+    "id_type_mesure": "10",
+    "valeur": null,
+    "id_unite": "6"
+  },
+  {
+    "id_mesure": 310532,
+    "id_specimen": 1025,
+    "id_type_mesure": "33",
+    "valeur": null,
+    "id_unite": "3"
+  }
+]
