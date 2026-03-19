@@ -28,7 +28,7 @@ const ValueTypeAnalysisHeader = ({ analysis }) => {
 
 const ValueTypeDisplay = ({ value, precision }) => {
   return (
-    <NumberDisplay value={value} precision={precision} />
+    <TextDisplay value={value} precision={precision} />
   )
 }
 
