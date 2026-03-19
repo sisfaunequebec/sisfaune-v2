@@ -6,6 +6,7 @@ import { Box, Flex, Container, VStack, AbsoluteCenter, Icon, IconButton, Text,  
 
 import { Header, Row } from '../../../../../../../../../../lib/components/dialogs/wrappers'
 
+import TextInput from '@/app/lib/components/inputs/base/text'
 import CommentInput from '@/app/lib/components/inputs/base/comment'
 import NumberInput from '@/app/lib/components/inputs/base/number'
 import SelectInput from '@/app/lib/components/inputs/base/select'
@@ -46,7 +47,7 @@ const CodeTypeInput = ({ value, codes, onChange, contentRef }) => {
 
 const ValueTypeInput = ({ value, onChange, precision }) => {
   return (
-    <NumberInput value={value} precision={precision} onChange={onChange} />
+    <TextInput value={value} precision={precision} onChange={onChange} />
   )
 }
 
