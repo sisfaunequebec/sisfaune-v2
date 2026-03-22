@@ -10,7 +10,7 @@ import orm from '../database'
 
 import getUser from '@/lib/auth/get-user'
 
-import { canUserViewProgram, canUserDeleteEvent, canUserSubmitInProgram, filterViewablePrograms, userCanViewAnalysisSection, userCanViewSpecimenSection } from '@/lib/auth/acl'
+import { canUserViewProgram, userCanDeleteEvent , canUserSubmitInProgram, filterViewablePrograms, userCanViewAnalysisSection, userCanViewSpecimenSection } from '@/lib/auth/acl'
 
 import fromDbEventTransformer from '../transformers/from-db/event'
 import toDbEventTransformer from '../transformers/to-db/event'
@@ -378,7 +378,7 @@ const deleteEvent = async (id) => {
 
   const canUserDeleteEvent = userCanDeleteEvent(user)
 
-  if (!canDeleteEvent) {
+  if (!canUserDeleteEvent) {
     throw new Error()
   }
 
