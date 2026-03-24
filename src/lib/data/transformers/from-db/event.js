@@ -82,7 +82,7 @@ const transformAnalysisGroups = (event) => {
 }
 
 const transformAnalyses = (analyses, transformedSpecimens, allResults) => {
-  return analyses.map(a => {
+  return analyses.filter(a => a.isActive).map(a => {
     const { id, name, unit, precision, resultTypeId, codeValues } = a
 
     const results = allResults.filter(r => r.analysisId === id)
