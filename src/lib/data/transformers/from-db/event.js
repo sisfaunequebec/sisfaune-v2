@@ -49,7 +49,19 @@ const schema = {
   labReceivedBy: null,
 
   analysisGroups: event => transformAnalysisGroups(event),
-  specimens: null
+  specimens: event => transformSpecimens(event),
+}
+
+const transformSpecimens = (event) => {
+  const { specimens } = event
+  const transformedSpecimens = specimens?.map(s => {
+    const { euthanizedAt } = s
+    return {
+      ...s,
+      euthanizedAt: dbDateToIso(euthanizedAt)
+    }
+  })
+  return transformedSpecimens
 }
 
 const transformAnalysisGroups = (event) => {
