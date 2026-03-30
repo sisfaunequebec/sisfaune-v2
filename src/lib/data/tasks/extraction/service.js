@@ -6,16 +6,18 @@ import { cookies } from 'next/headers'
 import { customAlphabet } from 'nanoid'
 import { alphanumeric   } from 'nanoid-dictionary'
 
+import orm from '../../database'
+
 import getUser from '@/lib/auth/get-user'
 
 const baseUrl = process.env.URL
 const url = `${baseUrl}/.netlify/functions/extract-background`
 
-import orm from '../../database'
-
 const nanoid = customAlphabet(alphanumeric, 12)
 
 const startExtraction = async (params = {}) => {
+  console.debug('Starting extraction with params:', url, params)
+  
   const user = await getUser()
   const { id: userId } = user
 
@@ -34,7 +36,7 @@ const startExtraction = async (params = {}) => {
     params: { texte, statut, programme, region, groupe, date, debut, fin, analyse }
   }
 
-  console.debug('Starting extraction with params:', url, body)
+
 
   fetch(url, {
     method: 'POST',
