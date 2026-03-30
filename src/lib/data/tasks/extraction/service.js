@@ -32,6 +32,8 @@ const startExtraction = async (params = {}) => {
     params: { texte, statut, programme, region, groupe, date, debut, fin, analyse }
   }
 
+  console.debug('Starting extraction with params:', url, body)
+
   fetch(url, {
     method: 'POST',
     headers: {
