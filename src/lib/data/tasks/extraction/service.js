@@ -11,6 +11,8 @@ import getUser from '@/lib/auth/get-user'
 const baseUrl = process.env.URL
 const url = `${baseUrl}/.netlify/functions/extract-background`
 
+import orm from '../../database'
+
 const nanoid = customAlphabet(alphanumeric, 12)
 
 const startExtraction = async (params = {}) => {
