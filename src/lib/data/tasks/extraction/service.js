@@ -17,7 +17,7 @@ const nanoid = customAlphabet(alphanumeric, 12)
 
 const startExtraction = async (params = {}) => {
   console.debug('Starting extraction with params:', url, params)
-  
+
   const user = await getUser()
   const { id: userId } = user
 
@@ -35,8 +35,6 @@ const startExtraction = async (params = {}) => {
     sessionId,
     params: { texte, statut, programme, region, groupe, date, debut, fin, analyse }
   }
-
-
 
   fetch(url, {
     method: 'POST',
