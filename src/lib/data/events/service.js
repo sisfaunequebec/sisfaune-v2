@@ -15,8 +15,6 @@ import { canUserViewProgram, userCanDeleteEvent , canUserSubmitInProgram, filter
 import fromDbEventTransformer from '../transformers/from-db/event'
 import toDbEventTransformer from '../transformers/to-db/event'
 
-import { dbDateToIso } from '../transformers/utils'
-
 const SORT_MAP = {
   date_signalement: 'reportedAt',
   date_creation: 'createdAt',
@@ -56,12 +54,12 @@ const getOrderByClause = (tri, direction) => {
   return orderByClause
 }
 
-const getPartialDateClause = (date, start, end) => {
+const getPartialDateClause = (date, debut, fin) => {
   const fieldName = DATE_MAP[date] || 'reportedAt'
 
   const conditions = [
-    start ? { [fieldName]: { gte: DateTime.fromFormat(start, 'yyyy-LL-dd').toJSDate() } } : null,
-    end ? { [fieldName]: { lte: DateTime.fromFormat(end, 'yyyy-LL-dd').toJSDate() } } : null
+    debut ? { [fieldName]: { gte: DateTime.fromFormat(debut, 'yyyy-LL-dd').toJSDate() } } : null,
+    fin ? { [fieldName]: { lte: DateTime.fromFormat(fin, 'yyyy-LL-dd').toJSDate() } } : null
   ]
 
   return {
@@ -70,7 +68,8 @@ const getPartialDateClause = (date, start, end) => {
 }
 
 const getWhereClauseFromParams = (params, user) => {
-  const { statut, programme, region, groupe, texte: texteRaw, date, start, end } = params
+  // console.debug('getWhereClauseFromParams', params)
+  const { statut, programme, region, groupe, texte: texteRaw, date, debut, fin } = params
 
   const { permissions } = user
   const viewableProgramIds = permissions.filter(filterViewablePrograms).map(p => p.programId)
@@ -80,7 +79,7 @@ const getWhereClauseFromParams = (params, user) => {
 
   const programsIds = programme ? programme : viewableProgramIds
 
-  const partialDateClause = getPartialDateClause(date, start, end) 
+  const partialDateClause = getPartialDateClause(date, debut, fin) 
   // console.debug('partialDateClause', partialDateClause)
 
   const whereClause = {

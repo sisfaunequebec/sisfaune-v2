@@ -810,16 +810,21 @@ enum TaskStatus {
   erreur
 }
 
-model Tasks {
+// enum TaskType {
+//   extraction
+// }
+
+model Task {
   @@map("admin_tache")
 
-  id Int @id @map(name: "id_tache") @default(autoincrement())
+  id String @id @map(name: "id_tache") 
   userId String @map(name: "id_utilisateur")
   sessionId String @map(name: "id_session")
+  // type TaskType @map(name: "type") 
   status TaskStatus @default(en_cours) @map(name: "etat") 
   payload Json? @map(name: "parametres") 
   result Json? @map(name: "resultat") 
-  wasSeen Boolean @map(name: "vu") @default(false)
+  // wasSeen Boolean @map(name: "vu") @default(false)
 
   createdAt DateTime @default(now()) @map(name: "meta_date_creation")
   updatedAt DateTime? @updatedAt @map(name: "meta_date_maj")

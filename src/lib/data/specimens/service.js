@@ -9,93 +9,93 @@ import getUser from '@/lib/auth/get-user'
 
 import { userCanDeleteSpecimen } from '@/lib/auth/acl'
 
-import { filterViewablePrograms } from '@/lib/auth/acl'
+import { getWhereClauseFromParams, getOrderByClause } from './query-builder'
 
 import toDbSpecimenTransformer from '../transformers/to-db/specimen'
 
-const getOrderByClause = (tri, direction) => {
-  const sortDirection = direction ?? 'desc'
+// const getOrderByClause = (tri, direction) => {
+//   const sortDirection = direction ?? 'desc'
 
-  switch (tri) {
-    case 'id':
-      return [{ eventId: sortDirection }, { sequenceId: sortDirection }]
-    case 'date_signalement':
-      return {
-        event: {
-          reportedAt: { sort: sortDirection, nulls: 'last' }
-        }
-      }
-    default:
-      return {
-        event: {
-          createdAt: sortDirection
-        }
-      }
-  }
-}
+//   switch (tri) {
+//     case 'id':
+//       return [{ eventId: sortDirection }, { sequenceId: sortDirection }]
+//     case 'date_signalement':
+//       return {
+//         event: {
+//           reportedAt: { sort: sortDirection, nulls: 'last' }
+//         }
+//       }
+//     default:
+//       return {
+//         event: {
+//           createdAt: sortDirection
+//         }
+//       }
+//   }
+// }
 
-const DATE_MAP = {
-  date_signalement: 'reportedAt',
-  date_decouverte: 'discoveredAt',
-  date_recolte: 'collectedAt'
-}
+// const DATE_MAP = {
+//   date_signalement: 'reportedAt',
+//   date_decouverte: 'discoveredAt',
+//   date_recolte: 'collectedAt'
+// }
 
-const getPartialDateClause = (date, start, end) => {
-  const fieldName = DATE_MAP[date] || 'reportedAt'
+// const getPartialDateClause = (date, debut, fin) => {
+//   const fieldName = DATE_MAP[date] || 'reportedAt'
 
-  const conditions = [
-    start ? { [fieldName]: { gte: DateTime.fromFormat(start, 'yyyy-LL-dd').toJSDate() } } : null,
-    end ? { [fieldName]: { lte: DateTime.fromFormat(end, 'yyyy-LL-dd').toJSDate() } } : null
-  ]
+//   const conditions = [
+//     debut ? { [fieldName]: { gte: DateTime.fromFormat(debut, 'yyyy-LL-dd').toJSDate() } } : null,
+//     fin ? { [fieldName]: { lte: DateTime.fromFormat(fin, 'yyyy-LL-dd').toJSDate() } } : null
+//   ]
 
-  return {
-    AND: conditions.filter(Boolean)
-  }
-}
+//   return {
+//     AND: conditions.filter(Boolean)
+//   }
+// }
 
-const getWhereClauseFromParams = (params, user) => {
-  const { statut, programme, region, groupe, texte: texteRaw, date, start, end } = params
+// const getWhereClauseFromParams = (params, user) => {
+//   const { statut, programme, region, groupe, texte: texteRaw, date, debut, fin } = params
 
-  const { permissions } = user
-  const viewableProgramIds = permissions.filter(filterViewablePrograms).map(p => p.programId)
+//   const { permissions } = user
+//   const viewableProgramIds = permissions.filter(filterViewablePrograms).map(p => p.programId)
 
-  const texte = texteRaw?.trim().length ? texteRaw?.trim() : undefined
-  const isTextNumber = isNaN(texte) ? false : true
+//   const texte = texteRaw?.trim().length ? texteRaw?.trim() : undefined
+//   const isTextNumber = isNaN(texte) ? false : true
 
-  const programsIds = programme ? programme : viewableProgramIds
+//   const programsIds = programme ? programme : viewableProgramIds
 
-  const partialDateClause = getPartialDateClause(date, start, end) 
+//   const partialDateClause = getPartialDateClause(date, debut, fin) 
 
-  const whereClause = {
-    specie: groupe ? { groupId: { in: groupe } } : undefined, 
-    event: {
-      statusId: statut ? { in: statut } : undefined,
-      programId: { in: programsIds },
-      location: {
-        locality: {
-          regionId: region ? { in: region } : undefined
-        }
-      },
-      ...partialDateClause,
-      OR: texte ? [
-        { id: isTextNumber ? parseInt(texte, 10) : undefined },
-        { silabId: texte ? { contains: texte, mode: 'insensitive' } : undefined },
-        { mapaqId: texte ? { contains: texte, mode: 'insensitive' } : undefined },
-        { pathologyNumber: texte ? { contains: texte, mode: 'insensitive' } : undefined },
-        { submitter: { lastName: texte ? { contains: texte, mode: 'insensitive' } : undefined } },
-        { submitter: { firstName: texte ? { contains: texte, mode: 'insensitive' } : undefined } },
-        { location: {
-            locality: {
-              name: texte ? { contains: texte, mode: 'insensitive' } : undefined
-            }
-          }
-        }
-      ] : undefined
-    }
-  }
+//   const whereClause = {
+//     specie: groupe ? { groupId: { in: groupe } } : undefined, 
+//     event: {
+//       statusId: statut ? { in: statut } : undefined,
+//       programId: { in: programsIds },
+//       location: {
+//         locality: {
+//           regionId: region ? { in: region } : undefined
+//         }
+//       },
+//       ...partialDateClause,
+//       OR: texte ? [
+//         { id: isTextNumber ? parseInt(texte, 10) : undefined },
+//         { silabId: texte ? { contains: texte, mode: 'insensitive' } : undefined },
+//         { mapaqId: texte ? { contains: texte, mode: 'insensitive' } : undefined },
+//         { pathologyNumber: texte ? { contains: texte, mode: 'insensitive' } : undefined },
+//         { submitter: { lastName: texte ? { contains: texte, mode: 'insensitive' } : undefined } },
+//         { submitter: { firstName: texte ? { contains: texte, mode: 'insensitive' } : undefined } },
+//         { location: {
+//             locality: {
+//               name: texte ? { contains: texte, mode: 'insensitive' } : undefined
+//             }
+//           }
+//         }
+//       ] : undefined
+//     }
+//   }
 
-  return whereClause
-}
+//   return whereClause
+// }
 
 const getSpecimensCount = async (params) => {
   const user = await getUser()
@@ -293,5 +293,7 @@ export {
   getSpecimensCount,
   addSpecimen,
   deleteSpecimen,
-  updateSpecimen
+  updateSpecimen,
+
+  getWhereClauseFromParams
 }

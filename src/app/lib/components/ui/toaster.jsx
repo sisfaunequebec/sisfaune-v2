@@ -29,10 +29,11 @@ import {
   Stack,
   Toast,
   createToaster,
+  Link
 } from '@chakra-ui/react'
 
 export const toaster = createToaster({
-  placement: 'bottom-start',
+  placement: 'bottom-end',
   pauseOnPageIdle: true,
 })
 

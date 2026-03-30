@@ -1,14 +1,18 @@
 'use client'
 import { useCallback } from 'react'
 
+import { useSWRConfig } from 'swr'
+
 import { useQueryStates } from 'nuqs'
 import { searchParams, urlKeys } from '@/lib/data/events/get-events.params'
 
-import { saveAs } from 'file-saver'
+// import { saveAs } from 'file-saver'
 
 import { RxDownload } from 'react-icons/rx'
 
-import { exportEvents } from '@/lib/data/events/service'
+import { startExtraction } from '@/lib/data/tasks/extraction/service'
+
+import { toaster } from '@/app/lib/components/ui/toaster'
 
 import useDialog from '@/utils/use-dialog'
 
@@ -16,17 +20,25 @@ import ResponsiveButton from '@/app/lib/components/responsive-button'
 import ExportDialog from './export-dialog'
 
 const ExportButton = () => {
+  const { mutate } = useSWRConfig()
   const [filters] = useQueryStates(searchParams, { urlKeys })
 
   const { ask: confirmDownload, dialog: downloadEventsDialog } = useDialog(ExportDialog)
 
   const handleExport = useCallback(async (params) => {
-    const result = await exportEvents(params)
-    if (result) {
-      const { file, fileName, mimeType } = result
-      const blob = new Blob([file], {type: `${mimeType}; charset=utf-8`})
-      saveAs(blob, fileName)
-    }
+    const result = await startExtraction(params)
+
+    const { data  } =  result
+    const { id: taskId } = data
+
+    toaster.create({
+      id: taskId,
+      title: 'Extraction en cours...',
+      description: 'Le téléchargement démarrera automatiquement lorsque l\'extraction sera terminée...',
+      type: 'loading'
+    })
+
+    return result
   }, [])
 
   const handleDownload = useCallback(async () => {
@@ -36,7 +48,7 @@ const ExportButton = () => {
   return (
     <>
       {downloadEventsDialog}
-      {/* <ResponsiveButton label={'Extraction'} colorPalette={'blue'} icon={<RxDownload />} onClick={handleDownload} /> */}
+      <ResponsiveButton label={'Extraction'} colorPalette={'blue'} icon={<RxDownload />} onClick={handleDownload} />
     </>
   )
 }

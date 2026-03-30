@@ -29,7 +29,7 @@ const Header = () => {
             <Menu user={user} onOpenExportManager={() => toggleExportManager(true)} />
           </HStack>
         </Container>
-        <ExportManager isVisible={isExportManagerVisible} onClose={() => toggleExportManager(false)} />
+        {/* <ExportManager isVisible={isExportManagerVisible} onClose={() => toggleExportManager(false)} /> */}
       </VStack>
     </Flex>
   )

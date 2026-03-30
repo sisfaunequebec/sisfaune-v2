@@ -34,14 +34,14 @@ import useDialog from '@/utils/use-dialog.js'
 import AccountParametersDialog from '../../../containers/account-parameters-dialog.js/index.js'
 
 const TasksIndicator = ({ tasks, size = 'md', ...rest}) => {
-  const hasUnseenTasks = tasks?.filter(t => t.wasSeen === false).length > 0
+  // const hasUnseenTasks = tasks?.filter(t => t.wasSeen === false).length > 0
   const hasPendingTasks = tasks?.filter(t => t.status === 'en_cours').length > 0
 
   const color = hasPendingTasks ? 'orange' : 'blue'
 
-  if (!hasUnseenTasks) {
-    return null
-  }
+  // if (!hasUnseenTasks) {
+  //   return null
+  // }
 
   return (
     <Status.Root colorPalette={color} size={size} {...rest} >
@@ -54,8 +54,8 @@ const DesktopMenu = ({ account, onOpenExportManager }) => {
   const router = useRouter()
   const segment = useSelectedLayoutSegment()
 
-  const { data: tasks, isLoading: isLoadingTasks } = useTasks()
-  const hasTasks = tasks?.length > 0
+  // const { data: tasks, isLoading: isLoadingTasks } = useTasks()
+  // const hasTasks = isLoadingTasks ? false : tasks?.length > 0
 
   const { ask: openParameters, dialog: parametersDialog } = useDialog(AccountParametersDialog)
 
@@ -77,7 +77,7 @@ const DesktopMenu = ({ account, onOpenExportManager }) => {
       <Flex hideBelow='md'>
         <Menu.Root positioning={{ placement: 'bottom-end' }} size={'md'} lazyMount >
           <Menu.Trigger as={IconButton} colorPalette='green' variant='subtle' rounded='full' size={['md', null, 'sm']}>
-            <TasksIndicator tasks={tasks} size={'lg'} position={'absolute'} bottom={-0.5} right={-0.5} />
+            {/* <TasksIndicator tasks={tasks} size={'lg'} position={'absolute'} bottom={-0.5} right={-0.5} /> */}
             <RxHamburgerMenu />
           </Menu.Trigger>
           <MenuContent minW={60} hideBelow='md' mt={4} isolation='isolate' isolate='isolate' zIndex={1001} _hover={{ bg: 'white' }}>

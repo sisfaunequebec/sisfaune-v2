@@ -21,9 +21,9 @@ const Date = () => {
     end: parseAsString.withDefault(null)
   }, {
     urlKeys: {
-      date: 'dd',
-      start: 'sd',
-      end: 'ed'
+      date: 'dt',
+      start: 'dd',
+      end: 'df'
     }
   })
 

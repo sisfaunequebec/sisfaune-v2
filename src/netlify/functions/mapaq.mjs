@@ -1,6 +1,6 @@
 
 
-import getDataFromFtp from '@/app/api/scheduled/mapaq/get-data-from-ftp'
+import getDataFromFtp from '../lib/mapaq/get-data-from-ftp'
 import readCsv from '@/app/api/scheduled/mapaq/read-csv'
 import insertData from '@/app/api/scheduled/mapaq/insert-data'
 import sendEmailConfirmation from '@/app/api/scheduled/mapaq/send-confirmation'

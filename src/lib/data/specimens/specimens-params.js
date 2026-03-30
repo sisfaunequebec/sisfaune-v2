@@ -12,8 +12,8 @@ const searchParams = {
   groupe: parseAsArrayOf(parseAsInteger),
 
   date: parseAsString,
-  start: parseAsString,
-  end: parseAsString,
+  debut: parseAsString,
+  fin: parseAsString,
 
   tri: parseAsString,
   direction: parseAsString,
@@ -24,9 +24,10 @@ const searchParams = {
 
 const urlKeys = { 
   tri: 'o', direction: 'd', texte: 't', statut: 's', programme: 'p', region: 'r', groupe: 'g',
-  date: 'dd',
-  start: 'sd',
-  end: 'ed'
+  
+  date: 'dt',
+  debut: 'dd',
+  fin: 'df'
 }
 export {
   searchParams,
