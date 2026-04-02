@@ -9,7 +9,7 @@ const handler = async (req) => {
     const ftpResult = await getDataFromFtp()
 
     if (ftpResult.error) {
-        console.debug(`Error downloading from source...`)
+        console.debug(`Error downloading from source...`, JSON.stringify(ftpResult.error))
         sendEmailConfirmation(null, ftpResult.error.detail)
         return
     }
@@ -21,7 +21,7 @@ const handler = async (req) => {
     const insertResult = await insertData(data)
 
     if (insertResult.error) {
-        console.debug(`Error inserting data...`)
+        console.debug(`Error inserting data...`, JSON.stringify(insertResult.error))
         await sendEmailConfirmation(null, insertResult.error)
         return Response.json({ status: 'error', error: insertResult.error})
     }
