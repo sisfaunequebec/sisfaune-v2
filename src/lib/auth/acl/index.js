@@ -6,8 +6,12 @@ const isUserAdmin = (user) => {
   return user.isAdmin
 }
 
-const canUserExport = () => {
-  return true
+const canUserExport = (user) => {
+  if (!user) {
+    return false
+  }
+
+  return isUserAdmin(user)
 }
 
 const canUserSubmitEvent = (user) => {
