@@ -29,6 +29,17 @@ const startExtraction = async (params = {}) => {
 
   const taskId = nanoid()
 
+  const taskData = {
+    id: taskId,
+    userId,
+    sessionId,
+    payload: params
+  }
+
+  await orm.Task.create({
+    data: taskData
+  })
+
   const body = {
     taskId,
     userId,

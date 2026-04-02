@@ -16,9 +16,9 @@ const GET = async (request) => {
   const sessionIdcookie = cookieStore.get('etl_session_id')
   const { value: sessionId } = sessionIdcookie
 
-  console.debug('GET /api/admin/tasks - sessionId:', sessionId, 'userId:', userId)
+  // console.debug('GET /api/admin/tasks - sessionId:', sessionId, 'userId:', userId)
   const tasks = await getExtractions(sessionId, userId) 
-  console.debug('GET /api/admin/tasks - tasks:', tasks)
+  // console.debug('GET /api/admin/tasks - tasks:', tasks)
   
   return NextResponse.json(tasks)
 }

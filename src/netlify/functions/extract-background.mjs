@@ -475,10 +475,6 @@ const handler = async (req, context) => {
 
   console.debug('Starting extraction task', { taskData })
 
-  await orm.Task.create({
-    data: taskData
-  })
-
   const filePath = await extractToExcel(params, userId)
   const fileName = await uploadToNetlify(filePath)
 
