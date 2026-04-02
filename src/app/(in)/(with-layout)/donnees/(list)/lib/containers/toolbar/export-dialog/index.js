@@ -30,7 +30,7 @@ const ExportDialog = ({ close, filters, onExport }) => {
     return result
   }
 
-  const message = `Vous vous apprêtez à extraire les informations relatives à ${specimensCount} spécimen(s).`
+  const message = `Vous vous apprêtez à extraire les informations relatives à ${specimensCount ?? 0} spécimen(s).`
 
   return (
     <BaseDialog title={'Extraction de données'} onClose={close} onSubmit={handleSubmit} submitBtnLabel={'Extraire'} defaultValues={defaultValues} schema={exportDataSchema} schemaType={'valibot'}>
