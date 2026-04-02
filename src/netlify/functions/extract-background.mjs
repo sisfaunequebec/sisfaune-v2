@@ -473,10 +473,13 @@ const handler = async (req, context) => {
     payload: params
   }
 
-  console.debug('Starting extraction task', { taskData })
+  console.debug('Starting extraction task...', { taskData })
 
   const filePath = await extractToExcel(params, userId)
+  console.debug('Done extracting to Excel...', params, userId)
+  
   const fileName = await uploadToNetlify(filePath)
+  console.debug('Done uploading to Netlify...', params, userId)
 
   await orm.Task.update({
     where: {

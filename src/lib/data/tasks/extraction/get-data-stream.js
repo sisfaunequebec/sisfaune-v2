@@ -8,7 +8,7 @@ const client = new PrismaClient()
 const prisma = client.$extends(cursorStreamExtension)
 
 const getDataStream = async (params, userId) => {
-  console.debug('getDataStream', params, userId)
+  // console.debug('getDataStream', params, userId)
 
   const { analyse: analysisGroupIds = [] } = params
 
