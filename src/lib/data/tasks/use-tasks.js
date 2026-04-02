@@ -15,7 +15,7 @@ const useTasks = () => {
   const result = useSWR(
     () => ((userId) ? `${baseUrl}` : null),
     fetcher,
-    { refreshInterval: 15000 }
+    { refreshInterval: 5000 }
   )
  
   const { data, error, isLoading } = result

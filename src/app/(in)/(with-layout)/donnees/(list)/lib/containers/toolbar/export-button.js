@@ -33,7 +33,7 @@ const ExportButton = () => {
 
     toaster.create({
       id: taskId,
-      title: 'Extraction en cours...',
+      title: 'Extraction en cours...' + taskId,
       description: 'Le téléchargement démarrera automatiquement lorsque l\'extraction sera terminée...',
       type: 'loading'
     })

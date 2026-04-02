@@ -3,7 +3,9 @@ const isUserAdmin = (user) => {
     return false
   }
 
-  return user.isAdmin
+  const { username } = user
+  return username === 'admin'
+  // return user.isAdmin
 }
 
 const canUserExport = (user) => {

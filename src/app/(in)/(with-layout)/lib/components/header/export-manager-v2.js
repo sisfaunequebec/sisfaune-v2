@@ -15,15 +15,16 @@ const ExportManager = () => {
       for (const task of tasks) {
         const { id, status } = task
 
-        if (toaster.isVisible(id) && status === 'termine') {
+        const isToasterVisible = toaster.isVisible(id)
+        console.debug('ExportManager - task:', id, status, isToasterVisible)
 
+        if (toaster.isVisible(id) && status === 'termine') {
           toaster.update(id, {
             title: 'Extraction terminée !',
             description: null,
             type: 'success',
             duration: 5000
           })
-
           saveAs(`/api/extraction/download/${id}`)
         }
       }

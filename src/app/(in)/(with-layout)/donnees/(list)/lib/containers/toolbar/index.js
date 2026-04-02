@@ -24,7 +24,7 @@ const Toolbar = async () => {
           <EvenementsSpecimens />
         </HStack>
         <HStack justifyContent={'space-between'} gap={2}>
-          {/* { canExport && <ExportButton /> } */}
+          { canExport && <ExportButton /> }
           { canSubmitEvent && <AddEventButton /> }
         </HStack>
       </HStack>

@@ -28,7 +28,7 @@ const getUser = async () => {
     }
   })
 
-  const { email, lastName, firstName, isAdmin, password, canReopenEvent, permissions: permissionsAsArray } =  userWithPermissions
+  const { username, email, lastName, firstName, isAdmin, password, canReopenEvent, permissions: permissionsAsArray } =  userWithPermissions
 
   const permissions = permissionsAsArray.map(p => {
     const { program, programId, roleId: role, canSubmit } = p
@@ -47,6 +47,7 @@ const getUser = async () => {
 
   return {
     id,
+    username,
     fullName,
     email,
     isAdmin,
