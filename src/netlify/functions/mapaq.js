@@ -9,7 +9,7 @@ const handler = async (req) => {
     const ftpResult = await getDataFromFtp()
 
     if (ftpResult.error) {
-        console.debug(`Error downloading ${sourceFileName}...`)
+        console.debug(`Error downloading from source...`)
         sendEmailConfirmation(null, ftpResult.error.detail)
         return
     }
@@ -26,8 +26,8 @@ const handler = async (req) => {
         return Response.json({ status: 'error', error: insertResult.error})
     }
 
-    console.debug(`Done inserting data (${insertedRowCount} rows inserted).`)
     const insertedRowCount = insertResult.data[5]
+    console.debug(`Done inserting data (${insertedRowCount} rows inserted).`)
 
     await sendEmailConfirmation(insertedRowCount, null)
     return Response.json({ status: 'ok', insertedRowCount })
