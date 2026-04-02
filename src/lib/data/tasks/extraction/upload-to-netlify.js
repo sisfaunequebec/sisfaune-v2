@@ -3,7 +3,7 @@ import { readFile } from 'node:fs/promises'
 
 import getBlobStore from '@/lib/data/tasks/extraction/get-blob-store'
 
-const uploadToNetlify = async (filePath) => {
+const uploadToNetlify = async (taskId, filePath) => {
   try {
     const fileName = path.basename(filePath)
     const fileBuffer = await readFile(filePath)

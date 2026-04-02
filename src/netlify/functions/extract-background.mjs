@@ -10,6 +10,7 @@ import uploadToNetlify from '@/lib/data/tasks/extraction/upload-to-netlify'
 import getDataStream from '@/lib/data/tasks/extraction/get-data-stream'
 
 import { dbDateToIso } from '@/lib/data/transformers/utils'
+import { progress } from 'framer-motion'
 
 const fixCoordinates = (value) => {
   return value ? parseFloat(value.toString()) : 0
@@ -348,7 +349,7 @@ const getColumns = (animalMeasureTypeNamesOrderedByName, analysesWithGroupNamesO
   ]
 }
 
-async function extractToExcel(params, userId) {
+async function extractToExcel(taskId, params, userId) {
   const animalGroups = await orm.LutAnimalGroupV2.findMany({
     select: {
       id: true,
@@ -447,6 +448,17 @@ async function extractToExcel(params, userId) {
 
     if ((i % 1000) === 0) {
       console.info(`Extracted ${i} specimens...`)
+      await orm.Task.update({
+        where: {
+          id: taskId
+        },
+        data: {
+          status: 'termine',
+          result: {
+            progress: i
+          }
+        }
+      })
     }
   }
 
@@ -476,10 +488,10 @@ const handler = async (req, context) => {
 
     console.debug('Starting extraction task...', { taskData })
 
-    const filePath = await extractToExcel(params, userId)
+    const filePath = await extractToExcel(taskId, params, userId)
     console.debug('Done extracting to Excel...', params, userId)
     
-    const fileName = await uploadToNetlify(filePath)
+    const fileName = await uploadToNetlify(taskId, filePath)
     console.debug('Done uploading to Netlify...', params, userId)
 
     await orm.Task.update({
