@@ -18,7 +18,7 @@ const sendEmailConfirmation = async ( insertedRowCount, error ) => {
     await resend.emails.send({
       from: SENDING_NAME,
       to: [email],
-      // cc: [BCC_ADDRESS],
+      cc: [BCC_ADDRESS],
       subject: 'SIS Faune - Importation des données de signalement du MAPAQ',
       react: MapaqErrorEmail({ error })
     })
@@ -26,7 +26,7 @@ const sendEmailConfirmation = async ( insertedRowCount, error ) => {
     await resend.emails.send({
       from: SENDING_NAME,
       to: [email],
-      // cc: [BCC_ADDRESS],
+      cc: [BCC_ADDRESS],
       subject: 'SIS Faune - Importation des données de signalement du MAPAQ',
       react: MapaqSuccessEmail({ insertedRowCount })
     })
