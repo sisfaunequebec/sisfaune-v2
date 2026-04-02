@@ -512,7 +512,7 @@ const handler = async (req, context) => {
           id: taskId
         },
         data: {
-          status: 'errur',
+          status: 'erreur',
           result: {
             error: JSON.stringify({
               message: error.message,
