@@ -459,39 +459,58 @@ async function extractToExcel(params, userId) {
 const handler = async (req, context) => {
   const { method  } = req
 
-  if (method !== 'POST') {
-    return Response.json({ code: 405, message: 'Method not allowed' }, { status: 405 })
-  }
-
-  const body = await req.json()
-  const { taskId, userId, sessionId, params } = body
-  
-  const taskData = {
-    id: taskId,
-    userId,
-    sessionId,
-    payload: params
-  }
-
-  console.debug('Starting extraction task...', { taskData })
-
-  const filePath = await extractToExcel(params, userId)
-  console.debug('Done extracting to Excel...', params, userId)
-  
-  const fileName = await uploadToNetlify(filePath)
-  console.debug('Done uploading to Netlify...', params, userId)
-
-  await orm.Task.update({
-    where: {
-      id: taskId
-    },
-    data: {
-      status: 'termine',
-      result: {
-        blobKey: fileName
-      }
+  try {
+    if (method !== 'POST') {
+      return Response.json({ code: 405, message: 'Method not allowed' }, { status: 405 })
     }
-  })
+
+    const body = await req.json()
+    const { taskId, userId, sessionId, params } = body
+    
+    const taskData = {
+      id: taskId,
+      userId,
+      sessionId,
+      payload: params
+    }
+
+    console.debug('Starting extraction task...', { taskData })
+
+    const filePath = await extractToExcel(params, userId)
+    console.debug('Done extracting to Excel...', params, userId)
+    
+    const fileName = await uploadToNetlify(filePath)
+    console.debug('Done uploading to Netlify...', params, userId)
+
+    await orm.Task.update({
+      where: {
+        id: taskId
+      },
+      data: {
+        status: 'termine',
+        result: {
+          blobKey: fileName
+        }
+      }
+    })
+  } catch (error) {
+
+    await orm.Task.update({
+        where: {
+          id: taskId
+        },
+        data: {
+          status: 'errur',
+          result: {
+            error: JSON.stringify({
+              message: error.message,
+              stack: error.stack
+            })
+          }
+        }
+      })
+
+  }
 
   return Response.json({ code: 200 })
 }
