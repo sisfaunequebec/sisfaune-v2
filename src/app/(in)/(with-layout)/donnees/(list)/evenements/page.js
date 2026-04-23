@@ -1,7 +1,3 @@
-// 'use client'
-
-import { Flex } from '@chakra-ui/react'
-
 import PageContainer from '../../../lib/components/page-container'
 import ContentContainer from '../../../lib/components/content-container'
 

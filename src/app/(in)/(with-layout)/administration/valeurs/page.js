@@ -1,3 +1,4 @@
+"use client"
 import NextLink from 'next/link'
 
 import { Flex, IconButton, LinkOverlay, Stack, Text, VStack } from '@chakra-ui/react'
@@ -10,9 +11,9 @@ import { ListContainer, LinkListWrapper } from '../../lib/components/list'
 
 import Toolbar from '../lib/components/toolbar'
 
-export const metadata = {
-  title: 'Administration - Tables de valeurs | SIS Faune'
-}
+// export const metadata = {
+//   title: 'Administration - Tables de valeurs | SIS Faune'
+// }
 
 const TableItem = ({ name, description = 'description', url = '' }) => {
   return (
