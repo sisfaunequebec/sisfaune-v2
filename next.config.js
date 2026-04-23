@@ -1,9 +1,12 @@
+
+import { withWorkflow } from 'workflow/next'
+
 const nextConfig = {
   experimental: {
     optimizePackageImports: ['@chakra-ui/react']
   },
   compiler: {
-    // removeConsole: process.env.NODE_ENV === 'production'
+    removeConsole: process.env.NODE_ENV === 'production'
   },
   async redirects() {
     return [
@@ -21,4 +24,6 @@ const nextConfig = {
   }
 }
 
-export default nextConfig
+const workflowConfig = {}
+
+export default withWorkflow(nextConfig, workflowConfig)

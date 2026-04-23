@@ -202,9 +202,11 @@ const LocationMarker = ({ position, isDraggable, onChange }) => {
     const response = await geocoder.geocode({ location: position, fulfillOnZeroResults: true })
 
     const { results } = response
+    console.debug(results)
+
     const result = results.find(r => {
       const { types } = r
-      return ['street_address'].some(value => types.includes(value))
+      return ['plus_code', 'street_address'].some(value => types.includes(value))
     })
 
     if (result) { return result.formatted_address } else { return null }

@@ -55,6 +55,19 @@ const getMeasures = (measures, animalMeasureTypeNamesOrderedByName) => {
   return entries
 }
 
+const getResultValue = (rawValue, codeValuesByCode) => {
+  if (!rawValue) {
+    return null
+  }
+
+  if (!codeValuesByCode) {
+    return rawValue
+  } else {
+    const value = codeValuesByCode[rawValue]  
+    return value
+  }
+}
+
 const getResults = (results, analysesWithGroupNamesOrderedByName) => {
   const resultsByAnalysisId = results.reduce((acc, r) => {
     const { analysisId, value } = r
@@ -63,15 +76,20 @@ const getResults = (results, analysesWithGroupNamesOrderedByName) => {
   }, {})
 
   const entries = analysesWithGroupNamesOrderedByName.reduce((acc, a) => {
-    const { id, name, analysisGroupName } = a
-    const key = [analysisGroupName, name].join('-')
+    const { id, name, analysisGroupName, codeValuesByCode } = a
 
-    const value = resultsByAnalysisId[id]
-    const slug = columnizeAnalysisName
-    acc[slug] = value ?? null
+    // console.debug(name, codeValuesByCode)
+    // const key = [analysisGroupName, name].join('-')
+
+    const slug = columnizeAnalysisName(name)
+    const rawValue = resultsByAnalysisId[id]
+    
+    acc[slug] = getResultValue(rawValue, codeValuesByCode)
+    
     return acc
   }, {})
 
+  // console.debug('getResults', results, analysesWithGroupNamesOrderedByName, entries)
   return entries
 }
 
@@ -268,6 +286,10 @@ const getRow = (specimen, animalGroupsById, animalMeasureTypeNamesOrderedByName,
 
   const { specimens: specimenCount } = _count
 
+  const affectedSpecies = getAffectedSpecies(event)
+  const resultsForSpecimen = getResults(results, analysesWithGroupNamesOrderedByName)
+  const measuresForSpecimen = getMeasures(measures, animalMeasureTypeNamesOrderedByName)
+
   const row = {
     id_evenement: eventId,
     id_specimen: specimenId,
@@ -311,7 +333,7 @@ const getRow = (specimen, animalGroupsById, animalMeasureTypeNamesOrderedByName,
     habitat: habitatTypeName,
     temperature,
 
-    ...getAffectedSpecies(event),
+    ...affectedSpecies,
 
       observations,
       commentaires_generaux: comments,
@@ -329,8 +351,8 @@ const getRow = (specimen, animalGroupsById, animalMeasureTypeNamesOrderedByName,
       region: regionName,
       nombre_specimens_associes: specimenCount,
 
-      ...getMeasures(measures, animalMeasureTypeNamesOrderedByName),
-      ...getResults(results, analysesWithGroupNamesOrderedByName)
+      ...measuresForSpecimen,
+      ...resultsForSpecimen
     }
 
     return row
@@ -407,8 +429,14 @@ async function extractToExcel(taskId, params, userId) {
 
   const analysesWithGroupNames = analyses.map(a => {
     const { id, name, analysisGroupId, codeValues, analysisGroup } = a
+    const codeValuesByCode = codeValues ? codeValues.reduce((acc, cv) => {
+      // console.debug('code value', cv)
+      const { code, description } = cv
+      acc[code] = description
+      return acc
+    }, {}) : null
     const { name: analysisGroupName } = analysisGroup
-    return { id, name, analysisGroupId, analysisGroupName, codeValues } 
+    return { id, name, analysisGroupId, analysisGroupName, codeValuesByCode } 
   })
 
   const analysesWithGroupNamesOrderedByName = orderBy(analysesWithGroupNames, ['analysisGroupId', 'name'])

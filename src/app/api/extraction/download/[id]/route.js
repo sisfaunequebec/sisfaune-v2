@@ -34,28 +34,28 @@ const GET = async (req, { params }) => {
 
   const fileName = `specimens-${todayAsString}-${blobKey}.xlsx`
 
-  const dateToDeletion = DateTime.now().minus({ days: DAYS_TO_BLOBS_DELETION }).toJSDate()
+  // const dateToDeletion = DateTime.now().minus({ days: DAYS_TO_BLOBS_DELETION }).toJSDate()
 
-  const blobsToBeDeleted = await orm.Task.findMany({
-    where: {
-      updatedAt: {
-        lt: dateToDeletion
-      }
-    }
-  })
+  // const blobsToBeDeleted = await orm.Task.findMany({
+  //   where: {
+  //     updatedAt: {
+  //       lt: dateToDeletion
+  //     }
+  //   }
+  // })
 
-  for (const blobKey of blobsToBeDeleted.map(t => t.result.blobKey)) {
-    await store.delete(blobKey)
-  }
+  // for (const blobKey of blobsToBeDeleted.map(t => t.result.blobKey)) {
+  //   await store.delete(blobKey)
+  // }
 
-  await orm.Task.deleteMany({
-    where: {
-      // wasSeen: true,
-      updatedAt: {
-        lt: dateToDeletion
-      }
-    }
-  })
+  // await orm.Task.deleteMany({
+  //   where: {
+  //     // wasSeen: true,
+  //     updatedAt: {
+  //       lt: dateToDeletion
+  //     }
+  //   }
+  // })
 
   return new NextResponse(buffer, {
     headers: {
