@@ -1,0 +1,8 @@
+{
+  "crons": [
+    {
+      "path": "/api/workflow/mapaq",
+      "schedule": "0 23 * * *"
+    }
+  ]
+}

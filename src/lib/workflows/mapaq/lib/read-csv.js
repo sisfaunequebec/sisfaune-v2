@@ -73,7 +73,6 @@ const PARSE_OPTIONS = {
 }
 
 const readCsv = async (file) => {
-  'use step'
   return new Promise((resolve, reject) => {
     const data = []
 
