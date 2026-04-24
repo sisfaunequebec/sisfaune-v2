@@ -10,11 +10,6 @@ const { RESEND_API_KEY, SENDING_NAME, BCC_ADDRESS } = process.env
 const sendEmailConfirmation = async ( insertedRowCount, error ) => {
   'use step'
 
-  if (Math.random() < 0.5) {
-    console.debug(`Simulating email sending error...`)
-    throw new Error('Simulated email sending error')
-  }
-
   const adminUser = await orm.User.findFirst({ where: { username: 'admin' }})
   const { email } = adminUser
 
