@@ -14,7 +14,6 @@ const {
 } = process.env
 
 const getDataFromFtp = async () => {
-   'use step'
   let fromFtpClient = null
 
   const tempFileName = 'temp.csv'

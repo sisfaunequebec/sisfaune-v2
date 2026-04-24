@@ -1,22 +1,29 @@
-import { sleep } from 'workflow'
+// import { sleep } from 'workflow'
 
-import getDataFromFtp from './get-data-from-ftp'
+import readFromSource from './read-from-source.step'
+import sendEmailConfirmation from './send-confirmation.step'
 
-async function step() {
-  'use step'
-  return { id: 'test' }
-}
+// import getDataFromFtp from './lib/get-data-from-ftp'
+import readCsv from './lib/read-csv'
 
-const workflow = async () => {
+const integrateMapaqData = async () => {
  'use workflow'
 
- console.debug('Starting MAPAQ workflow')
+ console.info('Starting MAPAQ workflow...')
 
- await getDataFromFtp()
+ const file = await readFromSource()
 
- console.log('MAPAQ workflow is complete!')
+//  console.info(`Reading CSV...`)
+//  const data = await readCsv(ftpResult.file)
+//  console.debug(data)
 
- return { status: 'started' }
+ console.info(`Inserting data...`)
+
+ console.info('MAPAQ workflow is complete!')
+
+//  await sendEmailConfirmation(10, null)
+
+ return null
 }
 
-export default workflow
+export default integrateMapaqData

@@ -3,7 +3,8 @@ import { start } from 'workflow/api'
 
 import workflow from '@/lib/workflows/mapaq'
 
-export async function POST() {
- await start(workflow)
- return NextResponse.json({ message: 'Workflow started' })
+export async function GET() {
+ const run = await start(workflow)
+ const status = await run.status
+ return NextResponse.json({ message: status })
 }
