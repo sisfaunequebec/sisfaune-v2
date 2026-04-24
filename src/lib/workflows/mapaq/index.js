@@ -1,5 +1,3 @@
-// import { sleep } from 'workflow'
-
 import sendEmailConfirmation from './send-confirmation.step'
 import readFromSource from './read-from-source.step'
 import insertDataInTarget from './insert-data-in-target.step'
