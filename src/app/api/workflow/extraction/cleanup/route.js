@@ -4,13 +4,13 @@ import { DateTime } from 'luxon'
 
 import { list, del } from '@vercel/blob'
 
-const filterBlobsOlderThan7Days = (blob) => {
+const filterBlobsOlderOneDay = (blob) => {
   const { uploadedAt } = blob
 
   const then = DateTime.fromJSDate(uploadedAt)
   const diff = then.diffNow('days').days
   
-  return diff < -7
+  return diff < -1
 }
 
 export async function GET() {
