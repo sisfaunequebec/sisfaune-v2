@@ -5,10 +5,8 @@ import workflow from '@/lib/workflows/extraction'
 
 export async function POST(req) {
   const body = await req.json()
-  // console.debug(body)
 
   const run = await start(workflow, [JSON.stringify(body)])
-
   const stream = run.getReadable()
   
   return new Response(stream, {

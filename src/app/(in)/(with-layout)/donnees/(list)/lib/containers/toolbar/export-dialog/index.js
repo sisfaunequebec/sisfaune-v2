@@ -25,10 +25,10 @@ const ExportDialog = ({ close, filters, onExport }) => {
   // const { data: specimensCount } = useSpecimensCount(filters)
   // console.debug('ExportDialog - filters:', specimensCount)
 
-  const [progress, setProgress] = useState({})
+  const [progress, setProgress] = useState(null)
 
   const handleSubmit = useCallback(async (data) => {
-    setProgress({ progress: 1, message: 'Extraction en cours..' })
+    setProgress({ progress: 0, message: 'Extraction en cours..' })
 
     const { analysisGroupIds } = data
     const params = {...filters, ...{ analyse: analysisGroupIds ? analysisGroupIds.map(ag => ag.id) : undefined }}
@@ -73,7 +73,7 @@ const ExportDialog = ({ close, filters, onExport }) => {
         }
       }
     }
-  }, [setProgress])
+  }, [setProgress, filters])
 
   // const handleSubmit = async (data) => {
   //   // const { format } = data
@@ -91,8 +91,6 @@ const ExportDialog = ({ close, filters, onExport }) => {
     
   //   return result
   // }
-
-  // const message = `Vous vous apprêtez à extraire les informations relatives à ${specimensCount ?? 0} spécimen(s).`
 
   return (
     <BaseDialog title={'Extraction de données'} size={'md'} onClose={close} onSubmit={handleSubmit} submitBtnLabel={'Extraire'} defaultValues={defaultValues} schema={exportDataSchema} schemaType={'valibot'} progress={progress}>

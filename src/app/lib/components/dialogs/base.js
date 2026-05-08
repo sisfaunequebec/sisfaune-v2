@@ -25,8 +25,8 @@ const getResolver = (type, schema) => {
   return type === 'zod' ? zodResolver(schema) : valibotResolver(schema, { reValidateMode: 'onSubmit' })
 }
 
-const CircularProgress = ({value = 0, message}) => {
-  if (!value) { return null }
+const CircularProgress = ({ value = 0, message }) => {
+  // if (!value) { return null }
   return (
     <HStack gap={3}>
       <ProgressCircle.Root value={value} size={'xs'} >
@@ -41,7 +41,7 @@ const CircularProgress = ({value = 0, message}) => {
   )
 }
 
-const BaseDialog = ({ title, message, size, isAlert = false, schema, schemaType = 'zod', watches = [], defaultValues, onClose, onSubmit, submitBtnLabel = 'OK', progress = {}, children }) => {
+const BaseDialog = ({ title, message, size, isAlert = false, schema, schemaType = 'zod', watches = [], defaultValues, onClose, onSubmit, submitBtnLabel = 'OK', progress, children }) => {
   const rootSize = useBreakpointValue({ base: 'full', md: size || (isAlert ? 'sm' : 'lg') })
   const placement = useBreakpointValue({ base: null, md: 'center' }) 
   const scrollBehavior = useBreakpointValue({ base: 'inside', md: 'outside' }) 

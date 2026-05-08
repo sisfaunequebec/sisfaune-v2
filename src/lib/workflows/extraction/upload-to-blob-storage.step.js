@@ -17,7 +17,7 @@ const uploadToBlobStorage = async (filePath) => {
 
   const fileContent = readFileSync(filePath)
 
-  const blobName = `extracted-data-${Date.now()}.xlsx`
+  const blobName = `extraction-specimens-${Date.now()}.xlsx`
 
   try {
     const result = await put(blobName, fileContent, { access: 'public' })
