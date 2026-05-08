@@ -476,12 +476,10 @@ const extractToExcel = async (params = {}, userId = 'd74796c5-2328-44be-be9e-eae
 
       const progress = Math.ceil((i / total) * 90)
 
-      const payload = JSON.stringify({ 
+      await writer.write(encoder.encode(JSON.stringify({ 
         progress,
         message: 'Extraction en cours..', // `Extracted ${i} specimens out of ${total}...` 
-      }) + '\n'
-
-      await writer.write(encoder.encode(payload))
+      }) + '\n'))
     }
   }
 

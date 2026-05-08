@@ -55,6 +55,7 @@ const ExportDialog = ({ close, filters, onExport }) => {
         if (part.trim()) {
           try {
             const parsed = JSON.parse(part)
+            // console.debug(parsed)
 
             const { progress, message, result } = parsed
             
