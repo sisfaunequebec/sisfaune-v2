@@ -7,6 +7,14 @@ import { put } from '@vercel/blob'
 const uploadToBlobStorage = async (filePath) => {
   'use step'
 
+  const payload = JSON.stringify({ 
+    progress: 95,
+    message: 'Téléversement du fichier... ', // `File uploaded to blob storage: ${url}`,
+    result: { filename: blobName, url }
+  }) + '\n'
+
+  await writer.write(encoder.encode(payload))
+
   const fileContent = readFileSync(filePath)
 
   const blobName = `extracted-data-${Date.now()}.xlsx`
@@ -15,15 +23,6 @@ const uploadToBlobStorage = async (filePath) => {
   const encoder = new TextEncoder()
 
   try {
-
-    const payload = JSON.stringify({ 
-      progress: 95,
-      message: 'Téléversement du fichier... ', // `File uploaded to blob storage: ${url}`,
-      result: { filename: blobName, url }
-    }) + '\n'
-
-    await writer.write(encoder.encode(payload))
-
     const result = await put(blobName, fileContent, { access: 'public' })
     const { url } = result
 
