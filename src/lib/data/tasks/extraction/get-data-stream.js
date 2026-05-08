@@ -23,6 +23,10 @@ const getDataStream = async (params, userId) => {
 
   const whereClause = getWhereClauseFromParams(params, user)
 
+  const count = await prisma.Specimen.count({
+    where: whereClause
+  })
+
   const dataStream = prisma.Specimen.cursorStream({
     include: {
       event: {
@@ -187,7 +191,7 @@ const getDataStream = async (params, userId) => {
     where: whereClause
   })
 
-  return dataStream
+  return { total: count, data: dataStream }
 }
 
 export default getDataStream

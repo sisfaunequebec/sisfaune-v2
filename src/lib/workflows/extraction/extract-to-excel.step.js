@@ -4,6 +4,8 @@ import ExcelJS from 'exceljs'
 import orderBy from 'lodash.orderby'
 import slugify from 'slugify'
 
+import { getWritable } from 'workflow'
+
 import orm from '@/lib/data/database'
 
 import getDataStream from '@/lib/data/tasks/extraction/get-data-stream'
@@ -368,6 +370,9 @@ const getColumns = (animalMeasureTypeNamesOrderedByName, analysesWithGroupNamesO
 const extractToExcel = async (params = {}, userId = 'd74796c5-2328-44be-be9e-eae0ac8043c4') => {
   'use step'
 
+  const writer = getWritable().getWriter()
+  // await writer.write(JSON.stringify({ progress: 0, message: 'Starting data extraction workflow...' }))
+
   const animalGroups = await orm.LutAnimalGroupV2.findMany({
     select: {
       id: true,
@@ -387,7 +392,6 @@ const extractToExcel = async (params = {}, userId = 'd74796c5-2328-44be-be9e-eae
       name: true
     }
   })
-
 
   const { analyse: analysisGroupIds = [] } = params
 
@@ -455,7 +459,7 @@ const extractToExcel = async (params = {}, userId = 'd74796c5-2328-44be-be9e-eae
     return { header: c, key: c }
   })
   
-  const dataStream = await getDataStream(params, userId)
+  const { total, data: dataStream } = await getDataStream(params, userId)
 
   let i = 0
 
@@ -465,20 +469,21 @@ const extractToExcel = async (params = {}, userId = 'd74796c5-2328-44be-be9e-eae
     const row = getRow(specimen, animalGroupsById, animalMeasureTypeNamesOrderedByName, analysesWithGroupNamesOrderedByName)
     worksheet.addRow(row).commit()
 
-    // if ((i % 1000) === 0) {
-    //   console.info(`Extracted ${i} specimens...`)
-    //   await orm.Task.update({
-    //     where: {
-    //       id: taskId
-    //     },
-    //     data: {
-    //       status: 'termine',
-    //       result: {
-    //         progress: i
-    //       }
-    //     }
-    //   })
-    // }
+    if ((i % 100) === 0) {
+      await writer.write(JSON.stringify({ progress: (i / total) * 90, message: `Extracted ${i} specimens out of ${total}...` }))
+      console.info(`Extracted ${i} specimens out of ${total}...`)
+      // await orm.Task.update({
+      //   where: {
+      //     id: taskId
+      //   },
+      //   data: {
+      //     status: 'termine',
+      //     result: {
+      //       progress: i
+      //     }
+      //   }
+      // })
+    }
   }
 
   await workbook.commit()

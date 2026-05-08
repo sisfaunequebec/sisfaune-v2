@@ -59,6 +59,7 @@ const getWhereClauseFromParams = (params, user) => {
   const whereClause = {
     specie: groupe ? { groupId: { in: groupIds } } : undefined, 
     event: {
+      id: { gt: 300000 },
       statusId: statut ? { in: statut } : undefined,
       programId: { in: programsIds },
       location: {

@@ -1,13 +1,13 @@
 'use client'
-import { useCallback } from 'react'
+import { useState, useCallback } from 'react'
 
 import { useSWRConfig } from 'swr'
 
 import { useQueryStates } from 'nuqs'
 import { searchParams, urlKeys } from '@/lib/data/events/get-events.params'
 
-// import { saveAs } from 'file-saver'
-
+import { saveAs } from 'file-saver'
+// import { ProgressCircle } from '@chakra-ui/react'
 import { RxDownload } from 'react-icons/rx'
 
 import { startExtraction } from '@/lib/data/tasks/extraction/service'
@@ -19,8 +19,23 @@ import useDialog from '@/utils/use-dialog'
 import ResponsiveButton from '@/app/lib/components/responsive-button'
 import ExportDialog from './export-dialog'
 
+// const CircularProgress = ({value = 0}) => {
+//   return (
+//     <ProgressCircle.Root value={value}>
+//       <ProgressCircle.Circle>
+//         <ProgressCircle.Track />
+//         <ProgressCircle.Range />
+//       </ProgressCircle.Circle>
+//       {/* <ProgressCircle.ValueText /> */}
+//     </ProgressCircle.Root>
+//   )
+// }
+
 const ExportButton = () => {
-  const { mutate } = useSWRConfig()
+  // const { mutate } = useSWRConfig()
+  const [status, setStatus] = useState(null)
+  const [progress, setProgress] = useState(0)
+
   const [filters] = useQueryStates(searchParams, { urlKeys })
 
   const { ask: confirmDownload, dialog: downloadEventsDialog } = useDialog(ExportDialog)
@@ -41,14 +56,48 @@ const ExportButton = () => {
     return result
   }, [])
 
-  const handleDownload = useCallback(async () => {
+  const handleDownloadOld = useCallback(async () => {
     const result = await confirmDownload({ filters, onExport: handleExport })
   }, [confirmDownload, filters, handleExport])
+
+  const handleDownload = useCallback(async () => {
+    setProgress(Math.round(1))
+
+    const response = await fetch('/api/workflow/extraction', { method: 'POST', body: JSON.stringify({ prompt: 'Hi' }) })
+    const reader = response.body.getReader()
+    const decoder = new TextDecoder()
+
+    while (true) {
+      const { done, value } = await reader.read()
+      if (done) break
+      const decoded = JSON.parse(decoder.decode(value))
+        // console.log(decoded) // Logs chunks as they arrive
+      const { progress, result } = decoded
+      if (result) {
+        saveAs(result)
+        setProgress(100)
+      }
+      setProgress(Math.round(progress))
+    }
+  }, [setProgress])
+
+  const isLoading = (progress > 0 && progress < 100)
+  // const loadingText = status
+
+  // console.debug(isLoading)
 
   return (
     <>
       {downloadEventsDialog}
-      <ResponsiveButton label={'Extraction'} colorPalette={'blue'} icon={<RxDownload />} onClick={handleDownload} />
+      <ResponsiveButton 
+        label={'Extraction'} 
+        colorPalette={'blue'} 
+        icon={<RxDownload />} 
+        loading={isLoading}
+        loadingText={'Extraction'}
+        // spinner={<CircularProgress value={progress} />}
+        // spinnerPlacement="end"
+        onClick={handleDownload} />
     </>
   )
 }

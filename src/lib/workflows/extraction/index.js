@@ -1,16 +1,22 @@
+// import { getWritable } from 'workflow'
+
 import extractToExcel from './extract-to-excel.step'
+import uploadToBlobStorage from './upload-to-blob-storage.step'
 
-const extractData = async () => {
- 'use workflow'
+const extractData = async (params) => {
+  'use workflow'
 
- console.info('Starting data extraction workflow...')
+  console.info('Starting data extraction workflow with params: ', params)
 
- const filePath = await extractToExcel()
- console.debug('Excel file created at', filePath)
+  const filePath = await extractToExcel()
+  console.debug('Excel file created at', filePath)
 
- console.info('Data extraction workflow is complete!')
+  const uploadResult = await uploadToBlobStorage(filePath)
+  console.debug('File uploaded to blob storage at', uploadResult)
 
- return { file: filePath }
+  console.info('Data extraction workflow is complete!')
+
+  return { file: filePath }
 }
 
 export default extractData

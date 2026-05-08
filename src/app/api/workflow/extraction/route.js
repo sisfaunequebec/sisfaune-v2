@@ -4,12 +4,16 @@ import { start } from 'workflow/api'
 import workflow from '@/lib/workflows/extraction'
 
 export async function POST(req) {
-  const body = await req.json()
-  console.debug(body)
+  // const body = await req.json()
 
-  // const { taskId, userId, sessionId, params } = body
+  const run = await start(workflow, ['toto'])
 
-  const run = await start(workflow)
-  const status = await run.status
-  return NextResponse.json({ message: status, runId: run.runId })
+  const stream = run.getReadable()
+  
+  return new Response(stream, {
+    headers: {
+      "Content-Type": "application/octet-stream"
+    }
+  })
+  // return NextResponse.json({ runId: run.runId })
 }
