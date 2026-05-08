@@ -6,7 +6,7 @@ import useCurrentUser from '@/lib/auth/use-user-v2'
 
 import { Flex, HStack, Image, VStack, Container } from '@chakra-ui/react'
 
-import ExportManager from '../../../donnees/(list)/lib/containers/toolbar/export-manager'
+// import ExportManager from '../../../donnees/(list)/lib/containers/toolbar/export-manager'
 
 import Menu from './menu'
 import Hello from './hello'

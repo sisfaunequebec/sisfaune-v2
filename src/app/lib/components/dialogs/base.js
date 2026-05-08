@@ -6,7 +6,7 @@ import { useForm, FormProvider, useController } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { valibotResolver } from '@hookform/resolvers/valibot'
 
-import { Dialog, Portal, Flex, Button, useBreakpointValue, VStack, Text } from '@chakra-ui/react'
+import { Dialog, Portal, Flex, Button, useBreakpointValue, VStack, HStack, Text, ProgressCircle } from '@chakra-ui/react'
 import { Fieldset, Separator } from '@chakra-ui/react'
 
 import {
@@ -25,7 +25,23 @@ const getResolver = (type, schema) => {
   return type === 'zod' ? zodResolver(schema) : valibotResolver(schema, { reValidateMode: 'onSubmit' })
 }
 
-const BaseDialog = ({ title, message, size, isAlert = false, schema, schemaType = 'zod', watches = [], defaultValues, onClose, onSubmit, submitBtnLabel = 'OK', children }) => {
+const CircularProgress = ({value = 0, message}) => {
+  if (!value) { return null }
+  return (
+    <HStack gap={3}>
+      <ProgressCircle.Root value={value} size={'xs'} >
+        <ProgressCircle.Circle css={{ '--thickness': '2px' }}>
+          <ProgressCircle.Track />
+          <ProgressCircle.Range stroke={'blue.700'} />
+        </ProgressCircle.Circle>
+        {/* <ProgressCircle.ValueText /> */}
+      </ProgressCircle.Root>
+      { message && <Text>{message}</Text> }
+    </HStack>
+  )
+}
+
+const BaseDialog = ({ title, message, size, isAlert = false, schema, schemaType = 'zod', watches = [], defaultValues, onClose, onSubmit, submitBtnLabel = 'OK', progress = {}, children }) => {
   const rootSize = useBreakpointValue({ base: 'full', md: size || (isAlert ? 'sm' : 'lg') })
   const placement = useBreakpointValue({ base: null, md: 'center' }) 
   const scrollBehavior = useBreakpointValue({ base: 'inside', md: 'outside' }) 
@@ -94,12 +110,17 @@ const BaseDialog = ({ title, message, size, isAlert = false, schema, schemaType 
                 <VStack flex={1} alignItems={'stretch'} gap={1}>{ children(contentRef, watched, isSubmitting) }</VStack>
               </Dialog.Body>
 
-              <DialogFooter gap={2}>
-                { hasErrors &&<Text color={'red'} fontWeight={'medium'}>Des erreurs ont été détectées</Text> }
-                { onClose && <DialogActionTrigger asChild>
-                  <Button size={['lg', null, 'sm']} variant={'outline'} onClick={() => onClose(false)} minW={24}>Annuler</Button>
-                </DialogActionTrigger> }
-                <Button type={'submit'} size={['lg', null, 'sm']} colorPalette={isSubmitting ? 'blue' : ((isAlert || hasErrors) ? 'red' : 'blue')} minW={24} loading={isSubmitting} onClick={() => clearErrors()}>{submitBtnLabel}</Button>
+              <DialogFooter gap={4} justifyContent={'space-between'} alignItems={'center'}>
+                <HStack gap={2}>
+                  { progress ? <CircularProgress value={progress.progress} message={progress.message} /> : null }
+                </HStack>
+                <HStack gap={2}>
+                  { hasErrors && <Text color={'red'} fontWeight={'medium'}>Des erreurs ont été détectées</Text> }
+                  { onClose && <DialogActionTrigger asChild>
+                    <Button size={['lg', null, 'sm']} variant={'outline'} disabled={isSubmitting} onClick={() => onClose(false)} minW={24}>Annuler</Button>
+                  </DialogActionTrigger> }
+                  <Button type={'submit'} size={['lg', null, 'sm']} colorPalette={isSubmitting ? 'blue' : ((isAlert || hasErrors) ? 'red' : 'blue')} minW={24} loading={isSubmitting} onClick={() => clearErrors()}>{submitBtnLabel}</Button>
+                </HStack>
               </DialogFooter>
 
           </Dialog.Content>

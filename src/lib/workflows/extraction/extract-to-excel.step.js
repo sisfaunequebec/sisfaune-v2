@@ -370,9 +370,6 @@ const getColumns = (animalMeasureTypeNamesOrderedByName, analysesWithGroupNamesO
 const extractToExcel = async (params = {}, userId = 'd74796c5-2328-44be-be9e-eae0ac8043c4') => {
   'use step'
 
-  const writer = getWritable().getWriter()
-  // await writer.write(JSON.stringify({ progress: 0, message: 'Starting data extraction workflow...' }))
-
   const animalGroups = await orm.LutAnimalGroupV2.findMany({
     select: {
       id: true,
@@ -463,6 +460,9 @@ const extractToExcel = async (params = {}, userId = 'd74796c5-2328-44be-be9e-eae
 
   let i = 0
 
+  const writer = getWritable().getWriter()
+  const encoder = new TextEncoder()
+
   for await (const specimen of dataStream) {
     i++
 
@@ -470,19 +470,16 @@ const extractToExcel = async (params = {}, userId = 'd74796c5-2328-44be-be9e-eae
     worksheet.addRow(row).commit()
 
     if ((i % 100) === 0) {
-      await writer.write(JSON.stringify({ progress: (i / total) * 90, message: `Extracted ${i} specimens out of ${total}...` }))
       console.info(`Extracted ${i} specimens out of ${total}...`)
-      // await orm.Task.update({
-      //   where: {
-      //     id: taskId
-      //   },
-      //   data: {
-      //     status: 'termine',
-      //     result: {
-      //       progress: i
-      //     }
-      //   }
-      // })
+
+      const progress = Math.ceil((i / total) * 90)
+
+      const payload = JSON.stringify({ 
+        progress,
+        message: 'Extraction en cours..', // `Extracted ${i} specimens out of ${total}...` 
+      }) + '\n'
+
+      await writer.write(encoder.encode(payload))
     }
   }
 

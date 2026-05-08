@@ -70,21 +70,23 @@ const ExportButton = () => {
     while (true) {
       const { done, value } = await reader.read()
       if (done) break
-      const decoded = JSON.parse(decoder.decode(value))
-        // console.log(decoded) // Logs chunks as they arrive
-      const { progress, result } = decoded
+      const decoded = decoder.decode(value)
+      console.debug(decoded)
+
+      const parsed = JSON.parse(decoded)
+      const { progress, result } = parsed
+      
       if (result) {
-        saveAs(result)
-        setProgress(100)
+         console.debug(result)
+        const { filename, url } = result
+        saveAs(url, filename)
+        // setProgress(100)
       }
-      setProgress(Math.round(progress))
+      setProgress(progress)
     }
   }, [setProgress])
 
-  const isLoading = (progress > 0 && progress < 100)
-  // const loadingText = status
-
-  // console.debug(isLoading)
+  // const isLoading = (progress > 0 && progress < 100)
 
   return (
     <>
@@ -93,11 +95,9 @@ const ExportButton = () => {
         label={'Extraction'} 
         colorPalette={'blue'} 
         icon={<RxDownload />} 
-        loading={isLoading}
-        loadingText={'Extraction'}
-        // spinner={<CircularProgress value={progress} />}
-        // spinnerPlacement="end"
-        onClick={handleDownload} />
+        // loading={isLoading}
+        // loadingText={'Extraction'}
+        onClick={handleDownloadOld} />
     </>
   )
 }
