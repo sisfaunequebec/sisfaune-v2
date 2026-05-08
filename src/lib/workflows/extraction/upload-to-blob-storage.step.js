@@ -11,9 +11,8 @@ const uploadToBlobStorage = async (filePath) => {
   const encoder = new TextEncoder()
 
   await writer.write(encoder.encode(JSON.stringify({ 
-    progress: 95,
+    progress: 90,
     message: 'Téléversement du fichier... ', // `File uploaded to blob storage: ${url}`,
-    // result: { filename: blobName, url }
   }) + '\n'))
 
   const fileContent = readFileSync(filePath)
