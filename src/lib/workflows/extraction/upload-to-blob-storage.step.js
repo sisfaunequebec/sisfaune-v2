@@ -15,18 +15,19 @@ const uploadToBlobStorage = async (filePath) => {
   const encoder = new TextEncoder()
 
   try {
-    const result = await put(blobName, fileContent, { access: 'public' })
-    const { url } = result
-
-    console.debug('File uploaded to blob storage:', url)
 
     const payload = JSON.stringify({ 
-      progress: 100,
+      progress: 95,
       message: 'Téléversement du fichier... ', // `File uploaded to blob storage: ${url}`,
       result: { filename: blobName, url }
     }) + '\n'
 
     await writer.write(encoder.encode(payload))
+
+    const result = await put(blobName, fileContent, { access: 'public' })
+    const { url } = result
+
+    console.debug('File uploaded to blob storage:', url)
 
     return { filename: blobName, url }
   } catch (error) {
