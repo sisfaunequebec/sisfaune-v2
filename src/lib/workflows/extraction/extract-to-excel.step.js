@@ -463,13 +463,15 @@ const extractToExcel = async (params = {}, userId = 'd74796c5-2328-44be-be9e-eae
   const writer = getWritable().getWriter()
   const encoder = new TextEncoder()
 
+  const progressSize = Math.ceil(total / 100)
+
   for await (const specimen of dataStream) {
     i++
 
     const row = getRow(specimen, animalGroupsById, animalMeasureTypeNamesOrderedByName, analysesWithGroupNamesOrderedByName)
     worksheet.addRow(row).commit()
 
-    if (((i % 100) === 0) || (i === 1)) {
+    if (((i % progressSize) === 0) || (i === 1)) {
       console.info(`Extracted ${i} specimens out of ${total}...`)
 
       const progress = Math.ceil((i / total) * 90)

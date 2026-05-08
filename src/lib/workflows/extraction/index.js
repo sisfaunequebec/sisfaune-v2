@@ -6,9 +6,9 @@ import uploadToBlobStorage from './upload-to-blob-storage.step'
 const extractData = async (params) => {
   'use workflow'
 
-  console.info('Starting data extraction workflow with params: ', params)
+  // console.info('Starting data extraction workflow with params: ', params)
 
-  const filePath = await extractToExcel()
+  const filePath = await extractToExcel(JSON.parse(params))
   console.debug('Excel file created at', filePath)
 
   const uploadResult = await uploadToBlobStorage(filePath)

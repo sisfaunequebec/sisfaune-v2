@@ -4,7 +4,10 @@ import { start } from 'workflow/api'
 import workflow from '@/lib/workflows/extraction'
 
 export async function POST(req) {
-  const run = await start(workflow, ['toto'])
+  const body = await req.json()
+  // console.debug(body)
+
+  const run = await start(workflow, [JSON.stringify(body)])
 
   const stream = run.getReadable()
   

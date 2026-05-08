@@ -30,7 +30,13 @@ const ExportDialog = ({ close, filters, onExport }) => {
   const handleSubmit = useCallback(async (data) => {
     setProgress({ progress: 1, message: 'Extraction en cours..' })
 
-    const response = await fetch('/api/workflow/extraction', { method: 'POST', body: {} })
+    const { analysisGroupIds } = data
+    const params = {...filters, ...{ analyse: analysisGroupIds ? analysisGroupIds.map(ag => ag.id) : undefined }}
+    console.debug(params)
+
+    // return true
+
+    const response = await fetch('/api/workflow/extraction', { method: 'POST', body: JSON.stringify(params) })
 
     const reader = response.body.getReader()
     const decoder = new TextDecoder()
