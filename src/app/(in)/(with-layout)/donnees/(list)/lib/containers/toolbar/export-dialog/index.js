@@ -28,7 +28,7 @@ const ExportDialog = ({ close, filters, onExport }) => {
   const [progress, setProgress] = useState({})
 
   const handleSubmit = useCallback(async (data) => {
-    // setProgress({ progress: 1, message: null })
+    setProgress({ progress: 1, message: 'Extraction en cours..' })
 
     const response = await fetch('/api/workflow/extraction', { method: 'POST', body: {} })
 
