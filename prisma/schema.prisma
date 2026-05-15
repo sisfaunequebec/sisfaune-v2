@@ -259,6 +259,7 @@ model LutAnimalGroupV2 {
 
   id Int @db.SmallInt @id
   name String @map(name: "groupe")
+  displayOrder Int @db.SmallInt @default(1) @map(name: "ordre_affichage")
   parentGroupId Int? @db.SmallInt @map(name: "id_parent")
 
   species LutAnimalSpecie[]

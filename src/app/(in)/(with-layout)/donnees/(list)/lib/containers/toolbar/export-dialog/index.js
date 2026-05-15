@@ -2,28 +2,23 @@ import { useState, useCallback } from 'react'
 
 import wait from '@/utils/wait'
 
-// import { startExtraction } from '@/lib/data/tasks/extraction/service'
-
 import { Text, Fieldset, Alert } from '@chakra-ui/react'
+
+import useSpecimensCount from '@/lib/data/specimens/use-specimens-count'
 
 import exportDataSchema from './export.schema'
 
 import BaseDialog from '@/app/lib/components/dialogs/base'
 
 import ControlledField from '@/app/lib/components/controlled-field'
-
-// import FormatSelect from './format-select'
 import AnalysisGroupMultiselect from './analysis-group-multiselect'
-
-import useSpecimensCount from '@/lib/data/specimens/use-specimens-count'
 
 const defaultValues = {
   // format: { value: 'xlsx'}
 }
 
-const ExportDialog = ({ close, filters, onExport }) => {
-  // const { data: specimensCount } = useSpecimensCount(filters)
-  // console.debug('ExportDialog - filters:', specimensCount)
+const ExportDialog = ({ close, filters }) => {
+  const { data: specimensCount } = useSpecimensCount(filters)
 
   const [progress, setProgress] = useState(null)
 
@@ -32,14 +27,12 @@ const ExportDialog = ({ close, filters, onExport }) => {
 
     const { analysisGroupIds } = data
     const params = {...filters, ...{ analyse: analysisGroupIds ? analysisGroupIds.map(ag => ag.id) : undefined }}
-    console.debug(params)
-
-    // return true
 
     const response = await fetch('/api/workflow/extraction', { method: 'POST', body: JSON.stringify(params) })
 
     const reader = response.body.getReader()
     const decoder = new TextDecoder()
+
     let buffer = ''
 
     while (true) {
@@ -55,7 +48,6 @@ const ExportDialog = ({ close, filters, onExport }) => {
         if (part.trim()) {
           try {
             const parsed = JSON.parse(part)
-            // console.debug(parsed)
 
             const { progress, message, result } = parsed
             
@@ -75,38 +67,13 @@ const ExportDialog = ({ close, filters, onExport }) => {
     }
   }, [setProgress, filters])
 
-  // const handleSubmit = async (data) => {
-  //   // const { format } = data
-  //   // const { value } = format
-  //   const { analysisGroupIds } = data
-  //   const params = {...filters, ...{ analyse: analysisGroupIds ? analysisGroupIds.map(ag => ag.id) : undefined }}
-  //   // const result = await onExport(params)
-
-  //   for (let i = 1; i <= 100; i++) {
-  //     setProgress(i)
-  //     await wait(1)
-  //   }
-
-  //   const result = 1
-    
-  //   return result
-  // }
-
   return (
     <BaseDialog title={'Extraction de données'} size={'md'} onClose={close} onSubmit={handleSubmit} submitBtnLabel={'Extraire'} defaultValues={defaultValues} schema={exportDataSchema} schemaType={'valibot'} progress={progress}>
       {(contentRef) => (
         <Fieldset.Root>
-          {/* <Text mb={1} fontWeight={'medium'}>{message}</Text> */}
-          {/* <Alert.Root status={'info'} mb={4}>
-            <Alert.Indicator />
-            <Alert.Content>
-              <Alert.Description>
-                Pour modifier les spécimens inclus dans l&apos;extraction, veuillez utiliser les filtres disponibles sur la page. Par défaut, <strong>tous les spécimens</strong> sont inclus. 
-              </Alert.Description>
-            </Alert.Content>
-          </Alert.Root> */}
+          <Text mb={4} fontWeight={'medium'}>Vous vous apprêtez à extraire les données de {specimensCount} spécimens.</Text>
           <Fieldset.Content gap={1}>
-            <ControlledField name={'analysisGroupIds'} label={'Analyses à inclure :'} variant={'horizontal'}>
+            <ControlledField name={'analysisGroupIds'} label={'Analyses à inclure :'} variant={'vertical'}>
               <AnalysisGroupMultiselect contentRef={contentRef} />
             </ControlledField>
           </Fieldset.Content>

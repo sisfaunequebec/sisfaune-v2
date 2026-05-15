@@ -28,7 +28,7 @@ const getResolver = (type, schema) => {
 const CircularProgress = ({ value = 0, message }) => {
   // if (!value) { return null }
   return (
-    <HStack gap={3}>
+    <HStack gap={2}>
       <ProgressCircle.Root value={value} size={'xs'} >
         <ProgressCircle.Circle css={{ '--thickness': '2px' }}>
           <ProgressCircle.Track />
