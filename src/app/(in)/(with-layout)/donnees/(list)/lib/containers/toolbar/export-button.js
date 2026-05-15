@@ -32,7 +32,7 @@ const ExportButton = () => {
     const result = await confirmDownload({ filters })
   }, [confirmDownload, filters])
 
-  const isDisabled = specimensCount === 0
+  const isDisabled = specimensCount < 1
 
   return (
     <>
@@ -41,7 +41,7 @@ const ExportButton = () => {
         label={'Extraction'} 
         colorPalette={'blue'} 
         icon={<RxDownload />} 
-        isDisabled={isDisabled}
+        disabled={isDisabled}
         onClick={handleDownload} 
       />
     </>
