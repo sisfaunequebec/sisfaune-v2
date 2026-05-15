@@ -24,7 +24,7 @@ const ExportButton = () => {
   const [filters] = useQueryStates(searchParams, { urlKeys })
 
   const { data: specimensCount } = useSpecimensCount(filters)
-  // console.debug('ExportDialog - filters:', specimensCount)
+  console.debug('ExportButton - specimensCount:', specimensCount)
 
   const { ask: confirmDownload, dialog: downloadEventsDialog } = useDialog(ExportDialog)
 
