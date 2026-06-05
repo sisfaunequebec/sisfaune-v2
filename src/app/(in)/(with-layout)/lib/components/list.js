@@ -1,6 +1,6 @@
 import { Button } from '@/app/lib/components/ui/button'
 import { HStack, LinkBox, VStack } from '@chakra-ui/react'
-import { RxPlus } from 'react-icons/rx'
+import { RxPlus, RxChevronDown } from 'react-icons/rx'
 
 const ListContainer = ({ children, isLoading }) => {
   return (
@@ -46,9 +46,9 @@ const LoadMoreButton = ({ count, total, label = 'Items', isReachingEnd, isLoadin
   const loadMoreButtonLabel = [`${label} 1 à ${count} de ${total}`, (isReachingEnd ? null : '')].filter(Boolean).join(' - ')
 
   return (
-    <Button size={['lg', null, 'sm']} py={[6, null, 6]} mt={[0, null, 2]} borderRadius={0} variant={'surface'} colorPalette={'blue'} onClick={isReachingEnd ? null : onClick} loading={isLoading} disabled={isReachingEnd} alignItems={'center'}>
+    <Button size={['lg', null, 'sm']} py={[6, null, 6]} mt={[0, null, 2]} zIndex={0} borderRadius={0} borderWidth={0} variant={'surface'} colorPalette={'blue'} onClick={isReachingEnd ? null : onClick} loading={isLoading} disabled={isReachingEnd} alignItems={'center'}>
       { loadMoreButtonLabel }
-      { !isReachingEnd && <RxPlus /> }
+      { !isReachingEnd && <RxChevronDown /> }
     </Button>
   )
 }
