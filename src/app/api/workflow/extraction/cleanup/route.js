@@ -17,7 +17,7 @@ export async function GET() {
   const result = await list()
   const { blobs } = result
 
-  const blobsToDelete = blobs.filter(filterBlobsOlderThan7Days)
+  const blobsToDelete = blobs.filter(filterBlobsOlderOneDay)
   const urlsToDelete = blobsToDelete.map(b => b.url)
 
   if (urlsToDelete.length) {
