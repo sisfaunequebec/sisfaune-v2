@@ -15,7 +15,7 @@ const Toolbar = async () => {
   const user = await getUser()
 
   const canSubmitEvent = canUserSubmitEvent(user)
-  const canExport = true // canUserExport(user)
+  const canExport = canUserExport(user)
 
   return (
     <ToolbarWrapper>
