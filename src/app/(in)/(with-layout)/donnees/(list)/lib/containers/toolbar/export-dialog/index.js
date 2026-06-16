@@ -23,7 +23,7 @@ const ExportDialog = ({ close, filters }) => {
   const [progress, setProgress] = useState(null)
 
   const handleSubmit = useCallback(async (data) => {
-    setProgress({ progress: 0, message: 'Extraction en cours..' })
+    setProgress({ progress: 0, message: 'Un instant...' })
 
     const { analysisGroupIds } = data
     const params = {...filters, ...{ analyse: analysisGroupIds ? analysisGroupIds.map(ag => ag.id) : undefined }}
