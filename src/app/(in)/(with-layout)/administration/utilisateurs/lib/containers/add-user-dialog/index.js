@@ -45,7 +45,7 @@ const FirstNameInput = ({ value, onChange, ...rest }) => {
   const { setValue } = useFormContext()
 
   const handleChange = useCallback(v => {
-    const username = slugify([v, lastName].join('-'), { lower: true })
+    const username = slugify([v, lastName].join('_'), { lower: true })
     setValue('username', username)
     onChange(v)
   }, [lastName, setValue, onChange])
@@ -59,7 +59,7 @@ const LastNameInput = ({ value, onChange, ...rest }) => {
   const { setValue } = useFormContext()
 
   const handleChange = useCallback(v => {
-    const username = slugify([firstName, v].join('-'), { lower: true })
+    const username = slugify([firstName, v].join('_'), { lower: true })
     setValue('username', username)
     onChange(v)
   }, [firstName, setValue, onChange])
