@@ -59,7 +59,6 @@ const getWhereClauseFromParams = (params, user) => {
   const whereClause = {
     specie: groupe ? { groupId: { in: groupIds } } : undefined, 
     event: {
-      // id: { gt: 304000 },
       statusId: statut ? { in: statut } : undefined,
       programId: { in: programsIds },
       location: {
@@ -73,6 +72,12 @@ const getWhereClauseFromParams = (params, user) => {
         { silabId: texte ? { contains: texte, mode: 'insensitive' } : undefined },
         { mapaqId: texte ? { contains: texte, mode: 'insensitive' } : undefined },
         { pathologyNumber: texte ? { contains: texte, mode: 'insensitive' } : undefined },
+        { specimens: {
+          some: {
+              terrainIdentificationNumber: texte ? { contains: texte, mode: 'insensitive' } : undefined
+            }
+          }
+        },
         { submitter: { lastName: texte ? { contains: texte, mode: 'insensitive' } : undefined } },
         { submitter: { firstName: texte ? { contains: texte, mode: 'insensitive' } : undefined } },
         { location: {

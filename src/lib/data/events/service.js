@@ -104,6 +104,12 @@ const getWhereClauseFromParams = (params, user) => {
       { cqsasIncidentNumber: texte ? { contains: texte, mode: 'insensitive' } : undefined },
       { mapaqId: texte ? { contains: texte, mode: 'insensitive' } : undefined },
       { pathologyNumber: texte ? { contains: texte, mode: 'insensitive' } : undefined },
+      { specimens: {
+          some: {
+            terrainIdentificationNumber: texte ? { contains: texte, mode: 'insensitive' } : undefined
+          }
+        }
+      },
       { submitter: { lastName: texte ? { contains: texte, mode: 'insensitive' } : undefined } },
       { submitter: { firstName: texte ? { contains: texte, mode: 'insensitive' } : undefined } },
       { location: {
