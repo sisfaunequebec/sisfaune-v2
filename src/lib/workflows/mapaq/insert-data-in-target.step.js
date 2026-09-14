@@ -12,7 +12,7 @@ const insertDataInTarget = async (data) => {
 
   if (error) {
     console.debug(`Error inserting data...`, JSON.stringify(error))
-    // await sendEmailConfirmation(null, error)
+    await sendEmailConfirmation(null, error)
     throw new FatalError(error)
   }
 
