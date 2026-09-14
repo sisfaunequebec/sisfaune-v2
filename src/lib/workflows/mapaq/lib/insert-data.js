@@ -83,7 +83,7 @@ const insertData = async (data) => {
         affectedSpecie1DeadCount: getAffect1Mort(r), // animalMort === 2 ? nbreAnimal : null,
         createdById: metaCreationPar
       }
-    })
+    }).slice(-200)
 
     const results = await orm.$transaction([
       // drop temp tables
