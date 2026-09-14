@@ -33,7 +33,14 @@ const getDataFromFtp = async () => {
       port: FTP_SOURCE_PORT,
       user: FTP_SOURCE_USER,
       password: FTP_SOURCE_PASSWORD,
-      secure: 'implicit'
+      secure: 'implicit',
+      secureOptions: {
+        // This stops Node from crashing when the data socket says "localhost"
+        checkServerIdentity: (hostname, cert) => {
+          // Return undefined / null to indicate the certificate matches
+          return undefined
+        }
+      }
     }
 
     console.debug('Connecting to source...')
